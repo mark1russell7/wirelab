@@ -19,8 +19,8 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | --- | --- | --- | --- | --- |
 | W0 | The role of wirelab | waiting | P1 | Mark confirms the role request `wirelab` on the hub with a passkey. |
 | W1 | The catalog tables | done | P0 | The tables of families, transports, protocols, packages, links, sources, registry rows and use, with their check and the priority formula. |
-| W2 | The use measures in `@procedures/npm` | active | P0 | Request builders and extractors for npm downloads, deps.dev dependents, jsDelivr hits and the full registry document. The fetch is a parameter. |
-| W3 | The measure run | later | P0 | A run passes the fetch of `polite-crawler` to the measures and adds a source with its rows. A weekly workflow opens a pull request with the new rows. |
+| W2 | The use measures in `@procedures/npm` | done | P0 | Request builders and extractors for npm downloads, deps.dev dependents, jsDelivr hits and the full registry document. The fetch is a parameter. |
+| W3 | The measure run | active | P0 | A run passes the fetch of `polite-crawler` to the measures and adds a source with its rows. A weekly workflow opens a pull request with the new rows. |
 | W4 | Repositories and their policies | later | P1 | The repository of each package, and its AI policy, CLA and security channel, each with its source and day. The landing factors use them. |
 | W5 | The catalog on the site | later | P1 | The site shows the ranked catalog, with filters and the parts of each score. It replaces the first site of the template. |
 | W6 | Fault plans in `rigor-chaos` | later | P1 | A fault plan is seeded data: delays, cuts, resets, split frames, reorders, duplicates and stalls, at planned times. |
