@@ -35,9 +35,9 @@ jobs:
     name: Repro ${{ inputs.dir }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    # The context runner is not available in the env of a job, so the step Run sets OUT from RUNNER_TEMP.
     env:
       DIR: ${{ inputs.dir }}
-      OUT: ${{ runner.temp }}/repro-out
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -76,6 +76,7 @@ jobs:
       # A repro of a fault exits with a code that is not 0. The job records the code and passes when run.sh ran.
       - name: Run
         run: |
+          OUT="$RUNNER_TEMP/repro-out"
           mkdir -p "$OUT"
           cd "repros/$DIR"
           {

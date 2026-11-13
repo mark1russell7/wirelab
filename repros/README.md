@@ -16,4 +16,7 @@ gh run download <run id>
 
 A repro of a fault exits with a code that is not 0. The job records the code and passes when `run.sh` ran.
 
+The workflow `.github/workflows/repro-types.yml` checks the types of each repro folder that a pull request changes.
+Add the `tsconfig.json` of each new folder to `conventions.rules["typed-files"].configs` in the root `package.json`.
+
 A repro of a security finding never goes in this repository.
