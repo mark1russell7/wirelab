@@ -8,6 +8,11 @@ on:
   # Then: gh run download <run id> -n pnpm-lock
   workflow_dispatch:
 
+# Runs of the same branch wait for each other.
+concurrency:
+  group: lockfile-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
 

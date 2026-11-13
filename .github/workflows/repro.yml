@@ -18,6 +18,11 @@ on:
         default: "24"
         type: string
 
+# Runs of the same folder on the same Node.js version wait for each other. Runs of other folders start at once.
+concurrency:
+  group: repro-${{ inputs.dir }}-node${{ inputs.node }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
 
