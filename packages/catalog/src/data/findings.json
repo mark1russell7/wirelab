@@ -1,1 +1,232 @@
-[]
+[
+  {
+    "id": "F0001",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: a late error event of an old socket closes the new connection (unsubscribe and subscribe while CONNECTING, timeout with retry)",
+    "note": "onerror has no check of the current socket. PR #6708 added that check to onclose only. Confidence high."
+  },
+  {
+    "id": "F0002",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: an exception of the serializer becomes the error 'WebSocketSubject.error must be called with an object with an error code'",
+    "note": "With a code property on the error, close() throws and the subject is stuck. Confidence high."
+  },
+  {
+    "id": "F0003",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: error({code, reason}) with a reason over 123 bytes or a code that close() refuses leaves the socket open and the subject stuck",
+    "note": "close() throws, so _resetState is skipped and no subscriber gets an event. Confidence high."
+  },
+  {
+    "id": "F0004",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket multiplex: a throwing subMsg still subscribes and sends unsubMsg, and an error of unsubMsg is lost",
+    "note": "No return after observer.error in the subMsg catch. Confidence high."
+  },
+  {
+    "id": "F0005",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "conformance",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: closingObserver is not called for a close that unsubscription causes, the one case that its documentation names",
+    "note": "Only complete() and error() call it. Confidence high."
+  },
+  {
+    "id": "F0006",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "types",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: the deprecated resultSelector option is typed and documented, but nothing reads it",
+    "note": "Unused since 6.x. Confidence high."
+  },
+  {
+    "id": "F0007",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "types",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: an explicit undefined deserializer or serializer replaces the JSON default",
+    "note": "The config copy keeps own keys with the value undefined. Confidence medium."
+  },
+  {
+    "id": "F0008",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: an exception in openObserver or closeObserver leaves the subject stuck",
+    "note": "The hooks run unwrapped in the event handlers. Confidence medium: the contract for hook errors is not documented."
+  },
+  {
+    "id": "F0009",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "conformance",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: values buffered before a connection are dropped when the attempt fails, so retry() does not send them",
+    "note": "The docs say that the values are sent when the connection is established. The 8.x rewrite also drops them, so the docs may be the fault. Confidence low."
+  },
+  {
+    "id": "F0010",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket multiplex: after a connection loss, the unsubMsg of a stream goes out on the new connection",
+    "note": "Some protocols, for example STOMP, answer an unknown UNSUBSCRIBE with an error. Confidence medium."
+  },
+  {
+    "id": "F0011",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: values buffered before open stay in memory for the life of the connection",
+    "note": "The queue subscription is not unsubscribed after the replay. Confidence medium."
+  },
+  {
+    "id": "F0012",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "conformance",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: with no global WebSocket and no WebSocketCtor, the constructor throws ReferenceError, not the error of the library",
+    "note": "The check uses the bare name WebSocket. Confidence high."
+  },
+  {
+    "id": "F0013",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "presence: the key __proto__ replaces the prototype of presenceState() and hides that member",
+    "note": "transformState builds a plain object with assignment. Only the returned object changes, not Object.prototype. Confidence high."
+  },
+  {
+    "id": "F0014",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "connect() adds the connection handlers again at each connect, also at each automatic reconnect",
+    "note": "After 20 reconnects, one frame runs 21 message callbacks. Confidence high."
+  },
+  {
+    "id": "F0015",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "disconnect() resolves but keeps a timer of 10 seconds, so a Node process cannot exit for 10 seconds",
+    "note": "The id of the timeout timer is not kept or cleared. Confidence high."
+  },
+  {
+    "id": "F0016",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "connect() or subscribe() while the socket closes does nothing, and the channel stays in CHANNEL_ERROR",
+    "note": "The guard isDisconnecting() drops the request. Confidence high."
+  },
+  {
+    "id": "F0017",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the first phx_join has no access token, and the token is not pushed after the join",
+    "note": "A regression of #2136 from the phoenix migration. Confidence high."
+  },
+  {
+    "id": "F0018",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "when the push buffer overflows, the promise of the dropped push does not settle",
+    "note": "Only cancelTimeout() runs on the dropped push. Confidence high."
+  },
+  {
+    "id": "F0019",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "httpSend keeps its timeout timer when the fetch rejects",
+    "note": "clearTimeout runs only after a resolved fetch. Confidence high."
+  },
+  {
+    "id": "F0020",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "each push failure on a joined channel is reported as 'before joining', and the real error is lost",
+    "note": "A catch-all throws a fixed message with no cause. Confidence high."
+  },
+  {
+    "id": "F0021",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "conformance",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a Uint8Array or Buffer broadcast payload goes out as JSON over the socket, but as binary over HTTP",
+    "note": "The docs name only ArrayBuffer. Confidence low."
+  },
+  {
+    "id": "F0022",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a binary frame of an unknown kind throws a TypeError in onmessage",
+    "note": "The server sends only kind 4 today. Confidence low."
+  },
+  {
+    "id": "F0023",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "types",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the type HeartbeatStatus has 'disconnected', but the callbacks of the user do not get it",
+    "note": "The filter is intentional (#2496). Only the type is stale. Confidence low."
+  }
+]

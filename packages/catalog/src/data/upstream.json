@@ -1,1 +1,86 @@
-[]
+[
+  {
+    "finding": "F0002",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "declined",
+    "url": "https://github.com/ReactiveX/rxjs/issues/7111",
+    "note": "Closed as not planned in the triage of 2026-07. The maintainer agreed that it is a bug. PR #7114 closed unmerged. Also #5624."
+  },
+  {
+    "finding": "F0011",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "closed",
+    "url": "https://github.com/ReactiveX/rxjs/issues/6196",
+    "note": "Closed as not planned for lack of a repro. The repro of this review is one."
+  },
+  {
+    "finding": "F0012",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "closed",
+    "url": "https://github.com/ReactiveX/rxjs/issues/3942",
+    "note": "Closed. #3692 and PR #3694 fixed only the case with a constructor."
+  },
+  {
+    "finding": "F0014",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2705",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0015",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2666",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0016",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2816",
+    "note": "An open pull request of another author, for issue #2815."
+  },
+  {
+    "finding": "F0017",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2655",
+    "note": "An open pull request of another author, for issue #1730."
+  },
+  {
+    "finding": "F0018",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2671",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0019",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2682",
+    "note": "An open pull request of another author, for issue #2681."
+  },
+  {
+    "finding": "F0020",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2635",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0021",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2772",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0022",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2130",
+    "note": "An open pull request of another author."
+  }
+]
