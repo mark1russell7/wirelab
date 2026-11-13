@@ -1,0 +1,39 @@
+# The lockfile of a branch. The job runs pnpm install --lockfile-only and keeps pnpm-lock.yaml as an artifact.
+# A person downloads it and commits it to the branch. The computer of the campaign is shared, and its memory is
+# often full, so this install runs here.
+name: Lockfile
+
+on:
+  # A person starts a run: gh workflow run lockfile.yml --ref <branch>
+  # Then: gh run download <run id> -n pnpm-lock
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  lockfile:
+    name: Lockfile
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 26
+      - run: pnpm install --lockfile-only
+      - name: Show the change
+        run: git diff --stat -- pnpm-lock.yaml
+      - name: Upload the lockfile
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: pnpm-lock
+          path: pnpm-lock.yaml
+          retention-days: 7

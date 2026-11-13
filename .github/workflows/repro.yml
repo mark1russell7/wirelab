@@ -1,0 +1,86 @@
+# One repro of the campaign. A repro is a folder repros/<package>/<finding> with a package.json that pins the exact
+# versions, and a script run.sh. The job installs the folder with npm, runs run.sh and keeps its output as an artifact.
+# The computer of the campaign is shared, and its memory is often full, so the repros of public findings run here.
+# A repro of a security finding never goes in this repository: it stays in the private repository of held work.
+name: Repro
+
+on:
+  # A person starts a run: gh workflow run repro.yml --ref <branch> -f dir=sockjs-client/F0068
+  workflow_dispatch:
+    inputs:
+      dir:
+        description: The folder of the repro, under repros/
+        required: true
+        type: string
+      node:
+        description: The major version of Node.js
+        required: false
+        default: "24"
+        type: string
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  repro:
+    name: Repro ${{ inputs.dir }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DIR: ${{ inputs.dir }}
+      OUT: ${{ runner.temp }}/repro-out
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ inputs.node }}
+      # The folder must be a relative path under repros/ with a run.sh. The name of the artifact cannot have a slash.
+      - name: Check the folder
+        id: folder
+        run: |
+          if [[ ! "$DIR" =~ ^[A-Za-z0-9@._-]+(/[A-Za-z0-9@._-]+)*$ || "$DIR" == *..* ]]; then
+            echo "The folder must be a relative path under repros/ with no '..'." >&2
+            exit 1
+          fi
+          if [[ ! -f "repros/$DIR/run.sh" ]]; then
+            echo "repros/$DIR/run.sh does not exist." >&2
+            exit 1
+          fi
+          echo "artifact=repro-${DIR//\//-}" >> "$GITHUB_OUTPUT"
+      # Install scripts do not run: the packages of a repro are code of others.
+      - name: Install
+        run: |
+          cd "repros/$DIR"
+          if [[ -f package.json ]]; then
+            npm install --ignore-scripts --no-audit --no-fund
+            npm ls --depth=0 || true
+          fi
+      # A repro of a fault exits with a code that is not 0. The job records the code and passes when run.sh ran.
+      - name: Run
+        run: |
+          mkdir -p "$OUT"
+          cd "repros/$DIR"
+          {
+            echo "repro: repros/$DIR"
+            echo "commit: $GITHUB_SHA"
+            echo "node: $(node --version), os: $(uname -sr)"
+            echo
+          } > "$OUT/output.txt"
+          set +e +o pipefail
+          OUT="$OUT" bash run.sh 2>&1 | tee -a "$OUT/output.txt"
+          code=${PIPESTATUS[0]}
+          echo "run.sh exit code: $code" | tee -a "$OUT/output.txt"
+      - name: Upload the output
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ${{ steps.folder.outputs.artifact }}
+          path: ${{ runner.temp }}/repro-out
+          if-no-files-found: warn
+          retention-days: 90

@@ -1,0 +1,8 @@
+{
+  "name": "repro-f0069",
+  "private": true,
+  "dependencies": {
+    "sockjs": "0.3.24",
+    "sockjs-client": "1.6.1"
+  }
+}
