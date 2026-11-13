@@ -129,7 +129,7 @@ export type PolicyTopic = (typeof POLICY_TOPICS)[number];
  * - `ai`: the rule for contributions that an AI made. `none-stated` means that the repository has no rule.
  * - `cla`: the agreement that a contributor signs. `dco` is a sign-off line in each commit.
  * - `security`: the private channel for a security fault. `platform` is a bounty platform, for example HackerOne.
- * - `contributions`: whether the repository takes pull requests. An `archived` repository takes none.
+ * - `contributions`: `open` when the repository takes pull requests. An `archived` repository takes none.
  */
 export const POLICY_VALUES: Readonly<Record<PolicyTopic, readonly string[]>> = {
   ai: ["none-stated", "allowed", "disclosure", "refused"],
