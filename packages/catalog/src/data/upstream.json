@@ -97,62 +97,6 @@
     "note": "An open pull request of another author."
   },
   {
-    "finding": "F0034",
-    "at": "2026-11-13T05:29:38Z",
-    "state": "pr-open",
-    "url": "https://github.com/socketio/socket.io/pull/5575",
-    "note": "An open pull request of another author, for issue #5274."
-  },
-  {
-    "finding": "F0035",
-    "at": "2026-11-13T05:29:38Z",
-    "state": "issue-open",
-    "url": "https://github.com/socketio/socket.io/issues/5286",
-    "note": "An open issue of another author. PR #5525 closed with no merge."
-  },
-  {
-    "finding": "F0036",
-    "at": "2026-11-13T05:29:38Z",
-    "state": "fixed-by-others",
-    "url": "https://github.com/socketio/socket.io/pull/5596",
-    "note": "Merged on main on 2026-11-12. Not in 6.6.8."
-  },
-  {
-    "finding": "F0063",
-    "at": "2026-11-13T06:36:50Z",
-    "state": "fixed-by-others",
-    "url": "https://github.com/socketio/socket.io/pull/5582",
-    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
-  },
-  {
-    "finding": "F0064",
-    "at": "2026-11-13T06:36:50Z",
-    "state": "pr-open",
-    "url": "https://github.com/socketio/socket.io/pull/5584",
-    "note": "An open pull request of another author."
-  },
-  {
-    "finding": "F0065",
-    "at": "2026-11-13T06:36:50Z",
-    "state": "fixed-by-others",
-    "url": "https://github.com/socketio/socket.io/pull/5566",
-    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
-  },
-  {
-    "finding": "F0066",
-    "at": "2026-11-13T06:36:50Z",
-    "state": "pr-open",
-    "url": "https://github.com/socketio/socket.io/pull/5539",
-    "note": "An open pull request of another author, on the server side. Also PR #5547."
-  },
-  {
-    "finding": "F0067",
-    "at": "2026-11-13T06:36:50Z",
-    "state": "issue-open",
-    "url": "https://github.com/socketio/socket.io/issues/5504",
-    "note": "An open issue of another author."
-  },
-  {
     "finding": "F0024",
     "at": "2026-11-13T07:39:09Z",
     "state": "issue-open",
@@ -212,5 +156,61 @@
     "at": "2026-11-13T07:43:45Z",
     "state": "pr-open",
     "url": "https://github.com/socketio/socket.io/pull/5613"
+  },
+  {
+    "finding": "F0034",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5575",
+    "note": "An open pull request of another author, for issue #5274."
+  },
+  {
+    "finding": "F0035",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5286",
+    "note": "An open issue of another author. PR #5525 closed with no merge."
+  },
+  {
+    "finding": "F0036",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5596",
+    "note": "Merged on main on 2026-11-12. Not in 6.6.8."
+  },
+  {
+    "finding": "F0063",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5582",
+    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
+  },
+  {
+    "finding": "F0064",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5584",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0065",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5566",
+    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
+  },
+  {
+    "finding": "F0066",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5539",
+    "note": "An open pull request of another author, on the server side. Also PR #5547."
+  },
+  {
+    "finding": "F0067",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5504",
+    "note": "An open issue of another author."
   }
 ]
