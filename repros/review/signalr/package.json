@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@microsoft/signalr": "11.0.0",
+    "ws": "8.23.0"
+  }
+}
