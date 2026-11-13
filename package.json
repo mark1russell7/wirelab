@@ -31,5 +31,17 @@
     "publint": "^0.3.25",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
+  },
+  "conventions": {
+    "rules": {
+      "typed-files": {
+        "configs": [
+          "repros/pusher-js/F0070/tsconfig.json",
+          "repros/sockjs-client/F0068/tsconfig.json",
+          "repros/sockjs-client/F0069/tsconfig.json"
+        ],
+        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines these configs."
+      }
+    }
   }
 }
