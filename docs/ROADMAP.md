@@ -23,8 +23,8 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W3 | The measure run | active | P0 | A run passes the fetch of `polite-crawler` to the measures and adds a source with its rows. A weekly workflow opens a pull request with the new rows. |
 | W4 | Repositories and their policies | later | P1 | The repository of each package, and its AI policy, CLA and security channel, each with its source and day. The landing factors use them. |
 | W5 | The catalog on the site | later | P1 | The site shows the ranked catalog, with filters and the parts of each score. It replaces the first site of the template. |
-| W6 | Fault plans in `rigor-chaos` | later | P1 | A fault plan is seeded data: delays, cuts, resets, split frames, reorders, duplicates and stalls, at planned times. |
-| W7 | The package `rigor-proxy` | later | P1 | A proxy applies a fault plan to TCP, WebSocket and HTTP streams, and records each fault. Its tests run in CI. |
+| W6 | Fault plans in `rigor-chaos` | done | P1 | A fault plan is seeded data: delays, cuts, resets, split frames, reorders, duplicates and stalls, at planned times. |
+| W7 | The package `rigor-proxy` | done | P1 | A proxy applies a fault plan to TCP, WebSocket and HTTP streams, and records each fault. Its tests run in CI. |
 | W8 | The transports of each package | later | P1 | `codeatlas` reads each published package and records the browser APIs that it calls, with the file and line as evidence. |
 | W9 | Conformance suites in CI | later | P0 | The Autobahn suite, the Engine.IO and Socket.IO suites, `sockjs-protocol`, the `graphql-http` audit and the Connect conformance suite, in browsers. |
 | W10 | Findings and the upstream ledger | done | P0 | The tables of suites, runs, findings and upstream states. Held fixes go to the private repository `wirelab-held`. |
