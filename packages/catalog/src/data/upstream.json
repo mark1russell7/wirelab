@@ -97,6 +97,67 @@
     "note": "An open pull request of another author."
   },
   {
+    "finding": "F0024",
+    "at": "2026-11-13T07:39:09Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5604"
+  },
+  {
+    "finding": "F0024",
+    "at": "2026-11-13T07:39:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5605"
+  },
+  {
+    "finding": "F0025",
+    "at": "2026-11-13T07:39:16Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5606"
+  },
+  {
+    "finding": "F0025",
+    "at": "2026-11-13T07:39:21Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5607"
+  },
+  {
+    "finding": "F0028",
+    "at": "2026-11-13T07:39:25Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5608"
+  },
+  {
+    "finding": "F0028",
+    "at": "2026-11-13T07:39:29Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5609"
+  },
+  {
+    "finding": "F0030",
+    "at": "2026-11-13T07:43:34Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5610"
+  },
+  {
+    "finding": "F0030",
+    "at": "2026-11-13T07:43:38Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5611",
+    "note": "The pull request and the fix of F0031 both change _fetch() in polling-fetch.ts. The second to merge needs a rebase."
+  },
+  {
+    "finding": "F0032",
+    "at": "2026-11-13T07:43:41Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5612"
+  },
+  {
+    "finding": "F0032",
+    "at": "2026-11-13T07:43:45Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5613"
+  },
+  {
     "finding": "F0034",
     "at": "2026-11-13T05:29:38Z",
     "state": "pr-open",
