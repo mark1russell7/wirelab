@@ -1,1 +1,155 @@
-[]
+[
+  {
+    "finding": "F0001",
+    "at": "2026-11-13T06:27:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/ReactiveX/rxjs/issues/7660"
+  },
+  {
+    "finding": "F0001",
+    "at": "2026-11-13T06:27:36Z",
+    "state": "pr-open",
+    "url": "https://github.com/ReactiveX/rxjs/pull/7661",
+    "note": "The base is the branch 7.x. The pull request has four new tests, which fail without the change."
+  },
+  {
+    "finding": "F0002",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "declined",
+    "url": "https://github.com/ReactiveX/rxjs/issues/7111",
+    "note": "Closed as not planned in the triage of 2026-07. The maintainer agreed that it is a bug. PR #7114 closed unmerged. Also #5624."
+  },
+  {
+    "finding": "F0011",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "closed",
+    "url": "https://github.com/ReactiveX/rxjs/issues/6196",
+    "note": "Closed as not planned for lack of a repro. The repro of this review is one."
+  },
+  {
+    "finding": "F0012",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "closed",
+    "url": "https://github.com/ReactiveX/rxjs/issues/3942",
+    "note": "Closed. #3692 and PR #3694 fixed only the case with a constructor."
+  },
+  {
+    "finding": "F0014",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2705",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0015",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2666",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0016",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2816",
+    "note": "An open pull request of another author, for issue #2815."
+  },
+  {
+    "finding": "F0017",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2655",
+    "note": "An open pull request of another author, for issue #1730."
+  },
+  {
+    "finding": "F0018",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2671",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0019",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2682",
+    "note": "An open pull request of another author, for issue #2681."
+  },
+  {
+    "finding": "F0020",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2635",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0021",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2772",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0022",
+    "at": "2026-11-13T05:26:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2130",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0034",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5575",
+    "note": "An open pull request of another author, for issue #5274."
+  },
+  {
+    "finding": "F0035",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5286",
+    "note": "An open issue of another author. PR #5525 closed with no merge."
+  },
+  {
+    "finding": "F0036",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5596",
+    "note": "Merged on main on 2026-11-12. Not in 6.6.8."
+  },
+  {
+    "finding": "F0063",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5582",
+    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
+  },
+  {
+    "finding": "F0064",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5584",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0065",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5566",
+    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
+  },
+  {
+    "finding": "F0066",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5539",
+    "note": "An open pull request of another author, on the server side. Also PR #5547."
+  },
+  {
+    "finding": "F0067",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5504",
+    "note": "An open issue of another author."
+  }
+]

@@ -1,0 +1,737 @@
+[
+  {
+    "repository": "JSteunou/webstomp-client",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "archived",
+    "evidence": "https://github.com/JSteunou/webstomp-client"
+  },
+  {
+    "repository": "ReactiveX/rxjs",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/ReactiveX/rxjs/blob/master/CONTRIBUTING.md",
+    "note": "AGENTS.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "ReactiveX/rxjs",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/ReactiveX/rxjs/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "ReactiveX/rxjs",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/ReactiveX/rxjs"
+  },
+  {
+    "repository": "ReactiveX/rxjs",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "github-advisory",
+    "evidence": "https://github.com/ReactiveX/rxjs/blob/master/SECURITY.md",
+    "note": "One maintainer. The line 7.x gets only security fixes and high-severity correctness fixes."
+  },
+  {
+    "repository": "ably/ably-pubsub-js",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/ably/ably-pubsub-js/blob/main/CONTRIBUTING.md",
+    "note": "AGENTS.md and CLAUDE.md guide AI agents in the repository. They have no rule for contributions."
+  },
+  {
+    "repository": "ably/ably-pubsub-js",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/ably/ably-pubsub-js/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "ably/ably-pubsub-js",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/ably/ably-pubsub-js"
+  },
+  {
+    "repository": "ably/ably-pubsub-js",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/ably/ably-pubsub-js",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "apollographql/subscriptions-transport-ws",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "archived",
+    "evidence": "https://github.com/apollographql/subscriptions-transport-ws"
+  },
+  {
+    "repository": "centrifugal/centrifuge-js",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/centrifugal/centrifuge-js"
+  },
+  {
+    "repository": "centrifugal/centrifuge-js",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/centrifugal/centrifuge-js/pull/452",
+    "note": "No CLA check runs on the pull request #452."
+  },
+  {
+    "repository": "centrifugal/centrifuge-js",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/centrifugal/centrifuge-js"
+  },
+  {
+    "repository": "centrifugal/centrifuge-js",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/centrifugal/centrifuge-js",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "cloudflare/partykit",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/cloudflare/partykit",
+    "note": "AGENTS.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "cloudflare/partykit",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/cloudflare/partykit/pull/417",
+    "note": "No CLA check runs on the pull request #417."
+  },
+  {
+    "repository": "cloudflare/partykit",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/cloudflare/partykit"
+  },
+  {
+    "repository": "cloudflare/partykit",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "platform",
+    "evidence": "https://github.com/cloudflare/.github/blob/master/SECURITY.md",
+    "note": "HackerOne, from the security policy of the organization."
+  },
+  {
+    "repository": "connectrpc/connect-es",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/connectrpc/connect-es/blob/main/.github/CONTRIBUTING.md"
+  },
+  {
+    "repository": "connectrpc/connect-es",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "dco",
+    "evidence": "https://github.com/connectrpc/connect-es/blob/main/.github/CONTRIBUTING.md",
+    "note": "A sign-off line in each commit. The check DCO runs on each pull request."
+  },
+  {
+    "repository": "connectrpc/connect-es",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/connectrpc/connect-es"
+  },
+  {
+    "repository": "connectrpc/connect-es",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "email",
+    "evidence": "https://github.com/connectrpc/connect-es/blob/main/SECURITY.md",
+    "note": "The private security list of Connect, from its governance page."
+  },
+  {
+    "repository": "dotnet/aspnetcore",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/dotnet/aspnetcore/blob/main/CONTRIBUTING.md",
+    "note": ".github/copilot-instructions.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "dotnet/aspnetcore",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "cla",
+    "evidence": "https://github.com/dotnet/aspnetcore/blob/main/CONTRIBUTING.md",
+    "note": "The CLA of the .NET Foundation. The check license/cla runs on each pull request."
+  },
+  {
+    "repository": "dotnet/aspnetcore",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/dotnet/aspnetcore"
+  },
+  {
+    "repository": "dotnet/aspnetcore",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "platform",
+    "evidence": "https://github.com/dotnet/aspnetcore/blob/main/SECURITY.md",
+    "note": "The MSRC Researcher Portal of Microsoft."
+  },
+  {
+    "repository": "eclipse-paho/paho.mqtt.javascript",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/eclipse-paho/paho.mqtt.javascript/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "eclipse-paho/paho.mqtt.javascript",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "cla",
+    "evidence": "https://github.com/eclipse-paho/paho.mqtt.javascript/blob/master/CONTRIBUTING.md",
+    "note": "The Eclipse contributor agreement, and a sign-off line in each commit."
+  },
+  {
+    "repository": "eclipse-paho/paho.mqtt.javascript",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/eclipse-paho/paho.mqtt.javascript"
+  },
+  {
+    "repository": "eclipse-paho/paho.mqtt.javascript",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "email",
+    "evidence": "https://github.com/eclipse-paho/paho.mqtt.javascript/blob/master/SECURITY.md",
+    "note": "The security team of the Eclipse Foundation."
+  },
+  {
+    "repository": "enisdenjo/graphql-ws",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/enisdenjo/graphql-ws/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "enisdenjo/graphql-ws",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/enisdenjo/graphql-ws/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "enisdenjo/graphql-ws",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/enisdenjo/graphql-ws"
+  },
+  {
+    "repository": "enisdenjo/graphql-ws",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/enisdenjo/graphql-ws",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "faye/faye",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/faye/faye/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "faye/faye",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/faye/faye/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "faye/faye",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/faye/faye"
+  },
+  {
+    "repository": "faye/faye",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "github-advisory",
+    "evidence": "https://github.com/faye/faye/security",
+    "note": "The private vulnerability reporting of GitHub is on. The repository has no SECURITY.md."
+  },
+  {
+    "repository": "grpc/grpc-web",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/grpc/grpc-web/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "grpc/grpc-web",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "cla",
+    "evidence": "https://github.com/grpc/grpc-web/blob/master/CONTRIBUTING.md",
+    "note": "The Google CLA. The check EasyCLA runs on each pull request."
+  },
+  {
+    "repository": "grpc/grpc-web",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/grpc/grpc-web"
+  },
+  {
+    "repository": "grpc/grpc-web",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "email",
+    "evidence": "https://github.com/grpc/grpc-web/blob/master/SECURITY.md",
+    "note": "The private list of the gRPC security team, from the gRPC CVE process."
+  },
+  {
+    "repository": "improbable-eng/grpc-web",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/improbable-eng/grpc-web/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "improbable-eng/grpc-web",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/improbable-eng/grpc-web/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "improbable-eng/grpc-web",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/improbable-eng/grpc-web"
+  },
+  {
+    "repository": "improbable-eng/grpc-web",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/improbable-eng/grpc-web",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "jmesnil/stomp-websocket",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/jmesnil/stomp-websocket"
+  },
+  {
+    "repository": "jmesnil/stomp-websocket",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/jmesnil/stomp-websocket/pull/93",
+    "note": "No CLA check runs on the pull request #93."
+  },
+  {
+    "repository": "jmesnil/stomp-websocket",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/jmesnil/stomp-websocket"
+  },
+  {
+    "repository": "jmesnil/stomp-websocket",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/jmesnil/stomp-websocket",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "mqttjs/MQTT.js",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/mqttjs/MQTT.js/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "mqttjs/MQTT.js",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/mqttjs/MQTT.js/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "mqttjs/MQTT.js",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/mqttjs/MQTT.js"
+  },
+  {
+    "repository": "mqttjs/MQTT.js",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "github-advisory",
+    "evidence": "https://github.com/mqttjs/MQTT.js/security",
+    "note": "The private vulnerability reporting of GitHub is on. The repository has no SECURITY.md."
+  },
+  {
+    "repository": "nats-io/nats.js",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/nats-io/nats.js/blob/main/CONTRIBUTING.md",
+    "note": "CLAUDE.md guides AI agents, and the maintainers review with Claude workflows. The repository has no rule for contributions."
+  },
+  {
+    "repository": "nats-io/nats.js",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "dco",
+    "evidence": "https://github.com/nats-io/nats.js/blob/main/CONTRIBUTING.md",
+    "note": "A Signed-off-by line with a legal name in each commit."
+  },
+  {
+    "repository": "nats-io/nats.js",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/nats-io/nats.js"
+  },
+  {
+    "repository": "nats-io/nats.js",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/nats-io/nats.js",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "nats-io/nats.ws",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "archived",
+    "evidence": "https://github.com/nats-io/nats.ws"
+  },
+  {
+    "repository": "phoenixframework/phoenix",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/phoenixframework/phoenix/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "phoenixframework/phoenix",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/phoenixframework/phoenix/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "phoenixframework/phoenix",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/phoenixframework/phoenix"
+  },
+  {
+    "repository": "phoenixframework/phoenix",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "github-advisory",
+    "evidence": "https://github.com/phoenixframework/phoenix/blob/main/SECURITY.md"
+  },
+  {
+    "repository": "pladaria/reconnecting-websocket",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/pladaria/reconnecting-websocket/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "pladaria/reconnecting-websocket",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/pladaria/reconnecting-websocket/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "pladaria/reconnecting-websocket",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/pladaria/reconnecting-websocket"
+  },
+  {
+    "repository": "pladaria/reconnecting-websocket",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/pladaria/reconnecting-websocket",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "pusher/pusher-js",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/pusher/pusher-js"
+  },
+  {
+    "repository": "pusher/pusher-js",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/pusher/pusher-js/pull/1006",
+    "note": "No CLA check runs on the pull request #1006."
+  },
+  {
+    "repository": "pusher/pusher-js",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/pusher/pusher-js"
+  },
+  {
+    "repository": "pusher/pusher-js",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/pusher/pusher-js",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "rails/rails",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/rails/rails/blob/main/CONTRIBUTING.md",
+    "note": "AGENTS.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "rails/rails",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/rails/rails/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "rails/rails",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/rails/rails"
+  },
+  {
+    "repository": "rails/rails",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "platform",
+    "evidence": "https://rubyonrails.org/security",
+    "note": "HackerOne. The page also names the email address of the security team."
+  },
+  {
+    "repository": "socketio/socket.io",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/socketio/socket.io/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "socketio/socket.io",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/socketio/socket.io/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "socketio/socket.io",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/socketio/socket.io"
+  },
+  {
+    "repository": "socketio/socket.io",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "email",
+    "evidence": "https://github.com/socketio/socket.io/blob/main/SECURITY.md",
+    "note": "An email to the maintainer, at the address in the GitHub profile."
+  },
+  {
+    "repository": "sockjs/sockjs-client",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/sockjs/sockjs-client"
+  },
+  {
+    "repository": "sockjs/sockjs-client",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/sockjs/sockjs-client/pull/706",
+    "note": "No CLA check runs on the pull request #706."
+  },
+  {
+    "repository": "sockjs/sockjs-client",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/sockjs/sockjs-client"
+  },
+  {
+    "repository": "sockjs/sockjs-client",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "platform",
+    "evidence": "https://github.com/sockjs/.github/blob/master/SECURITY.md",
+    "note": "Tidelift, from the security policy of the organization."
+  },
+  {
+    "repository": "stomp-js/rx-stomp",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/stomp-js/rx-stomp"
+  },
+  {
+    "repository": "stomp-js/rx-stomp",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/stomp-js/rx-stomp/pull/602",
+    "note": "No CLA check runs on the pull request #602."
+  },
+  {
+    "repository": "stomp-js/rx-stomp",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/stomp-js/rx-stomp"
+  },
+  {
+    "repository": "stomp-js/rx-stomp",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/stomp-js/rx-stomp",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "stomp-js/stompjs",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/stomp-js/stompjs"
+  },
+  {
+    "repository": "stomp-js/stompjs",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/stomp-js/stompjs/pull/713",
+    "note": "No CLA check runs on the pull request #713."
+  },
+  {
+    "repository": "stomp-js/stompjs",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/stomp-js/stompjs"
+  },
+  {
+    "repository": "stomp-js/stompjs",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/stomp-js/stompjs",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "supabase/supabase-js",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/supabase/supabase-js/blob/master/CONTRIBUTING.md",
+    "note": "AGENTS.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "supabase/supabase-js",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/supabase/supabase-js/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "supabase/supabase-js",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/supabase/supabase-js"
+  },
+  {
+    "repository": "supabase/supabase-js",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "platform",
+    "evidence": "https://github.com/supabase/.github/blob/main/SECURITY.md",
+    "note": "HackerOne, from the security policy of the organization."
+  },
+  {
+    "repository": "timostamm/protobuf-ts",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/timostamm/protobuf-ts/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "timostamm/protobuf-ts",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/timostamm/protobuf-ts/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "timostamm/protobuf-ts",
+    "topic": "contributions",
+    "checked": "2026-11-13",
+    "value": "open",
+    "evidence": "https://github.com/timostamm/protobuf-ts"
+  },
+  {
+    "repository": "timostamm/protobuf-ts",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/timostamm/protobuf-ts",
+    "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  }
+]

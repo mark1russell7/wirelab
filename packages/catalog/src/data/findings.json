@@ -1,1 +1,672 @@
-[]
+[
+  {
+    "id": "F0001",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: a late error event of an old socket closes the new connection (unsubscribe and subscribe while CONNECTING, timeout with retry)",
+    "note": "onerror has no check of the current socket. PR #6708 added that check to onclose only. Confidence high."
+  },
+  {
+    "id": "F0002",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: an exception of the serializer becomes the error 'WebSocketSubject.error must be called with an object with an error code'",
+    "note": "With a code property on the error, close() throws and the subject is stuck. Confidence high."
+  },
+  {
+    "id": "F0003",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: error({code, reason}) with a reason over 123 bytes or a code that close() refuses leaves the socket open and the subject stuck",
+    "note": "close() throws, so _resetState is skipped and no subscriber gets an event. Confidence high."
+  },
+  {
+    "id": "F0004",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket multiplex: a throwing subMsg still subscribes and sends unsubMsg, and an error of unsubMsg is lost",
+    "note": "No return after observer.error in the subMsg catch. Confidence high."
+  },
+  {
+    "id": "F0005",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "conformance",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: closingObserver is not called for a close that unsubscription causes, the one case that its documentation names",
+    "note": "Only complete() and error() call it. Confidence high."
+  },
+  {
+    "id": "F0006",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "types",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: the deprecated resultSelector option is typed and documented, but nothing reads it",
+    "note": "Unused since 6.x. Confidence high."
+  },
+  {
+    "id": "F0007",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "types",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: an explicit undefined deserializer or serializer replaces the JSON default",
+    "note": "The config copy keeps own keys with the value undefined. Confidence medium."
+  },
+  {
+    "id": "F0008",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: an exception in openObserver or closeObserver leaves the subject stuck",
+    "note": "The hooks run unwrapped in the event handlers. Confidence medium: the contract for hook errors is not documented."
+  },
+  {
+    "id": "F0009",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "conformance",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: values buffered before a connection are dropped when the attempt fails, so retry() does not send them",
+    "note": "The docs say that the values are sent when the connection is established. The 8.x rewrite also drops them, so the docs may be the fault. Confidence low."
+  },
+  {
+    "id": "F0010",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket multiplex: after a connection loss, the unsubMsg of a stream goes out on the new connection",
+    "note": "Some protocols, for example STOMP, answer an unknown UNSUBSCRIBE with an error. Confidence medium."
+  },
+  {
+    "id": "F0011",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: values buffered before open stay in memory for the life of the connection",
+    "note": "The queue subscription is not unsubscribed after the replay. Confidence medium."
+  },
+  {
+    "id": "F0012",
+    "package": "rxjs",
+    "version": "7.8.2",
+    "kind": "conformance",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "webSocket: with no global WebSocket and no WebSocketCtor, the constructor throws ReferenceError, not the error of the library",
+    "note": "The check uses the bare name WebSocket. Confidence high."
+  },
+  {
+    "id": "F0013",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "presence: the key __proto__ replaces the prototype of presenceState() and hides that member",
+    "note": "transformState builds a plain object with assignment. Only the returned object changes, not Object.prototype. Confidence high."
+  },
+  {
+    "id": "F0014",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "connect() adds the connection handlers again at each connect, also at each automatic reconnect",
+    "note": "After 20 reconnects, one frame runs 21 message callbacks. Confidence high."
+  },
+  {
+    "id": "F0015",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "disconnect() resolves but keeps a timer of 10 seconds, so a Node process cannot exit for 10 seconds",
+    "note": "The id of the timeout timer is not kept or cleared. Confidence high."
+  },
+  {
+    "id": "F0016",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "connect() or subscribe() while the socket closes does nothing, and the channel stays in CHANNEL_ERROR",
+    "note": "The guard isDisconnecting() drops the request. Confidence high."
+  },
+  {
+    "id": "F0017",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the first phx_join has no access token, and the token is not pushed after the join",
+    "note": "A regression of #2136 from the phoenix migration. Confidence high."
+  },
+  {
+    "id": "F0018",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "when the push buffer overflows, the promise of the dropped push does not settle",
+    "note": "Only cancelTimeout() runs on the dropped push. Confidence high."
+  },
+  {
+    "id": "F0019",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "httpSend keeps its timeout timer when the fetch rejects",
+    "note": "clearTimeout runs only after a resolved fetch. Confidence high."
+  },
+  {
+    "id": "F0020",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "each push failure on a joined channel is reported as 'before joining', and the real error is lost",
+    "note": "A catch-all throws a fixed message with no cause. Confidence high."
+  },
+  {
+    "id": "F0021",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "conformance",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a Uint8Array or Buffer broadcast payload goes out as JSON over the socket, but as binary over HTTP",
+    "note": "The docs name only ArrayBuffer. Confidence low."
+  },
+  {
+    "id": "F0022",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a binary frame of an unknown kind throws a TypeError in onmessage",
+    "note": "The server sends only kind 4 today. Confidence low."
+  },
+  {
+    "id": "F0023",
+    "package": "@supabase/realtime-js",
+    "version": "2.119.0",
+    "kind": "types",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the type HeartbeatStatus has 'disconnected', but the callbacks of the user do not get it",
+    "note": "The filter is intentional (#2496). Only the type is stale. Confidence low."
+  },
+  {
+    "id": "F0024",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the maxPayload check of a batch counts base64 as 1.33 bytes for each byte, so the server answers 413 and the client closes",
+    "note": "Base64 gives 4*ceil(n/3) bytes. Confidence high."
+  },
+  {
+    "id": "F0025",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the Fetch transport sends credentials 'omit', so it drops same-origin cookies and breaks sticky sessions",
+    "note": "XHR sends same-origin cookies. Shown in headless Chrome. Confidence high."
+  },
+  {
+    "id": "F0026",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "Fetch transport: an error while it reads the body is an unhandled rejection, so polling stops with no error event",
+    "note": "res.text() has no catch. In Node.js the process exits. Confidence high."
+  },
+  {
+    "id": "F0027",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "WebTransport: the promises ready, createBidirectionalStream, pipeTo and write reject unhandled",
+    "note": "Confidence high for ready, medium for pipeTo."
+  },
+  {
+    "id": "F0028",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the heartbeat timer overflows when pingInterval + pingTimeout is over 2^31-1, so the client closes with 'ping timeout' at once",
+    "note": "The server accepts that configuration. Confidence high."
+  },
+  {
+    "id": "F0029",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a malformed open packet throws out of the transport callback, with no error or close event, and the socket stays 'opening'",
+    "note": "JSON.parse and the field reads are unchecked. Only a server that does not obey the protocol causes it. Confidence high."
+  },
+  {
+    "id": "F0030",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "requestTimeout has no effect with NodeXHR, the default polling transport in Node.js, or with Fetch",
+    "note": "xmlhttprequest-ssl has no timeout, and Fetch gets no AbortSignal. Browser XHR obeys it. Confidence medium."
+  },
+  {
+    "id": "F0031",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "close does not abort the polling requests in flight: the long-poll GET and the close POST",
+    "note": "Each held request keeps a connection slot of the origin. Confidence medium."
+  },
+  {
+    "id": "F0032",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a failed probe is not closed: the probe WebSocket stays open, its listeners stay, and upgradeError fires twice",
+    "note": "The else branch of _probe has no freezeTransport(). Confidence medium."
+  },
+  {
+    "id": "F0033",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "types",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the types refuse perMessageDeflate: false and send(msg, fn), which the documentation and the runtime accept",
+    "note": "The JSDoc default of perMessageDeflate is also wrong. Confidence high."
+  },
+  {
+    "id": "F0034",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "close during the polling handshake leaves a session on the server until 'ping timeout'",
+    "note": "Reported before as #5274 (bug 2)."
+  },
+  {
+    "id": "F0035",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a close packet over WebSocket is ignored",
+    "note": "Reported before as #5286."
+  },
+  {
+    "id": "F0036",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "close() in an 'upgrade' listener does not close the socket",
+    "note": "Reported before as #5595."
+  },
+  {
+    "id": "F0037",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "In browsers, addEventListener listeners get close and error events with wrong fields: code \"close\", reason an Event object",
+    "note": "cloneEventBrowser calls new e.constructor(e.type, e), but the own CloseEvent and ErrorEvent take other arguments. The upstream tests run only in Node and jsdom. Confidence high."
+  },
+  {
+    "id": "F0038",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "resource",
+    "title": "close(code, reason) with a code or reason that the WebSocket rejects leaves the inner socket open, and the error is lost",
+    "note": "Since 1.2.0, _disconnect swallows the exception. readyState says CLOSED, send() still sends, and no close event comes. Confidence high."
+  },
+  {
+    "id": "F0039",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "reconnect() on an open socket stops itself when shouldReconnectOnClose returns false for its own close event",
+    "note": "New in 1.3.0. The predicate is for automatic reconnects only. Different from the open issue #428. Confidence high."
+  },
+  {
+    "id": "F0040",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "A URL or query provider that rejects with undefined or null gives an unhandled rejection, no error event and no retry",
+    "note": "Error(err.message) throws a TypeError inside the catch. The socket stays in CONNECTING. Confidence high."
+  },
+  {
+    "id": "F0041",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "updateProperties() throws \"path must not start with a slash\" on each PartySocket that was made with path",
+    "note": "The constructor adds a slash to this.path, and updateProperties passes it back. Confidence high."
+  },
+  {
+    "id": "F0042",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "A second updateProperties() call undoes the first, and the id changes on each call",
+    "note": "The merge uses the options of the constructor, which never change. A call with no id makes a new _pk. Confidence high for the undo, medium for the id."
+  },
+  {
+    "id": "F0043",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "React usePartySocket: after a mount with enabled false and a later enable, the first change of the options is ignored",
+    "note": "The branch from false to true does not set socketInitializedRef. Related to the open issue #422, with a different cause. Confidence high."
+  },
+  {
+    "id": "F0044",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "Node and React Native: listeners get the reason \"unknown reason\" for an empty reason, and wasClean is always true",
+    "note": "cloneEvent puts defaults on code and reason, and the own CloseEvent sets wasClean to true. Confidence high."
+  },
+  {
+    "id": "F0045",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "close() before the inner socket exists dispatches no close event",
+    "note": "This occurs in the first tick, while a URL provider is pending, and during a backoff wait. The doc comment promises a terminal event. Confidence medium."
+  },
+  {
+    "id": "F0046",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "An on* handler that throws stops the addEventListener listeners, and an onclose that throws inside close() is lost",
+    "note": "Inherited from reconnecting-websocket. The DOM reports the exception and runs the other listeners. Confidence medium."
+  },
+  {
+    "id": "F0047",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "performance",
+    "title": "The default reconnect delay has no jitter (3000 ms for each client), and the README tells a random default",
+    "note": "PR #397 replaced the random value with a fixed midpoint and did not change the README. After a server restart, all clients connect at the same times. Confidence high."
+  },
+  {
+    "id": "F0048",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "reconnect() during a backoff wait does not connect until the old delay ends",
+    "note": "_connectLock is held during _wait. Inherited from reconnecting-websocket. Confidence medium."
+  },
+  {
+    "id": "F0049",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "resource",
+    "title": "close() does not clear the backoff timer, so a Node process stays alive until the delay ends",
+    "note": "The handle of the timer is not kept, so _clearTimeouts cannot clear it. Severity low. Confidence high."
+  },
+  {
+    "id": "F0050",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "room and party are not URL-encoded: a room with ? or # goes to the wrong room, or retries without end",
+    "note": "Only a slash gives a warning. The server side must decode too. Confidence medium."
+  },
+  {
+    "id": "F0051",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "With no global crypto, new PartySocket() with no id throws ReferenceError",
+    "note": "crypto?.randomUUID does not protect against a name that is not declared, so the fallback never runs. This occurs on React Native without a polyfill. Confidence high."
+  },
+  {
+    "id": "F0052",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "types",
+    "title": "The types of partysocket/ws need the DOM lib",
+    "note": "The declarations use AddEventListenerOptions, EventListenerOrEventListenerObject and BinaryType. The fault shows with skipLibCheck false. Confidence high."
+  },
+  {
+    "id": "F0053",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "types",
+    "title": "The onError of the React hooks has the type Event, so e.message does not compile",
+    "note": "use-handlers.ts uses the global WebSocketEventMap, not the own map of partysocket. Confidence high."
+  },
+  {
+    "id": "F0054",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "types",
+    "title": "PartySocket.fetch needs room in its type also when basePath is given",
+    "note": "getPartyInfo uses basePath in place of room, and the constructor accepts the same options with no room. Confidence medium."
+  },
+  {
+    "id": "F0055",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "A volatile event emitted while the namespace is not connected is buffered and sent after connect, not dropped",
+    "note": "The check of the discard looks only at the transport. During the namespace handshake the transport is writable. Confidence high."
+  },
+  {
+    "id": "F0056",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "resource",
+    "title": "A dropped volatile packet keeps its ack handler: the handler leaks, and emitWithAck never settles",
+    "note": "_registerAckCallback runs before the discard, and the discard never removes the handler. Confidence high."
+  },
+  {
+    "id": "F0057",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "socket.connect() during a pending namespace handshake sends a second CONNECT",
+    "note": "With WebSocket the server gets an orphan socket. With polling the server closes the whole connection, so each namespace drops. Confidence high."
+  },
+  {
+    "id": "F0058",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "resource",
+    "title": "disconnect() during the namespace handshake leaves an orphan socket on the server",
+    "note": "No DISCONNECT goes out, and the later CONNECT reply is ignored. A DISCONNECT sent at once makes the 4.8 server close the connection. Confidence high."
+  },
+  {
+    "id": "F0059",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "reconnectionAttempts 0, reconnectionDelay 0 and reconnectionDelayMax 0 in the constructor become the defaults",
+    "note": "The constructor and backo2 use ||. The setters accept 0. randomizationFactor was fixed with ?? in #1231. Confidence high."
+  },
+  {
+    "id": "F0060",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "socket.recovered is undefined, not false, when the server does not use connection state recovery",
+    "note": "The field has the type boolean. Low impact. Confidence high."
+  },
+  {
+    "id": "F0061",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "url() with no scheme in Node.js or React Native gives \"undefined//host\"",
+    "note": "loc becomes false, so the check of typeof is always true and the https fallback never runs. Low impact. Confidence high."
+  },
+  {
+    "id": "F0062",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "types",
+    "title": "socket.timeout(ms).emitWithAck() returns Promise<any>, and the type tests of the package do not run",
+    "note": "FirstArg does not match the callback with two arguments. test:types is \"exit 0\", so the type test of the repository for this case never runs. Confidence high."
+  },
+  {
+    "id": "F0063",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "After about 1,015 reconnect attempts the backoff delay overflows to Infinity, and with jitter it drops near 0",
+    "note": "Known upstream. The repro of this review shows 6 of 10 gaps under 200 ms after attempt 1031."
+  },
+  {
+    "id": "F0064",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "retries without ackTimeout: a positive ack goes to the callback as the error, and the event is sent three times",
+    "note": "Known upstream. Related, different: issue #5446."
+  },
+  {
+    "id": "F0065",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "The retries queue keeps this.flags, so a later emit gets the timeout of an earlier one",
+    "note": "Known upstream. The retries branch returns before this.flags = {}."
+  },
+  {
+    "id": "F0066",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "Connection state recovery: a volatile event with a string as its last argument becomes the offset, so recovery fails",
+    "note": "Known upstream. PR #5547 (open) is a fix on the client side."
+  },
+  {
+    "id": "F0067",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "The decoder of the client allows 10 attachments, but the server sends more: an event with 11 buffers gives a parse error and a reconnect",
+    "note": "Known upstream. The Manager makes the Decoder with no options."
+  }
+]
