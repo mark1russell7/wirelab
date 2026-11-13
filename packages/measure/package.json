@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "@wirelab/measure",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.test.json"
+  },
+  "devDependencies": {
+    "@mark1russell7/algebra": "^0.8.4",
+    "@mark1russell7/cue": "^2.0.0",
+    "@types/node": "^26.6.5",
+    "@vitest/coverage-v8": "^5.0.3",
+    "typescript": "^7.0.2",
+    "undici": "^8.12.4",
+    "vitest": "^5.0.3"
+  },
+  "description": "The measure run of wirelab: the use of each package of the catalog, from npm, deps.dev and jsDelivr.",
+  "dependencies": {
+    "@procedures/npm": "^0.55.2",
+    "@wirelab/catalog": "workspace:*",
+    "polite-crawler": "^0.6.0"
+  }
+}
