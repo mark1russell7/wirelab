@@ -6,7 +6,7 @@ const tsc = path.join(__dirname, '..', '..', 'node_modules', 'typescript', 'bin'
 let out = '';
 let code = 0;
 try {
-  out = execFileSync(process.execPath, [tsc, '-p', path.join(__dirname, 'tsconfig.json')], { encoding: 'utf8', timeout: 60000 });
+  out = execFileSync(process.execPath, [tsc, '-p', path.join(__dirname, 'tsconfig.repro.json')], { encoding: 'utf8', timeout: 60000 });
 } catch (e) { out = (e.stdout || '') + (e.stderr || ''); code = e.status || 1; }
 const errs = out.split('\n').filter((l) => /error TS/.test(l)).map((l) => l.replace(/^.*readme-example\.ts/, 'readme-example.ts'));
 console.log(`${code === 0 ? 'PASS' : 'FAIL'} 10 README example and subscriptionCount typecheck under strict`);

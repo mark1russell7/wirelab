@@ -40,7 +40,11 @@
           "repros/sockjs-client/F0068/tsconfig.json",
           "repros/sockjs-client/F0069/tsconfig.json"
         ],
-        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines these configs."
+        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines these configs. The files in ignore are type checks of a fault: they fail before the fix by design, and the script of their repro runs them.",
+        "ignore": [
+          "repros/fix-tests/**/check-*.ts",
+          "repros/review/pusher-js/repro/types/readme-example.ts"
+        ]
       }
     }
   }
