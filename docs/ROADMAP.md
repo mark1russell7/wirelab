@@ -27,7 +27,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W7 | The package `rigor-proxy` | later | P1 | A proxy applies a fault plan to TCP, WebSocket and HTTP streams, and records each fault. Its tests run in CI. |
 | W8 | The transports of each package | later | P1 | `codeatlas` reads each published package and records the browser APIs that it calls, with the file and line as evidence. |
 | W9 | Conformance suites in CI | later | P0 | The Autobahn suite, the Engine.IO and Socket.IO suites, `sockjs-protocol`, the `graphql-http` audit and the Connect conformance suite, in browsers. |
-| W10 | Findings and the upstream ledger | later | P0 | The tables of suites, runs, findings and upstream states. Held fixes go to the private repository `wirelab-held`. |
+| W10 | Findings and the upstream ledger | active | P0 | The tables of suites, runs, findings and upstream states. Held fixes go to the private repository `wirelab-held`. |
 | W11 | Protocol state machines | later | P1 | Each protocol as a state machine in `@mark1russell7/algebra`, with trace replay. Engine.IO and Socket.IO come first. |
 | W12 | Fuzz and property tests | later | P2 | Generated frames and sequences for each protocol, with `fast-check` and the generators of `rigor`. |
 | W13 | The share of a client in a large package | later | P2 | The downloads of a package such as `rxjs` count all its users. Import counts of the client module correct the reach. |

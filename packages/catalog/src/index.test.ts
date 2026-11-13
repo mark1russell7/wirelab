@@ -34,6 +34,11 @@ describe("the check", () => {
     sources: [{ id: "s", at: "2026-11-13T00:00:00Z", what: "S." }],
     registry: [],
     usage: [],
+    suites: [{ id: "t", name: "T", subject: "client", url: "https://example.org/t" }],
+    suiteProtocols: [{ suite: "t", protocol: "p" }],
+    runs: [],
+    findings: [],
+    upstream: [],
   });
 
   it("accepts a valid catalog", () => {
@@ -64,6 +69,88 @@ describe("the check", () => {
   });
 });
 
+describe("the check of the ledger", () => {
+  const RUN = { id: "r1", suite: "t", package: "a", version: "1.0.0", at: "2026-11-14T10:00:00Z", url: "https://example.org/run/1", passed: 9, failed: 1 };
+  const FINDING = { id: "F0001", package: "a", version: "1.0.0", kind: "conformance", method: "suite", found: "2026-11-14", title: "T.", run: "r1" };
+  const ledger = (): Record<keyof Catalog, unknown[]> => ({
+    families: [{ id: "f", order: 1, title: "F", what: "F." }],
+    transports: [],
+    protocols: [
+      { id: "p", name: "P", family: "f", kind: "protocol", client: "library" },
+      { id: "q", name: "Q", family: "f", kind: "protocol", client: "library" },
+    ],
+    packages: [
+      { name: "a", family: "f" },
+      { name: "b", family: "f" },
+    ],
+    packageProtocols: [
+      { package: "a", protocol: "p" },
+      { package: "b", protocol: "q" },
+    ],
+    packageLinks: [],
+    sources: [],
+    registry: [],
+    usage: [],
+    suites: [{ id: "t", name: "T", subject: "client", url: "https://example.org/t" }],
+    suiteProtocols: [{ suite: "t", protocol: "p" }],
+    runs: [RUN],
+    findings: [FINDING],
+    upstream: [
+      { finding: "F0001", at: "2026-11-14T11:00:00Z", state: "issue-open", url: "https://example.org/issues/1" },
+      { finding: "F0001", at: "2026-11-15T09:00:00Z", state: "pr-open", url: "https://example.org/pull/2" },
+    ],
+  });
+
+  it("accepts a valid ledger", () => {
+    expect(catalogProblems(ledger())).toEqual([]);
+  });
+
+  it("finds a suite with no protocol, and a run of a package that speaks no protocol of its suite", () => {
+    const raw = ledger();
+    raw.suites.push({ id: "u", name: "U", subject: "server", url: "https://example.org/u" });
+    raw.runs.push({ ...RUN, id: "r2", package: "b" });
+    expect(catalogProblems(raw)).toEqual(["suites u tests no protocol.", "runs r2: the package b speaks no protocol of the suite t."]);
+  });
+
+  it("finds a finding with a bad id, a suite finding with no run, and a run of another package", () => {
+    const raw = ledger();
+    raw.findings.push({ ...FINDING, id: "bug-1", run: undefined }, { ...FINDING, id: "F0002", package: "b" });
+    raw.findings = raw.findings.map((f) => JSON.parse(JSON.stringify(f)) as unknown);
+    expect(catalogProblems(raw)).toEqual([
+      "findings bug-1 is not an id of the form F0001.",
+      "findings bug-1: a finding of a suite names its run, and only such a finding.",
+      "findings F0002: the run r1 tested a, not b.",
+    ]);
+  });
+
+  it("keeps a security finding out until its advisory is public, and out of public issues", () => {
+    const raw = ledger();
+    raw.findings[0] = { ...FINDING, kind: "security" };
+    expect(catalogProblems(raw)).toEqual([
+      "findings F0001: a security finding has its public advisory, and only a security finding.",
+      "upstream F0001: a security finding never has a public issue.",
+    ]);
+  });
+
+  it("finds an upstream state before the finding, a public state with no URL and a private state with a URL", () => {
+    const raw = ledger();
+    raw.upstream = [
+      { finding: "F0001", at: "2026-11-13T23:00:00Z", state: "pr-open", url: "https://example.org/pull/2" },
+      { finding: "F0001", at: "2026-11-14T12:00:00Z", state: "merged" },
+      { finding: "F0001", at: "2026-11-14T13:00:00Z", state: "held-cla", url: "https://example.org/held" },
+      { finding: "F0001", at: "2026-11-14T14:00:00Z", state: "reported-privately" },
+      { finding: "F0009", at: "2026-11-14T14:00:00Z", state: "closed" },
+    ];
+    expect(catalogProblems(raw)).toEqual([
+      "upstream F0001: the state pr-open at 2026-11-13T23:00:00Z is before the day of the finding.",
+      "upstream F0001: the state merged needs its URL.",
+      "upstream F0001: the state held-cla is private, so it has no URL.",
+      "upstream F0001: only a security finding goes through the private channel.",
+      "upstream F0009 names F0009, and that row is not in the catalog.",
+    ]);
+  });
+});
+
 describe("the priority order", () => {
   const fixture = (): Catalog => ({
     families: [{ id: "f", order: 1, title: "F", what: "F." }],
@@ -83,6 +170,11 @@ describe("the priority order", () => {
       { package: "c", source: "old", metric: "npm-downloads-week", value: 5000 },
       { package: "c", source: "new", metric: "npm-downloads-week", value: 10 },
     ],
+    suites: [],
+    suiteProtocols: [],
+    runs: [],
+    findings: [],
+    upstream: [],
   });
 
   it("puts the most used package first, and a package with no measure last", () => {

@@ -22,6 +22,24 @@ Each table is one JSON file in `src/data`. A row names a row of another table by
 - `packumentModified` is the day of the last change of the registry document. A deprecation also changes it, so it is not the day of the last release.
 - An observed row names its source. A new read adds a source and new rows, and the old rows stay. Thus the tables keep the history.
 
+## The ledger
+
+The ledger records the tests of the campaign, the faults that they find, and the state of each fix upstream.
+
+| Table | File | Key | What a row is |
+| --- | --- | --- | --- |
+| `suites` | `suites.json` | `id` | A suite of tests, with what it tests: the clients, the servers or both. |
+| `suiteProtocols` | `suite-protocols.json` | `suite`, `protocol` | A suite tests a protocol. |
+| `runs` | `runs.json` | `at`, `id` | One run of a suite on one version of a package, in CI, with its counts. |
+| `findings` | `findings.json` | `id` | One fault of one version of a package, with its kind and how the campaign found it. |
+| `upstream` | `upstream.json` | `finding`, `at`, `state` | One change of the state of a finding upstream. The latest row is the current state. |
+
+- A run tests a package that speaks a protocol of its suite.
+- A finding of a suite names its run. The run tested the same package.
+- An issue, a pull request, a merge and a release each need their URL. A held fix and a private report have no URL.
+- A security finding goes only through the private channel of the project. It does not go into a public issue.
+- A security finding is in these public tables only after its advisory is public. Before that, it is only in the private repository `wirelab-held`.
+
 ## The check
 
 `catalogProblems` gives one text for each problem, and `parseCatalog` throws an error that lists them. The import of the package checks the tables.
