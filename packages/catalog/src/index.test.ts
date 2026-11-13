@@ -241,6 +241,21 @@ describe("the priority order", () => {
     expect(order.find((r) => r.package === "c")?.landing).toBe(1);
   });
 
+  it("gives a package of an archived repository the factor once, also when npm deprecates it", () => {
+    const f = fixture();
+    const evidence = "https://example.org/o/r";
+    const policies = [{ repository: "o/r", topic: "contributions" as const, checked: "2026-11-13", value: "archived", evidence }];
+    const packageRepositories = [
+      { package: "a", repository: "o/r" },
+      { package: "b", repository: "o/r" },
+    ];
+    const order = priorityOrder({ ...f, packageRepositories, policies });
+    expect(order.find((r) => r.package === "b")?.landing).toBe(0.1);
+    expect(order.find((r) => r.package === "b")?.reasons).toEqual(["the repository o/r is archived (checked 2026-11-13)"]);
+    expect(order.find((r) => r.package === "a")?.landing).toBe(0.1);
+    expect(order.find((r) => r.package === "a")?.reasons).toEqual(["deprecated on npm: Use b.", "the repository o/r is archived (checked 2026-11-13)"]);
+  });
+
   it("gives equal values the mean rank", () => {
     const f = fixture();
     const usage = f.usage.map((u) => (u.package === "b" ? { ...u, value: 1000 } : u));
