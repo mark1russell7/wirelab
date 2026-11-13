@@ -668,5 +668,35 @@
     "kind": "correctness",
     "title": "The decoder of the client allows 10 attachments, but the server sends more: an event with 11 buffers gives a parse error and a reconnect",
     "note": "Known upstream. The Manager makes the Decoder with no options."
+  },
+  {
+    "id": "F0068",
+    "package": "sockjs-client",
+    "version": "1.6.1",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "resource",
+    "title": "close() in the tick of the constructor does not stop the /info request or its 8 s timer",
+    "note": "InfoReceiver does not keep the handle of its setTimeout, and close() does not clear it. Related: issue #493 (closed by the stale bot). Confidence high."
+  },
+  {
+    "id": "F0069",
+    "package": "sockjs-client",
+    "version": "1.6.1",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "After close(), the rest of the same a frame still gives message events, with readyState CLOSING",
+    "note": "The a and m branches of the frame handler do not check readyState. WHATWG drops a message when the state is not OPEN. Confidence medium-high."
+  },
+  {
+    "id": "F0070",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "A malformed handshake leaves the client in the state unavailable for good, with no retry",
+    "note": "The error branch of the handshake does not abort the runner or call retryIn, so connect() returns at once. The docs say that unavailable retries every 15 s. Confidence high."
   }
 ]
