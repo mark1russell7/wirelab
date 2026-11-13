@@ -1,15 +1,118 @@
 [
   {
+    "id": "JSteunou/webstomp-client",
+    "url": "https://github.com/JSteunou/webstomp-client",
+    "note": "Archived on GitHub. npm does not deprecate the package."
+  },
+  {
     "id": "ReactiveX/rxjs",
     "url": "https://github.com/ReactiveX/rxjs",
     "note": "The branch 7.x holds the release line 7, with no folder packages/rxjs."
+  },
+  {
+    "id": "ably/ably-pubsub-js",
+    "url": "https://github.com/ably/ably-pubsub-js"
+  },
+  {
+    "id": "apollographql/subscriptions-transport-ws",
+    "url": "https://github.com/apollographql/subscriptions-transport-ws",
+    "note": "Archived on GitHub. npm deprecates the package."
+  },
+  {
+    "id": "centrifugal/centrifuge-js",
+    "url": "https://github.com/centrifugal/centrifuge-js"
+  },
+  {
+    "id": "cloudflare/partykit",
+    "url": "https://github.com/cloudflare/partykit"
+  },
+  {
+    "id": "connectrpc/connect-es",
+    "url": "https://github.com/connectrpc/connect-es"
+  },
+  {
+    "id": "dotnet/aspnetcore",
+    "url": "https://github.com/dotnet/aspnetcore"
+  },
+  {
+    "id": "eclipse-paho/paho.mqtt.javascript",
+    "url": "https://github.com/eclipse-paho/paho.mqtt.javascript",
+    "note": "The last push to the repository was on 2024-05-14."
+  },
+  {
+    "id": "enisdenjo/graphql-ws",
+    "url": "https://github.com/enisdenjo/graphql-ws"
+  },
+  {
+    "id": "faye/faye",
+    "url": "https://github.com/faye/faye"
+  },
+  {
+    "id": "grpc/grpc-web",
+    "url": "https://github.com/grpc/grpc-web"
+  },
+  {
+    "id": "improbable-eng/grpc-web",
+    "url": "https://github.com/improbable-eng/grpc-web",
+    "note": "The last push to the repository was on 2023-09-23."
+  },
+  {
+    "id": "jmesnil/stomp-websocket",
+    "url": "https://github.com/jmesnil/stomp-websocket",
+    "note": "The last push to the repository was on 2017-07-11."
+  },
+  {
+    "id": "mqttjs/MQTT.js",
+    "url": "https://github.com/mqttjs/MQTT.js"
+  },
+  {
+    "id": "nats-io/nats.js",
+    "url": "https://github.com/nats-io/nats.js"
+  },
+  {
+    "id": "nats-io/nats.ws",
+    "url": "https://github.com/nats-io/nats.ws",
+    "note": "Archived on GitHub. npm deprecates the package, and @nats-io/nats-core replaces it."
+  },
+  {
+    "id": "phoenixframework/phoenix",
+    "url": "https://github.com/phoenixframework/phoenix"
+  },
+  {
+    "id": "pladaria/reconnecting-websocket",
+    "url": "https://github.com/pladaria/reconnecting-websocket",
+    "note": "The last push to the repository was on 2023-06-15."
+  },
+  {
+    "id": "pusher/pusher-js",
+    "url": "https://github.com/pusher/pusher-js"
+  },
+  {
+    "id": "rails/rails",
+    "url": "https://github.com/rails/rails"
   },
   {
     "id": "socketio/socket.io",
     "url": "https://github.com/socketio/socket.io"
   },
   {
+    "id": "sockjs/sockjs-client",
+    "url": "https://github.com/sockjs/sockjs-client"
+  },
+  {
+    "id": "stomp-js/rx-stomp",
+    "url": "https://github.com/stomp-js/rx-stomp"
+  },
+  {
+    "id": "stomp-js/stompjs",
+    "url": "https://github.com/stomp-js/stompjs"
+  },
+  {
     "id": "supabase/supabase-js",
     "url": "https://github.com/supabase/supabase-js"
+  },
+  {
+    "id": "timostamm/protobuf-ts",
+    "url": "https://github.com/timostamm/protobuf-ts"
   }
 ]

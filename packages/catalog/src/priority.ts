@@ -8,6 +8,7 @@
  *    is `(rank - 0.5) / n`, with the mean rank for equal values. A place does not depend on the unit of a measure.
  * 3. The reach of a package is the mean of its shares. A package with no measure has no reach, and it goes last.
  * 4. The chance that a fix lands multiplies the reach. A deprecated package has the factor `LANDING.deprecated`. A
+ *    package in an archived repository has the factor `LANDING.archived`, but only when npm does not deprecate it. A
  *    repository that refuses contributions that an AI made has the factor `LANDING.aiRefused`, and a repository
  *    with a CLA has the factor `LANDING.cla`. The latest policy row of each topic applies.
  *
@@ -22,11 +23,13 @@ import { METRICS } from "./schema.ts";
  * The factors of the chance that a fix lands.
  *
  * - `deprecated`: a deprecated package has no maintainer to release a fix. Its users still get the issue.
+ * - `archived`: the repository takes no pull request. A deprecated package does not get this factor too.
  * - `aiRefused`: the repository refuses contributions that an AI made. The fix stays held until the policy changes.
  * - `cla`: the repository needs a CLA. The fix stays held until Mark decides about the CLA.
  */
-export const LANDING: { readonly deprecated: number; readonly aiRefused: number; readonly cla: number } = {
+export const LANDING: { readonly deprecated: number; readonly archived: number; readonly aiRefused: number; readonly cla: number } = {
   deprecated: 0.1,
+  archived: 0.1,
   aiRefused: 0.2,
   cla: 0.5,
 };
@@ -106,6 +109,11 @@ export function priorityOrder(catalog: Catalog): Ranked[] {
     if (deprecated !== undefined) {
       landing *= LANDING.deprecated;
       reasons.push(`deprecated on npm: ${deprecated}`);
+    }
+    const contributions = policy(p.name, "contributions");
+    if (contributions?.value === "archived") {
+      if (deprecated === undefined) landing *= LANDING.archived;
+      reasons.push(`the repository ${contributions.repository} is archived (checked ${contributions.checked})`);
     }
     const ai = policy(p.name, "ai");
     if (ai?.value === "refused") {

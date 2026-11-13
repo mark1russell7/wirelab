@@ -120,7 +120,7 @@ export interface PackageRepository {
 }
 
 /** The topics of the policy of a repository that change how a fix goes upstream. */
-export const POLICY_TOPICS = ["ai", "cla", "security"] as const;
+export const POLICY_TOPICS = ["ai", "cla", "security", "contributions"] as const;
 export type PolicyTopic = (typeof POLICY_TOPICS)[number];
 
 /**
@@ -129,11 +129,13 @@ export type PolicyTopic = (typeof POLICY_TOPICS)[number];
  * - `ai`: the rule for contributions that an AI made. `none-stated` means that the repository has no rule.
  * - `cla`: the agreement that a contributor signs. `dco` is a sign-off line in each commit.
  * - `security`: the private channel for a security fault. `platform` is a bounty platform, for example HackerOne.
+ * - `contributions`: `open` when the repository takes pull requests. An `archived` repository takes none.
  */
 export const POLICY_VALUES: Readonly<Record<PolicyTopic, readonly string[]>> = {
   ai: ["none-stated", "allowed", "disclosure", "refused"],
   cla: ["none", "dco", "cla"],
   security: ["github-advisory", "email", "platform", "none-stated"],
+  contributions: ["open", "archived"],
 };
 
 /**
