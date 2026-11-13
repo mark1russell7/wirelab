@@ -1,0 +1,27 @@
+[
+  {
+    "package": "@supabase/postgrest-js",
+    "repository": "supabase/supabase-js",
+    "directory": "packages/core/postgrest-js"
+  },
+  {
+    "package": "@supabase/realtime-js",
+    "repository": "supabase/supabase-js",
+    "directory": "packages/core/realtime-js"
+  },
+  {
+    "package": "engine.io-client",
+    "repository": "socketio/socket.io",
+    "directory": "packages/engine.io-client"
+  },
+  {
+    "package": "rxjs",
+    "repository": "ReactiveX/rxjs",
+    "directory": "packages/rxjs"
+  },
+  {
+    "package": "socket.io-client",
+    "repository": "socketio/socket.io",
+    "directory": "packages/socket.io-client"
+  }
+]

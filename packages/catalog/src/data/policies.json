@@ -1,0 +1,70 @@
+[
+  {
+    "repository": "ReactiveX/rxjs",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/ReactiveX/rxjs/blob/master/CONTRIBUTING.md",
+    "note": "AGENTS.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "ReactiveX/rxjs",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/ReactiveX/rxjs/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "ReactiveX/rxjs",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "github-advisory",
+    "evidence": "https://github.com/ReactiveX/rxjs/blob/master/SECURITY.md",
+    "note": "One maintainer. The line 7.x gets only security fixes and high-severity correctness fixes."
+  },
+  {
+    "repository": "socketio/socket.io",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/socketio/socket.io/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "socketio/socket.io",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/socketio/socket.io/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "socketio/socket.io",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "email",
+    "evidence": "https://github.com/socketio/socket.io/blob/main/SECURITY.md",
+    "note": "An email to the maintainer, at the address in the GitHub profile."
+  },
+  {
+    "repository": "supabase/supabase-js",
+    "topic": "ai",
+    "checked": "2026-11-13",
+    "value": "none-stated",
+    "evidence": "https://github.com/supabase/supabase-js/blob/master/CONTRIBUTING.md",
+    "note": "AGENTS.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "supabase/supabase-js",
+    "topic": "cla",
+    "checked": "2026-11-13",
+    "value": "none",
+    "evidence": "https://github.com/supabase/supabase-js/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "supabase/supabase-js",
+    "topic": "security",
+    "checked": "2026-11-13",
+    "value": "platform",
+    "evidence": "https://github.com/supabase/.github/blob/main/SECURITY.md",
+    "note": "HackerOne, from the security policy of the organization."
+  }
+]

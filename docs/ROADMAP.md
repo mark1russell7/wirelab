@@ -21,7 +21,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W1 | The catalog tables | done | P0 | The tables of families, transports, protocols, packages, links, sources, registry rows and use, with their check and the priority formula. |
 | W2 | The use measures in `@procedures/npm` | done | P0 | Request builders and extractors for npm downloads, deps.dev dependents, jsDelivr hits and the full registry document. The fetch is a parameter. |
 | W3 | The measure run | blocked | P0 | A run passes the fetch of `polite-crawler` to the measures and adds a source with its rows. A weekly workflow opens a pull request with the new rows. The code is in draft PR #9. It waits for `@procedures/npm` 0.55.2 on npm. |
-| W4 | Repositories and their policies | later | P1 | The repository of each package, and its AI policy, CLA and security channel, each with its source and day. The landing factors use them. |
+| W4 | Repositories and their policies | active | P1 | The repository of each package, and its AI policy, CLA and security channel, each with its source and day. The landing factors use them. The tables and the factors are in PR #13, with the first three repositories. |
 | W5 | The catalog on the site | later | P1 | The site shows the ranked catalog, with filters and the parts of each score. It replaces the first site of the template. |
 | W6 | Fault plans in `rigor-chaos` | done | P1 | A fault plan is seeded data: delays, cuts, resets, split frames, reorders, duplicates and stalls, at planned times. |
 | W7 | The package `rigor-proxy` | done | P1 | A proxy applies a fault plan to TCP, WebSocket and HTTP streams, and records each fault. Its tests run in CI. |
@@ -41,7 +41,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 
 1. The share of a package on a measure is its place among the packages with that measure, from 0 to 1.
 2. The reach of a package is the mean of its shares.
-3. The chance that a fix lands multiplies the reach. A deprecated package has the factor 0.1.
+3. The chance that a fix lands multiplies the reach. A deprecated package has the factor 0.1. A repository that refuses AI contributions has the factor 0.2, and a repository with a CLA has the factor 0.5.
 
 npm downloads count the installs that come through other packages, and deps.dev counts the transitive dependents. Thus the reach includes transitive use.
 
