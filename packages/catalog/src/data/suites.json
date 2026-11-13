@@ -1,0 +1,47 @@
+[
+  {
+    "id": "autobahn-testsuite",
+    "name": "Autobahn WebSocket test suite",
+    "subject": "both",
+    "url": "https://github.com/crossbario/autobahn-testsuite",
+    "note": "Its mode fuzzingserver tests a client."
+  },
+  {
+    "id": "connect-conformance",
+    "name": "Connect conformance suite",
+    "subject": "both",
+    "url": "https://github.com/connectrpc/conformance"
+  },
+  {
+    "id": "engine-io-protocol",
+    "name": "Engine.IO protocol test suite",
+    "subject": "server",
+    "url": "https://github.com/socketio/engine.io-protocol",
+    "note": "The suite is a client of the server under test."
+  },
+  {
+    "id": "graphql-http-audit",
+    "name": "graphql-http audit suite",
+    "subject": "server",
+    "url": "https://github.com/graphql/graphql-http"
+  },
+  {
+    "id": "paho-mqtt-testing",
+    "name": "Eclipse Paho MQTT test broker",
+    "subject": "client",
+    "url": "https://github.com/eclipse-paho/paho.mqtt.testing"
+  },
+  {
+    "id": "socket-io-protocol",
+    "name": "Socket.IO protocol test suite",
+    "subject": "server",
+    "url": "https://github.com/socketio/socket.io-protocol",
+    "note": "The suite is a client of the server under test."
+  },
+  {
+    "id": "sockjs-protocol",
+    "name": "SockJS protocol tests",
+    "subject": "server",
+    "url": "https://github.com/sockjs/sockjs-protocol"
+  }
+]

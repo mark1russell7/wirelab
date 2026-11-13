@@ -105,6 +105,92 @@ export interface UsageRow {
   readonly value: number;
 }
 
+/** What a suite tests: the clients of its protocols, the servers, or both. */
+export const SUITE_SUBJECTS = ["client", "server", "both"] as const;
+export type SuiteSubject = (typeof SUITE_SUBJECTS)[number];
+
+/** A suite of tests for one or more protocols. `url` is the repository of the suite. */
+export interface Suite {
+  readonly id: string;
+  readonly name: string;
+  readonly subject: SuiteSubject;
+  readonly url: string;
+  readonly note?: string;
+}
+
+/** A suite tests a protocol. A suite can test more than one. */
+export interface SuiteProtocol {
+  readonly suite: string;
+  readonly protocol: string;
+}
+
+/** One run of a suite on one version of a package, in CI. `url` is the page of the CI run. */
+export interface Run {
+  readonly id: string;
+  readonly suite: string;
+  readonly package: string;
+  readonly version: string;
+  readonly at: string;
+  readonly url: string;
+  readonly passed: number;
+  readonly failed: number;
+  readonly skipped?: number;
+  readonly browser?: string;
+  readonly note?: string;
+}
+
+/** The kinds of a finding. A security finding is in the public tables only after its advisory is public. */
+export const FINDING_KINDS = ["conformance", "correctness", "types", "resource", "performance", "security"] as const;
+export type FindingKind = (typeof FINDING_KINDS)[number];
+
+/** How the campaign found a fault. */
+export const FINDING_METHODS = ["suite", "static", "fuzz", "chaos", "review"] as const;
+export type FindingMethod = (typeof FINDING_METHODS)[number];
+
+/**
+ * One fault of one package. `version` is the version that has the fault. `run` names the run that found it, when a
+ * run found it. `advisory` is the public advisory of a security finding.
+ */
+export interface Finding {
+  readonly id: string;
+  readonly package: string;
+  readonly version: string;
+  readonly kind: FindingKind;
+  readonly method: FindingMethod;
+  readonly found: string;
+  readonly title: string;
+  readonly run?: string;
+  readonly advisory?: string;
+  readonly note?: string;
+}
+
+/**
+ * The states of a finding upstream. A held fix is in a private repository: the project needs a CLA, or it refuses
+ * contributions that an AI made. A security fault goes only through the private channel of the project.
+ */
+export const UPSTREAM_STATES = [
+  "issue-open",
+  "pr-open",
+  "merged",
+  "released",
+  "held-cla",
+  "held-ai-policy",
+  "reported-privately",
+  "fixed-by-others",
+  "declined",
+  "closed",
+] as const;
+export type UpstreamState = (typeof UPSTREAM_STATES)[number];
+
+/** One change of the state of a finding upstream, at a UTC time. The latest row gives the current state. */
+export interface UpstreamRow {
+  readonly finding: string;
+  readonly at: string;
+  readonly state: UpstreamState;
+  readonly url?: string;
+  readonly note?: string;
+}
+
 /** All tables of the catalog. */
 export interface Catalog {
   readonly families: readonly Family[];
@@ -116,6 +202,11 @@ export interface Catalog {
   readonly sources: readonly Source[];
   readonly registry: readonly RegistryRow[];
   readonly usage: readonly UsageRow[];
+  readonly suites: readonly Suite[];
+  readonly suiteProtocols: readonly SuiteProtocol[];
+  readonly runs: readonly Run[];
+  readonly findings: readonly Finding[];
+  readonly upstream: readonly UpstreamRow[];
 }
 
 /** The name of each table, and the file that holds it. */
@@ -129,6 +220,11 @@ export const TABLE_FILES: Readonly<Record<keyof Catalog, string>> = {
   sources: "sources.json",
   registry: "registry.json",
   usage: "usage.json",
+  suites: "suites.json",
+  suiteProtocols: "suite-protocols.json",
+  runs: "runs.json",
+  findings: "findings.json",
+  upstream: "upstream.json",
 };
 
 type FieldKind = "text" | "url" | "day" | "time" | "count" | "order" | readonly string[];
@@ -161,7 +257,28 @@ export const TABLE_SPECS: Readonly<Record<keyof Catalog, TableSpec>> = {
     key: ["package", "source", "metric"],
     required: { package: "text", source: "text", metric: METRICS, value: "count" },
   },
+  suites: { key: ["id"], required: { id: "text", name: "text", subject: SUITE_SUBJECTS, url: "url" }, optional: { note: "text" } },
+  suiteProtocols: { key: ["suite", "protocol"], required: { suite: "text", protocol: "text" } },
+  runs: {
+    key: ["at", "id"],
+    required: { id: "text", suite: "text", package: "text", version: "text", at: "time", url: "url", passed: "count", failed: "count" },
+    optional: { skipped: "count", browser: "text", note: "text" },
+  },
+  findings: {
+    key: ["id"],
+    required: { id: "text", package: "text", version: "text", kind: FINDING_KINDS, method: FINDING_METHODS, found: "day", title: "text" },
+    optional: { run: "text", advisory: "url", note: "text" },
+  },
+  upstream: { key: ["finding", "at", "state"], required: { finding: "text", at: "time", state: UPSTREAM_STATES }, optional: { url: "url", note: "text" } },
 };
+
+/** The upstream states that need the URL of a public issue, pull request or release. */
+const PUBLIC_STATES: ReadonlySet<UpstreamState> = new Set(["issue-open", "pr-open", "merged", "released"]);
+
+/** The upstream states that must not have a URL: the place is private. */
+const PRIVATE_STATES: ReadonlySet<UpstreamState> = new Set(["held-cla", "held-ai-policy", "reported-privately"]);
+
+const FINDING_ID = /^F\d{4,}$/;
 
 const NPM_NAME = /^(?:@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -285,6 +402,55 @@ function keyProblems(c: Catalog): string[] {
   for (const u of c.usage) {
     need(packages, u.package, `usage ${u.package}`);
     need(sources, u.source, `usage ${u.package}`);
+  }
+  return problems.concat(ledgerProblems(c, { packages, protocols }));
+}
+
+/** This function checks the ledger: the suites, the runs, the findings and their states upstream. */
+function ledgerProblems(c: Catalog, known: { readonly packages: Set<string>; readonly protocols: Set<string> }): string[] {
+  const problems: string[] = [];
+  const need = (set: ReadonlySet<string>, value: string, what: string): void => {
+    if (!set.has(value)) problems.push(`${what} names ${value}, and that row is not in the catalog.`);
+  };
+  const suites = new Set(c.suites.map((s) => s.id));
+  const runs = new Map(c.runs.map((r) => [r.id, r]));
+  const findings = new Map(c.findings.map((f) => [f.id, f]));
+  if (runs.size !== c.runs.length) problems.push("runs repeats an id.");
+  const tested = new Map<string, Set<string>>();
+  for (const t of c.suiteProtocols) {
+    need(suites, t.suite, `suiteProtocols ${t.suite}`);
+    need(known.protocols, t.protocol, `suiteProtocols ${t.suite}`);
+    tested.set(t.suite, (tested.get(t.suite) ?? new Set()).add(t.protocol));
+  }
+  for (const s of c.suites) if (!tested.has(s.id)) problems.push(`suites ${s.id} tests no protocol.`);
+  const speaks = new Map<string, Set<string>>();
+  for (const s of c.packageProtocols) speaks.set(s.package, (speaks.get(s.package) ?? new Set()).add(s.protocol));
+  for (const r of c.runs) {
+    need(suites, r.suite, `runs ${r.id}`);
+    need(known.packages, r.package, `runs ${r.id}`);
+    const shared = [...(tested.get(r.suite) ?? [])].some((protocol) => speaks.get(r.package)?.has(protocol) === true);
+    if (suites.has(r.suite) && known.packages.has(r.package) && !shared) problems.push(`runs ${r.id}: the package ${r.package} speaks no protocol of the suite ${r.suite}.`);
+  }
+  for (const f of c.findings) {
+    if (!FINDING_ID.test(f.id)) problems.push(`findings ${f.id} is not an id of the form F0001.`);
+    need(known.packages, f.package, `findings ${f.id}`);
+    if ((f.method === "suite") !== (f.run !== undefined)) problems.push(`findings ${f.id}: a finding of a suite names its run, and only such a finding.`);
+    const run = f.run === undefined ? undefined : runs.get(f.run);
+    if (f.run !== undefined) need(new Set(runs.keys()), f.run, `findings ${f.id}`);
+    if (run !== undefined && run.package !== f.package) problems.push(`findings ${f.id}: the run ${run.id} tested ${run.package}, not ${f.package}.`);
+    if ((f.kind === "security") !== (f.advisory !== undefined)) problems.push(`findings ${f.id}: a security finding has its public advisory, and only a security finding.`);
+  }
+  for (const u of c.upstream) {
+    const f = findings.get(u.finding);
+    if (f === undefined) {
+      problems.push(`upstream ${u.finding} names ${u.finding}, and that row is not in the catalog.`);
+      continue;
+    }
+    if (u.at.slice(0, 10) < f.found) problems.push(`upstream ${u.finding}: the state ${u.state} at ${u.at} is before the day of the finding.`);
+    if (PUBLIC_STATES.has(u.state) && u.url === undefined) problems.push(`upstream ${u.finding}: the state ${u.state} needs its URL.`);
+    if (PRIVATE_STATES.has(u.state) && u.url !== undefined) problems.push(`upstream ${u.finding}: the state ${u.state} is private, so it has no URL.`);
+    if (f.kind === "security" && u.state === "issue-open") problems.push(`upstream ${u.finding}: a security finding never has a public issue.`);
+    if (f.kind !== "security" && u.state === "reported-privately") problems.push(`upstream ${u.finding}: only a security finding goes through the private channel.`);
   }
   return problems;
 }

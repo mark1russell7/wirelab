@@ -1,0 +1,34 @@
+[
+  {
+    "suite": "autobahn-testsuite",
+    "protocol": "websocket"
+  },
+  {
+    "suite": "connect-conformance",
+    "protocol": "connect"
+  },
+  {
+    "suite": "connect-conformance",
+    "protocol": "grpc-web"
+  },
+  {
+    "suite": "engine-io-protocol",
+    "protocol": "engine-io"
+  },
+  {
+    "suite": "graphql-http-audit",
+    "protocol": "graphql-over-http"
+  },
+  {
+    "suite": "paho-mqtt-testing",
+    "protocol": "mqtt"
+  },
+  {
+    "suite": "socket-io-protocol",
+    "protocol": "socket-io"
+  },
+  {
+    "suite": "sockjs-protocol",
+    "protocol": "sockjs"
+  }
+]
