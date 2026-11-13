@@ -1,0 +1,842 @@
+[
+  {
+    "name": "@anycable/web",
+    "family": "realtime"
+  },
+  {
+    "name": "@apollo/client",
+    "family": "graphql"
+  },
+  {
+    "name": "@atproto/api",
+    "family": "chat"
+  },
+  {
+    "name": "@automerge/automerge-repo",
+    "family": "sync"
+  },
+  {
+    "name": "@automerge/automerge-repo-network-websocket",
+    "family": "sync"
+  },
+  {
+    "name": "@aws-sdk/client-s3",
+    "family": "http"
+  },
+  {
+    "name": "@azure/event-hubs",
+    "family": "brokers"
+  },
+  {
+    "name": "@azure/service-bus",
+    "family": "brokers"
+  },
+  {
+    "name": "@azure/web-pubsub-client",
+    "family": "realtime"
+  },
+  {
+    "name": "@bufbuild/protobuf",
+    "family": "codecs"
+  },
+  {
+    "name": "@clickhouse/client-web",
+    "family": "databases"
+  },
+  {
+    "name": "@cloudamqp/amqp-client",
+    "family": "brokers",
+    "note": "The class AMQPWebSocketClient."
+  },
+  {
+    "name": "@connectrpc/connect-web",
+    "family": "rpc"
+  },
+  {
+    "name": "@converse/headless",
+    "family": "chat"
+  },
+  {
+    "name": "@daily-co/daily-js",
+    "family": "media"
+  },
+  {
+    "name": "@deepstream/client",
+    "family": "realtime"
+  },
+  {
+    "name": "@eclipse-zenoh/zenoh-ts",
+    "family": "iot",
+    "note": "Through the remote-api plugin."
+  },
+  {
+    "name": "@electric-sql/client",
+    "family": "sync"
+  },
+  {
+    "name": "@eyevinn/webrtc-player",
+    "family": "media"
+  },
+  {
+    "name": "@eyevinn/whip-web-client",
+    "family": "media"
+  },
+  {
+    "name": "@feathersjs/client",
+    "family": "realtime"
+  },
+  {
+    "name": "@foxglove/ws-protocol",
+    "family": "iot"
+  },
+  {
+    "name": "@helia/verified-fetch",
+    "family": "p2p"
+  },
+  {
+    "name": "@hocuspocus/provider",
+    "family": "sync"
+  },
+  {
+    "name": "@hotwired/turbo",
+    "family": "realtime"
+  },
+  {
+    "name": "@improbable-eng/grpc-web",
+    "family": "rpc"
+  },
+  {
+    "name": "@influxdata/influxdb-client-browser",
+    "family": "databases"
+  },
+  {
+    "name": "@instantdb/core",
+    "family": "sync"
+  },
+  {
+    "name": "@jupyterlab/services",
+    "family": "iot"
+  },
+  {
+    "name": "@kixelated/hang",
+    "family": "media"
+  },
+  {
+    "name": "@kixelated/moq",
+    "family": "media"
+  },
+  {
+    "name": "@libp2p/webrtc",
+    "family": "p2p"
+  },
+  {
+    "name": "@libp2p/websockets",
+    "family": "p2p"
+  },
+  {
+    "name": "@libp2p/webtransport",
+    "family": "p2p"
+  },
+  {
+    "name": "@libsql/client",
+    "family": "databases",
+    "entry": "@libsql/client/web"
+  },
+  {
+    "name": "@liveblocks/client",
+    "family": "realtime"
+  },
+  {
+    "name": "@microsoft/fetch-event-source",
+    "family": "http-streaming",
+    "note": "POST, custom headers and retry."
+  },
+  {
+    "name": "@microsoft/signalr",
+    "family": "realtime"
+  },
+  {
+    "name": "@microsoft/signalr-protocol-msgpack",
+    "family": "realtime"
+  },
+  {
+    "name": "@moq/hang",
+    "family": "media"
+  },
+  {
+    "name": "@moq/net",
+    "family": "media"
+  },
+  {
+    "name": "@moq/publish",
+    "family": "media"
+  },
+  {
+    "name": "@moq/watch",
+    "family": "media"
+  },
+  {
+    "name": "@msgpack/msgpack",
+    "family": "codecs"
+  },
+  {
+    "name": "@nats-io/nats-core",
+    "family": "brokers",
+    "note": "The function wsconnect."
+  },
+  {
+    "name": "@neondatabase/serverless",
+    "family": "databases",
+    "note": "Over WebSocket or HTTP."
+  },
+  {
+    "name": "@nostr-dev-kit/ndk",
+    "family": "chat"
+  },
+  {
+    "name": "@novnc/novnc",
+    "family": "remote"
+  },
+  {
+    "name": "@open-rpc/client-js",
+    "family": "rpc"
+  },
+  {
+    "name": "@opentelemetry/exporter-trace-otlp-http",
+    "family": "http"
+  },
+  {
+    "name": "@opentelemetry/exporter-trace-otlp-proto",
+    "family": "http"
+  },
+  {
+    "name": "@orpc/client",
+    "family": "rpc"
+  },
+  {
+    "name": "@planetscale/database",
+    "family": "databases"
+  },
+  {
+    "name": "@powersync/web",
+    "family": "sync"
+  },
+  {
+    "name": "@protobuf-ts/grpcweb-transport",
+    "family": "rpc"
+  },
+  {
+    "name": "@protobuf-ts/twirp-transport",
+    "family": "rpc"
+  },
+  {
+    "name": "@rails/actioncable",
+    "family": "realtime"
+  },
+  {
+    "name": "@rocicorp/zero",
+    "family": "sync"
+  },
+  {
+    "name": "@skyware/jetstream",
+    "family": "chat"
+  },
+  {
+    "name": "@solana/kit",
+    "family": "p2p"
+  },
+  {
+    "name": "@stomp/rx-stomp",
+    "family": "brokers"
+  },
+  {
+    "name": "@stomp/stompjs",
+    "family": "brokers"
+  },
+  {
+    "name": "@streamparser/json",
+    "family": "http-streaming"
+  },
+  {
+    "name": "@supabase/postgrest-js",
+    "family": "databases"
+  },
+  {
+    "name": "@supabase/realtime-js",
+    "family": "realtime"
+  },
+  {
+    "name": "@tidbcloud/serverless",
+    "family": "databases"
+  },
+  {
+    "name": "@trpc/client",
+    "family": "rpc"
+  },
+  {
+    "name": "@upstash/redis",
+    "family": "databases"
+  },
+  {
+    "name": "@urql/core",
+    "family": "graphql"
+  },
+  {
+    "name": "@videojs/http-streaming",
+    "family": "media"
+  },
+  {
+    "name": "@vueuse/core",
+    "family": "websocket",
+    "note": "The function useWebSocket."
+  },
+  {
+    "name": "@xmpp/client",
+    "family": "chat"
+  },
+  {
+    "name": "@xterm/addon-attach",
+    "family": "remote"
+  },
+  {
+    "name": "@y-sweet/client",
+    "family": "sync"
+  },
+  {
+    "name": "ably",
+    "family": "realtime"
+  },
+  {
+    "name": "agora-rtc-sdk-ng",
+    "family": "media"
+  },
+  {
+    "name": "apache-arrow",
+    "family": "codecs"
+  },
+  {
+    "name": "autobahn",
+    "family": "brokers"
+  },
+  {
+    "name": "autobahn-browser",
+    "family": "brokers"
+  },
+  {
+    "name": "avsc",
+    "family": "rpc"
+  },
+  {
+    "name": "aws-amplify",
+    "family": "graphql"
+  },
+  {
+    "name": "aws-iot-device-sdk-v2",
+    "family": "brokers"
+  },
+  {
+    "name": "aws4fetch",
+    "family": "http"
+  },
+  {
+    "name": "birpc",
+    "family": "rpc"
+  },
+  {
+    "name": "bittorrent-tracker",
+    "family": "p2p"
+  },
+  {
+    "name": "bson",
+    "family": "codecs"
+  },
+  {
+    "name": "capnp-es",
+    "family": "rpc"
+  },
+  {
+    "name": "capnp-ts",
+    "family": "rpc"
+  },
+  {
+    "name": "capnweb",
+    "family": "rpc"
+  },
+  {
+    "name": "cbor-x",
+    "family": "codecs"
+  },
+  {
+    "name": "centrifuge",
+    "family": "realtime"
+  },
+  {
+    "name": "cometd",
+    "family": "realtime"
+  },
+  {
+    "name": "comlink",
+    "family": "rpc"
+  },
+  {
+    "name": "convex",
+    "family": "realtime"
+  },
+  {
+    "name": "dashjs",
+    "family": "media",
+    "note": "The reference player."
+  },
+  {
+    "name": "ddp.js",
+    "family": "realtime"
+  },
+  {
+    "name": "dns-packet",
+    "family": "http",
+    "note": "With fetch."
+  },
+  {
+    "name": "engine.io-client",
+    "family": "realtime"
+  },
+  {
+    "name": "ethers",
+    "family": "p2p"
+  },
+  {
+    "name": "event-source-polyfill",
+    "family": "http-streaming"
+  },
+  {
+    "name": "eventsource",
+    "family": "http-streaming"
+  },
+  {
+    "name": "eventsource-parser",
+    "family": "http-streaming",
+    "note": "It parses a stream that you already have."
+  },
+  {
+    "name": "faye",
+    "family": "realtime"
+  },
+  {
+    "name": "firebase",
+    "family": "realtime"
+  },
+  {
+    "name": "flatbuffers",
+    "family": "codecs"
+  },
+  {
+    "name": "flv.js",
+    "family": "media"
+  },
+  {
+    "name": "graffle",
+    "family": "graphql"
+  },
+  {
+    "name": "graphql-http",
+    "family": "graphql",
+    "note": "The reference client of the GraphQL-over-HTTP spec."
+  },
+  {
+    "name": "graphql-request",
+    "family": "graphql"
+  },
+  {
+    "name": "graphql-sse",
+    "family": "graphql"
+  },
+  {
+    "name": "graphql-ws",
+    "family": "graphql"
+  },
+  {
+    "name": "grpc-web",
+    "family": "rpc"
+  },
+  {
+    "name": "guacamole-common-js",
+    "family": "remote"
+  },
+  {
+    "name": "gun",
+    "family": "p2p"
+  },
+  {
+    "name": "helia",
+    "family": "p2p"
+  },
+  {
+    "name": "hls.js",
+    "family": "media"
+  },
+  {
+    "name": "home-assistant-js-websocket",
+    "family": "iot"
+  },
+  {
+    "name": "irc-framework",
+    "family": "chat"
+  },
+  {
+    "name": "isomorphic-ws",
+    "family": "websocket",
+    "note": "One import for Node and the browser."
+  },
+  {
+    "name": "janus-gateway",
+    "family": "media"
+  },
+  {
+    "name": "jayson",
+    "family": "rpc"
+  },
+  {
+    "name": "jmap-client-ts",
+    "family": "http"
+  },
+  {
+    "name": "jmap-jam",
+    "family": "http"
+  },
+  {
+    "name": "jsmpeg",
+    "family": "media"
+  },
+  {
+    "name": "json-rpc-2.0",
+    "family": "rpc"
+  },
+  {
+    "name": "jssip",
+    "family": "chat"
+  },
+  {
+    "name": "laravel-echo",
+    "family": "realtime"
+  },
+  {
+    "name": "lib-jitsi-meet",
+    "family": "media"
+  },
+  {
+    "name": "libp2p",
+    "family": "p2p"
+  },
+  {
+    "name": "livekit-client",
+    "family": "media"
+  },
+  {
+    "name": "masto",
+    "family": "chat"
+  },
+  {
+    "name": "matrix-js-sdk",
+    "family": "chat"
+  },
+  {
+    "name": "mediasoup-client",
+    "family": "media"
+  },
+  {
+    "name": "meros",
+    "family": "graphql"
+  },
+  {
+    "name": "monaco-languageclient",
+    "family": "rpc"
+  },
+  {
+    "name": "mpegts.js",
+    "family": "media"
+  },
+  {
+    "name": "mqtt",
+    "family": "brokers",
+    "note": "MQTT.js."
+  },
+  {
+    "name": "msgpackr",
+    "family": "codecs"
+  },
+  {
+    "name": "nats.ws",
+    "family": "brokers"
+  },
+  {
+    "name": "neo4j-driver",
+    "family": "databases"
+  },
+  {
+    "name": "neo4j-driver-lite",
+    "family": "databases"
+  },
+  {
+    "name": "nostr-tools",
+    "family": "chat"
+  },
+  {
+    "name": "o.js",
+    "family": "rpc"
+  },
+  {
+    "name": "oboe",
+    "family": "http-streaming"
+  },
+  {
+    "name": "obs-websocket-js",
+    "family": "iot"
+  },
+  {
+    "name": "odata-query",
+    "family": "rpc"
+  },
+  {
+    "name": "openvidu-browser",
+    "family": "media"
+  },
+  {
+    "name": "paho-mqtt",
+    "family": "brokers"
+  },
+  {
+    "name": "partysocket",
+    "family": "websocket"
+  },
+  {
+    "name": "peerjs",
+    "family": "media"
+  },
+  {
+    "name": "penpal",
+    "family": "rpc"
+  },
+  {
+    "name": "phoenix",
+    "family": "realtime"
+  },
+  {
+    "name": "post-me",
+    "family": "rpc"
+  },
+  {
+    "name": "pouchdb-browser",
+    "family": "sync"
+  },
+  {
+    "name": "precompiled-mqtt",
+    "family": "brokers"
+  },
+  {
+    "name": "primus",
+    "family": "realtime"
+  },
+  {
+    "name": "protobufjs",
+    "family": "codecs"
+  },
+  {
+    "name": "pubnub",
+    "family": "realtime"
+  },
+  {
+    "name": "pusher-js",
+    "family": "realtime"
+  },
+  {
+    "name": "react-use-websocket",
+    "family": "websocket"
+  },
+  {
+    "name": "reconnecting-websocket",
+    "family": "websocket"
+  },
+  {
+    "name": "relay-runtime",
+    "family": "graphql"
+  },
+  {
+    "name": "rhea",
+    "family": "brokers"
+  },
+  {
+    "name": "rhea-promise",
+    "family": "brokers"
+  },
+  {
+    "name": "robust-websocket",
+    "family": "websocket"
+  },
+  {
+    "name": "roslib",
+    "family": "iot"
+  },
+  {
+    "name": "rpc-websockets",
+    "family": "rpc"
+  },
+  {
+    "name": "rsocket-core",
+    "family": "brokers"
+  },
+  {
+    "name": "rsocket-websocket-client",
+    "family": "brokers"
+  },
+  {
+    "name": "rxdb",
+    "family": "sync"
+  },
+  {
+    "name": "rxjs",
+    "family": "websocket",
+    "entry": "rxjs/webSocket"
+  },
+  {
+    "name": "shaka-player",
+    "family": "media"
+  },
+  {
+    "name": "sharedb",
+    "family": "sync"
+  },
+  {
+    "name": "simple-peer",
+    "family": "media"
+  },
+  {
+    "name": "simpleddp",
+    "family": "realtime"
+  },
+  {
+    "name": "sip.js",
+    "family": "chat"
+  },
+  {
+    "name": "socket.io-client",
+    "family": "realtime"
+  },
+  {
+    "name": "socketcluster-client",
+    "family": "realtime"
+  },
+  {
+    "name": "sockette",
+    "family": "websocket"
+  },
+  {
+    "name": "sockjs-client",
+    "family": "realtime"
+  },
+  {
+    "name": "solclientjs",
+    "family": "brokers"
+  },
+  {
+    "name": "sse.js",
+    "family": "http-streaming"
+  },
+  {
+    "name": "stanza",
+    "family": "chat"
+  },
+  {
+    "name": "stompjs",
+    "family": "brokers"
+  },
+  {
+    "name": "strophe.js",
+    "family": "chat"
+  },
+  {
+    "name": "subscriptions-transport-ws",
+    "family": "graphql"
+  },
+  {
+    "name": "surrealdb",
+    "family": "databases"
+  },
+  {
+    "name": "thrift",
+    "family": "rpc"
+  },
+  {
+    "name": "thruway.js",
+    "family": "brokers"
+  },
+  {
+    "name": "trystero",
+    "family": "media",
+    "note": "It signals over BitTorrent trackers, Nostr, MQTT, IPFS, Supabase or Firebase."
+  },
+  {
+    "name": "tsdav",
+    "family": "http"
+  },
+  {
+    "name": "tus-js-client",
+    "family": "http"
+  },
+  {
+    "name": "twilio-video",
+    "family": "media"
+  },
+  {
+    "name": "twirp-ts",
+    "family": "rpc"
+  },
+  {
+    "name": "u8-mqtt",
+    "family": "brokers"
+  },
+  {
+    "name": "viem",
+    "family": "p2p"
+  },
+  {
+    "name": "vscode-jsonrpc",
+    "family": "rpc",
+    "entry": "vscode-jsonrpc/browser"
+  },
+  {
+    "name": "vscode-ws-jsonrpc",
+    "family": "rpc"
+  },
+  {
+    "name": "wampy",
+    "family": "brokers"
+  },
+  {
+    "name": "web3",
+    "family": "p2p"
+  },
+  {
+    "name": "webdav",
+    "family": "http"
+  },
+  {
+    "name": "websocket-ts",
+    "family": "websocket"
+  },
+  {
+    "name": "webstomp-client",
+    "family": "brokers"
+  },
+  {
+    "name": "webtorrent",
+    "family": "p2p"
+  },
+  {
+    "name": "y-webrtc",
+    "family": "sync"
+  },
+  {
+    "name": "y-websocket",
+    "family": "sync"
+  }
+]

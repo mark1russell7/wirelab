@@ -1,0 +1,260 @@
+[
+  {
+    "package": "@anycable/web",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 288718
+  },
+  {
+    "package": "@azure/web-pubsub-client",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 95957
+  },
+  {
+    "package": "@deepstream/client",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 2162
+  },
+  {
+    "package": "@feathersjs/client",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 7078
+  },
+  {
+    "package": "@hotwired/turbo",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 1311562
+  },
+  {
+    "package": "@microsoft/signalr",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 2621340
+  },
+  {
+    "package": "@microsoft/signalr-protocol-msgpack",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 99739
+  },
+  {
+    "package": "@rails/actioncable",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 2236623
+  },
+  {
+    "package": "@stomp/rx-stomp",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 123847
+  },
+  {
+    "package": "@stomp/stompjs",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 652922
+  },
+  {
+    "package": "@supabase/realtime-js",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 71516942
+  },
+  {
+    "package": "ably",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 1443341
+  },
+  {
+    "package": "aws-iot-device-sdk-v2",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 126237
+  },
+  {
+    "package": "centrifuge",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 2116668
+  },
+  {
+    "package": "cometd",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 22297
+  },
+  {
+    "package": "ddp.js",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 1486
+  },
+  {
+    "package": "engine.io-client",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 23001245
+  },
+  {
+    "package": "faye",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 2187172
+  },
+  {
+    "package": "isomorphic-ws",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 28523519
+  },
+  {
+    "package": "laravel-echo",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 1146396
+  },
+  {
+    "package": "mqtt",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 3815380
+  },
+  {
+    "package": "paho-mqtt",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 168361
+  },
+  {
+    "package": "partysocket",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 4938223
+  },
+  {
+    "package": "phoenix",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 2214764
+  },
+  {
+    "package": "precompiled-mqtt",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 1216
+  },
+  {
+    "package": "primus",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 136024
+  },
+  {
+    "package": "pubnub",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 406068
+  },
+  {
+    "package": "pusher-js",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 4310338
+  },
+  {
+    "package": "react-use-websocket",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 760045
+  },
+  {
+    "package": "reconnecting-websocket",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 776570
+  },
+  {
+    "package": "rhea",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 1376193
+  },
+  {
+    "package": "rhea-promise",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 1208576
+  },
+  {
+    "package": "robust-websocket",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 8355
+  },
+  {
+    "package": "rxjs",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 139371879
+  },
+  {
+    "package": "simpleddp",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 3451
+  },
+  {
+    "package": "socket.io-client",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 20966696
+  },
+  {
+    "package": "socketcluster-client",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 150141
+  },
+  {
+    "package": "sockette",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 22105
+  },
+  {
+    "package": "sockjs-client",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 2724143
+  },
+  {
+    "package": "stompjs",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 68515
+  },
+  {
+    "package": "u8-mqtt",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 410
+  },
+  {
+    "package": "websocket-ts",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 34641
+  },
+  {
+    "package": "webstomp-client",
+    "source": "npm-check-2026-11-13",
+    "metric": "npm-downloads-week",
+    "value": 20908
+  }
+]

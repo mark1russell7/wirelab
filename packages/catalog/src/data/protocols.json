@@ -1,0 +1,1146 @@
+[
+  {
+    "id": "ably",
+    "name": "Ably realtime protocol",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Proprietary."
+  },
+  {
+    "id": "action-cable",
+    "name": "Action Cable",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "note": "AnyCable adds an extended protocol with history and presence."
+  },
+  {
+    "id": "agora",
+    "name": "Agora RTC",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Proprietary."
+  },
+  {
+    "id": "amqp-0-9-1",
+    "name": "AMQP 0-9-1",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "library",
+    "gateway": "A WebSocket-to-TCP relay in front of the broker."
+  },
+  {
+    "id": "amqp-1-0",
+    "name": "AMQP 1.0",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html"
+  },
+  {
+    "id": "appsync",
+    "name": "AWS AppSync realtime",
+    "family": "graphql",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "arrow-ipc",
+    "name": "Apache Arrow IPC",
+    "family": "codecs",
+    "kind": "codec",
+    "client": "library",
+    "spec": "https://arrow.apache.org/docs/format/Columnar.html"
+  },
+  {
+    "id": "atproto",
+    "name": "AT Protocol (XRPC)",
+    "family": "chat",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://atproto.com/specs/xrpc"
+  },
+  {
+    "id": "automerge-sync",
+    "name": "Automerge sync",
+    "family": "sync",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "avro",
+    "name": "Apache Avro",
+    "family": "codecs",
+    "kind": "codec",
+    "client": "library",
+    "spec": "https://avro.apache.org/docs/current/specification/"
+  },
+  {
+    "id": "avro-ipc",
+    "name": "Avro IPC",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://avro.apache.org/docs/current/specification/#protocol-declaration"
+  },
+  {
+    "id": "azure-web-pubsub",
+    "name": "Azure Web PubSub",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "bayeux",
+    "name": "Bayeux",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://docs.cometd.org/current/reference/#_bayeux"
+  },
+  {
+    "id": "birpc",
+    "name": "birpc messages",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "bittorrent",
+    "name": "BitTorrent over WebRTC (WebTorrent)",
+    "family": "p2p",
+    "kind": "protocol",
+    "client": "library",
+    "note": "A page reaches only WebRTC peers."
+  },
+  {
+    "id": "bolt",
+    "name": "Bolt",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://neo4j.com/docs/bolt/current/",
+    "note": "Neo4j and Memgraph. Bolt runs over WebSocket."
+  },
+  {
+    "id": "bosh",
+    "name": "BOSH (XEP-0124, XEP-0206)",
+    "family": "chat",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://xmpp.org/extensions/xep-0124.html"
+  },
+  {
+    "id": "bson",
+    "name": "BSON",
+    "family": "codecs",
+    "kind": "codec",
+    "client": "library",
+    "spec": "https://bsonspec.org/spec.html"
+  },
+  {
+    "id": "caldav",
+    "name": "CalDAV (RFC 4791)",
+    "family": "http",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc4791"
+  },
+  {
+    "id": "capnproto",
+    "name": "Cap'n Proto",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://capnproto.org/encoding.html"
+  },
+  {
+    "id": "capnweb",
+    "name": "Cap'n Web",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Object-capability RPC over HTTP batches, WebSocket and postMessage."
+  },
+  {
+    "id": "carddav",
+    "name": "CardDAV (RFC 6352)",
+    "family": "http",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc6352"
+  },
+  {
+    "id": "cbor",
+    "name": "CBOR (RFC 8949)",
+    "family": "codecs",
+    "kind": "codec",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc8949"
+  },
+  {
+    "id": "centrifugo",
+    "name": "Centrifugo client protocol",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://centrifugal.dev/docs/transports/client_protocol"
+  },
+  {
+    "id": "clickhouse-http",
+    "name": "ClickHouse HTTP interface",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://clickhouse.com/docs/interfaces/http"
+  },
+  {
+    "id": "coap",
+    "name": "CoAP",
+    "family": "iot",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "A gateway."
+  },
+  {
+    "id": "comlink",
+    "name": "Comlink messages",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "connect",
+    "name": "Connect protocol",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://connectrpc.com/docs/protocol"
+  },
+  {
+    "id": "convex",
+    "name": "Convex sync protocol",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Proprietary."
+  },
+  {
+    "id": "couchdb-replication",
+    "name": "CouchDB replication",
+    "family": "sync",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://docs.couchdb.org/en/stable/replication/protocol.html"
+  },
+  {
+    "id": "daily",
+    "name": "Daily",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Proprietary."
+  },
+  {
+    "id": "dash",
+    "name": "MPEG-DASH",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://dashif.org/guidelines/"
+  },
+  {
+    "id": "ddp",
+    "name": "Meteor DDP",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/meteor/meteor/blob/devel/packages/ddp/DDP.md"
+  },
+  {
+    "id": "deepstream",
+    "name": "deepstream",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "doh",
+    "name": "DNS over HTTPS (RFC 8484)",
+    "family": "http",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc8484"
+  },
+  {
+    "id": "electric",
+    "name": "Electric shape API",
+    "family": "sync",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "engine-io",
+    "name": "Engine.IO",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/socketio/engine.io-protocol"
+  },
+  {
+    "id": "ethereum-json-rpc",
+    "name": "Ethereum JSON-RPC",
+    "family": "p2p",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://ethereum.org/en/developers/docs/apis/json-rpc/"
+  },
+  {
+    "id": "feathers",
+    "name": "Feathers",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "note": "REST or Socket.IO."
+  },
+  {
+    "id": "firebase",
+    "name": "Firebase",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Proprietary."
+  },
+  {
+    "id": "flatbuffers",
+    "name": "FlatBuffers",
+    "family": "codecs",
+    "kind": "codec",
+    "client": "library",
+    "spec": "https://flatbuffers.dev/"
+  },
+  {
+    "id": "foxglove-ws",
+    "name": "Foxglove WebSocket protocol",
+    "family": "iot",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/foxglove/ws-protocol"
+  },
+  {
+    "id": "graphql-over-http",
+    "name": "GraphQL over HTTP",
+    "family": "graphql",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://graphql.github.io/graphql-over-http/"
+  },
+  {
+    "id": "graphql-sse",
+    "name": "GraphQL over SSE",
+    "family": "graphql",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/enisdenjo/graphql-sse/blob/master/PROTOCOL.md"
+  },
+  {
+    "id": "graphql-transport-ws",
+    "name": "GraphQL over WebSocket (graphql-transport-ws)",
+    "family": "graphql",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md"
+  },
+  {
+    "id": "grpc",
+    "name": "gRPC over HTTP/2",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "A gRPC-Web or Connect proxy, for example Envoy.",
+    "note": "A page cannot read HTTP trailers."
+  },
+  {
+    "id": "grpc-web",
+    "name": "gRPC-Web",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md"
+  },
+  {
+    "id": "guacamole",
+    "name": "Guacamole protocol",
+    "family": "remote",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://guacamole.apache.org/doc/gug/guacamole-protocol.html",
+    "note": "RDP, VNC and SSH through guacd."
+  },
+  {
+    "id": "gun",
+    "name": "GUN",
+    "family": "p2p",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "hls",
+    "name": "HLS and LL-HLS",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc8216"
+  },
+  {
+    "id": "home-assistant-ws",
+    "name": "Home Assistant WebSocket API",
+    "family": "iot",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://developers.home-assistant.io/docs/api/websocket/"
+  },
+  {
+    "id": "hrana",
+    "name": "Hrana (libSQL and Turso)",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/tursodatabase/libsql/blob/main/docs/HRANA_3_SPEC.md"
+  },
+  {
+    "id": "http-flv",
+    "name": "HTTP-FLV",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "imap",
+    "name": "IMAP",
+    "family": "http",
+    "kind": "protocol",
+    "client": "none",
+    "note": "TCP only."
+  },
+  {
+    "id": "influxdb-v2",
+    "name": "InfluxDB v2 HTTP API",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "instantdb",
+    "name": "InstantDB",
+    "family": "sync",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "ipfs",
+    "name": "IPFS (Bitswap and trustless gateways)",
+    "family": "p2p",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://specs.ipfs.tech/"
+  },
+  {
+    "id": "irc",
+    "name": "IRC",
+    "family": "chat",
+    "kind": "protocol",
+    "client": "library",
+    "gateway": "A WebSocket gateway, for example webircgateway."
+  },
+  {
+    "id": "janus",
+    "name": "Janus API",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://janus.conf.meetecho.com/docs/rest.html"
+  },
+  {
+    "id": "jetstream",
+    "name": "Bluesky Jetstream",
+    "family": "chat",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/bluesky-social/jetstream"
+  },
+  {
+    "id": "jitsi",
+    "name": "Jitsi Meet",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "jmap",
+    "name": "JMAP (RFC 8620, RFC 8621)",
+    "family": "http",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc8620"
+  },
+  {
+    "id": "json-rpc-2",
+    "name": "JSON-RPC 2.0",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.jsonrpc.org/specification"
+  },
+  {
+    "id": "jupyter",
+    "name": "Jupyter messaging",
+    "family": "iot",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://jupyter-client.readthedocs.io/en/latest/messaging.html"
+  },
+  {
+    "id": "kafka",
+    "name": "Kafka",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "Confluent REST Proxy, Strimzi HTTP Bridge or Zilla."
+  },
+  {
+    "id": "libp2p",
+    "name": "libp2p",
+    "family": "p2p",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/libp2p/specs"
+  },
+  {
+    "id": "liveblocks",
+    "name": "Liveblocks",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Proprietary."
+  },
+  {
+    "id": "livekit",
+    "name": "LiveKit signaling",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "lsp",
+    "name": "Language Server Protocol",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://microsoft.github.io/language-server-protocol/"
+  },
+  {
+    "id": "mastodon",
+    "name": "Mastodon API",
+    "family": "chat",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://docs.joinmastodon.org/api/",
+    "note": "REST and streams."
+  },
+  {
+    "id": "matrix",
+    "name": "Matrix client-server API",
+    "family": "chat",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://spec.matrix.org/"
+  },
+  {
+    "id": "mediasoup",
+    "name": "mediasoup",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "mercure",
+    "name": "Mercure",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "native",
+    "spec": "https://mercure.rocks/spec",
+    "note": "The native EventSource, or a fetch-based SSE client for auth headers."
+  },
+  {
+    "id": "modbus-tcp",
+    "name": "Modbus TCP",
+    "family": "iot",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "A gateway."
+  },
+  {
+    "id": "mongodb-wire",
+    "name": "MongoDB wire protocol",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "none",
+    "note": "The Atlas Data API and Realm Web are retired."
+  },
+  {
+    "id": "moq",
+    "name": "Media over QUIC",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://datatracker.ietf.org/doc/draft-ietf-moq-transport/",
+    "note": "Experimental."
+  },
+  {
+    "id": "mpeg-ts",
+    "name": "MPEG-TS over HTTP or WebSocket",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "mpeg1-ws",
+    "name": "MPEG-1 over WebSocket",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "mqtt",
+    "name": "MQTT 3.1.1 and 5",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html",
+    "note": "Over wss. Mosquitto, EMQX, HiveMQ and RabbitMQ accept it."
+  },
+  {
+    "id": "msgpack",
+    "name": "MessagePack",
+    "family": "codecs",
+    "kind": "codec",
+    "client": "library",
+    "spec": "https://github.com/msgpack/msgpack/blob/master/spec.md"
+  },
+  {
+    "id": "multipart-mixed",
+    "name": "multipart/mixed incremental delivery",
+    "family": "http-streaming",
+    "kind": "protocol",
+    "client": "library",
+    "note": "GraphQL @defer and @stream use it."
+  },
+  {
+    "id": "nats",
+    "name": "NATS",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://docs.nats.io/reference/reference-protocols/nats-protocol"
+  },
+  {
+    "id": "ndjson",
+    "name": "Streamed JSON and NDJSON",
+    "family": "http-streaming",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/ndjson/ndjson-spec"
+  },
+  {
+    "id": "nostr",
+    "name": "Nostr (NIP-01)",
+    "family": "chat",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/nostr-protocol/nips/blob/master/01.md"
+  },
+  {
+    "id": "obs-websocket",
+    "name": "obs-websocket 5",
+    "family": "iot",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/obsproject/obs-websocket/blob/master/docs/generated/protocol.md"
+  },
+  {
+    "id": "odata",
+    "name": "OData",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.odata.org/documentation/"
+  },
+  {
+    "id": "opc-ua",
+    "name": "OPC UA",
+    "family": "iot",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "A gateway."
+  },
+  {
+    "id": "openvidu",
+    "name": "OpenVidu",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "note": "OpenVidu 3 uses livekit-client."
+  },
+  {
+    "id": "orpc",
+    "name": "oRPC",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "note": "HTTP, WebSocket and MessagePort."
+  },
+  {
+    "id": "otlp-grpc",
+    "name": "OTLP over gRPC",
+    "family": "http",
+    "kind": "protocol",
+    "client": "none",
+    "note": "A page cannot speak gRPC."
+  },
+  {
+    "id": "otlp-http",
+    "name": "OTLP over HTTP",
+    "family": "http",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://opentelemetry.io/docs/specs/otlp/"
+  },
+  {
+    "id": "penpal",
+    "name": "Penpal messages",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "phoenix-channels",
+    "name": "Phoenix Channels",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://hexdocs.pm/phoenix/writing_a_channels_client.html"
+  },
+  {
+    "id": "planetscale-http",
+    "name": "PlanetScale HTTP API",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library",
+    "note": "MySQL over HTTP."
+  },
+  {
+    "id": "post-me",
+    "name": "post-me messages",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "postgres-wire",
+    "name": "Postgres wire protocol",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.postgresql.org/docs/current/protocol.html",
+    "gateway": "Servers other than Neon need a WebSocket-to-TCP proxy."
+  },
+  {
+    "id": "postgrest",
+    "name": "PostgREST",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://docs.postgrest.org/"
+  },
+  {
+    "id": "powersync",
+    "name": "PowerSync",
+    "family": "sync",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "primus",
+    "name": "Primus",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "note": "One API over engine.io, SockJS and ws."
+  },
+  {
+    "id": "protobuf",
+    "name": "Protocol Buffers",
+    "family": "codecs",
+    "kind": "codec",
+    "client": "library",
+    "spec": "https://protobuf.dev/programming-guides/encoding/"
+  },
+  {
+    "id": "pubnub",
+    "name": "PubNub",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Proprietary."
+  },
+  {
+    "id": "pulsar",
+    "name": "Pulsar WebSocket API",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "native",
+    "note": "Plain JSON over WebSocket."
+  },
+  {
+    "id": "pusher",
+    "name": "Pusher Channels protocol",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://pusher.com/docs/channels/library_auth_reference/pusher-websockets-protocol/",
+    "note": "Soketi and Laravel Reverb also speak it."
+  },
+  {
+    "id": "redis",
+    "name": "Redis (RESP)",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "Webdis, or a REST service such as Upstash."
+  },
+  {
+    "id": "rfb",
+    "name": "RFB (VNC, RFC 6143)",
+    "family": "remote",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc6143"
+  },
+  {
+    "id": "rosbridge",
+    "name": "rosbridge",
+    "family": "iot",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/RobotWebTools/rosbridge_suite/blob/ros2/ROSBRIDGE_PROTOCOL.md"
+  },
+  {
+    "id": "rsocket",
+    "name": "RSocket",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://rsocket.io/about/protocol"
+  },
+  {
+    "id": "rtmp",
+    "name": "RTMP",
+    "family": "media",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "MediaMTX or go2rtc, to WebRTC or HLS."
+  },
+  {
+    "id": "rtsp",
+    "name": "RTSP",
+    "family": "media",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "MediaMTX or go2rtc, to WebRTC or HLS."
+  },
+  {
+    "id": "s3",
+    "name": "Amazon S3 REST API with SigV4",
+    "family": "http",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "sharedb",
+    "name": "ShareDB",
+    "family": "sync",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Operational transform."
+  },
+  {
+    "id": "signalr",
+    "name": "SignalR hub protocol",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/dotnet/aspnetcore/blob/main/src/SignalR/docs/specs/HubProtocol.md"
+  },
+  {
+    "id": "sip",
+    "name": "SIP over WebSocket (RFC 7118)",
+    "family": "chat",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc7118"
+  },
+  {
+    "id": "smf",
+    "name": "Solace SMF",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Proprietary."
+  },
+  {
+    "id": "smtp",
+    "name": "SMTP",
+    "family": "http",
+    "kind": "protocol",
+    "client": "none",
+    "note": "TCP only."
+  },
+  {
+    "id": "socket-io",
+    "name": "Socket.IO",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/socketio/socket.io-protocol"
+  },
+  {
+    "id": "socketcluster",
+    "name": "SocketCluster",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "sockjs",
+    "name": "SockJS",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/sockjs/sockjs-protocol"
+  },
+  {
+    "id": "solana-json-rpc",
+    "name": "Solana JSON-RPC",
+    "family": "p2p",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://solana.com/docs/rpc"
+  },
+  {
+    "id": "srt",
+    "name": "SRT",
+    "family": "media",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "MediaMTX or go2rtc, to WebRTC or HLS."
+  },
+  {
+    "id": "sse",
+    "name": "Server-sent events",
+    "family": "http-streaming",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+  },
+  {
+    "id": "ssh",
+    "name": "SSH",
+    "family": "remote",
+    "kind": "protocol",
+    "client": "none",
+    "gateway": "Guacamole or a WebSocket proxy."
+  },
+  {
+    "id": "stomp",
+    "name": "STOMP 1.2",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://stomp.github.io/stomp-specification-1.2.html",
+    "note": "RabbitMQ, ActiveMQ, Artemis and Spring, often over SockJS."
+  },
+  {
+    "id": "subscriptions-transport-ws",
+    "name": "The old GraphQL WebSocket subprotocol (graphql-ws)",
+    "family": "graphql",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Its subprotocol name is graphql-ws, the same as the package name of the new protocol."
+  },
+  {
+    "id": "surrealdb-rpc",
+    "name": "SurrealDB RPC",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "terminal-ws",
+    "name": "Terminal bytes over WebSocket",
+    "family": "remote",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "thrift",
+    "name": "Apache Thrift",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "note": "XHR and WebSocket transports."
+  },
+  {
+    "id": "tidb-http",
+    "name": "TiDB Cloud serverless HTTP API",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library",
+    "note": "MySQL over HTTP."
+  },
+  {
+    "id": "trpc",
+    "name": "tRPC",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "note": "HTTP batches, streams, WebSocket and SSE subscriptions."
+  },
+  {
+    "id": "turbo-streams",
+    "name": "Turbo Streams",
+    "family": "realtime",
+    "kind": "protocol",
+    "client": "library",
+    "note": "HTML fragments over WebSocket or SSE."
+  },
+  {
+    "id": "tus",
+    "name": "tus resumable upload",
+    "family": "http",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://tus.io/protocols/resumable-upload"
+  },
+  {
+    "id": "twilio-video",
+    "name": "Twilio Video",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "note": "Proprietary."
+  },
+  {
+    "id": "twirp",
+    "name": "Twirp",
+    "family": "rpc",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://twitchtv.github.io/twirp/docs/spec_v7.html"
+  },
+  {
+    "id": "upstash-redis-rest",
+    "name": "Upstash Redis REST API",
+    "family": "databases",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "wamp",
+    "name": "WAMP",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://wamp-proto.org/spec.html"
+  },
+  {
+    "id": "webdav",
+    "name": "WebDAV (RFC 4918)",
+    "family": "http",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc4918"
+  },
+  {
+    "id": "webrtc",
+    "name": "WebRTC peer connections",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.w3.org/TR/webrtc/"
+  },
+  {
+    "id": "websocket",
+    "name": "WebSocket (RFC 6455)",
+    "family": "websocket",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc6455"
+  },
+  {
+    "id": "whep",
+    "name": "WHEP",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://datatracker.ietf.org/doc/draft-ietf-wish-whep/"
+  },
+  {
+    "id": "whip",
+    "name": "WHIP (RFC 9725)",
+    "family": "media",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc9725"
+  },
+  {
+    "id": "xmpp",
+    "name": "XMPP over WebSocket (RFC 7395)",
+    "family": "chat",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://www.rfc-editor.org/rfc/rfc7395"
+  },
+  {
+    "id": "yjs-sync",
+    "name": "Yjs sync protocol",
+    "family": "sync",
+    "kind": "protocol",
+    "client": "library",
+    "spec": "https://github.com/yjs/y-protocols/blob/master/PROTOCOL.md"
+  },
+  {
+    "id": "zenoh",
+    "name": "Zenoh remote API",
+    "family": "iot",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "zero",
+    "name": "Zero sync",
+    "family": "sync",
+    "kind": "protocol",
+    "client": "library"
+  },
+  {
+    "id": "zeromq",
+    "name": "ZeroMQ (ZMTP)",
+    "family": "brokers",
+    "kind": "protocol",
+    "client": "none",
+    "note": "No maintained browser client."
+  }
+]
