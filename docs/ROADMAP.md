@@ -33,7 +33,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W13 | The share of a client in a large package | later | P2 | The downloads of a large package, for example `rxjs`, count all its users. Import counts of the client module correct the reach. |
 | W14 | The table check moves to its home | blocked | P3 | The check of the tables goes to `@mark1russell7/sqlite` when that home has a table schema. |
 | W15 | Chaos, load and cluster layers | later | P2 | Fault plans and load schedules on the servers of the suites, and `kind` clusters where a protocol needs a fleet. All in CI. |
-| W16 | Reviews of the top packages | active | P0 | Each package, in the priority order, gets a review of its published code. Each finding has a small failing repro and a check for duplicates upstream. |
+| W16 | Reviews of the top packages | active | P0 | Each package, in the priority order, gets a review of its published code. Each finding has a small failing repro and a check for duplicates upstream. Done: rxjs, @supabase/realtime-js, engine.io-client, socket.io-client and partysocket. The first fix is upstream: rxjs#7661. |
 
 ## The priority formula
 
