@@ -1,8 +1,14 @@
 {
-  "name": "repro-f0069",
   "private": true,
+  "type": "module",
   "dependencies": {
     "sockjs": "0.3.24",
     "sockjs-client": "1.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/sockjs": "0.3.36",
+    "@types/sockjs-client": "1.5.4",
+    "typescript": "7.0.2"
   }
 }

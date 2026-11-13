@@ -1,8 +1,13 @@
 {
-  "name": "repro-f0070",
   "private": true,
+  "type": "module",
   "dependencies": {
     "pusher-js": "8.6.0",
     "ws": "8.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/ws": "8.18.2",
+    "typescript": "7.0.2"
   }
 }
