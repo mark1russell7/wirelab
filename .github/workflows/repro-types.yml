@@ -1,0 +1,80 @@
+# The type check of the repros in TypeScript. Each folder repros/<package>/<finding> with a tsconfig.json has its own
+# pinned packages, so the typecheck of the root does not reach it. This workflow examines these configs, and the
+# option configs of the rule typed-files in the root package.json names them.
+name: Repro types
+
+on:
+  pull_request:
+    paths:
+      - "repros/**"
+  push:
+    branches: [main]
+    paths:
+      - "repros/**"
+  workflow_dispatch:
+
+concurrency:
+  group: repro-types-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  types:
+    name: Repro types
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+      # A pull request examines the folders that it changes. A push to main and a run by a person examine all folders.
+      - name: Find the folders
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          mapfile -t all < <(git ls-files repros | grep '/tsconfig\.json$' | xargs -r -n1 dirname | sort -u)
+          dirs=()
+          if [[ -n "$BASE" ]]; then
+            mapfile -t changed < <(git diff --name-only "$BASE" HEAD -- repros)
+            for d in "${all[@]}"; do
+              for f in "${changed[@]}"; do
+                if [[ "$f" == "$d/"* ]]; then
+                  dirs+=("$d")
+                  break
+                fi
+              done
+            done
+          else
+            dirs=("${all[@]}")
+          fi
+          : > "$RUNNER_TEMP/dirs.txt"
+          for d in "${dirs[@]}"; do echo "$d" >> "$RUNNER_TEMP/dirs.txt"; done
+          echo "Folders to examine: ${#dirs[@]}"
+          cat "$RUNNER_TEMP/dirs.txt"
+      # Install scripts do not run: the packages of a repro are code of others.
+      - name: Type check
+        run: |
+          failed=()
+          while IFS= read -r d; do
+            echo "::group::$d"
+            if (cd "$d" && npm install --ignore-scripts --no-audit --no-fund && npx --no-install tsc -p .); then
+              echo "::endgroup::"
+            else
+              echo "::endgroup::"
+              echo "::error::The type check of $d failed."
+              failed+=("$d")
+            fi
+          done < "$RUNNER_TEMP/dirs.txt"
+          if (( ${#failed[@]} > 0 )); then
+            exit 1
+          fi
