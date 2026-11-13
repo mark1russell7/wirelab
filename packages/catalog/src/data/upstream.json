@@ -1,5 +1,18 @@
 [
   {
+    "finding": "F0001",
+    "at": "2026-11-13T06:27:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/ReactiveX/rxjs/issues/7660"
+  },
+  {
+    "finding": "F0001",
+    "at": "2026-11-13T06:27:36Z",
+    "state": "pr-open",
+    "url": "https://github.com/ReactiveX/rxjs/pull/7661",
+    "note": "The base is the branch 7.x. The pull request has four new tests, which fail without the change."
+  },
+  {
     "finding": "F0002",
     "at": "2026-11-13T05:26:12Z",
     "state": "declined",
@@ -103,5 +116,40 @@
     "state": "fixed-by-others",
     "url": "https://github.com/socketio/socket.io/pull/5596",
     "note": "Merged on main on 2026-11-12. Not in 6.6.8."
+  },
+  {
+    "finding": "F0063",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5582",
+    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
+  },
+  {
+    "finding": "F0064",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5584",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0065",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5566",
+    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
+  },
+  {
+    "finding": "F0066",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5539",
+    "note": "An open pull request of another author, on the server side. Also PR #5547."
+  },
+  {
+    "finding": "F0067",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5504",
+    "note": "An open issue of another author."
   }
 ]
