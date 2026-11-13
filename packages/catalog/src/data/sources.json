@@ -1,0 +1,8 @@
+[
+  {
+    "id": "npm-check-2026-11-13",
+    "at": "2026-11-13T02:59:16Z",
+    "what": "The abbreviated npm metadata and the npm downloads API (last week), one request for each package.",
+    "note": "The downloads API answered HTTP 429 after 43 packages. The check cut each deprecation message at 100 characters."
+  }
+]

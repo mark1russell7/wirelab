@@ -1,0 +1,92 @@
+[
+  {
+    "id": "websocket",
+    "order": 1,
+    "title": "WebSocket wrappers",
+    "what": "Reconnect, backoff and send buffers over a plain WebSocket."
+  },
+  {
+    "id": "realtime",
+    "order": 2,
+    "title": "Realtime protocols with fallbacks",
+    "what": "Protocols that emulate a socket over WebSocket, streams and polling, as SockJS does."
+  },
+  {
+    "id": "brokers",
+    "order": 3,
+    "title": "Message brokers",
+    "what": "Broker protocols over WebSocket: MQTT, STOMP, AMQP, NATS and others."
+  },
+  {
+    "id": "rpc",
+    "order": 4,
+    "title": "RPC",
+    "what": "Calls to a server or to another frame: gRPC-Web, Connect, JSON-RPC, tRPC and others."
+  },
+  {
+    "id": "graphql",
+    "order": 5,
+    "title": "GraphQL",
+    "what": "Queries over HTTP, and subscriptions over WebSocket or SSE."
+  },
+  {
+    "id": "http-streaming",
+    "order": 6,
+    "title": "Streaming over plain HTTP",
+    "what": "Server-sent events, streamed JSON and multipart responses."
+  },
+  {
+    "id": "media",
+    "order": 7,
+    "title": "Media and WebRTC",
+    "what": "Peer connections, media servers, WHIP and WHEP, and HTTP video."
+  },
+  {
+    "id": "chat",
+    "order": 8,
+    "title": "Chat, social and telephony",
+    "what": "XMPP, SIP, Matrix, IRC, Nostr and the social APIs."
+  },
+  {
+    "id": "remote",
+    "order": 9,
+    "title": "Remote desktop and terminals",
+    "what": "VNC, Guacamole and terminals over WebSocket."
+  },
+  {
+    "id": "p2p",
+    "order": 10,
+    "title": "Peer-to-peer and decentralized",
+    "what": "libp2p, IPFS, BitTorrent and the JSON-RPC of blockchains."
+  },
+  {
+    "id": "sync",
+    "order": 11,
+    "title": "Sync and collaboration",
+    "what": "CRDT and operational-transform sync, replication and sync engines."
+  },
+  {
+    "id": "databases",
+    "order": 12,
+    "title": "Databases over HTTP or WebSocket",
+    "what": "Database protocols that a page can speak."
+  },
+  {
+    "id": "http",
+    "order": 13,
+    "title": "Other HTTP protocols",
+    "what": "Uploads, object stores, WebDAV, JMAP, OTLP and DNS over HTTPS."
+  },
+  {
+    "id": "iot",
+    "order": 14,
+    "title": "IoT, robotics and tools",
+    "what": "Robot, device and tool protocols over WebSocket."
+  },
+  {
+    "id": "codecs",
+    "order": 15,
+    "title": "Wire formats",
+    "what": "Codecs that the protocols carry. They are not transports."
+  }
+]

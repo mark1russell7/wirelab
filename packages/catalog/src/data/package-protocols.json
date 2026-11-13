@@ -1,0 +1,966 @@
+[
+  {
+    "package": "@anycable/web",
+    "protocol": "action-cable"
+  },
+  {
+    "package": "@apollo/client",
+    "protocol": "graphql-over-http"
+  },
+  {
+    "package": "@atproto/api",
+    "protocol": "atproto"
+  },
+  {
+    "package": "@automerge/automerge-repo",
+    "protocol": "automerge-sync"
+  },
+  {
+    "package": "@automerge/automerge-repo-network-websocket",
+    "protocol": "automerge-sync"
+  },
+  {
+    "package": "@aws-sdk/client-s3",
+    "protocol": "s3"
+  },
+  {
+    "package": "@azure/event-hubs",
+    "protocol": "amqp-1-0"
+  },
+  {
+    "package": "@azure/service-bus",
+    "protocol": "amqp-1-0"
+  },
+  {
+    "package": "@azure/web-pubsub-client",
+    "protocol": "azure-web-pubsub"
+  },
+  {
+    "package": "@bufbuild/protobuf",
+    "protocol": "protobuf"
+  },
+  {
+    "package": "@clickhouse/client-web",
+    "protocol": "clickhouse-http"
+  },
+  {
+    "package": "@cloudamqp/amqp-client",
+    "protocol": "amqp-0-9-1"
+  },
+  {
+    "package": "@connectrpc/connect-web",
+    "protocol": "connect"
+  },
+  {
+    "package": "@connectrpc/connect-web",
+    "protocol": "grpc-web"
+  },
+  {
+    "package": "@converse/headless",
+    "protocol": "bosh"
+  },
+  {
+    "package": "@converse/headless",
+    "protocol": "xmpp"
+  },
+  {
+    "package": "@daily-co/daily-js",
+    "protocol": "daily"
+  },
+  {
+    "package": "@daily-co/daily-js",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "@deepstream/client",
+    "protocol": "deepstream"
+  },
+  {
+    "package": "@eclipse-zenoh/zenoh-ts",
+    "protocol": "zenoh"
+  },
+  {
+    "package": "@electric-sql/client",
+    "protocol": "electric"
+  },
+  {
+    "package": "@eyevinn/webrtc-player",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "@eyevinn/webrtc-player",
+    "protocol": "whep"
+  },
+  {
+    "package": "@eyevinn/whip-web-client",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "@eyevinn/whip-web-client",
+    "protocol": "whip"
+  },
+  {
+    "package": "@feathersjs/client",
+    "protocol": "feathers"
+  },
+  {
+    "package": "@feathersjs/client",
+    "protocol": "socket-io"
+  },
+  {
+    "package": "@foxglove/ws-protocol",
+    "protocol": "foxglove-ws"
+  },
+  {
+    "package": "@helia/verified-fetch",
+    "protocol": "ipfs"
+  },
+  {
+    "package": "@hocuspocus/provider",
+    "protocol": "yjs-sync"
+  },
+  {
+    "package": "@hotwired/turbo",
+    "protocol": "turbo-streams"
+  },
+  {
+    "package": "@improbable-eng/grpc-web",
+    "protocol": "grpc-web"
+  },
+  {
+    "package": "@influxdata/influxdb-client-browser",
+    "protocol": "influxdb-v2"
+  },
+  {
+    "package": "@instantdb/core",
+    "protocol": "instantdb"
+  },
+  {
+    "package": "@jupyterlab/services",
+    "protocol": "jupyter"
+  },
+  {
+    "package": "@kixelated/hang",
+    "protocol": "moq"
+  },
+  {
+    "package": "@kixelated/moq",
+    "protocol": "moq"
+  },
+  {
+    "package": "@libp2p/webrtc",
+    "protocol": "libp2p"
+  },
+  {
+    "package": "@libp2p/webrtc",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "@libp2p/websockets",
+    "protocol": "libp2p"
+  },
+  {
+    "package": "@libp2p/webtransport",
+    "protocol": "libp2p"
+  },
+  {
+    "package": "@libsql/client",
+    "protocol": "hrana"
+  },
+  {
+    "package": "@liveblocks/client",
+    "protocol": "liveblocks"
+  },
+  {
+    "package": "@microsoft/fetch-event-source",
+    "protocol": "sse"
+  },
+  {
+    "package": "@microsoft/signalr",
+    "protocol": "signalr"
+  },
+  {
+    "package": "@microsoft/signalr-protocol-msgpack",
+    "protocol": "msgpack"
+  },
+  {
+    "package": "@microsoft/signalr-protocol-msgpack",
+    "protocol": "signalr"
+  },
+  {
+    "package": "@moq/hang",
+    "protocol": "moq"
+  },
+  {
+    "package": "@moq/net",
+    "protocol": "moq"
+  },
+  {
+    "package": "@moq/publish",
+    "protocol": "moq"
+  },
+  {
+    "package": "@moq/watch",
+    "protocol": "moq"
+  },
+  {
+    "package": "@msgpack/msgpack",
+    "protocol": "msgpack"
+  },
+  {
+    "package": "@nats-io/nats-core",
+    "protocol": "nats"
+  },
+  {
+    "package": "@neondatabase/serverless",
+    "protocol": "postgres-wire"
+  },
+  {
+    "package": "@nostr-dev-kit/ndk",
+    "protocol": "nostr"
+  },
+  {
+    "package": "@novnc/novnc",
+    "protocol": "rfb"
+  },
+  {
+    "package": "@open-rpc/client-js",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "@opentelemetry/exporter-trace-otlp-http",
+    "protocol": "otlp-http"
+  },
+  {
+    "package": "@opentelemetry/exporter-trace-otlp-proto",
+    "protocol": "otlp-http"
+  },
+  {
+    "package": "@opentelemetry/exporter-trace-otlp-proto",
+    "protocol": "protobuf"
+  },
+  {
+    "package": "@orpc/client",
+    "protocol": "orpc"
+  },
+  {
+    "package": "@planetscale/database",
+    "protocol": "planetscale-http"
+  },
+  {
+    "package": "@powersync/web",
+    "protocol": "powersync"
+  },
+  {
+    "package": "@protobuf-ts/grpcweb-transport",
+    "protocol": "grpc-web"
+  },
+  {
+    "package": "@protobuf-ts/twirp-transport",
+    "protocol": "twirp"
+  },
+  {
+    "package": "@rails/actioncable",
+    "protocol": "action-cable"
+  },
+  {
+    "package": "@rocicorp/zero",
+    "protocol": "zero"
+  },
+  {
+    "package": "@skyware/jetstream",
+    "protocol": "jetstream"
+  },
+  {
+    "package": "@solana/kit",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "@solana/kit",
+    "protocol": "solana-json-rpc"
+  },
+  {
+    "package": "@stomp/rx-stomp",
+    "protocol": "stomp"
+  },
+  {
+    "package": "@stomp/stompjs",
+    "protocol": "stomp"
+  },
+  {
+    "package": "@streamparser/json",
+    "protocol": "ndjson"
+  },
+  {
+    "package": "@supabase/postgrest-js",
+    "protocol": "postgrest"
+  },
+  {
+    "package": "@supabase/realtime-js",
+    "protocol": "phoenix-channels"
+  },
+  {
+    "package": "@tidbcloud/serverless",
+    "protocol": "tidb-http"
+  },
+  {
+    "package": "@trpc/client",
+    "protocol": "trpc"
+  },
+  {
+    "package": "@upstash/redis",
+    "protocol": "upstash-redis-rest"
+  },
+  {
+    "package": "@urql/core",
+    "protocol": "graphql-over-http"
+  },
+  {
+    "package": "@videojs/http-streaming",
+    "protocol": "dash"
+  },
+  {
+    "package": "@videojs/http-streaming",
+    "protocol": "hls"
+  },
+  {
+    "package": "@vueuse/core",
+    "protocol": "websocket"
+  },
+  {
+    "package": "@xmpp/client",
+    "protocol": "xmpp"
+  },
+  {
+    "package": "@xterm/addon-attach",
+    "protocol": "terminal-ws"
+  },
+  {
+    "package": "@y-sweet/client",
+    "protocol": "yjs-sync"
+  },
+  {
+    "package": "ably",
+    "protocol": "ably"
+  },
+  {
+    "package": "agora-rtc-sdk-ng",
+    "protocol": "agora"
+  },
+  {
+    "package": "agora-rtc-sdk-ng",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "apache-arrow",
+    "protocol": "arrow-ipc"
+  },
+  {
+    "package": "autobahn",
+    "protocol": "wamp"
+  },
+  {
+    "package": "autobahn-browser",
+    "protocol": "wamp"
+  },
+  {
+    "package": "avsc",
+    "protocol": "avro"
+  },
+  {
+    "package": "avsc",
+    "protocol": "avro-ipc"
+  },
+  {
+    "package": "aws-amplify",
+    "protocol": "appsync"
+  },
+  {
+    "package": "aws-iot-device-sdk-v2",
+    "protocol": "mqtt"
+  },
+  {
+    "package": "aws4fetch",
+    "protocol": "s3"
+  },
+  {
+    "package": "birpc",
+    "protocol": "birpc"
+  },
+  {
+    "package": "bittorrent-tracker",
+    "protocol": "bittorrent"
+  },
+  {
+    "package": "bson",
+    "protocol": "bson"
+  },
+  {
+    "package": "capnp-es",
+    "protocol": "capnproto"
+  },
+  {
+    "package": "capnp-ts",
+    "protocol": "capnproto"
+  },
+  {
+    "package": "capnweb",
+    "protocol": "capnweb"
+  },
+  {
+    "package": "cbor-x",
+    "protocol": "cbor"
+  },
+  {
+    "package": "centrifuge",
+    "protocol": "centrifugo"
+  },
+  {
+    "package": "cometd",
+    "protocol": "bayeux"
+  },
+  {
+    "package": "comlink",
+    "protocol": "comlink"
+  },
+  {
+    "package": "convex",
+    "protocol": "convex"
+  },
+  {
+    "package": "dashjs",
+    "protocol": "dash"
+  },
+  {
+    "package": "ddp.js",
+    "protocol": "ddp"
+  },
+  {
+    "package": "dns-packet",
+    "protocol": "doh"
+  },
+  {
+    "package": "engine.io-client",
+    "protocol": "engine-io"
+  },
+  {
+    "package": "ethers",
+    "protocol": "ethereum-json-rpc"
+  },
+  {
+    "package": "ethers",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "event-source-polyfill",
+    "protocol": "sse"
+  },
+  {
+    "package": "eventsource",
+    "protocol": "sse"
+  },
+  {
+    "package": "eventsource-parser",
+    "protocol": "sse"
+  },
+  {
+    "package": "faye",
+    "protocol": "bayeux"
+  },
+  {
+    "package": "firebase",
+    "protocol": "firebase"
+  },
+  {
+    "package": "flatbuffers",
+    "protocol": "flatbuffers"
+  },
+  {
+    "package": "flv.js",
+    "protocol": "http-flv"
+  },
+  {
+    "package": "graffle",
+    "protocol": "graphql-over-http"
+  },
+  {
+    "package": "graphql-http",
+    "protocol": "graphql-over-http"
+  },
+  {
+    "package": "graphql-request",
+    "protocol": "graphql-over-http"
+  },
+  {
+    "package": "graphql-sse",
+    "protocol": "graphql-sse"
+  },
+  {
+    "package": "graphql-ws",
+    "protocol": "graphql-transport-ws"
+  },
+  {
+    "package": "grpc-web",
+    "protocol": "grpc-web"
+  },
+  {
+    "package": "grpc-web",
+    "protocol": "protobuf"
+  },
+  {
+    "package": "guacamole-common-js",
+    "protocol": "guacamole"
+  },
+  {
+    "package": "gun",
+    "protocol": "gun"
+  },
+  {
+    "package": "helia",
+    "protocol": "ipfs"
+  },
+  {
+    "package": "hls.js",
+    "protocol": "hls"
+  },
+  {
+    "package": "home-assistant-js-websocket",
+    "protocol": "home-assistant-ws"
+  },
+  {
+    "package": "irc-framework",
+    "protocol": "irc"
+  },
+  {
+    "package": "isomorphic-ws",
+    "protocol": "websocket"
+  },
+  {
+    "package": "janus-gateway",
+    "protocol": "janus"
+  },
+  {
+    "package": "janus-gateway",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "jayson",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "jmap-client-ts",
+    "protocol": "jmap"
+  },
+  {
+    "package": "jmap-jam",
+    "protocol": "jmap"
+  },
+  {
+    "package": "jsmpeg",
+    "protocol": "mpeg1-ws"
+  },
+  {
+    "package": "json-rpc-2.0",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "jssip",
+    "protocol": "sip"
+  },
+  {
+    "package": "laravel-echo",
+    "protocol": "pusher"
+  },
+  {
+    "package": "laravel-echo",
+    "protocol": "socket-io"
+  },
+  {
+    "package": "lib-jitsi-meet",
+    "protocol": "jitsi"
+  },
+  {
+    "package": "lib-jitsi-meet",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "libp2p",
+    "protocol": "libp2p"
+  },
+  {
+    "package": "livekit-client",
+    "protocol": "livekit"
+  },
+  {
+    "package": "livekit-client",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "masto",
+    "protocol": "mastodon"
+  },
+  {
+    "package": "matrix-js-sdk",
+    "protocol": "matrix"
+  },
+  {
+    "package": "mediasoup-client",
+    "protocol": "mediasoup"
+  },
+  {
+    "package": "mediasoup-client",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "meros",
+    "protocol": "multipart-mixed"
+  },
+  {
+    "package": "monaco-languageclient",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "monaco-languageclient",
+    "protocol": "lsp"
+  },
+  {
+    "package": "mpegts.js",
+    "protocol": "http-flv"
+  },
+  {
+    "package": "mpegts.js",
+    "protocol": "mpeg-ts"
+  },
+  {
+    "package": "mqtt",
+    "protocol": "mqtt"
+  },
+  {
+    "package": "msgpackr",
+    "protocol": "msgpack"
+  },
+  {
+    "package": "nats.ws",
+    "protocol": "nats"
+  },
+  {
+    "package": "neo4j-driver",
+    "protocol": "bolt"
+  },
+  {
+    "package": "neo4j-driver-lite",
+    "protocol": "bolt"
+  },
+  {
+    "package": "nostr-tools",
+    "protocol": "nostr"
+  },
+  {
+    "package": "o.js",
+    "protocol": "odata"
+  },
+  {
+    "package": "oboe",
+    "protocol": "ndjson"
+  },
+  {
+    "package": "obs-websocket-js",
+    "protocol": "obs-websocket"
+  },
+  {
+    "package": "odata-query",
+    "protocol": "odata"
+  },
+  {
+    "package": "openvidu-browser",
+    "protocol": "openvidu"
+  },
+  {
+    "package": "openvidu-browser",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "paho-mqtt",
+    "protocol": "mqtt"
+  },
+  {
+    "package": "partysocket",
+    "protocol": "websocket"
+  },
+  {
+    "package": "peerjs",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "penpal",
+    "protocol": "penpal"
+  },
+  {
+    "package": "phoenix",
+    "protocol": "phoenix-channels"
+  },
+  {
+    "package": "post-me",
+    "protocol": "post-me"
+  },
+  {
+    "package": "pouchdb-browser",
+    "protocol": "couchdb-replication"
+  },
+  {
+    "package": "precompiled-mqtt",
+    "protocol": "mqtt"
+  },
+  {
+    "package": "primus",
+    "protocol": "primus"
+  },
+  {
+    "package": "protobufjs",
+    "protocol": "protobuf"
+  },
+  {
+    "package": "pubnub",
+    "protocol": "pubnub"
+  },
+  {
+    "package": "pusher-js",
+    "protocol": "pusher"
+  },
+  {
+    "package": "react-use-websocket",
+    "protocol": "websocket"
+  },
+  {
+    "package": "reconnecting-websocket",
+    "protocol": "websocket"
+  },
+  {
+    "package": "relay-runtime",
+    "protocol": "graphql-over-http"
+  },
+  {
+    "package": "rhea",
+    "protocol": "amqp-1-0"
+  },
+  {
+    "package": "rhea-promise",
+    "protocol": "amqp-1-0"
+  },
+  {
+    "package": "robust-websocket",
+    "protocol": "websocket"
+  },
+  {
+    "package": "roslib",
+    "protocol": "rosbridge"
+  },
+  {
+    "package": "rpc-websockets",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "rsocket-core",
+    "protocol": "rsocket"
+  },
+  {
+    "package": "rsocket-websocket-client",
+    "protocol": "rsocket"
+  },
+  {
+    "package": "rxdb",
+    "protocol": "couchdb-replication"
+  },
+  {
+    "package": "rxjs",
+    "protocol": "websocket"
+  },
+  {
+    "package": "shaka-player",
+    "protocol": "dash"
+  },
+  {
+    "package": "shaka-player",
+    "protocol": "hls"
+  },
+  {
+    "package": "sharedb",
+    "protocol": "sharedb"
+  },
+  {
+    "package": "simple-peer",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "simpleddp",
+    "protocol": "ddp"
+  },
+  {
+    "package": "sip.js",
+    "protocol": "sip"
+  },
+  {
+    "package": "socket.io-client",
+    "protocol": "engine-io"
+  },
+  {
+    "package": "socket.io-client",
+    "protocol": "socket-io"
+  },
+  {
+    "package": "socketcluster-client",
+    "protocol": "socketcluster"
+  },
+  {
+    "package": "sockette",
+    "protocol": "websocket"
+  },
+  {
+    "package": "sockjs-client",
+    "protocol": "sockjs"
+  },
+  {
+    "package": "solclientjs",
+    "protocol": "smf"
+  },
+  {
+    "package": "sse.js",
+    "protocol": "sse"
+  },
+  {
+    "package": "stanza",
+    "protocol": "bosh"
+  },
+  {
+    "package": "stanza",
+    "protocol": "xmpp"
+  },
+  {
+    "package": "stompjs",
+    "protocol": "stomp"
+  },
+  {
+    "package": "strophe.js",
+    "protocol": "bosh"
+  },
+  {
+    "package": "strophe.js",
+    "protocol": "xmpp"
+  },
+  {
+    "package": "subscriptions-transport-ws",
+    "protocol": "subscriptions-transport-ws"
+  },
+  {
+    "package": "surrealdb",
+    "protocol": "surrealdb-rpc"
+  },
+  {
+    "package": "thrift",
+    "protocol": "thrift"
+  },
+  {
+    "package": "thruway.js",
+    "protocol": "wamp"
+  },
+  {
+    "package": "trystero",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "tsdav",
+    "protocol": "caldav"
+  },
+  {
+    "package": "tsdav",
+    "protocol": "carddav"
+  },
+  {
+    "package": "tsdav",
+    "protocol": "webdav"
+  },
+  {
+    "package": "tus-js-client",
+    "protocol": "tus"
+  },
+  {
+    "package": "twilio-video",
+    "protocol": "twilio-video"
+  },
+  {
+    "package": "twilio-video",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "twirp-ts",
+    "protocol": "twirp"
+  },
+  {
+    "package": "u8-mqtt",
+    "protocol": "mqtt"
+  },
+  {
+    "package": "viem",
+    "protocol": "ethereum-json-rpc"
+  },
+  {
+    "package": "viem",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "vscode-jsonrpc",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "vscode-ws-jsonrpc",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "vscode-ws-jsonrpc",
+    "protocol": "lsp"
+  },
+  {
+    "package": "wampy",
+    "protocol": "wamp"
+  },
+  {
+    "package": "web3",
+    "protocol": "ethereum-json-rpc"
+  },
+  {
+    "package": "web3",
+    "protocol": "json-rpc-2"
+  },
+  {
+    "package": "webdav",
+    "protocol": "webdav"
+  },
+  {
+    "package": "websocket-ts",
+    "protocol": "websocket"
+  },
+  {
+    "package": "webstomp-client",
+    "protocol": "stomp"
+  },
+  {
+    "package": "webtorrent",
+    "protocol": "bittorrent"
+  },
+  {
+    "package": "webtorrent",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "y-webrtc",
+    "protocol": "webrtc"
+  },
+  {
+    "package": "y-webrtc",
+    "protocol": "yjs-sync"
+  },
+  {
+    "package": "y-websocket",
+    "protocol": "yjs-sync"
+  }
+]

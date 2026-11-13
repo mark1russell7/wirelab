@@ -1,0 +1,47 @@
+[
+  {
+    "from": "@improbable-eng/grpc-web",
+    "relation": "replaced-by",
+    "to": "@connectrpc/connect-web"
+  },
+  {
+    "from": "@kixelated/hang",
+    "relation": "renamed-to",
+    "to": "@moq/hang"
+  },
+  {
+    "from": "@kixelated/moq",
+    "relation": "renamed-to",
+    "to": "@moq/net"
+  },
+  {
+    "from": "autobahn-browser",
+    "relation": "replaced-by",
+    "to": "autobahn"
+  },
+  {
+    "from": "capnp-es",
+    "relation": "fork-of",
+    "to": "capnp-ts"
+  },
+  {
+    "from": "flv.js",
+    "relation": "replaced-by",
+    "to": "mpegts.js"
+  },
+  {
+    "from": "nats.ws",
+    "relation": "replaced-by",
+    "to": "@nats-io/nats-core"
+  },
+  {
+    "from": "partysocket",
+    "relation": "fork-of",
+    "to": "reconnecting-websocket"
+  },
+  {
+    "from": "subscriptions-transport-ws",
+    "relation": "replaced-by",
+    "to": "graphql-ws"
+  }
+]

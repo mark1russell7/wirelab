@@ -1,0 +1,67 @@
+[
+  {
+    "id": "direct-sockets",
+    "name": "Direct Sockets",
+    "spec": "https://wicg.github.io/direct-sockets/",
+    "note": "TCP and UDP. Only Isolated Web Apps of Chrome have it."
+  },
+  {
+    "id": "eventsource",
+    "name": "EventSource",
+    "spec": "https://html.spec.whatwg.org/multipage/server-sent-events.html"
+  },
+  {
+    "id": "fetch",
+    "name": "fetch",
+    "spec": "https://fetch.spec.whatwg.org/",
+    "note": "Each browser streams a response body. Only Chromium streams a request body."
+  },
+  {
+    "id": "iframe",
+    "name": "Hidden iframe",
+    "note": "The htmlfile and iframe transports of SockJS."
+  },
+  {
+    "id": "jsonp",
+    "name": "JSONP polling",
+    "note": "A script tag for each poll."
+  },
+  {
+    "id": "postmessage",
+    "name": "postMessage",
+    "spec": "https://html.spec.whatwg.org/multipage/web-messaging.html",
+    "note": "Workers, frames and message ports. Not a network transport."
+  },
+  {
+    "id": "rtc-datachannel",
+    "name": "RTCDataChannel",
+    "spec": "https://www.w3.org/TR/webrtc/"
+  },
+  {
+    "id": "rtc-media",
+    "name": "WebRTC media tracks",
+    "spec": "https://www.w3.org/TR/webrtc/"
+  },
+  {
+    "id": "websocket",
+    "name": "WebSocket",
+    "spec": "https://websockets.spec.whatwg.org/"
+  },
+  {
+    "id": "websocket-stream",
+    "name": "WebSocketStream",
+    "spec": "https://websockets.spec.whatwg.org/",
+    "note": "Only Chromium has it."
+  },
+  {
+    "id": "webtransport",
+    "name": "WebTransport",
+    "spec": "https://www.w3.org/TR/webtransport/"
+  },
+  {
+    "id": "xhr",
+    "name": "XMLHttpRequest",
+    "spec": "https://xhr.spec.whatwg.org/",
+    "note": "Long polling and XHR streaming."
+  }
+]

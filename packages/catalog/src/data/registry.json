@@ -1,0 +1,1202 @@
+[
+  {
+    "package": "@anycable/web",
+    "source": "npm-check-2026-11-13",
+    "version": "1.1.1",
+    "packumentModified": "2026-01-28"
+  },
+  {
+    "package": "@apollo/client",
+    "source": "npm-check-2026-11-13",
+    "version": "4.3.8",
+    "packumentModified": "2026-11-10"
+  },
+  {
+    "package": "@atproto/api",
+    "source": "npm-check-2026-11-13",
+    "version": "0.31.1",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "@automerge/automerge-repo",
+    "source": "npm-check-2026-11-13",
+    "version": "2.6.0-alpha.3",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "@automerge/automerge-repo-network-websocket",
+    "source": "npm-check-2026-11-13",
+    "version": "2.6.0-alpha.3",
+    "packumentModified": "2026-10-13"
+  },
+  {
+    "package": "@aws-sdk/client-s3",
+    "source": "npm-check-2026-11-13",
+    "version": "3.1168.0",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "@azure/event-hubs",
+    "source": "npm-check-2026-11-13",
+    "version": "6.0.4",
+    "packumentModified": "2026-04-22"
+  },
+  {
+    "package": "@azure/service-bus",
+    "source": "npm-check-2026-11-13",
+    "version": "7.10.0",
+    "packumentModified": "2026-10-05"
+  },
+  {
+    "package": "@azure/web-pubsub-client",
+    "source": "npm-check-2026-11-13",
+    "version": "1.1.0",
+    "packumentModified": "2026-06-29"
+  },
+  {
+    "package": "@bufbuild/protobuf",
+    "source": "npm-check-2026-11-13",
+    "version": "2.17.0",
+    "packumentModified": "2026-11-05"
+  },
+  {
+    "package": "@clickhouse/client-web",
+    "source": "npm-check-2026-11-13",
+    "version": "1.25.0",
+    "packumentModified": "2026-11-04"
+  },
+  {
+    "package": "@cloudamqp/amqp-client",
+    "source": "npm-check-2026-11-13",
+    "version": "4.1.2",
+    "packumentModified": "2026-10-19"
+  },
+  {
+    "package": "@connectrpc/connect-web",
+    "source": "npm-check-2026-11-13",
+    "version": "2.3.0",
+    "packumentModified": "2026-10-27"
+  },
+  {
+    "package": "@converse/headless",
+    "source": "npm-check-2026-11-13",
+    "version": "14.0.1",
+    "packumentModified": "2026-10-17"
+  },
+  {
+    "package": "@daily-co/daily-js",
+    "source": "npm-check-2026-11-13",
+    "version": "0.95.0",
+    "packumentModified": "2026-11-07"
+  },
+  {
+    "package": "@deepstream/client",
+    "source": "npm-check-2026-11-13",
+    "version": "7.1.1",
+    "packumentModified": "2026-08-25"
+  },
+  {
+    "package": "@eclipse-zenoh/zenoh-ts",
+    "source": "npm-check-2026-11-13",
+    "version": "1.10.2",
+    "packumentModified": "2026-10-28"
+  },
+  {
+    "package": "@electric-sql/client",
+    "source": "npm-check-2026-11-13",
+    "version": "1.5.28",
+    "packumentModified": "2026-09-09"
+  },
+  {
+    "package": "@eyevinn/webrtc-player",
+    "source": "npm-check-2026-11-13",
+    "version": "0.13.0",
+    "packumentModified": "2026-01-12"
+  },
+  {
+    "package": "@eyevinn/whip-web-client",
+    "source": "npm-check-2026-11-13",
+    "version": "1.1.7",
+    "packumentModified": "2026-01-12"
+  },
+  {
+    "package": "@feathersjs/client",
+    "source": "npm-check-2026-11-13",
+    "version": "5.0.51",
+    "packumentModified": "2026-10-26"
+  },
+  {
+    "package": "@foxglove/ws-protocol",
+    "source": "npm-check-2026-11-13",
+    "version": "0.8.0",
+    "packumentModified": "2025-03-13"
+  },
+  {
+    "package": "@helia/verified-fetch",
+    "source": "npm-check-2026-11-13",
+    "version": "8.1.2",
+    "packumentModified": "2026-09-22"
+  },
+  {
+    "package": "@hocuspocus/provider",
+    "source": "npm-check-2026-11-13",
+    "version": "4.8.0",
+    "packumentModified": "2026-10-28"
+  },
+  {
+    "package": "@hotwired/turbo",
+    "source": "npm-check-2026-11-13",
+    "version": "8.0.23",
+    "packumentModified": "2026-01-29"
+  },
+  {
+    "package": "@improbable-eng/grpc-web",
+    "source": "npm-check-2026-11-13",
+    "version": "0.15.0",
+    "packumentModified": "2022-04-05"
+  },
+  {
+    "package": "@influxdata/influxdb-client-browser",
+    "source": "npm-check-2026-11-13",
+    "version": "1.35.0",
+    "packumentModified": "2026-09-02"
+  },
+  {
+    "package": "@instantdb/core",
+    "source": "npm-check-2026-11-13",
+    "version": "1.0.67",
+    "packumentModified": "2026-09-26"
+  },
+  {
+    "package": "@jupyterlab/services",
+    "source": "npm-check-2026-11-13",
+    "version": "7.6.6",
+    "packumentModified": "2026-11-06"
+  },
+  {
+    "package": "@kixelated/hang",
+    "source": "npm-check-2026-11-13",
+    "version": "0.8.0",
+    "packumentModified": "2026-05-26",
+    "deprecated": "Renamed and split. Use @moq/hang, @moq/watch, and/or @moq/publish. See https://moq.dev"
+  },
+  {
+    "package": "@kixelated/moq",
+    "source": "npm-check-2026-11-13",
+    "version": "0.10.0",
+    "packumentModified": "2026-05-26",
+    "deprecated": "Renamed to @moq/net. See https://moq.dev"
+  },
+  {
+    "package": "@libp2p/webrtc",
+    "source": "npm-check-2026-11-13",
+    "version": "7.0.2",
+    "packumentModified": "2026-10-27"
+  },
+  {
+    "package": "@libp2p/websockets",
+    "source": "npm-check-2026-11-13",
+    "version": "10.1.25",
+    "packumentModified": "2026-10-27"
+  },
+  {
+    "package": "@libp2p/webtransport",
+    "source": "npm-check-2026-11-13",
+    "version": "6.0.44",
+    "packumentModified": "2026-10-27"
+  },
+  {
+    "package": "@libsql/client",
+    "source": "npm-check-2026-11-13",
+    "version": "0.18.0",
+    "packumentModified": "2026-09-02"
+  },
+  {
+    "package": "@liveblocks/client",
+    "source": "npm-check-2026-11-13",
+    "version": "3.25.0",
+    "packumentModified": "2026-11-06"
+  },
+  {
+    "package": "@microsoft/fetch-event-source",
+    "source": "npm-check-2026-11-13",
+    "version": "2.0.1",
+    "packumentModified": "2026-07-16"
+  },
+  {
+    "package": "@microsoft/signalr",
+    "source": "npm-check-2026-11-13",
+    "version": "11.0.0",
+    "packumentModified": "2026-11-10"
+  },
+  {
+    "package": "@microsoft/signalr-protocol-msgpack",
+    "source": "npm-check-2026-11-13",
+    "version": "11.0.0",
+    "packumentModified": "2026-11-10"
+  },
+  {
+    "package": "@msgpack/msgpack",
+    "source": "npm-check-2026-11-13",
+    "version": "3.1.3",
+    "packumentModified": "2025-12-26"
+  },
+  {
+    "package": "@nats-io/nats-core",
+    "source": "npm-check-2026-11-13",
+    "version": "3.4.0",
+    "packumentModified": "2026-05-13"
+  },
+  {
+    "package": "@neondatabase/serverless",
+    "source": "npm-check-2026-11-13",
+    "version": "1.2.0",
+    "packumentModified": "2026-10-01"
+  },
+  {
+    "package": "@nostr-dev-kit/ndk",
+    "source": "npm-check-2026-11-13",
+    "version": "3.0.3",
+    "packumentModified": "2026-02-23"
+  },
+  {
+    "package": "@novnc/novnc",
+    "source": "npm-check-2026-11-13",
+    "version": "1.7.0",
+    "packumentModified": "2026-10-23"
+  },
+  {
+    "package": "@open-rpc/client-js",
+    "source": "npm-check-2026-11-13",
+    "version": "2.1.0",
+    "packumentModified": "2026-08-14"
+  },
+  {
+    "package": "@opentelemetry/exporter-trace-otlp-http",
+    "source": "npm-check-2026-11-13",
+    "version": "0.301.2",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "@opentelemetry/exporter-trace-otlp-proto",
+    "source": "npm-check-2026-11-13",
+    "version": "0.301.2",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "@orpc/client",
+    "source": "npm-check-2026-11-13",
+    "version": "1.16.2",
+    "packumentModified": "2026-11-09"
+  },
+  {
+    "package": "@planetscale/database",
+    "source": "npm-check-2026-11-13",
+    "version": "2.0.0",
+    "packumentModified": "2026-09-24"
+  },
+  {
+    "package": "@powersync/web",
+    "source": "npm-check-2026-11-13",
+    "version": "2.7.0",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "@protobuf-ts/grpcweb-transport",
+    "source": "npm-check-2026-11-13",
+    "version": "2.11.1",
+    "packumentModified": "2025-06-18"
+  },
+  {
+    "package": "@protobuf-ts/twirp-transport",
+    "source": "npm-check-2026-11-13",
+    "version": "2.11.1",
+    "packumentModified": "2025-06-18"
+  },
+  {
+    "package": "@rails/actioncable",
+    "source": "npm-check-2026-11-13",
+    "version": "8.1.401",
+    "packumentModified": "2026-11-04"
+  },
+  {
+    "package": "@rocicorp/zero",
+    "source": "npm-check-2026-11-13",
+    "version": "1.12.0",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "@skyware/jetstream",
+    "source": "npm-check-2026-11-13",
+    "version": "0.2.5",
+    "packumentModified": "2025-07-13"
+  },
+  {
+    "package": "@solana/kit",
+    "source": "npm-check-2026-11-13",
+    "version": "8.6.0",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "@stomp/rx-stomp",
+    "source": "npm-check-2026-11-13",
+    "version": "2.4.0",
+    "packumentModified": "2026-05-01"
+  },
+  {
+    "package": "@stomp/stompjs",
+    "source": "npm-check-2026-11-13",
+    "version": "7.5.0",
+    "packumentModified": "2026-10-15"
+  },
+  {
+    "package": "@streamparser/json",
+    "source": "npm-check-2026-11-13",
+    "version": "0.0.26",
+    "packumentModified": "2026-08-21"
+  },
+  {
+    "package": "@supabase/postgrest-js",
+    "source": "npm-check-2026-11-13",
+    "version": "2.119.0",
+    "packumentModified": "2026-11-04"
+  },
+  {
+    "package": "@supabase/realtime-js",
+    "source": "npm-check-2026-11-13",
+    "version": "2.119.0",
+    "packumentModified": "2026-11-04"
+  },
+  {
+    "package": "@tidbcloud/serverless",
+    "source": "npm-check-2026-11-13",
+    "version": "0.3.0",
+    "packumentModified": "2026-03-17"
+  },
+  {
+    "package": "@trpc/client",
+    "source": "npm-check-2026-11-13",
+    "version": "11.28.0",
+    "packumentModified": "2026-11-10"
+  },
+  {
+    "package": "@upstash/redis",
+    "source": "npm-check-2026-11-13",
+    "version": "1.41.0",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "@urql/core",
+    "source": "npm-check-2026-11-13",
+    "version": "6.0.3",
+    "packumentModified": "2026-07-23"
+  },
+  {
+    "package": "@videojs/http-streaming",
+    "source": "npm-check-2026-11-13",
+    "version": "3.17.6",
+    "packumentModified": "2026-11-05"
+  },
+  {
+    "package": "@xmpp/client",
+    "source": "npm-check-2026-11-13",
+    "version": "0.14.0",
+    "packumentModified": "2025-10-29"
+  },
+  {
+    "package": "@xterm/addon-attach",
+    "source": "npm-check-2026-11-13",
+    "version": "0.12.0",
+    "packumentModified": "2026-11-08"
+  },
+  {
+    "package": "@y-sweet/client",
+    "source": "npm-check-2026-11-13",
+    "version": "0.9.1",
+    "packumentModified": "2025-09-16"
+  },
+  {
+    "package": "ably",
+    "source": "npm-check-2026-11-13",
+    "version": "2.30.0",
+    "packumentModified": "2026-10-22"
+  },
+  {
+    "package": "agora-rtc-sdk-ng",
+    "source": "npm-check-2026-11-13",
+    "version": "4.24.9",
+    "packumentModified": "2026-11-02"
+  },
+  {
+    "package": "apache-arrow",
+    "source": "npm-check-2026-11-13",
+    "version": "21.2.0",
+    "packumentModified": "2026-07-21"
+  },
+  {
+    "package": "autobahn-browser",
+    "source": "npm-check-2026-11-13",
+    "version": "22.11.1",
+    "packumentModified": "2026-10-22",
+    "deprecated": "Package no longer supported. Contact Support at https://www.npmjs.com/support for more inf"
+  },
+  {
+    "package": "avsc",
+    "source": "npm-check-2026-11-13",
+    "version": "5.7.9",
+    "packumentModified": "2025-07-13"
+  },
+  {
+    "package": "aws-iot-device-sdk-v2",
+    "source": "npm-check-2026-11-13",
+    "version": "1.28.2",
+    "packumentModified": "2026-10-16"
+  },
+  {
+    "package": "aws4fetch",
+    "source": "npm-check-2026-11-13",
+    "version": "1.0.20",
+    "packumentModified": "2024-08-28"
+  },
+  {
+    "package": "birpc",
+    "source": "npm-check-2026-11-13",
+    "version": "4.2.0",
+    "packumentModified": "2026-08-19"
+  },
+  {
+    "package": "bittorrent-tracker",
+    "source": "npm-check-2026-11-13",
+    "version": "11.2.3",
+    "packumentModified": "2026-05-25"
+  },
+  {
+    "package": "bson",
+    "source": "npm-check-2026-11-13",
+    "version": "7.3.4",
+    "packumentModified": "2026-11-05"
+  },
+  {
+    "package": "capnp-es",
+    "source": "npm-check-2026-11-13",
+    "version": "0.0.17",
+    "packumentModified": "2026-11-09"
+  },
+  {
+    "package": "capnp-ts",
+    "source": "npm-check-2026-11-13",
+    "version": "0.9.3",
+    "packumentModified": "2026-08-21"
+  },
+  {
+    "package": "capnweb",
+    "source": "npm-check-2026-11-13",
+    "version": "0.12.0",
+    "packumentModified": "2026-10-28"
+  },
+  {
+    "package": "cbor-x",
+    "source": "npm-check-2026-11-13",
+    "version": "1.6.9",
+    "packumentModified": "2026-11-02"
+  },
+  {
+    "package": "centrifuge",
+    "source": "npm-check-2026-11-13",
+    "version": "5.8.0",
+    "packumentModified": "2026-10-20"
+  },
+  {
+    "package": "cometd",
+    "source": "npm-check-2026-11-13",
+    "version": "9.0.1",
+    "packumentModified": "2026-06-10"
+  },
+  {
+    "package": "comlink",
+    "source": "npm-check-2026-11-13",
+    "version": "4.4.2",
+    "packumentModified": "2024-11-07"
+  },
+  {
+    "package": "convex",
+    "source": "npm-check-2026-11-13",
+    "version": "1.50.0",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "dashjs",
+    "source": "npm-check-2026-11-13",
+    "version": "5.3.0",
+    "packumentModified": "2026-11-04"
+  },
+  {
+    "package": "ddp.js",
+    "source": "npm-check-2026-11-13",
+    "version": "2.2.1",
+    "packumentModified": "2022-06-14"
+  },
+  {
+    "package": "dns-packet",
+    "source": "npm-check-2026-11-13",
+    "version": "5.6.1",
+    "packumentModified": "2026-08-25"
+  },
+  {
+    "package": "engine.io-client",
+    "source": "npm-check-2026-11-13",
+    "version": "6.6.8",
+    "packumentModified": "2026-11-10"
+  },
+  {
+    "package": "ethers",
+    "source": "npm-check-2026-11-13",
+    "version": "6.17.0",
+    "packumentModified": "2026-06-18"
+  },
+  {
+    "package": "event-source-polyfill",
+    "source": "npm-check-2026-11-13",
+    "version": "1.0.31",
+    "packumentModified": "2022-08-11"
+  },
+  {
+    "package": "eventsource",
+    "source": "npm-check-2026-11-13",
+    "version": "5.1.5",
+    "packumentModified": "2026-11-08"
+  },
+  {
+    "package": "eventsource-parser",
+    "source": "npm-check-2026-11-13",
+    "version": "4.1.3",
+    "packumentModified": "2026-10-25"
+  },
+  {
+    "package": "faye",
+    "source": "npm-check-2026-11-13",
+    "version": "1.4.3",
+    "packumentModified": "2026-09-27"
+  },
+  {
+    "package": "firebase",
+    "source": "npm-check-2026-11-13",
+    "version": "13.3.0",
+    "packumentModified": "2026-11-11"
+  },
+  {
+    "package": "flatbuffers",
+    "source": "npm-check-2026-11-13",
+    "version": "25.9.23",
+    "packumentModified": "2025-09-24"
+  },
+  {
+    "package": "flv.js",
+    "source": "npm-check-2026-11-13",
+    "version": "1.6.2",
+    "packumentModified": "2022-06-18"
+  },
+  {
+    "package": "graffle",
+    "source": "npm-check-2026-11-13",
+    "version": "0.0.0",
+    "packumentModified": "2025-12-15"
+  },
+  {
+    "package": "graphql-http",
+    "source": "npm-check-2026-11-13",
+    "version": "1.23.1",
+    "packumentModified": "2026-09-28"
+  },
+  {
+    "package": "graphql-request",
+    "source": "npm-check-2026-11-13",
+    "version": "7.4.0",
+    "packumentModified": "2025-12-12"
+  },
+  {
+    "package": "graphql-sse",
+    "source": "npm-check-2026-11-13",
+    "version": "2.6.3",
+    "packumentModified": "2026-10-15"
+  },
+  {
+    "package": "graphql-ws",
+    "source": "npm-check-2026-11-13",
+    "version": "6.4.2",
+    "packumentModified": "2026-11-10"
+  },
+  {
+    "package": "grpc-web",
+    "source": "npm-check-2026-11-13",
+    "version": "2.1.1",
+    "packumentModified": "2026-08-27"
+  },
+  {
+    "package": "guacamole-common-js",
+    "source": "npm-check-2026-11-13",
+    "version": "1.5.0",
+    "packumentModified": "2026-07-05"
+  },
+  {
+    "package": "gun",
+    "source": "npm-check-2026-11-13",
+    "version": "0.2020.1241",
+    "packumentModified": "2025-07-01"
+  },
+  {
+    "package": "helia",
+    "source": "npm-check-2026-11-13",
+    "version": "7.1.16",
+    "packumentModified": "2026-09-29"
+  },
+  {
+    "package": "hls.js",
+    "source": "npm-check-2026-11-13",
+    "version": "1.7.4",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "home-assistant-js-websocket",
+    "source": "npm-check-2026-11-13",
+    "version": "9.8.1",
+    "packumentModified": "2026-10-29"
+  },
+  {
+    "package": "irc-framework",
+    "source": "npm-check-2026-11-13",
+    "version": "4.14.0",
+    "packumentModified": "2024-09-23"
+  },
+  {
+    "package": "isomorphic-ws",
+    "source": "npm-check-2026-11-13",
+    "version": "5.0.0",
+    "packumentModified": "2022-06-27"
+  },
+  {
+    "package": "janus-gateway",
+    "source": "npm-check-2026-11-13",
+    "version": "1.4.3",
+    "packumentModified": "2026-10-12"
+  },
+  {
+    "package": "jayson",
+    "source": "npm-check-2026-11-13",
+    "version": "5.0.0",
+    "packumentModified": "2026-09-18"
+  },
+  {
+    "package": "jmap-client-ts",
+    "source": "npm-check-2026-11-13",
+    "version": "1.0.0",
+    "packumentModified": "2022-04-11"
+  },
+  {
+    "package": "jmap-jam",
+    "source": "npm-check-2026-11-13",
+    "version": "0.13.8",
+    "packumentModified": "2026-09-24"
+  },
+  {
+    "package": "jsmpeg",
+    "source": "npm-check-2026-11-13",
+    "version": "1.0.0",
+    "packumentModified": "2022-06-19"
+  },
+  {
+    "package": "json-rpc-2.0",
+    "source": "npm-check-2026-11-13",
+    "version": "1.8.1",
+    "packumentModified": "2026-09-20"
+  },
+  {
+    "package": "jssip",
+    "source": "npm-check-2026-11-13",
+    "version": "3.13.9",
+    "packumentModified": "2026-10-20"
+  },
+  {
+    "package": "laravel-echo",
+    "source": "npm-check-2026-11-13",
+    "version": "2.6.3",
+    "packumentModified": "2026-10-27"
+  },
+  {
+    "package": "lib-jitsi-meet",
+    "source": "npm-check-2026-11-13",
+    "version": "1.0.6",
+    "packumentModified": "2022-06-19",
+    "deprecated": "Deprecated. lib-jitsi-meet is not distributed via npm, use the source."
+  },
+  {
+    "package": "libp2p",
+    "source": "npm-check-2026-11-13",
+    "version": "3.5.1",
+    "packumentModified": "2026-10-27"
+  },
+  {
+    "package": "livekit-client",
+    "source": "npm-check-2026-11-13",
+    "version": "2.24.0",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "masto",
+    "source": "npm-check-2026-11-13",
+    "version": "8.0.0",
+    "packumentModified": "2026-07-27"
+  },
+  {
+    "package": "matrix-js-sdk",
+    "source": "npm-check-2026-11-13",
+    "version": "45.1.0",
+    "packumentModified": "2026-11-11"
+  },
+  {
+    "package": "mediasoup-client",
+    "source": "npm-check-2026-11-13",
+    "version": "3.26.0",
+    "packumentModified": "2026-10-30"
+  },
+  {
+    "package": "meros",
+    "source": "npm-check-2026-11-13",
+    "version": "1.3.2",
+    "packumentModified": "2025-09-12"
+  },
+  {
+    "package": "monaco-languageclient",
+    "source": "npm-check-2026-11-13",
+    "version": "11.0.3",
+    "packumentModified": "2026-10-15"
+  },
+  {
+    "package": "mpegts.js",
+    "source": "npm-check-2026-11-13",
+    "version": "1.8.2",
+    "packumentModified": "2026-08-14"
+  },
+  {
+    "package": "mqtt",
+    "source": "npm-check-2026-11-13",
+    "version": "5.16.1",
+    "packumentModified": "2026-10-14"
+  },
+  {
+    "package": "msgpackr",
+    "source": "npm-check-2026-11-13",
+    "version": "2.1.4",
+    "packumentModified": "2026-11-02"
+  },
+  {
+    "package": "nats.ws",
+    "source": "npm-check-2026-11-13",
+    "version": "1.30.3",
+    "packumentModified": "2026-05-08",
+    "deprecated": "Package deprecated. Use @nats-io/nats-core or nats.js instead: https://github.com/nats-io/"
+  },
+  {
+    "package": "neo4j-driver",
+    "source": "npm-check-2026-11-13",
+    "version": "6.3.2",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "neo4j-driver-lite",
+    "source": "npm-check-2026-11-13",
+    "version": "6.3.2",
+    "packumentModified": "2026-11-11"
+  },
+  {
+    "package": "nostr-tools",
+    "source": "npm-check-2026-11-13",
+    "version": "2.26.0",
+    "packumentModified": "2026-11-07"
+  },
+  {
+    "package": "o.js",
+    "source": "npm-check-2026-11-13",
+    "version": "2.0.1",
+    "packumentModified": "2024-08-20"
+  },
+  {
+    "package": "oboe",
+    "source": "npm-check-2026-11-13",
+    "version": "2.1.7",
+    "packumentModified": "2024-09-25"
+  },
+  {
+    "package": "obs-websocket-js",
+    "source": "npm-check-2026-11-13",
+    "version": "5.0.8",
+    "packumentModified": "2026-06-17"
+  },
+  {
+    "package": "odata-query",
+    "source": "npm-check-2026-11-13",
+    "version": "8.1.0",
+    "packumentModified": "2026-05-20"
+  },
+  {
+    "package": "openvidu-browser",
+    "source": "npm-check-2026-11-13",
+    "version": "2.32.2",
+    "packumentModified": "2026-03-25"
+  },
+  {
+    "package": "paho-mqtt",
+    "source": "npm-check-2026-11-13",
+    "version": "1.1.0",
+    "packumentModified": "2022-06-23"
+  },
+  {
+    "package": "partysocket",
+    "source": "npm-check-2026-11-13",
+    "version": "1.3.0",
+    "packumentModified": "2026-06-23"
+  },
+  {
+    "package": "peerjs",
+    "source": "npm-check-2026-11-13",
+    "version": "1.5.5",
+    "packumentModified": "2025-06-07"
+  },
+  {
+    "package": "penpal",
+    "source": "npm-check-2026-11-13",
+    "version": "8.0.1",
+    "packumentModified": "2026-08-14"
+  },
+  {
+    "package": "phoenix",
+    "source": "npm-check-2026-11-13",
+    "version": "1.8.16",
+    "packumentModified": "2026-10-20"
+  },
+  {
+    "package": "post-me",
+    "source": "npm-check-2026-11-13",
+    "version": "0.4.5",
+    "packumentModified": "2022-05-13"
+  },
+  {
+    "package": "pouchdb-browser",
+    "source": "npm-check-2026-11-13",
+    "version": "9.0.0",
+    "packumentModified": "2024-06-21"
+  },
+  {
+    "package": "precompiled-mqtt",
+    "source": "npm-check-2026-11-13",
+    "version": "4.3.14-beta",
+    "packumentModified": "2022-09-13"
+  },
+  {
+    "package": "primus",
+    "source": "npm-check-2026-11-13",
+    "version": "8.0.9",
+    "packumentModified": "2023-11-06"
+  },
+  {
+    "package": "protobufjs",
+    "source": "npm-check-2026-11-13",
+    "version": "8.8.1",
+    "packumentModified": "2026-10-11"
+  },
+  {
+    "package": "pubnub",
+    "source": "npm-check-2026-11-13",
+    "version": "13.1.3",
+    "packumentModified": "2026-10-22"
+  },
+  {
+    "package": "pusher-js",
+    "source": "npm-check-2026-11-13",
+    "version": "8.6.0",
+    "packumentModified": "2026-07-23"
+  },
+  {
+    "package": "react-use-websocket",
+    "source": "npm-check-2026-11-13",
+    "version": "4.13.0",
+    "packumentModified": "2025-02-04"
+  },
+  {
+    "package": "reconnecting-websocket",
+    "source": "npm-check-2026-11-13",
+    "version": "4.4.0",
+    "packumentModified": "2022-06-26"
+  },
+  {
+    "package": "relay-runtime",
+    "source": "npm-check-2026-11-13",
+    "version": "21.0.1",
+    "packumentModified": "2026-11-09"
+  },
+  {
+    "package": "rhea",
+    "source": "npm-check-2026-11-13",
+    "version": "3.0.5",
+    "packumentModified": "2026-04-28"
+  },
+  {
+    "package": "rhea-promise",
+    "source": "npm-check-2026-11-13",
+    "version": "3.1.0",
+    "packumentModified": "2026-10-15"
+  },
+  {
+    "package": "robust-websocket",
+    "source": "npm-check-2026-11-13",
+    "version": "1.0.0",
+    "packumentModified": "2022-06-26"
+  },
+  {
+    "package": "roslib",
+    "source": "npm-check-2026-11-13",
+    "version": "2.1.0",
+    "packumentModified": "2026-03-03"
+  },
+  {
+    "package": "rpc-websockets",
+    "source": "npm-check-2026-11-13",
+    "version": "10.0.1",
+    "packumentModified": "2026-05-15"
+  },
+  {
+    "package": "rsocket-core",
+    "source": "npm-check-2026-11-13",
+    "version": "0.0.29-alpha.0",
+    "packumentModified": "2024-03-06"
+  },
+  {
+    "package": "rsocket-websocket-client",
+    "source": "npm-check-2026-11-13",
+    "version": "0.0.29-alpha.0",
+    "packumentModified": "2024-03-06"
+  },
+  {
+    "package": "rxdb",
+    "source": "npm-check-2026-11-13",
+    "version": "17.6.0",
+    "packumentModified": "2026-10-05"
+  },
+  {
+    "package": "rxjs",
+    "source": "npm-check-2026-11-13",
+    "version": "7.8.2",
+    "packumentModified": "2026-10-09"
+  },
+  {
+    "package": "shaka-player",
+    "source": "npm-check-2026-11-13",
+    "version": "5.3.4",
+    "packumentModified": "2026-11-06"
+  },
+  {
+    "package": "sharedb",
+    "source": "npm-check-2026-11-13",
+    "version": "8.0.0",
+    "packumentModified": "2026-11-12"
+  },
+  {
+    "package": "simple-peer",
+    "source": "npm-check-2026-11-13",
+    "version": "9.11.1",
+    "packumentModified": "2023-01-26"
+  },
+  {
+    "package": "simpleddp",
+    "source": "npm-check-2026-11-13",
+    "version": "2.2.4",
+    "packumentModified": "2022-05-17"
+  },
+  {
+    "package": "sip.js",
+    "source": "npm-check-2026-11-13",
+    "version": "0.21.2",
+    "packumentModified": "2022-10-27"
+  },
+  {
+    "package": "socket.io-client",
+    "source": "npm-check-2026-11-13",
+    "version": "4.8.4",
+    "packumentModified": "2026-09-25"
+  },
+  {
+    "package": "socketcluster-client",
+    "source": "npm-check-2026-11-13",
+    "version": "21.0.0",
+    "packumentModified": "2026-10-09"
+  },
+  {
+    "package": "sockette",
+    "source": "npm-check-2026-11-13",
+    "version": "2.0.6",
+    "packumentModified": "2022-06-26"
+  },
+  {
+    "package": "sockjs-client",
+    "source": "npm-check-2026-11-13",
+    "version": "1.6.1",
+    "packumentModified": "2022-10-22"
+  },
+  {
+    "package": "solclientjs",
+    "source": "npm-check-2026-11-13",
+    "version": "10.18.3",
+    "packumentModified": "2026-01-30"
+  },
+  {
+    "package": "sse.js",
+    "source": "npm-check-2026-11-13",
+    "version": "2.8.0",
+    "packumentModified": "2026-02-07"
+  },
+  {
+    "package": "stanza",
+    "source": "npm-check-2026-11-13",
+    "version": "12.22.1",
+    "packumentModified": "2026-03-28"
+  },
+  {
+    "package": "stompjs",
+    "source": "npm-check-2026-11-13",
+    "version": "2.3.3",
+    "packumentModified": "2022-06-27"
+  },
+  {
+    "package": "strophe.js",
+    "source": "npm-check-2026-11-13",
+    "version": "6.0.0",
+    "packumentModified": "2026-11-05"
+  },
+  {
+    "package": "subscriptions-transport-ws",
+    "source": "npm-check-2026-11-13",
+    "version": "0.11.0",
+    "packumentModified": "2022-06-27",
+    "deprecated": "The `subscriptions-transport-ws` package is no longer maintained. We recommend you use `gr"
+  },
+  {
+    "package": "surrealdb",
+    "source": "npm-check-2026-11-13",
+    "version": "2.2.2",
+    "packumentModified": "2026-11-04"
+  },
+  {
+    "package": "thrift",
+    "source": "npm-check-2026-11-13",
+    "version": "0.25.0",
+    "packumentModified": "2026-09-30"
+  },
+  {
+    "package": "thruway.js",
+    "source": "npm-check-2026-11-13",
+    "version": "2.0.8",
+    "packumentModified": "2026-10-27"
+  },
+  {
+    "package": "trystero",
+    "source": "npm-check-2026-11-13",
+    "version": "0.27.0",
+    "packumentModified": "2026-11-11"
+  },
+  {
+    "package": "tsdav",
+    "source": "npm-check-2026-11-13",
+    "version": "2.5.0",
+    "packumentModified": "2026-10-15"
+  },
+  {
+    "package": "tus-js-client",
+    "source": "npm-check-2026-11-13",
+    "version": "4.3.1",
+    "packumentModified": "2026-09-30"
+  },
+  {
+    "package": "twilio-video",
+    "source": "npm-check-2026-11-13",
+    "version": "2.36.1",
+    "packumentModified": "2026-10-09"
+  },
+  {
+    "package": "twirp-ts",
+    "source": "npm-check-2026-11-13",
+    "version": "2.5.0",
+    "packumentModified": "2022-05-22"
+  },
+  {
+    "package": "u8-mqtt",
+    "source": "npm-check-2026-11-13",
+    "version": "0.6.7",
+    "packumentModified": "2026-01-02"
+  },
+  {
+    "package": "viem",
+    "source": "npm-check-2026-11-13",
+    "version": "2.57.19",
+    "packumentModified": "2026-11-13"
+  },
+  {
+    "package": "vscode-jsonrpc",
+    "source": "npm-check-2026-11-13",
+    "version": "10.0.0",
+    "packumentModified": "2026-10-22"
+  },
+  {
+    "package": "vscode-ws-jsonrpc",
+    "source": "npm-check-2026-11-13",
+    "version": "4.0.3",
+    "packumentModified": "2026-10-15"
+  },
+  {
+    "package": "wampy",
+    "source": "npm-check-2026-11-13",
+    "version": "8.0.3",
+    "packumentModified": "2026-11-11"
+  },
+  {
+    "package": "web3",
+    "source": "npm-check-2026-11-13",
+    "version": "4.16.0",
+    "packumentModified": "2026-04-21"
+  },
+  {
+    "package": "webdav",
+    "source": "npm-check-2026-11-13",
+    "version": "5.11.0",
+    "packumentModified": "2026-09-19"
+  },
+  {
+    "package": "websocket-ts",
+    "source": "npm-check-2026-11-13",
+    "version": "3.0.0",
+    "packumentModified": "2026-09-29"
+  },
+  {
+    "package": "webstomp-client",
+    "source": "npm-check-2026-11-13",
+    "version": "1.2.6",
+    "packumentModified": "2022-06-29"
+  },
+  {
+    "package": "webtorrent",
+    "source": "npm-check-2026-11-13",
+    "version": "3.0.21",
+    "packumentModified": "2026-07-27"
+  },
+  {
+    "package": "y-webrtc",
+    "source": "npm-check-2026-11-13",
+    "version": "10.3.0",
+    "packumentModified": "2023-12-28"
+  },
+  {
+    "package": "y-websocket",
+    "source": "npm-check-2026-11-13",
+    "version": "3.1.0",
+    "packumentModified": "2026-08-06"
+  }
+]
