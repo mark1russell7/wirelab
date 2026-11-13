@@ -31,15 +31,5 @@
     "publint": "^0.3.25",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
-  },
-  "conventions": {
-    "rules": {
-      "typed-scripts": {
-        "ignore": [
-          "repros/**"
-        ],
-        "reason": "Each repro is the plain JavaScript script of an upstream issue, and a maintainer starts it with node. Its run.sh starts it in CI."
-      }
-    }
   }
 }

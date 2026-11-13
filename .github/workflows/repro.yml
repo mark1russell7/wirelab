@@ -66,6 +66,13 @@ jobs:
             npm install --ignore-scripts --no-audit --no-fund
             npm ls --depth=0 || true
           fi
+      # A repro in TypeScript has a tsconfig.json. Its types must check before it runs.
+      - name: Type check
+        run: |
+          cd "repros/$DIR"
+          if [[ -f tsconfig.json ]]; then
+            npx --no-install tsc -p .
+          fi
       # A repro of a fault exits with a code that is not 0. The job records the code and passes when run.sh ran.
       - name: Run
         run: |
