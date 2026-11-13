@@ -228,5 +228,135 @@
     "found": "2026-11-13",
     "title": "the type HeartbeatStatus has 'disconnected', but the callbacks of the user do not get it",
     "note": "The filter is intentional (#2496). Only the type is stale. Confidence low."
+  },
+  {
+    "id": "F0024",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the maxPayload check of a batch counts base64 as 1.33 bytes for each byte, so the server answers 413 and the client closes",
+    "note": "Base64 gives 4*ceil(n/3) bytes. Confidence high."
+  },
+  {
+    "id": "F0025",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the Fetch transport sends credentials 'omit', so it drops same-origin cookies and breaks sticky sessions",
+    "note": "XHR sends same-origin cookies. Shown in headless Chrome. Confidence high."
+  },
+  {
+    "id": "F0026",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "Fetch transport: an error while it reads the body is an unhandled rejection, so polling stops with no error event",
+    "note": "res.text() has no catch. In Node.js the process exits. Confidence high."
+  },
+  {
+    "id": "F0027",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "WebTransport: the promises ready, createBidirectionalStream, pipeTo and write reject unhandled",
+    "note": "Confidence high for ready, medium for pipeTo."
+  },
+  {
+    "id": "F0028",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the heartbeat timer overflows when pingInterval + pingTimeout is over 2^31-1, so the client closes with 'ping timeout' at once",
+    "note": "The server accepts that configuration. Confidence high."
+  },
+  {
+    "id": "F0029",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a malformed open packet throws out of the transport callback, with no error or close event, and the socket stays 'opening'",
+    "note": "JSON.parse and the field reads are unchecked. Only a server that does not obey the protocol causes it. Confidence high."
+  },
+  {
+    "id": "F0030",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "requestTimeout has no effect with NodeXHR, the default polling transport in Node.js, or with Fetch",
+    "note": "xmlhttprequest-ssl has no timeout, and Fetch gets no AbortSignal. Browser XHR obeys it. Confidence medium."
+  },
+  {
+    "id": "F0031",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "close does not abort the polling requests in flight: the long-poll GET and the close POST",
+    "note": "Each held request keeps a connection slot of the origin. Confidence medium."
+  },
+  {
+    "id": "F0032",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a failed probe is not closed: the probe WebSocket stays open, its listeners stay, and upgradeError fires twice",
+    "note": "The else branch of _probe has no freezeTransport(). Confidence medium."
+  },
+  {
+    "id": "F0033",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "types",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "the types refuse perMessageDeflate: false and send(msg, fn), which the documentation and the runtime accept",
+    "note": "The JSDoc default of perMessageDeflate is also wrong. Confidence high."
+  },
+  {
+    "id": "F0034",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "resource",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "close during the polling handshake leaves a session on the server until 'ping timeout'",
+    "note": "Reported before as #5274 (bug 2)."
+  },
+  {
+    "id": "F0035",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "a close packet over WebSocket is ignored",
+    "note": "Reported before as #5286."
+  },
+  {
+    "id": "F0036",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-13",
+    "title": "close() in an 'upgrade' listener does not close the socket",
+    "note": "Reported before as #5595."
   }
 ]

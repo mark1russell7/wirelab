@@ -82,5 +82,26 @@
     "state": "pr-open",
     "url": "https://github.com/supabase/supabase-js/pull/2130",
     "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0034",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5575",
+    "note": "An open pull request of another author, for issue #5274."
+  },
+  {
+    "finding": "F0035",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5286",
+    "note": "An open issue of another author. PR #5525 closed with no merge."
+  },
+  {
+    "finding": "F0036",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5596",
+    "note": "Merged on main on 2026-11-12. Not in 6.6.8."
   }
 ]
