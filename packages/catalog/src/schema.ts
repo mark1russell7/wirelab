@@ -105,6 +105,51 @@ export interface UsageRow {
   readonly value: number;
 }
 
+/** A source repository. `id` is `owner/name` on GitHub, or the host and the path for another host. */
+export interface Repository {
+  readonly id: string;
+  readonly url: string;
+  readonly note?: string;
+}
+
+/** The repository of a package. `directory` is the folder of the package in a repository with more than one package. */
+export interface PackageRepository {
+  readonly package: string;
+  readonly repository: string;
+  readonly directory?: string;
+}
+
+/** The topics of the policy of a repository that change how a fix goes upstream. */
+export const POLICY_TOPICS = ["ai", "cla", "security"] as const;
+export type PolicyTopic = (typeof POLICY_TOPICS)[number];
+
+/**
+ * The values of each policy topic.
+ *
+ * - `ai`: the rule for contributions that an AI made. `none-stated` means that the repository has no rule.
+ * - `cla`: the agreement that a contributor signs. `dco` is a sign-off line in each commit.
+ * - `security`: the private channel for a security fault. `platform` is a bounty platform, for example HackerOne.
+ */
+export const POLICY_VALUES: Readonly<Record<PolicyTopic, readonly string[]>> = {
+  ai: ["none-stated", "allowed", "disclosure", "refused"],
+  cla: ["none", "dco", "cla"],
+  security: ["github-advisory", "email", "platform", "none-stated"],
+};
+
+/**
+ * One fact of the policy of a repository on one topic, as read on the day `checked`. `evidence` is the page that
+ * shows the fact. For the value `none-stated`, it is the page that has no rule. The latest row of a topic gives the
+ * current policy.
+ */
+export interface Policy {
+  readonly repository: string;
+  readonly topic: PolicyTopic;
+  readonly checked: string;
+  readonly value: string;
+  readonly evidence: string;
+  readonly note?: string;
+}
+
 /** What a suite tests: the clients of its protocols, the servers, or both. */
 export const SUITE_SUBJECTS = ["client", "server", "both"] as const;
 export type SuiteSubject = (typeof SUITE_SUBJECTS)[number];
@@ -202,6 +247,9 @@ export interface Catalog {
   readonly sources: readonly Source[];
   readonly registry: readonly RegistryRow[];
   readonly usage: readonly UsageRow[];
+  readonly repositories: readonly Repository[];
+  readonly packageRepositories: readonly PackageRepository[];
+  readonly policies: readonly Policy[];
   readonly suites: readonly Suite[];
   readonly suiteProtocols: readonly SuiteProtocol[];
   readonly runs: readonly Run[];
@@ -220,6 +268,9 @@ export const TABLE_FILES: Readonly<Record<keyof Catalog, string>> = {
   sources: "sources.json",
   registry: "registry.json",
   usage: "usage.json",
+  repositories: "repositories.json",
+  packageRepositories: "package-repositories.json",
+  policies: "policies.json",
   suites: "suites.json",
   suiteProtocols: "suite-protocols.json",
   runs: "runs.json",
@@ -256,6 +307,13 @@ export const TABLE_SPECS: Readonly<Record<keyof Catalog, TableSpec>> = {
   usage: {
     key: ["package", "source", "metric"],
     required: { package: "text", source: "text", metric: METRICS, value: "count" },
+  },
+  repositories: { key: ["id"], required: { id: "text", url: "url" }, optional: { note: "text" } },
+  packageRepositories: { key: ["package"], required: { package: "text", repository: "text" }, optional: { directory: "text" } },
+  policies: {
+    key: ["repository", "topic", "checked"],
+    required: { repository: "text", topic: POLICY_TOPICS, checked: "day", value: "text", evidence: "url" },
+    optional: { note: "text" },
   },
   suites: { key: ["id"], required: { id: "text", name: "text", subject: SUITE_SUBJECTS, url: "url" }, optional: { note: "text" } },
   suiteProtocols: { key: ["suite", "protocol"], required: { suite: "text", protocol: "text" } },
@@ -402,6 +460,17 @@ function keyProblems(c: Catalog): string[] {
   for (const u of c.usage) {
     need(packages, u.package, `usage ${u.package}`);
     need(sources, u.source, `usage ${u.package}`);
+  }
+  const repositories = ids(c.repositories);
+  if (repositories.size !== c.repositories.length) problems.push("repositories repeats an id.");
+  for (const r of c.packageRepositories) {
+    need(packages, r.package, `packageRepositories ${r.package}`);
+    need(repositories, r.repository, `packageRepositories ${r.package}`);
+  }
+  for (const p of c.policies) {
+    need(repositories, p.repository, `policies ${p.repository}`);
+    const values = POLICY_VALUES[p.topic];
+    if (!values.includes(p.value)) problems.push(`policies ${p.repository} ${p.topic}: ${p.value} is not one of ${values.join(", ")}.`);
   }
   return problems.concat(ledgerProblems(c, { packages, protocols }));
 }

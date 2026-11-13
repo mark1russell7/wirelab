@@ -17,9 +17,17 @@ Each table is one JSON file in `src/data`. A row names a row of another table by
 | `sources` | `sources.json` | `at`, `id` | One read of outside data at one time. |
 | `registry` | `registry.json` | `package`, `source` | What the npm registry said about a package. |
 | `usage` | `usage.json` | `package`, `source`, `metric` | One measure of the use of a package. |
+| `repositories` | `repositories.json` | `id` | A source repository. The id is `owner/name` on GitHub. |
+| `packageRepositories` | `package-repositories.json` | `package` | The repository of a package, and the folder of the package in it. |
+| `policies` | `policies.json` | `repository`, `topic`, `checked` | One rule of a repository on one topic, with the day of the check and the page that shows it. |
 
 - The field `client` of a protocol is `library`, `native` or `none`. A protocol with `none` often has a gateway, which the field `gateway` names.
 - `packumentModified` is the day of the last change of the registry document. A deprecation also changes it, so it is not the day of the last release.
+- The policy topics are `ai`, `cla` and `security`. Each topic has its own set of values, in `POLICY_VALUES`.
+- The topic `ai` gives the rule for contributions that an AI made: `none-stated`, `allowed`, `disclosure` or `refused`.
+- The topic `cla` gives the agreement of a contributor: `none`, `dco` or `cla`.
+- The topic `security` gives the private channel for a security fault: `github-advisory`, `email`, `platform` or `none-stated`.
+- A new check of a policy adds a row. The latest row of a topic gives the current rule.
 - An observed row names its source. A new read adds a source and new rows, and the old rows stay. Thus the tables keep the history.
 
 ## The ledger
@@ -56,6 +64,9 @@ The ledger records the tests of the campaign, the faults that they find, and the
 1. For each measure, the latest value of a package comes from its newest source.
 2. The share of a package on a measure is `(rank - 0.5) / n` among the packages with that measure. Equal values get the mean rank. A share does not depend on the unit of the measure.
 3. The reach of a package is the mean of its shares. A package with no measure goes last.
-4. The chance that a fix lands multiplies the reach. A deprecated package has the factor `LANDING.deprecated`, which is 0.1.
+4. The chance that a fix lands multiplies the reach. Each factor of `LANDING` that applies multiplies the chance:
+   - A deprecated package has the factor `LANDING.deprecated`, which is 0.1.
+   - A repository that refuses contributions that an AI made has the factor `LANDING.aiRefused`, which is 0.2. The fix stays held until the rule changes.
+   - A repository with a CLA has the factor `LANDING.cla`, which is 0.5. The fix stays held until Mark decides about the CLA.
 
 The ranks come from `ranks` of `@mark1russell7/rigor-statistics`.

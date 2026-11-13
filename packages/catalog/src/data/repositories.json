@@ -1,0 +1,15 @@
+[
+  {
+    "id": "ReactiveX/rxjs",
+    "url": "https://github.com/ReactiveX/rxjs",
+    "note": "The branch 7.x holds the release line 7, with no folder packages/rxjs."
+  },
+  {
+    "id": "socketio/socket.io",
+    "url": "https://github.com/socketio/socket.io"
+  },
+  {
+    "id": "supabase/supabase-js",
+    "url": "https://github.com/supabase/supabase-js"
+  }
+]
