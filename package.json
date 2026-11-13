@@ -39,6 +39,14 @@
           "suite-mqtt.yml"
         ],
         "reason": "The MQTT suite is not a gate. It finds faults of MQTT.js, and its it.fails tests record them. It runs only when the suite changes."
+      },
+      "typed-files": {
+        "configs": [
+          "repros/pusher-js/F0070/tsconfig.json",
+          "repros/sockjs-client/F0068/tsconfig.json",
+          "repros/sockjs-client/F0069/tsconfig.json"
+        ],
+        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines these configs."
       }
     }
   }

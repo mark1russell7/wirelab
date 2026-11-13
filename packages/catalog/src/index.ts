@@ -6,9 +6,12 @@ import families from "./data/families.json" with { type: "json" };
 import findings from "./data/findings.json" with { type: "json" };
 import packageLinks from "./data/package-links.json" with { type: "json" };
 import packageProtocols from "./data/package-protocols.json" with { type: "json" };
+import packageRepositories from "./data/package-repositories.json" with { type: "json" };
 import packages from "./data/packages.json" with { type: "json" };
+import policies from "./data/policies.json" with { type: "json" };
 import protocols from "./data/protocols.json" with { type: "json" };
 import registry from "./data/registry.json" with { type: "json" };
+import repositories from "./data/repositories.json" with { type: "json" };
 import runs from "./data/runs.json" with { type: "json" };
 import sources from "./data/sources.json" with { type: "json" };
 import suiteProtocols from "./data/suite-protocols.json" with { type: "json" };
@@ -32,6 +35,9 @@ export const rawTables: RawTables = {
   sources,
   registry,
   usage,
+  repositories,
+  packageRepositories,
+  policies,
   suites,
   suiteProtocols,
   runs,

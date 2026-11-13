@@ -1,5 +1,18 @@
 [
   {
+    "finding": "F0001",
+    "at": "2026-11-13T06:27:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/ReactiveX/rxjs/issues/7660"
+  },
+  {
+    "finding": "F0001",
+    "at": "2026-11-13T06:27:36Z",
+    "state": "pr-open",
+    "url": "https://github.com/ReactiveX/rxjs/pull/7661",
+    "note": "The base is the branch 7.x. The pull request has four new tests, which fail without the change."
+  },
+  {
     "finding": "F0002",
     "at": "2026-11-13T05:26:12Z",
     "state": "declined",
@@ -82,5 +95,122 @@
     "state": "pr-open",
     "url": "https://github.com/supabase/supabase-js/pull/2130",
     "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0024",
+    "at": "2026-11-13T07:39:09Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5604"
+  },
+  {
+    "finding": "F0024",
+    "at": "2026-11-13T07:39:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5605"
+  },
+  {
+    "finding": "F0025",
+    "at": "2026-11-13T07:39:16Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5606"
+  },
+  {
+    "finding": "F0025",
+    "at": "2026-11-13T07:39:21Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5607"
+  },
+  {
+    "finding": "F0028",
+    "at": "2026-11-13T07:39:25Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5608"
+  },
+  {
+    "finding": "F0028",
+    "at": "2026-11-13T07:39:29Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5609"
+  },
+  {
+    "finding": "F0030",
+    "at": "2026-11-13T07:43:34Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5610"
+  },
+  {
+    "finding": "F0030",
+    "at": "2026-11-13T07:43:38Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5611",
+    "note": "The pull request and the fix of F0031 both change _fetch() in polling-fetch.ts. The second to merge needs a rebase."
+  },
+  {
+    "finding": "F0032",
+    "at": "2026-11-13T07:43:41Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5612"
+  },
+  {
+    "finding": "F0032",
+    "at": "2026-11-13T07:43:45Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5613"
+  },
+  {
+    "finding": "F0034",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5575",
+    "note": "An open pull request of another author, for issue #5274."
+  },
+  {
+    "finding": "F0035",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5286",
+    "note": "An open issue of another author. PR #5525 closed with no merge."
+  },
+  {
+    "finding": "F0036",
+    "at": "2026-11-13T05:29:38Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5596",
+    "note": "Merged on main on 2026-11-12. Not in 6.6.8."
+  },
+  {
+    "finding": "F0063",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5582",
+    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
+  },
+  {
+    "finding": "F0064",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5584",
+    "note": "An open pull request of another author."
+  },
+  {
+    "finding": "F0065",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/socketio/socket.io/pull/5566",
+    "note": "Merged on main on 2026-11-05. Not in 4.8.4."
+  },
+  {
+    "finding": "F0066",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5539",
+    "note": "An open pull request of another author, on the server side. Also PR #5547."
+  },
+  {
+    "finding": "F0067",
+    "at": "2026-11-13T06:36:50Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5504",
+    "note": "An open issue of another author."
   }
 ]

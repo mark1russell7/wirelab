@@ -34,6 +34,9 @@ describe("the check", () => {
     sources: [{ id: "s", at: "2026-11-13T00:00:00Z", what: "S." }],
     registry: [],
     usage: [],
+    repositories: [],
+    packageRepositories: [],
+    policies: [],
     suites: [{ id: "t", name: "T", subject: "client", url: "https://example.org/t" }],
     suiteProtocols: [{ suite: "t", protocol: "p" }],
     runs: [],
@@ -59,6 +62,22 @@ describe("the check", () => {
       "protocols[0].client is not one of library, native, none.",
       "packages[1] has the unknown field color.",
       "packages[1] repeats the key a.",
+    ]);
+  });
+
+  it("finds a policy of a missing repository, a value outside its topic and a package of a missing repository", () => {
+    const raw = base();
+    raw.repositories.push({ id: "o/r", url: "https://example.org/o/r" });
+    raw.packageRepositories.push({ package: "a", repository: "o/missing" });
+    raw.policies.push(
+      { repository: "o/r", topic: "cla", checked: "2026-11-13", value: "dco", evidence: "https://example.org/o/r/CONTRIBUTING.md" },
+      { repository: "o/r", topic: "ai", checked: "2026-11-13", value: "dco", evidence: "https://example.org/o/r/CONTRIBUTING.md" },
+      { repository: "o/gone", topic: "security", checked: "2026-11-13", value: "email", evidence: "https://example.org/o/gone/SECURITY.md" },
+    );
+    expect(catalogProblems(raw)).toEqual([
+      "packageRepositories a names o/missing, and that row is not in the catalog.",
+      "policies o/r ai: dco is not one of none-stated, allowed, disclosure, refused.",
+      "policies o/gone names o/gone, and that row is not in the catalog.",
     ]);
   });
 
@@ -91,6 +110,9 @@ describe("the check of the ledger", () => {
     sources: [],
     registry: [],
     usage: [],
+    repositories: [],
+    packageRepositories: [],
+    policies: [],
     suites: [{ id: "t", name: "T", subject: "client", url: "https://example.org/t" }],
     suiteProtocols: [{ suite: "t", protocol: "p" }],
     runs: [RUN],
@@ -170,6 +192,9 @@ describe("the priority order", () => {
       { package: "c", source: "old", metric: "npm-downloads-week", value: 5000 },
       { package: "c", source: "new", metric: "npm-downloads-week", value: 10 },
     ],
+    repositories: [{ id: "o/r", url: "https://example.org/o/r" }],
+    packageRepositories: [],
+    policies: [],
     suites: [],
     suiteProtocols: [],
     runs: [],
@@ -196,6 +221,39 @@ describe("the priority order", () => {
     expect(a?.landing).toBe(0.1);
     expect(a?.score).toBeCloseTo(0.25 / 3);
     expect(a?.reasons).toEqual(["deprecated on npm: Use b."]);
+  });
+
+  it("multiplies the reach by the factors of the latest AI and CLA policies of the repository", () => {
+    const f = fixture();
+    const evidence = "https://example.org/o/r/CONTRIBUTING.md";
+    const policies = [
+      { repository: "o/r", topic: "ai" as const, checked: "2026-11-01", value: "none-stated", evidence },
+      { repository: "o/r", topic: "ai" as const, checked: "2026-11-13", value: "refused", evidence },
+      { repository: "o/r", topic: "cla" as const, checked: "2026-11-01", value: "cla", evidence },
+      { repository: "o/r", topic: "cla" as const, checked: "2026-11-13", value: "none", evidence },
+    ];
+    const order = priorityOrder({ ...f, packageRepositories: [{ package: "b", repository: "o/r" }], policies });
+    const b = order.find((r) => r.package === "b");
+    expect(b?.landing).toBe(0.2);
+    expect(b?.reasons).toEqual(["the repository o/r refuses contributions that an AI made (checked 2026-11-13)"]);
+    const withCla = priorityOrder({ ...f, packageRepositories: [{ package: "b", repository: "o/r" }], policies: policies.slice(2, 3) });
+    expect(withCla.find((r) => r.package === "b")?.landing).toBe(0.5);
+    expect(order.find((r) => r.package === "c")?.landing).toBe(1);
+  });
+
+  it("gives a package of an archived repository the factor once, also when npm deprecates it", () => {
+    const f = fixture();
+    const evidence = "https://example.org/o/r";
+    const policies = [{ repository: "o/r", topic: "contributions" as const, checked: "2026-11-13", value: "archived", evidence }];
+    const packageRepositories = [
+      { package: "a", repository: "o/r" },
+      { package: "b", repository: "o/r" },
+    ];
+    const order = priorityOrder({ ...f, packageRepositories, policies });
+    expect(order.find((r) => r.package === "b")?.landing).toBe(0.1);
+    expect(order.find((r) => r.package === "b")?.reasons).toEqual(["the repository o/r is archived (checked 2026-11-13)"]);
+    expect(order.find((r) => r.package === "a")?.landing).toBe(0.1);
+    expect(order.find((r) => r.package === "a")?.reasons).toEqual(["deprecated on npm: Use b.", "the repository o/r is archived (checked 2026-11-13)"]);
   });
 
   it("gives equal values the mean rank", () => {
