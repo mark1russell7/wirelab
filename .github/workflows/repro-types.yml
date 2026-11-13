@@ -1,21 +1,23 @@
 # The type check of the repros in TypeScript. Each folder repros/<package>/<finding> with a tsconfig.json has its own
 # pinned packages, so the typecheck of the root does not reach it. This workflow examines these configs, and the
 # option configs of the rule typed-files in the root package.json names them.
+# The workflow starts on each pull request, so its summary check "Repro types OK" is always there (CI.md, "A gate with
+# paths"). The job "changes" decides if the type check runs.
 name: Repro types
 
 on:
   pull_request:
-    paths:
-      - "repros/**"
   push:
     branches: [main]
     paths:
       - "repros/**"
+      - ".github/workflows/repro-types.yml"
   workflow_dispatch:
 
+# A newer commit of a pull request cancels the older run. Each run of main finishes.
 concurrency:
-  group: repro-types-${{ github.ref }}
-  cancel-in-progress: true
+  group: repro-types-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -25,8 +27,26 @@ defaults:
     shell: bash
 
 jobs:
+  changes:
+    name: Changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: read
+    outputs:
+      match: ${{ steps.changes.outputs.match }}
+    steps:
+      - id: changes
+        uses: mark1russell7/template/.github/actions/changes@4466542421ef76bcb3ccf5b5e1765d4f509f8f4f # main
+        with:
+          paths: |
+            repros/**
+            .github/workflows/repro-types.yml
+
   types:
     name: Repro types
+    needs: changes
+    if: needs.changes.outputs.match == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -37,25 +57,33 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: "24"
-      # A pull request examines the folders that it changes. A push to main and a run by a person examine all folders.
+      # A pull request examines the folders that it changes, or all folders when it changes this workflow.
+      # A push to main and a run by a person examine all folders.
       - name: Find the folders
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
         run: |
           mapfile -t all < <(git ls-files repros | grep '/tsconfig\.json$' | xargs -r -n1 dirname | sort -u)
-          dirs=()
+          dirs=("${all[@]}")
           if [[ -n "$BASE" ]]; then
-            mapfile -t changed < <(git diff --name-only "$BASE" HEAD -- repros)
-            for d in "${all[@]}"; do
-              for f in "${changed[@]}"; do
-                if [[ "$f" == "$d/"* ]]; then
-                  dirs+=("$d")
-                  break
-                fi
-              done
+            mapfile -t changed < <(git diff --name-only "$BASE" HEAD)
+            self=false
+            for f in "${changed[@]}"; do
+              if [[ "$f" == ".github/workflows/repro-types.yml" ]]; then
+                self=true
+              fi
             done
-          else
-            dirs=("${all[@]}")
+            if [[ "$self" == false ]]; then
+              dirs=()
+              for d in "${all[@]}"; do
+                for f in "${changed[@]}"; do
+                  if [[ "$f" == "$d/"* ]]; then
+                    dirs+=("$d")
+                    break
+                  fi
+                done
+              done
+            fi
           fi
           : > "$RUNNER_TEMP/dirs.txt"
           for d in "${dirs[@]}"; do echo "$d" >> "$RUNNER_TEMP/dirs.txt"; done
@@ -78,3 +106,15 @@ jobs:
           if (( ${#failed[@]} > 0 )); then
             exit 1
           fi
+
+  repro-types-ok:
+    name: Repro types OK
+    if: ${{ !cancelled() }}
+    needs: [changes, types]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - uses: mark1russell7/template/.github/actions/gate-summary@4466542421ef76bcb3ccf5b5e1765d4f509f8f4f # main
+        with:
+          needs: ${{ toJSON(needs) }}
