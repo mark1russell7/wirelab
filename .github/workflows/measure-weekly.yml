@@ -1,0 +1,190 @@
+# The measure run, each week (roadmap item W3). Each Monday, this workflow measures the use of each
+# package of the catalog: npm downloads, deps.dev dependents, jsDelivr hits and the npm registry
+# document. polite-crawler sends each request at the pace of its source, with its own User-Agent
+# and no contact.
+#   gh workflow run measure-weekly.yml -R mark1russell7/wirelab [--ref <branch>]
+#
+# A pull request that the token of GitHub Actions opens starts no workflow. The job "measure" runs
+# the code of the repository, so it gets only "contents: read". The jobs after it run no code of the
+# repository, and each gets only its own permission:
+#   branch        commits the tables on the branch measure/<day> and pushes it       contents: write
+#   pull-request  opens the pull request into the branch of the run                 pull-requests: write
+#   ci            starts ci.yml on the branch: the main ruleset requires its checks   actions: write
+# The workflow never pushes to main.
+name: Measure each week
+
+on:
+  schedule:
+    # 05:23 UTC each Monday. The npm week "last-week" then is Monday to Sunday of the week before.
+    - cron: "23 5 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+# One run at a time, so two runs never send requests to the same sources at the same time.
+concurrency:
+  group: measure-weekly
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  measure:
+    name: Measure the packages
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: read
+    outputs:
+      day: ${{ steps.run.outputs.day }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # The pnpm version comes from "packageManager" in package.json
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "26"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      # A new, empty store of the crawler, so each answer is fresh
+      - name: Measure each package
+        id: run
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/out"
+          pnpm exec tsx packages/measure/src/main.ts --store "$RUNNER_TEMP/store" --report "$RUNNER_TEMP/out/body.md"
+          printf '\nThe workflow measure-weekly.yml made this pull request: %s\n' "$RUN_URL" >> "$RUNNER_TEMP/out/body.md"
+          echo "day=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
+      # The tests of the catalog read the new tables: their check and their canonical form
+      - name: Check the tables
+        run: pnpm --filter @wirelab/catalog test
+
+      - name: Make the patch
+        run: |
+          git add packages/catalog/src/data
+          git diff --cached --binary > "$RUNNER_TEMP/out/measure.patch"
+          git diff --cached --stat
+          cat "$RUNNER_TEMP/out/body.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: measure-data
+          path: ${{ runner.temp }}/out
+          if-no-files-found: error
+          retention-days: 30
+
+  branch:
+    name: Push the branch
+    needs: measure
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    outputs:
+      branch: ${{ steps.push.outputs.branch }}
+    steps:
+      # This job runs no code of the repository. The checkout keeps its token, for the push.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: measure-data
+          path: ${{ runner.temp }}/measure-data
+      - name: Commit the tables and push the branch
+        id: push
+        env:
+          DAY: ${{ needs.measure.outputs.day }}
+          PATCH: ${{ runner.temp }}/measure-data/measure.patch
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if ! [[ "$DAY" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+            echo "::error::The day is not a day: $DAY"
+            exit 1
+          fi
+          # the patch may change only the three tables of a run
+          git apply --numstat "$PATCH" | cut -f3 > "$RUNNER_TEMP/paths.txt"
+          if grep -Ev '^packages/catalog/src/data/(sources|usage|registry)\.json$' "$RUNNER_TEMP/paths.txt"; then
+            echo "::error::The patch changes a file outside the tables of the run."
+            exit 1
+          fi
+          git apply --index "$PATCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          branch="measure/$DAY"
+          git switch -c "$branch"
+          git commit -q -m "data: the measure run of $DAY" -m "The workflow measure-weekly.yml measured the packages of the catalog: $RUN_URL"
+          # the branch belongs to this workflow: a second run on the same day replaces it
+          git push --force origin "$branch"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+  pull-request:
+    name: Open the pull request
+    needs: [measure, branch]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: measure-data
+          path: ${{ runner.temp }}/measure-data
+      # GitHub refuses the pull request when "Allow GitHub Actions to create and approve pull
+      # requests" is off (Settings > Actions > General). The branch is then on GitHub, and the
+      # summary gives the address to open the pull request by hand.
+      - name: Open or update the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BASE: ${{ github.ref_name }}
+          HEAD: ${{ needs.branch.outputs.branch }}
+          DAY: ${{ needs.measure.outputs.day }}
+          BODY: ${{ runner.temp }}/measure-data/body.md
+        run: |
+          number=$(gh pr list -R "$REPO" --head "$HEAD" --base "$BASE" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$number" ]; then
+            gh pr edit "$number" -R "$REPO" --body-file "$BODY"
+            echo "The run updated the pull request #$number." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if url=$(gh pr create -R "$REPO" --base "$BASE" --head "$HEAD" --title "data: the measure run of $DAY" --body-file "$BODY" 2> "$RUNNER_TEMP/error.txt"); then
+            echo "The run opened the pull request $url." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          cat "$RUNNER_TEMP/error.txt"
+          {
+            echo "## The pull request is not open"
+            echo
+            echo "GitHub refused it: $(head -c 400 "$RUNNER_TEMP/error.txt")"
+            echo
+            echo "The branch is on GitHub. Open the pull request by hand: https://github.com/$REPO/compare/$BASE...$HEAD?expand=1"
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
+  ci:
+    name: Start CI on the branch
+    needs: branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      # A push of the token of GitHub Actions starts no workflow, but a workflow_dispatch does. The
+      # checks of ci.yml then show on the pull request, as the main ruleset requires.
+      - name: Start ci.yml on the branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          HEAD: ${{ needs.branch.outputs.branch }}
+        run: |
+          gh workflow run ci.yml -R "$REPO" --ref "$HEAD"
+          echo "The run started ci.yml on $HEAD: https://github.com/$REPO/actions/workflows/ci.yml" >> "$GITHUB_STEP_SUMMARY"
