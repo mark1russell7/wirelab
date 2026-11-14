@@ -459,11 +459,25 @@
     "note": "The repro ran in CI (repro.yml, run 43396421612). The fix pull request follows."
   },
   {
+    "finding": "F0068",
+    "at": "2026-11-14T18:35:03Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/713",
+    "note": "The fix test ran in CI (repro.yml, run 43626187896): the new test fails with lib of main and passes with the fix. The full suite gives 114 passing, 9 pending (113 on main). The linter gives the same 4 errors as on main."
+  },
+  {
     "finding": "F0069",
     "at": "2026-11-13T08:56:56Z",
     "state": "issue-open",
     "url": "https://github.com/sockjs/sockjs-client/issues/712",
     "note": "The repro ran in CI (repro.yml, run 43396452997). The fix pull request follows."
+  },
+  {
+    "finding": "F0069",
+    "at": "2026-11-14T18:35:05Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/714",
+    "note": "The fix test ran in CI (repro.yml, run 43626187896): the new test fails with lib of main and passes with the fix. The full suite gives 114 passing, 9 pending (113 on main). The linter gives the same 4 errors as on main."
   },
   {
     "finding": "F0070",

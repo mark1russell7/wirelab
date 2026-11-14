@@ -38,6 +38,8 @@
         "configs": [
           "repros/engine.io-client/F0031/tsconfig.json",
           "repros/engine.io-client/F0033/tsconfig.repro.json",
+          "repros/fix-tests/socket.io-client/group-2/tsconfig.check-F0062.json",
+          "repros/fix-tests/tsconfig.json",
           "repros/partysocket/F0037/tsconfig.json",
           "repros/partysocket/F0038/tsconfig.json",
           "repros/partysocket/F0039/tsconfig.json",
@@ -65,7 +67,7 @@
           "repros/sockjs-client/F0068/tsconfig.json",
           "repros/sockjs-client/F0069/tsconfig.json"
         ],
-        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines these configs. A repro of a types finding has tsconfig.repro.json: tsc fails on purpose, and the workflow compares its errors with expected-errors.txt."
+        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines the configs tsconfig.json and tsconfig.repro.json. A repro of a types finding has tsconfig.repro.json: tsc fails on purpose, and the workflow compares its errors with expected-errors.txt. The config repros/fix-tests/tsconfig.json examines the scripts of all fix tests. A types check of a fix test has its own config tsconfig.check-<finding>.json."
       }
     }
   }
