@@ -487,6 +487,13 @@
     "note": "The repro ran in CI (repro.yml, run 43396466628). The fix pull request follows."
   },
   {
+    "finding": "F0070",
+    "at": "2026-11-14T19:46:23Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1013",
+    "note": "The fix test ran in CI (repro.yml, run 43632360405): the two new specs fail with src of master and pass with the fix. The repro gives the state unavailable on master and connected with the fix. make node_unit gives 757 of 757 specs (755 on master), and make web_unit gives 876 ok in Chrome and in Firefox (874 on master)."
+  },
+  {
     "finding": "F0071",
     "at": "2026-11-14T20:01:50Z",
     "state": "issue-open",
