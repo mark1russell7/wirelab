@@ -36,6 +36,7 @@
     "rules": {
       "typed-files": {
         "configs": [
+          "repros/engine.io-client/F0031/tsconfig.json",
           "repros/partysocket/F0037/tsconfig.json",
           "repros/partysocket/F0038/tsconfig.json",
           "repros/partysocket/F0039/tsconfig.json",
@@ -63,6 +64,7 @@
         ],
         "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines these configs. A repro of a types finding fails tsc on purpose: its run.sh starts tsc and keeps the errors.",
         "ignore": [
+          "repros/engine.io-client/F0033/repro.ts",
           "repros/partysocket/F0053/repro.ts",
           "repros/partysocket/F0054/repro.ts"
         ]
