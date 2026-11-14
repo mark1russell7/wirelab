@@ -485,5 +485,12 @@
     "state": "issue-open",
     "url": "https://github.com/pusher/pusher-js/issues/1012",
     "note": "The repro ran in CI (repro.yml, run 43396466628). The fix pull request follows."
+  },
+  {
+    "finding": "F0071",
+    "at": "2026-11-14T20:01:50Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/447",
+    "note": "The repro ran in CI (repro.yml, run 43634067321). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-test-port-clash (c2e60cf), and the issue links it. Its tests ran in CI (repro.yml, run 43633709706)."
   }
 ]
