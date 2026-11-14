@@ -256,6 +256,22 @@ describe("the priority order", () => {
     expect(order.find((r) => r.package === "a")?.reasons).toEqual(["deprecated on npm: Use b.", "the repository o/r is archived (checked 2026-11-13)"]);
   });
 
+  it("gives a package of a repository that takes pull requests only from collaborators its factor", () => {
+    const f = fixture();
+    const evidence = "https://example.org/o/r";
+    const policies = [
+      { repository: "o/r", topic: "contributions" as const, checked: "2026-11-13", value: "open", evidence },
+      { repository: "o/r", topic: "contributions" as const, checked: "2026-11-14", value: "collaborators-only", evidence },
+    ];
+    const order = priorityOrder({ ...f, packageRepositories: [{ package: "b", repository: "o/r" }], policies });
+    expect(order.find((r) => r.package === "b")?.landing).toBe(0.3);
+    expect(order.find((r) => r.package === "b")?.reasons).toEqual([
+      "the repository o/r takes pull requests only from its collaborators (checked 2026-11-14)",
+    ]);
+    const reopened = priorityOrder({ ...f, packageRepositories: [{ package: "b", repository: "o/r" }], policies: policies.slice(0, 1) });
+    expect(reopened.find((r) => r.package === "b")?.landing).toBe(1);
+  });
+
   it("gives equal values the mean rank", () => {
     const f = fixture();
     const usage = f.usage.map((u) => (u.package === "b" ? { ...u, value: 1000 } : u));

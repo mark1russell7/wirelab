@@ -36,16 +36,38 @@
     "rules": {
       "typed-files": {
         "configs": [
+          "repros/engine.io-client/F0031/tsconfig.json",
+          "repros/engine.io-client/F0033/tsconfig.repro.json",
+          "repros/fix-tests/socket.io-client/group-2/tsconfig.check-F0062.json",
           "repros/fix-tests/sockjs-client/F0068-F0069/tsconfig.json",
+          "repros/partysocket/F0037/tsconfig.json",
+          "repros/partysocket/F0038/tsconfig.json",
+          "repros/partysocket/F0039/tsconfig.json",
+          "repros/partysocket/F0040/tsconfig.json",
+          "repros/partysocket/F0041/tsconfig.json",
+          "repros/partysocket/F0042/tsconfig.json",
+          "repros/partysocket/F0043/tsconfig.json",
+          "repros/partysocket/F0044/tsconfig.json",
+          "repros/partysocket/F0045/tsconfig.json",
+          "repros/partysocket/F0046/tsconfig.json",
+          "repros/partysocket/F0047/tsconfig.json",
+          "repros/partysocket/F0049/tsconfig.json",
+          "repros/partysocket/F0050/tsconfig.json",
+          "repros/partysocket/F0051/tsconfig.json",
+          "repros/partysocket/F0053/tsconfig.repro.json",
+          "repros/partysocket/F0054/tsconfig.repro.json",
           "repros/pusher-js/F0070/tsconfig.json",
+          "repros/socket.io-client/F0055/tsconfig.json",
+          "repros/socket.io-client/F0056/tsconfig.json",
+          "repros/socket.io-client/F0057/tsconfig.json",
+          "repros/socket.io-client/F0058/tsconfig.json",
+          "repros/socket.io-client/F0059/tsconfig.json",
+          "repros/socket.io-client/F0060/tsconfig.json",
+          "repros/socket.io-client/F0061/tsconfig.json",
           "repros/sockjs-client/F0068/tsconfig.json",
           "repros/sockjs-client/F0069/tsconfig.json"
         ],
-        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines these configs. The files in ignore are type checks of a fault: they fail before the fix by design, and the script of their repro runs them.",
-        "ignore": [
-          "repros/fix-tests/**/check-*.ts",
-          "repros/review/pusher-js/repro/types/readme-example.ts"
-        ]
+        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines the configs tsconfig.json and tsconfig.repro.json. A repro of a types finding has tsconfig.repro.json: tsc fails on purpose, and the workflow compares its errors with expected-errors.txt. A fix test examines its config tsconfig.check-<finding>.json before and after the fix."
       }
     }
   }

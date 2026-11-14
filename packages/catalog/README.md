@@ -27,7 +27,7 @@ Each table is one JSON file in `src/data`. A row names a row of another table by
 - The topic `ai` gives the rule for contributions that an AI made: `none-stated`, `allowed`, `disclosure` or `refused`.
 - The topic `cla` gives the agreement of a contributor: `none`, `dco` or `cla`.
 - The topic `security` gives the private channel for a security fault: `github-advisory`, `email`, `platform` or `none-stated`.
-- The topic `contributions` tells if the repository takes pull requests: `open` or `archived`.
+- The topic `contributions` tells if the repository takes pull requests: `open`, `collaborators-only` or `archived`.
 - A new check of a policy adds a row. The latest row of a topic gives the current rule.
 - An observed row names its source. A new read adds a source and new rows, and the old rows stay. Thus the tables keep the history.
 
@@ -68,6 +68,7 @@ The ledger records the tests of the campaign, the faults that they find, and the
 4. The chance that a fix lands multiplies the reach. Each factor of `LANDING` that applies multiplies the chance:
    - A deprecated package has the factor `LANDING.deprecated`, which is 0.1.
    - A package in an archived repository has the factor `LANDING.archived`, which is 0.1. A deprecated package does not get this factor too.
+   - A repository that takes pull requests only from its collaborators has the factor `LANDING.collaboratorsOnly`, which is 0.3. The issue links the fix branch, and a maintainer must apply the fix.
    - A repository that refuses contributions that an AI made has the factor `LANDING.aiRefused`, which is 0.2. The fix stays held until the rule changes.
    - A repository with a CLA has the factor `LANDING.cla`, which is 0.5. The fix stays held until Mark decides about the CLA.
 

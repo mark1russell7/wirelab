@@ -146,6 +146,20 @@
     "note": "The pull request and the fix of F0031 both change _fetch() in polling-fetch.ts. The second to merge needs a rebase."
   },
   {
+    "finding": "F0031",
+    "at": "2026-11-14T18:14:03Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5628",
+    "note": "The repro ran in CI (repro.yml, run 43625097098)."
+  },
+  {
+    "finding": "F0031",
+    "at": "2026-11-14T18:23:38Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5630",
+    "note": "The new test fails before the change and passes after it in CI (repro.yml, run 43625189318)."
+  },
+  {
     "finding": "F0032",
     "at": "2026-11-13T07:43:41Z",
     "state": "issue-open",
@@ -156,6 +170,20 @@
     "at": "2026-11-13T07:43:45Z",
     "state": "pr-open",
     "url": "https://github.com/socketio/socket.io/pull/5613"
+  },
+  {
+    "finding": "F0033",
+    "at": "2026-11-14T18:14:05Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5629",
+    "note": "The type check ran in CI (repro.yml, run 43625113524)."
+  },
+  {
+    "finding": "F0033",
+    "at": "2026-11-14T18:23:41Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5631",
+    "note": "tsc fails before the change and passes after it in CI (repro.yml, run 43625189318)."
   },
   {
     "finding": "F0034",
@@ -177,6 +205,216 @@
     "state": "fixed-by-others",
     "url": "https://github.com/socketio/socket.io/pull/5596",
     "note": "Merged on main on 2026-11-12. Not in 6.6.8."
+  },
+  {
+    "finding": "F0037",
+    "at": "2026-11-14T17:51:54Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/431",
+    "note": "The repro ran in CI (repro.yml, run 43622781078). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-browser-event-clone (708ce6d), and the issue links it. Its tests ran in CI (repro.yml, run 43622526752)."
+  },
+  {
+    "finding": "F0038",
+    "at": "2026-11-14T17:51:55Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/432",
+    "note": "The repro ran in CI (repro.yml, run 43622798504). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-close-invalid-code (35ad8e8), and the issue links it. Its tests ran in CI (repro.yml, run 43622526752)."
+  },
+  {
+    "finding": "F0039",
+    "at": "2026-11-14T17:51:56Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/433",
+    "note": "The repro ran in CI (repro.yml, run 43622815399). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-reconnect-ignores-predicate (65af3a1), and the issue links it. Its tests ran in CI (repro.yml, run 43622526752)."
+  },
+  {
+    "finding": "F0040",
+    "at": "2026-11-14T17:51:57Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/434",
+    "note": "The repro ran in CI (repro.yml, run 43622830945). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-provider-rejects-nullish (54a3d36), and the issue links it. Its tests ran in CI (repro.yml, run 43622526752)."
+  },
+  {
+    "finding": "F0041",
+    "at": "2026-11-14T17:51:58Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/435",
+    "note": "The repro ran in CI (repro.yml, run 43622846162). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-update-properties-path (d1ce646), and the issue links it. Its tests ran in CI (repro.yml, run 43622546292)."
+  },
+  {
+    "finding": "F0042",
+    "at": "2026-11-14T17:51:59Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/436",
+    "note": "The repro ran in CI (repro.yml, run 43622860157). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-update-properties-merge (883ea2d), and the issue links it. Its tests ran in CI (repro.yml, run 43622546292)."
+  },
+  {
+    "finding": "F0043",
+    "at": "2026-11-14T17:52:01Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/437",
+    "note": "The repro ran in CI (repro.yml, run 43622874106). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-react-enable-then-change (2aad565), and the issue links it. Its tests ran in CI (repro.yml, run 43622546292)."
+  },
+  {
+    "finding": "F0044",
+    "at": "2026-11-14T17:52:02Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/438",
+    "note": "The repro ran in CI (repro.yml, run 43622887813). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-node-close-event-fields (291a36b), and the issue links it. Its tests ran in CI (repro.yml, run 43622546292)."
+  },
+  {
+    "finding": "F0045",
+    "at": "2026-11-14T17:52:02Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/439",
+    "note": "The repro ran in CI (repro.yml, run 43622901800). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-close-before-socket-event (4d55d2d), and the issue links it. Its tests ran in CI (repro.yml, run 43622567098)."
+  },
+  {
+    "finding": "F0046",
+    "at": "2026-11-14T17:52:03Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/440",
+    "note": "The repro ran in CI (repro.yml, run 43622915737). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-throwing-handler (8bf19c5), and the issue links it. Its tests ran in CI (repro.yml, run 43622567098)."
+  },
+  {
+    "finding": "F0047",
+    "at": "2026-11-14T17:52:04Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/441",
+    "note": "The repro ran in CI (repro.yml, run 43622933168). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-random-default-delay (8c74423), and the issue links it. Its tests ran in CI (repro.yml, run 43622567098)."
+  },
+  {
+    "finding": "F0049",
+    "at": "2026-11-14T17:52:05Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/442",
+    "note": "The repro ran in CI (repro.yml, run 43622946920). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-close-clears-backoff (5ed5950), and the issue links it. Its tests ran in CI (repro.yml, run 43622567098)."
+  },
+  {
+    "finding": "F0050",
+    "at": "2026-11-14T17:52:06Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/443",
+    "note": "The repro ran in CI (repro.yml, run 43622961411). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-encode-room-name (720a46c), and the issue links it. Its tests ran in CI (repro.yml, run 43622644200)."
+  },
+  {
+    "finding": "F0051",
+    "at": "2026-11-14T17:52:07Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/444",
+    "note": "The repro ran in CI (repro.yml, run 43622974470). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-no-global-crypto (5a52347), and the issue links it. Its tests ran in CI (repro.yml, run 43622644200)."
+  },
+  {
+    "finding": "F0053",
+    "at": "2026-11-14T17:52:08Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/445",
+    "note": "The repro ran in CI (repro.yml, run 43621686445). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-hook-handler-types (9c5ab4e), and the issue links it. Its tests ran in CI (repro.yml, run 43622644200)."
+  },
+  {
+    "finding": "F0054",
+    "at": "2026-11-14T17:52:09Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/446",
+    "note": "The repro ran in CI (repro.yml, run 43621703429). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-fetch-basepath-type (33062db), and the issue links it. Its tests ran in CI (repro.yml, run 43622644200)."
+  },
+  {
+    "finding": "F0055",
+    "at": "2026-11-14T17:04:49Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5614",
+    "note": "The repro ran in CI (repro.yml, run 43618492783). The fix pull request follows."
+  },
+  {
+    "finding": "F0055",
+    "at": "2026-11-14T17:10:45Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5621",
+    "note": "The new tests fail without the change and pass with it, and npm test passes (repro.yml, run 43396701734)."
+  },
+  {
+    "finding": "F0056",
+    "at": "2026-11-14T17:04:50Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5615",
+    "note": "The repro ran in CI (repro.yml, run 43617861967). The fix pull request follows."
+  },
+  {
+    "finding": "F0056",
+    "at": "2026-11-14T17:10:47Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5622",
+    "note": "The new tests fail without the change and pass with it, and npm test passes (repro.yml, run 43396701734)."
+  },
+  {
+    "finding": "F0057",
+    "at": "2026-11-14T17:04:51Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5616",
+    "note": "The repro ran in CI (repro.yml, run 43618509523). The fix pull request follows."
+  },
+  {
+    "finding": "F0057",
+    "at": "2026-11-14T17:10:50Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5623",
+    "note": "The new tests fail without the change and pass with it, and npm test passes (repro.yml, run 43396701734)."
+  },
+  {
+    "finding": "F0058",
+    "at": "2026-11-14T17:04:52Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5617",
+    "note": "The repro ran in CI (repro.yml, run 43618528376). The issue asks the maintainers which fix they prefer, so no pull request yet."
+  },
+  {
+    "finding": "F0059",
+    "at": "2026-11-14T17:04:53Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5618",
+    "note": "The repro ran in CI (repro.yml, run 43617915461). The fix pull request follows."
+  },
+  {
+    "finding": "F0059",
+    "at": "2026-11-14T17:10:52Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5624",
+    "note": "The new tests fail without the change and pass with it, and npm test passes (repro.yml, run 43616819301)."
+  },
+  {
+    "finding": "F0060",
+    "at": "2026-11-14T17:04:54Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5619",
+    "note": "The repro ran in CI (repro.yml, run 43617934676). The fix pull request follows."
+  },
+  {
+    "finding": "F0060",
+    "at": "2026-11-14T17:10:55Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5625",
+    "note": "The new tests fail without the change and pass with it, and npm test passes (repro.yml, run 43616819301)."
+  },
+  {
+    "finding": "F0061",
+    "at": "2026-11-14T17:04:56Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5620",
+    "note": "The repro ran in CI (repro.yml, run 43617956462). The fix pull request follows."
+  },
+  {
+    "finding": "F0061",
+    "at": "2026-11-14T17:10:57Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5626",
+    "note": "The new tests fail without the change and pass with it, and npm test passes (repro.yml, run 43616819301)."
+  },
+  {
+    "finding": "F0062",
+    "at": "2026-11-14T17:10:59Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5627",
+    "note": "It refers to the closed issue #4925 and to #4817 of the server. The tsc check fails without the change and passes with it (repro.yml, run 43616819301)."
   },
   {
     "finding": "F0063",
@@ -212,5 +450,40 @@
     "state": "issue-open",
     "url": "https://github.com/socketio/socket.io/issues/5504",
     "note": "An open issue of another author."
+  },
+  {
+    "finding": "F0068",
+    "at": "2026-11-13T08:56:52Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/711",
+    "note": "The repro ran in CI (repro.yml, run 43396421612). The fix pull request follows."
+  },
+  {
+    "finding": "F0068",
+    "at": "2026-11-14T18:35:03Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/713",
+    "note": "The fix test ran in CI (repro.yml, run 43626187896): the new test fails with lib of main and passes with the fix. The full suite gives 114 passing, 9 pending (113 on main). The linter gives the same 4 errors as on main."
+  },
+  {
+    "finding": "F0069",
+    "at": "2026-11-13T08:56:56Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/712",
+    "note": "The repro ran in CI (repro.yml, run 43396452997). The fix pull request follows."
+  },
+  {
+    "finding": "F0069",
+    "at": "2026-11-14T18:35:05Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/714",
+    "note": "The fix test ran in CI (repro.yml, run 43626187896): the new test fails with lib of main and passes with the fix. The full suite gives 114 passing, 9 pending (113 on main). The linter gives the same 4 errors as on main."
+  },
+  {
+    "finding": "F0070",
+    "at": "2026-11-13T08:56:59Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1012",
+    "note": "The repro ran in CI (repro.yml, run 43396466628). The fix pull request follows."
   }
 ]
