@@ -21,7 +21,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W1 | The catalog tables | done | P0 | The tables of families, transports, protocols, packages, links, sources, registry rows and use, with their check and the priority formula. |
 | W2 | The use measures in `@procedures/npm` | done | P0 | Request builders and extractors for npm downloads, deps.dev dependents, jsDelivr hits and the full registry document. The fetch is a parameter. |
 | W3 | The measure run | blocked | P0 | A run passes the fetch of `polite-crawler` to the measures and adds a source with its rows. A weekly workflow opens a pull request with the new rows. The code is in draft PR #9. It waits for `@procedures/npm` 0.55.2 on npm. |
-| W4 | Repositories and their policies | active | P1 | The repository of each package, and its AI policy, CLA and security channel, each with its source and day. The landing factors use them. PR #13 added the tables and the factors. A second PR adds 24 repositories, the topic `contributions` and the factor for an archived repository. |
+| W4 | Repositories and their policies | active | P1 | The repository of each package, and its AI policy, CLA and security channel, each with its source and day. The landing factors use them. PR #13 added the tables and the factors. A second PR adds 24 repositories, the topic `contributions` and the factor for an archived repository. PR #25 adds the value `collaborators-only` and its factor: cloudflare/partykit takes pull requests only from its collaborators. |
 | W5 | The catalog on the site | later | P1 | The site shows the ranked catalog, with filters and the parts of each score. It replaces the first site of the template. |
 | W6 | Fault plans in `rigor-chaos` | done | P1 | A fault plan is seeded data: delays, cuts, resets, split frames, reorders, duplicates and stalls, at planned times. |
 | W7 | The package `rigor-proxy` | done | P1 | A proxy applies a fault plan to TCP, WebSocket and HTTP streams, and records each fault. Its tests run in CI. |
@@ -33,7 +33,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W13 | The share of a client in a large package | later | P2 | The downloads of a large package, for example `rxjs`, count all its users. Import counts of the client module correct the reach. |
 | W14 | The table check moves to its home | blocked | P3 | The check of the tables goes to `@mark1russell7/sqlite` when that home has a table schema. |
 | W15 | Chaos, load and cluster layers | later | P2 | Fault plans and load schedules on the servers of the suites, and `kind` clusters where a protocol needs a fleet. All in CI. |
-| W16 | Reviews of the top packages | active | P0 | Each package, in the priority order, gets a review of its published code. Each finding has a small failing repro and a check for duplicates upstream. Done: rxjs, @supabase/realtime-js, engine.io-client, socket.io-client and partysocket. The first fix is upstream: rxjs#7661. |
+| W16 | Reviews of the top packages | active | P0 | Each package, in the priority order, gets a review of its published code. Each finding has a small failing repro and a check for duplicates upstream. Done: rxjs, @supabase/realtime-js, engine.io-client, socket.io-client, partysocket, pusher-js and sockjs-client. Upstream: rxjs#7661, five engine.io-client issues with fix PRs, seven socket.io-client issues with seven fix PRs (socket.io #5614 to #5627), and 16 partysocket issues (partykit #431 to #446). partykit takes no pull request from outside, so each partysocket issue links its fix branch. |
 
 ## The priority formula
 
@@ -41,7 +41,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 
 1. The share of a package on a measure is its place among the packages with that measure, from 0 to 1.
 2. The reach of a package is the mean of its shares.
-3. The chance that a fix lands multiplies the reach. A deprecated package has the factor 0.1. A package in an archived repository also has the factor 0.1, but only once. A repository that refuses AI contributions has the factor 0.2, and a repository with a CLA has the factor 0.5.
+3. The chance that a fix lands multiplies the reach. A deprecated package has the factor 0.1. A package in an archived repository also has the factor 0.1, but only once. A repository that takes pull requests only from its collaborators has the factor 0.3. A repository that refuses AI contributions has the factor 0.2, and a repository with a CLA has the factor 0.5.
 
 npm downloads count the installs that come through other packages, and deps.dev counts the transitive dependents. Thus the reach includes transitive use.
 
