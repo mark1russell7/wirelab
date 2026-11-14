@@ -698,5 +698,15 @@
     "kind": "correctness",
     "title": "A malformed handshake leaves the client in the state unavailable for good, with no retry",
     "note": "The error branch of the handshake does not abort the runner or call retryIn, so connect() returns at once. The docs say that unavailable retries every 15 s. Confidence high."
+  },
+  {
+    "id": "F0071",
+    "package": "partysocket",
+    "version": "1.3.0",
+    "method": "review",
+    "found": "2026-11-14",
+    "kind": "tests",
+    "title": "Two test files bind port 50136, so a local run of the tests can fail with EADDRINUSE",
+    "note": "integration.test.ts binds 50132 to 50136 and edge-cases.test.ts binds 50136, and the test files run in parallel. Both blocks skip when GITHUB_ACTIONS is set, so only a local run shows it. 6 of the 16 full runs of the fix tests (repro.yml, runs 43631168169 and 43631211204) failed with EADDRINUSE :::50136. Confidence high."
   }
 ]
