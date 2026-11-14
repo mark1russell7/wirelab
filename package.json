@@ -37,6 +37,13 @@
       "typed-files": {
         "configs": [
           "repros/pusher-js/F0070/tsconfig.json",
+          "repros/socket.io-client/F0055/tsconfig.json",
+          "repros/socket.io-client/F0056/tsconfig.json",
+          "repros/socket.io-client/F0057/tsconfig.json",
+          "repros/socket.io-client/F0058/tsconfig.json",
+          "repros/socket.io-client/F0059/tsconfig.json",
+          "repros/socket.io-client/F0060/tsconfig.json",
+          "repros/socket.io-client/F0061/tsconfig.json",
           "repros/sockjs-client/F0068/tsconfig.json",
           "repros/sockjs-client/F0069/tsconfig.json"
         ],
