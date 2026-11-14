@@ -36,6 +36,8 @@
     "rules": {
       "typed-files": {
         "configs": [
+          "repros/engine.io-client/F0031/tsconfig.json",
+          "repros/engine.io-client/F0033/tsconfig.repro.json",
           "repros/partysocket/F0037/tsconfig.json",
           "repros/partysocket/F0038/tsconfig.json",
           "repros/partysocket/F0039/tsconfig.json",

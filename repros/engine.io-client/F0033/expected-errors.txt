@@ -1,0 +1,2 @@
+repro.ts(5,54): error TS2322: Type 'boolean' is not assignable to type '{ threshold: number; }'.
+repro.ts(8,22): error TS2559: Type '() => void' has no properties in common with type 'WriteOptions'.
