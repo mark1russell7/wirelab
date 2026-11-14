@@ -63,7 +63,7 @@ jobs:
         env:
           BASE: ${{ github.event.pull_request.base.sha }}
         run: |
-          mapfile -t all < <(git ls-files repros | grep '/tsconfig\.json$' | xargs -r -n1 dirname | sort -u)
+          mapfile -t all < <(git ls-files repros | grep -E '/tsconfig(\.repro)?\.json$' | xargs -r -n1 dirname | sort -u)
           dirs=("${all[@]}")
           if [[ -n "$BASE" ]]; then
             mapfile -t changed < <(git diff --name-only "$BASE" HEAD)
@@ -90,12 +90,32 @@ jobs:
           echo "Folders to examine: ${#dirs[@]}"
           cat "$RUNNER_TEMP/dirs.txt"
       # Install scripts do not run: the packages of a repro are code of others.
+      # A repro of a types finding has tsconfig.repro.json, and tsc fails on purpose. The job compares the errors of
+      # tsc with expected-errors.txt, so the repro still shows the same fault.
       - name: Type check
         run: |
+          check() {
+            local d=$1 status=0
+            (cd "$d" && npm install --ignore-scripts --no-audit --no-fund) || return 1
+            if [[ ! -f "$d/tsconfig.repro.json" ]]; then
+              (cd "$d" && npx --no-install tsc -p .)
+              return
+            fi
+            (cd "$d" && npx --no-install tsc -p tsconfig.repro.json) > "$RUNNER_TEMP/tsc.txt" 2>&1 || status=$?
+            cat "$RUNNER_TEMP/tsc.txt"
+            if (( status == 0 )); then
+              echo "::error::tsc found no error in $d, so the repro no longer shows its fault."
+              return 1
+            fi
+            if ! diff "$d/expected-errors.txt" "$RUNNER_TEMP/tsc.txt"; then
+              echo "::error::The errors of tsc in $d are not the errors of expected-errors.txt."
+              return 1
+            fi
+          }
           failed=()
           while IFS= read -r d; do
             echo "::group::$d"
-            if (cd "$d" && npm install --ignore-scripts --no-audit --no-fund && npx --no-install tsc -p .); then
+            if check "$d"; then
               echo "::endgroup::"
             else
               echo "::endgroup::"

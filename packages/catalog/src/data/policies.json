@@ -128,6 +128,14 @@
   },
   {
     "repository": "cloudflare/partykit",
+    "topic": "contributions",
+    "checked": "2026-11-14",
+    "value": "collaborators-only",
+    "evidence": "https://api.github.com/repos/cloudflare/partykit",
+    "note": "The field pull_request_creation_policy of the repository is collaborators_only. A pull request from the fork mark1russell7/partykit failed with a permission error. The issues link the fix branches instead."
+  },
+  {
+    "repository": "cloudflare/partykit",
     "topic": "security",
     "checked": "2026-11-13",
     "value": "platform",
