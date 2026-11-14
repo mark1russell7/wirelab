@@ -1,0 +1,4 @@
+repro.ts(8,3): error TS2322: Type '{ endpoint: string; }' is not assignable to type 'ChannelAuthorizationOptions | undefined'.
+  Property 'transport' is missing in type '{ endpoint: string; }' but required in type 'InternalAuthOptions'.
+repro.ts(16,3): error TS2322: Type '{ endpoint: string; }' is not assignable to type 'UserAuthenticationOptions | undefined'.
+  Property 'transport' is missing in type '{ endpoint: string; }' but required in type 'InternalAuthOptions'.
