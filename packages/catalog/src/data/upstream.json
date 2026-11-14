@@ -506,5 +506,131 @@
     "state": "fixed-by-others",
     "url": "https://github.com/pusher/pusher-js/pull/997",
     "note": "Merged on master on 2026-10-29. Not in 8.6.0."
+  },
+  {
+    "finding": "F0072",
+    "at": "2026-11-14T22:23:22Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1014",
+    "note": "The repro ran in CI (repro.yml, run 43640065066). The issue quotes its output."
+  },
+  {
+    "finding": "F0072",
+    "at": "2026-11-14T22:29:06Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1023",
+    "note": "The fix test ran in CI (repro.yml, run 43645295126): the new backoff spec fails with src of master and passes with the fix. The repro gives state=unavailable and the first socket open on master, and connected with 2 connections with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0073",
+    "at": "2026-11-14T22:23:33Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1015",
+    "note": "The repro ran in CI (repro.yml, run 43643145051). The issue quotes its output."
+  },
+  {
+    "finding": "F0073",
+    "at": "2026-11-14T22:29:14Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1024",
+    "note": "The fix test ran in CI (repro.yml, run 43645308587): the 3 new specs fail with src of master and pass with the fix. The repro receives the events of no channel on master, and of all 5 channels with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0075",
+    "at": "2026-11-14T22:23:42Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1016",
+    "note": "The repro ran in CI (repro.yml, run 43640121641). The issue quotes its output."
+  },
+  {
+    "finding": "F0075",
+    "at": "2026-11-14T22:29:22Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1025",
+    "note": "The fix test ran in CI (repro.yml, run 43645308587): the falsy data spec fails with src of master and passes with the fix. The repro gives no argument to pusher.bind() on master, and 0, false, null and \"\" with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0076",
+    "at": "2026-11-14T22:23:51Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1017",
+    "note": "The repro ran in CI (repro.yml, run 43640138065). The issue quotes its output."
+  },
+  {
+    "finding": "F0076",
+    "at": "2026-11-14T22:29:29Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1026",
+    "note": "The fix test ran in CI (repro.yml, run 43645308587): the 2 new specs fail with src of master and pass with the fix. The repro gives an unhandled rejection and subscriptionPending=true on master, and no rejection and subscriptionPending=false with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0077",
+    "at": "2026-11-14T22:23:59Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1018",
+    "note": "The repro ran in CI (repro.yml, run 43640153481). The issue quotes its output."
+  },
+  {
+    "finding": "F0077",
+    "at": "2026-11-14T22:29:35Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1027",
+    "note": "The fix test ran in CI (repro.yml, run 43645308587): 4 of the 9 changed and new specs fail with src of master, and all pass with the fix. The repro gives error=undefined on master and error=\"Invalid auth response\" with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0078",
+    "at": "2026-11-14T22:24:05Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1019",
+    "note": "The repro ran in CI (repro.yml, run 43640169138). The issue quotes its output."
+  },
+  {
+    "finding": "F0078",
+    "at": "2026-11-14T22:29:41Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1028",
+    "note": "The fix test ran in CI (repro.yml, run 43645295126): the disconnect spec fails with src of master and passes with the fix. The repro gives state=connected with 2 connections on master, and disconnected with 1 connection with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0079",
+    "at": "2026-11-14T22:24:12Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1020",
+    "note": "The repro ran in CI (repro.yml, run 43640187193). The issue quotes its output."
+  },
+  {
+    "finding": "F0079",
+    "at": "2026-11-14T22:29:48Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1029",
+    "note": "The fix test ran in CI (repro.yml, run 43645295126): the new spec fails with src of master and passes with the fix. The repro gives 3 server connections on master and 2 with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0080",
+    "at": "2026-11-14T22:24:18Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1021",
+    "note": "The repro ran in CI (repro.yml, run 43640201731). The issue quotes its output."
+  },
+  {
+    "finding": "F0080",
+    "at": "2026-11-14T22:29:56Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1030",
+    "note": "The fix test ran in CI (repro.yml, run 43645326968): tsc on the repro against the declarations of make types gives 2 errors with src of master and 0 with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0081",
+    "at": "2026-11-14T22:24:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1022",
+    "note": "The repro ran in CI (repro.yml, run 43643202362). The issue quotes its output."
+  },
+  {
+    "finding": "F0081",
+    "at": "2026-11-14T22:30:03Z",
+    "state": "pr-open",
+    "url": "https://github.com/pusher/pusher-js/pull/1031",
+    "note": "The fix test ran in CI (repro.yml, run 43645326968): the new spec fails with src of master and passes with the fix. tsc on the repro gives 1 error with src of master and 0 with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
   }
 ]
