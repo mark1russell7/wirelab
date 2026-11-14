@@ -34,6 +34,12 @@
   },
   "conventions": {
     "rules": {
+      "gate-trigger": {
+        "allow": [
+          "suite-mqtt.yml"
+        ],
+        "reason": "The MQTT suite is not a gate. It finds faults of MQTT.js, and its it.fails tests record them. It runs only when the suite changes."
+      },
       "typed-files": {
         "configs": [
           "repros/pusher-js/F0070/tsconfig.json",
