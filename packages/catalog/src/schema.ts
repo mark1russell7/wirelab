@@ -187,8 +187,11 @@ export interface Run {
   readonly note?: string;
 }
 
-/** The kinds of a finding. A security finding is in the public tables only after its advisory is public. */
-export const FINDING_KINDS = ["conformance", "correctness", "types", "resource", "performance", "security"] as const;
+/**
+ * The kinds of a finding. A security finding is in the public tables only after its advisory is public.
+ * A finding of the kind tests is a fault in the test suite of the repository, not in the published code.
+ */
+export const FINDING_KINDS = ["conformance", "correctness", "types", "resource", "performance", "security", "tests"] as const;
 export type FindingKind = (typeof FINDING_KINDS)[number];
 
 /** How the campaign found a fault. */

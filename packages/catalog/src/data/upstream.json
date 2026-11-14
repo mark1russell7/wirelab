@@ -494,6 +494,13 @@
     "note": "The fix test ran in CI (repro.yml, run 43632360405): the two new specs fail with src of master and pass with the fix. The repro gives the state unavailable on master and connected with the fix. make node_unit gives 757 of 757 specs (755 on master), and make web_unit gives 876 ok in Chrome and in Firefox (874 on master)."
   },
   {
+    "finding": "F0071",
+    "at": "2026-11-14T20:01:50Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/447",
+    "note": "The repro ran in CI (repro.yml, run 43634067321). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-test-port-clash (c2e60cf), and the issue links it. Its tests ran in CI (repro.yml, run 43633709706)."
+  },
+  {
     "finding": "F0074",
     "at": "2026-11-14T20:52:41Z",
     "state": "fixed-by-others",
