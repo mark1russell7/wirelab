@@ -1,0 +1,1 @@
+repro.ts(10,43): error TS2339: Property 'message' does not exist on type 'Event'.
