@@ -19,7 +19,8 @@ vt() {
   ( cd packages/partysocket && "$BIN/vitest" --no-watch --maxWorkers=2 "$@" ) > "$log" 2>&1
   echo "exit=$?" >> "$log"
 }
-summary() { grep -E "^ +(Test Files|Tests) " "$1" | sed 's/\x1b\[[0-9;]*m//g' | tr -s ' ' | tr '\n' ';'; }
+# The summary also has the line Errors of vitest: an unhandled error makes the exit code 1 when each test passes.
+summary() { sed 's/\x1b\[[0-9;]*m//g' "$1" | grep -E "^ +(Test Files|Tests|Errors) " | tr -s ' ' | tr '\n' ';'; }
 while [ $# -ge 2 ]; do
   id=$1; br=$2; shift 2
   git checkout --quiet -B "$br" "origin/$br" || { echo "$id: checkout of $br failed"; continue; }
@@ -34,7 +35,13 @@ while [ $# -ge 2 ]; do
   vt "$OUT/$id-after-full.txt"
   "$BIN/tsc" -p packages/partysocket/src/tsconfig.json > "$OUT/$id-tsc.txt" 2>&1; echo "exit=$?" >> "$OUT/$id-tsc.txt"
   "$BIN/oxlint" packages/partysocket > "$OUT/$id-lint.txt" 2>&1; echo "exit=$?" >> "$OUT/$id-lint.txt"
-  "$BIN/oxfmt" --check packages/partysocket .changeset > "$OUT/$id-fmt.txt" 2>&1; echo "exit=$?" >> "$OUT/$id-fmt.txt"
+  "$BIN/oxfmt" --check packages/partysocket .changeset > "$OUT/$id-fmt.txt" 2>&1; fmt=$?; echo "exit=$fmt" >> "$OUT/$id-fmt.txt"
+  # When the check fails, the formatter writes the files of the branch, and the diff goes to the log. Then the tree is clean again.
+  if [ "$fmt" -ne 0 ]; then
+    "$BIN/oxfmt" $(git diff --name-only upstream/main HEAD -- packages/partysocket .changeset) > /dev/null 2>&1
+    git diff > "$OUT/$id-fmt-diff.txt"
+    git checkout --quiet -- .
+  fi
   echo "$id files: $tests"
   echo "$id before: $(summary "$OUT/$id-before.txt") $(tail -1 "$OUT/$id-before.txt")"
   echo "$id after: $(summary "$OUT/$id-after.txt") $(tail -1 "$OUT/$id-after.txt")"
