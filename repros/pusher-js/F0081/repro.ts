@@ -6,6 +6,6 @@ const channel = pusher.subscribe("my-channel");
 
 // After a pusher:subscription_count event, Channel.subscriptionCount holds the number of subscribers.
 channel.bind("pusher:subscription_count", () => {
-  const count: number = channel.subscriptionCount;
-  console.log(`subscribers: ${count}`);
+  const count = channel.subscriptionCount;
+  if (typeof count === "number") console.log(`subscribers: ${count.toFixed(0)}`);
 });

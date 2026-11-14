@@ -3,10 +3,10 @@ import type { AddressInfo } from "node:net";
 import Pusher from "pusher-js";
 import { WebSocketServer } from "ws";
 
-// The channel names "constructor", "toString", "valueOf" and "hasOwnProperty" use only valid
-// characters. A fake Pusher server (protocol 7) accepts each subscription and then sends one event
-// on each channel.
-const NAMES = ["constructor", "toString", "valueOf", "hasOwnProperty"];
+// The channel names "constructor", "toString", "valueOf", "hasOwnProperty" and "__proto__" use only
+// valid characters. A fake Pusher server (protocol 7) accepts each subscription and then sends one
+// event on each channel.
+const NAMES = ["constructor", "toString", "valueOf", "hasOwnProperty", "__proto__"];
 const subscribes: string[] = [];
 const wss = new WebSocketServer({ host: "127.0.0.1", port: 0 });
 wss.on("connection", (ws) => {

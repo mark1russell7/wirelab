@@ -716,8 +716,8 @@
     "method": "review",
     "found": "2026-11-13",
     "kind": "correctness",
-    "title": "The channel names constructor, toString, valueOf and hasOwnProperty make subscribe() throw a TypeError",
-    "note": "Channels keeps its table in a plain object and reads this.channels[name], so these names find the members of Object.prototype. Confidence high."
+    "title": "Channel names that are members of Object.prototype, such as constructor and __proto__, make subscribe() throw a TypeError",
+    "note": "Channels keeps its table in a plain object and reads this.channels[name], so these names find the members of Object.prototype. The repro shows it for constructor, toString, valueOf, hasOwnProperty and __proto__. Confidence high."
   },
   {
     "id": "F0074",
