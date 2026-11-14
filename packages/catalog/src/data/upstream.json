@@ -501,13 +501,6 @@
     "note": "The repro ran in CI (repro.yml, run 43634067321). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-test-port-clash (c2e60cf), and the issue links it. Its tests ran in CI (repro.yml, run 43633709706)."
   },
   {
-    "finding": "F0074",
-    "at": "2026-11-14T20:52:41Z",
-    "state": "fixed-by-others",
-    "url": "https://github.com/pusher/pusher-js/pull/997",
-    "note": "Merged on master on 2026-10-29. Not in 8.6.0."
-  },
-  {
     "finding": "F0072",
     "at": "2026-11-14T22:23:22Z",
     "state": "issue-open",
@@ -534,6 +527,13 @@
     "state": "pr-open",
     "url": "https://github.com/pusher/pusher-js/pull/1024",
     "note": "The fix test ran in CI (repro.yml, run 43645308587): the 3 new specs fail with src of master and pass with the fix. The repro receives the events of no channel on master, and of all 5 channels with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0074",
+    "at": "2026-11-14T20:52:41Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/pusher/pusher-js/pull/997",
+    "note": "Merged on master on 2026-10-29. Not in 8.6.0."
   },
   {
     "finding": "F0075",
