@@ -154,8 +154,14 @@ function lines(result: Result): string[] {
     .map((line) => line.trim());
 }
 
+// The list of failures repeats each number with the name of its suite, so the first line of each number is the test.
 function failures(found: readonly string[]): string {
-  const unique = [...new Set(found)].slice(0, 6);
+  const byNumber = new Map<string, string>();
+  for (const line of found) {
+    const number = /^\d+\)/.exec(line)?.[0];
+    if (number !== undefined && !byNumber.has(number)) byNumber.set(number, line);
+  }
+  const unique = [...byNumber.values()].slice(0, 6);
   return unique.length > 0 ? ` | ${unique.join(" | ")}` : "";
 }
 
@@ -172,25 +178,40 @@ export function mocha(result: Result): string {
   return `${counts.join(", ")}${failures(all.filter((line) => /^\d+\) \S/.test(line)))} | exit=${result.code}`;
 }
 
-/** This summary gives the lines Test Files, Tests and Errors of vitest. An unhandled error gives exit 1 when each test passes. */
+/**
+ * This summary gives the lines Test Files, Tests and Errors of vitest, and the first unhandled error.
+ * An unhandled error gives exit 1 when each test passes.
+ */
 export function vitest(result: Result): string {
-  const counts = lines(result)
-    .filter((line) => /^(Test Files|Tests|Errors)\s/.test(line))
-    .map((line) => line.replace(/\s+/g, " "));
-  return `${counts.join("; ")} | exit=${result.code}`;
+  const all = lines(result);
+  const counts = all.filter((line) => /^(Test Files|Tests|Errors)\s/.test(line)).map((line) => line.replace(/\s+/g, " "));
+  const start = all.findIndex((line) => line.includes("Unhandled Error"));
+  const error = start < 0 ? undefined : all.slice(start + 1).find((line) => /^\w*Error\b/.test(line));
+  return `${counts.join("; ")}${error === undefined ? "" : ` | ${error}`} | exit=${result.code}`;
 }
 
-/** This summary gives the counts of jasmine, the last count of karma for each browser, and the failing specs. */
+/** This summary gives the last line of the output that matches the pattern, for example the result line of a repro. */
+export function matching(pattern: RegExp): (result: Result) => string {
+  return (result) => `${lines(result).filter((line) => pattern.test(line)).at(-1) ?? "(no line matches)"} | exit=${result.code}`;
+}
+
+/** This summary gives the count of jasmine, the count of karma for each browser, and the failing specs. */
 export function jasmine(result: Result): string {
   const all = lines(result);
-  const counts = all.filter((line) => /^\d+ specs?, \d+ failures?/.test(line));
-  const browsers = new Map<string, string>();
-  for (const line of all) {
-    const m = /^(.+?): Executed (\d+ of \d+.*?)(?:\s*\(\d[\d.]* secs.*)?$/.exec(line);
-    if (m?.[1] !== undefined && m[2] !== undefined) browsers.set(m[1], `${m[1]}: ${m[2]}`);
+  // jasmine-spec-reporter: "Executed 4 of 757 specs (2 FAILED) (753 SKIPPED)."
+  const counts = all.filter((line) => /^Executed \d+ of \d+ specs?/.test(line));
+  // karma-mocha-reporter: "Browser results:", then "- <browser>: 876 tests" and "- 876 ok" or "- 2 failed".
+  const browsers: string[] = [];
+  const start = all.indexOf("Browser results:");
+  for (const line of start < 0 ? [] : all.slice(start + 1)) {
+    const browser = /^- (.+: \d+ tests?)$/.exec(line);
+    const count = /^- (\d+ (?:ok|failed|skipped))$/.exec(line);
+    if (line === "") continue;
+    if (browser?.[1] !== undefined) browsers.push(browser[1]);
+    else if (count?.[1] !== undefined && browsers.length > 0) browsers[browsers.length - 1] += ` ${count[1]}`;
+    else if (!line.startsWith("-")) break;
   }
-  const totals = all.filter((line) => line.startsWith("TOTAL: "));
-  return `${[...counts, ...browsers.values(), ...totals].join(", ")}${failures(all.filter((line) => /^\d+\) \S/.test(line)))} | exit=${result.code}`;
+  return `${[...counts, ...browsers].join(", ")}${failures(all.filter((line) => /^\d+\) \S/.test(line)))} | exit=${result.code}`;
 }
 
 /** This summary gives the version of tsc and each error of tsc, one for each line. */

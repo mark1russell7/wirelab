@@ -1,13 +1,13 @@
 // F0031 (abort the polling requests on close) and F0033 (the types of perMessageDeflate and send).
 // Each item also runs its repro of the ledger against the build of the clone, before and after the fix.
 import { join } from "node:path";
-import { copy, fixTest, lastLine, repros, run, sequence, tsc, type Check } from "../../lib/fix-test.ts";
+import { copy, fixTest, matching, repros, run, sequence, tsc, type Check } from "../../lib/fix-test.ts";
 import { spec } from "../spec.ts";
 
 // The repro of F0031 imports engine.io-client, so it runs from the root of the clone: the workspace link is the build.
 const reproF0031: Check = {
   name: "repro",
-  summary: lastLine,
+  summary: matching(/^after 2 s/),
   run: async (context) => {
     copy(join(repros, "engine.io-client", "F0031", "repro.ts"), context.root, "repro-F0031.mts");
     return run("node", ["repro-F0031.mts"], { cwd: context.root, timeout: 60_000 });
