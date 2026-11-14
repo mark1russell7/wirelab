@@ -212,5 +212,26 @@
     "state": "issue-open",
     "url": "https://github.com/socketio/socket.io/issues/5504",
     "note": "An open issue of another author."
+  },
+  {
+    "finding": "F0068",
+    "at": "2026-11-13T08:56:52Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/711",
+    "note": "The repro ran in CI (repro.yml, run 43396421612). The fix pull request follows."
+  },
+  {
+    "finding": "F0069",
+    "at": "2026-11-13T08:56:56Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/712",
+    "note": "The repro ran in CI (repro.yml, run 43396452997). The fix pull request follows."
+  },
+  {
+    "finding": "F0070",
+    "at": "2026-11-13T08:56:59Z",
+    "state": "issue-open",
+    "url": "https://github.com/pusher/pusher-js/issues/1012",
+    "note": "The repro ran in CI (repro.yml, run 43396466628). The fix pull request follows."
   }
 ]
