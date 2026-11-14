@@ -36,6 +36,7 @@
     "rules": {
       "typed-files": {
         "configs": [
+          "repros/fix-tests/sockjs-client/F0068-F0069/tsconfig.json",
           "repros/pusher-js/F0070/tsconfig.json",
           "repros/sockjs-client/F0068/tsconfig.json",
           "repros/sockjs-client/F0069/tsconfig.json"
