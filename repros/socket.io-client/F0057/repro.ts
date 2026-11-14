@@ -18,7 +18,7 @@ async function run(transport: "websocket" | "polling") {
   const manager = new Manager(`http://127.0.0.1:${port}`, { transports: [transport], reconnection: false });
   const root = manager.socket("/");
   root.on("disconnect", (reason) => console.log(`client: / disconnect (${reason})`));
-  await new Promise((resolve) => root.once("connect", resolve));
+  await new Promise<void>((resolve) => root.once("connect", () => resolve()));
 
   const foo = manager.socket("/foo"); // the client sends the CONNECT packet of /foo
   foo.connect(); // the server has not answered the CONNECT packet yet

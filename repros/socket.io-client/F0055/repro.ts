@@ -19,7 +19,7 @@ httpServer.listen(0, "127.0.0.1", async () => {
   const { port } = httpServer.address() as AddressInfo;
   const manager = new Manager(`http://127.0.0.1:${port}`, { transports: ["websocket"] });
   const root = manager.socket("/");
-  await new Promise((resolve) => root.once("connect", resolve));
+  await new Promise<void>((resolve) => root.once("connect", () => resolve()));
 
   const delayed = manager.socket("/delayed"); // the client sends the CONNECT packet of /delayed
   await sleep(50);
