@@ -179,6 +179,118 @@
     "note": "Merged on main on 2026-11-12. Not in 6.6.8."
   },
   {
+    "finding": "F0037",
+    "at": "2026-11-14T17:51:54Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/431",
+    "note": "The repro ran in CI (repro.yml, run 43622781078). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-browser-event-clone (708ce6d), and the issue links it. Its tests ran in CI (repro.yml, run 43622526752)."
+  },
+  {
+    "finding": "F0038",
+    "at": "2026-11-14T17:51:55Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/432",
+    "note": "The repro ran in CI (repro.yml, run 43622798504). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-close-invalid-code (35ad8e8), and the issue links it. Its tests ran in CI (repro.yml, run 43622526752)."
+  },
+  {
+    "finding": "F0039",
+    "at": "2026-11-14T17:51:56Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/433",
+    "note": "The repro ran in CI (repro.yml, run 43622815399). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-reconnect-ignores-predicate (65af3a1), and the issue links it. Its tests ran in CI (repro.yml, run 43622526752)."
+  },
+  {
+    "finding": "F0040",
+    "at": "2026-11-14T17:51:57Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/434",
+    "note": "The repro ran in CI (repro.yml, run 43622830945). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-provider-rejects-nullish (54a3d36), and the issue links it. Its tests ran in CI (repro.yml, run 43622526752)."
+  },
+  {
+    "finding": "F0041",
+    "at": "2026-11-14T17:51:58Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/435",
+    "note": "The repro ran in CI (repro.yml, run 43622846162). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-update-properties-path (d1ce646), and the issue links it. Its tests ran in CI (repro.yml, run 43622546292)."
+  },
+  {
+    "finding": "F0042",
+    "at": "2026-11-14T17:51:59Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/436",
+    "note": "The repro ran in CI (repro.yml, run 43622860157). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-update-properties-merge (883ea2d), and the issue links it. Its tests ran in CI (repro.yml, run 43622546292)."
+  },
+  {
+    "finding": "F0043",
+    "at": "2026-11-14T17:52:01Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/437",
+    "note": "The repro ran in CI (repro.yml, run 43622874106). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-react-enable-then-change (2aad565), and the issue links it. Its tests ran in CI (repro.yml, run 43622546292)."
+  },
+  {
+    "finding": "F0044",
+    "at": "2026-11-14T17:52:02Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/438",
+    "note": "The repro ran in CI (repro.yml, run 43622887813). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-node-close-event-fields (291a36b), and the issue links it. Its tests ran in CI (repro.yml, run 43622546292)."
+  },
+  {
+    "finding": "F0045",
+    "at": "2026-11-14T17:52:02Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/439",
+    "note": "The repro ran in CI (repro.yml, run 43622901800). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-close-before-socket-event (4d55d2d), and the issue links it. Its tests ran in CI (repro.yml, run 43622567098)."
+  },
+  {
+    "finding": "F0046",
+    "at": "2026-11-14T17:52:03Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/440",
+    "note": "The repro ran in CI (repro.yml, run 43622915737). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-throwing-handler (8bf19c5), and the issue links it. Its tests ran in CI (repro.yml, run 43622567098)."
+  },
+  {
+    "finding": "F0047",
+    "at": "2026-11-14T17:52:04Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/441",
+    "note": "The repro ran in CI (repro.yml, run 43622933168). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-random-default-delay (8c74423), and the issue links it. Its tests ran in CI (repro.yml, run 43622567098)."
+  },
+  {
+    "finding": "F0049",
+    "at": "2026-11-14T17:52:05Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/442",
+    "note": "The repro ran in CI (repro.yml, run 43622946920). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-close-clears-backoff (5ed5950), and the issue links it. Its tests ran in CI (repro.yml, run 43622567098)."
+  },
+  {
+    "finding": "F0050",
+    "at": "2026-11-14T17:52:06Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/443",
+    "note": "The repro ran in CI (repro.yml, run 43622961411). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-encode-room-name (720a46c), and the issue links it. Its tests ran in CI (repro.yml, run 43622644200)."
+  },
+  {
+    "finding": "F0051",
+    "at": "2026-11-14T17:52:07Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/444",
+    "note": "The repro ran in CI (repro.yml, run 43622974470). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-no-global-crypto (5a52347), and the issue links it. Its tests ran in CI (repro.yml, run 43622644200)."
+  },
+  {
+    "finding": "F0053",
+    "at": "2026-11-14T17:52:08Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/445",
+    "note": "The repro ran in CI (repro.yml, run 43621686445). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-hook-handler-types (9c5ab4e), and the issue links it. Its tests ran in CI (repro.yml, run 43622644200)."
+  },
+  {
+    "finding": "F0054",
+    "at": "2026-11-14T17:52:09Z",
+    "state": "issue-open",
+    "url": "https://github.com/cloudflare/partykit/issues/446",
+    "note": "The repro ran in CI (repro.yml, run 43621703429). cloudflare/partykit accepts pull requests only from collaborators, so the fix stays on the fork branch mark1russell7/partykit fix/partysocket-fetch-basepath-type (33062db), and the issue links it. Its tests ran in CI (repro.yml, run 43622644200)."
+  },
+  {
     "finding": "F0055",
     "at": "2026-11-14T17:04:49Z",
     "state": "issue-open",
