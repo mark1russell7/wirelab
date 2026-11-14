@@ -1,2 +1,2 @@
-# The fix branches of sockjs-client for F0068 (#711) and F0069 (#712).
-node test-branches.ts "F0068|fix/info-receiver-close-timer|should not start the info request" "F0069|fix/no-message-after-close|should not dispatch the rest of a frame"
+# F0068 and F0069 of sockjs-client. The items are in run.ts.
+node run.ts
