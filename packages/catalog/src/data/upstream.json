@@ -146,6 +146,20 @@
     "note": "The pull request and the fix of F0031 both change _fetch() in polling-fetch.ts. The second to merge needs a rebase."
   },
   {
+    "finding": "F0031",
+    "at": "2026-11-14T18:14:03Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5628",
+    "note": "The repro ran in CI (repro.yml, run 43625097098)."
+  },
+  {
+    "finding": "F0031",
+    "at": "2026-11-14T18:23:38Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5630",
+    "note": "The new test fails before the change and passes after it in CI (repro.yml, run 43625189318)."
+  },
+  {
     "finding": "F0032",
     "at": "2026-11-13T07:43:41Z",
     "state": "issue-open",
@@ -156,6 +170,20 @@
     "at": "2026-11-13T07:43:45Z",
     "state": "pr-open",
     "url": "https://github.com/socketio/socket.io/pull/5613"
+  },
+  {
+    "finding": "F0033",
+    "at": "2026-11-14T18:14:05Z",
+    "state": "issue-open",
+    "url": "https://github.com/socketio/socket.io/issues/5629",
+    "note": "The type check ran in CI (repro.yml, run 43625113524)."
+  },
+  {
+    "finding": "F0033",
+    "at": "2026-11-14T18:23:41Z",
+    "state": "pr-open",
+    "url": "https://github.com/socketio/socket.io/pull/5631",
+    "note": "tsc fails before the change and passes after it in CI (repro.yml, run 43625189318)."
   },
   {
     "finding": "F0034",
