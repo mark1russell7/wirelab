@@ -38,6 +38,7 @@
         "configs": [
           "repros/engine.io-client/F0031/tsconfig.json",
           "repros/engine.io-client/F0033/tsconfig.repro.json",
+          "repros/fix-tests/pusher-js/F0070/tsconfig.json",
           "repros/fix-tests/socket.io-client/group-2/tsconfig.check-F0062.json",
           "repros/fix-tests/sockjs-client/F0068-F0069/tsconfig.json",
           "repros/partysocket/F0037/tsconfig.json",
