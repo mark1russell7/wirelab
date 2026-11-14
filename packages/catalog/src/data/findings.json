@@ -698,5 +698,105 @@
     "kind": "correctness",
     "title": "A malformed handshake leaves the client in the state unavailable for good, with no retry",
     "note": "The error branch of the handshake does not abort the runner or call retryIn, so connect() returns at once. The docs say that unavailable retries every 15 s. Confidence high."
+  },
+  {
+    "id": "F0072",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "A pusher:error with a null code in the handshake throws a TypeError, and the client stays unavailable",
+    "note": "getCloseAction gives null for a null code, and for each code below 4000 other than 1002 to 1004. The handshake passes the action null on, and ConnectionManager calls handshakeCallbacks[null]. The close path of the handshake changes null to backoff. Confidence high."
+  },
+  {
+    "id": "F0073",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "The channel names constructor, toString, valueOf and hasOwnProperty make subscribe() throw a TypeError",
+    "note": "Channels keeps its table in a plain object and reads this.channels[name], so these names find the members of Object.prototype. Confidence high."
+  },
+  {
+    "id": "F0074",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "unsubscribe() of a pending subscription is lost after a reconnect, and the client subscribes again",
+    "note": "subscribeAll() calls subscribe(), which clears subscriptionCancelled. Pull request 997 fixed it on master on 2026-10-29, after 8.6.0. Confidence high."
+  },
+  {
+    "id": "F0075",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "pusher.bind() callbacks get no argument when the event data is 0, false, null or an empty string",
+    "note": "Dispatcher.emit adds the data only when it is truthy and no metadata comes with it. channel.bind() gets the value, because Channel gives metadata. Confidence high."
+  },
+  {
+    "id": "F0076",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "A presence channel_data that is not valid JSON gives an unhandled rejection, and the subscription stays pending",
+    "note": "PresenceChannel.authorize calls JSON.parse in an async callback with no catch, so no pusher:subscription_error comes. By default, Node.js stops on an unhandled rejection. Confidence high."
+  },
+  {
+    "id": "F0077",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "A presence authorization with no channel_data and no signed-in user gives a subscription_error with the error undefined",
+    "note": "PresenceChannel.authorize gives the string Invalid auth response to the callback, and Channel.subscribe reads error.message. Related: issue 485 (closed by the stale bot). Confidence high."
+  },
+  {
+    "id": "F0078",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "disconnect() after a close with a backoff code does not stop the reconnect",
+    "note": "The backoff callback and the closed callback both call retryIn(1000), and retryIn replaces retryTimer but does not abort the old timer. disconnect() aborts only the second timer. switchCluster() in that second also gives a third connection. Confidence high."
+  },
+  {
+    "id": "F0079",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "connect() during the retry wait does not cancel the retry timer, which then closes the new connection",
+    "note": "connect() starts a connection when there is no connection and no runner, but does not clear retryTimer. The timer calls disconnectInternally() and connect(), so the new connection closes with the code 1000 and a third one opens. Confidence high."
+  },
+  {
+    "id": "F0080",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "types",
+    "title": "The configuration example of the README does not compile: channelAuthorization and userAuthentication require transport and endpoint",
+    "note": "InternalAuthOptions makes transport and endpoint required, but the README gives defaults for both, and config.ts merges the defaults. Confidence high."
+  },
+  {
+    "id": "F0081",
+    "package": "pusher-js",
+    "version": "8.6.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "types",
+    "title": "Channel.subscriptionCount has the type null, so a number does not compile",
+    "note": "channel.ts declares subscriptionCount: null, and handleSubscriptionCountEvent sets the count. Confidence high."
   }
 ]

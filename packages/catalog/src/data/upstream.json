@@ -492,5 +492,12 @@
     "state": "pr-open",
     "url": "https://github.com/pusher/pusher-js/pull/1013",
     "note": "The fix test ran in CI (repro.yml, run 43632360405): the two new specs fail with src of master and pass with the fix. The repro gives the state unavailable on master and connected with the fix. make node_unit gives 757 of 757 specs (755 on master), and make web_unit gives 876 ok in Chrome and in Firefox (874 on master)."
+  },
+  {
+    "finding": "F0074",
+    "at": "2026-11-14T20:52:41Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/pusher/pusher-js/pull/997",
+    "note": "Merged on master on 2026-10-29. Not in 8.6.0."
   }
 ]
