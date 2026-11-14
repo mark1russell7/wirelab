@@ -40,7 +40,7 @@ function Room({ room, enabled }: { room: string; enabled: boolean }) {
   });
   return null;
 }
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 const render = (props: { room: string; enabled: boolean }) => createElement(Room, props);
 
 let renderer: ReactTestRenderer | undefined;

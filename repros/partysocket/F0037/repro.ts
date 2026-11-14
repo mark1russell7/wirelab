@@ -33,3 +33,6 @@ const timeout = new WebSocket("ws://example.test/", undefined, {
 });
 timeout.onerror = (e) => console.log("onerror:        message", show(e.message), "error", show(e.error));
 timeout.addEventListener("error", (e) => console.log("error listener: message", show(e.message), "error", show(e.error)));
+
+// The file is a module, so top-level await works.
+export {};

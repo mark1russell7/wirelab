@@ -12,3 +12,6 @@ try {
 } catch (e) {
   console.log(`new PartySocket() threw: ${(e as Error).name}: ${(e as Error).message}`);
 }
+
+// The file is a module, so top-level await works.
+export {};
