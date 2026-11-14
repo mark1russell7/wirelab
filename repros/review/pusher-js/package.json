@@ -1,7 +1,0 @@
-{
-  "private": true,
-  "dependencies": {
-    "pusher-js": "8.6.0",
-    "ws": "8.23.0"
-  }
-}

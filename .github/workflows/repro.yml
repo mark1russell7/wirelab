@@ -59,20 +59,29 @@ jobs:
           fi
           echo "artifact=repro-${DIR//\//-}" >> "$GITHUB_OUTPUT"
       # Install scripts do not run: the packages of a repro are code of others.
+      # A folder can share packages with its parent folders, as the fix tests do: each package.json on the path
+      # from repros/ to the folder installs, the parent first.
       - name: Install
         run: |
-          cd "repros/$DIR"
-          if [[ -f package.json ]]; then
-            npm install --ignore-scripts --no-audit --no-fund
-            npm ls --depth=0 || true
-          fi
-      # A repro in TypeScript has a tsconfig.json. Its types must check before it runs.
+          path=repros
+          IFS=/ read -ra parts <<< "$DIR"
+          for part in "${parts[@]}"; do
+            path="$path/$part"
+            if [[ -f "$path/package.json" ]]; then
+              (cd "$path" && npm install --ignore-scripts --no-audit --no-fund && { npm ls --depth=0 || true; })
+            fi
+          done
+      # A repro in TypeScript has a tsconfig.json, in its folder or in a parent folder. Its types must check before it runs.
       - name: Type check
         run: |
-          cd "repros/$DIR"
-          if [[ -f tsconfig.json ]]; then
-            npx --no-install tsc -p .
-          fi
+          path=repros
+          IFS=/ read -ra parts <<< "$DIR"
+          for part in "${parts[@]}"; do
+            path="$path/$part"
+            if [[ -f "$path/tsconfig.json" ]]; then
+              (cd "$path" && npx --no-install tsc -p .)
+            fi
+          done
       # A repro of a fault exits with a code that is not 0. The job records the code and passes when run.sh ran.
       - name: Run
         run: |
