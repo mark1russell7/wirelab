@@ -56,6 +56,7 @@
           "repros/partysocket/F0051/tsconfig.json",
           "repros/partysocket/F0053/tsconfig.repro.json",
           "repros/partysocket/F0054/tsconfig.repro.json",
+          "repros/partysocket/F0071/tsconfig.json",
           "repros/pusher-js/F0070/tsconfig.json",
           "repros/socket.io-client/F0055/tsconfig.json",
           "repros/socket.io-client/F0056/tsconfig.json",
