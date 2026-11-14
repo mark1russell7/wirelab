@@ -2,7 +2,7 @@
 // The unit suites (Node.js and the browsers of karma) and the format check run on upstream first, as the baseline.
 // The new specs of an item run with jasmine on a Node.js bundle of the specs, with a filter.
 import { join } from "node:path";
-import { command, copy, jasmine, link, matching, repros, run, sequence, type Check, type Item, type Spec } from "../lib/fix-test.ts";
+import { command, copy, jasmine, link, matching, repros, run, sequence, tsc, type Check, type Item, type Spec } from "../lib/fix-test.ts";
 
 /** An item: a finding, its fix branch, and the jasmine filter of its new specs. */
 export interface PusherItem extends Item {
@@ -26,6 +26,29 @@ export function repro(result: RegExp): Check {
     },
   };
 }
+
+/**
+ * This check makes the declarations of the clone (make types), then type-checks the ledger repro of a types item
+ * against them, with its tsconfig.repro.json and the pinned TypeScript of repros/fix-tests. The repro imports
+ * pusher-js, the link to the clone.
+ */
+export const types: Check = {
+  name: "tsc",
+  summary: tsc,
+  run: (context) => {
+    const dir = join(context.here, "e2e-types");
+    const bin = join(repros, "fix-tests", "node_modules", ".bin", "tsc");
+    return sequence([
+      () => run("make", ["types"], { cwd: context.root }),
+      async () => {
+        copy(join(repros, "pusher-js", context.id, "repro.ts"), dir);
+        copy(join(repros, "pusher-js", context.id, "tsconfig.repro.json"), dir);
+        return run(bin, ["--version"], { cwd: dir });
+      },
+      () => run(bin, ["-p", "tsconfig.repro.json"], { cwd: dir }),
+    ]);
+  },
+};
 
 const nodeUnit = command("node-unit", "make", ["node_unit"], { summary: jasmine });
 const webUnit = command("web-unit", "make", ["web_unit"], { summary: jasmine });
