@@ -36,6 +36,20 @@
     "rules": {
       "typed-files": {
         "configs": [
+          "repros/partysocket/F0037/tsconfig.json",
+          "repros/partysocket/F0038/tsconfig.json",
+          "repros/partysocket/F0039/tsconfig.json",
+          "repros/partysocket/F0040/tsconfig.json",
+          "repros/partysocket/F0041/tsconfig.json",
+          "repros/partysocket/F0042/tsconfig.json",
+          "repros/partysocket/F0043/tsconfig.json",
+          "repros/partysocket/F0044/tsconfig.json",
+          "repros/partysocket/F0045/tsconfig.json",
+          "repros/partysocket/F0046/tsconfig.json",
+          "repros/partysocket/F0047/tsconfig.json",
+          "repros/partysocket/F0049/tsconfig.json",
+          "repros/partysocket/F0050/tsconfig.json",
+          "repros/partysocket/F0051/tsconfig.json",
           "repros/pusher-js/F0070/tsconfig.json",
           "repros/socket.io-client/F0055/tsconfig.json",
           "repros/socket.io-client/F0056/tsconfig.json",
@@ -47,7 +61,11 @@
           "repros/sockjs-client/F0068/tsconfig.json",
           "repros/sockjs-client/F0069/tsconfig.json"
         ],
-        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines these configs."
+        "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines these configs. A repro of a types finding fails tsc on purpose: its run.sh starts tsc and keeps the errors.",
+        "ignore": [
+          "repros/partysocket/F0053/repro.ts",
+          "repros/partysocket/F0054/repro.ts"
+        ]
       }
     }
   }
