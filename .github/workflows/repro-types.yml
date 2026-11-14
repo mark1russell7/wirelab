@@ -102,7 +102,8 @@ jobs:
               return
             fi
             (cd "$d" && npx --no-install tsc -p tsconfig.repro.json) > "$RUNNER_TEMP/tsc.txt" 2>&1 || status=$?
-            cat "$RUNNER_TEMP/tsc.txt"
+            # The indent stops the tsc problem matcher of setup-node: these errors are expected, not faults of the job.
+            sed 's/^/  /' "$RUNNER_TEMP/tsc.txt"
             if (( status == 0 )); then
               echo "::error::tsc found no error in $d, so the repro no longer shows its fault."
               return 1
