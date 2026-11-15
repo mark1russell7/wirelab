@@ -218,8 +218,9 @@ describe.runIf(brokerUrl !== undefined)("Paho client_test5.py, ported to MQTT.js
       () => undefined,
       (failure: unknown) => failure,
     );
+    // MQTT.js 5 rejects with ErrorWithSubackPacket. The reason code is in `packet.granted` of the error, not in `code`.
     expect(error).toBeInstanceOf(Error);
-    expect(error).toMatchObject({ code: 0x80 });
+    expect(error).toMatchObject({ message: expect.stringMatching(/^Subscribe error/), packet: { granted: [0x80] } });
     expect((ofType(peer.received, "suback")[0]?.packet as ISubackPacket).granted).toEqual([0x80]);
     expect(peer.client.connected).toBe(true);
   });
@@ -452,18 +453,24 @@ describe.runIf(brokerUrl !== undefined)("Paho client_test5.py, ported to MQTT.js
     expect(peer.disconnects).toHaveLength(0);
   });
 
-  it("client_topic_alias: after a new connection, the client refuses a QoS 1 alias that it did not set", async () => {
+  // client bug: MQTT.js 5.16.1 never settles a QoS 1 publish with an alias that it did not set. `_storePacket` finds
+  // the unregistered alias, but `publish()` gives `_sendPacket` no callback for QoS 1, so the error goes to a no-op.
+  it.fails("client_topic_alias: after a new connection, the client rejects a QoS 1 alias that it did not set", async () => {
     // broker: [MQTT-3.3.2-7] (the receiver keeps no alias from an old connection). Paho closes the connection.
     const topic = uniqueName("t");
     const first = await open({ ...v5, clientId: uniqueName("c") });
     await first.client.publishAsync(topic, "alias set", { qos: 1, properties: { topicAlias: 1 } });
     const peer = await open({ ...v5, clientId: uniqueName("c") });
-    const error = await peer.client.publishAsync("", "alias used", { qos: 1, properties: { topicAlias: 1 } }).then(
-      () => undefined,
-      (failure: unknown) => failure,
-    );
-    expect(error).toBeInstanceOf(Error);
+    const outcome = await Promise.race([
+      peer.client.publishAsync("", "alias used", { qos: 1, properties: { topicAlias: 1 } }).then(
+        () => "resolved",
+        (failure: unknown) => failure,
+      ),
+      sleep(2_000).then(() => "pending"),
+    ]);
+    console.info(`evidence: the QoS 1 publish is ${outcome instanceof Error ? `rejected (${outcome.message})` : String(outcome)} after 2 s`);
     expect(ofType(peer.sent, "publish")).toHaveLength(0);
+    expect(outcome).toBeInstanceOf(Error);
   });
 
   it("server_topic_alias: [MQTT-3.3.2-10] the client accepts the aliases of the server up to its Topic Alias Maximum", async () => {

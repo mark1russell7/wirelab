@@ -2,10 +2,18 @@
 // Each test names the normative statements of MQTT 3.1.1 that it examines. Where Paho examines only the broker, a
 // comment says so, and the test examines the client side of the scenario.
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { Store } from "mqtt";
 import type { IConnectPacket, ISubackPacket } from "mqtt-packet";
 import { brokerUrl, closeAll, ofType, open, sleep, topicsOf, uniqueName } from "./harness.ts";
 
 const v311 = { protocolVersion: 4, clean: true } as const;
+
+/** This store never answers `put`. Thus MQTT.js holds the PUBREC of each QoS 2 message that it gets. */
+class HoldingStore extends Store {
+  override put(): this {
+    return this;
+  }
+}
 const wait = { timeout: 5_000, interval: 20 } as const;
 
 describe.runIf(brokerUrl !== undefined)("Paho client_test.py, ported to MQTT.js (MQTT 3.1.1)", () => {
@@ -143,12 +151,17 @@ describe.runIf(brokerUrl !== undefined)("Paho client_test.py, ported to MQTT.js 
     // broker: [MQTT-4.4.0-1] (send the unacknowledged PUBLISH packets again).
     const base = uniqueName("t");
     const clientId = uniqueName("c");
-    const held = await open({ ...v311, clientId, clean: false, customHandleAcks: () => undefined });
+    // MQTT.js uses `customHandleAcks` only for MQTT 5. For 3.1.1 it sends each acknowledgement at once.
+    // A store with no answer to `put` holds the PUBREC. A `handleMessage` with no callback holds the PUBACK.
+    const held = await open({ ...v311, clientId, clean: false, incomingStore: new HoldingStore() });
+    held.client.handleMessage = () => undefined;
     await held.client.subscribeAsync(`${base}/+`, { qos: 2 });
     const publisher = await open({ ...v311, clientId: uniqueName("c") });
     await publisher.client.publishAsync(`${base}/1`, "qos 1", { qos: 1 });
     await publisher.client.publishAsync(`${base}/2`, "qos 2", { qos: 2 });
     await vi.waitFor(() => expect(held.wire.filter((p) => p.cmd === "publish")).toHaveLength(2), wait);
+    expect(ofType(held.sent, "puback")).toHaveLength(0);
+    expect(ofType(held.sent, "pubrec")).toHaveLength(0);
     held.client.end(true);
     await sleep(300);
 
@@ -171,7 +184,9 @@ describe.runIf(brokerUrl !== undefined)("Paho client_test.py, ported to MQTT.js 
       () => undefined,
       (failure: unknown) => failure,
     );
-    expect(error).toMatchObject({ code: 0x80 });
+    // MQTT.js 5 rejects with ErrorWithSubackPacket. The return code is in `packet.granted` of the error, not in `code`.
+    expect(error).toBeInstanceOf(Error);
+    expect(error).toMatchObject({ message: expect.stringMatching(/^Subscribe error/), packet: { granted: [0x80] } });
     expect((ofType(peer.received, "suback")[0]?.packet as ISubackPacket).granted).toEqual([0x80]);
     expect(peer.client.connected).toBe(true);
   });
