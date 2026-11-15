@@ -1,0 +1,1 @@
+repro.ts(5,25): error TS2741: Property 'room' is missing in type '{ host: string; basePath: string; }' but required in type 'PartyFetchOptions'.

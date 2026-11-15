@@ -129,13 +129,14 @@ export type PolicyTopic = (typeof POLICY_TOPICS)[number];
  * - `ai`: the rule for contributions that an AI made. `none-stated` means that the repository has no rule.
  * - `cla`: the agreement that a contributor signs. `dco` is a sign-off line in each commit.
  * - `security`: the private channel for a security fault. `platform` is a bounty platform, for example HackerOne.
- * - `contributions`: `open` when the repository takes pull requests. An `archived` repository takes none.
+ * - `contributions`: `open` when the repository takes pull requests. `collaborators-only` when it takes pull requests
+ *   only from its collaborators. An `archived` repository takes none.
  */
 export const POLICY_VALUES: Readonly<Record<PolicyTopic, readonly string[]>> = {
   ai: ["none-stated", "allowed", "disclosure", "refused"],
   cla: ["none", "dco", "cla"],
   security: ["github-advisory", "email", "platform", "none-stated"],
-  contributions: ["open", "archived"],
+  contributions: ["open", "collaborators-only", "archived"],
 };
 
 /**
@@ -186,8 +187,11 @@ export interface Run {
   readonly note?: string;
 }
 
-/** The kinds of a finding. A security finding is in the public tables only after its advisory is public. */
-export const FINDING_KINDS = ["conformance", "correctness", "types", "resource", "performance", "security"] as const;
+/**
+ * The kinds of a finding. A security finding is in the public tables only after its advisory is public.
+ * A finding of the kind tests is a fault in the test suite of the repository, not in the published code.
+ */
+export const FINDING_KINDS = ["conformance", "correctness", "types", "resource", "performance", "security", "tests"] as const;
 export type FindingKind = (typeof FINDING_KINDS)[number];
 
 /** How the campaign found a fault. */
