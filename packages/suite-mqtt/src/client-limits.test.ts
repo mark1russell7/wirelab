@@ -148,22 +148,38 @@ describe.runIf(brokerUrl !== undefined)("MQTT.js: limits and rules of the client
   });
 
   describe("topic_alias_maximum", () => {
-    it("[MQTT-3.2.2-17] [MQTT-3.3.2-9] the client refuses a Topic Alias above the Topic Alias Maximum of the server", async () => {
+    it("[MQTT-3.2.2-17] [MQTT-3.3.2-9] the client refuses a QoS 0 Topic Alias above the Topic Alias Maximum of the server", async () => {
       const peer = await open({ ...v5, clientId: uniqueName("c") });
       const maximum = peer.connack.properties?.topicAliasMaximum ?? 0;
       expect(maximum).toBe(broker.topicAliasMaximum);
-      for (const qos of [0, 1] as const) {
-        const error = await peer.client
-          .publishAsync(uniqueName("t"), "alias", { qos, properties: { topicAlias: maximum + 1 } })
-          .then(
-            () => undefined,
-            (failure: unknown) => failure,
-          );
-        expect(error).toBeInstanceOf(Error);
-        expect((error as Error).message).toMatch(/Topic Alias out of range/);
-      }
+      const error = await peer.client
+        .publishAsync(uniqueName("t"), "alias", { qos: 0, properties: { topicAlias: maximum + 1 } })
+        .then(
+          () => undefined,
+          (failure: unknown) => failure,
+        );
+      expect(error).toBeInstanceOf(Error);
+      expect((error as Error).message).toMatch(/Topic Alias out of range/);
       expect(ofType(peer.sent, "publish")).toHaveLength(0);
       expect(peer.client.connected).toBe(true);
+    });
+
+    // client bug: MQTT.js 5.16.1 never settles a QoS 1 or 2 publish that `_applyTopicAlias` refuses. For QoS 1 and 2,
+    // `publish()` gives `_sendPacket` no callback, so the error goes to a no-op and the Packet Identifier stays in use.
+    it.fails("[MQTT-3.2.2-17] [MQTT-3.3.2-9] the client rejects a QoS 1 publish with a Topic Alias above the maximum", async () => {
+      const peer = await open({ ...v5, clientId: uniqueName("c") });
+      const maximum = peer.connack.properties?.topicAliasMaximum ?? 0;
+      const outcome = await Promise.race([
+        peer.client.publishAsync(uniqueName("t"), "alias", { qos: 1, properties: { topicAlias: maximum + 1 } }).then(
+          () => "resolved",
+          (failure: unknown) => failure,
+        ),
+        sleep(2_000).then(() => "pending"),
+      ]);
+      evidence(`the QoS 1 publish is ${outcome instanceof Error ? `rejected (${outcome.message})` : String(outcome)} after 2 s`);
+      expect(ofType(peer.sent, "publish")).toHaveLength(0);
+      expect(outcome).toBeInstanceOf(Error);
+      expect((outcome as Error).message).toMatch(/Topic Alias out of range/);
     });
 
     it("[MQTT-3.2.2-17] with autoAssignTopicAlias, the client uses only the aliases from 1 to the maximum", async () => {
@@ -408,7 +424,9 @@ describe.runIf(brokerUrl !== undefined)("MQTT.js: limits and rules of the client
       expect(ofType(peer.received, "puback")[0]?.reasonCode).toBe(0x10);
     });
 
-    it("a DISCONNECT with reason code 135 gives the reason code and the properties to the application", async () => {
+    // broker: the command `cmd/disconnectWithRC` of the Paho broker at fdab9d2 sets `UserPropertyList`, which is not a
+    // property name. The broker raises an error and closes the socket with no DISCONNECT.
+    it.skip("a DISCONNECT with reason code 135 gives the reason code and the properties to the application", async () => {
       const peer = await open({ ...v5, clientId: uniqueName("c") });
       await peer.client.publishAsync("cmd/disconnectWithRC", "135", { qos: 0 });
       await vi.waitFor(() => expect(peer.disconnects).toHaveLength(1), wait);

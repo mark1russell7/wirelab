@@ -18,7 +18,7 @@ The suite tests the client, not the broker. The broker is a fixed reference: the
 - A normative statement has the form `[MQTT-x.x.x-y]`. The title or a comment of the test names it.
 - Some statements of a Paho test apply only to the broker. A comment `// broker:` names them. The test then examines the client side of the same exchange.
 - A test that shows a fault of MQTT.js is `it.fails`, with a comment `// client bug:`. The test passes while the fault stays. When a release of MQTT.js removes the fault, the test fails. Then change it to `it`.
-- A fault of the broker gets `it.skip`, with a comment `// broker:`. The suite has no such test at this time.
+- A fault of the broker gets `it.skip`, with a comment `// broker:`. One test has this mark: the `DISCONNECT` with reason code 135.
 - Each test has a time limit, removes its clients and uses its own client identifiers and topics.
 
 ## Run the suite on your computer
@@ -159,5 +159,6 @@ Each fault has one or more `it.fails` tests. A fault with two or more tests has 
 | The client gives a new PUBLISH a packet identifier that is in use. | 2.2.1-3 | `unique_packet_identifiers` |
 | The client sends a QoS 0 PUBLISH with DUP 1 when the application asks for it. | 3.3.1-2 | `values_from_the_application` |
 | The client sends a Subscription Identifier in a PUBLISH when the application gives one. | 3.3.4-6 | `values_from_the_application` |
+| The client refuses a QoS 1 or QoS 2 PUBLISH for its Topic Alias, but the publish does not resolve or reject at any time. | none: the client sends no bad packet | `topic_alias_maximum`, `client_topic_alias` |
 
 The client also ignores the Assigned Client Identifier of the server. An automatic reconnect sends an empty Client Identifier again, so the session of the first connection is lost. No normative statement of the client covers this, so the suite has no `it.fails` test for it. The test `assigned_client_identifier` shows that the session resumes when the application gives this identifier.
