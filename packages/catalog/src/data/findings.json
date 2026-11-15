@@ -808,5 +808,104 @@
     "kind": "types",
     "title": "Channel.subscriptionCount has the type null, so a number does not compile",
     "note": "channel.ts declares subscriptionCount: null, and handleSubscriptionCountEvent sets the count. Confidence high."
+  },
+  {
+    "id": "F0082",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "suite",
+    "found": "2026-11-15",
+    "run": "suite-mqtt-43766039892",
+    "kind": "conformance",
+    "title": "The client sends more QoS 1 and QoS 2 messages in flight than the Receive Maximum of the server",
+    "note": "[MQTT-3.3.4-7] [MQTT-4.9.0-2]. The tests flow_control2 and receive_maximum of suite-mqtt are it.fails."
+  },
+  {
+    "id": "F0083",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "suite",
+    "found": "2026-11-15",
+    "run": "suite-mqtt-43766039892",
+    "kind": "conformance",
+    "title": "The client sends packets larger than the Maximum Packet Size of the server",
+    "note": "[MQTT-3.2.2-15]. A PUBLISH and a SUBSCRIBE go out above the limit. The tests maximum_packet_size of suite-mqtt are it.fails."
+  },
+  {
+    "id": "F0084",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "suite",
+    "found": "2026-11-15",
+    "run": "suite-mqtt-43766039892",
+    "kind": "conformance",
+    "title": "The client sends a PUBLISH with Topic Alias 0",
+    "note": "[MQTT-3.3.2-8]. The test client_topic_alias of suite-mqtt is it.fails."
+  },
+  {
+    "id": "F0085",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "suite",
+    "found": "2026-11-15",
+    "run": "suite-mqtt-43766039892",
+    "kind": "conformance",
+    "title": "The client sends an unacknowledged PUBLISH again with DUP 0",
+    "note": "[MQTT-3.3.1-1]. The resend after a reconnect has DUP 0, for MQTT 5.0 at QoS 1 and QoS 2 and for MQTT 3.1.1. The tests resend_with_dup_v5 and resend_with_dup_v311 are it.fails."
+  },
+  {
+    "id": "F0086",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "suite",
+    "found": "2026-11-15",
+    "run": "suite-mqtt-43766039892",
+    "kind": "conformance",
+    "title": "The client sends old messages again after Session Present 0, or on a new session with Clean Start 1",
+    "note": "[MQTT-3.2.2-5] [MQTT-3.1.2-4] [MQTT-4.4.0-1]. The test resend_only_with_session of suite-mqtt is it.fails."
+  },
+  {
+    "id": "F0087",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "suite",
+    "found": "2026-11-15",
+    "run": "suite-mqtt-43766039892",
+    "kind": "conformance",
+    "title": "The client gives a new PUBLISH a Packet Identifier that is in use",
+    "note": "[MQTT-2.2.1-3]. The test unique_packet_identifiers of suite-mqtt is it.fails."
+  },
+  {
+    "id": "F0088",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "suite",
+    "found": "2026-11-15",
+    "run": "suite-mqtt-43766039892",
+    "kind": "conformance",
+    "title": "The client sends a QoS 0 PUBLISH with DUP 1 when the application asks for it",
+    "note": "[MQTT-3.3.1-2]. The client copies the dup option of the application into a QoS 0 PUBLISH. The test values_from_the_application is it.fails."
+  },
+  {
+    "id": "F0089",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "suite",
+    "found": "2026-11-15",
+    "run": "suite-mqtt-43766039892",
+    "kind": "conformance",
+    "title": "The client sends a Subscription Identifier in a PUBLISH when the application gives one",
+    "note": "[MQTT-3.3.4-6]. The test values_from_the_application of suite-mqtt is it.fails."
+  },
+  {
+    "id": "F0090",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "suite",
+    "found": "2026-11-15",
+    "run": "suite-mqtt-43766039892",
+    "kind": "correctness",
+    "title": "A QoS 1 or QoS 2 publish that the client refuses for its Topic Alias does not settle",
+    "note": "publish() gives _sendPacket no callback for QoS 1 and 2. The errors of _applyTopicAlias and _removeTopicAliasAndRecoverTopicName go to a no-op, and the Packet Identifier stays in outgoing. QoS 0 rejects. The tests topic_alias_maximum and client_topic_alias are it.fails."
   }
 ]
