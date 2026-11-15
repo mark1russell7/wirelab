@@ -30,10 +30,12 @@ jobs:
   suite:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    env:
-      BROKER_LOG: ${{ runner.temp }}/paho-broker.log
-      REPORT: ${{ runner.temp }}/suite-mqtt-report.json
     steps:
+      # The context runner does not exist in the env of a job, so the paths go to GITHUB_ENV in a step.
+      - name: Set the paths of the broker log and the report
+        run: |
+          echo "BROKER_LOG=$RUNNER_TEMP/paho-broker.log" >> "$GITHUB_ENV"
+          echo "REPORT=$RUNNER_TEMP/suite-mqtt-report.json" >> "$GITHUB_ENV"
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
