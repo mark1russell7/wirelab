@@ -18,7 +18,7 @@ The suite tests the client, not the broker. The broker is a fixed reference: the
 - A normative statement has the form `[MQTT-x.x.x-y]`. The title or a comment of the test names it.
 - Some statements of a Paho test apply only to the broker. A comment `// broker:` names them. The test then examines the client side of the same exchange.
 - A test that shows a fault of MQTT.js is `it.fails`, with a comment `// client bug:`. The test passes while the fault stays. When a release of MQTT.js removes the fault, the test fails. Then change it to `it`.
-- A fault of the broker gets `it.skip`, with a comment `// broker:`. The suite has no such test now.
+- A fault of the broker gets `it.skip`, with a comment `// broker:`. The suite has no such test at this time.
 - Each test has a time limit, removes its clients and uses its own client identifiers and topics.
 
 ## Run the suite on your computer
@@ -52,7 +52,7 @@ The suite needs Python 3 for the broker. The broker needs no other Python packag
    ```
 
 - When `MQTT_BROKER_URL` has no value, Vitest skips the tests that need a broker. Thus `pnpm test` passes on a computer with no broker.
-- Some tests wait for the Keep Alive of the server, for about one minute. The full suite runs in CI, in the workflow `.github/workflows/suite-mqtt.yml`.
+- Some tests wait for the Keep Alive of the server, for approximately one minute. The full suite runs in CI, in the workflow `.github/workflows/suite-mqtt.yml`.
 
 ## The broker configuration
 

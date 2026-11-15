@@ -2,6 +2,7 @@
 // Each test names the normative statements of MQTT 5.0 that it examines. Where Paho examines only the broker, a
 // comment says so, and the test examines the client side of the scenario.
 import { afterEach, describe, expect, it, vi } from "vitest";
+import type { IClientSubscribeOptions } from "mqtt";
 import type { IConnectPacket, IDisconnectPacket, IPublishPacket, ISubackPacket, ISubscribePacket } from "mqtt-packet";
 import { brokerUrl, closeAll, cut, ofType, open, peakInFlight, sleep, topicsOf, uniqueName } from "./harness.ts";
 
@@ -353,7 +354,9 @@ describe.runIf(brokerUrl !== undefined)("Paho client_test5.py, ported to MQTT.js
     await a.client.subscribeAsync(`${base}/rh/R`, { qos: 2, rh: 0 });
     await vi.waitFor(() => expect(a.messages).toHaveLength(1), wait);
     // MQTT.js sends no SUBSCRIBE for a filter that it has with the same QoS, unless the map has `resubscribe: true`.
-    await a.client.subscribeAsync({ [`${base}/rh/R`]: { qos: 2, rh: 1 }, resubscribe: true });
+    // A literal with `resubscribe` fails the index signature of `ISubscriptionMap`, so the map joins two typed parts.
+    const again: IClientSubscribeOptions = { qos: 2, rh: 1 };
+    await a.client.subscribeAsync(Object.assign({ [`${base}/rh/R`]: again }, { resubscribe: true }));
     await a.client.subscribeAsync(`${base}/rh/+`, { qos: 2, rh: 2 });
     await sleep(300);
     expect(a.messages).toHaveLength(1);
