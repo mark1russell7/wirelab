@@ -174,7 +174,7 @@ importers:
         version: 0.2.1(@swc/core@1.16.22)(dependency-cruiser@18.7.2)
       '@mark1russell7/conventions':
         specifier: ^0.41.2
-        version: 0.41.5
+        version: 0.41.10
       '@mark1russell7/cue':
         specifier: ^2.0.0
         version: 2.1.4
@@ -206,8 +206,8 @@ importers:
   packages/catalog:
     dependencies:
       '@mark1russell7/rigor-statistics':
-        specifier: ^0.1.28
-        version: 0.1.29
+        specifier: ^0.2.1
+        version: 0.2.1
     devDependencies:
       '@mark1russell7/cue':
         specifier: ^2.0.0
@@ -472,8 +472,8 @@ packages:
       dependency-cruiser:
         optional: true
 
-  '@mark1russell7/conventions@0.41.5':
-    resolution: {integrity: sha512-utYAEou/70qKRpukES+mYKZ+KxNpjOd9yyyM6sdQS0+geurjQ7YTlW0ov2CbjnTK8HVSkf1OHRo+SnIBD3fYmA==}
+  '@mark1russell7/conventions@0.41.10':
+    resolution: {integrity: sha512-OD4i/u7PI2U1VORHfQLnkk52MIytd/q8NaqHGVet+V6X/FhekBu9qfMrM1NcnSmZEpTLFx5VvA1WwcW12K0pPQ==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -486,8 +486,16 @@ packages:
     resolution: {integrity: sha512-0r+5JbxvSk6H0rTGqhzmlnE5UAHAImOH7R1CbOjQARLil2zOYkvvJzWvnwC5txLCw71eyVCvpT7rb09oKRcGxQ==}
     engines: {node: '>=22'}
 
+  '@mark1russell7/rigor-generators@0.1.16':
+    resolution: {integrity: sha512-C94Q4C31aZ8UXx1R0JSBV7DiQFl5tVpbFxHxHzHaSqr3dTgmCkEvLrvlUV8/0/GZqPhQYG9cbX6GOlqfRj/h4g==}
+    engines: {node: '>=22'}
+
   '@mark1russell7/rigor-statistics@0.1.29':
     resolution: {integrity: sha512-Wh91NJIwxIRN3+a5V2bqUkMhdPcjHI+gVZBCnohf12ZegdSTNqGlpqS2WXYmrRVjasF9EBgm1lC8GQNYpBSg7Q==}
+    engines: {node: '>=22'}
+
+  '@mark1russell7/rigor-statistics@0.2.1':
+    resolution: {integrity: sha512-4m8yw4giLH/y1HcsroBQSHAWByC5fK/iJb4dNGCPT6Eelr26bxvBz7kMC7UMFSzGcR+W8GTrAwlAQmmFnQDMuA==}
     engines: {node: '>=22'}
 
   '@mark1russell7/site-pages@0.4.8':
@@ -1503,14 +1511,14 @@ snapshots:
 
   '@mark1russell7/api-report@0.5.6':
     dependencies:
-      '@mark1russell7/conventions': 0.41.5
+      '@mark1russell7/conventions': 0.41.10
 
   '@mark1russell7/boundaries@0.2.1(@swc/core@1.16.22)(dependency-cruiser@18.7.2)':
     optionalDependencies:
       '@swc/core': 1.16.22
       dependency-cruiser: 18.7.2
 
-  '@mark1russell7/conventions@0.41.5':
+  '@mark1russell7/conventions@0.41.10':
     dependencies:
       yaml: 2.9.1
 
@@ -1518,9 +1526,15 @@ snapshots:
 
   '@mark1russell7/rigor-generators@0.1.15': {}
 
+  '@mark1russell7/rigor-generators@0.1.16': {}
+
   '@mark1russell7/rigor-statistics@0.1.29':
     dependencies:
       '@mark1russell7/rigor-generators': 0.1.15
+
+  '@mark1russell7/rigor-statistics@0.2.1':
+    dependencies:
+      '@mark1russell7/rigor-generators': 0.1.16
 
   '@mark1russell7/site-pages@0.4.8':
     dependencies:
