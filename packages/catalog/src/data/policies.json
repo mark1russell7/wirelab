@@ -61,6 +61,37 @@
     "note": "The MSRC Researcher Portal of Microsoft."
   },
   {
+    "repository": "Dash-Industry-Forum/dash.js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/Dash-Industry-Forum/dash.js/blob/development/AGENTS.md",
+    "note": "AGENTS.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "Dash-Industry-Forum/dash.js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "cla",
+    "evidence": "https://github.com/Dash-Industry-Forum/dash.js/blob/development/CONTRIBUTING.md",
+    "note": "The Feedback Agreement of the DASH Industry Forum. A contributor who is not a member signs it and sends it by email."
+  },
+  {
+    "repository": "Dash-Industry-Forum/dash.js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/Dash-Industry-Forum/dash.js/pulls"
+  },
+  {
+    "repository": "Dash-Industry-Forum/dash.js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/Dash-Industry-Forum/dash.js/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
     "repository": "EventSource/eventsource",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -212,6 +243,36 @@
     "checked": "2026-11-15",
     "value": "none-stated",
     "evidence": "https://github.com/SocketCluster/socketcluster-client/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
+    "repository": "Yaffle/EventSource",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/Yaffle/EventSource",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "Yaffle/EventSource",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/Yaffle/EventSource"
+  },
+  {
+    "repository": "Yaffle/EventSource",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/Yaffle/EventSource/pulls"
+  },
+  {
+    "repository": "Yaffle/EventSource",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/Yaffle/EventSource/security",
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
@@ -423,6 +484,36 @@
     "note": "The ASF vulnerability reporting process, from the security policy of the organization. It asks for an email to the ASF security team."
   },
   {
+    "repository": "apache/thrift",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "disclosure",
+    "evidence": "https://github.com/apache/thrift/blob/master/CONTRIBUTING.md#ai-generated-content",
+    "note": "The guide follows the ASF Generative Tooling Guidance. It asks for a Generated-by or Co-Authored-By trailer on AI content."
+  },
+  {
+    "repository": "apache/thrift",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/apache/thrift/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "apache/thrift",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/apache/thrift/pulls"
+  },
+  {
+    "repository": "apache/thrift",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/apache/thrift/blob/master/SECURITY.md",
+    "note": "SECURITY.md asks for an email to the ASF security team."
+  },
+  {
     "repository": "apollographql/apollo-client",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -489,6 +580,37 @@
     "value": "none-stated",
     "evidence": "https://github.com/ashiqdey/precompiled-mqtt/security",
     "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
+    "repository": "aws-amplify/amplify-js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/aws-amplify/amplify-js/blob/main/AGENTS.md",
+    "note": "AGENTS.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "aws-amplify/amplify-js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/aws-amplify/amplify-js/blob/main/CONTRIBUTING.md",
+    "note": "AWS asks for a CLA only for a larger change. No CLA check runs on pull requests."
+  },
+  {
+    "repository": "aws-amplify/amplify-js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/aws-amplify/amplify-js/pulls"
+  },
+  {
+    "repository": "aws-amplify/amplify-js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "platform",
+    "evidence": "https://github.com/aws-amplify/.github/blob/master/SECURITY.md",
+    "note": "The AWS Vulnerability Disclosure Program on HackerOne, or an email to AWS security, from the security policy of the organization."
   },
   {
     "repository": "aws/aws-iot-device-sdk-js-v2",
@@ -744,6 +866,65 @@
     "note": "The private security list of Connect, from its governance page."
   },
   {
+    "repository": "convex/convex-backend",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/convex/convex-backend/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "convex/convex-backend",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "cla",
+    "evidence": "https://github.com/convex/convex-backend/blob/main/CONTRIBUTING.md",
+    "note": "No separate form. The contribution guide says that a pull request lets Convex use, change, copy and redistribute it under the terms of its choice."
+  },
+  {
+    "repository": "convex/convex-backend",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/convex/convex-backend/pulls"
+  },
+  {
+    "repository": "convex/convex-backend",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/convex/convex-backend/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
+    "repository": "daily-co/daily-js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/daily-co/daily-js/blob/daily-js-releases/CONTRIBUTING.md"
+  },
+  {
+    "repository": "daily-co/daily-js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/daily-co/daily-js/blob/daily-js-releases/CONTRIBUTING.md"
+  },
+  {
+    "repository": "daily-co/daily-js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/daily-co/daily-js/pulls"
+  },
+  {
+    "repository": "daily-co/daily-js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/daily-co/daily-js/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
     "repository": "deepstreamIO/deepstream.io-client-js",
     "topic": "ai",
     "checked": "2026-11-15",
@@ -832,6 +1013,37 @@
     "value": "email",
     "evidence": "https://github.com/eclipse-paho/paho.mqtt.javascript/blob/master/SECURITY.md",
     "note": "The security team of the Eclipse Foundation."
+  },
+  {
+    "repository": "elpheria/rpc-websockets",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/elpheria/rpc-websockets",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "elpheria/rpc-websockets",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/elpheria/rpc-websockets",
+    "note": "Half of the recent commits have a sign-off line, but no check needs one."
+  },
+  {
+    "repository": "elpheria/rpc-websockets",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/elpheria/rpc-websockets/pulls"
+  },
+  {
+    "repository": "elpheria/rpc-websockets",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/elpheria/rpc-websockets/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
     "repository": "enisdenjo/graphql-ws",
@@ -1042,6 +1254,36 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "graphql/graphql-http",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/graphql/graphql-http/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "graphql/graphql-http",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "cla",
+    "evidence": "https://github.com/graphql/graphql-http/blob/main/CONTRIBUTING.md",
+    "note": "The GraphQL Specification Membership agreement, through EasyCLA. The check EasyCLA runs on each pull request."
+  },
+  {
+    "repository": "graphql/graphql-http",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/graphql/graphql-http/pulls"
+  },
+  {
+    "repository": "graphql/graphql-http",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/graphql/.github/blob/main/SECURITY.md",
+    "note": "An email to the security team of GraphQL, from the security policy of the organization."
+  },
+  {
     "repository": "grpc/grpc-web",
     "topic": "ai",
     "checked": "2026-11-13",
@@ -1157,6 +1399,36 @@
     "value": "none-stated",
     "evidence": "https://github.com/improbable-eng/grpc-web",
     "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "jdiaz5513/capnp-ts",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/jdiaz5513/capnp-ts",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "jdiaz5513/capnp-ts",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/jdiaz5513/capnp-ts"
+  },
+  {
+    "repository": "jdiaz5513/capnp-ts",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/jdiaz5513/capnp-ts/pulls"
+  },
+  {
+    "repository": "jdiaz5513/capnp-ts",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/jdiaz5513/capnp-ts/blob/master/SECURITY.md",
+    "note": "SECURITY.md asks for a public issue with the label security, or a pull request. There is no private channel."
   },
   {
     "repository": "jjxxs/websocket-ts",
@@ -1795,6 +2067,67 @@
     "evidence": "https://github.com/nats-io/nats.ws"
   },
   {
+    "repository": "neo4j/neo4j-javascript-driver",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/neo4j/neo4j-javascript-driver/blob/6.x/CONTRIBUTING.md"
+  },
+  {
+    "repository": "neo4j/neo4j-javascript-driver",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "cla",
+    "evidence": "https://github.com/neo4j/neo4j-javascript-driver/blob/6.x/CONTRIBUTING.md",
+    "note": "The Neo4j CLA, from the contribution guide and the pull request template."
+  },
+  {
+    "repository": "neo4j/neo4j-javascript-driver",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/neo4j/neo4j-javascript-driver/pulls"
+  },
+  {
+    "repository": "neo4j/neo4j-javascript-driver",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/neo4j/.github/blob/main/SECURITY.md",
+    "note": "The responsible disclosure policy of Neo4j, from the security policy of the organization. It asks for an email to the security team. GitHub private reporting is also on."
+  },
+  {
+    "repository": "neondatabase/electric",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/neondatabase/electric/blob/main/AGENTS.md",
+    "note": "AGENTS.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "neondatabase/electric",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "cla",
+    "evidence": "https://github.com/neondatabase/electric/blob/main/CONTRIBUTING.md",
+    "note": "The ElectricSQL CLA. A pull request with code counts as acceptance of it."
+  },
+  {
+    "repository": "neondatabase/electric",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/neondatabase/electric/pulls"
+  },
+  {
+    "repository": "neondatabase/electric",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "github-advisory",
+    "evidence": "https://github.com/neondatabase/electric/blob/main/SECURITY.md",
+    "note": "SECURITY.md asks for reports through GitHub private vulnerability reporting."
+  },
+  {
     "repository": "neondatabase/serverless",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -1823,6 +2156,36 @@
     "value": "none-stated",
     "evidence": "https://github.com/neondatabase/serverless/security",
     "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
+    "repository": "novnc/noVNC",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "refused",
+    "evidence": "https://github.com/novnc/noVNC/blob/master/AI_POLICY.md",
+    "note": "A significant contribution has no LLM content. A minor change or a test with LLM content needs an Assisted-by tag."
+  },
+  {
+    "repository": "novnc/noVNC",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/novnc/noVNC"
+  },
+  {
+    "repository": "novnc/noVNC",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/novnc/noVNC/pulls"
+  },
+  {
+    "repository": "novnc/noVNC",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "github-advisory",
+    "evidence": "https://github.com/novnc/noVNC/security",
+    "note": "Private vulnerability reporting is on. There is no SECURITY.md."
   },
   {
     "repository": "open-telemetry/opentelemetry-js",
@@ -2328,6 +2691,37 @@
     "note": "HackerOne, from the security policy of the organization."
   },
   {
+    "repository": "tedeh/jayson",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/tedeh/jayson/blob/master/README.md#contributing",
+    "note": "The repository has no contribution guide. The section Contributing of the README states no rule for AI."
+  },
+  {
+    "repository": "tedeh/jayson",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/tedeh/jayson",
+    "note": "Each recent commit has a sign-off line, but no check needs one."
+  },
+  {
+    "repository": "tedeh/jayson",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/tedeh/jayson/pulls"
+  },
+  {
+    "repository": "tedeh/jayson",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/tedeh/jayson/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
     "repository": "timostamm/protobuf-ts",
     "topic": "ai",
     "checked": "2026-11-13",
@@ -2413,6 +2807,95 @@
     "checked": "2026-11-16",
     "value": "none-stated",
     "evidence": "https://github.com/tursodatabase/libsql-client-ts/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
+    "repository": "tus/tus-js-client",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/tus/tus-js-client/blob/main/docs/contributing.md"
+  },
+  {
+    "repository": "tus/tus-js-client",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/tus/tus-js-client/blob/main/docs/contributing.md",
+    "note": "Half of the recent commits have a sign-off line, but no check needs one."
+  },
+  {
+    "repository": "tus/tus-js-client",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/tus/tus-js-client/pulls"
+  },
+  {
+    "repository": "tus/tus-js-client",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "github-advisory",
+    "evidence": "https://github.com/tus/tus-js-client/security",
+    "note": "Private vulnerability reporting is on. There is no SECURITY.md."
+  },
+  {
+    "repository": "ueberdosis/hocuspocus",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/ueberdosis/hocuspocus/blob/main/README.md",
+    "note": "The README names docs/contributing.md, but the repository has no such file."
+  },
+  {
+    "repository": "ueberdosis/hocuspocus",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/ueberdosis/hocuspocus/blob/main/README.md"
+  },
+  {
+    "repository": "ueberdosis/hocuspocus",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/ueberdosis/hocuspocus/pulls"
+  },
+  {
+    "repository": "ueberdosis/hocuspocus",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/ueberdosis/hocuspocus/blob/main/SECURITY.md",
+    "note": "SECURITY.md asks for an email to the security team of Tiptap. GitHub private reporting is also on."
+  },
+  {
+    "repository": "unjs/capnp-es",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/unjs/capnp-es/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "unjs/capnp-es",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/unjs/capnp-es/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "unjs/capnp-es",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/unjs/capnp-es/pulls"
+  },
+  {
+    "repository": "unjs/capnp-es",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/unjs/capnp-es/security",
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
@@ -2504,6 +2987,35 @@
     "note": "SECURITY.md sends reports to a public issue. Private vulnerability reporting is also on. Send a report there, not to an issue."
   },
   {
+    "repository": "videojs/http-streaming",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/videojs/http-streaming/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "videojs/http-streaming",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/videojs/http-streaming/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "videojs/http-streaming",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/videojs/http-streaming/pulls"
+  },
+  {
+    "repository": "videojs/http-streaming",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/videojs/http-streaming/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
     "repository": "vueuse/vueuse",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -2534,6 +3046,35 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "web3/web3.js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/web3/web3.js/blob/4.x/.github/CONTRIBUTING.md"
+  },
+  {
+    "repository": "web3/web3.js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/web3/web3.js/blob/4.x/.github/CONTRIBUTING.md"
+  },
+  {
+    "repository": "web3/web3.js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "archived",
+    "evidence": "https://github.com/web3/web3.js"
+  },
+  {
+    "repository": "web3/web3.js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/web3/web3.js/blob/4.x/SECURITY.md",
+    "note": "SECURITY.md asks for an email to the security team of ChainSafe."
+  },
+  {
     "repository": "wevm/viem",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -2562,5 +3103,35 @@
     "value": "github-advisory",
     "evidence": "https://github.com/wevm/viem/security",
     "note": "Private vulnerability reporting is on. .github/SECURITY.md names an email only for a patch to an old version."
+  },
+  {
+    "repository": "yjs/y-websocket",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/yjs/y-websocket/blob/master/AGENTS.md",
+    "note": "AGENTS.md guides AI agents in the repository. The repository has no contribution guide."
+  },
+  {
+    "repository": "yjs/y-websocket",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/yjs/y-websocket"
+  },
+  {
+    "repository": "yjs/y-websocket",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/yjs/y-websocket/pulls"
+  },
+  {
+    "repository": "yjs/y-websocket",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "github-advisory",
+    "evidence": "https://github.com/yjs/y-websocket/security",
+    "note": "Private vulnerability reporting is on. There is no SECURITY.md."
   }
 ]
