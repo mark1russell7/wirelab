@@ -916,7 +916,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "A message listener that throws stops the other listeners and the rest of the frame, and xhr-polling stops with readyState OPEN",
-    "note": "dispatchEvent of EventTarget calls each listener with no try/catch, so the exception goes up into the transport, and the rest of the a frame is lost. The xhr receiver moves bufferPosition after the emit, so its finish handler gives the same message again and throws before it emits close. Thus no next poll comes, and no close event. WHATWG DOM reports the exception and calls the next listener. Related: issue #563 (the repeated message, closed by the stale bot) and pull request #564 (open since 2021-09-08), which change only the receivers. Confidence high."
+    "note": "dispatchEvent of EventTarget starts each listener with no try/catch. Thus the exception goes up into the transport, and the rest of the a frame is lost. The xhr receiver moves bufferPosition after the emit, so its finish handler gives the same message again and throws before it emits close. Thus no next poll comes, and no close event. WHATWG DOM reports the exception and starts the next listener. Related: issue #563 (the repeated message, closed by the stale bot) and pull request #564 (open since 2021-09-08), which change only the receivers. Confidence high."
   },
   {
     "id": "F0092",
@@ -936,7 +936,7 @@
     "found": "2026-11-13",
     "kind": "conformance",
     "title": "On a page loaded over https, new SockJS() throws SecurityError for http://localhost and http://*.localhost",
-    "note": "The check of an insecure URL allows only 127.0.0.0/8 and [::1] (isLoopbackAddr). Secure Contexts counts localhost and *.localhost as potentially trustworthy, so Mixed Content does not block them. Duplicate: issue #645 (open since 2024-01-11). Related: issue #482, where the maintainer declined localhost in 2019. Commit a57c910 then added 127.0.0.0/8 and ::1 in 2020. Confidence medium-high."
+    "note": "The check of an insecure URL lets only 127.0.0.0/8 and [::1] through (isLoopbackAddr). Secure Contexts counts localhost and *.localhost as potentially trustworthy, so Mixed Content does not block them. Duplicate: issue #645 (open since 2024-01-11). Related: issue #482, where the maintainer declined localhost in 2019. Commit a57c910 then added 127.0.0.0/8 and ::1 in 2020. Confidence medium-high."
   },
   {
     "id": "F0094",
@@ -946,7 +946,7 @@
     "found": "2026-11-13",
     "kind": "conformance",
     "title": "close() while CONNECTING gives close 1000 with wasClean true, and an error event only while /info is pending",
-    "note": "close() always gives _close() the code 1000 and wasClean true. _close() fires the error event only when this._ir is set, so the events depend on an internal phase. WHATWG fails the connection: an error event, then close with the code 1006 and wasClean false, as the native WebSocket of Node.js does. This is not F0068, the timer of the /info request that close() leaks (issue #711). No upstream issue has it. Confidence medium-high."
+    "note": "close() always gives _close() the code 1000 and wasClean true. The error event comes only when this._ir is set, so the events depend on an internal phase. WHATWG fails the connection: an error event, then close with the code 1006 and wasClean false, as the native WebSocket of Node.js does. This is not F0068, the timer of the /info request that close() leaks (issue #711). No upstream issue has it. Confidence medium-high."
   },
   {
     "id": "F0095",
@@ -956,7 +956,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "close() while xhr-streaming waits for the page load does not stop it: on load, the closed socket connects and throws InvalidStateError",
-    "note": "For a transport with needBody (xhr-streaming in a browser, jsonp-polling, the iframe transports), _connect() waits with attachEvent('load', this._connect.bind(this)). close() does not detach the listener or empty _transports. On load, _connect() opens a transport, its open frame calls _open() on the closed socket, and _close() throws InvalidStateError: SockJS has already been closed from the transport callback. Related: issue #344 (the same error after an early close(), closed in 2017). Confidence high."
+    "note": "For a transport with needBody (xhr-streaming in a browser, jsonp-polling, the iframe transports), _connect() waits with attachEvent('load', this._connect.bind(this)). close() does not detach the listener or empty _transports. On load, _connect() opens a transport, and its open frame starts _open() on the closed socket. Then _close() throws InvalidStateError: SockJS has already been closed, from the transport callback. Related: issue #344 (the same error after an early close(), closed in 2017). Confidence high."
   },
   {
     "id": "F0096",
@@ -965,8 +965,8 @@
     "method": "review",
     "found": "2026-11-13",
     "kind": "correctness",
-    "title": "The timer of a failed transport attempt still runs, and it ends the next attempt before its own timeout",
-    "note": "_connect() starts a new _transportTimeoutId for each attempt, and _transportClose() does not clear the timer of the attempt that failed. When the websocket attempt fails fast, its timer ends the xhr-polling attempt, and the socket closes with 2000 All transports failed. Pull request #607 fixed it on main on 2022-11-09, after 1.6.1 (2022-05-28), and no release has it. With the source of main, the review run 43396482043 opened via xhr-polling. Confidence high."
+    "title": "The timer of a transport that failed still runs, and it stops the next transport before the end of its own timeout",
+    "note": "_connect() starts a new _transportTimeoutId for each transport, and _transportClose() does not clear the timer of the transport that failed. When the websocket transport fails fast, its timer stops the xhr-polling transport, and the socket closes with 2000 All transports failed. Pull request #607 fixed it on main on 2022-11-09, after 1.6.1 (2022-05-28), and no release has it. With the source of main, the review run 43396482043 opened with xhr-polling. Confidence high."
   },
   {
     "id": "F0097",
@@ -976,7 +976,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "In Node.js, a connection that drops during an xhr-streaming response gives no close event, and readyState stays OPEN",
-    "note": "The Node.js XHR driver listens only for the data and end events of the response and the error event of the request. When the connection drops after the response starts, the response gives no end, and the request gives no error, so finish never comes. The websocket and xhr-polling transports give close 1006. Related: issues #176 and #64 (a lost connection with no close event in browsers, closed in 2014) and pull request #601 (a heartbeat watchdog, open). Confidence high."
+    "note": "The Node.js XHR driver listens only for the data and end events of the response and the error event of the request. When the connection drops after the response starts, the response gives no end, and the request gives no error, so finish does not come. The websocket and xhr-polling transports give close 1006. Related: issues #176 and #64 (a lost connection with no close event in browsers, closed in 2014) and pull request #601 (a heartbeat watchdog, open). Confidence high."
   },
   {
     "id": "F0098",
@@ -986,6 +986,6 @@
     "found": "2026-11-13",
     "kind": "resource",
     "title": "close() while a transport connects does not clear the transport timer, so Node.js stays alive to the end of the timeout",
-    "note": "_connect() starts _transportTimeoutId, and only _open() clears it. _close() does not. SenderReceiver.close() removes its listeners first, so _transportClose() does not run, and the fix of pull request #607 on main does not cover this path. This is a different timer from that of F0068 (the /info request, issue #711, pull request #713). Confidence high."
+    "note": "_connect() starts _transportTimeoutId, and only _open() clears it. _close() does not. SenderReceiver.close() removes its listeners first, so nothing starts _transportClose(), and the fix of pull request #607 on main does not cover this path. This is a different timer from that of F0068 (the /info request, issue #711, pull request #713). Confidence high."
   }
 ]
