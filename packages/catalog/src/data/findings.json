@@ -657,7 +657,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "Connection state recovery: a volatile event with a string as its last argument becomes the offset, so recovery fails",
-    "note": "Known upstream. PR #5547 (open) is a fix on the client side."
+    "note": "Known upstream. PR #5547 closed with no merge on 2026-11-13. The commit f97d51a on main adds a check args.length > 1, thus an event with only its name no longer becomes the offset. A string as the last of two or more arguments still does. No release has f97d51a."
   },
   {
     "id": "F0067",
