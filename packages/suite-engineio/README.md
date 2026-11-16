@@ -1,14 +1,15 @@
 # @wirelab/suite-engineio
 
-This package holds the conformance suite of the Engine.IO client `engine.io-client`, for the transport HTTP long-polling. A scripted server gives a fixed list of replies, and the suite examines each request of the client. Each test names the rules of the Engine.IO protocol, version 4, that it examines.
+This package holds the conformance suite of the Engine.IO client `engine.io-client`, for HTTP long-polling, WebSocket and the upgrade between them. A scripted server gives a fixed list of replies and frames. The suite examines each request and each frame of the client. Each test names the rules of the Engine.IO protocol, version 4, that it examines.
 
 ## What the suite tests
 
-The suite tests the client. The server is a list of replies from `startScriptedServer` of `@mark1russell7/rigor-testkit/http`. Thus each test controls each byte that the client gets, and the suite needs no Engine.IO server.
+The suite tests the client. The server is a list of replies and WebSocket steps from `startScriptedServer` of `@mark1russell7/rigor-testkit/http`. Thus each test controls each byte that the client gets, and the suite needs no Engine.IO server.
 
 | File | What it has |
 | --- | --- |
 | `src/polling.test.ts` | The conformance checks: the handshake, the requests, the packet encoding, the heartbeat, `maxPayload` and the packet types. |
+| `src/websocket.test.ts` | The conformance checks of the transport `NodeWebSocket`: the handshake, the frames, the heartbeat and the packet types. It also has the checks of the upgrade from HTTP long-polling. |
 | `src/findings.test.ts` | The checks that show known faults of `engine.io-client` 6.6.8. Each check is `it.fails`. |
 | `src/index.test.ts` | A check with no server: each check of `src/index.ts` has a test, and each test names its rules. |
 | `src/codec.test.ts` | A check of the codec against the examples of the protocol document. |
@@ -17,7 +18,8 @@ The suite tests the client. The server is a list of replies from `startScriptedS
 | `src/child.ts` | The client of one check in a separate process. It writes one line of JSON with its events and its uncaught errors. |
 | `src/index.ts` | The rules and the checks as data. The entry also gives the codec and the scripted Engine.IO server `startEngineServer` to the suites of protocols on Engine.IO. |
 
-- Each check examines the two transports of HTTP long-polling for Node.js: `NodeXHR` and `Fetch`.
+- Each check of `src/polling.test.ts` examines the two transports of HTTP long-polling for Node.js: `NodeXHR` and `Fetch`.
+- Each check of `src/websocket.test.ts` examines `NodeWebSocket`, the transport on the package `ws`. Each check of an upgrade examines two cases: the default transports (`NodeXHR` to `NodeWebSocket`) and `Fetch` to `NodeWebSocket`.
 - A rule has the form `[EIO4-<group>-<number>]`. The title of the test names it.
 - A test that shows a fault of `engine.io-client` is `it.fails`, with a comment `// client bug:` and the identifier of the finding. The test passes while the fault stays. When a release removes the fault, the test fails. Then change it to `it`.
 - A test of a fault writes a line `client bug evidence:` to the log. The log of the CI job keeps the measured values.
@@ -65,6 +67,15 @@ The rules come from the protocol document `README.md` of `socketio/engine.io-pro
 | `EIO4-PT-1` | Packet types | `meaning` | A `close` packet of the server closes the connection. |
 | `EIO4-PT-2` | Packet types | `meaning` | A `noop` packet gives no message to the application. |
 | `EIO4-PT-3` | Packet types | `meaning` | The client gives the data of each `message` packet to the application, in order. |
+| `EIO4-WS-1` | WebSocket | `meaning` | Each packet is in its own WebSocket frame, in the two directions. |
+| `EIO4-WS-2` | Packet encoding | `meaning` | A binary packet is a binary frame with its bytes as they are. |
+| `EIO4-WS-3` | WebSocket | `MUST` | The client opens no more than one WebSocket connection for each session. |
+| `EIO4-UP-1` | Upgrade | `MUST` | The WebSocket connection of an upgrade has `EIO=4`, `transport=websocket` and the `sid` of the session. |
+| `EIO4-UP-2` | Upgrade | `MUST` | The first packet of the client on that connection is a `ping` packet with the data `probe`. |
+| `EIO4-UP-3` | Upgrade | `MUST` | After a `pong` packet with the data `probe`, the client sends an `upgrade` packet. |
+| `EIO4-UP-4` | Upgrade | `MUST` | The client pauses HTTP long-polling: it sends no HTTP request after the `upgrade` packet. |
+| `EIO4-UP-5` | Upgrade | `meaning` | The server gets each packet of the client one time, in order, across the upgrade. |
+| `EIO4-UP-6` | Upgrade | `SHOULD` | With its default options, the client starts on HTTP long-polling and then changes to WebSocket. |
 
 ## The known faults of engine.io-client 6.6.8
 
@@ -75,6 +86,8 @@ The rules come from the protocol document `README.md` of `socketio/engine.io-pro
 | F0030 | `request-timeout` | The transports `NodeXHR` and `Fetch` do not use the option `requestTimeout`. |
 | F0031 | `close-aborts-poll` | `close()` does not stop the active GET request. |
 | F0029 | `malformed-open`, `open-no-fields` | The client does not examine the open packet. A packet that is not JSON, or that has no fields, gives an uncaught error. |
+| F0035 | `ws-close-packet` | Only the polling transport reads a `close` packet. Over WebSocket, the client ignores it and stays open. |
+| F0032 | `probe-error-closes` | A wrong answer to the probe gives an `upgradeError`, but the client does not close the probe WebSocket. |
 | F0026 | `fetch-body-cut` | The transport `Fetch` does not catch an error of the read of a body. A cut in the body gives an unhandled rejection, and the polling stops. |
 
 The checks of F0029 and F0026 start the client in a separate process, with the script `src/child.ts`. An uncaught error stops the worker of a test, but in a separate process it stops only that process. The process writes a report of the events and the uncaught errors of the client.

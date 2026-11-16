@@ -1,12 +1,22 @@
 /**
- * The helpers of the tests: a scripted Engine.IO server for HTTP long-polling, a client on that server, and the records
- * of the session. The server is a fixed list of replies, thus each test controls each byte that the client gets.
+ * The helpers of the tests: a scripted Engine.IO server for HTTP long-polling and WebSocket, a client on that server, and
+ * the records of the session. The server is a fixed list of replies and steps. Thus each test controls each byte that
+ * the client gets.
  */
 import { fileURLToPath } from "node:url";
-import { startScriptedServer, type ScriptedReply, type ScriptedRequest, type ScriptedServer } from "@mark1russell7/rigor-testkit/http";
+import {
+  messagesOf,
+  startScriptedServer,
+  type ScriptedReply,
+  type ScriptedRequest,
+  type ScriptedServer,
+  type SendStep,
+  type WebSocketConnection,
+  type WebSocketSession,
+} from "@mark1russell7/rigor-testkit/http";
 import { runToStop } from "@mark1russell7/rigor-testkit/stop";
-import { Fetch, NodeXHR, Socket, type SocketOptions, type TransportCtor } from "engine.io-client";
-import { decodePayload, encodePayload, openPacket, type Handshake, type Packet } from "./codec.ts";
+import { Fetch, NodeWebSocket, NodeXHR, Socket, type SocketOptions, type TransportCtor } from "engine.io-client";
+import { decodePacket, decodePayload, encodePacket, encodePayload, openPacket, type Handshake, type Packet } from "./codec.ts";
 
 /**
  * This value is true when the environment variable `SUITE_ENGINEIO` is `1`. The checks of the client run only then.
@@ -26,6 +36,22 @@ export const transports: readonly PollingTransport[] = [
   { name: "Fetch", implementation: Fetch },
 ];
 
+/** The WebSocket transport of the client on the package `ws`. It is the default WebSocket transport in Node.js. */
+export const webSocketTransport: PollingTransport = { name: "NodeWebSocket", implementation: NodeWebSocket };
+
+/** A start of a session on HTTP long-polling and an upgrade to WebSocket. */
+export interface UpgradeCase {
+  readonly name: string;
+  /** The transports of the client. With no list, the client has its default transports: `NodeXHR` and `NodeWebSocket`. */
+  readonly client: SocketOptions;
+}
+
+/** The upgrade cases. Each check of an upgrade examines each case. */
+export const upgradeCases: readonly UpgradeCase[] = [
+  { name: "default transports", client: {} },
+  { name: "Fetch to NodeWebSocket", client: { transports: [Fetch, NodeWebSocket] } },
+];
+
 /** The path of the Engine.IO server. It is the default path of the client. */
 export const enginePath: string = "/engine.io/";
 
@@ -35,6 +61,11 @@ export const defaultHandshake: Handshake = { sid: "wirelab-sid-1", upgrades: [],
 /** This function gives the reply that holds a list of packets. `extra` adds a delay or other parts of the reply. */
 export function payload(packets: readonly Packet[], extra: ScriptedReply = {}): ScriptedReply {
   return { ...extra, fields: { "content-type": "text/plain; charset=UTF-8", ...extra.fields }, body: encodePayload(packets) };
+}
+
+/** This function gives the step of a WebSocket session that sends one packet in one frame. A binary message is a binary frame. */
+export function frame(packet: Packet, delayMs: number = 0): SendStep {
+  return { send: typeof packet.data === "string" ? encodePacket(packet) : packet.data, delayMs };
 }
 
 /** The reply of the server to a POST request that it accepts. */
@@ -59,17 +90,27 @@ export interface SessionScript {
   readonly hold?: ScriptedReply;
   /** The replies to the POST requests, in order. The server gives the last reply again. The default is `ok`. */
   readonly posts?: readonly ScriptedReply[];
+  /**
+   * The scripts of the WebSocket connections at the path of the server, in order. A session on WebSocket alone gets
+   * no open packet from the HTTP routes. Thus its first step sends the open packet, for example with `openFrame`.
+   */
+  readonly webSockets?: readonly WebSocketSession[];
+}
+
+/** This function gives the step that sends the open packet of a handshake in one frame. */
+export function openFrame(handshake: Partial<Handshake> = {}): SendStep {
+  return frame(openPacket({ ...defaultHandshake, ...handshake }));
 }
 
 /** The kind of an event of the client. */
-export type EventKind = "open" | "message" | "close" | "error";
+export type EventKind = "open" | "message" | "close" | "error" | "upgrading" | "upgrade" | "upgradeError";
 
 /** One event of the client. */
 export interface SessionEvent {
   /** The time of the event in ms after the start of the client. */
   readonly at: number;
   readonly kind: EventKind;
-  /** The reason of a close, the text of an error, or the text of a message. */
+  /** The reason of a close, the text of an error, the text of a message, or the name of a transport. */
   readonly detail: string;
 }
 
@@ -94,6 +135,13 @@ export interface Session {
   posts(): readonly ScriptedRequest[];
   /** This method gives the packets of all POST bodies, in order. A part that is not a packet is `undefined`. */
   posted(): readonly (Packet | undefined)[];
+  /** This method gives the records of the WebSocket connections of the client, in order. */
+  webSockets(): readonly WebSocketConnection[];
+  /**
+   * This method gives the packets of the messages of the client on one WebSocket connection, in order. A binary
+   * message is a binary packet. A text that is not a packet is `undefined`.
+   */
+  sent(connection?: number): readonly (Packet | undefined)[];
   /** This method closes the client and then the server. */
   end(): Promise<void>;
 }
@@ -124,12 +172,28 @@ export async function startEngineServer(script: SessionScript = {}, path: string
       { method: "GET", path, replies: [payload([script.open ?? openPacket(handshake)], script.openReply), ...(script.polls ?? []), hold] },
       { method: "POST", path, replies: script.posts ?? [accepted] },
     ],
+    ...(script.webSockets === undefined ? {} : { webSockets: [{ path, sessions: script.webSockets }] }),
   });
   return { server, handshake };
 }
 
-/** This function starts a scripted server and a client of one transport on it. */
-export async function startSession(transport: PollingTransport, script: SessionScript = {}, client: SocketOptions = {}): Promise<Session> {
+/** This function gives the packets of a list of WebSocket messages. Bytes are a binary message. */
+export function packetsOf(messages: readonly (string | Uint8Array)[]): readonly (Packet | undefined)[] {
+  return messages.map((item) => (typeof item === "string" ? decodePacket(item) : { type: "message", data: item }));
+}
+
+/** This function starts a scripted server and a client of one transport on it. The client has no upgrade. */
+export function startSession(transport: PollingTransport, script: SessionScript = {}, client: SocketOptions = {}): Promise<Session> {
+  return openSession(script, { ...client, transports: [transport.implementation], upgrade: false });
+}
+
+/** This function starts a scripted server and a client on it with the transports of an upgrade case. The client can upgrade. */
+export function startUpgrade(upgradeCase: UpgradeCase, script: SessionScript = {}): Promise<Session> {
+  return openSession(script, upgradeCase.client);
+}
+
+/** This function starts a scripted server and a client with the given options on it. */
+async function openSession(script: SessionScript, options: SocketOptions): Promise<Session> {
   const { server, handshake } = await startEngineServer(script);
   const start = performance.now();
   const elapsed = (): number => performance.now() - start;
@@ -138,8 +202,11 @@ export async function startSession(transport: PollingTransport, script: SessionS
   const record = (kind: EventKind, detail: string): void => {
     events.push({ at: elapsed(), kind, detail });
   };
-  const socket = new Socket(server.url, { ...client, transports: [transport.implementation], upgrade: false });
+  const socket = new Socket(server.url, options);
   socket.on("open", () => record("open", ""));
+  socket.on("upgrading", (next: { readonly name: string }) => record("upgrading", next.name));
+  socket.on("upgrade", (next: { readonly name: string }) => record("upgrade", next.name));
+  socket.on("upgradeError", (error: Error) => record("upgradeError", error.message));
   socket.on("message", (data: unknown) => {
     const normal = normalData(data);
     messages.push(normal);
@@ -165,6 +232,8 @@ export async function startSession(transport: PollingTransport, script: SessionS
     gets: () => requestsOf("GET"),
     posts: () => requestsOf("POST"),
     posted: () => requestsOf("POST").flatMap((request) => decodePayload(request.body)),
+    webSockets: () => server.webSockets,
+    sent: (connection = 0) => packetsOf(messagesOf(server.webSockets[connection]?.frames ?? [])),
     end: async () => {
       socket.close();
       await server.close();
