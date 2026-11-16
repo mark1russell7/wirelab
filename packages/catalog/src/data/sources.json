@@ -4,5 +4,11 @@
     "at": "2026-11-13T02:59:16Z",
     "what": "The abbreviated npm metadata and the npm downloads API (last week), one request for each package.",
     "note": "The downloads API answered HTTP 429 after 43 packages. The check cut each deprecation message at 100 characters."
+  },
+  {
+    "id": "measures-2026-11-16",
+    "at": "2026-11-16T08:53:40Z",
+    "what": "The npm downloads API (last week), the deps.dev dependents of the default version and the jsDelivr hits (last month), through polite-crawler.",
+    "note": "206 packages. Unknown: 0 to downloads, 23 to deps.dev, 0 to jsDelivr. Failed requests: 0."
   }
 ]
