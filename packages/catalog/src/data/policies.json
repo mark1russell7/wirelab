@@ -427,6 +427,36 @@
     "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
   },
   {
+    "repository": "amark/gun",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/amark/gun",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "amark/gun",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/amark/gun"
+  },
+  {
+    "repository": "amark/gun",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/amark/gun/pulls"
+  },
+  {
+    "repository": "amark/gun",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/amark/gun/blob/master/SECURITY.md",
+    "note": "SECURITY.md names no channel for a report, and private vulnerability reporting is off."
+  },
+  {
     "repository": "amqp/rhea",
     "topic": "ai",
     "checked": "2026-11-15",
@@ -703,6 +733,35 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "automerge/automerge-repo",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/automerge/automerge-repo/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "automerge/automerge-repo",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/automerge/automerge-repo/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "automerge/automerge-repo",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/automerge/automerge-repo/pulls"
+  },
+  {
+    "repository": "automerge/automerge-repo",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/automerge/automerge-repo/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
     "repository": "aws-amplify/amplify-js",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -794,6 +853,36 @@
     "value": "platform",
     "evidence": "https://github.com/aws/.github/blob/master/SECURITY.md",
     "note": "The AWS Vulnerability Disclosure Program on HackerOne, or email to aws-security@amazon.com."
+  },
+  {
+    "repository": "bilibili/flv.js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/bilibili/flv.js",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "bilibili/flv.js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/bilibili/flv.js"
+  },
+  {
+    "repository": "bilibili/flv.js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/bilibili/flv.js/pulls"
+  },
+  {
+    "repository": "bilibili/flv.js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/bilibili/flv.js/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
     "repository": "bluesky-social/atproto",
@@ -1136,6 +1225,36 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "dmotz/trystero",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/dmotz/trystero",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "dmotz/trystero",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/dmotz/trystero"
+  },
+  {
+    "repository": "dmotz/trystero",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/dmotz/trystero/pulls"
+  },
+  {
+    "repository": "dmotz/trystero",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "github-advisory",
+    "evidence": "https://github.com/dmotz/trystero/security",
+    "note": "Private vulnerability reporting is on. There is no SECURITY.md."
+  },
+  {
     "repository": "dotnet/aspnetcore",
     "topic": "ai",
     "checked": "2026-11-13",
@@ -1435,6 +1554,36 @@
     "note": "The Google vulnerability intake at g.co/vulnz. This is the security policy of the organization."
   },
   {
+    "repository": "foxglove/ws-protocol",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/foxglove/ws-protocol",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "foxglove/ws-protocol",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/foxglove/ws-protocol"
+  },
+  {
+    "repository": "foxglove/ws-protocol",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "archived",
+    "evidence": "https://github.com/foxglove/ws-protocol"
+  },
+  {
+    "repository": "foxglove/ws-protocol",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/foxglove/ws-protocol",
+    "note": "The repository is archived, and it has no security policy."
+  },
+  {
     "repository": "google/flatbuffers",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -1581,6 +1730,67 @@
     "checked": "2026-11-15",
     "value": "none-stated",
     "evidence": "https://github.com/heineiuo/isomorphic-ws/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
+    "repository": "home-assistant/home-assistant-js-websocket",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "refused",
+    "evidence": "https://github.com/home-assistant/.github/blob/master/AI_POLICY.md",
+    "note": "AI tools can help a person who understands each change. The policy closes pull requests from autonomous agents, and a person answers each question in their own words."
+  },
+  {
+    "repository": "home-assistant/home-assistant-js-websocket",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "cla",
+    "evidence": "https://github.com/home-assistant/home-assistant-js-websocket/pulls",
+    "note": "The CLA of Home Assistant. Each pull request has the check cla-bot and the label cla-signed."
+  },
+  {
+    "repository": "home-assistant/home-assistant-js-websocket",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/home-assistant/home-assistant-js-websocket/pulls"
+  },
+  {
+    "repository": "home-assistant/home-assistant-js-websocket",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "github-advisory",
+    "evidence": "https://www.home-assistant.io/security",
+    "note": "The security policy of the organization points to a page that asks for a GitHub security advisory on home-assistant/core."
+  },
+  {
+    "repository": "hopin-team/twirp-ts",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/hopin-team/twirp-ts",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "hopin-team/twirp-ts",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/hopin-team/twirp-ts"
+  },
+  {
+    "repository": "hopin-team/twirp-ts",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/hopin-team/twirp-ts/pulls"
+  },
+  {
+    "repository": "hopin-team/twirp-ts",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/hopin-team/twirp-ts/security",
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
@@ -2610,6 +2820,36 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "neet/masto.js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/neet/masto.js/blob/main/CLAUDE.md",
+    "note": "CLAUDE.md guides AI agents in the repository. It has no rule for contributions."
+  },
+  {
+    "repository": "neet/masto.js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/neet/masto.js/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "neet/masto.js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/neet/masto.js/pulls"
+  },
+  {
+    "repository": "neet/masto.js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/neet/masto.js/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
     "repository": "neo4j/neo4j-javascript-driver",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -2731,6 +2971,36 @@
     "note": "Private vulnerability reporting is on. There is no SECURITY.md."
   },
   {
+    "repository": "obs-websocket-community-projects/obs-websocket-js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/obs-websocket-community-projects/obs-websocket-js/blob/master/.github/CONTRIBUTING.md"
+  },
+  {
+    "repository": "obs-websocket-community-projects/obs-websocket-js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/obs-websocket-community-projects/obs-websocket-js/blob/master/.github/CONTRIBUTING.md",
+    "note": "Most recent commits have a sign-off line, but no check needs one."
+  },
+  {
+    "repository": "obs-websocket-community-projects/obs-websocket-js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/obs-websocket-community-projects/obs-websocket-js/pulls"
+  },
+  {
+    "repository": "obs-websocket-community-projects/obs-websocket-js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/obs-websocket-community-projects/obs-websocket-js/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
     "repository": "onsip/SIP.js",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -2759,6 +3029,36 @@
     "value": "none-stated",
     "evidence": "https://github.com/onsip/SIP.js/blob/main/SECURITY.md",
     "note": "SECURITY.md asks for a public issue on GitHub. There is no private channel."
+  },
+  {
+    "repository": "open-rpc/client-js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/open-rpc/client-js/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "open-rpc/client-js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "cla",
+    "evidence": "https://github.com/open-rpc/client-js/blob/master/CONTRIBUTING.md",
+    "note": "The guide asks each contributor to sign the CLA of the repository once. It gives no form, and no pull request has a CLA check."
+  },
+  {
+    "repository": "open-rpc/client-js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/open-rpc/client-js/pulls"
+  },
+  {
+    "repository": "open-rpc/client-js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/open-rpc/client-js/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
     "repository": "open-telemetry/opentelemetry-js",
@@ -3326,6 +3626,36 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "share/sharedb",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/share/sharedb",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "share/sharedb",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/share/sharedb"
+  },
+  {
+    "repository": "share/sharedb",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/share/sharedb/pulls"
+  },
+  {
+    "repository": "share/sharedb",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "github-advisory",
+    "evidence": "https://github.com/share/sharedb/security",
+    "note": "Private vulnerability reporting is on. There is no SECURITY.md."
+  },
+  {
     "repository": "shogowada/json-rpc-2.0",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -3503,6 +3833,35 @@
     "value": "platform",
     "evidence": "https://github.com/supabase/.github/blob/main/SECURITY.md",
     "note": "HackerOne, from the security policy of the organization."
+  },
+  {
+    "repository": "surrealdb/surrealdb.js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/surrealdb/surrealdb.js/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "surrealdb/surrealdb.js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/surrealdb/surrealdb.js/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "surrealdb/surrealdb.js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/surrealdb/surrealdb.js/pulls"
+  },
+  {
+    "repository": "surrealdb/surrealdb.js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/surrealdb/surrealdb.js/blob/main/SECURITY.md",
+    "note": "SECURITY.md asks for an email to the security team. Private vulnerability reporting is on too."
   },
   {
     "repository": "techniq/odata-query",
@@ -4040,6 +4399,67 @@
     "note": "SECURITY.md asks for an email to the security team of ChainSafe."
   },
   {
+    "repository": "webtorrent/bittorrent-tracker",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/webtorrent/bittorrent-tracker/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "webtorrent/bittorrent-tracker",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/webtorrent/bittorrent-tracker/blob/master/CONTRIBUTING.md",
+    "note": "The guide holds the Developer's Certificate of Origin 1.1. No recent commit has a sign-off line, and no check needs one."
+  },
+  {
+    "repository": "webtorrent/bittorrent-tracker",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/webtorrent/bittorrent-tracker/pulls"
+  },
+  {
+    "repository": "webtorrent/bittorrent-tracker",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/webtorrent/.github/blob/master/SECURITY.md",
+    "note": "An email to the lead maintainer, from the security policy of the organization."
+  },
+  {
+    "repository": "webtorrent/webtorrent",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/webtorrent/.github/blob/master/CONTRIBUTING.md",
+    "note": "The contribution guide of the organization states no rule for AI."
+  },
+  {
+    "repository": "webtorrent/webtorrent",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/webtorrent/.github/blob/master/CONTRIBUTING.md",
+    "note": "The guide holds the Developer's Certificate of Origin 1.1. No recent commit has a sign-off line, and no check needs one."
+  },
+  {
+    "repository": "webtorrent/webtorrent",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/webtorrent/webtorrent/pulls"
+  },
+  {
+    "repository": "webtorrent/webtorrent",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/webtorrent/.github/blob/master/SECURITY.md",
+    "note": "An email to the lead maintainer, from the security policy of the organization."
+  },
+  {
     "repository": "wevm/viem",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -4068,6 +4488,36 @@
     "value": "github-advisory",
     "evidence": "https://github.com/wevm/viem/security",
     "note": "Private vulnerability reporting is on. .github/SECURITY.md names an email only for a patch to an old version."
+  },
+  {
+    "repository": "xqq/mpegts.js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/xqq/mpegts.js",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "xqq/mpegts.js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/xqq/mpegts.js"
+  },
+  {
+    "repository": "xqq/mpegts.js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/xqq/mpegts.js/pulls"
+  },
+  {
+    "repository": "xqq/mpegts.js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/xqq/mpegts.js/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
     "repository": "xtermjs/xterm.js",

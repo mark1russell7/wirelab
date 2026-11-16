@@ -66,6 +66,10 @@
     "url": "https://github.com/ably/ably-pubsub-js"
   },
   {
+    "id": "amark/gun",
+    "url": "https://github.com/amark/gun"
+  },
+  {
     "id": "amqp/rhea",
     "url": "https://github.com/amqp/rhea"
   },
@@ -109,6 +113,10 @@
     "note": "Last push 2022-09-13."
   },
   {
+    "id": "automerge/automerge-repo",
+    "url": "https://github.com/automerge/automerge-repo"
+  },
+  {
     "id": "aws-amplify/amplify-js",
     "url": "https://github.com/aws-amplify/amplify-js"
   },
@@ -119,6 +127,11 @@
   {
     "id": "aws/aws-sdk-js-v3",
     "url": "https://github.com/aws/aws-sdk-js-v3"
+  },
+  {
+    "id": "bilibili/flv.js",
+    "url": "https://github.com/bilibili/flv.js",
+    "note": "The README says that the project is rarely maintained. Last push 2024-07-07."
   },
   {
     "id": "bluesky-social/atproto",
@@ -168,6 +181,10 @@
     "url": "https://github.com/deepstreamIO/deepstream.io-client-js"
   },
   {
+    "id": "dmotz/trystero",
+    "url": "https://github.com/dmotz/trystero"
+  },
+  {
     "id": "dotnet/aspnetcore",
     "url": "https://github.com/dotnet/aspnetcore"
   },
@@ -210,6 +227,11 @@
     "url": "https://github.com/firebase/firebase-js-sdk"
   },
   {
+    "id": "foxglove/ws-protocol",
+    "url": "https://github.com/foxglove/ws-protocol",
+    "note": "The README says that the libraries are deprecated, and asks users to move to the Foxglove SDK. Last push 2025-08-05."
+  },
+  {
     "id": "google/flatbuffers",
     "url": "https://github.com/google/flatbuffers"
   },
@@ -230,6 +252,15 @@
     "id": "heineiuo/isomorphic-ws",
     "url": "https://github.com/heineiuo/isomorphic-ws",
     "note": "Last push 2023-06-20."
+  },
+  {
+    "id": "home-assistant/home-assistant-js-websocket",
+    "url": "https://github.com/home-assistant/home-assistant-js-websocket"
+  },
+  {
+    "id": "hopin-team/twirp-ts",
+    "url": "https://github.com/hopin-team/twirp-ts",
+    "note": "Last push 2024-06-11."
   },
   {
     "id": "hotwired/turbo",
@@ -382,6 +413,10 @@
     "url": "https://github.com/nbd-wtf/nostr-tools"
   },
   {
+    "id": "neet/masto.js",
+    "url": "https://github.com/neet/masto.js"
+  },
+  {
     "id": "neo4j/neo4j-javascript-driver",
     "url": "https://github.com/neo4j/neo4j-javascript-driver"
   },
@@ -399,8 +434,16 @@
     "url": "https://github.com/novnc/noVNC"
   },
   {
+    "id": "obs-websocket-community-projects/obs-websocket-js",
+    "url": "https://github.com/obs-websocket-community-projects/obs-websocket-js"
+  },
+  {
     "id": "onsip/SIP.js",
     "url": "https://github.com/onsip/SIP.js"
+  },
+  {
+    "id": "open-rpc/client-js",
+    "url": "https://github.com/open-rpc/client-js"
   },
   {
     "id": "open-telemetry/opentelemetry-js",
@@ -483,6 +526,10 @@
     "url": "https://github.com/shanewholloway/js-u8-mqtt"
   },
   {
+    "id": "share/sharedb",
+    "url": "https://github.com/share/sharedb"
+  },
+  {
     "id": "shogowada/json-rpc-2.0",
     "url": "https://github.com/shogowada/json-rpc-2.0"
   },
@@ -505,6 +552,10 @@
   {
     "id": "supabase/supabase-js",
     "url": "https://github.com/supabase/supabase-js"
+  },
+  {
+    "id": "surrealdb/surrealdb.js",
+    "url": "https://github.com/surrealdb/surrealdb.js"
   },
   {
     "id": "techniq/odata-query",
@@ -581,8 +632,20 @@
     "note": "The registry names ChainSafe/web3.js, the old name of the repository. ChainSafe archived it at the sunset of Web3.js on 2025-03-04."
   },
   {
+    "id": "webtorrent/bittorrent-tracker",
+    "url": "https://github.com/webtorrent/bittorrent-tracker"
+  },
+  {
+    "id": "webtorrent/webtorrent",
+    "url": "https://github.com/webtorrent/webtorrent"
+  },
+  {
     "id": "wevm/viem",
     "url": "https://github.com/wevm/viem"
+  },
+  {
+    "id": "xqq/mpegts.js",
+    "url": "https://github.com/xqq/mpegts.js"
   },
   {
     "id": "xtermjs/xterm.js",
