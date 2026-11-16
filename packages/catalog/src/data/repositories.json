@@ -30,6 +30,10 @@
     "url": "https://github.com/EventSource/eventsource"
   },
   {
+    "id": "Eyevinn/webrtc-player",
+    "url": "https://github.com/Eyevinn/webrtc-player"
+  },
+  {
     "id": "GoogleChromeLabs/comlink",
     "url": "https://github.com/GoogleChromeLabs/comlink"
   },
@@ -44,9 +48,22 @@
     "note": "Archived on GitHub. npm does not deprecate the package."
   },
   {
+    "id": "KSDaemon/wampy.js",
+    "url": "https://github.com/KSDaemon/wampy.js"
+  },
+  {
+    "id": "OpenVidu/openvidu",
+    "url": "https://github.com/OpenVidu/openvidu",
+    "note": "The branch master holds OpenVidu 3. The folder openvidu-browser and its version 2.32.2 are on the branch v2."
+  },
+  {
     "id": "ReactiveX/rxjs",
     "url": "https://github.com/ReactiveX/rxjs",
     "note": "The branch 7.x holds the release line 7, with no folder packages/rxjs."
+  },
+  {
+    "id": "RobotWebTools/roslibjs",
+    "url": "https://github.com/RobotWebTools/roslibjs"
   },
   {
     "id": "SocketCluster/socketcluster-client",
@@ -64,6 +81,11 @@
   {
     "id": "ably/ably-pubsub-js",
     "url": "https://github.com/ably/ably-pubsub-js"
+  },
+  {
+    "id": "alesgenova/post-me",
+    "url": "https://github.com/alesgenova/post-me",
+    "note": "Last push 2021-02-19."
   },
   {
     "id": "amark/gun",
@@ -93,6 +115,11 @@
   {
     "id": "apache/arrow-js",
     "url": "https://github.com/apache/arrow-js"
+  },
+  {
+    "id": "apache/pouchdb",
+    "url": "https://github.com/apache/pouchdb",
+    "note": "The repository pouchdb/pouchdb moved here."
   },
   {
     "id": "apache/thrift",
@@ -172,6 +199,15 @@
     "note": "Pull requests land through an internal repository, so GitHub shows each one as closed, not merged."
   },
   {
+    "id": "crossbario/autobahn-js",
+    "url": "https://github.com/crossbario/autobahn-js"
+  },
+  {
+    "id": "crossbario/autobahn-js-browser",
+    "url": "https://github.com/crossbario/autobahn-js-browser",
+    "note": "The repository holds the built browser versions of autobahn-js. Last push 2022-11-15."
+  },
+  {
     "id": "daily-co/daily-js",
     "url": "https://github.com/daily-co/daily-js",
     "note": "The registry names no repository. The repository is a public mirror of an internal repository of Daily, and accepted pull requests come in through it."
@@ -192,6 +228,10 @@
     "id": "eclipse-paho/paho.mqtt.javascript",
     "url": "https://github.com/eclipse-paho/paho.mqtt.javascript",
     "note": "The last push to the repository was on 2024-05-14."
+  },
+  {
+    "id": "eclipse-zenoh/zenoh-ts",
+    "url": "https://github.com/eclipse-zenoh/zenoh-ts"
   },
   {
     "id": "elpheria/rpc-websockets",
@@ -276,6 +316,19 @@
     "url": "https://github.com/instantdb/instant"
   },
   {
+    "id": "ipfs/helia",
+    "url": "https://github.com/ipfs/helia"
+  },
+  {
+    "id": "ipfs/helia-verified-fetch",
+    "url": "https://github.com/ipfs/helia-verified-fetch"
+  },
+  {
+    "id": "jamsocket/y-sweet",
+    "url": "https://github.com/jamsocket/y-sweet",
+    "note": "The repository drifting-in-space/y-sweet moved here. Last push 2025-12-04."
+  },
+  {
     "id": "jdiaz5513/capnp-ts",
     "url": "https://github.com/jdiaz5513/capnp-ts"
   },
@@ -315,6 +368,10 @@
     "note": "A monorepo of three packages. The registry names no folder for laravel-echo."
   },
   {
+    "id": "legastero/stanza",
+    "url": "https://github.com/legastero/stanza"
+  },
+  {
     "id": "libp2p/js-libp2p",
     "url": "https://github.com/libp2p/js-libp2p"
   },
@@ -342,6 +399,11 @@
   {
     "id": "matrix-org/matrix-js-sdk",
     "url": "https://github.com/matrix-org/matrix-js-sdk"
+  },
+  {
+    "id": "meetecho/janus-gateway",
+    "url": "https://github.com/meetecho/janus-gateway",
+    "note": "The folder npm has no package.json. Its build wraps html/demos/janus.js with npm/module.js and rollup."
   },
   {
     "id": "meta/relay",
@@ -428,6 +490,10 @@
   {
     "id": "neondatabase/serverless",
     "url": "https://github.com/neondatabase/serverless"
+  },
+  {
+    "id": "nostr-dev-kit/ndk",
+    "url": "https://github.com/nostr-dev-kit/ndk"
   },
   {
     "id": "novnc/noVNC",
@@ -550,6 +616,10 @@
     "url": "https://github.com/stomp-js/stompjs"
   },
   {
+    "id": "strophe/strophejs",
+    "url": "https://github.com/strophe/strophejs"
+  },
+  {
     "id": "supabase/supabase-js",
     "url": "https://github.com/supabase/supabase-js"
   },
@@ -564,6 +634,10 @@
   {
     "id": "tedeh/jayson",
     "url": "https://github.com/tedeh/jayson"
+  },
+  {
+    "id": "tidbcloud/serverless-js",
+    "url": "https://github.com/tidbcloud/serverless-js"
   },
   {
     "id": "timostamm/protobuf-ts",
@@ -642,6 +716,10 @@
   {
     "id": "wevm/viem",
     "url": "https://github.com/wevm/viem"
+  },
+  {
+    "id": "xmppjs/xmpp.js",
+    "url": "https://github.com/xmppjs/xmpp.js"
   },
   {
     "id": "xqq/mpegts.js",
