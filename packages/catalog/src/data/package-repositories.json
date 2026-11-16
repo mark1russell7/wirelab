@@ -4,9 +4,19 @@
     "repository": "anycable/anycable-client"
   },
   {
+    "package": "@aws-sdk/client-s3",
+    "repository": "aws/aws-sdk-js-v3",
+    "directory": "clients/client-s3"
+  },
+  {
     "package": "@azure/web-pubsub-client",
     "repository": "Azure/azure-sdk-for-js",
     "directory": "sdk/web-pubsub/web-pubsub-client"
+  },
+  {
+    "package": "@bufbuild/protobuf",
+    "repository": "bufbuild/protobuf-es",
+    "directory": "packages/protobuf"
   },
   {
     "package": "@connectrpc/connect-web",
@@ -46,6 +56,16 @@
     "directory": "core"
   },
   {
+    "package": "@opentelemetry/exporter-trace-otlp-http",
+    "repository": "open-telemetry/opentelemetry-js",
+    "directory": "experimental/packages/exporter-trace-otlp-http"
+  },
+  {
+    "package": "@opentelemetry/exporter-trace-otlp-proto",
+    "repository": "open-telemetry/opentelemetry-js",
+    "directory": "experimental/packages/exporter-trace-otlp-proto"
+  },
+  {
     "package": "@protobuf-ts/grpcweb-transport",
     "repository": "timostamm/protobuf-ts",
     "directory": "packages/grpcweb-transport"
@@ -74,12 +94,29 @@
     "directory": "packages/core/realtime-js"
   },
   {
+    "package": "@vueuse/core",
+    "repository": "vueuse/vueuse",
+    "directory": "packages/core"
+  },
+  {
     "package": "ably",
     "repository": "ably/ably-pubsub-js"
   },
   {
     "package": "aws-iot-device-sdk-v2",
     "repository": "aws/aws-iot-device-sdk-js-v2"
+  },
+  {
+    "package": "aws4fetch",
+    "repository": "mhart/aws4fetch"
+  },
+  {
+    "package": "birpc",
+    "repository": "antfu-collective/birpc"
+  },
+  {
+    "package": "bson",
+    "repository": "mongodb/js-bson"
   },
   {
     "package": "centrifuge",
@@ -94,13 +131,38 @@
     "repository": "mondora/ddp.js"
   },
   {
+    "package": "dns-packet",
+    "repository": "mafintosh/dns-packet"
+  },
+  {
     "package": "engine.io-client",
     "repository": "socketio/socket.io",
     "directory": "packages/engine.io-client"
   },
   {
+    "package": "eventsource",
+    "repository": "EventSource/eventsource"
+  },
+  {
+    "package": "eventsource-parser",
+    "repository": "rexxars/eventsource-parser"
+  },
+  {
     "package": "faye",
     "repository": "faye/faye"
+  },
+  {
+    "package": "firebase",
+    "repository": "firebase/firebase-js-sdk",
+    "directory": "packages/firebase"
+  },
+  {
+    "package": "flatbuffers",
+    "repository": "google/flatbuffers"
+  },
+  {
+    "package": "graphql-request",
+    "repository": "graffle-js/graffle"
   },
   {
     "package": "graphql-ws",
@@ -112,16 +174,32 @@
     "directory": "packages/grpc-web"
   },
   {
+    "package": "hls.js",
+    "repository": "video-dev/hls.js"
+  },
+  {
     "package": "isomorphic-ws",
     "repository": "heineiuo/isomorphic-ws"
+  },
+  {
+    "package": "json-rpc-2.0",
+    "repository": "shogowada/json-rpc-2.0"
   },
   {
     "package": "laravel-echo",
     "repository": "laravel/echo"
   },
   {
+    "package": "meros",
+    "repository": "maraisr/meros"
+  },
+  {
     "package": "mqtt",
     "repository": "mqttjs/MQTT.js"
+  },
+  {
+    "package": "msgpackr",
+    "repository": "kriszyp/msgpackr"
   },
   {
     "package": "nats.ws",
@@ -147,6 +225,10 @@
   {
     "package": "primus",
     "repository": "primus/primus"
+  },
+  {
+    "package": "protobufjs",
+    "repository": "protobufjs/protobuf.js"
   },
   {
     "package": "pubnub",
@@ -213,6 +295,11 @@
   {
     "package": "u8-mqtt",
     "repository": "shanewholloway/js-u8-mqtt"
+  },
+  {
+    "package": "vscode-jsonrpc",
+    "repository": "microsoft/vscode-languageserver-node",
+    "directory": "jsonrpc"
   },
   {
     "package": "websocket-ts",

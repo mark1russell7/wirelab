@@ -4,6 +4,10 @@
     "url": "https://github.com/Azure/azure-sdk-for-js"
   },
   {
+    "id": "EventSource/eventsource",
+    "url": "https://github.com/EventSource/eventsource"
+  },
+  {
     "id": "Gregivy/simpleddp",
     "url": "https://github.com/Gregivy/simpleddp",
     "note": "Last push 2022-12-07."
@@ -35,6 +39,10 @@
     "url": "https://github.com/amqp/rhea-promise"
   },
   {
+    "id": "antfu-collective/birpc",
+    "url": "https://github.com/antfu-collective/birpc"
+  },
+  {
     "id": "anycable/anycable-client",
     "url": "https://github.com/anycable/anycable-client",
     "note": "A monorepo of several packages. The registry names no folder for @anycable/web."
@@ -52,6 +60,14 @@
   {
     "id": "aws/aws-iot-device-sdk-js-v2",
     "url": "https://github.com/aws/aws-iot-device-sdk-js-v2"
+  },
+  {
+    "id": "aws/aws-sdk-js-v3",
+    "url": "https://github.com/aws/aws-sdk-js-v3"
+  },
+  {
+    "id": "bufbuild/protobuf-es",
+    "url": "https://github.com/bufbuild/protobuf-es"
   },
   {
     "id": "centrifugal/centrifuge-js",
@@ -96,6 +112,19 @@
     "url": "https://github.com/feathersjs/feathers"
   },
   {
+    "id": "firebase/firebase-js-sdk",
+    "url": "https://github.com/firebase/firebase-js-sdk"
+  },
+  {
+    "id": "google/flatbuffers",
+    "url": "https://github.com/google/flatbuffers"
+  },
+  {
+    "id": "graffle-js/graffle",
+    "url": "https://github.com/graffle-js/graffle",
+    "note": "The default branch holds graffle, the new name of graphql-request. The source of graphql-request 7 is on the branch graphql-request."
+  },
+  {
     "id": "grpc/grpc-web",
     "url": "https://github.com/grpc/grpc-web"
   },
@@ -123,6 +152,10 @@
     "note": "The last push to the repository was on 2017-07-11."
   },
   {
+    "id": "kriszyp/msgpackr",
+    "url": "https://github.com/kriszyp/msgpackr"
+  },
+  {
     "id": "laravel/echo",
     "url": "https://github.com/laravel/echo",
     "note": "A monorepo of three packages. The registry names no folder for laravel-echo."
@@ -133,9 +166,30 @@
     "note": "Last push 2024-01-20."
   },
   {
+    "id": "mafintosh/dns-packet",
+    "url": "https://github.com/mafintosh/dns-packet"
+  },
+  {
+    "id": "maraisr/meros",
+    "url": "https://github.com/maraisr/meros"
+  },
+  {
+    "id": "mhart/aws4fetch",
+    "url": "https://github.com/mhart/aws4fetch",
+    "note": "Last push 2024-12-06."
+  },
+  {
+    "id": "microsoft/vscode-languageserver-node",
+    "url": "https://github.com/microsoft/vscode-languageserver-node"
+  },
+  {
     "id": "mondora/ddp.js",
     "url": "https://github.com/mondora/ddp.js",
     "note": "Last push 2018-03-17."
+  },
+  {
+    "id": "mongodb/js-bson",
+    "url": "https://github.com/mongodb/js-bson"
   },
   {
     "id": "mqttjs/MQTT.js",
@@ -156,6 +210,10 @@
     "note": "Archived on GitHub. npm deprecates the package, and @nats-io/nats-core replaces it."
   },
   {
+    "id": "open-telemetry/opentelemetry-js",
+    "url": "https://github.com/open-telemetry/opentelemetry-js"
+  },
+  {
     "id": "phoenixframework/phoenix",
     "url": "https://github.com/phoenixframework/phoenix"
   },
@@ -170,6 +228,10 @@
     "note": "Last push 2023-11-06."
   },
   {
+    "id": "protobufjs/protobuf.js",
+    "url": "https://github.com/protobufjs/protobuf.js"
+  },
+  {
     "id": "pubnub/javascript",
     "url": "https://github.com/pubnub/javascript"
   },
@@ -182,12 +244,20 @@
     "url": "https://github.com/rails/rails"
   },
   {
+    "id": "rexxars/eventsource-parser",
+    "url": "https://github.com/rexxars/eventsource-parser"
+  },
+  {
     "id": "robtaussig/react-use-websocket",
     "url": "https://github.com/robtaussig/react-use-websocket"
   },
   {
     "id": "shanewholloway/js-u8-mqtt",
     "url": "https://github.com/shanewholloway/js-u8-mqtt"
+  },
+  {
+    "id": "shogowada/json-rpc-2.0",
+    "url": "https://github.com/shogowada/json-rpc-2.0"
   },
   {
     "id": "socketio/socket.io",
@@ -212,5 +282,13 @@
   {
     "id": "timostamm/protobuf-ts",
     "url": "https://github.com/timostamm/protobuf-ts"
+  },
+  {
+    "id": "video-dev/hls.js",
+    "url": "https://github.com/video-dev/hls.js"
+  },
+  {
+    "id": "vueuse/vueuse",
+    "url": "https://github.com/vueuse/vueuse"
   }
 ]
