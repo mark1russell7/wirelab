@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "@mark1russell7/rigor-chaos": "^0.3.4",
-    "@mark1russell7/rigor-testkit": "^0.1.15",
+    "@mark1russell7/rigor-proxy": "^0.4.1",
+    "@mark1russell7/rigor-testkit": "^0.1.19",
     "engine.io-client": "^6.6.8"
   }
 }
