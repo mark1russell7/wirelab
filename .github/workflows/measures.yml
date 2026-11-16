@@ -8,9 +8,9 @@
 name: Measures
 
 on:
-  # Each Tuesday at 07:23 UTC. The Monday mornings already have the suites and the dependency updates.
+  # Each Tuesday at 07:09 UTC. The Monday mornings already have the suites and the dependency updates.
   schedule:
-    - cron: "23 7 * * 2"
+    - cron: "9 7 * * 2"
   # A person starts a run: gh workflow run measures.yml --ref <branch> [-f only=<count>] [-f push=true]
   # Then: gh run download <run id> -n measures
   workflow_dispatch:
