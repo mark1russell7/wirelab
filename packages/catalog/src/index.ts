@@ -26,6 +26,7 @@ import { type Catalog, type RawTables, parseCatalog } from "./schema.ts";
 export * from "./schema.ts";
 export * from "./priority.ts";
 export * from "./measures.ts";
+export * from "./transports.ts";
 
 /** The raw tables of the files, before the check. */
 export const rawTables: RawTables = {

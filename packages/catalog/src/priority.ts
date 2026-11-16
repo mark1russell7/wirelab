@@ -79,6 +79,11 @@ function newest<T extends { readonly source: string }>(rows: readonly T[], key: 
   return out;
 }
 
+/** This function gives the newest registry row of each package, by the time of its source. */
+export function newestRegistry(catalog: Pick<Catalog, "sources" | "registry">): Map<string, RegistryRow> {
+  return newest<RegistryRow>(catalog.registry, (r) => r.package, new Map(catalog.sources.map((s) => [s.id, s.at])));
+}
+
 /** This function gives the latest policy row of each repository and topic, by the day of the check. */
 function latestPolicies(policies: readonly Policy[]): Map<string, Policy> {
   const out = new Map<string, Policy>();
@@ -94,7 +99,7 @@ function latestPolicies(policies: readonly Policy[]): Map<string, Policy> {
 export function priorityOrder(catalog: Catalog): Ranked[] {
   const at = new Map(catalog.sources.map((s) => [s.id, s.at]));
   const usage = newest<UsageRow>(catalog.usage, (u) => `${u.package}\u0000${u.metric}`, at);
-  const registry = newest<RegistryRow>(catalog.registry, (r) => r.package, at);
+  const registry = newestRegistry(catalog);
   const repositoryOf = new Map(catalog.packageRepositories.map((r) => [r.package, r.repository]));
   const policies = latestPolicies(catalog.policies);
   const policy = (name: string, topic: PolicyTopic): Policy | undefined => {
