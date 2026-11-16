@@ -25,7 +25,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W5 | The catalog on the site | later | P1 | The site shows the ranked catalog, with filters and the parts of each score. It replaces the first site of the template. |
 | W6 | Fault plans in `rigor-chaos` | done | P1 | A fault plan is seeded data: delays, cuts, resets, split frames, reorders, duplicates and stalls, at planned times. |
 | W7 | The package `rigor-proxy` | done | P1 | A proxy applies a fault plan to TCP, WebSocket and HTTP streams, and records each fault. Its tests run in CI. |
-| W8 | The transports of each package | later | P1 | `codeatlas` reads each published package and records the browser APIs that it calls, with the file and line as evidence. |
+| W8 | The transports of each package | later | P2 | `codeatlas` reads each published package and records the browser APIs that it uses, with the file and line as evidence. Lowered from P1 on 2026-11-15: the alerts fault suite comes first (W17). It goes back to P1 when W17 is done. |
 | W9 | Conformance suites in CI | active | P0 | The Autobahn suite, the Engine.IO and Socket.IO suites, `sockjs-protocol`, the `graphql-http` audit and the Connect conformance suite, in browsers. First: `packages/suite-mqtt` (#20, #44) tests MQTT.js 5.16.1 against the Paho test broker in CI. Its first green run found 9 faults of MQTT.js (F0082 to F0090) and one fault of the broker. |
 | W10 | Findings and the upstream ledger | done | P0 | The tables of suites, runs, findings and upstream states. Held fixes go to the private repository `wirelab-held`. |
 | W11 | Protocol state machines | later | P1 | Each protocol as a state machine in `@mark1russell7/algebra`, with trace replay. Engine.IO and Socket.IO come first. |
