@@ -27,7 +27,7 @@ describe("the rules and the checks", () => {
   it("names only known rules, and each check of a finding is in findings.test.ts", () => {
     for (const check of checks) {
       for (const rule of check.rules) expect(ruleIds.has(rule)).toBe(true);
-      expect(check.finding === undefined ? "protocol.test.ts" : "findings.test.ts").toBe(check.file);
+      expect(check.file === "findings.test.ts").toBe(check.finding !== undefined);
       if (check.finding === undefined) expect(check.rules.length).toBeGreaterThan(0);
       else expect(check.finding).toMatch(/^F\d{4}$/);
     }

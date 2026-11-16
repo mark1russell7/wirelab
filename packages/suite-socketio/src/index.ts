@@ -22,7 +22,7 @@ export interface Rule {
 }
 
 /** The test file of a check. */
-export type CheckFile = "protocol.test.ts" | "findings.test.ts";
+export type CheckFile = "protocol.test.ts" | "websocket.test.ts" | "findings.test.ts";
 
 /** One check of the suite. */
 export interface Check {
@@ -104,6 +104,19 @@ export const checks: readonly Check[] = [
   { id: "send-disconnect", rules: ["SIO5-DC-1"], file: "protocol.test.ts" },
   { id: "receive-disconnect", rules: ["SIO5-DC-1"], file: "protocol.test.ts" },
   { id: "invalid-event-payload", rules: ["SIO5-EV-2"], file: "protocol.test.ts" },
+  { id: "ws-connect", rules: ["SIO5-CN-1", "SIO5-CN-2", "SIO5-PE-4"], file: "websocket.test.ts" },
+  { id: "ws-receive-event", rules: ["SIO5-PE-1", "SIO5-PE-4"], file: "websocket.test.ts" },
+  { id: "ws-multiplex", rules: ["SIO5-CN-5", "SIO5-PE-4"], file: "websocket.test.ts" },
+  { id: "ws-send-event", rules: ["SIO5-EV-1", "SIO5-PE-4"], file: "websocket.test.ts" },
+  { id: "ws-send-binary", rules: ["SIO5-PE-3", "SIO5-PE-4"], file: "websocket.test.ts" },
+  { id: "ws-receive-binary", rules: ["SIO5-PE-3"], file: "websocket.test.ts" },
+  { id: "ws-binary-ack", rules: ["SIO5-AK-2", "SIO5-PE-3"], file: "websocket.test.ts" },
+  { id: "ws-receive-disconnect", rules: ["SIO5-DC-1"], file: "websocket.test.ts" },
+  { id: "ws-invalid-event-payload", rules: ["SIO5-EV-2"], file: "websocket.test.ts" },
+  { id: "upgrade-connect", rules: ["SIO5-CN-1", "SIO5-PE-4"], file: "websocket.test.ts" },
+  { id: "upgrade-events", rules: ["SIO5-PE-4"], file: "websocket.test.ts" },
+  { id: "upgrade-binary", rules: ["SIO5-PE-3", "SIO5-PE-4"], file: "websocket.test.ts" },
+  { id: "upgrade-ack", rules: ["SIO5-AK-1", "SIO5-AK-2"], file: "websocket.test.ts" },
   { id: "disconnect-during-connect", rules: ["SIO5-DC-1"], file: "findings.test.ts", finding: "F0058" },
   { id: "retries-without-ack-timeout", rules: ["SIO5-AK-1"], file: "findings.test.ts", finding: "F0064" },
   { id: "eleven-attachments", rules: ["SIO5-PE-3"], file: "findings.test.ts", finding: "F0067" },
