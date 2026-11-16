@@ -30,5 +30,9 @@
   {
     "suite": "sockjs-protocol",
     "protocol": "sockjs"
+  },
+  {
+    "suite": "wirelab-suite-engineio",
+    "protocol": "engine-io"
   }
 ]
