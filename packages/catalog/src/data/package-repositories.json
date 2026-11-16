@@ -70,9 +70,18 @@
     "repository": "deepstreamIO/deepstream.io-client-js"
   },
   {
+    "package": "@eclipse-zenoh/zenoh-ts",
+    "repository": "eclipse-zenoh/zenoh-ts",
+    "directory": "zenoh-ts"
+  },
+  {
     "package": "@electric-sql/client",
     "repository": "neondatabase/electric",
     "directory": "packages/typescript-client"
+  },
+  {
+    "package": "@eyevinn/webrtc-player",
+    "repository": "Eyevinn/webrtc-player"
   },
   {
     "package": "@feathersjs/client",
@@ -83,6 +92,11 @@
     "package": "@foxglove/ws-protocol",
     "repository": "foxglove/ws-protocol",
     "directory": "typescript/ws-protocol"
+  },
+  {
+    "package": "@helia/verified-fetch",
+    "repository": "ipfs/helia-verified-fetch",
+    "directory": "packages/verified-fetch"
   },
   {
     "package": "@hocuspocus/provider",
@@ -126,6 +140,11 @@
     "package": "@libp2p/websockets",
     "repository": "libp2p/js-libp2p",
     "directory": "packages/transport-websockets"
+  },
+  {
+    "package": "@libp2p/webtransport",
+    "repository": "libp2p/js-libp2p",
+    "directory": "packages/transport-webtransport"
   },
   {
     "package": "@libsql/client",
@@ -178,6 +197,11 @@
   {
     "package": "@neondatabase/serverless",
     "repository": "neondatabase/serverless"
+  },
+  {
+    "package": "@nostr-dev-kit/ndk",
+    "repository": "nostr-dev-kit/ndk",
+    "directory": "core"
   },
   {
     "package": "@novnc/novnc",
@@ -260,6 +284,10 @@
     "directory": "packages/core/realtime-js"
   },
   {
+    "package": "@tidbcloud/serverless",
+    "repository": "tidbcloud/serverless-js"
+  },
+  {
     "package": "@trpc/client",
     "repository": "trpc/trpc",
     "directory": "packages/client"
@@ -284,9 +312,19 @@
     "directory": "packages/core"
   },
   {
+    "package": "@xmpp/client",
+    "repository": "xmppjs/xmpp.js",
+    "directory": "packages/client"
+  },
+  {
     "package": "@xterm/addon-attach",
     "repository": "xtermjs/xterm.js",
     "directory": "addons/addon-attach"
+  },
+  {
+    "package": "@y-sweet/client",
+    "repository": "jamsocket/y-sweet",
+    "directory": "js-pkg/client"
   },
   {
     "package": "ably",
@@ -300,6 +338,16 @@
   {
     "package": "apache-arrow",
     "repository": "apache/arrow-js"
+  },
+  {
+    "package": "autobahn",
+    "repository": "crossbario/autobahn-js",
+    "directory": "packages/autobahn"
+  },
+  {
+    "package": "autobahn-browser",
+    "repository": "crossbario/autobahn-js-browser",
+    "directory": "autobahn"
   },
   {
     "package": "avsc",
@@ -444,6 +492,11 @@
     "repository": "amark/gun"
   },
   {
+    "package": "helia",
+    "repository": "ipfs/helia",
+    "directory": "packages/helia"
+  },
+  {
     "package": "hls.js",
     "repository": "video-dev/hls.js"
   },
@@ -454,6 +507,11 @@
   {
     "package": "isomorphic-ws",
     "repository": "heineiuo/isomorphic-ws"
+  },
+  {
+    "package": "janus-gateway",
+    "repository": "meetecho/janus-gateway",
+    "directory": "npm"
   },
   {
     "package": "jayson",
@@ -523,6 +581,11 @@
     "directory": "packages/neo4j-driver"
   },
   {
+    "package": "neo4j-driver-lite",
+    "repository": "neo4j/neo4j-javascript-driver",
+    "directory": "packages/neo4j-driver-lite"
+  },
+  {
     "package": "nostr-tools",
     "repository": "nbd-wtf/nostr-tools"
   },
@@ -537,6 +600,11 @@
   {
     "package": "odata-query",
     "repository": "techniq/odata-query"
+  },
+  {
+    "package": "openvidu-browser",
+    "repository": "OpenVidu/openvidu",
+    "directory": "openvidu-browser"
   },
   {
     "package": "paho-mqtt",
@@ -558,6 +626,16 @@
   {
     "package": "phoenix",
     "repository": "phoenixframework/phoenix"
+  },
+  {
+    "package": "post-me",
+    "repository": "alesgenova/post-me",
+    "directory": "packages/core"
+  },
+  {
+    "package": "pouchdb-browser",
+    "repository": "apache/pouchdb",
+    "directory": "packages/node_modules/pouchdb-browser"
   },
   {
     "package": "precompiled-mqtt",
@@ -603,6 +681,11 @@
   {
     "package": "robust-websocket",
     "repository": "nathanboktae/robust-websocket"
+  },
+  {
+    "package": "roslib",
+    "repository": "RobotWebTools/roslibjs",
+    "directory": "packages/roslib"
   },
   {
     "package": "rpc-websockets",
@@ -669,8 +752,16 @@
     "repository": "mpetazzoni/sse.js"
   },
   {
+    "package": "stanza",
+    "repository": "legastero/stanza"
+  },
+  {
     "package": "stompjs",
     "repository": "jmesnil/stomp-websocket"
+  },
+  {
+    "package": "strophe.js",
+    "repository": "strophe/strophejs"
   },
   {
     "package": "subscriptions-transport-ws",
@@ -724,6 +815,10 @@
     "package": "vscode-ws-jsonrpc",
     "repository": "TypeFox/monaco-languageclient",
     "directory": "packages/vscode-ws-jsonrpc"
+  },
+  {
+    "package": "wampy",
+    "repository": "KSDaemon/wampy.js"
   },
   {
     "package": "web3",
