@@ -40,9 +40,10 @@
       "gate-trigger": {
         "allow": [
           "suite-mqtt.yml",
-          "suite-engineio.yml"
+          "suite-engineio.yml",
+          "suite-socketio.yml"
         ],
-        "reason": "The suites of MQTT and Engine.IO are not gates. They find faults of the clients, and their it.fails tests record them. They run only when a suite changes, each week and on a manual start."
+        "reason": "The suites of MQTT, Engine.IO and Socket.IO are not gates. They find faults of the clients, and their it.fails tests record them. They run only when a suite changes, each week and on a manual start."
       },
       "typed-files": {
         "configs": [

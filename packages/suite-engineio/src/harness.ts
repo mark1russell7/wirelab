@@ -102,16 +102,31 @@ export function normalData(data: unknown): string | Uint8Array {
   return String(data);
 }
 
-/** This function starts a scripted server and a client of one transport on it. */
-export async function startSession(transport: PollingTransport, script: SessionScript = {}, client: SocketOptions = {}): Promise<Session> {
+/** A scripted Engine.IO server and the handshake that its open reply gives. */
+export interface EngineServer {
+  readonly server: ScriptedServer;
+  readonly handshake: Handshake;
+}
+
+/**
+ * This function starts a scripted Engine.IO server for HTTP long-polling at the given path. The first GET request gets
+ * the open packet. The suites of protocols on Engine.IO, for example Socket.IO, use it with their own client.
+ */
+export async function startEngineServer(script: SessionScript = {}, path: string = enginePath): Promise<EngineServer> {
   const handshake: Handshake = { ...defaultHandshake, ...script.handshake };
   const hold = script.hold ?? payload([{ type: "noop", data: "" }], { delayMs: 30_000 });
   const server = await startScriptedServer({
     routes: [
-      { method: "GET", path: enginePath, replies: [payload([openPacket(handshake)], script.openReply), ...(script.polls ?? []), hold] },
-      { method: "POST", path: enginePath, replies: script.posts ?? [accepted] },
+      { method: "GET", path, replies: [payload([openPacket(handshake)], script.openReply), ...(script.polls ?? []), hold] },
+      { method: "POST", path, replies: script.posts ?? [accepted] },
     ],
   });
+  return { server, handshake };
+}
+
+/** This function starts a scripted server and a client of one transport on it. */
+export async function startSession(transport: PollingTransport, script: SessionScript = {}, client: SocketOptions = {}): Promise<Session> {
+  const { server, handshake } = await startEngineServer(script);
   const start = performance.now();
   const elapsed = (): number => performance.now() - start;
   const events: SessionEvent[] = [];

@@ -14,7 +14,7 @@ The suite tests the client. The server is a list of replies from `startScriptedS
 | `src/codec.test.ts` | A check of the codec against the examples of the protocol document. |
 | `src/codec.ts` | The packets and the payloads of the protocol, from the protocol document. The tests do not use `engine.io-parser`. |
 | `src/harness.ts` | The helpers of the tests: the scripted session, the client and the records of the requests and the events. |
-| `src/index.ts` | The rules and the checks as data. |
+| `src/index.ts` | The rules and the checks as data. The entry also gives the codec and the scripted Engine.IO server `startEngineServer` to the suites of protocols on Engine.IO. |
 
 - Each check examines the two transports of HTTP long-polling for Node.js: `NodeXHR` and `Fetch`.
 - A rule has the form `[EIO4-<group>-<number>]`. The title of the test names it.
@@ -76,4 +76,4 @@ The rules come from the protocol document `README.md` of `socketio/engine.io-pro
 
 Two other faults have no test in this suite. A malformed open packet (F0029) and a failed read of a reply body with `Fetch` (F0026) give an uncaught error. An uncaught error stops the worker of the test, thus these checks need a separate process.
 
-The WebSocket transport and the Socket.IO protocol are not in this suite. They come in a later part of the roadmap item W9.
+The Socket.IO protocol has its own suite, `@wirelab/suite-socketio`. The WebSocket transport is not in this suite. It comes in a later part of the roadmap item W9.
