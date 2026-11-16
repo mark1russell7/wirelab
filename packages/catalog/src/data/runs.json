@@ -10,5 +10,17 @@
     "failed": 0,
     "skipped": 1,
     "note": "The skipped test is the DISCONNECT with reason code 135: a fault of the Paho broker at fdab9d2. Each it.fails test passed, so each fault below stays."
+  },
+  {
+    "id": "suite-engineio-43922263433",
+    "suite": "wirelab-suite-engineio",
+    "package": "engine.io-client",
+    "version": "6.6.8",
+    "at": "2026-11-16T17:49:53Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/43922263433",
+    "passed": 73,
+    "failed": 0,
+    "skipped": 0,
+    "note": "The 8 it.fails tests passed, so the faults F0024, F0028, F0030 and F0031 stay in 6.6.8. A line client bug evidence of the log gives the measured values of each fault."
   }
 ]

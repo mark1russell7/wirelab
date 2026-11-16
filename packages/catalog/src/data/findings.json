@@ -237,7 +237,7 @@
     "method": "review",
     "found": "2026-11-13",
     "title": "the maxPayload check of a batch counts base64 as 1.33 bytes for each byte, so the server answers 413 and the client closes",
-    "note": "Base64 gives 4*ceil(n/3) bytes. Confidence high."
+    "note": "Base64 gives 4*ceil(n/3) bytes. Confidence high. The run suite-engineio-43922263433 of wirelab-suite-engineio confirms it over NodeXHR and Fetch, with the it.fails test max-payload-binary."
   },
   {
     "id": "F0025",
@@ -277,7 +277,7 @@
     "method": "review",
     "found": "2026-11-13",
     "title": "the heartbeat timer overflows when pingInterval + pingTimeout is over 2^31-1, so the client closes with 'ping timeout' at once",
-    "note": "The server accepts that configuration. Confidence high."
+    "note": "The server accepts that configuration. Confidence high. The run suite-engineio-43922263433 of wirelab-suite-engineio confirms it over NodeXHR and Fetch, with the it.fails test long-ping-interval."
   },
   {
     "id": "F0029",
@@ -297,7 +297,7 @@
     "method": "review",
     "found": "2026-11-13",
     "title": "requestTimeout has no effect with NodeXHR, the default polling transport in Node.js, or with Fetch",
-    "note": "xmlhttprequest-ssl has no timeout, and Fetch gets no AbortSignal. Browser XHR obeys it. Confidence medium."
+    "note": "xmlhttprequest-ssl has no timeout, and Fetch gets no AbortSignal. Browser XHR obeys it. Confidence medium. The run suite-engineio-43922263433 of wirelab-suite-engineio confirms it over NodeXHR and Fetch, with the it.fails test request-timeout."
   },
   {
     "id": "F0031",
@@ -307,7 +307,7 @@
     "method": "review",
     "found": "2026-11-13",
     "title": "close does not abort the polling requests in flight: the long-poll GET and the close POST",
-    "note": "Each held request keeps a connection slot of the origin. Confidence medium."
+    "note": "Each held request keeps a connection slot of the origin. Confidence medium. The run suite-engineio-43922263433 of wirelab-suite-engineio confirms it over NodeXHR and Fetch, with the it.fails test close-aborts-poll."
   },
   {
     "id": "F0032",
