@@ -5,6 +5,26 @@
  * @packageDocumentation
  */
 
+// The suites of protocols on Engine.IO, for example Socket.IO, use the codec and the scripted server of this suite.
+export * from "./codec.ts";
+export {
+  accepted,
+  active,
+  bytesOf,
+  defaultHandshake,
+  enginePath,
+  largest,
+  message,
+  normalData,
+  pause,
+  payload,
+  queryOf,
+  startEngineServer,
+  until,
+  type EngineServer,
+  type SessionScript,
+} from "./harness.ts";
+
 /** The force of a rule. `MUST` and `SHOULD` come from the protocol document. `meaning` is the effect that the document gives to a packet. */
 export type RuleLevel = "MUST" | "SHOULD" | "meaning";
 
