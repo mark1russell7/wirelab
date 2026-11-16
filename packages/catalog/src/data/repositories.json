@@ -4,6 +4,11 @@
     "url": "https://github.com/Aaronius/penpal"
   },
   {
+    "id": "AgoraIO/agora-rtc-web",
+    "url": "https://github.com/AgoraIO/agora-rtc-web",
+    "note": "The repository holds the built SDK, its type declarations and demo projects, not the source. packages/rtc-web-v4 holds version 4.19.1. The latest version on the registry is 4.24.10."
+  },
+  {
     "id": "Azure/azure-sdk-for-js",
     "url": "https://github.com/Azure/azure-sdk-for-js"
   },
@@ -46,6 +51,10 @@
   {
     "id": "SocketCluster/socketcluster-client",
     "url": "https://github.com/SocketCluster/socketcluster-client"
+  },
+  {
+    "id": "TypeFox/monaco-languageclient",
+    "url": "https://github.com/TypeFox/monaco-languageclient"
   },
   {
     "id": "Yaffle/EventSource",
@@ -122,6 +131,10 @@
   {
     "id": "centrifugal/centrifuge-js",
     "url": "https://github.com/centrifugal/centrifuge-js"
+  },
+  {
+    "id": "cloudamqp/amqp-client.js",
+    "url": "https://github.com/cloudamqp/amqp-client.js"
   },
   {
     "id": "cloudflare/capnweb",
@@ -254,6 +267,10 @@
     "url": "https://github.com/juanjoDiaz/streamparser-json"
   },
   {
+    "id": "jupyterlab/jupyterlab",
+    "url": "https://github.com/jupyterlab/jupyterlab"
+  },
+  {
     "id": "kriszyp/cbor-x",
     "url": "https://github.com/kriszyp/cbor-x"
   },
@@ -265,6 +282,10 @@
     "id": "laravel/echo",
     "url": "https://github.com/laravel/echo",
     "note": "A monorepo of three packages. The registry names no folder for laravel-echo."
+  },
+  {
+    "id": "libp2p/js-libp2p",
+    "url": "https://github.com/libp2p/js-libp2p"
   },
   {
     "id": "liveblocks/liveblocks",
@@ -317,6 +338,14 @@
   {
     "id": "mongodb/js-bson",
     "url": "https://github.com/mongodb/js-bson"
+  },
+  {
+    "id": "moq-dev/moq",
+    "url": "https://github.com/moq-dev/moq"
+  },
+  {
+    "id": "mpetazzoni/sse.js",
+    "url": "https://github.com/mpetazzoni/sse.js"
   },
   {
     "id": "mqttjs/MQTT.js",
@@ -378,6 +407,10 @@
     "url": "https://github.com/open-telemetry/opentelemetry-js"
   },
   {
+    "id": "peers/peerjs",
+    "url": "https://github.com/peers/peerjs"
+  },
+  {
     "id": "perry-mitchell/webdav-client",
     "url": "https://github.com/perry-mitchell/webdav-client"
   },
@@ -395,6 +428,10 @@
     "url": "https://github.com/planetscale/database-js"
   },
   {
+    "id": "powersync-ja/powersync-js",
+    "url": "https://github.com/powersync-ja/powersync-js"
+  },
+  {
     "id": "primus/primus",
     "url": "https://github.com/primus/primus",
     "note": "Last push 2023-11-06."
@@ -402,6 +439,10 @@
   {
     "id": "protobufjs/protobuf.js",
     "url": "https://github.com/protobufjs/protobuf.js"
+  },
+  {
+    "id": "pubkey/rxdb",
+    "url": "https://github.com/pubkey/rxdb"
   },
   {
     "id": "pubnub/javascript",
@@ -466,12 +507,21 @@
     "url": "https://github.com/supabase/supabase-js"
   },
   {
+    "id": "techniq/odata-query",
+    "url": "https://github.com/techniq/odata-query"
+  },
+  {
     "id": "tedeh/jayson",
     "url": "https://github.com/tedeh/jayson"
   },
   {
     "id": "timostamm/protobuf-ts",
     "url": "https://github.com/timostamm/protobuf-ts"
+  },
+  {
+    "id": "tophcodes/guacamole-common-js",
+    "url": "https://github.com/tophcodes/guacamole-common-js",
+    "note": "A fork that puts the JavaScript client of Apache Guacamole on the registry. The code comes from apache/guacamole-client. Last push 2023-03-23."
   },
   {
     "id": "trpc/trpc",
@@ -506,6 +556,14 @@
     "url": "https://github.com/urql-graphql/urql"
   },
   {
+    "id": "versatica/JsSIP",
+    "url": "https://github.com/versatica/JsSIP"
+  },
+  {
+    "id": "versatica/mediasoup-client",
+    "url": "https://github.com/versatica/mediasoup-client"
+  },
+  {
     "id": "video-dev/hls.js",
     "url": "https://github.com/video-dev/hls.js"
   },
@@ -525,6 +583,10 @@
   {
     "id": "wevm/viem",
     "url": "https://github.com/wevm/viem"
+  },
+  {
+    "id": "xtermjs/xterm.js",
+    "url": "https://github.com/xtermjs/xterm.js"
   },
   {
     "id": "yjs/y-webrtc",
