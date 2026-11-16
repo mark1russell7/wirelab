@@ -1,5 +1,14 @@
 [
   {
+    "id": "Azure/azure-sdk-for-js",
+    "url": "https://github.com/Azure/azure-sdk-for-js"
+  },
+  {
+    "id": "Gregivy/simpleddp",
+    "url": "https://github.com/Gregivy/simpleddp",
+    "note": "Last push 2022-12-07."
+  },
+  {
     "id": "JSteunou/webstomp-client",
     "url": "https://github.com/JSteunou/webstomp-client",
     "note": "Archived on GitHub. npm does not deprecate the package."
@@ -10,13 +19,39 @@
     "note": "The branch 7.x holds the release line 7, with no folder packages/rxjs."
   },
   {
+    "id": "SocketCluster/socketcluster-client",
+    "url": "https://github.com/SocketCluster/socketcluster-client"
+  },
+  {
     "id": "ably/ably-pubsub-js",
     "url": "https://github.com/ably/ably-pubsub-js"
+  },
+  {
+    "id": "amqp/rhea",
+    "url": "https://github.com/amqp/rhea"
+  },
+  {
+    "id": "amqp/rhea-promise",
+    "url": "https://github.com/amqp/rhea-promise"
+  },
+  {
+    "id": "anycable/anycable-client",
+    "url": "https://github.com/anycable/anycable-client",
+    "note": "A monorepo of several packages. The registry names no folder for @anycable/web."
   },
   {
     "id": "apollographql/subscriptions-transport-ws",
     "url": "https://github.com/apollographql/subscriptions-transport-ws",
     "note": "Archived on GitHub. npm deprecates the package."
+  },
+  {
+    "id": "ashiqdey/precompiled-mqtt",
+    "url": "https://github.com/ashiqdey/precompiled-mqtt",
+    "note": "Last push 2022-09-13."
+  },
+  {
+    "id": "aws/aws-iot-device-sdk-js-v2",
+    "url": "https://github.com/aws/aws-iot-device-sdk-js-v2"
   },
   {
     "id": "centrifugal/centrifuge-js",
@@ -27,8 +62,17 @@
     "url": "https://github.com/cloudflare/partykit"
   },
   {
+    "id": "cometd/cometd-javascript",
+    "url": "https://github.com/cometd/cometd-javascript",
+    "note": "A mirror of the JavaScript sources of cometd/cometd, arranged for the registry. It has no pull requests."
+  },
+  {
     "id": "connectrpc/connect-es",
     "url": "https://github.com/connectrpc/connect-es"
+  },
+  {
+    "id": "deepstreamIO/deepstream.io-client-js",
+    "url": "https://github.com/deepstreamIO/deepstream.io-client-js"
   },
   {
     "id": "dotnet/aspnetcore",
@@ -48,8 +92,21 @@
     "url": "https://github.com/faye/faye"
   },
   {
+    "id": "feathersjs/feathers",
+    "url": "https://github.com/feathersjs/feathers"
+  },
+  {
     "id": "grpc/grpc-web",
     "url": "https://github.com/grpc/grpc-web"
+  },
+  {
+    "id": "heineiuo/isomorphic-ws",
+    "url": "https://github.com/heineiuo/isomorphic-ws",
+    "note": "Last push 2023-06-20."
+  },
+  {
+    "id": "hotwired/turbo",
+    "url": "https://github.com/hotwired/turbo"
   },
   {
     "id": "improbable-eng/grpc-web",
@@ -57,13 +114,37 @@
     "note": "The last push to the repository was on 2023-09-23."
   },
   {
+    "id": "jjxxs/websocket-ts",
+    "url": "https://github.com/jjxxs/websocket-ts"
+  },
+  {
     "id": "jmesnil/stomp-websocket",
     "url": "https://github.com/jmesnil/stomp-websocket",
     "note": "The last push to the repository was on 2017-07-11."
   },
   {
+    "id": "laravel/echo",
+    "url": "https://github.com/laravel/echo",
+    "note": "A monorepo of three packages. The registry names no folder for laravel-echo."
+  },
+  {
+    "id": "lukeed/sockette",
+    "url": "https://github.com/lukeed/sockette",
+    "note": "Last push 2024-01-20."
+  },
+  {
+    "id": "mondora/ddp.js",
+    "url": "https://github.com/mondora/ddp.js",
+    "note": "Last push 2018-03-17."
+  },
+  {
     "id": "mqttjs/MQTT.js",
     "url": "https://github.com/mqttjs/MQTT.js"
+  },
+  {
+    "id": "nathanboktae/robust-websocket",
+    "url": "https://github.com/nathanboktae/robust-websocket",
+    "note": "Last push 2022-07-14."
   },
   {
     "id": "nats-io/nats.js",
@@ -84,12 +165,29 @@
     "note": "The last push to the repository was on 2023-06-15."
   },
   {
+    "id": "primus/primus",
+    "url": "https://github.com/primus/primus",
+    "note": "Last push 2023-11-06."
+  },
+  {
+    "id": "pubnub/javascript",
+    "url": "https://github.com/pubnub/javascript"
+  },
+  {
     "id": "pusher/pusher-js",
     "url": "https://github.com/pusher/pusher-js"
   },
   {
     "id": "rails/rails",
     "url": "https://github.com/rails/rails"
+  },
+  {
+    "id": "robtaussig/react-use-websocket",
+    "url": "https://github.com/robtaussig/react-use-websocket"
+  },
+  {
+    "id": "shanewholloway/js-u8-mqtt",
+    "url": "https://github.com/shanewholloway/js-u8-mqtt"
   },
   {
     "id": "socketio/socket.io",
