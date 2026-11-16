@@ -13,6 +13,8 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - "@mark1russell7/*"
   - "@procedures/*"
+  # Our own crawler. It has no scope, and the release train releases it as the packages above.
+  - polite-crawler
 
 # An install fails when a new version has less trust evidence than an earlier version of the same package: for
 # example, a version with no provenance after versions from a trusted publisher. Such a version can be a stolen token.
