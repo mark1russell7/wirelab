@@ -634,10 +634,66 @@
     "note": "The fix test ran in CI (repro.yml, run 43645326968): the new spec fails with src of master and passes with the fix. tsc on the repro gives 1 error with src of master and 0 with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
   },
   {
+    "finding": "F0091",
+    "at": "2026-11-16T23:54:54Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/715",
+    "note": "The repro ran in CI (repro.yml, run 43978492175). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
+  },
+  {
+    "finding": "F0092",
+    "at": "2026-11-16T23:54:55Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/716",
+    "note": "The repro ran in CI (repro.yml, run 43978617046). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
+  },
+  {
+    "finding": "F0093",
+    "at": "2026-11-16T23:55:04Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/645#issuecomment-6933063864",
+    "note": "A duplicate of issue #645 (open since 2024-01-11). The comment gives the repro and the CI run 43978630757."
+  },
+  {
+    "finding": "F0094",
+    "at": "2026-11-16T23:54:56Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/717",
+    "note": "The repro ran in CI (repro.yml, run 43978649894). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
+  },
+  {
+    "finding": "F0095",
+    "at": "2026-11-16T23:54:58Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/718",
+    "note": "The repro ran in CI (repro.yml, run 43978665454). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
+  },
+  {
     "finding": "F0096",
     "at": "2026-11-16T23:24:53Z",
     "state": "fixed-by-others",
     "url": "https://github.com/sockjs/sockjs-client/pull/607",
     "note": "Merged on main on 2022-11-09 (commit 52acd8e). Not in 1.6.1, the latest release."
+  },
+  {
+    "finding": "F0097",
+    "at": "2026-11-16T23:54:59Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/719",
+    "note": "The repro ran in CI (repro.yml, run 43978775520). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
+  },
+  {
+    "finding": "F0098",
+    "at": "2026-11-16T23:55:00Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/720",
+    "note": "The repro ran in CI (repro.yml, run 43978796004). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
+  },
+  {
+    "finding": "F0099",
+    "at": "2026-11-16T23:55:02Z",
+    "state": "issue-open",
+    "url": "https://github.com/sockjs/sockjs-client/issues/721",
+    "note": "The repro ran in CI (repro.yml, run 43978825836). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
   }
 ]
