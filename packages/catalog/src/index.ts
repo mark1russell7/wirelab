@@ -16,6 +16,8 @@ import runs from "./data/runs.json" with { type: "json" };
 import sources from "./data/sources.json" with { type: "json" };
 import suiteProtocols from "./data/suite-protocols.json" with { type: "json" };
 import suites from "./data/suites.json" with { type: "json" };
+import transportMarkers from "./data/transport-markers.json" with { type: "json" };
+import transportUses from "./data/transport-uses.json" with { type: "json" };
 import transports from "./data/transports.json" with { type: "json" };
 import upstream from "./data/upstream.json" with { type: "json" };
 import usage from "./data/usage.json" with { type: "json" };
@@ -29,6 +31,7 @@ export * from "./measures.ts";
 export const rawTables: RawTables = {
   families,
   transports,
+  transportMarkers,
   protocols,
   packages,
   packageProtocols,
@@ -44,6 +47,7 @@ export const rawTables: RawTables = {
   runs,
   findings,
   upstream,
+  transportUses,
 };
 
 /** The catalog, checked. An import of this module throws an error when a table has a problem. */

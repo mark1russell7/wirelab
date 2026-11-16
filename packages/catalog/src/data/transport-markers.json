@@ -1,0 +1,91 @@
+[
+  {
+    "kind": "global",
+    "name": "EventSource",
+    "transport": "eventsource"
+  },
+  {
+    "kind": "global",
+    "name": "MessageChannel",
+    "transport": "postmessage"
+  },
+  {
+    "kind": "global",
+    "name": "MozWebSocket",
+    "transport": "websocket",
+    "note": "The WebSocket of Firefox 6 to 10, with a prefix."
+  },
+  {
+    "kind": "global",
+    "name": "RTCDataChannel",
+    "transport": "rtc-datachannel"
+  },
+  {
+    "kind": "global",
+    "name": "TCPServerSocket",
+    "transport": "direct-sockets"
+  },
+  {
+    "kind": "global",
+    "name": "TCPSocket",
+    "transport": "direct-sockets"
+  },
+  {
+    "kind": "global",
+    "name": "UDPSocket",
+    "transport": "direct-sockets"
+  },
+  {
+    "kind": "global",
+    "name": "WebSocket",
+    "transport": "websocket"
+  },
+  {
+    "kind": "global",
+    "name": "WebSocketStream",
+    "transport": "websocket-stream"
+  },
+  {
+    "kind": "global",
+    "name": "WebTransport",
+    "transport": "webtransport"
+  },
+  {
+    "kind": "global",
+    "name": "XDomainRequest",
+    "transport": "xhr",
+    "note": "The cross-origin request of Internet Explorer 8 and 9."
+  },
+  {
+    "kind": "global",
+    "name": "XMLHttpRequest",
+    "transport": "xhr"
+  },
+  {
+    "kind": "global",
+    "name": "fetch",
+    "transport": "fetch"
+  },
+  {
+    "kind": "method",
+    "name": "addTrack",
+    "transport": "rtc-media",
+    "note": "A peer connection gets a media track. The global RTCPeerConnection opens data channels and media, so it is not a marker."
+  },
+  {
+    "kind": "method",
+    "name": "addTransceiver",
+    "transport": "rtc-media"
+  },
+  {
+    "kind": "method",
+    "name": "createDataChannel",
+    "transport": "rtc-datachannel"
+  },
+  {
+    "kind": "method",
+    "name": "postMessage",
+    "transport": "postmessage",
+    "note": "Each worker, frame and message port has this method."
+  }
+]

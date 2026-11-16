@@ -27,6 +27,7 @@ describe("the check", () => {
   const base = (): Record<keyof Catalog, unknown[]> => ({
     families: [{ id: "f", order: 1, title: "F", what: "F." }],
     transports: [],
+    transportMarkers: [],
     protocols: [{ id: "p", name: "P", family: "f", kind: "protocol", client: "library" }],
     packages: [{ name: "a", family: "f" }],
     packageProtocols: [{ package: "a", protocol: "p" }],
@@ -42,6 +43,7 @@ describe("the check", () => {
     runs: [],
     findings: [],
     upstream: [],
+    transportUses: [],
   });
 
   it("accepts a valid catalog", () => {
@@ -81,6 +83,27 @@ describe("the check", () => {
     ]);
   });
 
+  it("finds a marker of a missing transport and a use of a missing marker, package or source", () => {
+    const raw = base();
+    raw.transports.push({ id: "websocket", name: "WebSocket" });
+    raw.transportMarkers.push({ kind: "global", name: "WebSocket", transport: "websocket" }, { kind: "method", name: "send", transport: "missing" });
+    const use = { package: "a", source: "s", version: "1.0.0", kind: "global", name: "WebSocket", file: "dist/index.js", line: 12, files: 2 };
+    raw.transportUses.push(
+      use,
+      { ...use, kind: "method", name: "close" },
+      { ...use, package: "gone", source: "s2" },
+      { ...use, name: "EventSource", line: 0 },
+    );
+    expect(catalogProblems(raw)).toEqual(["transportUses[3].line is not an order from 1."]);
+    raw.transportUses.pop();
+    expect(catalogProblems(raw)).toEqual([
+      "transportMarkers method send names missing, and that row is not in the catalog.",
+      "transportUses a names method close, and that row is not in the catalog.",
+      "transportUses gone names gone, and that row is not in the catalog.",
+      "transportUses gone names s2, and that row is not in the catalog.",
+    ]);
+  });
+
   it("finds a library protocol that no package speaks", () => {
     const raw = base();
     raw.protocols.push({ id: "q", name: "Q", family: "f", kind: "protocol", client: "library" });
@@ -94,6 +117,7 @@ describe("the check of the ledger", () => {
   const ledger = (): Record<keyof Catalog, unknown[]> => ({
     families: [{ id: "f", order: 1, title: "F", what: "F." }],
     transports: [],
+    transportMarkers: [],
     protocols: [
       { id: "p", name: "P", family: "f", kind: "protocol", client: "library" },
       { id: "q", name: "Q", family: "f", kind: "protocol", client: "library" },
@@ -121,6 +145,7 @@ describe("the check of the ledger", () => {
       { finding: "F0001", at: "2026-11-14T11:00:00Z", state: "issue-open", url: "https://example.org/issues/1" },
       { finding: "F0001", at: "2026-11-15T09:00:00Z", state: "pr-open", url: "https://example.org/pull/2" },
     ],
+    transportUses: [],
   });
 
   it("accepts a valid ledger", () => {
@@ -177,6 +202,7 @@ describe("the priority order", () => {
   const fixture = (): Catalog => ({
     families: [{ id: "f", order: 1, title: "F", what: "F." }],
     transports: [],
+    transportMarkers: [],
     protocols: [{ id: "p", name: "P", family: "f", kind: "protocol", client: "library" }],
     packages: ["a", "b", "c", "d"].map((name) => ({ name, family: "f" })),
     packageProtocols: ["a", "b", "c", "d"].map((name) => ({ package: name, protocol: "p" })),
@@ -200,6 +226,7 @@ describe("the priority order", () => {
     runs: [],
     findings: [],
     upstream: [],
+    transportUses: [],
   });
 
   it("puts the most used package first, and a package with no measure last", () => {

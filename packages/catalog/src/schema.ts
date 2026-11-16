@@ -20,6 +20,36 @@ export interface Transport {
   readonly note?: string;
 }
 
+/** The kinds of a marker of a transport: a global name that code reads, or the name of a method that code calls. */
+export const MARKER_KINDS = ["global", "method"] as const;
+export type MarkerKind = (typeof MARKER_KINDS)[number];
+
+/**
+ * A name in code that shows a transport. A file that reads the global `WebSocket` uses the transport `websocket`. A
+ * file that calls a method `createDataChannel` uses `rtc-datachannel`. One marker shows one transport.
+ */
+export interface TransportMarker {
+  readonly kind: MarkerKind;
+  readonly name: string;
+  readonly transport: string;
+  readonly note?: string;
+}
+
+/**
+ * The published files of a package at one version have a marker of a transport. `file` and `line` are the first
+ * place of the marker. `files` counts the files that have it. `source` is the read of the files.
+ */
+export interface TransportUse {
+  readonly package: string;
+  readonly source: string;
+  readonly version: string;
+  readonly kind: MarkerKind;
+  readonly name: string;
+  readonly file: string;
+  readonly line: number;
+  readonly files: number;
+}
+
 /** The kinds of a protocol row. A codec is a wire format that a protocol carries, not a protocol. */
 export const PROTOCOL_KINDS = ["protocol", "codec"] as const;
 export type ProtocolKind = (typeof PROTOCOL_KINDS)[number];
@@ -250,6 +280,7 @@ export interface UpstreamRow {
 export interface Catalog {
   readonly families: readonly Family[];
   readonly transports: readonly Transport[];
+  readonly transportMarkers: readonly TransportMarker[];
   readonly protocols: readonly Protocol[];
   readonly packages: readonly Package[];
   readonly packageProtocols: readonly PackageProtocol[];
@@ -265,12 +296,14 @@ export interface Catalog {
   readonly runs: readonly Run[];
   readonly findings: readonly Finding[];
   readonly upstream: readonly UpstreamRow[];
+  readonly transportUses: readonly TransportUse[];
 }
 
 /** The name of each table, and the file that holds it. */
 export const TABLE_FILES: Readonly<Record<keyof Catalog, string>> = {
   families: "families.json",
   transports: "transports.json",
+  transportMarkers: "transport-markers.json",
   protocols: "protocols.json",
   packages: "packages.json",
   packageProtocols: "package-protocols.json",
@@ -286,6 +319,7 @@ export const TABLE_FILES: Readonly<Record<keyof Catalog, string>> = {
   runs: "runs.json",
   findings: "findings.json",
   upstream: "upstream.json",
+  transportUses: "transport-uses.json",
 };
 
 type FieldKind = "text" | "url" | "day" | "time" | "count" | "order" | readonly string[];
@@ -300,6 +334,7 @@ interface TableSpec {
 export const TABLE_SPECS: Readonly<Record<keyof Catalog, TableSpec>> = {
   families: { key: ["order"], required: { id: "text", order: "order", title: "text", what: "text" } },
   transports: { key: ["id"], required: { id: "text", name: "text" }, optional: { spec: "url", note: "text" } },
+  transportMarkers: { key: ["kind", "name"], required: { kind: MARKER_KINDS, name: "text", transport: "text" }, optional: { note: "text" } },
   protocols: {
     key: ["id"],
     required: { id: "text", name: "text", family: "text", kind: PROTOCOL_KINDS, client: CLIENT_KINDS },
@@ -338,6 +373,10 @@ export const TABLE_SPECS: Readonly<Record<keyof Catalog, TableSpec>> = {
     optional: { run: "text", advisory: "url", note: "text" },
   },
   upstream: { key: ["finding", "at", "state"], required: { finding: "text", at: "time", state: UPSTREAM_STATES }, optional: { url: "url", note: "text" } },
+  transportUses: {
+    key: ["package", "kind", "name"],
+    required: { package: "text", source: "text", version: "text", kind: MARKER_KINDS, name: "text", file: "text", line: "order", files: "order" },
+  },
 };
 
 /** The upstream states that need the URL of a public issue, pull request or release. */
@@ -476,6 +515,14 @@ function keyProblems(c: Catalog): string[] {
   for (const r of c.packageRepositories) {
     need(packages, r.package, `packageRepositories ${r.package}`);
     need(repositories, r.repository, `packageRepositories ${r.package}`);
+  }
+  const transports = ids(c.transports);
+  const markers = new Set(c.transportMarkers.map((m) => `${m.kind} ${m.name}`));
+  for (const m of c.transportMarkers) need(transports, m.transport, `transportMarkers ${m.kind} ${m.name}`);
+  for (const u of c.transportUses) {
+    need(packages, u.package, `transportUses ${u.package}`);
+    need(sources, u.source, `transportUses ${u.package}`);
+    need(markers, `${u.kind} ${u.name}`, `transportUses ${u.package}`);
   }
   for (const p of c.policies) {
     need(repositories, p.repository, `policies ${p.repository}`);
