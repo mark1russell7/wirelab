@@ -107,9 +107,11 @@ export const checks: readonly Check[] = [
   { id: "disconnect-during-connect", rules: ["SIO5-DC-1"], file: "findings.test.ts", finding: "F0058" },
   { id: "retries-without-ack-timeout", rules: ["SIO5-AK-1"], file: "findings.test.ts", finding: "F0064" },
   { id: "eleven-attachments", rules: ["SIO5-PE-3"], file: "findings.test.ts", finding: "F0067" },
-  // These four checks examine the documented behavior of the client, not a rule of the protocol.
+  // These six checks examine the documented behavior of the client, not a rule of the protocol.
   { id: "volatile-before-connect", rules: [], file: "findings.test.ts", finding: "F0055" },
   { id: "second-connect", rules: [], file: "findings.test.ts", finding: "F0057" },
   { id: "reconnection-attempts-zero", rules: [], file: "findings.test.ts", finding: "F0059" },
   { id: "recovered-false", rules: [], file: "findings.test.ts", finding: "F0060" },
+  { id: "offset-event-name", rules: [], file: "findings.test.ts", finding: "F0066" },
+  { id: "offset-string-argument", rules: [], file: "findings.test.ts", finding: "F0066" },
 ];

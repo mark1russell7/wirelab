@@ -18,6 +18,7 @@
     "vitest": "^5.0.3"
   },
   "dependencies": {
+    "@mark1russell7/rigor-chaos": "^0.3.4",
     "@mark1russell7/rigor-testkit": "^0.1.15",
     "engine.io-client": "^6.6.8"
   }
