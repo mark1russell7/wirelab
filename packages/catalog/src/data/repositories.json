@@ -1,5 +1,9 @@
 [
   {
+    "id": "Aaronius/penpal",
+    "url": "https://github.com/Aaronius/penpal"
+  },
+  {
     "id": "Azure/azure-sdk-for-js",
     "url": "https://github.com/Azure/azure-sdk-for-js"
   },
@@ -7,6 +11,10 @@
     "id": "Azure/fetch-event-source",
     "url": "https://github.com/Azure/fetch-event-source",
     "note": "Two merged pull requests in the history of the repository. Last push 2026-02-28."
+  },
+  {
+    "id": "ClickHouse/clickhouse-js",
+    "url": "https://github.com/ClickHouse/clickhouse-js"
   },
   {
     "id": "Dash-Industry-Forum/dash.js",
@@ -104,6 +112,10 @@
     "url": "https://github.com/aws/aws-sdk-js-v3"
   },
   {
+    "id": "bluesky-social/atproto",
+    "url": "https://github.com/bluesky-social/atproto"
+  },
+  {
     "id": "bufbuild/protobuf-es",
     "url": "https://github.com/bufbuild/protobuf-es"
   },
@@ -156,6 +168,10 @@
     "url": "https://github.com/elpheria/rpc-websockets"
   },
   {
+    "id": "enisdenjo/graphql-sse",
+    "url": "https://github.com/enisdenjo/graphql-sse"
+  },
+  {
     "id": "enisdenjo/graphql-ws",
     "url": "https://github.com/enisdenjo/graphql-ws"
   },
@@ -170,6 +186,11 @@
   {
     "id": "feathersjs/feathers",
     "url": "https://github.com/feathersjs/feathers"
+  },
+  {
+    "id": "feross/simple-peer",
+    "url": "https://github.com/feross/simple-peer",
+    "note": "Last push 2024-06-26."
   },
   {
     "id": "firebase/firebase-js-sdk",
@@ -207,8 +228,17 @@
     "note": "The last push to the repository was on 2023-09-23."
   },
   {
+    "id": "instantdb/instant",
+    "url": "https://github.com/instantdb/instant"
+  },
+  {
     "id": "jdiaz5513/capnp-ts",
     "url": "https://github.com/jdiaz5513/capnp-ts"
+  },
+  {
+    "id": "jimhigson/oboe.js",
+    "url": "https://github.com/jimhigson/oboe.js",
+    "note": "Last push 2025-11-17."
   },
   {
     "id": "jjxxs/websocket-ts",
@@ -237,6 +267,10 @@
     "note": "A monorepo of three packages. The registry names no folder for laravel-echo."
   },
   {
+    "id": "liveblocks/liveblocks",
+    "url": "https://github.com/liveblocks/liveblocks"
+  },
+  {
     "id": "livekit/client-sdk-js",
     "url": "https://github.com/livekit/client-sdk-js"
   },
@@ -252,6 +286,10 @@
   {
     "id": "maraisr/meros",
     "url": "https://github.com/maraisr/meros"
+  },
+  {
+    "id": "matrix-org/matrix-js-sdk",
+    "url": "https://github.com/matrix-org/matrix-js-sdk"
   },
   {
     "id": "meta/relay",
@@ -293,6 +331,10 @@
     "url": "https://github.com/mtth/avsc"
   },
   {
+    "id": "natelindev/tsdav",
+    "url": "https://github.com/natelindev/tsdav"
+  },
+  {
     "id": "nathanboktae/robust-websocket",
     "url": "https://github.com/nathanboktae/robust-websocket",
     "note": "Last push 2022-07-14."
@@ -305,6 +347,10 @@
     "id": "nats-io/nats.ws",
     "url": "https://github.com/nats-io/nats.ws",
     "note": "Archived on GitHub. npm deprecates the package, and @nats-io/nats-core replaces it."
+  },
+  {
+    "id": "nbd-wtf/nostr-tools",
+    "url": "https://github.com/nbd-wtf/nostr-tools"
   },
   {
     "id": "neo4j/neo4j-javascript-driver",
@@ -324,8 +370,16 @@
     "url": "https://github.com/novnc/noVNC"
   },
   {
+    "id": "onsip/SIP.js",
+    "url": "https://github.com/onsip/SIP.js"
+  },
+  {
     "id": "open-telemetry/opentelemetry-js",
     "url": "https://github.com/open-telemetry/opentelemetry-js"
+  },
+  {
+    "id": "perry-mitchell/webdav-client",
+    "url": "https://github.com/perry-mitchell/webdav-client"
   },
   {
     "id": "phoenixframework/phoenix",
@@ -335,6 +389,10 @@
     "id": "pladaria/reconnecting-websocket",
     "url": "https://github.com/pladaria/reconnecting-websocket",
     "note": "The last push to the repository was on 2023-06-15."
+  },
+  {
+    "id": "planetscale/database-js",
+    "url": "https://github.com/planetscale/database-js"
   },
   {
     "id": "primus/primus",
@@ -364,6 +422,20 @@
   {
     "id": "robtaussig/react-use-websocket",
     "url": "https://github.com/robtaussig/react-use-websocket"
+  },
+  {
+    "id": "rocicorp/mono",
+    "url": "https://github.com/rocicorp/mono",
+    "note": "Pull requests land through an internal repository, so GitHub shows each one as closed, not merged."
+  },
+  {
+    "id": "rsocket/rsocket-js",
+    "url": "https://github.com/rsocket/rsocket-js",
+    "note": "The default branch 1.0.x-alpha holds rsocket-core 1.0.0-alpha.3. The latest version on the registry is 0.0.29-alpha.0."
+  },
+  {
+    "id": "shaka-project/shaka-player",
+    "url": "https://github.com/shaka-project/shaka-player"
   },
   {
     "id": "shanewholloway/js-u8-mqtt",
@@ -414,6 +486,10 @@
     "url": "https://github.com/tus/tus-js-client"
   },
   {
+    "id": "twilio/twilio-video.js",
+    "url": "https://github.com/twilio/twilio-video.js"
+  },
+  {
     "id": "ueberdosis/hocuspocus",
     "url": "https://github.com/ueberdosis/hocuspocus"
   },
@@ -449,6 +525,11 @@
   {
     "id": "wevm/viem",
     "url": "https://github.com/wevm/viem"
+  },
+  {
+    "id": "yjs/y-webrtc",
+    "url": "https://github.com/yjs/y-webrtc",
+    "note": "Last push 2024-04-28."
   },
   {
     "id": "yjs/y-websocket",

@@ -8,9 +8,19 @@
     "repository": "apollographql/apollo-client"
   },
   {
+    "package": "@atproto/api",
+    "repository": "bluesky-social/atproto",
+    "directory": "packages/api"
+  },
+  {
     "package": "@aws-sdk/client-s3",
     "repository": "aws/aws-sdk-js-v3",
     "directory": "clients/client-s3"
+  },
+  {
+    "package": "@azure/event-hubs",
+    "repository": "Azure/azure-sdk-for-js",
+    "directory": "sdk/eventhub/event-hubs"
   },
   {
     "package": "@azure/service-bus",
@@ -26,6 +36,11 @@
     "package": "@bufbuild/protobuf",
     "repository": "bufbuild/protobuf-es",
     "directory": "packages/protobuf"
+  },
+  {
+    "package": "@clickhouse/client-web",
+    "repository": "ClickHouse/clickhouse-js",
+    "directory": "packages/client-web"
   },
   {
     "package": "@connectrpc/connect-web",
@@ -64,9 +79,19 @@
     "repository": "improbable-eng/grpc-web"
   },
   {
+    "package": "@instantdb/core",
+    "repository": "instantdb/instant",
+    "directory": "client/packages/core"
+  },
+  {
     "package": "@libsql/client",
     "repository": "tursodatabase/libsql-client-ts",
     "directory": "packages/libsql-client"
+  },
+  {
+    "package": "@liveblocks/client",
+    "repository": "liveblocks/liveblocks",
+    "directory": "packages/liveblocks-client"
   },
   {
     "package": "@microsoft/fetch-event-source",
@@ -115,6 +140,10 @@
     "directory": "packages/client"
   },
   {
+    "package": "@planetscale/database",
+    "repository": "planetscale/database-js"
+  },
+  {
     "package": "@protobuf-ts/grpcweb-transport",
     "repository": "timostamm/protobuf-ts",
     "directory": "packages/grpcweb-transport"
@@ -123,6 +152,11 @@
     "package": "@rails/actioncable",
     "repository": "rails/rails",
     "directory": "actioncable"
+  },
+  {
+    "package": "@rocicorp/zero",
+    "repository": "rocicorp/mono",
+    "directory": "packages/zero"
   },
   {
     "package": "@solana/kit",
@@ -298,6 +332,10 @@
     "repository": "graffle-js/graffle"
   },
   {
+    "package": "graphql-sse",
+    "repository": "enisdenjo/graphql-sse"
+  },
+  {
     "package": "graphql-ws",
     "repository": "enisdenjo/graphql-ws"
   },
@@ -331,6 +369,10 @@
     "repository": "livekit/client-sdk-js"
   },
   {
+    "package": "matrix-js-sdk",
+    "repository": "matrix-org/matrix-js-sdk"
+  },
+  {
     "package": "meros",
     "repository": "maraisr/meros"
   },
@@ -352,6 +394,14 @@
     "directory": "packages/neo4j-driver"
   },
   {
+    "package": "nostr-tools",
+    "repository": "nbd-wtf/nostr-tools"
+  },
+  {
+    "package": "oboe",
+    "repository": "jimhigson/oboe.js"
+  },
+  {
     "package": "paho-mqtt",
     "repository": "eclipse-paho/paho.mqtt.javascript"
   },
@@ -359,6 +409,10 @@
     "package": "partysocket",
     "repository": "cloudflare/partykit",
     "directory": "packages/partysocket"
+  },
+  {
+    "package": "penpal",
+    "repository": "Aaronius/penpal"
   },
   {
     "package": "phoenix",
@@ -414,13 +468,30 @@
     "repository": "elpheria/rpc-websockets"
   },
   {
+    "package": "rsocket-core",
+    "repository": "rsocket/rsocket-js",
+    "directory": "packages/rsocket-core"
+  },
+  {
     "package": "rxjs",
     "repository": "ReactiveX/rxjs",
     "directory": "packages/rxjs"
   },
   {
+    "package": "shaka-player",
+    "repository": "shaka-project/shaka-player"
+  },
+  {
+    "package": "simple-peer",
+    "repository": "feross/simple-peer"
+  },
+  {
     "package": "simpleddp",
     "repository": "Gregivy/simpleddp"
+  },
+  {
+    "package": "sip.js",
+    "repository": "onsip/SIP.js"
   },
   {
     "package": "socket.io-client",
@@ -452,8 +523,16 @@
     "repository": "apache/thrift"
   },
   {
+    "package": "tsdav",
+    "repository": "natelindev/tsdav"
+  },
+  {
     "package": "tus-js-client",
     "repository": "tus/tus-js-client"
+  },
+  {
+    "package": "twilio-video",
+    "repository": "twilio/twilio-video.js"
   },
   {
     "package": "u8-mqtt",
@@ -475,12 +554,20 @@
     "directory": "packages/web3"
   },
   {
+    "package": "webdav",
+    "repository": "perry-mitchell/webdav-client"
+  },
+  {
     "package": "websocket-ts",
     "repository": "jjxxs/websocket-ts"
   },
   {
     "package": "webstomp-client",
     "repository": "JSteunou/webstomp-client"
+  },
+  {
+    "package": "y-webrtc",
+    "repository": "yjs/y-webrtc"
   },
   {
     "package": "y-websocket",
