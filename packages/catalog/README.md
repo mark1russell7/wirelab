@@ -73,3 +73,12 @@ The ledger records the tests of the campaign, the faults that they find, and the
    - A repository with a CLA has the factor `LANDING.cla`, which is 0.5. The fix stays held until Mark decides about the CLA.
 
 The ranks come from `ranks` of `@mark1russell7/rigor-statistics`.
+
+## A new read of the measures
+
+`addReadings` adds a new source and one usage row for each reading. The old rows stay.
+
+- The workflow `measures.yml` starts `scripts/measures.ts` in CI. The script reads the four measures of each package through polite-crawler.
+- The sources are the npm downloads API, the dependents of deps.dev and the hits of jsDelivr. Each is free.
+- The workflow keeps the new `sources.json` and `usage.json` as an artifact. Commit them in a pull request.
+- The summary of the run gives the packages without a repository, by weekly downloads. This list gives the order of the next batch of policy checks.
