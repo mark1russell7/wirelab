@@ -26,12 +26,21 @@
     "url": "https://github.com/Dash-Industry-Forum/dash.js"
   },
   {
+    "id": "Drivetech/jsmpeg",
+    "url": "https://github.com/Drivetech/jsmpeg",
+    "note": "The repository lgaticaq/jsmpeg moved here. No pull request has merged. Last push 2023-04-03."
+  },
+  {
     "id": "EventSource/eventsource",
     "url": "https://github.com/EventSource/eventsource"
   },
   {
     "id": "Eyevinn/webrtc-player",
     "url": "https://github.com/Eyevinn/webrtc-player"
+  },
+  {
+    "id": "Eyevinn/whip",
+    "url": "https://github.com/Eyevinn/whip"
   },
   {
     "id": "GoogleChromeLabs/comlink",
@@ -194,6 +203,10 @@
     "url": "https://github.com/connectrpc/connect-es"
   },
   {
+    "id": "conversejs/converse.js",
+    "url": "https://github.com/conversejs/converse.js"
+  },
+  {
     "id": "convex/convex-backend",
     "url": "https://github.com/convex/convex-backend",
     "note": "Pull requests land through an internal repository, so GitHub shows each one as closed, not merged."
@@ -307,9 +320,17 @@
     "url": "https://github.com/hotwired/turbo"
   },
   {
+    "id": "htunnicliff/jmap-jam",
+    "url": "https://github.com/htunnicliff/jmap-jam"
+  },
+  {
     "id": "improbable-eng/grpc-web",
     "url": "https://github.com/improbable-eng/grpc-web",
     "note": "The last push to the repository was on 2023-09-23."
+  },
+  {
+    "id": "influxdata/influxdb-client-js",
+    "url": "https://github.com/influxdata/influxdb-client-js"
   },
   {
     "id": "instantdb/instant",
@@ -329,6 +350,11 @@
     "note": "The repository drifting-in-space/y-sweet moved here. Last push 2025-12-04."
   },
   {
+    "id": "janhommes/o.js",
+    "url": "https://github.com/janhommes/o.js",
+    "note": "Last push 2024-09-26."
+  },
+  {
     "id": "jdiaz5513/capnp-ts",
     "url": "https://github.com/jdiaz5513/capnp-ts"
   },
@@ -336,6 +362,10 @@
     "id": "jimhigson/oboe.js",
     "url": "https://github.com/jimhigson/oboe.js",
     "note": "Last push 2025-11-17."
+  },
+  {
+    "id": "jitsi/lib-jitsi-meet",
+    "url": "https://github.com/jitsi/lib-jitsi-meet"
   },
   {
     "id": "jjxxs/websocket-ts",
@@ -353,6 +383,10 @@
   {
     "id": "jupyterlab/jupyterlab",
     "url": "https://github.com/jupyterlab/jupyterlab"
+  },
+  {
+    "id": "kiwiirc/irc-framework",
+    "url": "https://github.com/kiwiirc/irc-framework"
   },
   {
     "id": "kriszyp/cbor-x",
@@ -374,6 +408,11 @@
   {
     "id": "libp2p/js-libp2p",
     "url": "https://github.com/libp2p/js-libp2p"
+  },
+  {
+    "id": "linagora/jmap-client-ts",
+    "url": "https://github.com/linagora/jmap-client-ts",
+    "note": "The repository OpenPaaS-Suite/jmap-client-ts moved here."
   },
   {
     "id": "liveblocks/liveblocks",
@@ -600,6 +639,10 @@
     "url": "https://github.com/shogowada/json-rpc-2.0"
   },
   {
+    "id": "skyware-js/jetstream",
+    "url": "https://github.com/skyware-js/jetstream"
+  },
+  {
     "id": "socketio/socket.io",
     "url": "https://github.com/socketio/socket.io"
   },
@@ -695,6 +738,10 @@
   {
     "id": "videojs/http-streaming",
     "url": "https://github.com/videojs/http-streaming"
+  },
+  {
+    "id": "voryx/thruway.js",
+    "url": "https://github.com/voryx/thruway.js"
   },
   {
     "id": "vueuse/vueuse",

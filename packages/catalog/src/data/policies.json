@@ -183,6 +183,36 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "Drivetech/jsmpeg",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/Drivetech/jsmpeg",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "Drivetech/jsmpeg",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/Drivetech/jsmpeg"
+  },
+  {
+    "repository": "Drivetech/jsmpeg",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/Drivetech/jsmpeg/pulls"
+  },
+  {
+    "repository": "Drivetech/jsmpeg",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/Drivetech/jsmpeg/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
     "repository": "EventSource/eventsource",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -235,6 +265,36 @@
   },
   {
     "repository": "Eyevinn/webrtc-player",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/Eyevinn/.github/blob/main/SECURITY.md",
+    "note": "An email to the security address, from the security policy of the organization."
+  },
+  {
+    "repository": "Eyevinn/whip",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/Eyevinn/whip",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "Eyevinn/whip",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/Eyevinn/whip"
+  },
+  {
+    "repository": "Eyevinn/whip",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/Eyevinn/whip/pulls"
+  },
+  {
+    "repository": "Eyevinn/whip",
     "topic": "security",
     "checked": "2026-11-16",
     "value": "email",
@@ -1318,6 +1378,36 @@
     "note": "The private security list of Connect, from its governance page."
   },
   {
+    "repository": "conversejs/converse.js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/conversejs/converse.js/blob/master/.github/CONTRIBUTING.md",
+    "note": "AGENTS.md guides AI agents in the code. It has no rule for contributions."
+  },
+  {
+    "repository": "conversejs/converse.js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/conversejs/converse.js/blob/master/.github/CONTRIBUTING.md"
+  },
+  {
+    "repository": "conversejs/converse.js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/conversejs/converse.js/pulls"
+  },
+  {
+    "repository": "conversejs/converse.js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "github-advisory",
+    "evidence": "https://github.com/conversejs/converse.js/security",
+    "note": "Private vulnerability reporting is on. There is no SECURITY.md."
+  },
+  {
     "repository": "convex/convex-backend",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -2094,6 +2184,36 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "htunnicliff/jmap-jam",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/htunnicliff/jmap-jam",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "htunnicliff/jmap-jam",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/htunnicliff/jmap-jam"
+  },
+  {
+    "repository": "htunnicliff/jmap-jam",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/htunnicliff/jmap-jam/pulls"
+  },
+  {
+    "repository": "htunnicliff/jmap-jam",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "github-advisory",
+    "evidence": "https://github.com/htunnicliff/jmap-jam/security",
+    "note": "Private vulnerability reporting is on. There is no SECURITY.md."
+  },
+  {
     "repository": "improbable-eng/grpc-web",
     "topic": "ai",
     "checked": "2026-11-13",
@@ -2121,6 +2241,37 @@
     "value": "none-stated",
     "evidence": "https://github.com/improbable-eng/grpc-web",
     "note": "The repository has no SECURITY.md, and its private vulnerability reporting is off."
+  },
+  {
+    "repository": "influxdata/influxdb-client-js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/influxdata/influxdb-client-js/blob/master/README.md",
+    "note": "The README asks for a pull request to the branch master. It states no rule for AI."
+  },
+  {
+    "repository": "influxdata/influxdb-client-js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/influxdata/influxdb-client-js/blob/master/README.md",
+    "note": "Most recent commits have a sign-off line, but no check needs one."
+  },
+  {
+    "repository": "influxdata/influxdb-client-js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/influxdata/influxdb-client-js/pulls"
+  },
+  {
+    "repository": "influxdata/influxdb-client-js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/influxdata/influxdb-client-js/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
     "repository": "instantdb/instant",
@@ -2243,6 +2394,36 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "janhommes/o.js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/janhommes/o.js",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "janhommes/o.js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/janhommes/o.js"
+  },
+  {
+    "repository": "janhommes/o.js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/janhommes/o.js/pulls"
+  },
+  {
+    "repository": "janhommes/o.js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/janhommes/o.js/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
     "repository": "jdiaz5513/capnp-ts",
     "topic": "ai",
     "checked": "2026-11-16",
@@ -2300,6 +2481,37 @@
     "value": "none-stated",
     "evidence": "https://github.com/jimhigson/oboe.js/security",
     "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
+    "repository": "jitsi/lib-jitsi-meet",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/jitsi/handbook/blob/master/docs/dev-guide/contributing.md",
+    "note": "The contribution guide of the Jitsi handbook states no rule for AI. CLAUDE.md guides AI agents in the code."
+  },
+  {
+    "repository": "jitsi/lib-jitsi-meet",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "cla",
+    "evidence": "https://github.com/jitsi/handbook/blob/master/docs/dev-guide/contributing.md",
+    "note": "The Apache-based CLA of Jitsi, for a person or a corporation. Each pull request has the check cla / CLA and the label info:cla-signed."
+  },
+  {
+    "repository": "jitsi/lib-jitsi-meet",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/jitsi/lib-jitsi-meet/pulls"
+  },
+  {
+    "repository": "jitsi/lib-jitsi-meet",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "email",
+    "evidence": "https://github.com/jitsi/lib-jitsi-meet/blob/master/SECURITY.md",
+    "note": "SECURITY.md asks for an email to the security address of Jitsi."
   },
   {
     "repository": "jjxxs/websocket-ts",
@@ -2419,6 +2631,36 @@
     "value": "email",
     "evidence": "https://github.com/jupyterlab/.github/blob/master/SECURITY.md",
     "note": "An email to the security team of Jupyter, from the security policy of the organization. Private vulnerability reporting is on too."
+  },
+  {
+    "repository": "kiwiirc/irc-framework",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/kiwiirc/irc-framework",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "kiwiirc/irc-framework",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/kiwiirc/irc-framework"
+  },
+  {
+    "repository": "kiwiirc/irc-framework",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/kiwiirc/irc-framework/pulls"
+  },
+  {
+    "repository": "kiwiirc/irc-framework",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/kiwiirc/irc-framework/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
     "repository": "kriszyp/cbor-x",
@@ -2569,6 +2811,35 @@
     "value": "github-advisory",
     "evidence": "https://github.com/libp2p/js-libp2p/blob/main/SECURITY.md",
     "note": "SECURITY.md asks for a private security advisory. An email address of the security team gives help."
+  },
+  {
+    "repository": "linagora/jmap-client-ts",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/linagora/jmap-client-ts/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "linagora/jmap-client-ts",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/linagora/jmap-client-ts/blob/main/CONTRIBUTING.md"
+  },
+  {
+    "repository": "linagora/jmap-client-ts",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/linagora/jmap-client-ts/pulls"
+  },
+  {
+    "repository": "linagora/jmap-client-ts",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/linagora/jmap-client-ts/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
     "repository": "liveblocks/liveblocks",
@@ -4138,6 +4409,36 @@
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
+    "repository": "skyware-js/jetstream",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/skyware-js/jetstream",
+    "note": "The repository has no contribution guide."
+  },
+  {
+    "repository": "skyware-js/jetstream",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/skyware-js/jetstream"
+  },
+  {
+    "repository": "skyware-js/jetstream",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "archived",
+    "evidence": "https://github.com/skyware-js/jetstream"
+  },
+  {
+    "repository": "skyware-js/jetstream",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/skyware-js/jetstream",
+    "note": "The repository is archived, and it has no security policy."
+  },
+  {
     "repository": "socketio/socket.io",
     "topic": "ai",
     "checked": "2026-11-13",
@@ -4850,6 +5151,36 @@
     "checked": "2026-11-16",
     "value": "none-stated",
     "evidence": "https://github.com/videojs/http-streaming/security",
+    "note": "Private vulnerability reporting is off and there is no security policy."
+  },
+  {
+    "repository": "voryx/thruway.js",
+    "topic": "ai",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/voryx/thruway.js/blob/master/CONTRIBUTING.md"
+  },
+  {
+    "repository": "voryx/thruway.js",
+    "topic": "cla",
+    "checked": "2026-11-16",
+    "value": "none",
+    "evidence": "https://github.com/voryx/thruway.js/blob/master/CONTRIBUTING.md",
+    "note": "Most recent commits have a sign-off line, but no check needs one."
+  },
+  {
+    "repository": "voryx/thruway.js",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "open",
+    "evidence": "https://github.com/voryx/thruway.js/pulls"
+  },
+  {
+    "repository": "voryx/thruway.js",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://github.com/voryx/thruway.js/security",
     "note": "Private vulnerability reporting is off and there is no security policy."
   },
   {
