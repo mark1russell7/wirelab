@@ -632,5 +632,12 @@
     "state": "pr-open",
     "url": "https://github.com/pusher/pusher-js/pull/1031",
     "note": "The fix test ran in CI (repro.yml, run 43645326968): the new spec fails with src of master and passes with the fix. tsc on the repro gives 1 error with src of master and 0 with the fix. make node_unit, make web_unit (Chrome and Firefox) and check-format pass with the fix."
+  },
+  {
+    "finding": "F0096",
+    "at": "2026-11-16T23:24:53Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/sockjs/sockjs-client/pull/607",
+    "note": "Merged on main on 2022-11-09 (commit 52acd8e). Not in 1.6.1, the latest release."
   }
 ]
