@@ -338,6 +338,7 @@ section > p {
   color: var(--quiet);
   font-size: 0.85rem;
   text-align: right;
+  white-space: nowrap;
 }
 
 .detail {
@@ -451,7 +452,9 @@ section > p {
   margin: 1rem 0 0;
 }
 
+/* A class wins over `section > p`, so the row of the button is as wide as the list. */
 .more-row {
+  max-width: none;
   margin: 1rem 0 0;
   text-align: center;
 }
@@ -499,7 +502,7 @@ section > p {
 
 @media (max-width: 40rem) {
   .head {
-    grid-template-columns: 2rem minmax(0, 1fr) 3.5rem;
+    grid-template-columns: 2rem minmax(0, 1fr) auto;
     gap: 0.25rem 0.5rem;
   }
 
