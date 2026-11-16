@@ -17,7 +17,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 
 | ID | Item | Status | Priority | Summary |
 | --- | --- | --- | --- | --- |
-| W0 | The role of wirelab | waiting | P1 | Mark confirms the role request `wirelab` on the hub with a passkey. |
+| W0 | The role of wirelab | done | P1 | Mark confirmed the role request `wirelab` on the hub with a passkey on 2026-11-14. |
 | W1 | The catalog tables | done | P0 | The tables of families, transports, protocols, packages, links, sources, registry rows and use, with their check and the priority formula. |
 | W2 | The use measures in `@procedures/npm` | done | P0 | Request builders and extractors for npm downloads, deps.dev dependents, jsDelivr hits and the full registry document. The fetch is a parameter. |
 | W3 | The measure run | later | P2 | `scripts/measures.ts` reads the four measures of each package through `polite-crawler` in CI (#54). The first full read gave 778 usage rows (#56). A person starts `measures.yml` and commits its rows in a pull request. Next: a weekly read. A workflow of this repository cannot open a pull request, so the weekly read pushes a branch, and the session opens the pull request. |
