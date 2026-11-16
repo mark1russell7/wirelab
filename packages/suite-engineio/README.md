@@ -14,6 +14,7 @@ The suite tests the client. The server is a list of replies from `startScriptedS
 | `src/codec.test.ts` | A check of the codec against the examples of the protocol document. |
 | `src/codec.ts` | The packets and the payloads of the protocol, from the protocol document. The tests do not use `engine.io-parser`. |
 | `src/harness.ts` | The helpers of the tests: the scripted session, the client and the records of the requests and the events. |
+| `src/child.ts` | The client of one check in a separate process. It writes one line of JSON with its events and its uncaught errors. |
 | `src/index.ts` | The rules and the checks as data. The entry also gives the codec and the scripted Engine.IO server `startEngineServer` to the suites of protocols on Engine.IO. |
 
 - Each check examines the two transports of HTTP long-polling for Node.js: `NodeXHR` and `Fetch`.
@@ -73,7 +74,9 @@ The rules come from the protocol document `README.md` of `socketio/engine.io-pro
 | F0028 | `long-ping-interval` | Node.js changes a timer delay larger than 2^31-1 ms to 1 ms. Thus a long `pingInterval` closes the client at once. |
 | F0030 | `request-timeout` | The transports `NodeXHR` and `Fetch` do not use the option `requestTimeout`. |
 | F0031 | `close-aborts-poll` | `close()` does not stop the active GET request. |
+| F0029 | `malformed-open`, `open-no-fields` | The client does not examine the open packet. A packet that is not JSON, or that has no fields, gives an uncaught error. |
+| F0026 | `fetch-body-cut` | The transport `Fetch` does not catch an error of the read of a body. A cut in the body gives an unhandled rejection, and the polling stops. |
 
-Two other faults have no test in this suite. A malformed open packet (F0029) and a failed read of a reply body with `Fetch` (F0026) give an uncaught error. An uncaught error stops the worker of the test, thus these checks need a separate process.
+The checks of F0029 and F0026 start the client in a separate process, with the script `src/child.ts`. An uncaught error stops the worker of a test, but in a separate process it stops only that process. The process writes a report of the events and the uncaught errors of the client.
 
 The Socket.IO protocol has its own suite, `@wirelab/suite-socketio`. The WebSocket transport is not in this suite. It comes in a later part of the roadmap item W9.
