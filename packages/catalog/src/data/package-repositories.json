@@ -43,6 +43,10 @@
     "directory": "packages/client-web"
   },
   {
+    "package": "@cloudamqp/amqp-client",
+    "repository": "cloudamqp/amqp-client.js"
+  },
+  {
     "package": "@connectrpc/connect-web",
     "repository": "connectrpc/connect-es",
     "directory": "packages/connect-web"
@@ -84,6 +88,11 @@
     "directory": "client/packages/core"
   },
   {
+    "package": "@jupyterlab/services",
+    "repository": "jupyterlab/jupyterlab",
+    "directory": "packages/services"
+  },
+  {
     "package": "@libsql/client",
     "repository": "tursodatabase/libsql-client-ts",
     "directory": "packages/libsql-client"
@@ -106,6 +115,21 @@
     "package": "@microsoft/signalr-protocol-msgpack",
     "repository": "dotnet/aspnetcore",
     "directory": "src/SignalR/clients/ts/signalr-protocol-msgpack"
+  },
+  {
+    "package": "@moq/hang",
+    "repository": "moq-dev/moq",
+    "directory": "js/hang"
+  },
+  {
+    "package": "@moq/net",
+    "repository": "moq-dev/moq",
+    "directory": "js/net"
+  },
+  {
+    "package": "@moq/watch",
+    "repository": "moq-dev/moq",
+    "directory": "js/watch"
   },
   {
     "package": "@msgpack/msgpack",
@@ -144,9 +168,19 @@
     "repository": "planetscale/database-js"
   },
   {
+    "package": "@powersync/web",
+    "repository": "powersync-ja/powersync-js",
+    "directory": "packages/web"
+  },
+  {
     "package": "@protobuf-ts/grpcweb-transport",
     "repository": "timostamm/protobuf-ts",
     "directory": "packages/grpcweb-transport"
+  },
+  {
+    "package": "@protobuf-ts/twirp-transport",
+    "repository": "timostamm/protobuf-ts",
+    "directory": "packages/twirp-transport"
   },
   {
     "package": "@rails/actioncable",
@@ -211,8 +245,18 @@
     "directory": "packages/core"
   },
   {
+    "package": "@xterm/addon-attach",
+    "repository": "xtermjs/xterm.js",
+    "directory": "addons/addon-attach"
+  },
+  {
     "package": "ably",
     "repository": "ably/ably-pubsub-js"
+  },
+  {
+    "package": "agora-rtc-sdk-ng",
+    "repository": "AgoraIO/agora-rtc-web",
+    "directory": "packages/rtc-web-v4"
   },
   {
     "package": "apache-arrow",
@@ -345,6 +389,10 @@
     "directory": "packages/grpc-web"
   },
   {
+    "package": "guacamole-common-js",
+    "repository": "tophcodes/guacamole-common-js"
+  },
+  {
     "package": "hls.js",
     "repository": "video-dev/hls.js"
   },
@@ -361,8 +409,17 @@
     "repository": "shogowada/json-rpc-2.0"
   },
   {
+    "package": "jssip",
+    "repository": "versatica/JsSIP"
+  },
+  {
     "package": "laravel-echo",
     "repository": "laravel/echo"
+  },
+  {
+    "package": "libp2p",
+    "repository": "libp2p/js-libp2p",
+    "directory": "packages/libp2p"
   },
   {
     "package": "livekit-client",
@@ -373,8 +430,17 @@
     "repository": "matrix-org/matrix-js-sdk"
   },
   {
+    "package": "mediasoup-client",
+    "repository": "versatica/mediasoup-client"
+  },
+  {
     "package": "meros",
     "repository": "maraisr/meros"
+  },
+  {
+    "package": "monaco-languageclient",
+    "repository": "TypeFox/monaco-languageclient",
+    "directory": "packages/client"
   },
   {
     "package": "mqtt",
@@ -402,6 +468,10 @@
     "repository": "jimhigson/oboe.js"
   },
   {
+    "package": "odata-query",
+    "repository": "techniq/odata-query"
+  },
+  {
     "package": "paho-mqtt",
     "repository": "eclipse-paho/paho.mqtt.javascript"
   },
@@ -409,6 +479,10 @@
     "package": "partysocket",
     "repository": "cloudflare/partykit",
     "directory": "packages/partysocket"
+  },
+  {
+    "package": "peerjs",
+    "repository": "peers/peerjs"
   },
   {
     "package": "penpal",
@@ -473,6 +547,15 @@
     "directory": "packages/rsocket-core"
   },
   {
+    "package": "rsocket-websocket-client",
+    "repository": "rsocket/rsocket-js",
+    "directory": "packages/rsocket-websocket-client"
+  },
+  {
+    "package": "rxdb",
+    "repository": "pubkey/rxdb"
+  },
+  {
     "package": "rxjs",
     "repository": "ReactiveX/rxjs",
     "directory": "packages/rxjs"
@@ -511,6 +594,10 @@
     "repository": "sockjs/sockjs-client"
   },
   {
+    "package": "sse.js",
+    "repository": "mpetazzoni/sse.js"
+  },
+  {
     "package": "stompjs",
     "repository": "jmesnil/stomp-websocket"
   },
@@ -547,6 +634,11 @@
     "package": "vscode-jsonrpc",
     "repository": "microsoft/vscode-languageserver-node",
     "directory": "jsonrpc"
+  },
+  {
+    "package": "vscode-ws-jsonrpc",
+    "repository": "TypeFox/monaco-languageclient",
+    "directory": "packages/vscode-ws-jsonrpc"
   },
   {
     "package": "web3",
