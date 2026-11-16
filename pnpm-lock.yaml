@@ -258,6 +258,31 @@ importers:
         specifier: ^5.0.3
         version: 5.1.0(@opentelemetry/api@1.10.0)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
 
+  packages/suite-engineio:
+    dependencies:
+      '@mark1russell7/rigor-testkit':
+        specifier: ^0.1.15
+        version: 0.1.16(@opentelemetry/api@1.10.0)
+      engine.io-client:
+        specifier: ^6.6.8
+        version: 6.6.8(supports-color@7.2.0)
+    devDependencies:
+      '@mark1russell7/cue':
+        specifier: ^2.0.0
+        version: 2.1.4
+      '@types/node':
+        specifier: ^26.6.5
+        version: 26.6.6
+      '@vitest/coverage-v8':
+        specifier: ^5.0.3
+        version: 5.1.0(vitest@5.1.0)
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+      vitest:
+        specifier: ^5.0.3
+        version: 5.1.0(@opentelemetry/api@1.10.0)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
+
   packages/suite-mqtt:
     dependencies:
       mqtt:
@@ -569,6 +594,36 @@ packages:
     resolution: {integrity: sha512-jaUqrz8FmsUoR9n0MeRUIk9UTpG5QL+dF/moh+C23fyihb00LgOD42Up//1piIPVZZDiq6lua0sBcSKMwh5IFg==}
     engines: {node: '>=22'}
 
+  '@mark1russell7/rigor-testkit@0.1.16':
+    resolution: {integrity: sha512-pdn65CX9XRKyUe99iSFi+hqqGbDEJRZyfpJy6ro5VyWr7arp9dhkmLO2RUb8LndaGnEKufmeRwv1qhNwtCoiJw==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      '@mark1russell7/rigor-chaos': ^0.3.2
+      '@mark1russell7/rigor-generators': ^0.1.18
+      '@opentelemetry/api': ^1.9.0
+      '@opentelemetry/api-logs': ^0.213.0 || ^0.223.0
+      '@opentelemetry/sdk-logs': ^0.223.0 || ^3.0.0
+      '@opentelemetry/sdk-metrics': ^2.12.0 || ^3.0.0
+      '@opentelemetry/sdk-trace-base': ^2.12.0
+      fast-check: ^4.0.0
+    peerDependenciesMeta:
+      '@mark1russell7/rigor-chaos':
+        optional: true
+      '@mark1russell7/rigor-generators':
+        optional: true
+      '@opentelemetry/api':
+        optional: true
+      '@opentelemetry/api-logs':
+        optional: true
+      '@opentelemetry/sdk-logs':
+        optional: true
+      '@opentelemetry/sdk-metrics':
+        optional: true
+      '@opentelemetry/sdk-trace-base':
+        optional: true
+      fast-check:
+        optional: true
+
   '@mark1russell7/service@0.8.20':
     resolution: {integrity: sha512-8yo1hu4MMXCdzRk43tSvB1xqb9MBgOqAmKisspOGszqsRCZVjdmSbZ1Hgli6RtE5jrF7I7eaGEQLHADnhxxHGQ==}
     engines: {node: '>=22.19'}
@@ -776,6 +831,9 @@ packages:
 
   '@rolldown/pluginutils@1.1.0':
     resolution: {integrity: sha512-K+NU2HDCEem4sClgHH4ZZXwdJeNFkJo+hRk479DIwdIviAPN2hFJH1KHHwg8CxHQXvi0M5XY4deTXINfIiSG6w==}
+
+  '@socket.io/component-emitter@3.1.2':
+    resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
   '@swc/core-darwin-arm64@1.16.22':
     resolution: {integrity: sha512-PddkOjOK3MK01AVOvqG309iAJ0hn5vK37ug9g5Zt5e2aWF3IhVLdDLjMePXts1zi8yc4ild2h9FYCkVYb5+Qcw==}
@@ -1180,6 +1238,13 @@ packages:
   domutils@4.0.2:
     resolution: {integrity: sha512-qI4JLRKnSzqFqr7hAlS5xQDusBCjKSEG4t4+7aNrIQMHBcsC2TGEhuyABJdYkgSewL57PNLYEiibY2iPKhKpaA==}
     engines: {node: '>=20.19.0'}
+
+  engine.io-client@6.6.8:
+    resolution: {integrity: sha512-DPN6+2uNi3A2cbSR3gqJepLVOnSQmbaJT4USgU+TgGPczEqLQT0i6t05jHrf4TT6rcxABrGp/1As0FyqwIZlGg==}
+
+  engine.io-parser@5.2.3:
+    resolution: {integrity: sha512-HqD3yTBfnBxIrbnM1DoD6Pcq8NECnh8d4As1Qgh0z5Gg3jRRIqijury0CL3ghu/edArpUYiYqQiDUQBIs4np3Q==}
+    engines: {node: '>=10.0.0'}
 
   enhanced-resolve@5.26.0:
     resolution: {integrity: sha512-9vhedylFonb2YGogzUKX6+Ja72gOJbN1QHAqdrvqLwhdl/QWbKopzoUC9EbQNVsAns/bx/4uyqalrQAoy1IByw==}
@@ -1755,6 +1820,18 @@ packages:
   worker-timers@8.0.34:
     resolution: {integrity: sha512-WXL+Dqsm0G6dnC66rQsvM3tPT2adhbqSirWUCZGglkALOr8ocS0KlpU0iuKbjflJOlu3ydZikMEVrYnHOM9suw==}
 
+  ws@8.21.3:
+    resolution: {integrity: sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
   ws@8.23.0:
     resolution: {integrity: sha512-wCkmX8QMOrKjgO8HW2WyDbTSGeqkocxgDzS9iR79rEAexty6/2qzilx3Ag8Tqf9ykop3irLKle0MtVn5qjVnoQ==}
     engines: {node: '>=10.0.0'}
@@ -1766,6 +1843,10 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+
+  xmlhttprequest-ssl@2.1.2:
+    resolution: {integrity: sha512-TEU+nJVUUnA4CYJFLvK5X9AOeH4KvDvhIfm0vV1GaQRtchnG0hgK5p8hw/xjv8cunWYCsiPCSDzObPyhEwq3KQ==}
+    engines: {node: '>=0.4.0'}
 
   yaml@2.9.1:
     resolution: {integrity: sha512-3NxN8+78OdzbT7C/WjGsyfPAtJaN3FNDsWxv7Y7mcDsT/oOmgW8BpyQQFFBnvZE3j9Y2Sdz1ULFLezL7Eb2yFw==}
@@ -1974,6 +2055,10 @@ snapshots:
     dependencies:
       '@mark1russell7/rigor-generators': 0.1.16
 
+  '@mark1russell7/rigor-testkit@0.1.16(@opentelemetry/api@1.10.0)':
+    optionalDependencies:
+      '@opentelemetry/api': 1.10.0
+
   '@mark1russell7/service@0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0)(zod@4.6.7)':
     dependencies:
       '@mark1russell7/algebra': 0.8.10(zod@4.6.7)
@@ -2156,6 +2241,8 @@ snapshots:
     optional: true
 
   '@rolldown/pluginutils@1.1.0': {}
+
+  '@socket.io/component-emitter@3.1.2': {}
 
   '@swc/core-darwin-arm64@1.16.22':
     optional: true
@@ -2489,6 +2576,20 @@ snapshots:
       dom-serializer: 3.1.1
       domelementtype: 3.0.0
       domhandler: 6.0.1
+
+  engine.io-client@6.6.8(supports-color@7.2.0):
+    dependencies:
+      '@socket.io/component-emitter': 3.1.2
+      debug: 4.4.3(supports-color@7.2.0)
+      engine.io-parser: 5.2.3
+      ws: 8.21.3
+      xmlhttprequest-ssl: 2.1.2
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
+  engine.io-parser@5.2.3: {}
 
   enhanced-resolve@5.26.0:
     dependencies:
@@ -3014,7 +3115,11 @@ snapshots:
       worker-timers-broker: 8.0.18
       worker-timers-worker: 9.0.15
 
+  ws@8.21.3: {}
+
   ws@8.23.0: {}
+
+  xmlhttprequest-ssl@2.1.2: {}
 
   yaml@2.9.1: {}
 
