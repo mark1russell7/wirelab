@@ -13,6 +13,11 @@
     "directory": "clients/client-s3"
   },
   {
+    "package": "@azure/service-bus",
+    "repository": "Azure/azure-sdk-for-js",
+    "directory": "sdk/servicebus/service-bus"
+  },
+  {
     "package": "@azure/web-pubsub-client",
     "repository": "Azure/azure-sdk-for-js",
     "directory": "sdk/web-pubsub/web-pubsub-client"
@@ -28,13 +33,27 @@
     "directory": "packages/connect-web"
   },
   {
+    "package": "@daily-co/daily-js",
+    "repository": "daily-co/daily-js"
+  },
+  {
     "package": "@deepstream/client",
     "repository": "deepstreamIO/deepstream.io-client-js"
+  },
+  {
+    "package": "@electric-sql/client",
+    "repository": "neondatabase/electric",
+    "directory": "packages/typescript-client"
   },
   {
     "package": "@feathersjs/client",
     "repository": "feathersjs/feathers",
     "directory": "packages/client"
+  },
+  {
+    "package": "@hocuspocus/provider",
+    "repository": "ueberdosis/hocuspocus",
+    "directory": "packages/provider"
   },
   {
     "package": "@hotwired/turbo",
@@ -75,6 +94,10 @@
   {
     "package": "@neondatabase/serverless",
     "repository": "neondatabase/serverless"
+  },
+  {
+    "package": "@novnc/novnc",
+    "repository": "novnc/noVNC"
   },
   {
     "package": "@opentelemetry/exporter-trace-otlp-http",
@@ -145,6 +168,10 @@
     "directory": "packages/core"
   },
   {
+    "package": "@videojs/http-streaming",
+    "repository": "videojs/http-streaming"
+  },
+  {
     "package": "@vueuse/core",
     "repository": "vueuse/vueuse",
     "directory": "packages/core"
@@ -162,6 +189,11 @@
     "repository": "mtth/avsc"
   },
   {
+    "package": "aws-amplify",
+    "repository": "aws-amplify/amplify-js",
+    "directory": "packages/aws-amplify"
+  },
+  {
     "package": "aws-iot-device-sdk-v2",
     "repository": "aws/aws-iot-device-sdk-js-v2"
   },
@@ -176,6 +208,15 @@
   {
     "package": "bson",
     "repository": "mongodb/js-bson"
+  },
+  {
+    "package": "capnp-es",
+    "repository": "unjs/capnp-es"
+  },
+  {
+    "package": "capnp-ts",
+    "repository": "jdiaz5513/capnp-ts",
+    "directory": "packages/capnp-ts"
   },
   {
     "package": "capnweb",
@@ -198,6 +239,15 @@
     "repository": "GoogleChromeLabs/comlink"
   },
   {
+    "package": "convex",
+    "repository": "convex/convex-backend",
+    "directory": "npm-packages/convex"
+  },
+  {
+    "package": "dashjs",
+    "repository": "Dash-Industry-Forum/dash.js"
+  },
+  {
     "package": "ddp.js",
     "repository": "mondora/ddp.js"
   },
@@ -213,6 +263,10 @@
   {
     "package": "ethers",
     "repository": "ethers-io/ethers.js"
+  },
+  {
+    "package": "event-source-polyfill",
+    "repository": "Yaffle/EventSource"
   },
   {
     "package": "eventsource",
@@ -236,6 +290,10 @@
     "repository": "google/flatbuffers"
   },
   {
+    "package": "graphql-http",
+    "repository": "graphql/graphql-http"
+  },
+  {
     "package": "graphql-request",
     "repository": "graffle-js/graffle"
   },
@@ -255,6 +313,10 @@
   {
     "package": "isomorphic-ws",
     "repository": "heineiuo/isomorphic-ws"
+  },
+  {
+    "package": "jayson",
+    "repository": "tedeh/jayson"
   },
   {
     "package": "json-rpc-2.0",
@@ -283,6 +345,11 @@
   {
     "package": "nats.ws",
     "repository": "nats-io/nats.ws"
+  },
+  {
+    "package": "neo4j-driver",
+    "repository": "neo4j/neo4j-javascript-driver",
+    "directory": "packages/neo4j-driver"
   },
   {
     "package": "paho-mqtt",
@@ -343,6 +410,10 @@
     "repository": "nathanboktae/robust-websocket"
   },
   {
+    "package": "rpc-websockets",
+    "repository": "elpheria/rpc-websockets"
+  },
+  {
     "package": "rxjs",
     "repository": "ReactiveX/rxjs",
     "directory": "packages/rxjs"
@@ -377,6 +448,14 @@
     "repository": "apollographql/subscriptions-transport-ws"
   },
   {
+    "package": "thrift",
+    "repository": "apache/thrift"
+  },
+  {
+    "package": "tus-js-client",
+    "repository": "tus/tus-js-client"
+  },
+  {
     "package": "u8-mqtt",
     "repository": "shanewholloway/js-u8-mqtt"
   },
@@ -391,11 +470,20 @@
     "directory": "jsonrpc"
   },
   {
+    "package": "web3",
+    "repository": "web3/web3.js",
+    "directory": "packages/web3"
+  },
+  {
     "package": "websocket-ts",
     "repository": "jjxxs/websocket-ts"
   },
   {
     "package": "webstomp-client",
     "repository": "JSteunou/webstomp-client"
+  },
+  {
+    "package": "y-websocket",
+    "repository": "yjs/y-websocket"
   }
 ]

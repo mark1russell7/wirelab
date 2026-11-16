@@ -9,6 +9,10 @@
     "note": "Two merged pull requests in the history of the repository. Last push 2026-02-28."
   },
   {
+    "id": "Dash-Industry-Forum/dash.js",
+    "url": "https://github.com/Dash-Industry-Forum/dash.js"
+  },
+  {
     "id": "EventSource/eventsource",
     "url": "https://github.com/EventSource/eventsource"
   },
@@ -34,6 +38,11 @@
   {
     "id": "SocketCluster/socketcluster-client",
     "url": "https://github.com/SocketCluster/socketcluster-client"
+  },
+  {
+    "id": "Yaffle/EventSource",
+    "url": "https://github.com/Yaffle/EventSource",
+    "note": "Last push 2024-05-18."
   },
   {
     "id": "ably/ably-pubsub-js",
@@ -65,6 +74,10 @@
     "url": "https://github.com/apache/arrow-js"
   },
   {
+    "id": "apache/thrift",
+    "url": "https://github.com/apache/thrift"
+  },
+  {
     "id": "apollographql/apollo-client",
     "url": "https://github.com/apollographql/apollo-client"
   },
@@ -77,6 +90,10 @@
     "id": "ashiqdey/precompiled-mqtt",
     "url": "https://github.com/ashiqdey/precompiled-mqtt",
     "note": "Last push 2022-09-13."
+  },
+  {
+    "id": "aws-amplify/amplify-js",
+    "url": "https://github.com/aws-amplify/amplify-js"
   },
   {
     "id": "aws/aws-iot-device-sdk-js-v2",
@@ -112,6 +129,16 @@
     "url": "https://github.com/connectrpc/connect-es"
   },
   {
+    "id": "convex/convex-backend",
+    "url": "https://github.com/convex/convex-backend",
+    "note": "Pull requests land through an internal repository, so GitHub shows each one as closed, not merged."
+  },
+  {
+    "id": "daily-co/daily-js",
+    "url": "https://github.com/daily-co/daily-js",
+    "note": "The registry names no repository. The repository is a public mirror of an internal repository of Daily, and accepted pull requests come in through it."
+  },
+  {
     "id": "deepstreamIO/deepstream.io-client-js",
     "url": "https://github.com/deepstreamIO/deepstream.io-client-js"
   },
@@ -123,6 +150,10 @@
     "id": "eclipse-paho/paho.mqtt.javascript",
     "url": "https://github.com/eclipse-paho/paho.mqtt.javascript",
     "note": "The last push to the repository was on 2024-05-14."
+  },
+  {
+    "id": "elpheria/rpc-websockets",
+    "url": "https://github.com/elpheria/rpc-websockets"
   },
   {
     "id": "enisdenjo/graphql-ws",
@@ -154,6 +185,10 @@
     "note": "The default branch holds graffle, the new name of graphql-request. The source of graphql-request 7 is on the branch graphql-request."
   },
   {
+    "id": "graphql/graphql-http",
+    "url": "https://github.com/graphql/graphql-http"
+  },
+  {
     "id": "grpc/grpc-web",
     "url": "https://github.com/grpc/grpc-web"
   },
@@ -170,6 +205,10 @@
     "id": "improbable-eng/grpc-web",
     "url": "https://github.com/improbable-eng/grpc-web",
     "note": "The last push to the repository was on 2023-09-23."
+  },
+  {
+    "id": "jdiaz5513/capnp-ts",
+    "url": "https://github.com/jdiaz5513/capnp-ts"
   },
   {
     "id": "jjxxs/websocket-ts",
@@ -268,8 +307,21 @@
     "note": "Archived on GitHub. npm deprecates the package, and @nats-io/nats-core replaces it."
   },
   {
+    "id": "neo4j/neo4j-javascript-driver",
+    "url": "https://github.com/neo4j/neo4j-javascript-driver"
+  },
+  {
+    "id": "neondatabase/electric",
+    "url": "https://github.com/neondatabase/electric",
+    "note": "The registry names electric-sql/electric, the old name of the repository."
+  },
+  {
     "id": "neondatabase/serverless",
     "url": "https://github.com/neondatabase/serverless"
+  },
+  {
+    "id": "novnc/noVNC",
+    "url": "https://github.com/novnc/noVNC"
   },
   {
     "id": "open-telemetry/opentelemetry-js",
@@ -342,6 +394,10 @@
     "url": "https://github.com/supabase/supabase-js"
   },
   {
+    "id": "tedeh/jayson",
+    "url": "https://github.com/tedeh/jayson"
+  },
+  {
     "id": "timostamm/protobuf-ts",
     "url": "https://github.com/timostamm/protobuf-ts"
   },
@@ -352,6 +408,18 @@
   {
     "id": "tursodatabase/libsql-client-ts",
     "url": "https://github.com/tursodatabase/libsql-client-ts"
+  },
+  {
+    "id": "tus/tus-js-client",
+    "url": "https://github.com/tus/tus-js-client"
+  },
+  {
+    "id": "ueberdosis/hocuspocus",
+    "url": "https://github.com/ueberdosis/hocuspocus"
+  },
+  {
+    "id": "unjs/capnp-es",
+    "url": "https://github.com/unjs/capnp-es"
   },
   {
     "id": "upstash/redis-js",
@@ -366,11 +434,25 @@
     "url": "https://github.com/video-dev/hls.js"
   },
   {
+    "id": "videojs/http-streaming",
+    "url": "https://github.com/videojs/http-streaming"
+  },
+  {
     "id": "vueuse/vueuse",
     "url": "https://github.com/vueuse/vueuse"
   },
   {
+    "id": "web3/web3.js",
+    "url": "https://github.com/web3/web3.js",
+    "note": "The registry names ChainSafe/web3.js, the old name of the repository. ChainSafe archived it at the sunset of Web3.js on 2025-03-04."
+  },
+  {
     "id": "wevm/viem",
     "url": "https://github.com/wevm/viem"
+  },
+  {
+    "id": "yjs/y-websocket",
+    "url": "https://github.com/yjs/y-websocket",
+    "note": "The default branch holds @y/websocket 4, the new name of y-websocket. The source of y-websocket 3 is on the branch v3."
   }
 ]
