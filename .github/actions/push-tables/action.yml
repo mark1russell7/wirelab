@@ -1,0 +1,57 @@
+# The push of the tables of a read (measures.yml and transports.yml). The step copies the JSON files of the artifact of
+# the read into packages/catalog/src/data, commits them on a new branch <prefix>/<date>-<run id>, and pushes it. A
+# workflow of this repository cannot open a pull request, so the session of the campaign opens it from that branch.
+# The step starts no script and no package of the repository: it uses only jq and git.
+name: Push the tables
+description: Commit the JSON tables of a read on a new branch, and push the branch.
+inputs:
+  tables:
+    description: The folder with the JSON files of the read, from the artifact.
+    required: true
+  files:
+    description: The names of the JSON files in packages/catalog/src/data, with a space between two names.
+    required: true
+  prefix:
+    description: The first part of the name of the branch, for example measures.
+    required: true
+  subject:
+    description: The subject of the commit. The date of the read goes after it.
+    required: true
+  token:
+    description: The token that pushes the branch. It needs contents write.
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Commit and push the tables
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.token }}
+        TABLES: ${{ inputs.tables }}
+        FILES: ${{ inputs.files }}
+        PREFIX: ${{ inputs.prefix }}
+        SUBJECT: ${{ inputs.subject }}
+        WORKFLOW: ${{ github.workflow }}
+      run: |
+        set -euo pipefail
+        [[ "$PREFIX" =~ ^[a-z0-9-]+$ ]] || { echo "::error::Not a branch prefix: $PREFIX"; exit 1; }
+        paths=()
+        for file in $FILES; do
+          # only a plain file name of the data folder
+          [[ "$file" =~ ^[a-z0-9-]+\.json$ ]] || { echo "::error::Not a name of a table: $file"; exit 1; }
+          jq empty "$TABLES/$file"
+          cp "$TABLES/$file" "packages/catalog/src/data/$file"
+          paths+=("packages/catalog/src/data/$file")
+        done
+        day="$(date -u +%F)"
+        branch="${PREFIX}/${day}-${GITHUB_RUN_ID}"
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add -- "${paths[@]}"
+        git commit -m "${SUBJECT} ${day}" -m "The ${WORKFLOW} run ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID} read them."
+        git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/${branch}"
+        {
+          echo "## The tables are on a branch"
+          echo
+          echo "Branch: \`${branch}\`. Open the pull request: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1"
+        } >> "$GITHUB_STEP_SUMMARY"

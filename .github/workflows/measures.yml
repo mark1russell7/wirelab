@@ -4,7 +4,8 @@
 #
 # Each week, the scheduled run reads all packages. When the tables change, the job push puts them on a new branch
 # measures/<date>-<run id>. A workflow of this repository cannot open a pull request, so the session of the campaign
-# opens it from that branch. The job push runs no code of the repository: it only copies the two JSON files.
+# opens it from that branch. The job push starts no script of the repository: its action push-tables copies the two
+# JSON files with jq and git.
 name: Measures
 
 on:
@@ -94,23 +95,10 @@ jobs:
           name: measures
           path: ${{ runner.temp }}/measures
       - name: Commit and push the tables
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TABLES: ${{ runner.temp }}/measures
-        run: |
-          for file in sources.json usage.json; do
-            jq empty "$TABLES/$file"
-            cp "$TABLES/$file" "packages/catalog/src/data/$file"
-          done
-          day="$(date -u +%F)"
-          branch="measures/${day}-${GITHUB_RUN_ID}"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add packages/catalog/src/data/sources.json packages/catalog/src/data/usage.json
-          git commit -m "data(catalog): the measures of use of ${day}" -m "The Measures run ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID} read them."
-          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/${branch}"
-          {
-            echo "## The tables are on a branch"
-            echo
-            echo "Branch: \`${branch}\`. Open the pull request: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1"
-          } >> "$GITHUB_STEP_SUMMARY"
+        uses: ./.github/actions/push-tables
+        with:
+          tables: ${{ runner.temp }}/measures
+          files: sources.json usage.json
+          prefix: measures
+          subject: "data(catalog): the measures of use of"
+          token: ${{ github.token }}
