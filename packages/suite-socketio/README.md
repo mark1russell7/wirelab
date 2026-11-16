@@ -76,6 +76,8 @@ The rules come from the protocol document `docs/socket.io-protocol/v5-current.md
 | F0058 | `disconnect-during-connect` | `disconnect()` during the handshake of a namespace sends no `DISCONNECT` packet. The server keeps an orphan socket. |
 | F0059 | `reconnection-attempts-zero` | The option `reconnectionAttempts: 0` becomes `Infinity`, thus the client reconnects. |
 | F0060 | `recovered-false` | `socket.recovered` is `undefined`, not `false`, when the server does not use the recovery of the connection state. |
+| F0066 | `offset-event-name` | With the recovery of the connection state, an event with only its name becomes the offset of the next `CONNECT` packet. |
+| F0066 | `offset-string-argument` | With the recovery of the connection state, an event with a string as its last argument and no offset changes the offset of the next `CONNECT` packet. |
 | F0064 | `retries-without-ack-timeout` | With `retries` and no `ackTimeout`, a positive acknowledgement goes to the callback as the error, and the client sends the event again. |
 | F0067 | `eleven-attachments` | The decoder of the client accepts no more than 10 attachments, but the server sends more. An event with 11 buffers gives a parse error. |
 
