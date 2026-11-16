@@ -1,8 +1,30 @@
 [
   {
+    "package": "@anycable/web",
+    "repository": "anycable/anycable-client"
+  },
+  {
+    "package": "@azure/web-pubsub-client",
+    "repository": "Azure/azure-sdk-for-js",
+    "directory": "sdk/web-pubsub/web-pubsub-client"
+  },
+  {
     "package": "@connectrpc/connect-web",
     "repository": "connectrpc/connect-es",
     "directory": "packages/connect-web"
+  },
+  {
+    "package": "@deepstream/client",
+    "repository": "deepstreamIO/deepstream.io-client-js"
+  },
+  {
+    "package": "@feathersjs/client",
+    "repository": "feathersjs/feathers",
+    "directory": "packages/client"
+  },
+  {
+    "package": "@hotwired/turbo",
+    "repository": "hotwired/turbo"
   },
   {
     "package": "@improbable-eng/grpc-web",
@@ -56,8 +78,20 @@
     "repository": "ably/ably-pubsub-js"
   },
   {
+    "package": "aws-iot-device-sdk-v2",
+    "repository": "aws/aws-iot-device-sdk-js-v2"
+  },
+  {
     "package": "centrifuge",
     "repository": "centrifugal/centrifuge-js"
+  },
+  {
+    "package": "cometd",
+    "repository": "cometd/cometd-javascript"
+  },
+  {
+    "package": "ddp.js",
+    "repository": "mondora/ddp.js"
   },
   {
     "package": "engine.io-client",
@@ -76,6 +110,14 @@
     "package": "grpc-web",
     "repository": "grpc/grpc-web",
     "directory": "packages/grpc-web"
+  },
+  {
+    "package": "isomorphic-ws",
+    "repository": "heineiuo/isomorphic-ws"
+  },
+  {
+    "package": "laravel-echo",
+    "repository": "laravel/echo"
   },
   {
     "package": "mqtt",
@@ -99,12 +141,40 @@
     "repository": "phoenixframework/phoenix"
   },
   {
+    "package": "precompiled-mqtt",
+    "repository": "ashiqdey/precompiled-mqtt"
+  },
+  {
+    "package": "primus",
+    "repository": "primus/primus"
+  },
+  {
+    "package": "pubnub",
+    "repository": "pubnub/javascript"
+  },
+  {
     "package": "pusher-js",
     "repository": "pusher/pusher-js"
   },
   {
+    "package": "react-use-websocket",
+    "repository": "robtaussig/react-use-websocket"
+  },
+  {
     "package": "reconnecting-websocket",
     "repository": "pladaria/reconnecting-websocket"
+  },
+  {
+    "package": "rhea",
+    "repository": "amqp/rhea"
+  },
+  {
+    "package": "rhea-promise",
+    "repository": "amqp/rhea-promise"
+  },
+  {
+    "package": "robust-websocket",
+    "repository": "nathanboktae/robust-websocket"
   },
   {
     "package": "rxjs",
@@ -112,9 +182,21 @@
     "directory": "packages/rxjs"
   },
   {
+    "package": "simpleddp",
+    "repository": "Gregivy/simpleddp"
+  },
+  {
     "package": "socket.io-client",
     "repository": "socketio/socket.io",
     "directory": "packages/socket.io-client"
+  },
+  {
+    "package": "socketcluster-client",
+    "repository": "SocketCluster/socketcluster-client"
+  },
+  {
+    "package": "sockette",
+    "repository": "lukeed/sockette"
   },
   {
     "package": "sockjs-client",
@@ -127,6 +209,14 @@
   {
     "package": "subscriptions-transport-ws",
     "repository": "apollographql/subscriptions-transport-ws"
+  },
+  {
+    "package": "u8-mqtt",
+    "repository": "shanewholloway/js-u8-mqtt"
+  },
+  {
+    "package": "websocket-ts",
+    "repository": "jjxxs/websocket-ts"
   },
   {
     "package": "webstomp-client",
