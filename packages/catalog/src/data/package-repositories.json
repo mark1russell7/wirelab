@@ -4,6 +4,10 @@
     "repository": "anycable/anycable-client"
   },
   {
+    "package": "@apollo/client",
+    "repository": "apollographql/apollo-client"
+  },
+  {
     "package": "@aws-sdk/client-s3",
     "repository": "aws/aws-sdk-js-v3",
     "directory": "clients/client-s3"
@@ -41,6 +45,15 @@
     "repository": "improbable-eng/grpc-web"
   },
   {
+    "package": "@libsql/client",
+    "repository": "tursodatabase/libsql-client-ts",
+    "directory": "packages/libsql-client"
+  },
+  {
+    "package": "@microsoft/fetch-event-source",
+    "repository": "Azure/fetch-event-source"
+  },
+  {
     "package": "@microsoft/signalr",
     "repository": "dotnet/aspnetcore",
     "directory": "src/SignalR/clients/ts/signalr"
@@ -51,9 +64,17 @@
     "directory": "src/SignalR/clients/ts/signalr-protocol-msgpack"
   },
   {
+    "package": "@msgpack/msgpack",
+    "repository": "msgpack/msgpack-javascript"
+  },
+  {
     "package": "@nats-io/nats-core",
     "repository": "nats-io/nats.js",
     "directory": "core"
+  },
+  {
+    "package": "@neondatabase/serverless",
+    "repository": "neondatabase/serverless"
   },
   {
     "package": "@opentelemetry/exporter-trace-otlp-http",
@@ -66,6 +87,11 @@
     "directory": "experimental/packages/exporter-trace-otlp-proto"
   },
   {
+    "package": "@orpc/client",
+    "repository": "middleapi/orpc",
+    "directory": "packages/client"
+  },
+  {
     "package": "@protobuf-ts/grpcweb-transport",
     "repository": "timostamm/protobuf-ts",
     "directory": "packages/grpcweb-transport"
@@ -76,12 +102,22 @@
     "directory": "actioncable"
   },
   {
+    "package": "@solana/kit",
+    "repository": "anza-xyz/kit",
+    "directory": "packages/kit"
+  },
+  {
     "package": "@stomp/rx-stomp",
     "repository": "stomp-js/rx-stomp"
   },
   {
     "package": "@stomp/stompjs",
     "repository": "stomp-js/stompjs"
+  },
+  {
+    "package": "@streamparser/json",
+    "repository": "juanjoDiaz/streamparser-json",
+    "directory": "packages/plainjs"
   },
   {
     "package": "@supabase/postgrest-js",
@@ -94,6 +130,21 @@
     "directory": "packages/core/realtime-js"
   },
   {
+    "package": "@trpc/client",
+    "repository": "trpc/trpc",
+    "directory": "packages/client"
+  },
+  {
+    "package": "@upstash/redis",
+    "repository": "upstash/redis-js",
+    "directory": "packages/redis"
+  },
+  {
+    "package": "@urql/core",
+    "repository": "urql-graphql/urql",
+    "directory": "packages/core"
+  },
+  {
     "package": "@vueuse/core",
     "repository": "vueuse/vueuse",
     "directory": "packages/core"
@@ -101,6 +152,14 @@
   {
     "package": "ably",
     "repository": "ably/ably-pubsub-js"
+  },
+  {
+    "package": "apache-arrow",
+    "repository": "apache/arrow-js"
+  },
+  {
+    "package": "avsc",
+    "repository": "mtth/avsc"
   },
   {
     "package": "aws-iot-device-sdk-v2",
@@ -119,12 +178,24 @@
     "repository": "mongodb/js-bson"
   },
   {
+    "package": "capnweb",
+    "repository": "cloudflare/capnweb"
+  },
+  {
+    "package": "cbor-x",
+    "repository": "kriszyp/cbor-x"
+  },
+  {
     "package": "centrifuge",
     "repository": "centrifugal/centrifuge-js"
   },
   {
     "package": "cometd",
     "repository": "cometd/cometd-javascript"
+  },
+  {
+    "package": "comlink",
+    "repository": "GoogleChromeLabs/comlink"
   },
   {
     "package": "ddp.js",
@@ -138,6 +209,10 @@
     "package": "engine.io-client",
     "repository": "socketio/socket.io",
     "directory": "packages/engine.io-client"
+  },
+  {
+    "package": "ethers",
+    "repository": "ethers-io/ethers.js"
   },
   {
     "package": "eventsource",
@@ -188,6 +263,10 @@
   {
     "package": "laravel-echo",
     "repository": "laravel/echo"
+  },
+  {
+    "package": "livekit-client",
+    "repository": "livekit/client-sdk-js"
   },
   {
     "package": "meros",
@@ -247,6 +326,11 @@
     "repository": "pladaria/reconnecting-websocket"
   },
   {
+    "package": "relay-runtime",
+    "repository": "meta/relay",
+    "directory": "packages/relay-runtime"
+  },
+  {
     "package": "rhea",
     "repository": "amqp/rhea"
   },
@@ -295,6 +379,11 @@
   {
     "package": "u8-mqtt",
     "repository": "shanewholloway/js-u8-mqtt"
+  },
+  {
+    "package": "viem",
+    "repository": "wevm/viem",
+    "directory": "src"
   },
   {
     "package": "vscode-jsonrpc",

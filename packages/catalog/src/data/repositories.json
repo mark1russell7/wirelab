@@ -4,8 +4,17 @@
     "url": "https://github.com/Azure/azure-sdk-for-js"
   },
   {
+    "id": "Azure/fetch-event-source",
+    "url": "https://github.com/Azure/fetch-event-source",
+    "note": "Two merged pull requests in the history of the repository. Last push 2026-02-28."
+  },
+  {
     "id": "EventSource/eventsource",
     "url": "https://github.com/EventSource/eventsource"
+  },
+  {
+    "id": "GoogleChromeLabs/comlink",
+    "url": "https://github.com/GoogleChromeLabs/comlink"
   },
   {
     "id": "Gregivy/simpleddp",
@@ -48,6 +57,18 @@
     "note": "A monorepo of several packages. The registry names no folder for @anycable/web."
   },
   {
+    "id": "anza-xyz/kit",
+    "url": "https://github.com/anza-xyz/kit"
+  },
+  {
+    "id": "apache/arrow-js",
+    "url": "https://github.com/apache/arrow-js"
+  },
+  {
+    "id": "apollographql/apollo-client",
+    "url": "https://github.com/apollographql/apollo-client"
+  },
+  {
     "id": "apollographql/subscriptions-transport-ws",
     "url": "https://github.com/apollographql/subscriptions-transport-ws",
     "note": "Archived on GitHub. npm deprecates the package."
@@ -72,6 +93,10 @@
   {
     "id": "centrifugal/centrifuge-js",
     "url": "https://github.com/centrifugal/centrifuge-js"
+  },
+  {
+    "id": "cloudflare/capnweb",
+    "url": "https://github.com/cloudflare/capnweb"
   },
   {
     "id": "cloudflare/partykit",
@@ -102,6 +127,10 @@
   {
     "id": "enisdenjo/graphql-ws",
     "url": "https://github.com/enisdenjo/graphql-ws"
+  },
+  {
+    "id": "ethers-io/ethers.js",
+    "url": "https://github.com/ethers-io/ethers.js"
   },
   {
     "id": "faye/faye",
@@ -152,6 +181,14 @@
     "note": "The last push to the repository was on 2017-07-11."
   },
   {
+    "id": "juanjoDiaz/streamparser-json",
+    "url": "https://github.com/juanjoDiaz/streamparser-json"
+  },
+  {
+    "id": "kriszyp/cbor-x",
+    "url": "https://github.com/kriszyp/cbor-x"
+  },
+  {
     "id": "kriszyp/msgpackr",
     "url": "https://github.com/kriszyp/msgpackr"
   },
@@ -159,6 +196,10 @@
     "id": "laravel/echo",
     "url": "https://github.com/laravel/echo",
     "note": "A monorepo of three packages. The registry names no folder for laravel-echo."
+  },
+  {
+    "id": "livekit/client-sdk-js",
+    "url": "https://github.com/livekit/client-sdk-js"
   },
   {
     "id": "lukeed/sockette",
@@ -174,6 +215,11 @@
     "url": "https://github.com/maraisr/meros"
   },
   {
+    "id": "meta/relay",
+    "url": "https://github.com/meta/relay",
+    "note": "The registry names facebook/relay, the old name of the repository."
+  },
+  {
     "id": "mhart/aws4fetch",
     "url": "https://github.com/mhart/aws4fetch",
     "note": "Last push 2024-12-06."
@@ -181,6 +227,10 @@
   {
     "id": "microsoft/vscode-languageserver-node",
     "url": "https://github.com/microsoft/vscode-languageserver-node"
+  },
+  {
+    "id": "middleapi/orpc",
+    "url": "https://github.com/middleapi/orpc"
   },
   {
     "id": "mondora/ddp.js",
@@ -196,6 +246,14 @@
     "url": "https://github.com/mqttjs/MQTT.js"
   },
   {
+    "id": "msgpack/msgpack-javascript",
+    "url": "https://github.com/msgpack/msgpack-javascript"
+  },
+  {
+    "id": "mtth/avsc",
+    "url": "https://github.com/mtth/avsc"
+  },
+  {
     "id": "nathanboktae/robust-websocket",
     "url": "https://github.com/nathanboktae/robust-websocket",
     "note": "Last push 2022-07-14."
@@ -208,6 +266,10 @@
     "id": "nats-io/nats.ws",
     "url": "https://github.com/nats-io/nats.ws",
     "note": "Archived on GitHub. npm deprecates the package, and @nats-io/nats-core replaces it."
+  },
+  {
+    "id": "neondatabase/serverless",
+    "url": "https://github.com/neondatabase/serverless"
   },
   {
     "id": "open-telemetry/opentelemetry-js",
@@ -284,11 +346,31 @@
     "url": "https://github.com/timostamm/protobuf-ts"
   },
   {
+    "id": "trpc/trpc",
+    "url": "https://github.com/trpc/trpc"
+  },
+  {
+    "id": "tursodatabase/libsql-client-ts",
+    "url": "https://github.com/tursodatabase/libsql-client-ts"
+  },
+  {
+    "id": "upstash/redis-js",
+    "url": "https://github.com/upstash/redis-js"
+  },
+  {
+    "id": "urql-graphql/urql",
+    "url": "https://github.com/urql-graphql/urql"
+  },
+  {
     "id": "video-dev/hls.js",
     "url": "https://github.com/video-dev/hls.js"
   },
   {
     "id": "vueuse/vueuse",
     "url": "https://github.com/vueuse/vueuse"
+  },
+  {
+    "id": "wevm/viem",
+    "url": "https://github.com/wevm/viem"
   }
 ]
