@@ -22,5 +22,17 @@
     "failed": 0,
     "skipped": 0,
     "note": "The 8 it.fails tests passed, so the faults F0024, F0028, F0030 and F0031 stay in 6.6.8. A line client bug evidence of the log gives the measured values of each fault."
+  },
+  {
+    "id": "suite-socketio-43945837241",
+    "suite": "wirelab-suite-socketio",
+    "package": "socket.io-client",
+    "version": "4.8.4",
+    "at": "2026-11-16T20:14:43Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/43945837241",
+    "passed": 105,
+    "failed": 0,
+    "skipped": 0,
+    "note": "The 14 it.fails tests passed, so the faults F0055, F0057, F0058, F0059, F0060, F0064 and F0067 stay in 4.8.4. A line client bug evidence of the log gives the measured values of each fault."
   }
 ]

@@ -547,7 +547,7 @@
     "found": "2026-11-13",
     "kind": "conformance",
     "title": "A volatile event emitted while the namespace is not connected is buffered and sent after connect, not dropped",
-    "note": "The check of the discard looks only at the transport. During the namespace handshake the transport is writable. Confidence high."
+    "note": "The check of the discard looks only at the transport. During the namespace handshake the transport is writable. Confidence high. The run suite-socketio-43945837241 of wirelab-suite-socketio confirms it over NodeXHR and Fetch, with the it.fails test volatile-before-connect."
   },
   {
     "id": "F0056",
@@ -567,7 +567,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "socket.connect() during a pending namespace handshake sends a second CONNECT",
-    "note": "With WebSocket the server gets an orphan socket. With polling the server closes the whole connection, so each namespace drops. Confidence high."
+    "note": "With WebSocket the server gets an orphan socket. With polling the server closes the whole connection, so each namespace drops. Confidence high. The run suite-socketio-43945837241 of wirelab-suite-socketio confirms it over NodeXHR and Fetch, with the it.fails test second-connect."
   },
   {
     "id": "F0058",
@@ -577,7 +577,7 @@
     "found": "2026-11-13",
     "kind": "resource",
     "title": "disconnect() during the namespace handshake leaves an orphan socket on the server",
-    "note": "No DISCONNECT goes out, and the later CONNECT reply is ignored. A DISCONNECT sent at once makes the 4.8 server close the connection. Confidence high."
+    "note": "No DISCONNECT goes out, and the later CONNECT reply is ignored. A DISCONNECT sent at once makes the 4.8 server close the connection. Confidence high. The run suite-socketio-43945837241 of wirelab-suite-socketio confirms it over NodeXHR and Fetch, with the it.fails test disconnect-during-connect."
   },
   {
     "id": "F0059",
@@ -587,7 +587,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "reconnectionAttempts 0, reconnectionDelay 0 and reconnectionDelayMax 0 in the constructor become the defaults",
-    "note": "The constructor and backo2 use ||. The setters accept 0. randomizationFactor was fixed with ?? in #1231. Confidence high."
+    "note": "The constructor and backo2 use ||. The setters accept 0. randomizationFactor was fixed with ?? in #1231. Confidence high. The run suite-socketio-43945837241 of wirelab-suite-socketio confirms it over NodeXHR and Fetch, with the it.fails test reconnection-attempts-zero."
   },
   {
     "id": "F0060",
@@ -597,7 +597,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "socket.recovered is undefined, not false, when the server does not use connection state recovery",
-    "note": "The field has the type boolean. Low impact. Confidence high."
+    "note": "The field has the type boolean. Low impact. Confidence high. The run suite-socketio-43945837241 of wirelab-suite-socketio confirms it over NodeXHR and Fetch, with the it.fails test recovered-false."
   },
   {
     "id": "F0061",
@@ -637,7 +637,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "retries without ackTimeout: a positive ack goes to the callback as the error, and the event is sent three times",
-    "note": "Known upstream. Related, different: issue #5446."
+    "note": "Known upstream. Related, different: issue #5446. The run suite-socketio-43945837241 of wirelab-suite-socketio confirms it over NodeXHR and Fetch, with the it.fails test retries-without-ack-timeout."
   },
   {
     "id": "F0065",
@@ -657,7 +657,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "Connection state recovery: a volatile event with a string as its last argument becomes the offset, so recovery fails",
-    "note": "Known upstream. PR #5547 (open) is a fix on the client side."
+    "note": "Known upstream. PR #5547 closed with no merge on 2026-11-13. The commit f97d51a on main adds a check args.length > 1, thus an event with only its name no longer becomes the offset. A string as the last of two or more arguments still does. No release has f97d51a."
   },
   {
     "id": "F0067",
@@ -667,7 +667,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "The decoder of the client allows 10 attachments, but the server sends more: an event with 11 buffers gives a parse error and a reconnect",
-    "note": "Known upstream. The Manager makes the Decoder with no options."
+    "note": "Known upstream. The Manager makes the Decoder with no options. The run suite-socketio-43945837241 of wirelab-suite-socketio confirms it over NodeXHR and Fetch, with the it.fails test eleven-attachments."
   },
   {
     "id": "F0068",
