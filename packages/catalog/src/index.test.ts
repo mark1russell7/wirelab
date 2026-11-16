@@ -272,6 +272,18 @@ describe("the priority order", () => {
     expect(reopened.find((r) => r.package === "b")?.landing).toBe(1);
   });
 
+  it("gives a package with a closed source the factor of its vendor", () => {
+    const f = fixture();
+    const evidence = "https://vendor.example/package.json";
+    const policies = [{ repository: "vendor.example", topic: "contributions" as const, checked: "2026-11-16", value: "closed", evidence }];
+    const order = priorityOrder({ ...f, packageRepositories: [{ package: "b", repository: "vendor.example" }], policies });
+    expect(order.find((r) => r.package === "b")?.landing).toBe(0.2);
+    expect(order.find((r) => r.package === "b")?.reasons).toEqual([
+      "the source is closed, and only its vendor vendor.example can apply a fix (checked 2026-11-16)",
+    ]);
+    expect(order.find((r) => r.package === "c")?.landing).toBe(1);
+  });
+
   it("gives equal values the mean rank", () => {
     const f = fixture();
     const usage = f.usage.map((u) => (u.package === "b" ? { ...u, value: 1000 } : u));

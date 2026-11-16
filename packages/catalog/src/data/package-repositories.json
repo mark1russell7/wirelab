@@ -801,6 +801,10 @@
     "repository": "sockjs/sockjs-client"
   },
   {
+    "package": "solclientjs",
+    "repository": "solace.dev"
+  },
+  {
     "package": "sse.js",
     "repository": "mpetazzoni/sse.js"
   },
