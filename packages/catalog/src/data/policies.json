@@ -4498,6 +4498,22 @@
     "note": "Tidelift, from the security policy of the organization."
   },
   {
+    "repository": "solace.dev",
+    "topic": "contributions",
+    "checked": "2026-11-16",
+    "value": "closed",
+    "evidence": "https://cdn.jsdelivr.net/npm/solclientjs@10.18.3/package.json",
+    "note": "The repository field of solclientjs 10.18.3 is https://solace.dev, and its license is SEE LICENSE IN LICENSE.txt."
+  },
+  {
+    "repository": "solace.dev",
+    "topic": "security",
+    "checked": "2026-11-16",
+    "value": "none-stated",
+    "evidence": "https://solace.com/security/",
+    "note": "The security page of Solace names no channel for a report. It links the notices of known vulnerabilities, and a contact page for security documents."
+  },
+  {
     "repository": "stomp-js/rx-stomp",
     "topic": "ai",
     "checked": "2026-11-13",

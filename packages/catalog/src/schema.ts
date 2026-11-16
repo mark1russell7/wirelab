@@ -105,7 +105,10 @@ export interface UsageRow {
   readonly value: number;
 }
 
-/** A source repository. `id` is `owner/name` on GitHub, or the host and the path for another host. */
+/**
+ * The home of the source of a package. `id` is `owner/name` on GitHub, or the host and the path for another host.
+ * The home of a closed source is the site of its vendor.
+ */
 export interface Repository {
   readonly id: string;
   readonly url: string;
@@ -130,13 +133,14 @@ export type PolicyTopic = (typeof POLICY_TOPICS)[number];
  * - `cla`: the agreement that a contributor signs. `dco` is a sign-off line in each commit.
  * - `security`: the private channel for a security fault. `platform` is a bounty platform, for example HackerOne.
  * - `contributions`: `open` when the repository takes pull requests. `collaborators-only` when it takes pull requests
- *   only from its collaborators. An `archived` repository takes none.
+ *   only from its collaborators. An `archived` repository takes none. A `closed` source is not public, so only its
+ *   vendor changes the code.
  */
 export const POLICY_VALUES: Readonly<Record<PolicyTopic, readonly string[]>> = {
   ai: ["none-stated", "allowed", "disclosure", "refused"],
   cla: ["none", "dco", "cla"],
   security: ["github-advisory", "email", "platform", "none-stated"],
-  contributions: ["open", "collaborators-only", "archived"],
+  contributions: ["open", "collaborators-only", "archived", "closed"],
 };
 
 /**

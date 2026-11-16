@@ -17,17 +17,17 @@ Each table is one JSON file in `src/data`. A row names a row of another table by
 | `sources` | `sources.json` | `at`, `id` | One read of outside data at one time. |
 | `registry` | `registry.json` | `package`, `source` | What the npm registry said about a package. |
 | `usage` | `usage.json` | `package`, `source`, `metric` | One measure of the use of a package. |
-| `repositories` | `repositories.json` | `id` | A source repository. The id is `owner/name` on GitHub. |
+| `repositories` | `repositories.json` | `id` | The home of the source of a package. The id is `owner/name` on GitHub. A closed source has the site of its vendor. |
 | `packageRepositories` | `package-repositories.json` | `package` | The repository of a package, and the folder of the package in it. |
 | `policies` | `policies.json` | `repository`, `topic`, `checked` | One rule of a repository on one topic, with the day of the check and the page that shows it. |
 
 - The field `client` of a protocol is `library`, `native` or `none`. A protocol with `none` often has a gateway, which the field `gateway` names.
 - `packumentModified` is the day of the last change of the registry document. A deprecation also changes it, so it is not the day of the last release.
-- The policy topics are `ai`, `cla` and `security`. Each topic has its own set of values, in `POLICY_VALUES`.
+- The policy topics are `ai`, `cla`, `security` and `contributions`. Each topic has its own set of values, in `POLICY_VALUES`.
 - The topic `ai` gives the rule for contributions that an AI made: `none-stated`, `allowed`, `disclosure` or `refused`.
 - The topic `cla` gives the agreement of a contributor: `none`, `dco` or `cla`.
 - The topic `security` gives the private channel for a security fault: `github-advisory`, `email`, `platform` or `none-stated`.
-- The topic `contributions` tells if the repository takes pull requests: `open`, `collaborators-only` or `archived`.
+- The topic `contributions` tells if the repository takes pull requests: `open`, `collaborators-only`, `archived` or `closed`. A `closed` source is not public, so only its vendor changes the code.
 - A new check of a policy adds a row. The latest row of a topic gives the current rule.
 - An observed row names its source. A new read adds a source and new rows, and the old rows stay. Thus the tables keep the history.
 
@@ -69,6 +69,7 @@ The ledger records the tests of the campaign, the faults that they find, and the
    - A deprecated package has the factor `LANDING.deprecated`, which is 0.1.
    - A package in an archived repository has the factor `LANDING.archived`, which is 0.1. A deprecated package does not get this factor too.
    - A repository that takes pull requests only from its collaborators has the factor `LANDING.collaboratorsOnly`, which is 0.3. The issue links the fix branch, and a maintainer must apply the fix.
+   - A package with a closed source has the factor `LANDING.closed`, which is 0.2. The fix goes to the vendor as a report with no fix branch, and only the vendor can apply it.
    - A repository that refuses contributions that an AI made has the factor `LANDING.aiRefused`, which is 0.2. The fix stays held until the rule changes.
    - A repository with a CLA has the factor `LANDING.cla`, which is 0.5. The fix stays held until Mark decides about the CLA.
 

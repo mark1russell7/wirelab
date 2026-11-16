@@ -651,6 +651,11 @@
     "url": "https://github.com/sockjs/sockjs-client"
   },
   {
+    "id": "solace.dev",
+    "url": "https://solace.dev",
+    "note": "The developer site of Solace, the vendor of solclientjs. The source of solclientjs is closed, and GitHub has no public repository of it."
+  },
+  {
     "id": "stomp-js/rx-stomp",
     "url": "https://github.com/stomp-js/rx-stomp"
   },
