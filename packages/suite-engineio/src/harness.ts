@@ -2,9 +2,9 @@
  * The helpers of the tests: a scripted Engine.IO server for HTTP long-polling, a client on that server, and the records
  * of the session. The server is a fixed list of replies, thus each test controls each byte that the client gets.
  */
-import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { startScriptedServer, type ScriptedReply, type ScriptedRequest, type ScriptedServer } from "@mark1russell7/rigor-testkit/http";
+import { runToStop } from "@mark1russell7/rigor-testkit/stop";
 import { Fetch, NodeXHR, Socket, type SocketOptions, type TransportCtor } from "engine.io-client";
 import { decodePayload, encodePayload, openPacket, type Handshake, type Packet } from "./codec.ts";
 
@@ -245,32 +245,28 @@ export interface ChildTimes {
   readonly settleMs?: number;
 }
 
+/** The time in ms that the process of a client gets after its own limit. After that time, the harness stops it. */
+const childMarginMs = 10_000;
+
 /**
  * This function starts a client of one transport in a separate process, on the server at `url`. It gives the report
- * of the process. An uncaught error of the client stops only that process, not the worker of the test.
+ * of the process. An uncaught error of the client stops only that process, not the worker of the test. `runToStop` of
+ * `@mark1russell7/rigor-testkit` starts the process with no stop, and it stops a process that passes its time.
  */
-export function runChild(url: string, transport: PollingTransport, times: ChildTimes = {}): Promise<ChildReport> {
+export async function runChild(url: string, transport: PollingTransport, times: ChildTimes = {}): Promise<ChildReport> {
   const script = fileURLToPath(new URL("./child.ts", import.meta.url));
-  const args = [script, url, transport.name, String(times.limitMs ?? 5_000), String(times.settleMs ?? 1_000)];
-  return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, args, { stdio: ["ignore", "pipe", "pipe"] });
-    let out = "";
-    let stderr = "";
-    child.stdout.setEncoding("utf8").on("data", (chunk: string) => {
-      out += chunk;
-    });
-    child.stderr.setEncoding("utf8").on("data", (chunk: string) => {
-      stderr += chunk;
-    });
-    child.on("error", reject);
-    child.on("close", (code: number | null) => {
-      const line = out.trim().split("\n").at(-1) ?? "";
-      try {
-        const parsed = JSON.parse(line) as Pick<ChildReport, "events" | "uncaught" | "readyState">;
-        resolve({ events: parsed.events, uncaught: parsed.uncaught, readyState: parsed.readyState, code, stderr });
-      } catch {
-        reject(new Error(`The client process gave no report. The exit code is ${String(code)}. The error output is: ${stderr}`));
-      }
-    });
+  const limitMs = times.limitMs ?? 5_000;
+  const run = await runToStop({
+    command: process.execPath,
+    args: [script, url, transport.name, String(limitMs), String(times.settleMs ?? 1_000)],
+    timeoutMs: limitMs + childMarginMs,
   });
+  const line = run.stdout.trim().split("\n").at(-1) ?? "";
+  let parsed: Pick<ChildReport, "events" | "uncaught" | "readyState">;
+  try {
+    parsed = JSON.parse(line) as Pick<ChildReport, "events" | "uncaught" | "readyState">;
+  } catch {
+    throw new Error(`The client process gave no report. The exit code is ${String(run.exit.code)}. The error output is: ${run.stderr}`);
+  }
+  return { events: parsed.events, uncaught: parsed.uncaught, readyState: parsed.readyState, code: run.exit.code, stderr: run.stderr };
 }
