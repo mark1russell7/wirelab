@@ -12,6 +12,10 @@
     "dev": "vite",
     "build": "vite build"
   },
+  "dependencies": {
+    "@mark1russell7/text": "^0.0.10",
+    "@wirelab/catalog": "workspace:*"
+  },
   "devDependencies": {
     "@mark1russell7/cue": "^2.0.0",
     "@mark1russell7/site-pages": "^0.5.1",

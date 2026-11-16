@@ -1,10 +1,23 @@
 // The checks that show known faults of socket.io-client 4.8.4. Each test is `it.fails` with a comment `// client bug:`
 // and the identifier of the finding in the catalog. The test passes while the fault stays. When a release of the client
 // removes the fault, the test fails. Then change it to `it`, and move the check to `protocol.test.ts`.
-import { pause, payload, until } from "@wirelab/suite-engineio";
+import { defaultHandshake, openPacket, pause, payload, until } from "@wirelab/suite-engineio";
 import { afterEach, describe, expect, it } from "vitest";
 import { placeholder } from "./codec.ts";
-import { answerMs, connectMain, connectReply, framesOf, handshakes, sioReply, startSioSession, suiteEnabled, transports, type SioFrame, type SioSession } from "./harness.ts";
+import {
+  answerMs,
+  connectMain,
+  connectReply,
+  framesOf,
+  handshakes,
+  sioReply,
+  startSioSession,
+  suiteEnabled,
+  transports,
+  type PollingTransport,
+  type SioFrame,
+  type SioSession,
+} from "./harness.ts";
 
 const sessions: SioSession[] = [];
 
@@ -21,6 +34,59 @@ afterEach(async () => {
 /** This function writes a line of evidence to the log. The record of a CI job keeps it. */
 function evidence(text: string): void {
   console.info(`client bug evidence: ${text}`);
+}
+
+/** The private session ID of the recovery of the connection state. */
+const recoveryPid = "pid-1";
+
+/** The offset of the last event of the server that has an offset. */
+const recoveryOffset = "offset-1";
+
+/**
+ * This function starts a session with the recovery of the connection state. The server sends an event with an offset,
+ * then the event `last` with no offset, and then it closes. The client reconnects. The function gives the payload of the
+ * second `CONNECT` packet of the client. When the session does not get to that packet, it writes a line `harness fault`
+ * and gives `undefined`.
+ */
+async function reconnectPayload(transport: PollingTransport, last: readonly unknown[]): Promise<unknown> {
+  try {
+    return await reconnect(transport, last);
+  } catch (error) {
+    console.info(`harness fault: F0066 ${transport.name}: ${error instanceof Error ? error.message : String(error)}`);
+    return undefined;
+  }
+}
+
+/** This function is the body of `reconnectPayload`. An error of the harness goes out of it as an exception. */
+async function reconnect(transport: PollingTransport, last: readonly unknown[]): Promise<unknown> {
+  const s = await session(
+    transport,
+    {
+      polls: [
+        sioReply([{ type: "CONNECT", nsp: "/", data: { sid: "sid-main", pid: recoveryPid } }], { delayMs: answerMs }),
+        sioReply(
+          [
+            { type: "EVENT", nsp: "/", data: ["news", { n: 1 }, recoveryOffset] },
+            { type: "EVENT", nsp: "/", data: last },
+          ],
+          { delayMs: answerMs },
+        ),
+        payload([{ type: "close", data: "" }], { delayMs: answerMs }),
+        payload([openPacket(defaultHandshake)]),
+      ],
+    },
+    { reconnection: true, reconnectionDelay: 50, reconnectionDelayMax: 50, randomizationFactor: 0 },
+  );
+  s.socket("/");
+  await s.next("connect");
+  const connects = (): readonly SioFrame[] => framesOf(s.posted(), "CONNECT");
+  const received = await until(() => s.eventsOf("/").filter((event) => event.kind === "event").length >= 2, 3_000);
+  const reconnected = await until(() => connects().length >= 2, 3_000);
+  if (!received || !reconnected) {
+    console.info(`harness fault: F0066 ${transport.name}: the client got the 2 events: ${String(received)}, and it sent a second CONNECT: ${String(reconnected)}`);
+    return undefined;
+  }
+  return connects()[1]?.packet.data;
 }
 
 describe.runIf(suiteEnabled)("socket.io-client over HTTP long-polling", () => {
@@ -139,6 +205,25 @@ describe.runIf(suiteEnabled)("socket.io-client over HTTP long-polling", () => {
       await s.next("connect");
       evidence(`F0060 ${transport.name}: socket.recovered is ${String(socket.recovered)} after a CONNECT packet with no pid`);
       expect(socket.recovered).toBe(false);
+    });
+
+    // client bug: F0066. With a pid, the client takes the last argument of each event as the offset when it is a string.
+    // An event with no offset, for example a volatile event, thus changes the offset of the next CONNECT packet. The commit
+    // f97d51a of socketio/socket.io removes this case for an event with only its name. No release has that commit.
+    it.fails("offset-event-name: after an event with only its name, the CONNECT of the reconnection has the last offset", async () => {
+      const data = await reconnectPayload(transport, ["ping"]);
+      if (data === undefined) return;
+      evidence(`F0066 ${transport.name}: after the events ["news",{"n":1},"${recoveryOffset}"] and ["ping"], the CONNECT of the reconnection has ${JSON.stringify(data)}`);
+      expect(data).toEqual({ pid: recoveryPid, offset: recoveryOffset });
+    });
+
+    // client bug: F0066. The same fault for an event with a string as its last argument. The main branch of
+    // socketio/socket.io keeps this case, because the format of an offset depends on the adapter of the server.
+    it.fails("offset-string-argument: after an event with a string as its last argument, the CONNECT of the reconnection has the last offset", async () => {
+      const data = await reconnectPayload(transport, ["ticker", "hello"]);
+      if (data === undefined) return;
+      evidence(`F0066 ${transport.name}: after the events ["news",{"n":1},"${recoveryOffset}"] and ["ticker","hello"], the CONNECT of the reconnection has ${JSON.stringify(data)}`);
+      expect(data).toEqual({ pid: recoveryPid, offset: recoveryOffset });
     });
   });
 });
