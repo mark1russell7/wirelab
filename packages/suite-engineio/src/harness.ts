@@ -2,7 +2,9 @@
  * The helpers of the tests: a scripted Engine.IO server for HTTP long-polling, a client on that server, and the records
  * of the session. The server is a fixed list of replies, thus each test controls each byte that the client gets.
  */
+import { fileURLToPath } from "node:url";
 import { startScriptedServer, type ScriptedReply, type ScriptedRequest, type ScriptedServer } from "@mark1russell7/rigor-testkit/http";
+import { runToStop } from "@mark1russell7/rigor-testkit/stop";
 import { Fetch, NodeXHR, Socket, type SocketOptions, type TransportCtor } from "engine.io-client";
 import { decodePayload, encodePayload, openPacket, type Handshake, type Packet } from "./codec.ts";
 
@@ -47,6 +49,8 @@ export function message(data: string | Uint8Array): Packet {
 export interface SessionScript {
   /** The fields of the open packet that change the default handshake. */
   readonly handshake?: Partial<Handshake>;
+  /** The packet of the open reply. The default is the open packet of the handshake. A check of a malformed open packet changes it. */
+  readonly open?: Packet;
   /** The parts of the open reply other than its body, for example a delay. */
   readonly openReply?: ScriptedReply;
   /** The replies to the GET requests after the handshake, in order. */
@@ -117,7 +121,7 @@ export async function startEngineServer(script: SessionScript = {}, path: string
   const hold = script.hold ?? payload([{ type: "noop", data: "" }], { delayMs: 30_000 });
   const server = await startScriptedServer({
     routes: [
-      { method: "GET", path, replies: [payload([openPacket(handshake)], script.openReply), ...(script.polls ?? []), hold] },
+      { method: "GET", path, replies: [payload([script.open ?? openPacket(handshake)], script.openReply), ...(script.polls ?? []), hold] },
       { method: "POST", path, replies: script.posts ?? [accepted] },
     ],
   });
@@ -207,4 +211,62 @@ export function queryOf(target: string): URLSearchParams {
 /** This function gives the number of UTF-8 bytes of a text. */
 export function bytesOf(text: string): number {
   return Buffer.byteLength(text, "utf8");
+}
+
+/** One uncaught error of the process of a client. */
+export interface UncaughtError {
+  /** The time of the error in ms after the start of the client. */
+  readonly at: number;
+  /** The event of the process: `uncaughtException` or `unhandledRejection`. */
+  readonly origin: string;
+  readonly name: string;
+  readonly message: string;
+}
+
+/** The report of a client in a separate process. */
+export interface ChildReport {
+  /** The events of the client, in order. */
+  readonly events: readonly SessionEvent[];
+  /** The uncaught errors of the process, in order. */
+  readonly uncaught: readonly UncaughtError[];
+  /** The value of `readyState` of the client at the end. */
+  readonly readyState: string;
+  /** The exit code of the process. */
+  readonly code: number | null;
+  /** The text of the error output of the process. */
+  readonly stderr: string;
+}
+
+/** The times of a client in a separate process. */
+export interface ChildTimes {
+  /** The time in ms from the start of the client to the report. The default is 5000 ms. */
+  readonly limitMs?: number;
+  /** The time in ms from the first error, close or uncaught error to the report. The default is 1000 ms. */
+  readonly settleMs?: number;
+}
+
+/** The time in ms that the process of a client gets after its own limit. After that time, the harness stops it. */
+const childMarginMs = 10_000;
+
+/**
+ * This function starts a client of one transport in a separate process, on the server at `url`. It gives the report
+ * of the process. An uncaught error of the client stops only that process, not the worker of the test. `runToStop` of
+ * `@mark1russell7/rigor-testkit` starts the process with no stop, and it stops a process that passes its time.
+ */
+export async function runChild(url: string, transport: PollingTransport, times: ChildTimes = {}): Promise<ChildReport> {
+  const script = fileURLToPath(new URL("./child.ts", import.meta.url));
+  const limitMs = times.limitMs ?? 5_000;
+  const run = await runToStop({
+    command: process.execPath,
+    args: [script, url, transport.name, String(limitMs), String(times.settleMs ?? 1_000)],
+    timeoutMs: limitMs + childMarginMs,
+  });
+  const line = run.stdout.trim().split("\n").at(-1) ?? "";
+  let parsed: Pick<ChildReport, "events" | "uncaught" | "readyState">;
+  try {
+    parsed = JSON.parse(line) as Pick<ChildReport, "events" | "uncaught" | "readyState">;
+  } catch {
+    throw new Error(`The client process gave no report. The exit code is ${String(run.exit.code)}. The error output is: ${run.stderr}`);
+  }
+  return { events: parsed.events, uncaught: parsed.uncaught, readyState: parsed.readyState, code: run.exit.code, stderr: run.stderr };
 }

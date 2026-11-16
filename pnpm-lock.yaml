@@ -267,9 +267,12 @@ importers:
 
   packages/suite-engineio:
     dependencies:
+      '@mark1russell7/rigor-chaos':
+        specifier: ^0.3.4
+        version: 0.3.4
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.15
-        version: 0.1.16(@opentelemetry/api@1.10.0)
+        version: 0.1.16(@mark1russell7/rigor-chaos@0.3.4)(@opentelemetry/api@1.10.0)
       engine.io-client:
         specifier: ^6.6.8
         version: 6.6.8(supports-color@7.2.0)
@@ -319,7 +322,7 @@ importers:
     dependencies:
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.15
-        version: 0.1.16(@opentelemetry/api@1.10.0)
+        version: 0.1.16(@mark1russell7/rigor-chaos@0.3.4)(@opentelemetry/api@1.10.0)
       '@wirelab/suite-engineio':
         specifier: workspace:*
         version: link:../suite-engineio
@@ -617,8 +620,16 @@ packages:
     resolution: {integrity: sha512-S28nfQFfRax40wbV9UTw711ZwnVB3rCW/SPpAuJtyKBh/zFbQx69+qnAeLF7u2B9GccaY75nIMZtN8mvgSRA1Q==}
     engines: {node: '>=22'}
 
+  '@mark1russell7/rigor-chaos@0.3.4':
+    resolution: {integrity: sha512-8Od9qR9rS4jbYfEKKrRpaOqx7vMb2I9s9+DMK9bBYx3JI25qGeDa15bU0MyrtrfNZOtRLknXzjbKMbE9/aXXkA==}
+    engines: {node: '>=22'}
+
   '@mark1russell7/rigor-generators@0.1.16':
     resolution: {integrity: sha512-C94Q4C31aZ8UXx1R0JSBV7DiQFl5tVpbFxHxHzHaSqr3dTgmCkEvLrvlUV8/0/GZqPhQYG9cbX6GOlqfRj/h4g==}
+    engines: {node: '>=22'}
+
+  '@mark1russell7/rigor-generators@0.2.0':
+    resolution: {integrity: sha512-eTyJhK4Nowx1KQ3QrsQqLiAlhFoL+8m1OT6He+X0Lf0G/0f9OyQC8ponQLViQKRkP/ef10B6oACFjtjnKErobg==}
     engines: {node: '>=22'}
 
   '@mark1russell7/rigor-statistics@0.1.29':
@@ -627,6 +638,10 @@ packages:
 
   '@mark1russell7/rigor-statistics@0.2.5':
     resolution: {integrity: sha512-jaUqrz8FmsUoR9n0MeRUIk9UTpG5QL+dF/moh+C23fyihb00LgOD42Up//1piIPVZZDiq6lua0sBcSKMwh5IFg==}
+    engines: {node: '>=22'}
+
+  '@mark1russell7/rigor-statistics@0.2.9':
+    resolution: {integrity: sha512-9u9u2imcLpkiwSu1FGeB57Z+/Fr7byplVNMoR8G9OELjhSwOdzNbTiPieHqFM6phVVyMWrGlgoEQyBaxKqwvtQ==}
     engines: {node: '>=22'}
 
   '@mark1russell7/rigor-testkit@0.1.16':
@@ -2092,7 +2107,14 @@ snapshots:
 
   '@mark1russell7/rational@0.1.3': {}
 
+  '@mark1russell7/rigor-chaos@0.3.4':
+    dependencies:
+      '@mark1russell7/rigor-generators': 0.2.0
+      '@mark1russell7/rigor-statistics': 0.2.9
+
   '@mark1russell7/rigor-generators@0.1.16': {}
+
+  '@mark1russell7/rigor-generators@0.2.0': {}
 
   '@mark1russell7/rigor-statistics@0.1.29':
     dependencies:
@@ -2102,8 +2124,13 @@ snapshots:
     dependencies:
       '@mark1russell7/rigor-generators': 0.1.16
 
-  '@mark1russell7/rigor-testkit@0.1.16(@opentelemetry/api@1.10.0)':
+  '@mark1russell7/rigor-statistics@0.2.9':
+    dependencies:
+      '@mark1russell7/rigor-generators': 0.2.0
+
+  '@mark1russell7/rigor-testkit@0.1.16(@mark1russell7/rigor-chaos@0.3.4)(@opentelemetry/api@1.10.0)':
     optionalDependencies:
+      '@mark1russell7/rigor-chaos': 0.3.4
       '@opentelemetry/api': 1.10.0
 
   '@mark1russell7/service@0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0)(zod@4.6.7)':

@@ -95,7 +95,12 @@ export const checks: readonly Check[] = [
   { id: "client-close", rules: ["EIO4-PT-1"], file: "polling.test.ts" },
   { id: "max-payload-binary", rules: ["EIO4-MP-1"], file: "findings.test.ts", finding: "F0024" },
   { id: "long-ping-interval", rules: ["EIO4-HB-2"], file: "findings.test.ts", finding: "F0028" },
-  // These two checks examine the documented behavior of the client, not a rule of the protocol.
+  // These checks examine the documented behavior of the client, or its answer to a server that does not obey the
+  // protocol. They are not tests of a rule of the protocol.
   { id: "request-timeout", rules: [], file: "findings.test.ts", finding: "F0030" },
   { id: "close-aborts-poll", rules: [], file: "findings.test.ts", finding: "F0031" },
+  // A client in a separate process: an uncaught error stops only that process.
+  { id: "malformed-open", rules: [], file: "findings.test.ts", finding: "F0029" },
+  { id: "open-no-fields", rules: [], file: "findings.test.ts", finding: "F0029" },
+  { id: "fetch-body-cut", rules: [], file: "findings.test.ts", finding: "F0026" },
 ];
