@@ -26,13 +26,56 @@
 <main>
   <h1>wirelab</h1>
   <p class="lead">A catalog of browser protocol clients, and a campaign that tests each one and fixes its bugs.</p>
+  <ul class="tiles" id="tiles" aria-label="The campaign in numbers"></ul>
+
+  <section aria-labelledby="order-title">
+    <h2 id="order-title">The order of the campaign</h2>
+    <p>The campaign tests the packages in this order. The score of a package is its reach times the chance that a fix lands. Select a package to show the parts of its score and its faults.</p>
+    <form class="filters" id="filters" role="search" aria-label="Filter the packages">
+      <label class="field">Package
+        <input id="q" type="search" placeholder="For example, socket" autocomplete="off" spellcheck="false">
+      </label>
+      <label class="field">Family
+        <select id="family"><option value="">All families</option></select>
+      </label>
+      <label class="field">Chance that a fix lands
+        <select id="landing">
+          <option value="all">All packages</option>
+          <option value="full">Full chance</option>
+          <option value="lowered">Lower chance</option>
+        </select>
+      </label>
+      <label class="check"><input id="faults" type="checkbox"> Only packages with faults</label>
+    </form>
+    <div class="list-head">
+      <p class="count" id="count" aria-live="polite"></p>
+      <p class="key" aria-hidden="true"><span class="swatch score"></span>Score <span class="swatch lost"></span>Reach that the chance takes away</p>
+    </div>
+    <ol class="ranked" id="ranked"></ol>
+    <p class="more-row"><button id="more" type="button" hidden>Show more</button></p>
+  </section>
+
+  <section aria-labelledby="faults-title">
+    <h2 id="faults-title">The faults that the campaign found</h2>
+    <p>Each fault is a test that fails on a published version of a package. Each fix goes upstream as an issue or a pull request.</p>
+    <div class="charts">
+      <figure class="chart">
+        <figcaption>Faults by kind</figcaption>
+        <ul class="bars" id="kinds"></ul>
+      </figure>
+      <figure class="chart">
+        <figcaption>The state of each fault upstream</figcaption>
+        <ul class="bars" id="states"></ul>
+      </figure>
+    </div>
+  </section>
 
   <h2>Get the code</h2>
   <div class="command">
     <code id="install">git clone https://github.com/mark1russell7/wirelab.git</code>
     <button id="copy" type="button">Copy</button>
   </div>
-  <p class="note"><a href="./releases/">Releases</a> shows each version, and <a href="./status/">Status</a> shows the open work.</p>
+  <p class="note"><a href="./releases/">Releases</a> shows each version, and <a href="./status/">Status</a> shows the open work. <span id="as-of"></span></p>
 </main>
 
 <script type="module" src="./src/index.ts"></script>
