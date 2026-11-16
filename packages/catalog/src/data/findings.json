@@ -987,5 +987,15 @@
     "kind": "resource",
     "title": "close() while a transport connects does not clear the transport timer, so Node.js stays alive to the end of the timeout",
     "note": "_connect() starts _transportTimeoutId, and only _open() clears it. _close() does not. SenderReceiver.close() removes its listeners first, so nothing starts _transportClose(), and the fix of pull request #607 on main does not cover this path. This is a different timer from that of F0068 (the /info request, issue #711, pull request #713). Confidence high."
+  },
+  {
+    "id": "F0099",
+    "package": "sockjs-client",
+    "version": "1.6.1",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "A query that contains a second ? loses its end on each request",
+    "note": "addPath() of lib/utils/url.js splits the URL at each \"?\" and keeps only the first two parts. So the query ?next=/home?tab=2&token=abc becomes ?next=/home on the /info request and on each request of the transport. RFC 3986 (section 3.4) permits \"?\" in a query, and the README of sockjs-client permits a query in the URL. Issues #72 and #248 (closed) are about other losses of the query. Confidence high."
   }
 ]
