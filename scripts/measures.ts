@@ -59,11 +59,11 @@ const failures: string[] = [];
 const missing: { readonly downloads: string[]; readonly "deps.dev": string[]; readonly jsDelivr: string[] } = { downloads: [], "deps.dev": [], jsDelivr: [] };
 
 /**
- * This function sends one request of a measure and reads the answer with its extractor. It tries a request again
- * after a refusal for the rate, a host that is not available or a network error. It gives `undefined` after the last
- * try, and records the failure.
+ * This function sends one request of a measure and gives the body of its answer. It tries a request again after a
+ * refusal for the rate, a host that is not available or a network error. After the last try, it gives the reason of the
+ * last failure.
  */
-async function call<Row>(request: MeasureRequest, extract: Extractor<Row>, what: string): Promise<Extracted<Row> | undefined> {
+async function fetchBody(request: MeasureRequest, what: string): Promise<{ readonly body: string } | { readonly reason: string }> {
   const { host } = new URL(request.url);
   let reason = "no try";
   for (let attempt = 1; attempt <= TRIES; attempt += 1) {
@@ -71,7 +71,7 @@ async function call<Row>(request: MeasureRequest, extract: Extractor<Row>, what:
       const exchange = { method: "GET", url: request.url, headers: { accept: request.accept }, body: null };
       const answer = await send(pace, transport, { source: host, host, minIntervalMs: INTERVAL_MS[host] ?? 1000, what, exchange });
       const { outcome } = answer.classified;
-      if (outcome === "ok" || outcome === "not-found") return extract(answer.reply.body, request.url);
+      if (outcome === "ok" || outcome === "not-found") return { body: answer.reply.body };
       reason = `${outcome} (HTTP ${String(answer.reply.status)})`;
       if (!AGAIN.has(outcome)) break;
     } catch (error) {
@@ -79,8 +79,25 @@ async function call<Row>(request: MeasureRequest, extract: Extractor<Row>, what:
     }
     log(`${what}: try ${String(attempt)} failed: ${reason}`);
   }
-  failures.push(`${what}: ${reason}`);
-  return undefined;
+  return { reason };
+}
+
+/**
+ * This function sends one request of a measure and reads the answer with its extractor. An answer with an unknown
+ * shape gets no second try. The function records each failure and gives `undefined` for it.
+ */
+async function call<Row>(request: MeasureRequest, extract: Extractor<Row>, what: string): Promise<Extracted<Row> | undefined> {
+  const fetched = await fetchBody(request, what);
+  if ("reason" in fetched) {
+    failures.push(`${what}: ${fetched.reason}`);
+    return undefined;
+  }
+  try {
+    return extract(fetched.body, request.url);
+  } catch (error) {
+    failures.push(`${what}: ${errorMessage(error)}`);
+    return undefined;
+  }
 }
 
 const known = new Set(names);
