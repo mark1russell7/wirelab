@@ -20,9 +20,10 @@ on:
         default: "24"
         type: string
 
-# Runs of the same folders on the same Node.js version wait for each other. Runs of other folders start at once.
+# Runs of the same folder on the same Node.js version wait for each other. Runs of other folders start at once.
+# A run of more folders has its own group: the name of a group must have fewer than 400 characters.
 concurrency:
-  group: repro-${{ inputs.dir }}-node${{ inputs.node }}
+  group: repro-${{ contains(inputs.dir, ' ') && github.run_id || inputs.dir }}-node${{ inputs.node }}
   cancel-in-progress: false
 
 permissions:
@@ -34,7 +35,8 @@ defaults:
 
 jobs:
   repro:
-    name: Repro ${{ inputs.dir }}
+    # With more folders, the step summary names each folder.
+    name: Repro ${{ contains(inputs.dir, ' ') && 'of more folders' || inputs.dir }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     # The context runner is not available in the env of a job, so the step Run sets OUT from RUNNER_TEMP.
