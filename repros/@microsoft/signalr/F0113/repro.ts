@@ -1,14 +1,18 @@
 // npm install, then: node repro.ts (Node.js 22.18 or later runs TypeScript directly)
 //
-// The server invokes a client method that expects a result, and two handlers are registered for it.
-// HubConnection._invokeClientMethod() must send an error ("Client provided multiple results.").
-// The check is `if (expectsResponse && res && prevRes)`, so a falsy result (0, false, "", null)
-// does not count. Thus the outcome depends on the order of the handlers: 5 and 7 give the error,
-// but 0 and 7 give the result 7, 7 and 0 give the result 0, and true and false give false.
+// FetchHttpClient.send() (the default HTTP client in browsers and on Node.js) clears its timeout
+// timer and removes request.abortSignal.onabort in a `finally` block when fetch() resolves, that is
+// when the response HEADERS come. It reads the body after that, with no timeout and no abort.
+// Thus a long-polling response whose body stops after the headers (a network stall in a large
+// message, or a proxy that sends the headers early):
+//   - does not time out (the poll timeout is 100 s), and
+//   - cannot be aborted. LongPollingTransport.stop() aborts _pollAbort and waits for the poll,
+//     so hub.stop() does not resolve while the body is stalled.
 //
-// Public API only: a custom HttpClient answers /negotiate, and an ITransport object records the frames.
-import { HttpClient, HttpResponse, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
-import type { ITransport } from "@microsoft/signalr";
+// Local server only: node:http. The third poll sends the headers and a part of the body, then stops.
+import http from "node:http";
+import type { AddressInfo } from "node:net";
+import { HttpTransportType, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 
 const RS = "\x1e";
 setTimeout(() => {
@@ -16,68 +20,92 @@ setTimeout(() => {
   process.exit(2);
 }, 20000).unref();
 
-interface Frame {
-  readonly type?: number;
-  readonly invocationId?: string;
-  readonly result?: unknown;
-  readonly error?: string;
-}
-
-class FakeHttpClient extends HttpClient {
-  override async send(): Promise<HttpResponse> {
-    const negotiate = { connectionId: "c1", connectionToken: "t1", negotiateVersion: 1, availableTransports: [] };
-    return new HttpResponse(200, "OK", JSON.stringify(negotiate));
+let polls = 0;
+let pendingPoll: http.ServerResponse | null = null;
+const stalled: http.ServerResponse[] = [];
+const server = http.createServer((req, res) => {
+  const url = new URL(req.url ?? "/", "http://localhost");
+  if (req.method === "POST" && url.pathname === "/hub/negotiate") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        connectionId: "c1",
+        connectionToken: "tok1",
+        negotiateVersion: 1,
+        availableTransports: [{ transport: "LongPolling", transferFormats: ["Text", "Binary"] }],
+      }),
+    );
+    return;
   }
-}
-class FakeTransport implements ITransport {
-  onreceive: ((data: string | ArrayBuffer) => void) | null = null;
-  onclose: ((error?: Error) => void) | null = null;
-  readonly sent: Frame[] = [];
-  private handshakeDone = false;
-  async connect(): Promise<void> {}
-  async send(data: unknown): Promise<void> {
-    for (const frame of String(data).split(RS).filter(Boolean)) this.sent.push(JSON.parse(frame) as Frame);
-    if (!this.handshakeDone) {
-      this.handshakeDone = true;
-      setTimeout(() => this.onreceive?.(`{}${RS}`), 0);
+  if (req.method === "GET" && url.pathname === "/hub") {
+    polls += 1;
+    // The connect poll.
+    if (polls === 1) {
+      res.writeHead(200);
+      res.end();
+      return;
     }
+    // The server answers this poll with the handshake response below.
+    if (polls === 2) {
+      pendingPoll = res;
+      return;
+    }
+    // Poll 3: the headers and a half message, then the body stops.
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.write('{"type":1,"target":"big","arguments":["');
+    stalled.push(res);
+    return;
   }
-  async stop(): Promise<void> {
-    this.onclose?.();
+  if (req.method === "POST" && url.pathname === "/hub") {
+    let body = "";
+    req.on("data", (c: Buffer) => {
+      body += c.toString();
+    });
+    req.on("end", () => {
+      res.writeHead(200);
+      res.end();
+      if (body.includes('"protocol"') && pendingPoll !== null) {
+        pendingPoll.writeHead(200);
+        pendingPoll.end(`{}${RS}`);
+        pendingPoll = null;
+      }
+    });
+    return;
   }
-}
+  if (req.method === "DELETE") {
+    res.writeHead(202);
+    res.end();
+    return;
+  }
+  res.writeHead(404);
+  res.end();
+});
+await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
+const { port } = server.address() as AddressInfo;
 
-async function run(a: unknown, b: unknown): Promise<string> {
-  const transport = new FakeTransport();
-  const hub = new HubConnectionBuilder()
-    .withUrl("http://fake.invalid/hub", { httpClient: new FakeHttpClient(), transport })
-    .configureLogging(LogLevel.None)
-    .build();
-  hub.on("getValue", () => a);
-  hub.on("getValue", () => b);
-  await hub.start();
-  transport.onreceive?.(`${JSON.stringify({ type: 1, invocationId: "1", target: "getValue", arguments: [] })}${RS}`);
-  await new Promise((resolve) => setTimeout(resolve, 20));
-  const c = transport.sent.find((m) => m.type === 3 && m.invocationId === "1");
-  await hub.stop();
-  if (c === undefined) return "no Completion";
-  return c.error !== undefined ? `error "${c.error}"` : `result ${JSON.stringify(c.result)}`;
-}
+const hub = new HubConnectionBuilder()
+  .withUrl(`http://127.0.0.1:${port}/hub`, { transport: HttpTransportType.LongPolling })
+  .configureLogging(LogLevel.None)
+  .build();
+await hub.start();
+while (stalled.length === 0) await new Promise((resolve) => setTimeout(resolve, 10));
 
-const outcomes: string[] = [];
-for (const [a, b] of [
-  [5, 7],
-  [0, 7],
-  [7, 0],
-  [true, false],
-] as const) {
-  const outcome = await run(a, b);
-  outcomes.push(outcome);
-  console.log(`handlers return ${JSON.stringify(a)} and ${JSON.stringify(b)} -> Completion ${outcome}`);
-}
-console.log("expected: each pair of two results gets the same outcome as 5 and 7 (an error)");
-if (outcomes.some((o) => !o.startsWith("error"))) {
-  console.log("BUG PRESENT: the check for multiple results does not count a falsy client result.");
+const t0 = Date.now();
+let stopResolvedAt: number | null = null;
+void hub.stop().then(() => {
+  stopResolvedAt = Date.now() - t0;
+});
+await new Promise((resolve) => setTimeout(resolve, 2000));
+
+console.log(`hub.state: ${hub.state}`);
+console.log(`hub.stop() during a poll whose body stopped after the headers: ${stopResolvedAt === null ? "still pending after 2000 ms" : `resolved after ${stopResolvedAt} ms`}`);
+console.log("expected: stop() aborts the poll and resolves at once");
+
+for (const r of stalled) r.destroy();
+server.closeAllConnections();
+server.close();
+if (stopResolvedAt === null) {
+  console.log("BUG PRESENT: the abort signal (and the timeout) have no effect after the response headers come.");
   process.exit(1);
 }
 console.log("OK");

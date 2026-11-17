@@ -1,19 +1,21 @@
 // npm install, then: node repro.ts (Node.js 22.18 or later runs TypeScript directly)
 //
-// With withStatefulReconnect(), an internal stop (here the server timeout, also a Close message of
-// the server or a bad Sequence message) calls HttpConnection.stop() and does not clear
-// features.reconnect. WebSocketTransport.stop() gives onclose at once, and the stateful-reconnect
-// onclose handler of HttpConnection._startTransport() then opens a NEW WebSocket with the same
-// connection token. The resend on it fails (HttpConnection is "Disconnecting"), and
-// _stopConnection() runs, but nothing closes the new socket. The HubConnection is "Disconnected",
-// but the socket stays open, and the client still gives its messages to the hub.on() handlers.
+// A stateful-reconnect attempt fails, and withAutomaticReconnect() starts a new connection that
+// does NOT use stateful reconnect. (The new negotiate gives useStatefulReconnect:false, or the
+// client goes to SSE or long polling.) HubConnection keeps the old MessageBuffer. That buffer is
+// still in the modes "reconnect in progress" and "wait for Sequence". Thus:
+//   - _sendWithProtocol() gives each message to the old buffer, which does not send it, so
+//     invoke() and send() do not resolve.
+//   - _processIncomingData() asks the old buffer, which drops each message until a Sequence message
+//     comes. A server with no stateful reconnect does not send a Sequence message.
+// onreconnected comes, and the pings still go (they do not go through the buffer), so no timeout occurs.
 //
-// Local server only: node:http for /negotiate and the ws package for the WebSocket endpoint.
-import http from "node:http";
-import type { AddressInfo } from "node:net";
-import { HttpTransportType, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
-import { WebSocketServer } from "ws";
-import type { WebSocket } from "ws";
+// In process only: a custom HttpClient answers /negotiate, and options.WebSocket is a fake class.
+import { HttpClient, HttpResponse, HttpTransportType, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import type { HttpRequest, IHttpConnectionOptions } from "@microsoft/signalr";
+
+// HttpConnection reads the option WebSocket (the WebSocket class to use), but the public typings do not declare it.
+type Options = IHttpConnectionOptions & { readonly WebSocket: unknown };
 
 const RS = "\x1e";
 setTimeout(() => {
@@ -21,72 +23,120 @@ setTimeout(() => {
   process.exit(2);
 }, 20000).unref();
 
-const sockets: WebSocket[] = [];
-const server = http.createServer((req, res) => {
-  const url = new URL(req.url ?? "/", "http://localhost");
-  if (req.method === "POST" && url.pathname === "/hub/negotiate") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(
-      JSON.stringify({
-        connectionId: "c1",
-        connectionToken: "tok1",
-        negotiateVersion: 1,
-        useStatefulReconnect: url.searchParams.get("useStatefulReconnect") === "true",
-        availableTransports: [{ transport: "WebSockets", transferFormats: ["Text", "Binary"] }],
-      }),
-    );
-    return;
-  }
-  res.writeHead(404);
-  res.end();
-});
-const wss = new WebSocketServer({ server, path: "/hub" });
-wss.on("connection", (ws) => {
-  const index = sockets.push(ws);
-  let first = true;
-  ws.on("message", () => {
-    // The first socket gets the handshake response, and then no message: the server timeout of the client.
-    if (first && index === 1) ws.send(`{}${RS}`);
-    first = false;
-  });
-});
-await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
-const { port } = server.address() as AddressInfo;
+interface Frame {
+  readonly protocol?: string;
+  readonly type?: number;
+  readonly invocationId?: string;
+}
 
+let negotiateCount = 0;
+class FakeHttpClient extends HttpClient {
+  override async send(request: HttpRequest): Promise<HttpResponse> {
+    if (request.url?.includes("/negotiate") === true) {
+      negotiateCount += 1;
+      const negotiate = {
+        connectionId: `c${negotiateCount}`,
+        connectionToken: `tok${negotiateCount}`,
+        negotiateVersion: 1,
+        useStatefulReconnect: negotiateCount === 1, // The second server does not offer stateful reconnect.
+        availableTransports: [{ transport: "WebSockets", transferFormats: ["Text", "Binary"] }],
+      };
+      return new HttpResponse(200, "OK", JSON.stringify(negotiate));
+    }
+    return new HttpResponse(404, "Not Found", "");
+  }
+}
+
+interface CloseInit {
+  readonly code: number;
+  readonly wasClean: boolean;
+  readonly reason: string;
+}
+
+const sockets: FakeWebSocket[] = [];
+class FakeWebSocket {
+  static readonly CONNECTING = 0;
+  static readonly OPEN = 1;
+  static readonly CLOSING = 2;
+  static readonly CLOSED = 3;
+  readyState = 0;
+  readonly received: Frame[] = [];
+  onopen: ((event: object) => void) | null = null;
+  onclose: ((event: CloseInit) => void) | null = null;
+  onmessage: ((event: { data: string }) => void) | null = null;
+  onerror: ((event: object) => void) | null = null;
+  readonly url: string;
+  constructor(url: string) {
+    this.url = url;
+    const index = sockets.push(this);
+    setTimeout(() => {
+      if (index === 2) {
+        // The stateful reconnect to the old connection token fails: the server lost the connection.
+        this.readyState = 3;
+        this.onclose?.({ code: 1006, wasClean: false, reason: "" });
+      } else {
+        this.readyState = 1;
+        this.onopen?.({});
+      }
+    }, 5);
+  }
+  send(data: unknown): void {
+    for (const frame of String(data).split(RS).filter(Boolean)) {
+      const msg = JSON.parse(frame) as Frame;
+      this.received.push(msg);
+      if (msg.protocol !== undefined) setTimeout(() => this.onmessage?.({ data: `{}${RS}` }), 1);
+      if (msg.type === 1 && msg.invocationId !== undefined) {
+        const completion = { type: 3, invocationId: msg.invocationId, result: "pong" };
+        setTimeout(() => this.onmessage?.({ data: `${JSON.stringify(completion)}${RS}` }), 1);
+      }
+    }
+  }
+  close(): void {
+    this.readyState = 3;
+  }
+  drop(): void {
+    this.readyState = 3;
+    this.onclose?.({ code: 1006, wasClean: false, reason: "" });
+  }
+}
+
+const options: Options = { httpClient: new FakeHttpClient(), WebSocket: FakeWebSocket, transport: HttpTransportType.WebSockets };
 const hub = new HubConnectionBuilder()
-  .withUrl(`http://127.0.0.1:${port}/hub`, { transport: HttpTransportType.WebSockets })
+  .withUrl("http://fake.invalid/hub", options)
   .withStatefulReconnect()
-  .withServerTimeout(300)
-  .withKeepAliveInterval(100)
+  .withAutomaticReconnect([0])
   .configureLogging(LogLevel.None)
   .build();
 
-let zombieCalls = 0;
-hub.on("zombie", () => {
-  zombieCalls += 1;
-});
-const closed = new Promise<Error | undefined>((resolve) => hub.onclose((error) => resolve(error)));
+const news: unknown[] = [];
+hub.on("news", (x: unknown) => news.push(x));
+const reconnected = new Promise<void>((resolve) => hub.onreconnected(() => resolve()));
 
 await hub.start();
-const closeError = await closed; // The server timeout comes after about 300 ms.
-await new Promise((resolve) => setTimeout(resolve, 300));
+sockets[0]?.drop();
+await reconnected;
 
-const openAfterClose = sockets.filter((s) => s.readyState === s.OPEN);
-for (const s of openAfterClose) s.send(`${JSON.stringify({ type: 1, target: "zombie", arguments: [] })}${RS}`);
-await new Promise((resolve) => setTimeout(resolve, 200));
+const ws3 = sockets[2];
+const invokeResult = await Promise.race([
+  hub.invoke<string>("Ping").then(
+    (r) => `resolved: ${r}`,
+    (e: unknown) => `rejected: ${String(e)}`,
+  ),
+  new Promise<string>((resolve) => setTimeout(() => resolve("still pending after 1000 ms"), 1000)),
+]);
+ws3?.onmessage?.({ data: `${JSON.stringify({ type: 1, target: "news", arguments: ["hello"] })}${RS}` });
+await new Promise((resolve) => setTimeout(resolve, 50));
 
-console.log(`hub.onclose error: ${closeError?.message}`);
-console.log(`hub.state after close: ${hub.state}`);
-console.log(`WebSocket connections the client opened: ${sockets.length}; still open 300 ms after onclose: ${openAfterClose.length}`);
-console.log(`hub.on("zombie") calls after the hub was Disconnected: ${zombieCalls}`);
-console.log("expected: no socket stays open after onclose, and no handler runs on a Disconnected hub");
+const invocationsOnNewSocket = ws3?.received.filter((m) => m.type === 1).length ?? 0;
+console.log(`negotiates: ${negotiateCount}; sockets: ${sockets.length}; hub.state: ${hub.state}`);
+console.log(`hub.invoke("Ping") after onreconnected: ${invokeResult}`);
+console.log(`Invocation messages that reached the new socket: ${invocationsOnNewSocket}`);
+console.log(`hub.on("news") calls for a message that the server sent on the new socket: ${news.length}`);
+console.log("expected: the client sends the invocation and gets its result, and the app gets the message of the server");
 
-for (const s of sockets) s.terminate();
-wss.close();
-server.close();
-
-if (openAfterClose.length > 0 || zombieCalls > 0) {
-  console.log("BUG PRESENT: an internal stop started a stateful reconnect. The new WebSocket stays open and still gives messages to the closed hub.");
+await hub.stop().catch(() => {});
+if (invocationsOnNewSocket === 0 || news.length === 0) {
+  console.log("BUG PRESENT: the old MessageBuffer of the failed connection stops all sends and drops all received messages.");
   process.exit(1);
 }
 console.log("OK");

@@ -1,69 +1,125 @@
 // npm install, then: node repro.ts (Node.js 22.18 or later runs TypeScript directly)
 //
-// The Server-Sent Events transport with a connect that fails. The onerror handler before the open
-// rejects connect(), but it does not call eventSource.close(). The transport keeps the EventSource
-// in _eventSource only after the open, so stop() cannot close it. Thus the EventSource goes on with
-// its own reconnects after start() has rejected, and the client sends a new GET request each time.
+// Two public promises reject with a plain string, not an Error:
+//   a) WebSocketTransport.send(): Promise.reject("WebSocket is not in the OPEN state").
+//      hub.send() and invoke() get it while the socket is CLOSING (the close handshake is in
+//      progress, onclose has not come yet, and HttpConnection is still Connected).
+//   b) TransportSendQueue._sendLoop(): this._transportResult.reject("Connection stopped.").
+//      The hub.send() calls in the queue behind a send in progress get it when the connection stops.
+// A caller that reads error.message or error.name gets undefined, instanceof Error gives false,
+// and there is no stack.
 //
-// Local server only: node:http answers /negotiate and gives the status 503 to each SSE GET request.
-import http from "node:http";
-import type { AddressInfo } from "node:net";
-import { HttpTransportType, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+// In process only: options.WebSocket is a fake class (a), an ITransport object (b), and a custom
+// HttpClient answers /negotiate.
+import { HttpClient, HttpResponse, HttpTransportType, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import type { IHttpConnectionOptions, ITransport } from "@microsoft/signalr";
 
+// HttpConnection reads the option WebSocket (the WebSocket class to use), but the public typings do not declare it.
+type Options = IHttpConnectionOptions & { readonly WebSocket: unknown };
+
+const RS = "\x1e";
 setTimeout(() => {
   console.log("time limit");
   process.exit(2);
 }, 20000).unref();
 
-let sseGets = 0;
-const server = http.createServer((req, res) => {
-  const url = new URL(req.url ?? "/", "http://localhost");
-  if (req.method === "POST" && url.pathname === "/hub/negotiate") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(
-      JSON.stringify({
-        connectionId: "c1",
-        connectionToken: "tok1",
-        negotiateVersion: 1,
-        availableTransports: [{ transport: "ServerSentEvents", transferFormats: ["Text"] }],
-      }),
-    );
-    return;
-  }
-  if (req.method === "GET" && url.pathname === "/hub") {
-    sseGets += 1;
-    res.writeHead(503);
-    res.end();
-    return;
-  }
-  res.writeHead(404);
-  res.end();
-});
-await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
-const { port } = server.address() as AddressInfo;
+const describeReason = (reason: unknown): string =>
+  `${typeof reason} ${reason instanceof Error ? "(Error)" : "(not an Error)"}: ${JSON.stringify(reason instanceof Error ? reason.message : reason)}`;
 
-const hub = new HubConnectionBuilder()
-  .withUrl(`http://127.0.0.1:${port}/hub`, { transport: HttpTransportType.ServerSentEvents })
+// a) A WebSocket in the state CLOSING.
+class FakeWebSocket {
+  static readonly CONNECTING = 0;
+  static readonly OPEN = 1;
+  static readonly CLOSING = 2;
+  static readonly CLOSED = 3;
+  static last: FakeWebSocket | undefined;
+  readyState = 0;
+  onopen: ((event: object) => void) | null = null;
+  onclose: ((event: object) => void) | null = null;
+  onmessage: ((event: { data: string }) => void) | null = null;
+  onerror: ((event: object) => void) | null = null;
+  readonly url: string;
+  constructor(url: string) {
+    this.url = url;
+    FakeWebSocket.last = this;
+    setTimeout(() => {
+      this.readyState = 1;
+      this.onopen?.({});
+    }, 1);
+  }
+  send(data: unknown): void {
+    if (String(data).includes('"protocol"')) setTimeout(() => this.onmessage?.({ data: `{}${RS}` }), 1);
+  }
+  close(): void {
+    this.readyState = 3;
+  }
+}
+const options: Options = { skipNegotiation: true, transport: HttpTransportType.WebSockets, WebSocket: FakeWebSocket };
+const hubA = new HubConnectionBuilder()
+  .withUrl("http://fake.invalid/hub", options)
   .configureLogging(LogLevel.None)
   .build();
+await hubA.start();
+if (FakeWebSocket.last !== undefined) FakeWebSocket.last.readyState = FakeWebSocket.CLOSING; // The server started the close handshake.
+let reasonA: unknown;
+await hubA.send("Hello").catch((e: unknown) => {
+  reasonA = e;
+});
+await hubA.stop();
+console.log(`a) hub.send() while the WebSocket is CLOSING rejected with ${describeReason(reasonA)}`);
 
-const startResult = await hub.start().then(
-  () => "resolved",
-  (e: unknown) => `rejected: ${(e as Error).message.slice(0, 90)}...`,
-);
-const getsAtReject = sseGets;
-await new Promise((resolve) => setTimeout(resolve, 3500));
-const getsLater = sseGets;
+// b) Sends in the queue behind a send in progress when the connection stops.
+class FakeHttpClient extends HttpClient {
+  override async send(): Promise<HttpResponse> {
+    const negotiate = { connectionId: "c1", connectionToken: "t1", negotiateVersion: 1, availableTransports: [] };
+    return new HttpResponse(200, "OK", JSON.stringify(negotiate));
+  }
+}
+class SlowTransport implements ITransport {
+  onreceive: ((data: string | ArrayBuffer) => void) | null = null;
+  onclose: ((error?: Error) => void) | null = null;
+  release: (() => void) | null = null;
+  private handshakeDone = false;
+  async connect(): Promise<void> {}
+  send(data: unknown): Promise<void> {
+    if (!this.handshakeDone) {
+      this.handshakeDone = true;
+      setTimeout(() => this.onreceive?.(`{}${RS}`), 0);
+      return Promise.resolve();
+    }
+    // A slow write to the network.
+    if (String(data).includes('"First"')) {
+      return new Promise<void>((resolve) => {
+        this.release = resolve;
+      });
+    }
+    return Promise.resolve();
+  }
+  async stop(): Promise<void> {
+    this.onclose?.();
+  }
+}
+const slow = new SlowTransport();
+const hubB = new HubConnectionBuilder()
+  .withUrl("http://fake.invalid/hub", { httpClient: new FakeHttpClient(), transport: slow })
+  .configureLogging(LogLevel.None)
+  .build();
+await hubB.start();
+hubB.send("First").catch(() => {});
+await new Promise((resolve) => setTimeout(resolve, 10));
+let reasonB: unknown;
+const second = hubB.send("Second").catch((e: unknown) => {
+  reasonB = e;
+});
+await hubB.stop();
+slow.release?.();
+await second;
+console.log(`b) hub.send() in the queue when the connection stopped rejected with ${describeReason(reasonB)}`);
+console.log("expected: both reject with an Error object");
 
-console.log(`hub.start(): ${startResult}`);
-console.log(`hub.state: ${hub.state}`);
-console.log(`SSE GET requests when start() rejected: ${getsAtReject}; 3.5 s later: ${getsLater}`);
-console.log("expected: no new GET request after start() has rejected (the client closes the failed EventSource)");
-
-server.closeAllConnections();
-server.close();
-if (getsLater > getsAtReject) {
-  console.log("BUG PRESENT: nothing closed the EventSource of the failed connect, and it goes on with its reconnects.");
+const bad = [reasonA, reasonB].filter((r) => !(r instanceof Error));
+if (bad.length > 0) {
+  console.log(`BUG PRESENT: ${bad.length} rejection(s) are plain strings, not Error objects.`);
   process.exit(1);
 }
 console.log("OK");

@@ -1,77 +1,102 @@
 // npm install, then: node repro.ts (Node.js 22.18 or later runs TypeScript directly)
 //
-// HubConnection._methods is a plain object ({}), with the method name in lower case as its key.
-// The names of Object.prototype in lower case ("constructor", "__proto__") find the prototype in
-// place of a list of handlers:
-//   - hub.on("constructor", fn) throws "this._methods[methodName].indexOf is not a function".
-//   - A server Invocation with the target "constructor" and an invocationId (a client-result call)
-//     makes _invokeClientMethod throw on methods.slice(). The client sends no Completion, so the
-//     server call waits for its own timeout in place of the error "Client didn't provide a result.".
+// MessageBuffer._dispose() does not clear the Ack timer of 1 second (_ackTimerHandle), and the timer
+// sends through the shared HttpConnection object. The app can stop and start the HubConnection in
+// that second (for example to change the user or the token). Then the timer of the OLD buffer sends
+// Ack{sequenceId: <count of the old connection>} on the NEW connection.
+// HubProtocol.md: the sequenceId of an Ack is the count of the trackable messages that the client
+// received on this connection. The new connection received none. A server that trusts this Ack
+// removes messages from its resend buffer that the client did not receive.
 //
-// Public API only: a custom HttpClient answers /negotiate, and an ITransport object records the frames.
-import { HttpClient, HttpResponse, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
-import type { ITransport } from "@microsoft/signalr";
+// In process only: a custom HttpClient answers /negotiate, and options.WebSocket is a fake class.
+import { HttpClient, HttpResponse, HttpTransportType, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import type { IHttpConnectionOptions } from "@microsoft/signalr";
+
+// HttpConnection reads the option WebSocket (the WebSocket class to use), but the public typings do not declare it.
+type Options = IHttpConnectionOptions & { readonly WebSocket: unknown };
 
 const RS = "\x1e";
+setTimeout(() => {
+  console.log("time limit");
+  process.exit(2);
+}, 20000).unref();
 
 interface Frame {
+  readonly protocol?: string;
   readonly type?: number;
-  readonly invocationId?: string;
-  readonly error?: string;
+  readonly sequenceId?: number;
 }
 
+let negotiateCount = 0;
 class FakeHttpClient extends HttpClient {
   override async send(): Promise<HttpResponse> {
-    const negotiate = { connectionId: "c1", connectionToken: "t1", negotiateVersion: 1, availableTransports: [] };
+    negotiateCount += 1;
+    const negotiate = {
+      connectionId: `c${negotiateCount}`,
+      connectionToken: `tok${negotiateCount}`,
+      negotiateVersion: 1,
+      useStatefulReconnect: true,
+      availableTransports: [{ transport: "WebSockets", transferFormats: ["Text", "Binary"] }],
+    };
     return new HttpResponse(200, "OK", JSON.stringify(negotiate));
   }
 }
 
-class FakeTransport implements ITransport {
-  onreceive: ((data: string | ArrayBuffer) => void) | null = null;
-  onclose: ((error?: Error) => void) | null = null;
-  readonly sent: Frame[] = [];
-  private handshakeDone = false;
-  async connect(): Promise<void> {}
-  async send(data: unknown): Promise<void> {
-    for (const frame of String(data).split(RS).filter(Boolean)) this.sent.push(JSON.parse(frame) as Frame);
-    if (!this.handshakeDone) {
-      this.handshakeDone = true;
-      setTimeout(() => this.onreceive?.(`{}${RS}`), 0);
+const sockets: FakeWebSocket[] = [];
+class FakeWebSocket {
+  static readonly CONNECTING = 0;
+  static readonly OPEN = 1;
+  static readonly CLOSING = 2;
+  static readonly CLOSED = 3;
+  readyState = 0;
+  readonly received: Frame[] = [];
+  onopen: ((event: object) => void) | null = null;
+  onclose: ((event: object) => void) | null = null;
+  onmessage: ((event: { data: string }) => void) | null = null;
+  onerror: ((event: object) => void) | null = null;
+  readonly url: string;
+  constructor(url: string) {
+    this.url = url;
+    sockets.push(this);
+    setTimeout(() => {
+      this.readyState = 1;
+      this.onopen?.({});
+    }, 1);
+  }
+  send(data: unknown): void {
+    for (const frame of String(data).split(RS).filter(Boolean)) {
+      const msg = JSON.parse(frame) as Frame;
+      this.received.push(msg);
+      if (msg.protocol !== undefined) setTimeout(() => this.onmessage?.({ data: `{}${RS}` }), 1);
     }
   }
-  async stop(): Promise<void> {
-    this.onclose?.();
+  close(): void {
+    this.readyState = 3;
   }
 }
 
-const transport = new FakeTransport();
+const options: Options = { httpClient: new FakeHttpClient(), WebSocket: FakeWebSocket, transport: HttpTransportType.WebSockets };
 const hub = new HubConnectionBuilder()
-  .withUrl("http://fake.invalid/hub", { httpClient: new FakeHttpClient(), transport })
+  .withUrl("http://fake.invalid/hub", options)
+  .withStatefulReconnect()
   .configureLogging(LogLevel.None)
   .build();
-
-let onError = "no error";
-try {
-  hub.on("constructor", () => {});
-} catch (error) {
-  onError = `${(error as Error).name}: ${(error as Error).message}`;
-}
+hub.on("msg", () => {});
 
 await hub.start();
-// The server calls two client methods for a result. The client registered neither of them.
-transport.onreceive?.(`${JSON.stringify({ type: 1, invocationId: "41", target: "notRegistered", arguments: [] })}${RS}`);
-transport.onreceive?.(`${JSON.stringify({ type: 1, invocationId: "42", target: "constructor", arguments: [] })}${RS}`);
-await new Promise((resolve) => setTimeout(resolve, 50));
-const completions = transport.sent.filter((m) => m.type === 3).map((m) => `${m.invocationId}: ${m.error}`);
+for (let i = 1; i <= 3; i++) sockets[0]?.onmessage?.({ data: `${JSON.stringify({ type: 1, target: "msg", arguments: [i] })}${RS}` });
+// The app stops and starts again at once, well in the Ack delay of 1 second.
+await hub.stop();
+await hub.start();
+await new Promise((resolve) => setTimeout(resolve, 1300));
+const acksOnNew = (sockets[1]?.received ?? []).filter((m) => m.type === 8).map((m) => m.sequenceId ?? 0);
 await hub.stop();
 
-console.log(`hub.on("constructor", fn): ${onError}`);
-console.log(`Completion messages sent for the client-result calls of the server: ${JSON.stringify(completions)}`);
-console.log(`expected: on() accepts the name, and each call (41 and 42) gets a Completion ("Client didn't provide a result.")`);
-const missing42 = !completions.some((c) => c.startsWith("42:"));
-if (onError !== "no error" || missing42) {
-  console.log("BUG PRESENT: the client finds the names of Object.prototype on the prototype of the map of handlers.");
+console.log("old connection: 3 trackable messages received; new connection: 0 trackable messages received");
+console.log(`Ack messages sent on the NEW connection: ${JSON.stringify(acksOnNew)}`);
+console.log("expected: no Ack with a sequenceId above 0 on the new connection");
+if (acksOnNew.some((id) => id > 0)) {
+  console.log("BUG PRESENT: the Ack timer of the disposed MessageBuffer sent the sequence id of the old connection on the new connection.");
   process.exit(1);
 }
 console.log("OK");

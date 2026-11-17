@@ -1,94 +1,177 @@
 // npm install, then: node repro.ts (Node.js 22.18 or later runs TypeScript directly)
 //
-// hub.stop() while a stateful reconnect is in progress cannot cancel the pending WebSocket.
-// The onclose handler of HttpConnection calls transport.connect() again, but WebSocketTransport
-// keeps the new socket in a local variable until it opens. stop() calls WebSocketTransport.stop(),
-// which finds no _webSocket and does nothing. Then HttpConnection.stop() waits for
-// _stopConnection(), which runs only when the pending connect settles. Thus stop() does not
-// resolve while the server holds the upgrade. When the upgrade completes, the new socket stays open.
+// With withStatefulReconnect(), HubConnection makes its MessageBuffer only after the handshake
+// promise resolves (HubConnection._startInternal). The client handles the messages that come in the
+// same frame as the handshake response (or in the same tick) before that:
+//   A) First start: there is no buffer yet, so the app gets these messages, but the client does NOT
+//      count them. Thus the sequence numbers of the client are one less than those of the server.
+//      After a stateful reconnect, the app gets the resend of the server a second time.
+//   B) Start after withAutomaticReconnect(): the OLD buffer is still there and waits for a Sequence
+//      message, so the client drops these messages and gives no error.
 //
-// Local server only: node:http and ws (noServer, so that the script can hold the second upgrade).
-import http from "node:http";
-import type { AddressInfo } from "node:net";
-import { HttpTransportType, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
-import { WebSocketServer } from "ws";
-import type { WebSocket } from "ws";
+// In process only: a custom HttpClient answers /negotiate, options.WebSocket is a fake class, and
+// the fake server obeys the Ack and Sequence rules of HubProtocol.md.
+import { HttpClient, HttpResponse, HttpTransportType, HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import type { HttpRequest, IHttpConnectionOptions } from "@microsoft/signalr";
+
+// HttpConnection reads the option WebSocket (the WebSocket class to use), but the public typings do not declare it.
+type Options = IHttpConnectionOptions & { readonly WebSocket: unknown };
 
 const RS = "\x1e";
-const HOLD_MS = 1500;
 setTimeout(() => {
   console.log("time limit");
   process.exit(2);
 }, 20000).unref();
 
-const sockets: WebSocket[] = [];
-let upgrades = 0;
-const server = http.createServer((req, res) => {
-  const url = new URL(req.url ?? "/", "http://localhost");
-  if (req.method === "POST" && url.pathname === "/hub/negotiate") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(
-      JSON.stringify({
-        connectionId: "c1",
-        connectionToken: "tok1",
-        negotiateVersion: 1,
-        useStatefulReconnect: true,
-        availableTransports: [{ transport: "WebSockets", transferFormats: ["Text", "Binary"] }],
-      }),
-    );
-    return;
+const inv = (target: string, arg: string): string => `${JSON.stringify({ type: 1, target, arguments: [arg] })}${RS}`;
+
+interface Plan {
+  readonly failSocket?: number;
+  readonly waitReconnected?: boolean;
+  readonly firstMessage: (index: number) => string;
+  readonly expected: readonly string[];
+}
+
+interface Frame {
+  readonly protocol?: string;
+  readonly type?: number;
+  readonly sequenceId?: number;
+}
+
+interface ServerConnection {
+  readonly sent: Array<{ readonly seq: number; readonly frame: string }>;
+  acked: number;
+}
+
+async function scenario(name: string, plan: Plan): Promise<boolean> {
+  let negotiateCount = 0;
+  class FakeHttpClient extends HttpClient {
+    override async send(request: HttpRequest): Promise<HttpResponse> {
+      if (request.url?.includes("/negotiate") === true) {
+        negotiateCount += 1;
+        const negotiate = {
+          connectionId: `c${negotiateCount}`,
+          connectionToken: `tok${negotiateCount}`,
+          negotiateVersion: 1,
+          useStatefulReconnect: true,
+          availableTransports: [{ transport: "WebSockets", transferFormats: ["Text", "Binary"] }],
+        };
+        return new HttpResponse(200, "OK", JSON.stringify(negotiate));
+      }
+      return new HttpResponse(404, "Not Found", "");
+    }
   }
-  res.writeHead(404);
-  res.end();
+  // The state of the server for each logical connection (by token): the messages that it sent, with their sequence ids.
+  const serverConn = new Map<string, ServerConnection>();
+  const sockets: FakeWebSocket[] = [];
+  class FakeWebSocket {
+    static readonly CONNECTING = 0;
+    static readonly OPEN = 1;
+    static readonly CLOSING = 2;
+    static readonly CLOSED = 3;
+    readyState = 0;
+    readonly token: string;
+    readonly index: number;
+    onopen: ((event: object) => void) | null = null;
+    onclose: ((event: object) => void) | null = null;
+    onmessage: ((event: { data: string }) => void) | null = null;
+    onerror: ((event: object) => void) | null = null;
+    readonly url: string;
+    constructor(url: string) {
+      this.url = url;
+      this.token = new URL(url.replace(/^ws/, "http")).searchParams.get("id") ?? "";
+      this.index = sockets.push(this);
+      setTimeout(() => {
+        if (plan.failSocket === this.index) {
+          this.readyState = 3;
+          this.onclose?.({ code: 1006, wasClean: false, reason: "" });
+          return;
+        }
+        this.readyState = 1;
+        this.onopen?.({});
+      }, 5);
+    }
+    state(): ServerConnection {
+      let s = serverConn.get(this.token);
+      if (s === undefined) {
+        s = { sent: [], acked: 0 };
+        serverConn.set(this.token, s);
+      }
+      return s;
+    }
+    // The server sends a trackable message. It gets the next sequence id of this logical connection.
+    push(target: string, arg: string): string {
+      const s = this.state();
+      s.sent.push({ seq: s.sent.length + 1, frame: inv(target, arg) });
+      return inv(target, arg);
+    }
+    send(data: unknown): void {
+      for (const frame of String(data).split(RS).filter(Boolean)) {
+        const msg = JSON.parse(frame) as Frame;
+        if (msg.protocol !== undefined) {
+          // The handshake response and one app message in the SAME frame.
+          const first = this.push("msg", plan.firstMessage(this.index));
+          setTimeout(() => this.onmessage?.({ data: `{}${RS}${first}` }), 1);
+        } else if (msg.type === 8) {
+          this.state().acked = Math.max(this.state().acked, msg.sequenceId ?? 0);
+        } else if (msg.type === 9) {
+          // The client resumed this logical connection: a Sequence message, and the resend of each message with no Ack.
+          const s = this.state();
+          const resend = s.sent.filter((m) => m.seq > s.acked);
+          const out = `${JSON.stringify({ type: 9, sequenceId: s.acked + 1 })}${RS}${resend.map((m) => m.frame).join("")}`;
+          setTimeout(() => this.onmessage?.({ data: out }), 1);
+        }
+      }
+    }
+    close(): void {
+      this.readyState = 3;
+    }
+    drop(): void {
+      this.readyState = 3;
+      this.onclose?.({ code: 1006, wasClean: false, reason: "" });
+    }
+  }
+
+  const options: Options = { httpClient: new FakeHttpClient(), WebSocket: FakeWebSocket, transport: HttpTransportType.WebSockets };
+  const hub = new HubConnectionBuilder()
+    .withUrl("http://fake.invalid/hub", options)
+    .withStatefulReconnect()
+    .withAutomaticReconnect([0])
+    .configureLogging(LogLevel.None)
+    .build();
+  const delivered: string[] = [];
+  hub.on("msg", (x: string) => delivered.push(x));
+  const reconnected = new Promise<void>((resolve) => hub.onreconnected(() => resolve()));
+
+  await hub.start();
+  await new Promise((resolve) => setTimeout(resolve, 20));
+  // A second app message in its own frame.
+  const s0 = sockets[0];
+  s0?.onmessage?.({ data: s0.push("msg", "second") });
+  await new Promise((resolve) => setTimeout(resolve, 20));
+  s0?.drop();
+  if (plan.waitReconnected === true) await reconnected;
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  await hub.stop().catch(() => {});
+  console.log(`[${name}] app saw: ${JSON.stringify(delivered)}; expected: ${JSON.stringify(plan.expected)}`);
+  return JSON.stringify(delivered) === JSON.stringify(plan.expected);
+}
+
+const okA = await scenario("A first start, then stateful reconnect", {
+  firstMessage: () => "first",
+  expected: ["first", "second"],
 });
-const wss = new WebSocketServer({ noServer: true });
-server.on("upgrade", (req, socket, head) => {
-  upgrades += 1;
-  const accept = (): void =>
-    wss.handleUpgrade(req, socket, head, (ws) => {
-      const index = sockets.push(ws);
-      ws.on("message", (data) => {
-        if (index === 1 && String(data).startsWith('{"protocol"')) ws.send(`{}${RS}`);
-      });
-    });
-  // The server holds the upgrade of the reconnect.
-  if (upgrades === 1) accept();
-  else setTimeout(accept, HOLD_MS);
+const okB = await scenario("B automatic reconnect after a failed stateful reconnect", {
+  failSocket: 2,
+  waitReconnected: true,
+  firstMessage: (i) => (i === 1 ? "first" : "welcome"),
+  expected: ["first", "second", "welcome"],
 });
-await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
-const { port } = server.address() as AddressInfo;
 
-const hub = new HubConnectionBuilder()
-  .withUrl(`http://127.0.0.1:${port}/hub`, { transport: HttpTransportType.WebSockets })
-  .withStatefulReconnect()
-  .configureLogging(LogLevel.None)
-  .build();
-hub.serverTimeoutInMilliseconds = 60000;
-
-await hub.start();
-sockets[0]?.terminate(); // A network drop starts the stateful reconnect.
-while (upgrades < 2) await new Promise((resolve) => setTimeout(resolve, 10));
-
-const t0 = Date.now();
-let stopResolvedAt: number | null = null;
-void hub.stop().then(() => {
-  stopResolvedAt = Date.now() - t0;
-});
-await new Promise((resolve) => setTimeout(resolve, 500));
-const resolvedWithin500 = stopResolvedAt !== null;
-await new Promise((resolve) => setTimeout(resolve, HOLD_MS + 500));
-
-const leaked = sockets.slice(1).filter((s) => s.readyState === s.OPEN).length;
-console.log(`hub.stop() called while the server held the reconnect upgrade for ${HOLD_MS} ms`);
-console.log(`hub.stop() resolved within 500 ms: ${resolvedWithin500}; resolved after: ${stopResolvedAt === null ? "never (so far)" : `${stopResolvedAt} ms`}`);
-console.log(`hub.state: ${hub.state}; reconnect sockets still open after stop(): ${leaked}`);
-console.log("expected: stop() stops the pending reconnect at once and leaves no open socket");
-
-for (const s of sockets) s.terminate();
-server.close();
-
-if (!resolvedWithin500 || leaked > 0) {
-  console.log("BUG PRESENT: stop() waited for the pending stateful-reconnect WebSocket, or left it open, or both.");
+if (!okA || !okB) {
+  const a = okA ? "" : "A: the app got a message two times after a stateful reconnect. ";
+  const b = okB ? "" : "B: the client dropped a message of the handshake frame.";
+  console.log(`BUG PRESENT: ${a}${b}`);
   process.exit(1);
 }
 console.log("OK");
