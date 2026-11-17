@@ -1137,5 +1137,95 @@
     "kind": "correctness",
     "title": "The timeout and the abort signal of FetchHttpClient stop when the response headers come, so a stalled body blocks stop()",
     "note": "The finally block of FetchHttpClient.send() clears the timeout and request.abortSignal.onabort when fetch() resolves, before deserializeContent() reads the body. So a long poll whose body stalls after its headers does not time out, and LongPollingTransport.stop() cannot abort it. In the repro, stop() is still pending after 2000 ms, in the state Disconnecting. Issue #58260 (open) has possibly the same cause. Confidence high."
+  },
+  {
+    "id": "F0114",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "conformance",
+    "title": "An inbound QoS 2 PUBLISH with a Topic Alias and an empty topic arrives with the topic \"\"",
+    "note": "[MQTT-3.3.2-12]. handlePublish puts the topic of the alias in a local variable, but for QoS 2 it stores the packet, and the PUBREL handler emits 'message' with the topic of the stored packet, which is still empty. QoS 0 and QoS 1 use the topic of the alias. The same code is on main (0ceae41). Confidence high."
+  },
+  {
+    "id": "F0115",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "A SUBACK with one failure code removes each topic of its SUBSCRIBE from the resubscribe list",
+    "note": "handleAck deletes each topic of messageIdToTopic[messageId] from _resubscribeTopics when one reason code is a failure. So a topic that the server granted is not subscribed again after a reconnect with a new session. The same code is on main (0ceae41). Confidence high."
+  },
+  {
+    "id": "F0116",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "With the option servers and TLS, the SNI and the certificate check keep the name of the first server",
+    "note": "connect/tls.ts sets opts.servername to the first host. The failover wrapper of connect/index.ts changes opts.host and opts.hostname, but not opts.servername. So the ClientHello to the second server has the SNI of the first server, and tls.connect checks its certificate against the first name. The same code is on main (0ceae41). Confidence high."
+  },
+  {
+    "id": "F0117",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "publish() with QoS 1 or 2 after end() throws a TypeError when reconnectPeriod is 0",
+    "note": "After end(), publish() with QoS 1 throws \"Cannot read properties of null (reading 'set')\", and publishAsync() rejects with the same TypeError. The callback of publish() does not get an error that tells that the client is closed. Confidence high."
+  },
+  {
+    "id": "F0118",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "conformance",
+    "title": "The client sends a QoS 2 PUBLISH to a server whose CONNACK gives Maximum QoS 1",
+    "note": "[MQTT-3.2.2-11]. No file of MQTT.js reads the maximumQoS property of the CONNACK, and the callback of publish() gets no error. The same code is on main (0ceae41). Confidence high."
+  },
+  {
+    "id": "F0119",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "conformance",
+    "title": "The client sends a PUBLISH with RETAIN 1 to a server whose CONNACK gives Retain Available 0",
+    "note": "[MQTT-3.2.2-14]. No file of MQTT.js reads the retainAvailable property of the CONNACK, and the callback of publish() gets no error. The same code is on main (0ceae41). Confidence high."
+  },
+  {
+    "id": "F0120",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "An offline subscribe() gets \"Connection closed\" when a reconnect attempt fails, but the client still sends the SUBSCRIBE",
+    "note": "_flushVolatile calls the callback with \"Connection closed\" and deletes the outgoing entry, but it keeps the queued SUBSCRIBE and the topic in _resubscribeTopics. So the next connection subscribes, and the app thinks that it has no subscription. In the repro, the server also gets the SUBSCRIBE twice on that connection. Confidence high."
+  },
+  {
+    "id": "F0121",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "unsubscribe() reports success for an UNSUBACK with a failure reason code",
+    "note": "MQTT 5.0 section 3.11.3: a reason code of 0x80 or more is a failure. handleAck calls the callback of unsubscribe() with no error for each UNSUBACK, and unsubscribeAsync() resolves. For a SUBACK with a failure code, subscribe() gives an error. The same code is on main (0ceae41). Confidence high."
+  },
+  {
+    "id": "F0122",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "end() before connect() of a client with manualConnect throws a TypeError",
+    "note": "With manualConnect: true, the client has no stream until connect(). end() then throws \"Cannot read properties of undefined (reading 'on')\". Confidence high."
   }
 ]
