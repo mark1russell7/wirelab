@@ -82,4 +82,6 @@ The ranks come from `ranks` of `@mark1russell7/rigor-statistics`.
 - The workflow `measures.yml` starts `scripts/measures.ts` in CI. The script reads the four measures of each package through polite-crawler.
 - The sources are the npm downloads API, the dependents of deps.dev and the hits of jsDelivr. Each is free.
 - The workflow keeps the new `sources.json` and `usage.json` as an artifact. Commit them in a pull request.
+- Each Tuesday, a scheduled run reads all packages. When the tables change, it pushes them to a new branch `measures/<date>-<run id>`.
+- A workflow of this repository cannot open a pull request. Open it from that branch, with the link in the summary of the run.
 - The summary of the run gives the packages without a repository, by weekly downloads. This list gives the order of the next batch of policy checks.

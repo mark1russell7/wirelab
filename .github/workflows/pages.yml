@@ -51,3 +51,5 @@ jobs:
       # The check opens each page in a browser at 360, 400 and 1280 pixels, in light and dark.
       site-check: true
       site-check-pages: /,/releases/,/status/
+      # The probe drives the catalog at each width: the list, the details of a row and the filters.
+      site-check-probe: packages/site/src/check-probe.ts
