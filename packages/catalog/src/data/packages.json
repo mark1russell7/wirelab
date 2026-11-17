@@ -422,6 +422,11 @@
     "family": "realtime"
   },
   {
+    "name": "faye-websocket",
+    "family": "websocket",
+    "note": "The WebSocket client and server of Faye."
+  },
+  {
     "name": "firebase",
     "family": "realtime"
   },
@@ -795,6 +800,11 @@
     "family": "brokers"
   },
   {
+    "name": "undici",
+    "family": "websocket",
+    "note": "The WebSocket of Node.js comes from the copy of undici in Node.js."
+  },
+  {
     "name": "viem",
     "family": "p2p"
   },
@@ -820,6 +830,11 @@
     "family": "http"
   },
   {
+    "name": "websocket",
+    "family": "websocket",
+    "note": "WebSocket-Node."
+  },
+  {
     "name": "websocket-ts",
     "family": "websocket"
   },
@@ -830,6 +845,11 @@
   {
     "name": "webtorrent",
     "family": "p2p"
+  },
+  {
+    "name": "ws",
+    "family": "websocket",
+    "note": "The WebSocket client and server for Node.js."
   },
   {
     "name": "y-webrtc",
