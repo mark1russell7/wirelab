@@ -32,6 +32,9 @@ The server is a fixed reference: the image `crossbario/autobahn-testsuite` 25.10
 - The cases `9.*` measure the speed with large messages. They take a long time and find no conformance fault, so the configuration excludes them.
 - A case in `src/known.ts` is `it.fails`, with the identifier of its finding in the name of the test. The test passes while the fault stays. When a release removes the fault, the test fails. Then remove the case from `src/known.ts`.
 - The close test compares the cases with a failed close behavior to the close list of `src/known.ts`.
+- The server has a time limit for the cases `12.*` and `13.*`, from 60 to 480 seconds. The client waits that limit and 10 seconds more. Then the result of a slow case comes from the server.
+- Each other case has a time limit of 20 seconds.
+- A test of each client compares the time limits of `src/fuzzingserver.ts` to the expectations in the reports of the server.
 
 ## Start the suite on your computer
 

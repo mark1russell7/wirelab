@@ -20,6 +20,50 @@ export const reportsFolder: string | undefined = process.env["AUTOBAHN_REPORTS"]
  */
 export const passingBehaviors: readonly string[] = ["OK", "NON-STRICT", "INFORMATIONAL", "UNIMPLEMENTED"];
 
+/**
+ * This function gives the time limit in seconds of the fuzzing server for the case `id`. It gives `undefined` when the
+ * server has no limit for the case.
+ *
+ * Only the `permessage-deflate` cases `12.*` and `13.*` have a limit. The table `MSG_SIZES` in `case12_x_x.py` of the
+ * server gives the limit from the last number of the identifier. The reports of the server tell the same limit in the
+ * expectation of each case.
+ */
+export function serverTimeLimitSeconds(id: string): number | undefined {
+  const match = /^1[23]\.\d+\.(\d+)$/.exec(id);
+  if (match === null) return undefined;
+  const last = Number(match[1]);
+  if (last <= 2) return 60;
+  if (last === 3) return 120;
+  if (last === 4) return 240;
+  return 480;
+}
+
+/**
+ * The time limit of a case that has no limit of the server. The slowest of these cases wait 2 seconds for the client.
+ */
+export const defaultCaseTimeLimitMs = 20_000;
+
+/** The time that the client waits after the limit of the server. At its limit, the server closes the connection. */
+const serverLimitMarginMs = 10_000;
+
+/**
+ * This function gives the time limit in milliseconds of one echo session for the case `id`. A client stops a session
+ * only after the server stops it. Thus the result of a slow case comes from the server.
+ */
+export function caseTimeLimitMs(id: string): number {
+  const server = serverTimeLimitSeconds(id);
+  return server === undefined ? defaultCaseTimeLimitMs : server * 1000 + serverLimitMarginMs;
+}
+
+/**
+ * This function reads the time limit in seconds from the expectation of a case report, for example "Timeout case after
+ * 480 secs.". It gives `undefined` when the expectation tells no limit.
+ */
+export function expectationTimeLimitSeconds(expectation: string): number | undefined {
+  const match = /Timeout case after (\d+) secs/.exec(expectation);
+  return match === null ? undefined : Number(match[1]);
+}
+
 /** One case of the fuzzing server. */
 export interface FuzzingCase {
   /** The number of the case in the API of the server. The first case has the number 1. */
@@ -123,4 +167,12 @@ export async function readCaseReports(folder: string, agent: string): Promise<Re
   const reports = index[agent];
   if (reports === undefined) throw new Error(`The reports in ${folder} have no results of the agent ${agent}.`);
   return reports;
+}
+
+/** This function reads the expectation from the report file `reportfile` in the folder `folder`. */
+export async function readCaseExpectation(folder: string, reportfile: string): Promise<string> {
+  const file = path.join(folder, "clients", reportfile.replace(/\.html$/, ".json"));
+  const report = JSON.parse(await readFile(file, "utf8")) as { expectation?: unknown };
+  if (typeof report.expectation !== "string") throw new Error(`The report ${file} has no expectation.`);
+  return report.expectation;
 }
