@@ -1136,7 +1136,7 @@
     "found": "2026-11-13",
     "kind": "correctness",
     "title": "The check for multiple client results does not count a falsy result, so the outcome depends on the order of the handlers",
-    "note": "The function _invokeClientMethod() of HubConnection sends the error \"Client provided multiple results.\" only if expectsResponse && res && prevRes is true. So 5 and 7 give the error, and 0 and 7 give the result 7. Also, 7 and 0 give 0, and true and false give false. Pull request #45169 (closed) changed the Completion of a false or null result, but not this check. Confidence high."
+    "note": "The function _invokeClientMethod() of HubConnection sends the error \"Client provided multiple results.\" only if expectsResponse && res && prevRes is true. So 5 and 7 give the error, and 0 and 7 give the result 7. Also, 7 and 0 give 0, and true and false give false. Pull request #45169 (merged) changed the Completion of a false or null result, but not this check. Confidence high."
   },
   {
     "id": "F0114",
