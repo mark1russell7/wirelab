@@ -641,11 +641,25 @@
     "note": "The repro ran in CI (repro.yml, run 43978492175). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
   },
   {
+    "finding": "F0091",
+    "at": "2026-11-17T01:02:58Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/722",
+    "note": "The fix of #715. In the fix-test run 43990474586, the new test failed before the fix and passed after it, with no new failure."
+  },
+  {
     "finding": "F0092",
     "at": "2026-11-16T23:54:55Z",
     "state": "issue-open",
     "url": "https://github.com/sockjs/sockjs-client/issues/716",
     "note": "The repro ran in CI (repro.yml, run 43978617046). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
+  },
+  {
+    "finding": "F0092",
+    "at": "2026-11-17T01:03:00Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/723",
+    "note": "The fix of #716. In the fix-test run 43990474586, the new test failed before the fix and passed after it, with no new failure."
   },
   {
     "finding": "F0093",
@@ -662,11 +676,25 @@
     "note": "The repro ran in CI (repro.yml, run 43978649894). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
   },
   {
+    "finding": "F0094",
+    "at": "2026-11-17T01:03:02Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/724",
+    "note": "The fix of #717. In the fix-test run 43990474586, the new test failed before the fix and passed after it, with no new failure."
+  },
+  {
     "finding": "F0095",
     "at": "2026-11-16T23:54:58Z",
     "state": "issue-open",
     "url": "https://github.com/sockjs/sockjs-client/issues/718",
     "note": "The repro ran in CI (repro.yml, run 43978665454). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
+  },
+  {
+    "finding": "F0095",
+    "at": "2026-11-17T01:03:05Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/725",
+    "note": "The fix of #718. In the fix-test run 43990474586, the new test failed before the fix and passed after it, with no new failure."
   },
   {
     "finding": "F0096",
@@ -683,6 +711,13 @@
     "note": "The repro ran in CI (repro.yml, run 43978775520). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
   },
   {
+    "finding": "F0097",
+    "at": "2026-11-17T01:03:07Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/726",
+    "note": "The fix of #719. In the fix-test run 43990474586, the new test failed before the fix and passed after it, with no new failure."
+  },
+  {
     "finding": "F0098",
     "at": "2026-11-16T23:55:00Z",
     "state": "issue-open",
@@ -690,10 +725,122 @@
     "note": "The repro ran in CI (repro.yml, run 43978796004). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
   },
   {
+    "finding": "F0098",
+    "at": "2026-11-17T01:03:09Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/727",
+    "note": "The fix of #720. In the fix-test run 43990474586, the new test failed before the fix and passed after it, with no new failure."
+  },
+  {
     "finding": "F0099",
     "at": "2026-11-16T23:55:02Z",
     "state": "issue-open",
     "url": "https://github.com/sockjs/sockjs-client/issues/721",
     "note": "The repro ran in CI (repro.yml, run 43978825836). A local run with the source of main (76bd542) gives the same output. The fix pull request follows."
+  },
+  {
+    "finding": "F0099",
+    "at": "2026-11-17T01:03:11Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/728",
+    "note": "The fix of #721. In the fix-test run 43990474586, the new test failed before the fix and passed after it, with no new failure."
+  },
+  {
+    "finding": "F0100",
+    "at": "2026-11-17T02:58:30Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70641",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0101",
+    "at": "2026-11-17T02:58:36Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70642",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0102",
+    "at": "2026-11-17T02:58:42Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70643",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0103",
+    "at": "2026-11-17T02:58:49Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70644",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0104",
+    "at": "2026-11-17T02:58:55Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70645",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0105",
+    "at": "2026-11-17T02:59:01Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70646",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0106",
+    "at": "2026-11-17T02:59:07Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70647",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0107",
+    "at": "2026-11-17T02:59:13Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70648",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0108",
+    "at": "2026-11-17T02:59:20Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70649",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0109",
+    "at": "2026-11-17T02:59:25Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70650",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0110",
+    "at": "2026-11-17T02:59:31Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70651",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0111",
+    "at": "2026-11-17T02:59:36Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70652",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0112",
+    "at": "2026-11-17T02:59:42Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70653",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0113",
+    "at": "2026-11-17T02:59:47Z",
+    "state": "issue-open",
+    "url": "https://github.com/dotnet/aspnetcore/issues/70654",
+    "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
   }
 ]
