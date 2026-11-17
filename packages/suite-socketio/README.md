@@ -1,6 +1,6 @@
 # @wirelab/suite-socketio
 
-This package holds the conformance suite of the Socket.IO client `socket.io-client`, for the transport HTTP long-polling. A scripted server gives a fixed list of replies, and the suite examines each packet of the client. Each test names the rules of the Socket.IO protocol, version 5, that it examines.
+This package holds the conformance suite of the Socket.IO client `socket.io-client`, for HTTP long-polling, WebSocket and the upgrade from one to the other. A scripted server gives a fixed list of replies, and the suite examines each packet of the client. Each test names the rules of the Socket.IO protocol, version 5, that it examines.
 
 ## What the suite tests
 
@@ -8,7 +8,8 @@ The suite tests the client. The server is the scripted Engine.IO server of `@wir
 
 | File | What it has |
 | --- | --- |
-| `src/protocol.test.ts` | The conformance checks: the connection to a namespace, events, acknowledgements, binary packets and the disconnection. |
+| `src/protocol.test.ts` | The conformance checks over HTTP long-polling: the connection to a namespace, events, acknowledgements, binary packets and the disconnection. |
+| `src/websocket.test.ts` | The conformance checks over the transport `NodeWebSocket`, and over the upgrade from HTTP long-polling to WebSocket. |
 | `src/findings.test.ts` | The checks that show known faults of `socket.io-client` 4.8.4. Each check is `it.fails`. |
 | `src/index.test.ts` | A check with no server: each check of `src/index.ts` has a test, and each test names its rules. |
 | `src/codec.test.ts` | A check of the codec against the examples of the protocol document. |
@@ -16,7 +17,9 @@ The suite tests the client. The server is the scripted Engine.IO server of `@wir
 | `src/harness.ts` | The helpers of the tests: the scripted session, the manager, its sockets and the records of the packets and the events. |
 | `src/index.ts` | The rules and the checks as data. |
 
-- Each check examines the two transports of HTTP long-polling for Node.js: `NodeXHR` and `Fetch`.
+- Each check of `src/protocol.test.ts` examines the two transports of HTTP long-polling for Node.js: `NodeXHR` and `Fetch`.
+- The checks of `src/websocket.test.ts` examine `NodeWebSocket` alone, and two upgrade cases: the default transports, and `Fetch` to `NodeWebSocket`.
+- Over WebSocket, the harness joins the attachments over the frames of the client. Across an upgrade, it joins them over the POST bodies and then the frames.
 - A rule has the form `[SIO5-<group>-<number>]`. The title of the test names it.
 - The parts of a binary packet can go in different POST bodies. Thus the harness joins the attachments over all POST bodies, in order.
 - A test that shows a fault of `socket.io-client` is `it.fails`, with a comment `// client bug:` and the identifier of the finding. The test passes while the fault stays. When a release removes the fault, the test fails. Then change it to `it`.
@@ -80,5 +83,3 @@ The rules come from the protocol document `docs/socket.io-protocol/v5-current.md
 | F0066 | `offset-string-argument` | With the recovery of the connection state, an event with a string as its last argument and no offset changes the offset of the next `CONNECT` packet. |
 | F0064 | `retries-without-ack-timeout` | With `retries` and no `ackTimeout`, a positive acknowledgement goes to the callback as the error, and the client sends the event again. |
 | F0067 | `eleven-attachments` | The decoder of the client accepts no more than 10 attachments, but the server sends more. An event with 11 buffers gives a parse error. |
-
-The WebSocket transport is not in this suite. It comes in a later part of the roadmap item W9.

@@ -323,9 +323,12 @@ importers:
 
   packages/suite-socketio:
     dependencies:
+      '@mark1russell7/rigor-proxy':
+        specifier: ^0.4.1
+        version: 0.4.1(zod@4.6.7)
       '@mark1russell7/rigor-testkit':
-        specifier: ^0.1.15
-        version: 0.1.16(@mark1russell7/rigor-chaos@0.3.4)(@opentelemetry/api@1.10.0)
+        specifier: ^0.1.19
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.0)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       '@wirelab/suite-engineio':
         specifier: workspace:*
         version: link:../suite-engineio
@@ -659,36 +662,6 @@ packages:
   '@mark1russell7/rigor-statistics@0.2.9':
     resolution: {integrity: sha512-9u9u2imcLpkiwSu1FGeB57Z+/Fr7byplVNMoR8G9OELjhSwOdzNbTiPieHqFM6phVVyMWrGlgoEQyBaxKqwvtQ==}
     engines: {node: '>=22'}
-
-  '@mark1russell7/rigor-testkit@0.1.16':
-    resolution: {integrity: sha512-pdn65CX9XRKyUe99iSFi+hqqGbDEJRZyfpJy6ro5VyWr7arp9dhkmLO2RUb8LndaGnEKufmeRwv1qhNwtCoiJw==}
-    engines: {node: '>=22'}
-    peerDependencies:
-      '@mark1russell7/rigor-chaos': ^0.3.2
-      '@mark1russell7/rigor-generators': ^0.1.18
-      '@opentelemetry/api': ^1.9.0
-      '@opentelemetry/api-logs': ^0.213.0 || ^0.223.0
-      '@opentelemetry/sdk-logs': ^0.223.0 || ^3.0.0
-      '@opentelemetry/sdk-metrics': ^2.12.0 || ^3.0.0
-      '@opentelemetry/sdk-trace-base': ^2.12.0
-      fast-check: ^4.0.0
-    peerDependenciesMeta:
-      '@mark1russell7/rigor-chaos':
-        optional: true
-      '@mark1russell7/rigor-generators':
-        optional: true
-      '@opentelemetry/api':
-        optional: true
-      '@opentelemetry/api-logs':
-        optional: true
-      '@opentelemetry/sdk-logs':
-        optional: true
-      '@opentelemetry/sdk-metrics':
-        optional: true
-      '@opentelemetry/sdk-trace-base':
-        optional: true
-      fast-check:
-        optional: true
 
   '@mark1russell7/rigor-testkit@0.1.19':
     resolution: {integrity: sha512-wNAsC2qsm1BQ5eI1Do5vfLLozw8VXQz1cZvoKFGuYQ+8z4P1TLlvWP59ibCNLuFdjItBbXck8kJb44JxotoLlA==}
@@ -2189,11 +2162,6 @@ snapshots:
   '@mark1russell7/rigor-statistics@0.2.9':
     dependencies:
       '@mark1russell7/rigor-generators': 0.2.0
-
-  '@mark1russell7/rigor-testkit@0.1.16(@mark1russell7/rigor-chaos@0.3.4)(@opentelemetry/api@1.10.0)':
-    optionalDependencies:
-      '@mark1russell7/rigor-chaos': 0.3.4
-      '@opentelemetry/api': 1.10.0
 
   '@mark1russell7/rigor-testkit@0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.0)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)':
     optionalDependencies:

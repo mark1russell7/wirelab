@@ -1,10 +1,32 @@
 /**
  * The helpers of the tests: a scripted Socket.IO server, a manager of `socket.io-client` on it, and the records of the
- * session. The server is the scripted Engine.IO server of the Engine.IO suite. Each test controls each byte that the client gets.
+ * session. The server is the scripted Engine.IO server of the Engine.IO suite, with its HTTP long-polling and WebSocket
+ * routes. Each test controls each byte that the client gets.
  */
-import type { ScriptedReply, ScriptedRequest, ScriptedServer } from "@mark1russell7/rigor-testkit/http";
-import { decodePayload, message, payload, queryOf, startEngineServer, until, type Handshake, type Packet, type SessionScript } from "@wirelab/suite-engineio";
-import { Fetch, Manager, NodeXHR, type ManagerOptions, type Socket, type SocketOptions } from "socket.io-client";
+import {
+  messagesOf,
+  type ScriptedReply,
+  type ScriptedRequest,
+  type ScriptedServer,
+  type SendStep,
+  type WebSocketConnection,
+  type WebSocketStep,
+} from "@mark1russell7/rigor-testkit/http";
+import {
+  decodePayload,
+  frame,
+  message,
+  openFrame,
+  packetsOf,
+  payload,
+  queryOf,
+  startEngineServer,
+  until,
+  type Handshake,
+  type Packet,
+  type SessionScript,
+} from "@wirelab/suite-engineio";
+import { Fetch, Manager, NodeWebSocket, NodeXHR, type ManagerOptions, type Socket, type SocketOptions } from "socket.io-client";
 import { decodeSioPacket, encodeSioPacket, type SioPacket } from "./codec.ts";
 
 /**
@@ -13,10 +35,10 @@ import { decodeSioPacket, encodeSioPacket, type SioPacket } from "./codec.ts";
  */
 export const suiteEnabled: boolean = process.env["SUITE_SOCKETIO"] === "1";
 
-/** A transport of HTTP long-polling that the suite examines. */
+/** A transport of the client that the suite examines. */
 export interface PollingTransport {
   readonly name: string;
-  readonly implementation: typeof NodeXHR | typeof Fetch;
+  readonly implementation: typeof NodeXHR | typeof Fetch | typeof NodeWebSocket;
 }
 
 /** The transports of HTTP long-polling for Node.js. Each check examines each transport. */
@@ -24,6 +46,19 @@ export const transports: readonly PollingTransport[] = [
   { name: "NodeXHR", implementation: NodeXHR },
   { name: "Fetch", implementation: Fetch },
 ];
+
+/** The WebSocket transport of the client on the package `ws`. It is the default WebSocket transport in Node.js. */
+export const webSocketTransport: PollingTransport = { name: "NodeWebSocket", implementation: NodeWebSocket };
+
+/** A start of a session on HTTP long-polling and an upgrade to WebSocket. */
+export interface UpgradeCase {
+  readonly name: string;
+  /** The transports of the client. With no list, the client has its default transports: `NodeXHR` and `NodeWebSocket`. */
+  readonly transports?: readonly PollingTransport["implementation"][];
+}
+
+/** The upgrade cases. Each check of an upgrade examines each case. */
+export const upgradeCases: readonly UpgradeCase[] = [{ name: "default transports" }, { name: "Fetch to NodeWebSocket", transports: [Fetch, NodeWebSocket] }];
 
 /** The path of the server. It is the default path of the client, with the slash that the client adds at the end. */
 export const socketPath: string = "/socket.io/";
@@ -46,6 +81,22 @@ export function engineMessages(item: SioPacket | SioFrame): Packet[] {
 /** This function gives a reply to a GET request with the given Socket.IO packets. `extra` adds a delay or other parts. */
 export function sioReply(items: readonly (SioPacket | SioFrame)[], extra: ScriptedReply = {}): ScriptedReply {
   return payload(items.flatMap(engineMessages), extra);
+}
+
+/**
+ * This function gives the WebSocket steps that send the given Socket.IO packets: one frame for each Engine.IO packet. The
+ * first frame waits `delayMs`, and the attachments of a packet follow it with no delay.
+ */
+export function sioFrames(items: readonly (SioPacket | SioFrame)[], delayMs: number = 0): SendStep[] {
+  return items.flatMap(engineMessages).map((packet, index) => frame(packet, index === 0 ? delayMs : 0));
+}
+
+/**
+ * This function gives the script of a session on WebSocket alone. The server sends the open packet, waits for the
+ * `CONNECT` packet of the client, and connects the main namespace. Then it sends the given steps.
+ */
+export function webSocketScript(steps: readonly WebSocketStep[] = [], handshake: Partial<Handshake> = {}): SessionScript {
+  return { handshake, webSockets: [{ steps: [openFrame(handshake), { receive: 1 }, ...sioFrames([connectReply("sid-main")], answerMs), ...steps] }] };
 }
 
 /** This function gives the `CONNECT` packet of the server for a namespace, with the given session ID. */
@@ -138,6 +189,15 @@ export interface SioSession {
   posts(): readonly ScriptedRequest[];
   /** This method gives the packets of all POST bodies. */
   posted(): Posted;
+  /** This method gives the records of the WebSocket connections of the client, in order. */
+  webSockets(): readonly WebSocketConnection[];
+  /** This method gives the packets that the client sent on a WebSocket connection. The default is the first connection. */
+  sent(connection?: number): Posted;
+  /**
+   * This method gives the packets of the client on the two transports of an upgrade: the POST bodies, and then the first
+   * WebSocket connection. The client sends no POST request after the upgrade, thus this list has the order of the sends.
+   */
+  delivered(): Posted;
   /** This method disconnects the sockets, closes the manager, and then closes the server. */
   end(): Promise<void>;
 }
@@ -152,7 +212,20 @@ export function normalValue(value: unknown): unknown {
 }
 
 /** This function starts a scripted server and a manager of one transport on it. The manager does not reconnect by default. */
-export async function startSioSession(transport: PollingTransport, script: SessionScript = {}, client: Partial<ManagerOptions> = {}): Promise<SioSession> {
+export function startSioSession(transport: PollingTransport, script: SessionScript = {}, client: Partial<ManagerOptions> = {}): Promise<SioSession> {
+  return openSioSession(script, { reconnection: false, ...client, transports: [transport.implementation], upgrade: false });
+}
+
+/**
+ * This function starts a scripted server and a manager with the transports of an upgrade case on it. The manager can
+ * upgrade, and it does not reconnect by default.
+ */
+export function startSioUpgrade(upgradeCase: UpgradeCase, script: SessionScript = {}, client: Partial<ManagerOptions> = {}): Promise<SioSession> {
+  return openSioSession(script, { reconnection: false, ...client, ...(upgradeCase.transports === undefined ? {} : { transports: [...upgradeCase.transports] }) });
+}
+
+/** This function starts a scripted server and a manager with the given options on it. */
+async function openSioSession(script: SessionScript, options: Partial<ManagerOptions>): Promise<SioSession> {
   const { server, handshake } = await startEngineServer(script, socketPath);
   const start = performance.now();
   const elapsed = (): number => performance.now() - start;
@@ -161,7 +234,7 @@ export async function startSioSession(transport: PollingTransport, script: Sessi
   const record = (nsp: string, kind: SocketEventKind, detail: string, args: readonly unknown[] = []): void => {
     events.push({ at: elapsed(), nsp, kind, detail, args: args.map(normalValue) });
   };
-  const manager = new Manager(server.url, { reconnection: false, ...client, transports: [transport.implementation], upgrade: false });
+  const manager = new Manager(server.url, options);
   const requestsOf = (method: string): readonly ScriptedRequest[] => server.requests.filter((request) => request.method === method);
   const eventsOf = (nsp: string): readonly SocketEvent[] => events.filter((event) => event.nsp === nsp);
   return {
@@ -190,6 +263,9 @@ export async function startSioSession(transport: PollingTransport, script: Sessi
     gets: () => requestsOf("GET"),
     posts: () => requestsOf("POST"),
     posted: () => joinFrames(requestsOf("POST").flatMap((request) => decodePayload(request.body))),
+    webSockets: () => server.webSockets,
+    sent: (connection = 0) => joinFrames(webSocketPackets(server, connection)),
+    delivered: () => joinFrames([...requestsOf("POST").flatMap((request) => decodePayload(request.body)), ...webSocketPackets(server, 0)]),
     end: async () => {
       manager.reconnection(false);
       for (const socket of sockets) socket.disconnect();
@@ -197,6 +273,11 @@ export async function startSioSession(transport: PollingTransport, script: Sessi
       await server.close();
     },
   };
+}
+
+/** This function gives the Engine.IO packets that the client sent on a WebSocket connection of the server. */
+function webSocketPackets(server: ScriptedServer, connection: number): readonly (Packet | undefined)[] {
+  return packetsOf(messagesOf(server.webSockets[connection]?.frames ?? []));
 }
 
 /** This function gives the frames of the given type and namespace. */
