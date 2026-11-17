@@ -25,6 +25,30 @@
   },
   {
     "package": "@anycable/web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 9
+  },
+  {
+    "package": "@anycable/web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3
+  },
+  {
+    "package": "@anycable/web",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 424
+  },
+  {
+    "package": "@anycable/web",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 308612
+  },
+  {
+    "package": "@anycable/web",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 288718
@@ -54,6 +78,30 @@
     "value": 8297331
   },
   {
+    "package": "@apollo/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 249
+  },
+  {
+    "package": "@apollo/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 315
+  },
+  {
+    "package": "@apollo/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 291156
+  },
+  {
+    "package": "@apollo/client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 8297331
+  },
+  {
     "package": "@atproto/api",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -62,6 +110,18 @@
   {
     "package": "@atproto/api",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 355161
+  },
+  {
+    "package": "@atproto/api",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 40913
+  },
+  {
+    "package": "@atproto/api",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 355161
   },
@@ -90,6 +150,30 @@
     "value": 50474
   },
   {
+    "package": "@automerge/automerge-repo",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 9
+  },
+  {
+    "package": "@automerge/automerge-repo",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@automerge/automerge-repo",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 5694
+  },
+  {
+    "package": "@automerge/automerge-repo",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 50474
+  },
+  {
     "package": "@automerge/automerge-repo-network-websocket",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -114,6 +198,30 @@
     "value": 30877
   },
   {
+    "package": "@automerge/automerge-repo-network-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "@automerge/automerge-repo-network-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@automerge/automerge-repo-network-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 756
+  },
+  {
+    "package": "@automerge/automerge-repo-network-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 30877
+  },
+  {
     "package": "@aws-sdk/client-s3",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -122,6 +230,18 @@
   {
     "package": "@aws-sdk/client-s3",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 74293312
+  },
+  {
+    "package": "@aws-sdk/client-s3",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1072446
+  },
+  {
+    "package": "@aws-sdk/client-s3",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 74293312
   },
@@ -150,6 +270,30 @@
     "value": 368452
   },
   {
+    "package": "@azure/event-hubs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 10
+  },
+  {
+    "package": "@azure/event-hubs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@azure/event-hubs",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 3063
+  },
+  {
+    "package": "@azure/event-hubs",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 368452
+  },
+  {
     "package": "@azure/service-bus",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -174,6 +318,30 @@
     "value": 978438
   },
   {
+    "package": "@azure/service-bus",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 149
+  },
+  {
+    "package": "@azure/service-bus",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 12
+  },
+  {
+    "package": "@azure/service-bus",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2547
+  },
+  {
+    "package": "@azure/service-bus",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 978438
+  },
+  {
     "package": "@azure/web-pubsub-client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -194,6 +362,30 @@
   {
     "package": "@azure/web-pubsub-client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 104858
+  },
+  {
+    "package": "@azure/web-pubsub-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 7
+  },
+  {
+    "package": "@azure/web-pubsub-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@azure/web-pubsub-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 9057
+  },
+  {
+    "package": "@azure/web-pubsub-client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 104858
   },
@@ -228,6 +420,30 @@
     "value": 42527631
   },
   {
+    "package": "@bufbuild/protobuf",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1530
+  },
+  {
+    "package": "@bufbuild/protobuf",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 4460
+  },
+  {
+    "package": "@bufbuild/protobuf",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 302448
+  },
+  {
+    "package": "@bufbuild/protobuf",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 42527631
+  },
+  {
     "package": "@clickhouse/client-web",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -248,6 +464,30 @@
   {
     "package": "@clickhouse/client-web",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 377729
+  },
+  {
+    "package": "@clickhouse/client-web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 10
+  },
+  {
+    "package": "@clickhouse/client-web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 10
+  },
+  {
+    "package": "@clickhouse/client-web",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2714
+  },
+  {
+    "package": "@clickhouse/client-web",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 377729
   },
@@ -276,6 +516,30 @@
     "value": 99267
   },
   {
+    "package": "@cloudamqp/amqp-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 4
+  },
+  {
+    "package": "@cloudamqp/amqp-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@cloudamqp/amqp-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1355
+  },
+  {
+    "package": "@cloudamqp/amqp-client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 99267
+  },
+  {
     "package": "@connectrpc/connect-web",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -296,6 +560,30 @@
   {
     "package": "@connectrpc/connect-web",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 7062114
+  },
+  {
+    "package": "@connectrpc/connect-web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 212
+  },
+  {
+    "package": "@connectrpc/connect-web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 474
+  },
+  {
+    "package": "@connectrpc/connect-web",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2203
+  },
+  {
+    "package": "@connectrpc/connect-web",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 7062114
   },
@@ -324,6 +612,30 @@
     "value": 595
   },
   {
+    "package": "@converse/headless",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 0
+  },
+  {
+    "package": "@converse/headless",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@converse/headless",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 557
+  },
+  {
+    "package": "@converse/headless",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 595
+  },
+  {
     "package": "@daily-co/daily-js",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -348,6 +660,30 @@
     "value": 1368568
   },
   {
+    "package": "@daily-co/daily-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 3
+  },
+  {
+    "package": "@daily-co/daily-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@daily-co/daily-js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 729254
+  },
+  {
+    "package": "@daily-co/daily-js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 1368568
+  },
+  {
     "package": "@deepstream/client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -368,6 +704,30 @@
   {
     "package": "@deepstream/client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2338
+  },
+  {
+    "package": "@deepstream/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 3
+  },
+  {
+    "package": "@deepstream/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@deepstream/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1295
+  },
+  {
+    "package": "@deepstream/client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2338
   },
@@ -402,6 +762,30 @@
     "value": 10534
   },
   {
+    "package": "@eclipse-zenoh/zenoh-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 9
+  },
+  {
+    "package": "@eclipse-zenoh/zenoh-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 7
+  },
+  {
+    "package": "@eclipse-zenoh/zenoh-ts",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1355
+  },
+  {
+    "package": "@eclipse-zenoh/zenoh-ts",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 10534
+  },
+  {
     "package": "@electric-sql/client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -422,6 +806,30 @@
   {
     "package": "@electric-sql/client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2518929
+  },
+  {
+    "package": "@electric-sql/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 20
+  },
+  {
+    "package": "@electric-sql/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 69
+  },
+  {
+    "package": "@electric-sql/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 6124
+  },
+  {
+    "package": "@electric-sql/client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2518929
   },
@@ -450,6 +858,30 @@
     "value": 6485
   },
   {
+    "package": "@eyevinn/webrtc-player",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "@eyevinn/webrtc-player",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@eyevinn/webrtc-player",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1174
+  },
+  {
+    "package": "@eyevinn/webrtc-player",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 6485
+  },
+  {
     "package": "@eyevinn/whip-web-client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -474,6 +906,30 @@
     "value": 2051
   },
   {
+    "package": "@eyevinn/whip-web-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "@eyevinn/whip-web-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@eyevinn/whip-web-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 195
+  },
+  {
+    "package": "@eyevinn/whip-web-client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 2051
+  },
+  {
     "package": "@feathersjs/client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -494,6 +950,30 @@
   {
     "package": "@feathersjs/client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 6482
+  },
+  {
+    "package": "@feathersjs/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "@feathersjs/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 12
+  },
+  {
+    "package": "@feathersjs/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 183167
+  },
+  {
+    "package": "@feathersjs/client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 6482
   },
@@ -528,6 +1008,30 @@
     "value": 42008
   },
   {
+    "package": "@foxglove/ws-protocol",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 4
+  },
+  {
+    "package": "@foxglove/ws-protocol",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 2
+  },
+  {
+    "package": "@foxglove/ws-protocol",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 416
+  },
+  {
+    "package": "@foxglove/ws-protocol",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 42008
+  },
+  {
     "package": "@helia/verified-fetch",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -548,6 +1052,30 @@
   {
     "package": "@helia/verified-fetch",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 6839
+  },
+  {
+    "package": "@helia/verified-fetch",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "@helia/verified-fetch",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@helia/verified-fetch",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1889
+  },
+  {
+    "package": "@helia/verified-fetch",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 6839
   },
@@ -576,6 +1104,30 @@
     "value": 2986504
   },
   {
+    "package": "@hocuspocus/provider",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 246
+  },
+  {
+    "package": "@hocuspocus/provider",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 5
+  },
+  {
+    "package": "@hocuspocus/provider",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2006
+  },
+  {
+    "package": "@hocuspocus/provider",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 2986504
+  },
+  {
     "package": "@hotwired/turbo",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -596,6 +1148,30 @@
   {
     "package": "@hotwired/turbo",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 1309848
+  },
+  {
+    "package": "@hotwired/turbo",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 16
+  },
+  {
+    "package": "@hotwired/turbo",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 10
+  },
+  {
+    "package": "@hotwired/turbo",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 11505392
+  },
+  {
+    "package": "@hotwired/turbo",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 1309848
   },
@@ -630,6 +1206,30 @@
     "value": 258188
   },
   {
+    "package": "@improbable-eng/grpc-web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 148
+  },
+  {
+    "package": "@improbable-eng/grpc-web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 453
+  },
+  {
+    "package": "@improbable-eng/grpc-web",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1644
+  },
+  {
+    "package": "@improbable-eng/grpc-web",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 258188
+  },
+  {
     "package": "@influxdata/influxdb-client-browser",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -650,6 +1250,30 @@
   {
     "package": "@influxdata/influxdb-client-browser",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 1081
+  },
+  {
+    "package": "@influxdata/influxdb-client-browser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 3
+  },
+  {
+    "package": "@influxdata/influxdb-client-browser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@influxdata/influxdb-client-browser",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1933
+  },
+  {
+    "package": "@influxdata/influxdb-client-browser",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 1081
   },
@@ -678,6 +1302,30 @@
     "value": 444165
   },
   {
+    "package": "@instantdb/core",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 18
+  },
+  {
+    "package": "@instantdb/core",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 6
+  },
+  {
+    "package": "@instantdb/core",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 27108
+  },
+  {
+    "package": "@instantdb/core",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 444165
+  },
+  {
     "package": "@jupyterlab/services",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -698,6 +1346,30 @@
   {
     "package": "@jupyterlab/services",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 225747
+  },
+  {
+    "package": "@jupyterlab/services",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 390
+  },
+  {
+    "package": "@jupyterlab/services",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 763
+  },
+  {
+    "package": "@jupyterlab/services",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 12710
+  },
+  {
+    "package": "@jupyterlab/services",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 225747
   },
@@ -726,6 +1398,30 @@
     "value": 75360
   },
   {
+    "package": "@kixelated/hang",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 0
+  },
+  {
+    "package": "@kixelated/hang",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@kixelated/hang",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 671
+  },
+  {
+    "package": "@kixelated/hang",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 75360
+  },
+  {
     "package": "@kixelated/moq",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -746,6 +1442,30 @@
   {
     "package": "@kixelated/moq",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 75378
+  },
+  {
+    "package": "@kixelated/moq",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 0
+  },
+  {
+    "package": "@kixelated/moq",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@kixelated/moq",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 751
+  },
+  {
+    "package": "@kixelated/moq",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 75378
   },
@@ -774,6 +1494,30 @@
     "value": 36231
   },
   {
+    "package": "@libp2p/webrtc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "@libp2p/webrtc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 4
+  },
+  {
+    "package": "@libp2p/webrtc",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 5095
+  },
+  {
+    "package": "@libp2p/webrtc",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 36231
+  },
+  {
     "package": "@libp2p/websockets",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -794,6 +1538,30 @@
   {
     "package": "@libp2p/websockets",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 55483
+  },
+  {
+    "package": "@libp2p/websockets",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 73
+  },
+  {
+    "package": "@libp2p/websockets",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 213
+  },
+  {
+    "package": "@libp2p/websockets",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 6602
+  },
+  {
+    "package": "@libp2p/websockets",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 55483
   },
@@ -822,6 +1590,30 @@
     "value": 4205
   },
   {
+    "package": "@libp2p/webtransport",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 7
+  },
+  {
+    "package": "@libp2p/webtransport",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 26
+  },
+  {
+    "package": "@libp2p/webtransport",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2699
+  },
+  {
+    "package": "@libp2p/webtransport",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 4205
+  },
+  {
     "package": "@libsql/client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -846,6 +1638,30 @@
     "value": 5724597
   },
   {
+    "package": "@libsql/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 127
+  },
+  {
+    "package": "@libsql/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 154
+  },
+  {
+    "package": "@libsql/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 64067
+  },
+  {
+    "package": "@libsql/client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 5724597
+  },
+  {
     "package": "@liveblocks/client",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -854,6 +1670,18 @@
   {
     "package": "@liveblocks/client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 549615
+  },
+  {
+    "package": "@liveblocks/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 4936
+  },
+  {
+    "package": "@liveblocks/client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 549615
   },
@@ -882,6 +1710,30 @@
     "value": 5563523
   },
   {
+    "package": "@microsoft/fetch-event-source",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 543
+  },
+  {
+    "package": "@microsoft/fetch-event-source",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 2821
+  },
+  {
+    "package": "@microsoft/fetch-event-source",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 87564
+  },
+  {
+    "package": "@microsoft/fetch-event-source",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 5563523
+  },
+  {
     "package": "@microsoft/signalr",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -902,6 +1754,30 @@
   {
     "package": "@microsoft/signalr",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2768656
+  },
+  {
+    "package": "@microsoft/signalr",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 10
+  },
+  {
+    "package": "@microsoft/signalr",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3
+  },
+  {
+    "package": "@microsoft/signalr",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 27608459
+  },
+  {
+    "package": "@microsoft/signalr",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2768656
   },
@@ -937,6 +1813,30 @@
   },
   {
     "package": "@microsoft/signalr-protocol-msgpack",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 0
+  },
+  {
+    "package": "@microsoft/signalr-protocol-msgpack",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@microsoft/signalr-protocol-msgpack",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 323583
+  },
+  {
+    "package": "@microsoft/signalr-protocol-msgpack",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 95594
+  },
+  {
+    "package": "@microsoft/signalr-protocol-msgpack",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 99739
@@ -966,6 +1866,30 @@
     "value": 89120
   },
   {
+    "package": "@moq/hang",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 4
+  },
+  {
+    "package": "@moq/hang",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1
+  },
+  {
+    "package": "@moq/hang",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 21448
+  },
+  {
+    "package": "@moq/hang",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 89120
+  },
+  {
     "package": "@moq/net",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -974,6 +1898,18 @@
   {
     "package": "@moq/net",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 98352
+  },
+  {
+    "package": "@moq/net",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 17862
+  },
+  {
+    "package": "@moq/net",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 98352
   },
@@ -1002,6 +1938,30 @@
     "value": 3928
   },
   {
+    "package": "@moq/publish",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "@moq/publish",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@moq/publish",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 7613
+  },
+  {
+    "package": "@moq/publish",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 3928
+  },
+  {
     "package": "@moq/watch",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1022,6 +1982,30 @@
   {
     "package": "@moq/watch",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 85508
+  },
+  {
+    "package": "@moq/watch",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 3
+  },
+  {
+    "package": "@moq/watch",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@moq/watch",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 8104
+  },
+  {
+    "package": "@moq/watch",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 85508
   },
@@ -1050,6 +2034,30 @@
     "value": 8215907
   },
   {
+    "package": "@msgpack/msgpack",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 767
+  },
+  {
+    "package": "@msgpack/msgpack",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 18535
+  },
+  {
+    "package": "@msgpack/msgpack",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2248117
+  },
+  {
+    "package": "@msgpack/msgpack",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 8215907
+  },
+  {
     "package": "@nats-io/nats-core",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1074,6 +2082,18 @@
     "value": 1202349
   },
   {
+    "package": "@nats-io/nats-core",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 134277
+  },
+  {
+    "package": "@nats-io/nats-core",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 1202349
+  },
+  {
     "package": "@neondatabase/serverless",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -1082,6 +2102,18 @@
   {
     "package": "@neondatabase/serverless",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 8073011
+  },
+  {
+    "package": "@neondatabase/serverless",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 29182
+  },
+  {
+    "package": "@neondatabase/serverless",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 8073011
   },
@@ -1110,6 +2142,30 @@
     "value": 12195
   },
   {
+    "package": "@nostr-dev-kit/ndk",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 33
+  },
+  {
+    "package": "@nostr-dev-kit/ndk",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3
+  },
+  {
+    "package": "@nostr-dev-kit/ndk",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 5767
+  },
+  {
+    "package": "@nostr-dev-kit/ndk",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 12195
+  },
+  {
     "package": "@novnc/novnc",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1130,6 +2186,30 @@
   {
     "package": "@novnc/novnc",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 1980351
+  },
+  {
+    "package": "@novnc/novnc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 49
+  },
+  {
+    "package": "@novnc/novnc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 18
+  },
+  {
+    "package": "@novnc/novnc",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1438324
+  },
+  {
+    "package": "@novnc/novnc",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 1980351
   },
@@ -1158,6 +2238,30 @@
     "value": 62777
   },
   {
+    "package": "@open-rpc/client-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "@open-rpc/client-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 4
+  },
+  {
+    "package": "@open-rpc/client-js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 955
+  },
+  {
+    "package": "@open-rpc/client-js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 62777
+  },
+  {
     "package": "@opentelemetry/exporter-trace-otlp-http",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -1170,6 +2274,18 @@
     "value": 52679740
   },
   {
+    "package": "@opentelemetry/exporter-trace-otlp-http",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 4614362
+  },
+  {
+    "package": "@opentelemetry/exporter-trace-otlp-http",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 52679740
+  },
+  {
     "package": "@opentelemetry/exporter-trace-otlp-proto",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -1178,6 +2294,18 @@
   {
     "package": "@opentelemetry/exporter-trace-otlp-proto",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 36870880
+  },
+  {
+    "package": "@opentelemetry/exporter-trace-otlp-proto",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 9453
+  },
+  {
+    "package": "@opentelemetry/exporter-trace-otlp-proto",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 36870880
   },
@@ -1206,6 +2334,30 @@
     "value": 3613759
   },
   {
+    "package": "@orpc/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 203
+  },
+  {
+    "package": "@orpc/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 445
+  },
+  {
+    "package": "@orpc/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 11681
+  },
+  {
+    "package": "@orpc/client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 3613759
+  },
+  {
     "package": "@planetscale/database",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1226,6 +2378,30 @@
   {
     "package": "@planetscale/database",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 750449
+  },
+  {
+    "package": "@planetscale/database",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 3
+  },
+  {
+    "package": "@planetscale/database",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@planetscale/database",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 67798
+  },
+  {
+    "package": "@planetscale/database",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 750449
   },
@@ -1254,6 +2430,30 @@
     "value": 192592
   },
   {
+    "package": "@powersync/web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "@powersync/web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@powersync/web",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 5497
+  },
+  {
+    "package": "@powersync/web",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 192592
+  },
+  {
     "package": "@protobuf-ts/grpcweb-transport",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1278,6 +2478,30 @@
     "value": 635680
   },
   {
+    "package": "@protobuf-ts/grpcweb-transport",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 79
+  },
+  {
+    "package": "@protobuf-ts/grpcweb-transport",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1567
+  },
+  {
+    "package": "@protobuf-ts/grpcweb-transport",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2358
+  },
+  {
+    "package": "@protobuf-ts/grpcweb-transport",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 635680
+  },
+  {
     "package": "@protobuf-ts/twirp-transport",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1298,6 +2522,30 @@
   {
     "package": "@protobuf-ts/twirp-transport",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 205355
+  },
+  {
+    "package": "@protobuf-ts/twirp-transport",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 5
+  },
+  {
+    "package": "@protobuf-ts/twirp-transport",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 12
+  },
+  {
+    "package": "@protobuf-ts/twirp-transport",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 968
+  },
+  {
+    "package": "@protobuf-ts/twirp-transport",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 205355
   },
@@ -1327,6 +2575,30 @@
   },
   {
     "package": "@rails/actioncable",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 31
+  },
+  {
+    "package": "@rails/actioncable",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 27
+  },
+  {
+    "package": "@rails/actioncable",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 449286
+  },
+  {
+    "package": "@rails/actioncable",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 2403708
+  },
+  {
+    "package": "@rails/actioncable",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 2236623
@@ -1340,6 +2612,18 @@
   {
     "package": "@rocicorp/zero",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 305117
+  },
+  {
+    "package": "@rocicorp/zero",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 22396
+  },
+  {
+    "package": "@rocicorp/zero",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 305117
   },
@@ -1368,6 +2652,30 @@
     "value": 1057
   },
   {
+    "package": "@skyware/jetstream",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 4
+  },
+  {
+    "package": "@skyware/jetstream",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1
+  },
+  {
+    "package": "@skyware/jetstream",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 432
+  },
+  {
+    "package": "@skyware/jetstream",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 1057
+  },
+  {
     "package": "@solana/kit",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1392,6 +2700,30 @@
     "value": 3341248
   },
   {
+    "package": "@solana/kit",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 105
+  },
+  {
+    "package": "@solana/kit",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 16149
+  },
+  {
+    "package": "@solana/kit",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 31647
+  },
+  {
+    "package": "@solana/kit",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 3341248
+  },
+  {
     "package": "@stomp/rx-stomp",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1412,6 +2744,30 @@
   {
     "package": "@stomp/rx-stomp",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 105022
+  },
+  {
+    "package": "@stomp/rx-stomp",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 11
+  },
+  {
+    "package": "@stomp/rx-stomp",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 9
+  },
+  {
+    "package": "@stomp/rx-stomp",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 457780
+  },
+  {
+    "package": "@stomp/rx-stomp",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 105022
   },
@@ -1447,6 +2803,30 @@
   },
   {
     "package": "@stomp/stompjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 116
+  },
+  {
+    "package": "@stomp/stompjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 42
+  },
+  {
+    "package": "@stomp/stompjs",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 3452514
+  },
+  {
+    "package": "@stomp/stompjs",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 641032
+  },
+  {
+    "package": "@stomp/stompjs",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 652922
@@ -1476,6 +2856,30 @@
     "value": 3780230
   },
   {
+    "package": "@streamparser/json",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 26
+  },
+  {
+    "package": "@streamparser/json",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 97
+  },
+  {
+    "package": "@streamparser/json",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 41763
+  },
+  {
+    "package": "@streamparser/json",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 3780230
+  },
+  {
     "package": "@supabase/postgrest-js",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1500,6 +2904,30 @@
     "value": 72314222
   },
   {
+    "package": "@supabase/postgrest-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 30
+  },
+  {
+    "package": "@supabase/postgrest-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3925
+  },
+  {
+    "package": "@supabase/postgrest-js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 12713744
+  },
+  {
+    "package": "@supabase/postgrest-js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 72314222
+  },
+  {
     "package": "@supabase/realtime-js",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1520,6 +2948,30 @@
   {
     "package": "@supabase/realtime-js",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 72086012
+  },
+  {
+    "package": "@supabase/realtime-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 22
+  },
+  {
+    "package": "@supabase/realtime-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3973
+  },
+  {
+    "package": "@supabase/realtime-js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 13225590
+  },
+  {
+    "package": "@supabase/realtime-js",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 72086012
   },
@@ -1554,6 +3006,30 @@
     "value": 27203
   },
   {
+    "package": "@tidbcloud/serverless",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 4
+  },
+  {
+    "package": "@tidbcloud/serverless",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@tidbcloud/serverless",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 20947
+  },
+  {
+    "package": "@tidbcloud/serverless",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 27203
+  },
+  {
     "package": "@trpc/client",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -1562,6 +3038,18 @@
   {
     "package": "@trpc/client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 6940434
+  },
+  {
+    "package": "@trpc/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 35351
+  },
+  {
+    "package": "@trpc/client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 6940434
   },
@@ -1590,6 +3078,30 @@
     "value": 8167407
   },
   {
+    "package": "@upstash/redis",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 446
+  },
+  {
+    "package": "@upstash/redis",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 475
+  },
+  {
+    "package": "@upstash/redis",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 76463
+  },
+  {
+    "package": "@upstash/redis",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 8167407
+  },
+  {
     "package": "@urql/core",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1610,6 +3122,30 @@
   {
     "package": "@urql/core",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 7829468
+  },
+  {
+    "package": "@urql/core",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 68
+  },
+  {
+    "package": "@urql/core",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 60
+  },
+  {
+    "package": "@urql/core",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 6475
+  },
+  {
+    "package": "@urql/core",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 7829468
   },
@@ -1638,6 +3174,30 @@
     "value": 1310861
   },
   {
+    "package": "@videojs/http-streaming",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 15
+  },
+  {
+    "package": "@videojs/http-streaming",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 470
+  },
+  {
+    "package": "@videojs/http-streaming",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 3355499
+  },
+  {
+    "package": "@videojs/http-streaming",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 1310861
+  },
+  {
     "package": "@vueuse/core",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1658,6 +3218,30 @@
   {
     "package": "@vueuse/core",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 19017280
+  },
+  {
+    "package": "@vueuse/core",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 306
+  },
+  {
+    "package": "@vueuse/core",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 5907
+  },
+  {
+    "package": "@vueuse/core",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 497326
+  },
+  {
+    "package": "@vueuse/core",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 19017280
   },
@@ -1686,6 +3270,30 @@
     "value": 25167
   },
   {
+    "package": "@xmpp/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 36
+  },
+  {
+    "package": "@xmpp/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 10
+  },
+  {
+    "package": "@xmpp/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 8861
+  },
+  {
+    "package": "@xmpp/client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 25167
+  },
+  {
     "package": "@xterm/addon-attach",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1710,6 +3318,30 @@
     "value": 157935
   },
   {
+    "package": "@xterm/addon-attach",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 10
+  },
+  {
+    "package": "@xterm/addon-attach",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 56
+  },
+  {
+    "package": "@xterm/addon-attach",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2079
+  },
+  {
+    "package": "@xterm/addon-attach",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 157935
+  },
+  {
     "package": "@y-sweet/client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1730,6 +3362,30 @@
   {
     "package": "@y-sweet/client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 6966
+  },
+  {
+    "package": "@y-sweet/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1
+  },
+  {
+    "package": "@y-sweet/client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "@y-sweet/client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 24
+  },
+  {
+    "package": "@y-sweet/client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 6966
   },
@@ -1759,6 +3415,30 @@
   },
   {
     "package": "ably",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 81
+  },
+  {
+    "package": "ably",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 25
+  },
+  {
+    "package": "ably",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 223032
+  },
+  {
+    "package": "ably",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 1407268
+  },
+  {
+    "package": "ably",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 1443341
@@ -1772,6 +3452,18 @@
   {
     "package": "agora-rtc-sdk-ng",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 229726
+  },
+  {
+    "package": "agora-rtc-sdk-ng",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 362204
+  },
+  {
+    "package": "agora-rtc-sdk-ng",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 229726
   },
@@ -1800,6 +3492,30 @@
     "value": 10475992
   },
   {
+    "package": "apache-arrow",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 240
+  },
+  {
+    "package": "apache-arrow",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 4676
+  },
+  {
+    "package": "apache-arrow",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1267140
+  },
+  {
+    "package": "apache-arrow",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 10475992
+  },
+  {
     "package": "autobahn",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1820,6 +3536,30 @@
   {
     "package": "autobahn",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 11511
+  },
+  {
+    "package": "autobahn",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 12
+  },
+  {
+    "package": "autobahn",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1
+  },
+  {
+    "package": "autobahn",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 857
+  },
+  {
+    "package": "autobahn",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 11511
   },
@@ -1848,6 +3588,30 @@
     "value": 5940
   },
   {
+    "package": "autobahn-browser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "autobahn-browser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "autobahn-browser",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1208
+  },
+  {
+    "package": "autobahn-browser",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 5940
+  },
+  {
     "package": "avsc",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1868,6 +3632,30 @@
   {
     "package": "avsc",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 3345954
+  },
+  {
+    "package": "avsc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 233
+  },
+  {
+    "package": "avsc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 609
+  },
+  {
+    "package": "avsc",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 3028
+  },
+  {
+    "package": "avsc",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 3345954
   },
@@ -1896,6 +3684,30 @@
     "value": 2664474
   },
   {
+    "package": "aws-amplify",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 249
+  },
+  {
+    "package": "aws-amplify",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 13
+  },
+  {
+    "package": "aws-amplify",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1627789
+  },
+  {
+    "package": "aws-amplify",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 2664474
+  },
+  {
     "package": "aws-iot-device-sdk-v2",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1916,6 +3728,30 @@
   {
     "package": "aws-iot-device-sdk-v2",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 129422
+  },
+  {
+    "package": "aws-iot-device-sdk-v2",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 45
+  },
+  {
+    "package": "aws-iot-device-sdk-v2",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 8
+  },
+  {
+    "package": "aws-iot-device-sdk-v2",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2756
+  },
+  {
+    "package": "aws-iot-device-sdk-v2",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 129422
   },
@@ -1950,6 +3786,30 @@
     "value": 16135952
   },
   {
+    "package": "aws4fetch",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 385
+  },
+  {
+    "package": "aws4fetch",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 2501
+  },
+  {
+    "package": "aws4fetch",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 9595
+  },
+  {
+    "package": "aws4fetch",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 16135952
+  },
+  {
     "package": "birpc",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -1970,6 +3830,30 @@
   {
     "package": "birpc",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 18013515
+  },
+  {
+    "package": "birpc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 67
+  },
+  {
+    "package": "birpc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1242
+  },
+  {
+    "package": "birpc",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1518229
+  },
+  {
+    "package": "birpc",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 18013515
   },
@@ -1998,6 +3882,30 @@
     "value": 36024
   },
   {
+    "package": "bittorrent-tracker",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 99
+  },
+  {
+    "package": "bittorrent-tracker",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 137
+  },
+  {
+    "package": "bittorrent-tracker",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1531
+  },
+  {
+    "package": "bittorrent-tracker",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 36024
+  },
+  {
     "package": "bson",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2018,6 +3926,30 @@
   {
     "package": "bson",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 21866351
+  },
+  {
+    "package": "bson",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 213
+  },
+  {
+    "package": "bson",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 5401
+  },
+  {
+    "package": "bson",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 78444
+  },
+  {
+    "package": "bson",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 21866351
   },
@@ -2046,6 +3978,30 @@
     "value": 1030376
   },
   {
+    "package": "capnp-es",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 0
+  },
+  {
+    "package": "capnp-es",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "capnp-es",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 890
+  },
+  {
+    "package": "capnp-es",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 1030376
+  },
+  {
     "package": "capnp-ts",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2066,6 +4022,30 @@
   {
     "package": "capnp-ts",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 751449
+  },
+  {
+    "package": "capnp-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "capnp-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3
+  },
+  {
+    "package": "capnp-ts",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1387
+  },
+  {
+    "package": "capnp-ts",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 751449
   },
@@ -2094,6 +4074,30 @@
     "value": 4218283
   },
   {
+    "package": "capnweb",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 11
+  },
+  {
+    "package": "capnweb",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 97
+  },
+  {
+    "package": "capnweb",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1800
+  },
+  {
+    "package": "capnweb",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 4218283
+  },
+  {
     "package": "cbor-x",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2118,6 +4122,30 @@
     "value": 5491047
   },
   {
+    "package": "cbor-x",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 396
+  },
+  {
+    "package": "cbor-x",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1164
+  },
+  {
+    "package": "cbor-x",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 8288
+  },
+  {
+    "package": "cbor-x",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 5491047
+  },
+  {
     "package": "centrifuge",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2138,6 +4166,30 @@
   {
     "package": "centrifuge",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2174956
+  },
+  {
+    "package": "centrifuge",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 96
+  },
+  {
+    "package": "centrifuge",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 98
+  },
+  {
+    "package": "centrifuge",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 31098576
+  },
+  {
+    "package": "centrifuge",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2174956
   },
@@ -2173,6 +4225,30 @@
   },
   {
     "package": "cometd",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 4
+  },
+  {
+    "package": "cometd",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 4
+  },
+  {
+    "package": "cometd",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 162950
+  },
+  {
+    "package": "cometd",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 20091
+  },
+  {
+    "package": "cometd",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 22297
@@ -2202,6 +4278,30 @@
     "value": 4209696
   },
   {
+    "package": "comlink",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 902
+  },
+  {
+    "package": "comlink",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 2039
+  },
+  {
+    "package": "comlink",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 914438
+  },
+  {
+    "package": "comlink",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 4209696
+  },
+  {
     "package": "convex",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -2210,6 +4310,18 @@
   {
     "package": "convex",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2758722
+  },
+  {
+    "package": "convex",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 407553
+  },
+  {
+    "package": "convex",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2758722
   },
@@ -2238,6 +4350,30 @@
     "value": 1286540
   },
   {
+    "package": "dashjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 44
+  },
+  {
+    "package": "dashjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 154
+  },
+  {
+    "package": "dashjs",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 35975224
+  },
+  {
+    "package": "dashjs",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 1286540
+  },
+  {
     "package": "ddp.js",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2258,6 +4394,30 @@
   {
     "package": "ddp.js",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 1595
+  },
+  {
+    "package": "ddp.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 16
+  },
+  {
+    "package": "ddp.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 21
+  },
+  {
+    "package": "ddp.js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 100
+  },
+  {
+    "package": "ddp.js",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 1595
   },
@@ -2292,6 +4452,30 @@
     "value": 20370676
   },
   {
+    "package": "dns-packet",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 947
+  },
+  {
+    "package": "dns-packet",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 77607
+  },
+  {
+    "package": "dns-packet",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1566
+  },
+  {
+    "package": "dns-packet",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 20370676
+  },
+  {
     "package": "engine.io-client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2312,6 +4496,30 @@
   {
     "package": "engine.io-client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 23488904
+  },
+  {
+    "package": "engine.io-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 437
+  },
+  {
+    "package": "engine.io-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 20207
+  },
+  {
+    "package": "engine.io-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1718669
+  },
+  {
+    "package": "engine.io-client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 23488904
   },
@@ -2346,6 +4554,30 @@
     "value": 4602004
   },
   {
+    "package": "ethers",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 6419
+  },
+  {
+    "package": "ethers",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 7432
+  },
+  {
+    "package": "ethers",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 16479886
+  },
+  {
+    "package": "ethers",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 4602004
+  },
+  {
     "package": "event-source-polyfill",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2366,6 +4598,30 @@
   {
     "package": "event-source-polyfill",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2810578
+  },
+  {
+    "package": "event-source-polyfill",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 240
+  },
+  {
+    "package": "event-source-polyfill",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 2515
+  },
+  {
+    "package": "event-source-polyfill",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 176845
+  },
+  {
+    "package": "event-source-polyfill",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2810578
   },
@@ -2394,6 +4650,30 @@
     "value": 103058123
   },
   {
+    "package": "eventsource",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 56
+  },
+  {
+    "package": "eventsource",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 168
+  },
+  {
+    "package": "eventsource",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 645843
+  },
+  {
+    "package": "eventsource",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 103058123
+  },
+  {
     "package": "eventsource-parser",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2414,6 +4694,30 @@
   {
     "package": "eventsource-parser",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 121418058
+  },
+  {
+    "package": "eventsource-parser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 80
+  },
+  {
+    "package": "eventsource-parser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 347
+  },
+  {
+    "package": "eventsource-parser",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 194005
+  },
+  {
+    "package": "eventsource-parser",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 121418058
   },
@@ -2443,6 +4747,30 @@
   },
   {
     "package": "faye",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 221
+  },
+  {
+    "package": "faye",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1598
+  },
+  {
+    "package": "faye",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1350
+  },
+  {
+    "package": "faye",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 2206386
+  },
+  {
+    "package": "faye",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 2187172
@@ -2456,6 +4784,18 @@
   {
     "package": "firebase",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 14395629
+  },
+  {
+    "package": "firebase",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 178800930
+  },
+  {
+    "package": "firebase",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 14395629
   },
@@ -2484,6 +4824,30 @@
     "value": 17749449
   },
   {
+    "package": "flatbuffers",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2104
+  },
+  {
+    "package": "flatbuffers",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 10941
+  },
+  {
+    "package": "flatbuffers",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 902843
+  },
+  {
+    "package": "flatbuffers",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 17749449
+  },
+  {
     "package": "flv.js",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2504,6 +4868,30 @@
   {
     "package": "flv.js",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 41344
+  },
+  {
+    "package": "flv.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 445
+  },
+  {
+    "package": "flv.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 131
+  },
+  {
+    "package": "flv.js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 7440706
+  },
+  {
+    "package": "flv.js",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 41344
   },
@@ -2532,6 +4920,30 @@
     "value": 4125
   },
   {
+    "package": "graffle",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1
+  },
+  {
+    "package": "graffle",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1
+  },
+  {
+    "package": "graffle",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 741
+  },
+  {
+    "package": "graffle",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 4125
+  },
+  {
     "package": "graphql-http",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2552,6 +4964,30 @@
   {
     "package": "graphql-http",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2411958
+  },
+  {
+    "package": "graphql-http",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 91
+  },
+  {
+    "package": "graphql-http",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1465
+  },
+  {
+    "package": "graphql-http",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 4338
+  },
+  {
+    "package": "graphql-http",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2411958
   },
@@ -2580,6 +5016,30 @@
     "value": 12009128
   },
   {
+    "package": "graphql-request",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 611
+  },
+  {
+    "package": "graphql-request",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1134
+  },
+  {
+    "package": "graphql-request",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 35371
+  },
+  {
+    "package": "graphql-request",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 12009128
+  },
+  {
     "package": "graphql-sse",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2600,6 +5060,30 @@
   {
     "package": "graphql-sse",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 484906
+  },
+  {
+    "package": "graphql-sse",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 30
+  },
+  {
+    "package": "graphql-sse",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 37
+  },
+  {
+    "package": "graphql-sse",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2190
+  },
+  {
+    "package": "graphql-sse",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 484906
   },
@@ -2628,6 +5112,30 @@
     "value": 16040737
   },
   {
+    "package": "graphql-ws",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 173
+  },
+  {
+    "package": "graphql-ws",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1295
+  },
+  {
+    "package": "graphql-ws",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 46283
+  },
+  {
+    "package": "graphql-ws",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 16040737
+  },
+  {
     "package": "grpc-web",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2648,6 +5156,30 @@
   {
     "package": "grpc-web",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 279120
+  },
+  {
+    "package": "grpc-web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 21
+  },
+  {
+    "package": "grpc-web",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 5
+  },
+  {
+    "package": "grpc-web",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 951
+  },
+  {
+    "package": "grpc-web",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 279120
   },
@@ -2676,6 +5208,30 @@
     "value": 90853
   },
   {
+    "package": "guacamole-common-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 9
+  },
+  {
+    "package": "guacamole-common-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "guacamole-common-js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 8018
+  },
+  {
+    "package": "guacamole-common-js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 90853
+  },
+  {
     "package": "gun",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2696,6 +5252,30 @@
   {
     "package": "gun",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 81170
+  },
+  {
+    "package": "gun",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 126
+  },
+  {
+    "package": "gun",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 195
+  },
+  {
+    "package": "gun",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 170570
+  },
+  {
+    "package": "gun",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 81170
   },
@@ -2724,6 +5304,30 @@
     "value": 23902
   },
   {
+    "package": "helia",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 21
+  },
+  {
+    "package": "helia",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 23
+  },
+  {
+    "package": "helia",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 3090
+  },
+  {
+    "package": "helia",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 23902
+  },
+  {
     "package": "hls.js",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2744,6 +5348,30 @@
   {
     "package": "hls.js",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 14796794
+  },
+  {
+    "package": "hls.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 955
+  },
+  {
+    "package": "hls.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 2232
+  },
+  {
+    "package": "hls.js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 7846902719
+  },
+  {
+    "package": "hls.js",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 14796794
   },
@@ -2772,6 +5400,30 @@
     "value": 41261
   },
   {
+    "package": "home-assistant-js-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 49
+  },
+  {
+    "package": "home-assistant-js-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 14
+  },
+  {
+    "package": "home-assistant-js-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 31973
+  },
+  {
+    "package": "home-assistant-js-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 41261
+  },
+  {
     "package": "irc-framework",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2796,6 +5448,30 @@
     "value": 3629
   },
   {
+    "package": "irc-framework",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 15
+  },
+  {
+    "package": "irc-framework",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "irc-framework",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1014
+  },
+  {
+    "package": "irc-framework",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 3629
+  },
+  {
     "package": "isomorphic-ws",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2816,6 +5492,30 @@
   {
     "package": "isomorphic-ws",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 28861366
+  },
+  {
+    "package": "isomorphic-ws",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1063
+  },
+  {
+    "package": "isomorphic-ws",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 25028
+  },
+  {
+    "package": "isomorphic-ws",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 46000
+  },
+  {
+    "package": "isomorphic-ws",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 28861366
   },
@@ -2850,6 +5550,30 @@
     "value": 9483
   },
   {
+    "package": "janus-gateway",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 176
+  },
+  {
+    "package": "janus-gateway",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "janus-gateway",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 384159
+  },
+  {
+    "package": "janus-gateway",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 9483
+  },
+  {
     "package": "jayson",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2870,6 +5594,30 @@
   {
     "package": "jayson",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 3134108
+  },
+  {
+    "package": "jayson",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 43
+  },
+  {
+    "package": "jayson",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 7
+  },
+  {
+    "package": "jayson",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 29718
+  },
+  {
+    "package": "jayson",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 3134108
   },
@@ -2898,6 +5646,30 @@
     "value": 22
   },
   {
+    "package": "jmap-client-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 0
+  },
+  {
+    "package": "jmap-client-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "jmap-client-ts",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 12
+  },
+  {
+    "package": "jmap-client-ts",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 22
+  },
+  {
     "package": "jmap-jam",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2918,6 +5690,30 @@
   {
     "package": "jmap-jam",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 3966
+  },
+  {
+    "package": "jmap-jam",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1
+  },
+  {
+    "package": "jmap-jam",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1
+  },
+  {
+    "package": "jmap-jam",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 335
+  },
+  {
+    "package": "jmap-jam",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 3966
   },
@@ -2946,6 +5742,30 @@
     "value": 1854
   },
   {
+    "package": "jsmpeg",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 10
+  },
+  {
+    "package": "jsmpeg",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "jsmpeg",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 16381
+  },
+  {
+    "package": "jsmpeg",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 1854
+  },
+  {
     "package": "json-rpc-2.0",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -2966,6 +5786,30 @@
   {
     "package": "json-rpc-2.0",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 12359956
+  },
+  {
+    "package": "json-rpc-2.0",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 179
+  },
+  {
+    "package": "json-rpc-2.0",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 261
+  },
+  {
+    "package": "json-rpc-2.0",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 915
+  },
+  {
+    "package": "json-rpc-2.0",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 12359956
   },
@@ -2994,6 +5838,30 @@
     "value": 229539
   },
   {
+    "package": "jssip",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 146
+  },
+  {
+    "package": "jssip",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 15
+  },
+  {
+    "package": "jssip",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 39722
+  },
+  {
+    "package": "jssip",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 229539
+  },
+  {
     "package": "laravel-echo",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3014,6 +5882,30 @@
   {
     "package": "laravel-echo",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 1159610
+  },
+  {
+    "package": "laravel-echo",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 36
+  },
+  {
+    "package": "laravel-echo",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 9
+  },
+  {
+    "package": "laravel-echo",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 10481237
+  },
+  {
+    "package": "laravel-echo",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 1159610
   },
@@ -3048,6 +5940,30 @@
     "value": 826
   },
   {
+    "package": "lib-jitsi-meet",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1
+  },
+  {
+    "package": "lib-jitsi-meet",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "lib-jitsi-meet",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1317
+  },
+  {
+    "package": "lib-jitsi-meet",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 826
+  },
+  {
     "package": "libp2p",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3072,6 +5988,30 @@
     "value": 114276
   },
   {
+    "package": "libp2p",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 106
+  },
+  {
+    "package": "libp2p",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 245
+  },
+  {
+    "package": "libp2p",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 15937
+  },
+  {
+    "package": "libp2p",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 114276
+  },
+  {
     "package": "livekit-client",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -3080,6 +6020,18 @@
   {
     "package": "livekit-client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 7733700
+  },
+  {
+    "package": "livekit-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 8202004
+  },
+  {
+    "package": "livekit-client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 7733700
   },
@@ -3096,6 +6048,18 @@
     "value": 31697
   },
   {
+    "package": "masto",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1568
+  },
+  {
+    "package": "masto",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 31697
+  },
+  {
     "package": "matrix-js-sdk",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -3104,6 +6068,18 @@
   {
     "package": "matrix-js-sdk",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 504757
+  },
+  {
+    "package": "matrix-js-sdk",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 34701
+  },
+  {
+    "package": "matrix-js-sdk",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 504757
   },
@@ -3132,6 +6108,30 @@
     "value": 173730
   },
   {
+    "package": "mediasoup-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 173
+  },
+  {
+    "package": "mediasoup-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 57
+  },
+  {
+    "package": "mediasoup-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 14560
+  },
+  {
+    "package": "mediasoup-client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 173730
+  },
+  {
     "package": "meros",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3152,6 +6152,30 @@
   {
     "package": "meros",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 11262212
+  },
+  {
+    "package": "meros",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 38
+  },
+  {
+    "package": "meros",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 2195
+  },
+  {
+    "package": "meros",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1148
+  },
+  {
+    "package": "meros",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 11262212
   },
@@ -3180,6 +6204,30 @@
     "value": 102107
   },
   {
+    "package": "monaco-languageclient",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1
+  },
+  {
+    "package": "monaco-languageclient",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "monaco-languageclient",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2726
+  },
+  {
+    "package": "monaco-languageclient",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 102107
+  },
+  {
     "package": "mpegts.js",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3204,6 +6252,30 @@
     "value": 83684
   },
   {
+    "package": "mpegts.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 101
+  },
+  {
+    "package": "mpegts.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1103
+  },
+  {
+    "package": "mpegts.js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 4847780
+  },
+  {
+    "package": "mpegts.js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 83684
+  },
+  {
     "package": "mqtt",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3224,6 +6296,30 @@
   {
     "package": "mqtt",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 4486355
+  },
+  {
+    "package": "mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1342
+  },
+  {
+    "package": "mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 440
+  },
+  {
+    "package": "mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 938194
+  },
+  {
+    "package": "mqtt",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 4486355
   },
@@ -3258,6 +6354,30 @@
     "value": 61317419
   },
   {
+    "package": "msgpackr",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 166
+  },
+  {
+    "package": "msgpackr",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 4219
+  },
+  {
+    "package": "msgpackr",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 12832
+  },
+  {
+    "package": "msgpackr",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 61317419
+  },
+  {
     "package": "nats.ws",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3282,6 +6402,30 @@
     "value": 60800
   },
   {
+    "package": "nats.ws",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 60
+  },
+  {
+    "package": "nats.ws",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 24
+  },
+  {
+    "package": "nats.ws",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1243240
+  },
+  {
+    "package": "nats.ws",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 60800
+  },
+  {
     "package": "neo4j-driver",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -3290,6 +6434,18 @@
   {
     "package": "neo4j-driver",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 1475572
+  },
+  {
+    "package": "neo4j-driver",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 10827
+  },
+  {
+    "package": "neo4j-driver",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 1475572
   },
@@ -3306,6 +6462,18 @@
     "value": 7618
   },
   {
+    "package": "neo4j-driver-lite",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 916
+  },
+  {
+    "package": "neo4j-driver-lite",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 7618
+  },
+  {
     "package": "nostr-tools",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -3314,6 +6482,18 @@
   {
     "package": "nostr-tools",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 643156
+  },
+  {
+    "package": "nostr-tools",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 159808
+  },
+  {
+    "package": "nostr-tools",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 643156
   },
@@ -3342,6 +6522,30 @@
     "value": 69
   },
   {
+    "package": "o.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1
+  },
+  {
+    "package": "o.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "o.js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 32
+  },
+  {
+    "package": "o.js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 69
+  },
+  {
     "package": "oboe",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3362,6 +6566,30 @@
   {
     "package": "oboe",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 473248
+  },
+  {
+    "package": "oboe",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 116
+  },
+  {
+    "package": "oboe",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1261
+  },
+  {
+    "package": "oboe",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 7845
+  },
+  {
+    "package": "oboe",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 473248
   },
@@ -3390,6 +6618,30 @@
     "value": 54750
   },
   {
+    "package": "obs-websocket-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 42
+  },
+  {
+    "package": "obs-websocket-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 8
+  },
+  {
+    "package": "obs-websocket-js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 461608
+  },
+  {
+    "package": "obs-websocket-js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 54750
+  },
+  {
     "package": "odata-query",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3410,6 +6662,30 @@
   {
     "package": "odata-query",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 192979
+  },
+  {
+    "package": "odata-query",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 9
+  },
+  {
+    "package": "odata-query",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 23
+  },
+  {
+    "package": "odata-query",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2576
+  },
+  {
+    "package": "odata-query",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 192979
   },
@@ -3438,6 +6714,30 @@
     "value": 5424
   },
   {
+    "package": "openvidu-browser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 9
+  },
+  {
+    "package": "openvidu-browser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3
+  },
+  {
+    "package": "openvidu-browser",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1614
+  },
+  {
+    "package": "openvidu-browser",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 5424
+  },
+  {
     "package": "paho-mqtt",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3458,6 +6758,30 @@
   {
     "package": "paho-mqtt",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 150822
+  },
+  {
+    "package": "paho-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 104
+  },
+  {
+    "package": "paho-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 482
+  },
+  {
+    "package": "paho-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 22084242
+  },
+  {
+    "package": "paho-mqtt",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 150822
   },
@@ -3493,6 +6817,30 @@
   },
   {
     "package": "partysocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 143
+  },
+  {
+    "package": "partysocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 219
+  },
+  {
+    "package": "partysocket",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 13801
+  },
+  {
+    "package": "partysocket",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 4960145
+  },
+  {
+    "package": "partysocket",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 4938223
@@ -3522,6 +6870,30 @@
     "value": 138530
   },
   {
+    "package": "peerjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 212
+  },
+  {
+    "package": "peerjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 159
+  },
+  {
+    "package": "peerjs",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1338964
+  },
+  {
+    "package": "peerjs",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 138530
+  },
+  {
     "package": "penpal",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3546,6 +6918,30 @@
     "value": 506405
   },
   {
+    "package": "penpal",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 14
+  },
+  {
+    "package": "penpal",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 5
+  },
+  {
+    "package": "penpal",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 281138
+  },
+  {
+    "package": "penpal",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 506405
+  },
+  {
     "package": "phoenix",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3566,6 +6962,30 @@
   {
     "package": "phoenix",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2247514
+  },
+  {
+    "package": "phoenix",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 234
+  },
+  {
+    "package": "phoenix",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1151
+  },
+  {
+    "package": "phoenix",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 686826
+  },
+  {
+    "package": "phoenix",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2247514
   },
@@ -3600,6 +7020,30 @@
     "value": 6016
   },
   {
+    "package": "post-me",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 22
+  },
+  {
+    "package": "post-me",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 62
+  },
+  {
+    "package": "post-me",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 450
+  },
+  {
+    "package": "post-me",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 6016
+  },
+  {
     "package": "pouchdb-browser",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3624,6 +7068,30 @@
     "value": 18355
   },
   {
+    "package": "pouchdb-browser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 6
+  },
+  {
+    "package": "pouchdb-browser",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 4
+  },
+  {
+    "package": "pouchdb-browser",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 554
+  },
+  {
+    "package": "pouchdb-browser",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 18355
+  },
+  {
     "package": "precompiled-mqtt",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3644,6 +7112,30 @@
   {
     "package": "precompiled-mqtt",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 1186
+  },
+  {
+    "package": "precompiled-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 8
+  },
+  {
+    "package": "precompiled-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 6
+  },
+  {
+    "package": "precompiled-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 80
+  },
+  {
+    "package": "precompiled-mqtt",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 1186
   },
@@ -3679,6 +7171,30 @@
   },
   {
     "package": "primus",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 31
+  },
+  {
+    "package": "primus",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3735
+  },
+  {
+    "package": "primus",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2402
+  },
+  {
+    "package": "primus",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 165624
+  },
+  {
+    "package": "primus",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 136024
@@ -3708,6 +7224,30 @@
     "value": 124020394
   },
   {
+    "package": "protobufjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 560
+  },
+  {
+    "package": "protobufjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 2341
+  },
+  {
+    "package": "protobufjs",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 306688144
+  },
+  {
+    "package": "protobufjs",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 124020394
+  },
+  {
     "package": "pubnub",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3728,6 +7268,30 @@
   {
     "package": "pubnub",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 436097
+  },
+  {
+    "package": "pubnub",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 10
+  },
+  {
+    "package": "pubnub",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 4
+  },
+  {
+    "package": "pubnub",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 20201
+  },
+  {
+    "package": "pubnub",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 436097
   },
@@ -3763,6 +7327,30 @@
   },
   {
     "package": "pusher-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 217
+  },
+  {
+    "package": "pusher-js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 172
+  },
+  {
+    "package": "pusher-js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 8798479
+  },
+  {
+    "package": "pusher-js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 4510458
+  },
+  {
+    "package": "pusher-js",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 4310338
@@ -3788,6 +7376,30 @@
   {
     "package": "react-use-websocket",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 813889
+  },
+  {
+    "package": "react-use-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 104
+  },
+  {
+    "package": "react-use-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 5
+  },
+  {
+    "package": "react-use-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 4110
+  },
+  {
+    "package": "react-use-websocket",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 813889
   },
@@ -3823,6 +7435,30 @@
   },
   {
     "package": "reconnecting-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 584
+  },
+  {
+    "package": "reconnecting-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 967
+  },
+  {
+    "package": "reconnecting-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 615741
+  },
+  {
+    "package": "reconnecting-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 788092
+  },
+  {
+    "package": "reconnecting-websocket",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 776570
@@ -3852,6 +7488,30 @@
     "value": 5473808
   },
   {
+    "package": "relay-runtime",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 10
+  },
+  {
+    "package": "relay-runtime",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 13
+  },
+  {
+    "package": "relay-runtime",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 31758
+  },
+  {
+    "package": "relay-runtime",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 5473808
+  },
+  {
     "package": "rhea",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3872,6 +7532,30 @@
   {
     "package": "rhea",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 1442456
+  },
+  {
+    "package": "rhea",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 37
+  },
+  {
+    "package": "rhea",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 232
+  },
+  {
+    "package": "rhea",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1366
+  },
+  {
+    "package": "rhea",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 1442456
   },
@@ -3907,6 +7591,30 @@
   },
   {
     "package": "rhea-promise",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 10
+  },
+  {
+    "package": "rhea-promise",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 228
+  },
+  {
+    "package": "rhea-promise",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 952
+  },
+  {
+    "package": "rhea-promise",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 1264496
+  },
+  {
+    "package": "rhea-promise",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 1208576
@@ -3932,6 +7640,30 @@
   {
     "package": "robust-websocket",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 8039
+  },
+  {
+    "package": "robust-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 11
+  },
+  {
+    "package": "robust-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3
+  },
+  {
+    "package": "robust-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1958
+  },
+  {
+    "package": "robust-websocket",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 8039
   },
@@ -3966,6 +7698,30 @@
     "value": 29712
   },
   {
+    "package": "roslib",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 7
+  },
+  {
+    "package": "roslib",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "roslib",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 33199
+  },
+  {
+    "package": "roslib",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 29712
+  },
+  {
     "package": "rpc-websockets",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -3986,6 +7742,30 @@
   {
     "package": "rpc-websockets",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 3144943
+  },
+  {
+    "package": "rpc-websockets",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 28
+  },
+  {
+    "package": "rpc-websockets",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 49
+  },
+  {
+    "package": "rpc-websockets",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 32793
+  },
+  {
+    "package": "rpc-websockets",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 3144943
   },
@@ -4014,6 +7794,30 @@
     "value": 249104
   },
   {
+    "package": "rsocket-core",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 7
+  },
+  {
+    "package": "rsocket-core",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1
+  },
+  {
+    "package": "rsocket-core",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 585
+  },
+  {
+    "package": "rsocket-core",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 249104
+  },
+  {
     "package": "rsocket-websocket-client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4038,6 +7842,30 @@
     "value": 229914
   },
   {
+    "package": "rsocket-websocket-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 2
+  },
+  {
+    "package": "rsocket-websocket-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "rsocket-websocket-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 569
+  },
+  {
+    "package": "rsocket-websocket-client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 229914
+  },
+  {
     "package": "rxdb",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4058,6 +7886,30 @@
   {
     "package": "rxdb",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 133963
+  },
+  {
+    "package": "rxdb",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 4
+  },
+  {
+    "package": "rxdb",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "rxdb",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 47076
+  },
+  {
+    "package": "rxdb",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 133963
   },
@@ -4087,6 +7939,30 @@
   },
   {
     "package": "rxjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 20283
+  },
+  {
+    "package": "rxjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 130589
+  },
+  {
+    "package": "rxjs",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 38723640
+  },
+  {
+    "package": "rxjs",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 141069226
+  },
+  {
+    "package": "rxjs",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 139371879
@@ -4104,6 +7980,18 @@
     "value": 458722
   },
   {
+    "package": "shaka-player",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 112217615
+  },
+  {
+    "package": "shaka-player",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 458722
+  },
+  {
     "package": "sharedb",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -4112,6 +8000,18 @@
   {
     "package": "sharedb",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 40103
+  },
+  {
+    "package": "sharedb",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 3652
+  },
+  {
+    "package": "sharedb",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 40103
   },
@@ -4140,6 +8040,30 @@
     "value": 594679
   },
   {
+    "package": "simple-peer",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 369
+  },
+  {
+    "package": "simple-peer",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 1470
+  },
+  {
+    "package": "simple-peer",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 321553
+  },
+  {
+    "package": "simple-peer",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 594679
+  },
+  {
     "package": "simpleddp",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4160,6 +8084,30 @@
   {
     "package": "simpleddp",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 3442
+  },
+  {
+    "package": "simpleddp",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 14
+  },
+  {
+    "package": "simpleddp",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "simpleddp",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 173
+  },
+  {
+    "package": "simpleddp",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 3442
   },
@@ -4194,6 +8142,30 @@
     "value": 266892
   },
   {
+    "package": "sip.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 105
+  },
+  {
+    "package": "sip.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 13
+  },
+  {
+    "package": "sip.js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 5272562
+  },
+  {
+    "package": "sip.js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 266892
+  },
+  {
     "package": "socket.io-client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4214,6 +8186,30 @@
   {
     "package": "socket.io-client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 21332221
+  },
+  {
+    "package": "socket.io-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 6419
+  },
+  {
+    "package": "socket.io-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 11306
+  },
+  {
+    "package": "socket.io-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 9315353
+  },
+  {
+    "package": "socket.io-client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 21332221
   },
@@ -4249,6 +8245,30 @@
   },
   {
     "package": "socketcluster-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 7
+  },
+  {
+    "package": "socketcluster-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 8
+  },
+  {
+    "package": "socketcluster-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 6667
+  },
+  {
+    "package": "socketcluster-client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 155448
+  },
+  {
+    "package": "socketcluster-client",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 150141
@@ -4274,6 +8294,30 @@
   {
     "package": "sockette",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 23831
+  },
+  {
+    "package": "sockette",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 53
+  },
+  {
+    "package": "sockette",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 10
+  },
+  {
+    "package": "sockette",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 577
+  },
+  {
+    "package": "sockette",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 23831
   },
@@ -4309,6 +8353,30 @@
   },
   {
     "package": "sockjs-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1020
+  },
+  {
+    "package": "sockjs-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 15034
+  },
+  {
+    "package": "sockjs-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 30426448
+  },
+  {
+    "package": "sockjs-client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 2610975
+  },
+  {
+    "package": "sockjs-client",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 2724143
@@ -4338,6 +8406,30 @@
     "value": 75921
   },
   {
+    "package": "solclientjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 15
+  },
+  {
+    "package": "solclientjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "solclientjs",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1824
+  },
+  {
+    "package": "solclientjs",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 75921
+  },
+  {
     "package": "sse.js",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4358,6 +8450,30 @@
   {
     "package": "sse.js",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 248690
+  },
+  {
+    "package": "sse.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 39
+  },
+  {
+    "package": "sse.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 29
+  },
+  {
+    "package": "sse.js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 14413
+  },
+  {
+    "package": "sse.js",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 248690
   },
@@ -4386,6 +8502,30 @@
     "value": 12649
   },
   {
+    "package": "stanza",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 9
+  },
+  {
+    "package": "stanza",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 7
+  },
+  {
+    "package": "stanza",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1842
+  },
+  {
+    "package": "stanza",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 12649
+  },
+  {
     "package": "stompjs",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4406,6 +8546,30 @@
   {
     "package": "stompjs",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 70786
+  },
+  {
+    "package": "stompjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 299
+  },
+  {
+    "package": "stompjs",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 69
+  },
+  {
+    "package": "stompjs",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2607567
+  },
+  {
+    "package": "stompjs",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 70786
   },
@@ -4440,6 +8604,30 @@
     "value": 17204
   },
   {
+    "package": "strophe.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 3
+  },
+  {
+    "package": "strophe.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "strophe.js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 19037
+  },
+  {
+    "package": "strophe.js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 17204
+  },
+  {
     "package": "subscriptions-transport-ws",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4460,6 +8648,30 @@
   {
     "package": "subscriptions-transport-ws",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2695014
+  },
+  {
+    "package": "subscriptions-transport-ws",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 179
+  },
+  {
+    "package": "subscriptions-transport-ws",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 929
+  },
+  {
+    "package": "subscriptions-transport-ws",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 18698
+  },
+  {
+    "package": "subscriptions-transport-ws",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2695014
   },
@@ -4488,6 +8700,30 @@
     "value": 63892
   },
   {
+    "package": "surrealdb",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 50
+  },
+  {
+    "package": "surrealdb",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 3
+  },
+  {
+    "package": "surrealdb",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1359
+  },
+  {
+    "package": "surrealdb",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 63892
+  },
+  {
     "package": "thrift",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4508,6 +8744,30 @@
   {
     "package": "thrift",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 2123260
+  },
+  {
+    "package": "thrift",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 16
+  },
+  {
+    "package": "thrift",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 9
+  },
+  {
+    "package": "thrift",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1981
+  },
+  {
+    "package": "thrift",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 2123260
   },
@@ -4536,6 +8796,30 @@
     "value": 40
   },
   {
+    "package": "thruway.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 0
+  },
+  {
+    "package": "thruway.js",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "thruway.js",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 17
+  },
+  {
+    "package": "thruway.js",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 40
+  },
+  {
     "package": "trystero",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -4544,6 +8828,18 @@
   {
     "package": "trystero",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 32692
+  },
+  {
+    "package": "trystero",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 182997
+  },
+  {
+    "package": "trystero",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 32692
   },
@@ -4572,6 +8868,18 @@
     "value": 294577
   },
   {
+    "package": "tsdav",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1562
+  },
+  {
+    "package": "tsdav",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 294577
+  },
+  {
     "package": "tus-js-client",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4592,6 +8900,30 @@
   {
     "package": "tus-js-client",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 3264115
+  },
+  {
+    "package": "tus-js-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 143
+  },
+  {
+    "package": "tus-js-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 283
+  },
+  {
+    "package": "tus-js-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 36266614
+  },
+  {
+    "package": "tus-js-client",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 3264115
   },
@@ -4620,6 +8952,30 @@
     "value": 308958
   },
   {
+    "package": "twilio-video",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 41
+  },
+  {
+    "package": "twilio-video",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 6
+  },
+  {
+    "package": "twilio-video",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 13441
+  },
+  {
+    "package": "twilio-video",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 308958
+  },
+  {
     "package": "twirp-ts",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4640,6 +8996,30 @@
   {
     "package": "twirp-ts",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 82359
+  },
+  {
+    "package": "twirp-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 6
+  },
+  {
+    "package": "twirp-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 6
+  },
+  {
+    "package": "twirp-ts",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1239
+  },
+  {
+    "package": "twirp-ts",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 82359
   },
@@ -4669,6 +9049,30 @@
   },
   {
     "package": "u8-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1
+  },
+  {
+    "package": "u8-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "u8-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 865
+  },
+  {
+    "package": "u8-mqtt",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 439
+  },
+  {
+    "package": "u8-mqtt",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 410
@@ -4682,6 +9086,18 @@
   {
     "package": "viem",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 9830046
+  },
+  {
+    "package": "viem",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1812701
+  },
+  {
+    "package": "viem",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 9830046
   },
@@ -4710,6 +9126,30 @@
     "value": 34639920
   },
   {
+    "package": "vscode-jsonrpc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 58
+  },
+  {
+    "package": "vscode-jsonrpc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 5072
+  },
+  {
+    "package": "vscode-jsonrpc",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 12035
+  },
+  {
+    "package": "vscode-jsonrpc",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 34639920
+  },
+  {
     "package": "vscode-ws-jsonrpc",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4734,6 +9174,30 @@
     "value": 209967
   },
   {
+    "package": "vscode-ws-jsonrpc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 3
+  },
+  {
+    "package": "vscode-ws-jsonrpc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 27
+  },
+  {
+    "package": "vscode-ws-jsonrpc",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1001
+  },
+  {
+    "package": "vscode-ws-jsonrpc",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 209967
+  },
+  {
     "package": "wampy",
     "source": "measures-2026-11-16",
     "metric": "jsdelivr-hits-month",
@@ -4742,6 +9206,18 @@
   {
     "package": "wampy",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 6849
+  },
+  {
+    "package": "wampy",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1017
+  },
+  {
+    "package": "wampy",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 6849
   },
@@ -4770,6 +9246,30 @@
     "value": 759394
   },
   {
+    "package": "web3",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 1037
+  },
+  {
+    "package": "web3",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 16390
+  },
+  {
+    "package": "web3",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2232469
+  },
+  {
+    "package": "web3",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 759394
+  },
+  {
     "package": "webdav",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4794,6 +9294,30 @@
     "value": 261828
   },
   {
+    "package": "webdav",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 111
+  },
+  {
+    "package": "webdav",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 60
+  },
+  {
+    "package": "webdav",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 6973
+  },
+  {
+    "package": "webdav",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 261828
+  },
+  {
     "package": "websocket-ts",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4814,6 +9338,30 @@
   {
     "package": "websocket-ts",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 36031
+  },
+  {
+    "package": "websocket-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 0
+  },
+  {
+    "package": "websocket-ts",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 0
+  },
+  {
+    "package": "websocket-ts",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 765
+  },
+  {
+    "package": "websocket-ts",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 36031
   },
@@ -4849,6 +9397,30 @@
   },
   {
     "package": "webstomp-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 52
+  },
+  {
+    "package": "webstomp-client",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 15
+  },
+  {
+    "package": "webstomp-client",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 932960
+  },
+  {
+    "package": "webstomp-client",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 21497
+  },
+  {
+    "package": "webstomp-client",
     "source": "npm-check-2026-11-13",
     "metric": "npm-downloads-week",
     "value": 20908
@@ -4878,6 +9450,30 @@
     "value": 38367
   },
   {
+    "package": "webtorrent",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 104
+  },
+  {
+    "package": "webtorrent",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 2
+  },
+  {
+    "package": "webtorrent",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 268134
+  },
+  {
+    "package": "webtorrent",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 38367
+  },
+  {
     "package": "y-webrtc",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4902,6 +9498,30 @@
     "value": 370799
   },
   {
+    "package": "y-webrtc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 157
+  },
+  {
+    "package": "y-webrtc",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 119
+  },
+  {
+    "package": "y-webrtc",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 1778
+  },
+  {
+    "package": "y-webrtc",
+    "source": "measures-2026-11-17",
+    "metric": "npm-downloads-week",
+    "value": 370799
+  },
+  {
     "package": "y-websocket",
     "source": "measures-2026-11-16",
     "metric": "deps-dev-dependents-direct",
@@ -4922,6 +9542,30 @@
   {
     "package": "y-websocket",
     "source": "measures-2026-11-16",
+    "metric": "npm-downloads-week",
+    "value": 1273709
+  },
+  {
+    "package": "y-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-direct",
+    "value": 130
+  },
+  {
+    "package": "y-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "deps-dev-dependents-indirect",
+    "value": 67
+  },
+  {
+    "package": "y-websocket",
+    "source": "measures-2026-11-17",
+    "metric": "jsdelivr-hits-month",
+    "value": 2817
+  },
+  {
+    "package": "y-websocket",
+    "source": "measures-2026-11-17",
     "metric": "npm-downloads-week",
     "value": 1273709
   }
