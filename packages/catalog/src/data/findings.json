@@ -997,5 +997,165 @@
     "kind": "correctness",
     "title": "A query that contains a second ? loses its end on each request",
     "note": "addPath() of lib/utils/url.js splits the URL at each \"?\" and keeps only the first two parts. So the query ?next=/home?tab=2&token=abc becomes ?next=/home on the /info request and on each request of the transport. RFC 3986 (section 3.4) permits \"?\" in a query, and the README of sockjs-client permits a query in the URL. Issues #72 and #248 (closed) are about other losses of the query. Confidence high."
+  },
+  {
+    "id": "F0100",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "Two adjacent stream arguments: the client sends the second one as a plain argument, with no stream id",
+    "note": "The function _replaceStreamingParams() of HubConnection removes each stream argument with args.splice(), but it does not decrease the index. So the loop does not examine the next argument. A call of invoke() with two adjacent Subject arguments sends one stream id. The second Subject goes into the arguments as {\"observers\":[]}. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0101",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "A callback of onclose, onreconnecting or onreconnected that throws stops the callbacks after it",
+    "note": "HubConnection puts one try/catch block around the forEach() loop of each list of these callbacks. When a callback throws, the client logs the error and skips the callbacks after it. Thus a library that registers its callback after the app does not get the event. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0102",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "resource",
+    "title": "After a server timeout, the client starts a stateful reconnect: the new WebSocket stays open, and the closed hub still gets messages",
+    "note": "Only the stop() of the app sets connection.features.reconnect to false. The internal stop after the server timeout does not set it, so HttpConnection starts a stateful reconnect while HubConnection closes. In the repro, 1 of 2 WebSockets is open 300 ms after onclose, and the Disconnected hub gives a message to a handler. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0103",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "resource",
+    "title": "stop() during a stateful reconnect waits until the new WebSocket opens, and that WebSocket stays open",
+    "note": "WebSocketTransport keeps a new socket in a local variable until onopen sets this._webSocket, so stop() cannot close a socket that connects. In the repro, stop() resolves after 1495 ms, when the server completes the upgrade, and 1 reconnect socket stays open. Issue #58260 (the client stays in Connecting or Disconnecting, open) has possibly the same cause. Confidence high."
+  },
+  {
+    "id": "F0104",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "After a failed stateful reconnect, the automatic reconnect connects, but the client sends no message and gets no message",
+    "note": "Only _completeClose() disposes the MessageBuffer, and _startInternal() makes a new buffer only for a stateful connection. So the old buffer stays in its reconnect mode. It keeps each send and drops each received message until a Sequence message comes, and a server with no stateful reconnect sends none. The onreconnected event comes, and the pings keep the connection open. In the repro, invoke() is still pending after 1000 ms. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0105",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "With stateful reconnect, the client does not count a message that comes in the frame of the handshake response",
+    "note": "HubConnection makes the MessageBuffer only after the handshake promise resolves, and a message in the frame of the handshake response comes before that. On the first start, the app gets the message, but the buffer does not count it. So the sequence ids of the client are 1 less than those of the server. After a stateful reconnect, the app gets a message 2 times. After an automatic reconnect, the old buffer drops the message. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0106",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "resource",
+    "title": "With Server-Sent Events, a connect that fails does not close its EventSource, and the EventSource continues to reconnect",
+    "note": "In ServerSentEventsTransport.connect(), the onerror handler before the open rejects the promise, but it does not close the EventSource. The transport keeps the EventSource in _eventSource only after the open, so stop() cannot close it. In the repro, start() rejects after 1 GET request, and 3.5 s later the client has sent 4 GET requests. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0107",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "The client continues to send an upload stream after the server completed the invocation",
+    "note": "HubProtocol.md tells the caller to stop its StreamItem and Completion messages after the Completion of the callee. The function _launchStreams() of HubConnection subscribes to each upload stream and does not dispose the subscription. In the repro, the client sends 4 messages for upload stream 0 after the Completion of the server. The same occurs after stream().dispose(). No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0108",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "Two promises of the client reject with a string, not with an Error",
+    "note": "WebSocketTransport.send() gives Promise.reject(\"WebSocket is not in the OPEN state\"), and TransportSendQueue rejects with \"Connection stopped.\". So send() and invoke() reject with a string when the socket closes, or when the connection stops with sends in the queue. A caller that reads error.message gets undefined, and the rejection has no stack. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0109",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "With a binary hub protocol, the client decodes the handshake response as Latin-1, not as UTF-8",
+    "note": "HandshakeProtocol.parseHandshakeResponse() changes the bytes into text with String.fromCharCode.apply(), one character for each byte. HubProtocol.md specifies UTF-8 JSON for the handshake. So the client garbles each character of an error text that is not ASCII: \"unterstützt\" becomes \"unterstÃ¼tzt\". The text path decodes correctly. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0110",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "A client method with the name of a member of Object.prototype, for example \"constructor\", breaks on() and the client results",
+    "note": "HubConnection keeps its handlers in this._methods, a plain object, so this._methods[\"constructor\"] is the function Object. on(\"constructor\", fn) throws the TypeError \"this._methods[methodName].indexOf is not a function\". A client-result call of the server for \"constructor\" gets no Completion, so the server waits for its own timeout. A Map or Object.create(null) prevents it. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0111",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "@microsoft/signalr loads tough-cookie at run time, but it does not declare it as a dependency",
+    "note": "FetchHttpClient calls requireFunc(\"tough-cookie\") on Node.js. The package.json of @microsoft/signalr has tough-cookie only in its overrides, which have no effect on a consumer. An npm install works because npm hoists the tough-cookie of fetch-cookie. In a strict layout (pnpm with no hoist, Yarn Plug'n'Play), build() throws \"Cannot find module 'tough-cookie'\". Issue #52656 (a CookieJar fault in Electron, open) has possibly the same cause. Issue #51849 (closed) is about the version of tough-cookie only. Confidence high."
+  },
+  {
+    "id": "F0112",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "conformance",
+    "title": "After stop() and start(), the Ack timer of the old connection sends its sequence id on the new connection",
+    "note": "MessageBuffer._dispose() does not clear _ackTimerHandle, and the timer sends through the HttpConnection object that the next connection also uses. In the repro, the app stops and starts in 1 second, and the client sends Ack 3 on a new connection that has received no message. A server that trusts this Ack removes messages from its resend buffer that the client did not get. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0113",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "The check for multiple client results does not count a falsy result, so the outcome depends on the order of the handlers",
+    "note": "The function _invokeClientMethod() of HubConnection sends the error \"Client provided multiple results.\" only if expectsResponse && res && prevRes is true. So 5 and 7 give the error, and 0 and 7 give the result 7. Also, 7 and 0 give 0, and true and false give false. Pull request #45169 (closed) changed the Completion of a false or null result, but not this check. Confidence high."
+  },
+  {
+    "id": "F0114",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "types",
+    "title": "The typings tell that the client sets IStreamSubscriber.closed when the stream closes, but nothing sets it",
+    "note": "Stream.ts declares closed?: boolean with the comment \"A boolean that will be set by the IStreamResult when the stream is closed.\" No code of the client sets it. After a completion, an error or dispose(), subscriber.closed stays undefined. No upstream issue tells this fault. Confidence high."
+  },
+  {
+    "id": "F0115",
+    "package": "@microsoft/signalr",
+    "version": "11.0.0",
+    "method": "review",
+    "found": "2026-11-13",
+    "kind": "correctness",
+    "title": "The timeout and the abort signal of FetchHttpClient stop when the response headers come, so a stalled body blocks stop()",
+    "note": "The finally block of FetchHttpClient.send() clears the timeout and request.abortSignal.onabort when fetch() resolves, before deserializeContent() reads the body. So a long poll whose body stalls after its headers does not time out, and LongPollingTransport.stop() cannot abort it. In the repro, stop() is still pending after 2000 ms, in the state Disconnecting. Issue #58260 (open) has possibly the same cause. Confidence high."
   }
 ]
