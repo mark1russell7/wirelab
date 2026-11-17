@@ -912,5 +912,68 @@
     "state": "issue-open",
     "url": "https://github.com/dotnet/aspnetcore/issues/70654",
     "note": "The repro ran in CI (repro.yml, run 44004191462, one job for the 14 signalr folders). The project asks for a CLA for pull requests, so no fix pull request goes with the issue."
+  },
+  {
+    "finding": "F0114",
+    "at": "2026-11-17T21:39:41Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2099",
+    "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
+  },
+  {
+    "finding": "F0115",
+    "at": "2026-11-17T21:39:42Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2100",
+    "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
+  },
+  {
+    "finding": "F0116",
+    "at": "2026-11-17T21:39:43Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2101",
+    "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
+  },
+  {
+    "finding": "F0117",
+    "at": "2026-11-17T21:39:44Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2102",
+    "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
+  },
+  {
+    "finding": "F0118",
+    "at": "2026-11-17T21:39:45Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2103",
+    "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
+  },
+  {
+    "finding": "F0119",
+    "at": "2026-11-17T21:39:45Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2104",
+    "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
+  },
+  {
+    "finding": "F0120",
+    "at": "2026-11-17T21:39:46Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2105",
+    "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
+  },
+  {
+    "finding": "F0121",
+    "at": "2026-11-17T21:39:47Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2106",
+    "note": "The repro ran in CI (repro.yml, run 44176958498, after the fix of its output). A fix pull request can follow: the project asks for no CLA."
+  },
+  {
+    "finding": "F0122",
+    "at": "2026-11-17T21:39:48Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2107",
+    "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
   }
 ]
