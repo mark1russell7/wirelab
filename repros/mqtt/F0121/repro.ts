@@ -38,7 +38,8 @@ await new Promise<void>((resolve) => client.once("connect", () => resolve()));
 const subscribed = await new Promise<string>((resolve) => client.subscribe("f0121/t", (error) => resolve(error?.message ?? "no error")));
 const unsubscribed = await new Promise<string>((resolve) =>
   client.unsubscribe("f0121/t", (error, packet) =>
-    resolve(`${error?.message ?? "no error"}; reason code ${JSON.stringify(packet && "reasonCode" in packet ? packet.reasonCode : undefined)}`),
+    // mqtt-packet puts the reason codes of an UNSUBACK in `granted`.
+    resolve(`${error?.message ?? "no error"}; reason codes ${JSON.stringify(packet?.cmd === "unsuback" ? packet.granted : undefined)}`),
   ),
 );
 let asyncResult: string;
