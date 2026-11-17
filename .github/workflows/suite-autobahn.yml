@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
   # Each week, so that a new release of a client in the range of package.json gets a run
   schedule:
-    - cron: "52 6 * * 1"
+    - cron: "20 6 * * 1"
 
 permissions:
   contents: read
