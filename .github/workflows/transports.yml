@@ -1,6 +1,7 @@
-# The transports of each package of the catalog (roadmap item W8). The job starts scripts/transports.ts: it packs the
-# newest version of each package, reads its published files with the facts command of codeatlas, and finds the
-# markers of the transports. It keeps the new sources.json and transport-uses.json as an artifact.
+# The transports of each package of the catalog (roadmap item W8). The job starts scripts/transports.ts: it reads the
+# tarball of the newest version of each package from the registry and checks its hash. It reads the published files
+# with the facts command of codeatlas (--files published), and finds the markers of the transports.
+# It keeps the new sources.json and transport-uses.json as an artifact.
 #
 # The versions come from the registry table, and the markers from transport-markers.json. A change of one of them, or
 # a new pin of codeatlas, needs a new read. With push=true, the job push puts the tables on a new branch
@@ -39,7 +40,7 @@ defaults:
 
 env:
   # codeatlas is not on npm, so the job checks out this commit of its repository. Change the pin in a pull request.
-  CODEATLAS_REF: CODEATLAS_SHA
+  CODEATLAS_REF: 794c00ca76b11e36df259b39b813dfa8387492bd
 
 jobs:
   transports:

@@ -28,18 +28,14 @@ import {
   type Extractor,
   type MeasureRequest,
 } from "@procedures/npm/measures";
-import { fetchTransport, send } from "polite-crawler/api";
-import { HostScheduler, realClock } from "polite-crawler/politeness";
+import { realClock } from "polite-crawler/politeness";
+import { politeGet } from "./polite-get.ts";
 import { TABLE_FILES, addReadings, catalog, parseCatalog, rawTables, tableText, type Metric, type Reading, type Source } from "../packages/catalog/src/index.ts";
 
 /** The User-Agent of each request. It names no person and no project. */
 const USER_AGENT = "catalog-measures";
 /** The shortest time between two requests to each host. The downloads API refused single requests after 43 packages on 2026-11-13. */
 const INTERVAL_MS: Readonly<Record<string, number>> = { "api.npmjs.org": 3000, "api.deps.dev": 1000, "data.jsdelivr.com": 1000 };
-/** The count of tries of one request. The scheduler waits for the time that a refusal asks for before the next try. */
-const TRIES = 3;
-/** The outcomes after which the script tries the request again. */
-const AGAIN = new Set(["rate-limited", "unavailable", "error"]);
 const DATA = join(import.meta.dirname, "..", "packages", "catalog", "src", "data");
 
 const option = (name: string): string | undefined => process.argv.find((arg) => arg.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -48,38 +44,19 @@ const summaryFile = option("summary");
 if (only !== undefined && !/^[1-9][0-9]*$/.test(only)) throw new Error(`--only=${only} is not a count of 1 or more.`);
 const names = catalog.packages.map((one) => one.name).slice(0, only === undefined ? undefined : Number(only));
 
-const pace = { scheduler: new HostScheduler(realClock, 3), now: realClock.now };
-const transport = fetchTransport({ userAgent: USER_AGENT });
 const started = realClock.now();
 const log = (text: string): void => console.log(`${new Date(realClock.now()).toISOString()} ${text}`);
+const get = politeGet({ userAgent: USER_AGENT, intervalMs: INTERVAL_MS, log });
 
 /** The requests that failed after each try, with the reason of the last try. */
 const failures: string[] = [];
 /** The packages that each source does not know. */
 const missing: { readonly downloads: string[]; readonly "deps.dev": string[]; readonly jsDelivr: string[] } = { downloads: [], "deps.dev": [], jsDelivr: [] };
 
-/**
- * This function sends one request of a measure and gives the body of its answer. It tries a request again after a
- * refusal for the rate, a host that is not available or a network error. After the last try, it gives the reason of the
- * last failure.
- */
+/** This function sends one request of a measure and gives the body of its answer, or the reason of the last failure. */
 async function fetchBody(request: MeasureRequest, what: string): Promise<{ readonly body: string } | { readonly reason: string }> {
-  const { host } = new URL(request.url);
-  let reason = "no try";
-  for (let attempt = 1; attempt <= TRIES; attempt += 1) {
-    try {
-      const exchange = { method: "GET", url: request.url, headers: { accept: request.accept }, body: null };
-      const answer = await send(pace, transport, { source: host, host, minIntervalMs: INTERVAL_MS[host] ?? 1000, what, exchange });
-      const { outcome } = answer.classified;
-      if (outcome === "ok" || outcome === "not-found") return { body: answer.reply.body };
-      reason = `${outcome} (HTTP ${String(answer.reply.status)})`;
-      if (!AGAIN.has(outcome)) break;
-    } catch (error) {
-      reason = errorMessage(error);
-    }
-    log(`${what}: try ${String(attempt)} failed: ${reason}`);
-  }
-  return { reason };
+  const got = await get(request, what);
+  return "reason" in got ? got : { body: got.reply.body };
 }
 
 /**
