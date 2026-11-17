@@ -198,7 +198,7 @@ importers:
         version: 0.0.13
       '@procedures/npm':
         specifier: ^0.59.0
-        version: 0.59.0
+        version: 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       '@swc/core':
         specifier: ^1.15.0
         version: 1.16.22
@@ -210,7 +210,7 @@ importers:
         version: 18.7.2
       polite-crawler:
         specifier: ^0.7.6
-        version: 0.7.6(@opentelemetry/api@1.10.0)(ws@8.23.0)(zod@4.6.7)
+        version: 0.7.6(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7)
       publint:
         specifier: ^0.3.25
         version: 0.3.25
@@ -274,6 +274,40 @@ importers:
         specifier: ^5.0.3
         version: 5.1.0(@opentelemetry/api@1.10.0)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
 
+  packages/suite-autobahn:
+    dependencies:
+      faye-websocket:
+        specifier: ~0.11.4
+        version: 0.11.4
+      websocket:
+        specifier: ^1.0.35
+        version: 1.0.35(supports-color@7.2.0)
+      ws:
+        specifier: ^8.23.0
+        version: 8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+    devDependencies:
+      '@mark1russell7/cue':
+        specifier: ^2.0.0
+        version: 2.1.4
+      '@types/node':
+        specifier: ^26.6.5
+        version: 26.6.6
+      '@types/websocket':
+        specifier: ^1.0.10
+        version: 1.0.10
+      '@types/ws':
+        specifier: ^8.18.2
+        version: 8.18.2
+      '@vitest/coverage-v8':
+        specifier: ^5.0.3
+        version: 5.1.0(vitest@5.1.0)
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+      vitest:
+        specifier: ^5.0.3
+        version: 5.1.0(@opentelemetry/api@1.10.0)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
+
   packages/suite-engineio:
     dependencies:
       '@mark1russell7/rigor-chaos':
@@ -287,7 +321,7 @@ importers:
         version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.0)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       engine.io-client:
         specifier: ^6.6.8
-        version: 6.6.8(supports-color@7.2.0)
+        version: 6.6.8(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10)
     devDependencies:
       '@mark1russell7/cue':
         specifier: ^2.0.0
@@ -309,7 +343,7 @@ importers:
     dependencies:
       mqtt:
         specifier: ^5.16.1
-        version: 5.16.1(supports-color@7.2.0)
+        version: 5.16.1(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10)
       mqtt-packet:
         specifier: ^9.0.2
         version: 9.0.2(supports-color@7.2.0)
@@ -343,7 +377,7 @@ importers:
         version: link:../suite-engineio
       socket.io-client:
         specifier: ^4.8.4
-        version: 4.8.4(supports-color@7.2.0)
+        version: 4.8.4(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10)
     devDependencies:
       '@mark1russell7/cue':
         specifier: ^2.0.0
@@ -1027,6 +1061,9 @@ packages:
   '@types/readable-stream@4.0.25':
     resolution: {integrity: sha512-7GsxL8Wd5X3jh73/qgW7WCnbBvGSdD8U3E4Jiuus3/8I+PN20DtlkJtwFhr/sImXfDDQ2Z03i/9wNiIF3TVSsw==}
 
+  '@types/websocket@1.0.10':
+    resolution: {integrity: sha512-svjGZvPB7EzuYS94cI7a+qhwgGU1y89wUgjT6E2wVUfmAGIvRfT7obBvRtnhXCSsoMdlG4gBFGE7MfkIXZLoww==}
+
   '@types/ws@8.18.2':
     resolution: {integrity: sha512-67MQl+fpWKVTT1NYdnmo3U4sc/xPo/zQBncVnI74qmQa0z/b+1g6iYqNmGCPbxO+zz2aklb08a0oHfegiVd0/w==}
 
@@ -1236,6 +1273,10 @@ packages:
   buffer@6.0.3:
     resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
 
+  bufferutil@4.2.0:
+    resolution: {integrity: sha512-gyy58jET9kst2IGyBKb96a4Y2bPGTHXGyCd0/1eqIV3hr1Sz3VxtA8n7bXh8fLIuE2K6Z0Upax5a5Msx+HU1IQ==}
+    engines: {node: '>=6.14.2'}
+
   chai@6.3.0:
     resolution: {integrity: sha512-XWAtwJ6OHO+tj0EKCs0Y2UamnyOxseZWltU4x2U2wh8g4AigdjwvtUjvLP2tqkA/avxHEtzxNaqGq/YGNwckKg==}
     engines: {node: '>=18'}
@@ -1272,6 +1313,18 @@ packages:
   cssomnom@0.1.12:
     resolution: {integrity: sha512-nlsLjRxRN2RPomw3r+e+oD3KQBbEbKK0+oBUATbodf5N38FlOMg/5nqV0CdClNvpVsjFLikD63H6dgKTgeuuUg==}
     engines: {node: '>=20.0.0'}
+
+  d@1.0.2:
+    resolution: {integrity: sha512-MOqHvMWF9/9MX6nza0KgvFH4HpMU0EF5uUDXqX/BtxtU8NfB0QzRtJ8Oe/6SuS4kbhyzVJwjd97EA4PKrzJ8bw==}
+    engines: {node: '>=0.12'}
+
+  debug@2.6.9:
+    resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -1350,13 +1403,32 @@ packages:
   es-module-lexer@2.3.2:
     resolution: {integrity: sha512-poHGpORABojJJucnV9KbOavETW8lBVnphkW77ER5/BQ5Fz7oXSoCNek7IH3vR5nRjdsEz926ibFYX8KtLQmdyw==}
 
+  es5-ext@0.10.64:
+    resolution: {integrity: sha512-p2snDhiLaXe6dahss1LddxqEm+SkuDvV8dnIQG0MWjyHpcMNfXKPE+/Cc0y+PhxJX3A4xGNeFCj5oc0BUh6deg==}
+    engines: {node: '>=0.10'}
+
+  es6-iterator@2.0.3:
+    resolution: {integrity: sha512-zw4SRzoUkd+cl+ZoE15A9o1oQd920Bb0iOJMQkQhl3jNc03YqVjAhG7scf9C5KWRU/R13Orf588uCC6525o02g==}
+
+  es6-symbol@3.1.4:
+    resolution: {integrity: sha512-U9bFFjX8tFiATgtkJ1zg25+KviIXpgRvRHS8sau3GfhVzThRQrOeksPeT0BWW2MNZs1OEWJ1DPXOQMn0KKRkvg==}
+    engines: {node: '>=0.12'}
+
   esbuild@0.28.2:
     resolution: {integrity: sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==}
     engines: {node: '>=18'}
     hasBin: true
 
+  esniff@2.0.1:
+    resolution: {integrity: sha512-kTUIGKQ/mDPFoJ0oVfcmyJn4iBDRptjNVIzwIFR7tqWXdVI9xfA2RMwY/gbSpJG3lkdWNEjLap/NqVHZiJsdfg==}
+    engines: {node: '>=0.10'}
+
   estree-walker@3.0.3:
     resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
+
+  event-emitter@0.3.7:
+    resolution: {integrity: sha512-R9h/VgWniW4ZRqx3Pd2/n3aGGbPmWilvHwzgrc6YQcFd2HzwPsIFLbrtfoU0hWorKUowd5Iqr5x3ZNv5H6bP+w==}
+    engines: {node: '>=0.12'}
 
   event-target-shim@5.0.1:
     resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
@@ -1370,6 +1442,9 @@ packages:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
     engines: {node: '>=12.0.0'}
 
+  ext@1.7.0:
+    resolution: {integrity: sha512-6hxeJYaL110a9b5TEJSj0gojyHQAmA2ch5Os+ySCiA1QGdS697XWY1pzsrSjqA9LDEEgdB/KypIlR59RcLuHYw==}
+
   fast-string-truncated-width@3.0.3:
     resolution: {integrity: sha512-0jjjIEL6+0jag3l2XWWizO64/aZVtpiGE3t0Zgqxv0DPuxiMjvB3M24fCyhZUO4KomJQPj3LTSUnDP3GpdwC0g==}
 
@@ -1382,6 +1457,10 @@ packages:
 
   fast-wrap-ansi@0.2.2:
     resolution: {integrity: sha512-7F2Fl+TjRSenLqlU3UjSH0iyqopqoZIu7eZVpEirP2g1GtWa2G/ecEmBdgz31+Mxr+ELclgg6sokpSFIQiZ02Q==}
+
+  faye-websocket@0.11.4:
+    resolution: {integrity: sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==}
+    engines: {node: '>=0.8.0'}
 
   fdir@6.5.0:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
@@ -1424,6 +1503,9 @@ packages:
   htmlparser2@10.1.0:
     resolution: {integrity: sha512-VTZkM9GWRAtEpveh7MSF6SjjrpNVNNVJfFup7xTY3UpFtm67foy9HDVXneLtFVt4pMz5kZtgNcvCniNFb1hlEQ==}
 
+  http-parser-js@0.5.10:
+    resolution: {integrity: sha512-Pysuw9XpUq5dVc/2SMHpuTY01RFl8fttgcyunjL7eEMhGM3cI4eOmiCycJDVCo/7O7ClfQD3SaI6ftDzqOXYMA==}
+
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
 
@@ -1457,6 +1539,9 @@ packages:
   is-path-inside@4.0.0:
     resolution: {integrity: sha512-lJJV/5dYS+RcL8uQdBDW9c9uWFLLBNRyFhnAKXw5tVqLlKZ4RMGZKv+YQ/IA3OhD+RpbJa1LLFM1FQPGyIXvOA==}
     engines: {node: '>=12'}
+
+  is-typedarray@1.0.0:
+    resolution: {integrity: sha512-cyA56iCMHAh5CdzjJIa4aohJyeO1YbwLi3Jc35MmRU6poroFjIGZzUzupGiRPOjgHg9TLu43xbpwXk523fMxKA==}
 
   js-tokens@10.0.0:
     resolution: {integrity: sha512-lM/UBzQmfJRo9ABXbPWemivdCW8V2G8FHaHdypQaIy523snUjog0W71ayWXTjiR+ixeMyVHN2XcpnTd/liPg/Q==}
@@ -1577,12 +1662,22 @@ packages:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
 
+  ms@2.0.0:
+    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
+
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
   nanoid@3.3.20:
     resolution: {integrity: sha512-uKdg2G3GNCKQn9byYOpxbGqrT2fGO5KRt5J/8b3pok8rT6qxGWF6hxMyJiEYtAf+FVyYuD9hRaDqX5uPFYJ4ZQ==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
+  next-tick@1.1.0:
+    resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
+
+  node-gyp-build@4.8.4:
+    resolution: {integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==}
     hasBin: true
 
   nth-check@3.0.1:
@@ -1768,6 +1863,12 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
+  type@2.7.3:
+    resolution: {integrity: sha512-8j+1QmAbPvLZow5Qpi6NCaN8FB60p/6x8/vfNqOk/hC+HuvFZhL4+WfekuhQLiqFZXOgQdrs3B+XxEmCc6b3FQ==}
+
+  typedarray-to-buffer@3.1.5:
+    resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
+
   typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
@@ -1799,6 +1900,10 @@ packages:
     peerDependenciesMeta:
       '@napi-rs/canvas':
         optional: true
+
+  utf-8-validate@5.0.10:
+    resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
+    engines: {node: '>=6.14.2'}
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -1892,6 +1997,18 @@ packages:
     engines: {node: ^22.13||^24||>=26}
     hasBin: true
 
+  websocket-driver@0.7.5:
+    resolution: {integrity: sha512-ZL2+3c7kMBdIRCMz6l8jQMHyGVxj+UL+xVk74Ombiciboca8rHa15L86B19E5oh1pL9Ii/uj54gtsIrZGMo6zA==}
+    engines: {node: '>=0.8.0'}
+
+  websocket-extensions@0.1.4:
+    resolution: {integrity: sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==}
+    engines: {node: '>=0.8.0'}
+
+  websocket@1.0.35:
+    resolution: {integrity: sha512-/REy6amwPZl44DDzvRCkaI1q1bIiQB0mEFQLUrhz3z2EK91cp3n72rAjUlrTP0zV22HJIUOVHQGPxhFRjxjt+Q==}
+    engines: {node: '>=4.0.0'}
+
   why-is-node-running@3.2.1:
     resolution: {integrity: sha512-Tb2FUhB4vUsGQlfSquQLYkApkuPAFQXGFzxWKHHumVz2dK+X1RUm/HnID4+TfIGYJ1kTcwOaCk/buYCEJr6YjQ==}
     engines: {node: '>=20.11'}
@@ -1936,6 +2053,11 @@ packages:
   xmlhttprequest-ssl@2.1.2:
     resolution: {integrity: sha512-TEU+nJVUUnA4CYJFLvK5X9AOeH4KvDvhIfm0vV1GaQRtchnG0hgK5p8hw/xjv8cunWYCsiPCSDzObPyhEwq3KQ==}
     engines: {node: '>=0.4.0'}
+
+  yaeti@0.0.6:
+    resolution: {integrity: sha512-MvQa//+KcZCUkBTIC9blM+CU9J2GzuTytsOUwf2lidtvkx/6gnEp1QvJv34t9vdjhFmha/mUiNDbN0D0mJWdug==}
+    engines: {node: '>=0.10.32'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   yaml@2.9.1:
     resolution: {integrity: sha512-3NxN8+78OdzbT7C/WjGsyfPAtJaN3FNDsWxv7Y7mcDsT/oOmgW8BpyQQFFBnvZE3j9Y2Sdz1ULFLezL7Eb2yFw==}
@@ -2175,7 +2297,7 @@ snapshots:
       '@mark1russell7/rigor-proxy': 0.4.1(zod@4.6.7)
       '@opentelemetry/api': 1.10.0
 
-  '@mark1russell7/service@0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0)(zod@4.6.7)':
+  '@mark1russell7/service@0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7)':
     dependencies:
       '@mark1russell7/algebra': 0.8.10(zod@4.6.7)
       '@mark1russell7/collections': 0.11.2(zod@4.6.7)
@@ -2185,7 +2307,7 @@ snapshots:
       '@mark1russell7/text': 0.0.6
     optionalDependencies:
       '@opentelemetry/api': 1.10.0
-      ws: 8.23.0
+      ws: 8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
 
   '@mark1russell7/site-pages@0.7.0':
@@ -2219,16 +2341,16 @@ snapshots:
 
   '@oxc-project/types@0.156.0': {}
 
-  '@procedures/client@0.59.0':
+  '@procedures/client@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
       '@mark1russell7/algebra': 0.8.10(zod@4.6.7)
       '@mark1russell7/coeval': 0.34.0(zod@4.6.7)
       '@mark1russell7/collections': 0.10.2(zod@4.6.7)
       '@mark1russell7/quantity': 0.4.1(zod@4.6.7)
-      '@mark1russell7/service': 0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0)(zod@4.6.7)
+      '@mark1russell7/service': 0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7)
       '@opentelemetry/api': 1.10.0
       '@types/ws': 8.18.2
-      ws: 8.23.0
+      ws: 8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
     transitivePeerDependencies:
       - '@grpc/grpc-js'
@@ -2239,10 +2361,10 @@ snapshots:
       - pg
       - utf-8-validate
 
-  '@procedures/compiler@0.59.0':
+  '@procedures/compiler@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
       '@mark1russell7/coeval': 0.34.0(zod@4.6.7)
-      '@procedures/client': 0.59.0
+      '@procedures/client': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
     transitivePeerDependencies:
       - '@grpc/grpc-js'
@@ -2254,10 +2376,10 @@ snapshots:
       - pg
       - utf-8-validate
 
-  '@procedures/json@0.59.0':
+  '@procedures/json@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
-      '@procedures/client': 0.59.0
-      '@procedures/compiler': 0.59.0
+      '@procedures/client': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/compiler': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       yaml: 2.9.1
       zod: 4.6.7
     transitivePeerDependencies:
@@ -2270,11 +2392,11 @@ snapshots:
       - pg
       - utf-8-validate
 
-  '@procedures/npm@0.59.0':
+  '@procedures/npm@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
-      '@procedures/client': 0.59.0
-      '@procedures/json': 0.59.0
-      '@procedures/shell': 0.59.0
+      '@procedures/client': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/json': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/shell': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
     transitivePeerDependencies:
       - '@grpc/grpc-js'
@@ -2286,9 +2408,9 @@ snapshots:
       - pg
       - utf-8-validate
 
-  '@procedures/shell@0.59.0':
+  '@procedures/shell@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
-      '@procedures/client': 0.59.0
+      '@procedures/client': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
     transitivePeerDependencies:
       - '@grpc/grpc-js'
@@ -2442,6 +2564,10 @@ snapshots:
     dependencies:
       '@types/node': 26.6.6
 
+  '@types/websocket@1.0.10':
+    dependencies:
+      '@types/node': 26.6.6
+
   '@types/ws@8.18.2':
     dependencies:
       '@types/node': 26.6.6
@@ -2592,6 +2718,10 @@ snapshots:
       base64-js: 1.5.1
       ieee754: 1.2.1
 
+  bufferutil@4.2.0:
+    dependencies:
+      node-gyp-build: 4.8.4
+
   chai@6.3.0: {}
 
   chalk@4.1.2:
@@ -2627,6 +2757,17 @@ snapshots:
   css-what@8.0.0: {}
 
   cssomnom@0.1.12: {}
+
+  d@1.0.2:
+    dependencies:
+      es5-ext: 0.10.64
+      type: 2.7.3
+
+  debug@2.6.9(supports-color@7.2.0):
+    dependencies:
+      ms: 2.0.0
+    optionalDependencies:
+      supports-color: 7.2.0
 
   debug@4.4.3(supports-color@7.2.0):
     dependencies:
@@ -2693,12 +2834,12 @@ snapshots:
       domelementtype: 3.0.0
       domhandler: 6.0.1
 
-  engine.io-client@6.6.8(supports-color@7.2.0):
+  engine.io-client@6.6.8(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10):
     dependencies:
       '@socket.io/component-emitter': 3.1.2
       debug: 4.4.3(supports-color@7.2.0)
       engine.io-parser: 5.2.3
-      ws: 8.21.3
+      ws: 8.21.3(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       xmlhttprequest-ssl: 2.1.2
     transitivePeerDependencies:
       - bufferutil
@@ -2721,6 +2862,24 @@ snapshots:
   es-errors@1.3.0: {}
 
   es-module-lexer@2.3.2: {}
+
+  es5-ext@0.10.64:
+    dependencies:
+      es6-iterator: 2.0.3
+      es6-symbol: 3.1.4
+      esniff: 2.0.1
+      next-tick: 1.1.0
+
+  es6-iterator@2.0.3:
+    dependencies:
+      d: 1.0.2
+      es5-ext: 0.10.64
+      es6-symbol: 3.1.4
+
+  es6-symbol@3.1.4:
+    dependencies:
+      d: 1.0.2
+      ext: 1.7.0
 
   esbuild@0.28.2:
     optionalDependencies:
@@ -2751,15 +2910,32 @@ snapshots:
       '@esbuild/win32-ia32': 0.28.2
       '@esbuild/win32-x64': 0.28.2
 
+  esniff@2.0.1:
+    dependencies:
+      d: 1.0.2
+      es5-ext: 0.10.64
+      event-emitter: 0.3.7
+      type: 2.7.3
+
   estree-walker@3.0.3:
     dependencies:
       '@types/estree': 1.0.10
+
+  event-emitter@0.3.7:
+    dependencies:
+      d: 1.0.2
+      es5-ext: 0.10.64
+      type: 2.7.3
 
   event-target-shim@5.0.1: {}
 
   events@3.3.0: {}
 
   expect-type@1.4.0: {}
+
+  ext@1.7.0:
+    dependencies:
+      type: 2.7.3
 
   fast-string-truncated-width@3.0.3: {}
 
@@ -2775,6 +2951,10 @@ snapshots:
   fast-wrap-ansi@0.2.2:
     dependencies:
       fast-string-width: 3.0.2
+
+  faye-websocket@0.11.4:
+    dependencies:
+      websocket-driver: 0.7.5
 
   fdir@6.5.0(picomatch@4.0.7):
     optionalDependencies:
@@ -2808,6 +2988,8 @@ snapshots:
       domutils: 3.2.2
       entities: 7.0.1
 
+  http-parser-js@0.5.10: {}
+
   ieee754@1.2.1: {}
 
   ignore@7.0.14: {}
@@ -2830,6 +3012,8 @@ snapshots:
       is-path-inside: 4.0.0
 
   is-path-inside@4.0.0: {}
+
+  is-typedarray@1.0.0: {}
 
   js-tokens@10.0.0: {}
 
@@ -2916,7 +3100,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  mqtt@5.16.1(supports-color@7.2.0):
+  mqtt@5.16.1(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10):
     dependencies:
       '@types/readable-stream': 4.0.25
       '@types/ws': 8.18.2
@@ -2932,7 +3116,7 @@ snapshots:
       socks: 2.8.10
       split2: 4.2.0
       worker-timers: 8.0.34
-      ws: 8.23.0
+      ws: 8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -2940,9 +3124,15 @@ snapshots:
 
   mri@1.2.0: {}
 
+  ms@2.0.0: {}
+
   ms@2.1.3: {}
 
   nanoid@3.3.20: {}
+
+  next-tick@1.1.0: {}
+
+  node-gyp-build@4.8.4: {}
 
   nth-check@3.0.1:
     dependencies:
@@ -2958,9 +3148,9 @@ snapshots:
 
   picomatch@4.0.7: {}
 
-  polite-crawler@0.7.6(@opentelemetry/api@1.10.0)(ws@8.23.0)(zod@4.6.7):
+  polite-crawler@0.7.6(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7):
     dependencies:
-      '@mark1russell7/service': 0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0)(zod@4.6.7)
+      '@mark1russell7/service': 0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7)
       '@mark1russell7/sqlite': 0.3.6
       '@mozilla/readability': 0.6.0
       linkedom: 0.18.15
@@ -3069,11 +3259,11 @@ snapshots:
 
   smart-buffer@4.2.0: {}
 
-  socket.io-client@4.8.4(supports-color@7.2.0):
+  socket.io-client@4.8.4(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10):
     dependencies:
       '@socket.io/component-emitter': 3.1.2
       debug: 4.4.3(supports-color@7.2.0)
-      engine.io-client: 6.6.8(supports-color@7.2.0)
+      engine.io-client: 6.6.8(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10)
       socket.io-parser: 4.2.7(supports-color@7.2.0)
     transitivePeerDependencies:
       - bufferutil
@@ -3144,6 +3334,12 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
+  type@2.7.3: {}
+
+  typedarray-to-buffer@3.1.5:
+    dependencies:
+      is-typedarray: 1.0.0
+
   typedarray@0.0.6: {}
 
   typescript@6.0.3: {}
@@ -3178,6 +3374,10 @@ snapshots:
   undici@8.12.4: {}
 
   unpdf@1.9.1: {}
+
+  utf-8-validate@5.0.10:
+    dependencies:
+      node-gyp-build: 4.8.4
 
   util-deprecate@1.0.2: {}
 
@@ -3220,6 +3420,25 @@ snapshots:
 
   watskeburt@6.0.0: {}
 
+  websocket-driver@0.7.5:
+    dependencies:
+      http-parser-js: 0.5.10
+      safe-buffer: 5.2.1
+      websocket-extensions: 0.1.4
+
+  websocket-extensions@0.1.4: {}
+
+  websocket@1.0.35(supports-color@7.2.0):
+    dependencies:
+      bufferutil: 4.2.0
+      debug: 2.6.9(supports-color@7.2.0)
+      es5-ext: 0.10.64
+      typedarray-to-buffer: 3.1.5
+      utf-8-validate: 5.0.10
+      yaeti: 0.0.6
+    transitivePeerDependencies:
+      - supports-color
+
   why-is-node-running@3.2.1: {}
 
   worker-factory@7.0.50:
@@ -3249,11 +3468,19 @@ snapshots:
       worker-timers-broker: 8.0.18
       worker-timers-worker: 9.0.15
 
-  ws@8.21.3: {}
+  ws@8.21.3(bufferutil@4.2.0)(utf-8-validate@5.0.10):
+    optionalDependencies:
+      bufferutil: 4.2.0
+      utf-8-validate: 5.0.10
 
-  ws@8.23.0: {}
+  ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10):
+    optionalDependencies:
+      bufferutil: 4.2.0
+      utf-8-validate: 5.0.10
 
   xmlhttprequest-ssl@2.1.2: {}
+
+  yaeti@0.0.6: {}
 
   yaml@2.9.1: {}
 
