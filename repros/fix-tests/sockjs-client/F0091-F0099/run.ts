@@ -1,5 +1,5 @@
 // The fix branches of sockjs-client for F0091 (#715), F0092 (#716), F0094 (#717), F0095 (#718), F0097 (#719), F0098 (#720) and F0099 (#721).
-// F0093 is a duplicate of #645, and main fixed F0096, so they have no fix branch.
+// Main fixed F0096, so it has no fix branch. F0093 (#645) has its own folder, F0093.
 import { fixTest } from "../../lib/fix-test.ts";
 import { spec } from "../spec.ts";
 
