@@ -468,6 +468,10 @@
     "protocol": "bayeux"
   },
   {
+    "package": "faye-websocket",
+    "protocol": "websocket"
+  },
+  {
     "package": "firebase",
     "protocol": "firebase"
   },
@@ -900,6 +904,10 @@
     "protocol": "mqtt"
   },
   {
+    "package": "undici",
+    "protocol": "websocket"
+  },
+  {
     "package": "viem",
     "protocol": "ethereum-json-rpc"
   },
@@ -936,6 +944,10 @@
     "protocol": "webdav"
   },
   {
+    "package": "websocket",
+    "protocol": "websocket"
+  },
+  {
     "package": "websocket-ts",
     "protocol": "websocket"
   },
@@ -950,6 +962,10 @@
   {
     "package": "webtorrent",
     "protocol": "webrtc"
+  },
+  {
+    "package": "ws",
+    "protocol": "websocket"
   },
   {
     "package": "y-webrtc",

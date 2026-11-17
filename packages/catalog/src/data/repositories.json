@@ -267,6 +267,10 @@
     "url": "https://github.com/faye/faye"
   },
   {
+    "id": "faye/faye-websocket-node",
+    "url": "https://github.com/faye/faye-websocket-node"
+  },
+  {
     "id": "feathersjs/feathers",
     "url": "https://github.com/feathersjs/feathers"
   },
@@ -531,6 +535,10 @@
     "url": "https://github.com/neondatabase/serverless"
   },
   {
+    "id": "nodejs/undici",
+    "url": "https://github.com/nodejs/undici"
+  },
+  {
     "id": "nostr-dev-kit/ndk",
     "url": "https://github.com/nostr-dev-kit/ndk"
   },
@@ -684,6 +692,10 @@
     "url": "https://github.com/tedeh/jayson"
   },
   {
+    "id": "theturtle32/WebSocket-Node",
+    "url": "https://github.com/theturtle32/WebSocket-Node"
+  },
+  {
     "id": "tidbcloud/serverless-js",
     "url": "https://github.com/tidbcloud/serverless-js"
   },
@@ -756,6 +768,10 @@
     "id": "web3/web3.js",
     "url": "https://github.com/web3/web3.js",
     "note": "The registry names ChainSafe/web3.js, the old name of the repository. ChainSafe archived it at the sunset of Web3.js on 2025-03-04."
+  },
+  {
+    "id": "websockets/ws",
+    "url": "https://github.com/websockets/ws"
   },
   {
     "id": "webtorrent/bittorrent-tracker",

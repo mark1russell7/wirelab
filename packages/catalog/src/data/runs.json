@@ -34,5 +34,53 @@
     "failed": 0,
     "skipped": 0,
     "note": "The 14 it.fails tests passed, so the faults F0055, F0057, F0058, F0059, F0060, F0064 and F0067 stay in 4.8.4. A line client bug evidence of the log gives the measured values of each fault."
+  },
+  {
+    "id": "suite-autobahn-44184442709-faye-websocket",
+    "suite": "autobahn-testsuite",
+    "package": "faye-websocket",
+    "version": "0.11.4",
+    "at": "2026-11-17T22:26:08Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/44184442709",
+    "passed": 465,
+    "failed": 0,
+    "skipped": 0,
+    "note": "Each of the 463 cases and each close behavior passed. The 216 cases of permessage-deflate (12.* and 13.*) are UNIMPLEMENTED: the client does not offer the extension."
+  },
+  {
+    "id": "suite-autobahn-44184442709-undici",
+    "suite": "autobahn-testsuite",
+    "package": "undici",
+    "version": "8.12.4",
+    "at": "2026-11-17T22:26:08Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/44184442709",
+    "passed": 465,
+    "failed": 0,
+    "skipped": 0,
+    "note": "The WebSocket of Node.js v26.13.1. Each of the 463 cases and each close behavior passed, with permessage-deflate."
+  },
+  {
+    "id": "suite-autobahn-44184442709-websocket",
+    "suite": "autobahn-testsuite",
+    "package": "websocket",
+    "version": "1.0.35",
+    "at": "2026-11-17T22:26:08Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/44184442709",
+    "passed": 465,
+    "failed": 0,
+    "skipped": 0,
+    "note": "Each of the 463 cases and each close behavior passed. The 216 cases of permessage-deflate (12.* and 13.*) are UNIMPLEMENTED: the client does not offer the extension."
+  },
+  {
+    "id": "suite-autobahn-44184442709-ws",
+    "suite": "autobahn-testsuite",
+    "package": "ws",
+    "version": "8.23.0",
+    "at": "2026-11-17T22:26:08Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/44184442709",
+    "passed": 465,
+    "failed": 0,
+    "skipped": 0,
+    "note": "Each of the 463 cases and each close behavior passed, with permessage-deflate."
   }
 ]

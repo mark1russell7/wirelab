@@ -2,8 +2,8 @@
   {
     "id": "websocket",
     "order": 1,
-    "title": "WebSocket wrappers",
-    "what": "Reconnect, backoff and send buffers over a plain WebSocket."
+    "title": "WebSocket clients and wrappers",
+    "what": "Plain WebSocket clients, and reconnect, backoff and send buffers over a plain WebSocket."
   },
   {
     "id": "realtime",

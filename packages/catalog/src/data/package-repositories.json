@@ -474,6 +474,10 @@
     "repository": "faye/faye"
   },
   {
+    "package": "faye-websocket",
+    "repository": "faye/faye-websocket-node"
+  },
+  {
     "package": "firebase",
     "repository": "firebase/firebase-js-sdk",
     "directory": "packages/firebase"
@@ -863,6 +867,10 @@
     "repository": "shanewholloway/js-u8-mqtt"
   },
   {
+    "package": "undici",
+    "repository": "nodejs/undici"
+  },
+  {
     "package": "viem",
     "repository": "wevm/viem",
     "directory": "src"
@@ -891,6 +899,10 @@
     "repository": "perry-mitchell/webdav-client"
   },
   {
+    "package": "websocket",
+    "repository": "theturtle32/WebSocket-Node"
+  },
+  {
     "package": "websocket-ts",
     "repository": "jjxxs/websocket-ts"
   },
@@ -901,6 +913,10 @@
   {
     "package": "webtorrent",
     "repository": "webtorrent/webtorrent"
+  },
+  {
+    "package": "ws",
+    "repository": "websockets/ws"
   },
   {
     "package": "y-webrtc",
