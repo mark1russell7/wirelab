@@ -732,6 +732,13 @@
     "note": "A duplicate of issue #645 (open since 2024-01-11). The comment gives the repro and the CI run 43978630757."
   },
   {
+    "finding": "F0093",
+    "at": "2026-11-17T20:15:46Z",
+    "state": "pr-open",
+    "url": "https://github.com/sockjs/sockjs-client/pull/730",
+    "note": "The fix of #645, after the maintainer asked for a contribution. In the fix-test run 44165378060, the new test failed before the fix and passed after it, with no new failure."
+  },
+  {
     "finding": "F0094",
     "at": "2026-11-16T23:54:56Z",
     "state": "issue-open",
