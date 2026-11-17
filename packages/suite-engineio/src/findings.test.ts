@@ -6,15 +6,20 @@ import { decodePayload, encodePayload, type Packet } from "./codec.ts";
 import {
   accepted,
   bytesOf,
+  frame,
   message,
+  openFrame,
   pause,
   payload,
   runChild,
   startEngineServer,
   startSession,
+  startUpgrade,
   suiteEnabled,
   transports,
   until,
+  upgradeCases,
+  webSocketTransport,
   type ChildReport,
   type Session,
 } from "./harness.ts";
@@ -37,6 +42,7 @@ function evidence(text: string): void {
 }
 
 const noop: Packet = { type: "noop", data: "" };
+const close: Packet = { type: "close", data: "" };
 
 /** This function gives a short text of the report of a client process, for a line of evidence. */
 function summary(report: ChildReport): string {
@@ -172,5 +178,43 @@ describe.runIf(suiteEnabled)("engine.io-client over HTTP long-polling", () => {
     } finally {
       if (open) await server.close();
     }
+  });
+});
+
+describe.runIf(suiteEnabled)("engine.io-client over WebSocket", () => {
+  // client bug: F0035. Only the polling transport reads a close packet. The socket has no case for a close packet, thus
+  // over WebSocket the client ignores it, stays open and gives the next messages.
+  it.fails("ws-close-packet: [EIO4-PT-1] a close packet of the server over WebSocket closes the client", async () => {
+    const s = await session(webSocketTransport, { webSockets: [{ steps: [openFrame(), frame(close, 100), frame(message("after"), 100)] }] });
+    await s.opened();
+    // A close event or the message after the close packet shows that the client read the close packet.
+    const read = await until(() => s.messages.length >= 1 || s.closed() !== undefined, 3_000);
+    evidence(`F0035 NodeWebSocket: after a close packet, the events are ${JSON.stringify(s.events)} and readyState is ${s.socket.readyState}`);
+    if (!read) {
+      console.info("harness fault: F0035 the client gave no close event and no message in 3000 ms");
+      return;
+    }
+    expect(s.closed()).toBeDefined();
+    expect(s.messages).toEqual([]);
+  });
+
+  describe.each(upgradeCases)("upgrade, $name", (upgradeCase) => {
+    // client bug: F0032. A first answer to the probe other than the pong "probe" gives an upgradeError, but the client
+    // does not close the probe transport. The WebSocket stays open with its listeners.
+    it.fails("probe-error-closes: a probe that gets a packet other than the pong probe closes its WebSocket", async () => {
+      const script = { handshake: { upgrades: ["websocket"] }, hold: payload([noop], { delayMs: 200 }), webSockets: [{ steps: [{ receive: 1 }, frame(message("wrong"))] }] };
+      const s = await startUpgrade(upgradeCase, script);
+      sessions.push(s);
+      await s.opened();
+      const failed = await until(() => s.events.some((event) => event.kind === "upgradeError"), 3_000);
+      await pause(500);
+      const probe = s.webSockets()[0];
+      evidence(`F0032 ${upgradeCase.name}: 500 ms after the probe error, the probe WebSocket has closedAt ${String(probe?.closedAt)}, and the events are ${JSON.stringify(s.events)}`);
+      if (!failed || probe === undefined) {
+        console.info(`harness fault: F0032 the probe error came: ${String(failed)}, and the probe WebSocket came: ${String(probe !== undefined)}`);
+        return;
+      }
+      expect(probe.closedAt).toBeDefined();
+    });
   });
 });
