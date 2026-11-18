@@ -1847,5 +1847,25 @@
     "kind": "correctness",
     "title": "keys() and scan() give key names that JSON parsing changed",
     "note": "The automatic deserialization runs JSON.parse on each key name: \"123\" comes back as the number 123, \"null\" as null and \"\\\"draft\\\"\" as \"draft\". The docs give string[]. del() with a changed name deletes a different key."
+  },
+  {
+    "id": "F0186",
+    "package": "birpc",
+    "version": "4.2.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A function that throws a falsy value gives the caller a success",
+    "note": "The reply and the caller test the truth of the thrown value. A function that throws undefined, null, 0, '' or false, or that gives Promise.reject() with no reason, resolves the call with undefined."
+  },
+  {
+    "id": "F0187",
+    "package": "birpc",
+    "version": "4.2.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "An onRequest hook that does not wait for next() leaves the call open after the timeout",
+    "note": "The type of onRequest allows a void return. When the hook calls next() and returns, _call clears the timer and removes the pending call, so the reply is dropped and the timeout never rejects the call."
   }
 ]
