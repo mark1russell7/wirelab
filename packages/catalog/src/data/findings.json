@@ -1917,5 +1917,45 @@
     "kind": "correctness",
     "title": "A resumed parallel upload writes the part URLs into the boundaries of the app",
     "note": "_startParallelUpload() sets part.uploadUrl on the objects of parallelUploadBoundaries. A later upload of another file with the same array resumes the old parts, sends none of its bytes and reports success. Main (5.0.0-pre3) copies the objects."
+  },
+  {
+    "id": "F0193",
+    "package": "aws4fetch",
+    "version": "1.0.20",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "sign() of a GET or HEAD Request with a Content-Type header throws a TypeError",
+    "note": "sign() reads the body of a Request input when it has a Content-Type header. For GET and HEAD that body is an empty ArrayBuffer, and new Request() refuses it. No request goes out."
+  },
+  {
+    "id": "F0194",
+    "package": "aws4fetch",
+    "version": "1.0.20",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "sign() of a Request drops its signal and its redirect mode",
+    "note": "sign() copies only the method, URL, headers and body of a Request input. An abort of the Request does not stop aws.fetch(), and redirect: manual becomes follow."
+  },
+  {
+    "id": "F0195",
+    "package": "aws4fetch",
+    "version": "1.0.20",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "The guess gives a wrong service and region for a virtual-hosted bucket on an S3 host with a dash",
+    "note": "my-bucket.s3-us-west-2.amazonaws.com gives the service my-bucket and the region s3-us-west-2. The guess knows the dash hosts only in the path style."
+  },
+  {
+    "id": "F0196",
+    "package": "aws4fetch",
+    "version": "1.0.20",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "The guess gives the service s3-accesspoint for an S3 access point host",
+    "note": "The signing name of S3 access points is s3. The credential scope is wrong, and the S3 rules (UNSIGNED-PAYLOAD) do not apply."
   }
 ]
