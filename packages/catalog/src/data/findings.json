@@ -1437,5 +1437,45 @@
     "found": "2026-11-17",
     "title": "The XML parser changes an undeclared entity with no error: &nbsp; becomes empty, and &constructor; becomes the source text of a function",
     "note": "decodeEntities in @aws-sdk/xml-builder 3.972.43 returns AwsXmlParser.ENTITIES[name] ?? \"\", and ENTITIES is a plain object. In the repro of ListObjectsV2, a&nbsp;b gives \"ab\", and a&constructor;b gives \"afunction Object() { [native code] }b\". parseTag has the same plain-object test, child.tag in obj: <a><toString>x</toString></a> gives [Function: toString, \"x\"], but no S3 shape reads such a member."
+  },
+  {
+    "id": "F0145",
+    "package": "apache-arrow",
+    "version": "21.2.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "The stream reader reads a stream cut inside the 8-byte prefix of a message as a complete stream, with no error",
+    "note": "RecordBatchStreamReader of apache-arrow 21.2.0 throws when a stream stops inside the metadata of a message. When it stops after 2, 4, 6 or 8 bytes of the prefix of the RecordBatch, tableFromIPC returns the schema with 0 rows and no error. The repro reads 4 cut streams of a valid stream of 3 rows."
+  },
+  {
+    "id": "F0146",
+    "package": "apache-arrow",
+    "version": "21.2.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "The stream reader reads a RecordBatch whose dictionary was never sent, and the column gives null for each row, with no error",
+    "note": "The format sends the DictionaryBatch of an id before each RecordBatch that uses it. In apache-arrow 21.2.0, a stream with no DictionaryBatch gives 3 rows, d = [null, null, null], from a column that was [\"a\", \"b\", \"a\"]. The repro removes the DictionaryBatch from a valid stream."
+  },
+  {
+    "id": "F0147",
+    "package": "apache-arrow",
+    "version": "21.2.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "The writer writes a wrong second batch when two batches share the first chunk of a dictionary and then differ",
+    "note": "In apache-arrow 21.2.0, the shared chunk [\"a\", \"b\"] concatenated with [\"c\"], then with [\"X\"], gives the written batches [\"a\", \"b\", \"c\"] and [\"a\", \"X\"]. The stream and the file read back [\"a\", \"b\", \"c\"] and [\"a\", \"c\"]. RecordBatchWriter._writeDictionaries() compares only the first chunk and the number of chunks with the previous dictionary, so it writes no DictionaryBatch for the second batch."
+  },
+  {
+    "id": "F0148",
+    "package": "apache-arrow",
+    "version": "21.2.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "conformance",
+    "title": "The file reader accepts two non-delta DictionaryBatches for one id, and the values of the column change with no error",
+    "note": "The format lets a file have one non-delta DictionaryBatch for each id, and the writer of apache-arrow 21.2.0 refuses a replacement. The file reader accepts one: with the isDelta byte of the second DictionaryBatch set to 0, the column [\"a\", \"b\", \"c\"] reads as [\"c\", null, null]."
   }
 ]
