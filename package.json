@@ -48,6 +48,12 @@
       },
       "typed-files": {
         "configs": [
+          "repros/@aws-sdk/client-s3/F0139/tsconfig.json",
+          "repros/@aws-sdk/client-s3/F0140/tsconfig.json",
+          "repros/@aws-sdk/client-s3/F0141/tsconfig.json",
+          "repros/@aws-sdk/client-s3/F0142/tsconfig.json",
+          "repros/@aws-sdk/client-s3/F0143/tsconfig.json",
+          "repros/@aws-sdk/client-s3/F0144/tsconfig.json",
           "repros/@microsoft/signalr/F0100/tsconfig.json",
           "repros/@microsoft/signalr/F0101/tsconfig.json",
           "repros/@microsoft/signalr/F0102/tsconfig.json",

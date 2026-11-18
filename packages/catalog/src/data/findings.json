@@ -1387,5 +1387,65 @@
     "kind": "correctness",
     "title": "encode() writes an Invalid Date as the timestamp 0 with no error, so decode() gives the valid date 1970-01-01T00:00:00.000Z",
     "note": "encodeDateToTimeSpec gives NaN for sec and nsec. encodeTimeSpecToTimestamp then uses the timestamp 96 format, and DataView writes NaN as 0. In the repro, new Date(NaN) and new Date(\"not a date\") both decode as 1970-01-01T00:00:00.000Z."
+  },
+  {
+    "id": "F0139",
+    "package": "@aws-sdk/client-s3",
+    "version": "3.1171.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-17",
+    "title": "An event type that is the name of an Object.prototype member, for example toString, makes send() of an event stream reject with a TypeError",
+    "note": "EventStreamSerde.deserializeEventStream in @smithy/core 3.41.0 tests unionMember in memberSchemas, and memberSchemas is a plain object. The same function uses hasOwn for the event keys. In the repro of SelectObjectContent, the unknown event type FutureEvent is skipped, but toString, constructor and __proto__ make send() reject with \"eventStreamSchema.isStructSchema is not a function\"."
+  },
+  {
+    "id": "F0140",
+    "package": "@aws-sdk/client-s3",
+    "version": "3.1171.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-17",
+    "title": "An event stream that ends after 1 to 3 bytes of the length of a new message ends with no error, but a later cut gives \"Truncated event message received.\"",
+    "note": "When the source ends, getChunkedStream in @smithy/core 3.41.0 examines only currentMessageTotalLength, so it drops a part of the 4-byte length prefix. In the repro of SelectObjectContent, cuts after 1, 2 and 3 bytes of the second message end with no error, and cuts after 4, 5 and 12 bytes throw."
+  },
+  {
+    "id": "F0141",
+    "package": "@aws-sdk/client-s3",
+    "version": "3.1171.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-17",
+    "title": "The event stream decoder accepts a header value that runs past the header section, and the value takes bytes of the payload",
+    "note": "HeaderMarshaller.parse in @smithy/core 3.41.0 makes each value with new Uint8Array(headers.buffer, ...) and does not compare its end with the end of the header section. In the repro, a string header that declares 10 bytes with 3 bytes left gives \"abcPAYLOAD\". The message has correct lengths and CRC32 checksums."
+  },
+  {
+    "id": "F0142",
+    "package": "@aws-sdk/client-s3",
+    "version": "3.1171.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-17",
+    "title": "The XML parser gives a wrong character for a numeric character reference above U+FFFF, for example &#x1F600; gives U+F600",
+    "note": "decodeEntities in @aws-sdk/xml-builder 3.972.43 uses String.fromCharCode, which keeps the low 16 bits. In the repro of ListObjectsV2, &#x1F600; and &#128512; give U+F600, and &#x10000; gives U+0000. String.fromCodePoint with a range check gives the correct character."
+  },
+  {
+    "id": "F0143",
+    "package": "@aws-sdk/client-s3",
+    "version": "3.1171.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-17",
+    "title": "The XML parser changes a value of only white space with a line feed from character references, for example &#10;, to an empty string",
+    "note": "The parser of @aws-sdk/xml-builder 3.972.43 applies the rule text.trim() === \"\" && text.includes(\"\n\") after it decodes the character references. In the repro of ListObjectsV2, the keys &#10;, &#13;&#10; and \" &#10; \" become \"\", and the keys a&#10; and &#9; stay correct."
+  },
+  {
+    "id": "F0144",
+    "package": "@aws-sdk/client-s3",
+    "version": "3.1171.0",
+    "kind": "correctness",
+    "method": "review",
+    "found": "2026-11-17",
+    "title": "The XML parser changes an undeclared entity with no error: &nbsp; becomes empty, and &constructor; becomes the source text of a function",
+    "note": "decodeEntities in @aws-sdk/xml-builder 3.972.43 returns AwsXmlParser.ENTITIES[name] ?? \"\", and ENTITIES is a plain object. In the repro of ListObjectsV2, a&nbsp;b gives \"ab\", and a&constructor;b gives \"afunction Object() { [native code] }b\". parseTag has the same plain-object test, child.tag in obj: <a><toString>x</toString></a> gives [Function: toString, \"x\"], but no S3 shape reads such a member."
   }
 ]
