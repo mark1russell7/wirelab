@@ -1237,5 +1237,65 @@
     "kind": "tests",
     "title": "Five test files call process.exit(0) in an after hook, so node --test does not report a failure of the last test of each file and exits 0",
     "note": "client.ts, client_mqtt5.ts, secure_client.ts, unique_message_id_provider_client.ts and websocket_client.ts in test/node, at 5.16.1 (66a9708) and at main 0ceae41. The script unit-test:node runs the files with node --test. With the hook, the runner does not report the last test of the file, and a failure of that test gives exit code 0. A comment of client_mqtt5.ts names the effect, and the tests of GHSA-h8jm-hm87-fqw3 are not last because of it. Found in the work on the fix of F0116 (MQTT.js #2108), whose new test is not last for the same reason. On Windows with Node 24.21.0 the repro printed BUG PRESENT and exited 1. Confidence high."
+  },
+  {
+    "id": "F0124",
+    "package": "protobufjs",
+    "version": "8.8.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "A lone UTF-16 surrogate in a string is written as invalid UTF-8, so protobufjs cannot decode its own proto3 message",
+    "note": "util.utf8.write writes ED A0 80 for a lone surrogate. TextEncoder and Buffer write EF BF BD. The decoder of protobufjs rejects these bytes in a proto3 or editions string field (utf8_validation VERIFY). On Node.js, a string of 40 chars or more goes through Buffer and is correct. Confidence high."
+  },
+  {
+    "id": "F0125",
+    "package": "protobufjs",
+    "version": "8.8.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "The .proto parser drops the Unicode escapes of a string literal",
+    "note": "protoc and the language specification read a backslash, u and 4 hex digits (or U and 8 hex digits) as a code point. The unescape function of tokenize.js removes the escape and keeps the digits as text. Confidence high."
+  },
+  {
+    "id": "F0126",
+    "package": "protobufjs",
+    "version": "8.8.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "An octal or hex escape of a byte above 0x7f in a .proto string gives a char, not a byte",
+    "note": "protoc reads each octal or hex escape as one byte. protobufjs makes one char of each escape. A string default with escaped UTF-8 bytes gets the wrong text, and a bytes default gets the UTF-8 form of each char: the escape of 0xff gives c3 bf, not ff. Confidence high."
+  },
+  {
+    "id": "F0127",
+    "package": "protobufjs",
+    "version": "8.8.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "A bytes default that looks like base64 is decoded as base64",
+    "note": "Field#resolve decodes the string default of a bytes field as base64 when util.base64.test accepts it, and else writes its UTF-8 bytes. A .proto default is a string literal (protoc), so the default text test gives the bytes b5 eb 2d, not 74 65 73 74. Confidence high."
+  },
+  {
+    "id": "F0128",
+    "package": "protobufjs",
+    "version": "8.8.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "A 64-bit default larger than 2^53 in a .proto file loses its low bits",
+    "note": "parseNumber of parse.js gives a float for each number. Field#resolve then makes a Long of the float, so 9007199254740993 becomes 9007199254740992. protoc keeps the exact value. Confidence high."
+  },
+  {
+    "id": "F0129",
+    "package": "protobufjs",
+    "version": "8.8.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "The .proto parser rejects a hex number with the prefix 0X",
+    "note": "The protobuf language specification and protoc accept the prefixes 0x and 0X. The regular expressions of parse.js accept only 0x, so a field number or a default such as 0X1F throws an error. Confidence high."
   }
 ]
