@@ -1227,5 +1227,15 @@
     "kind": "correctness",
     "title": "end() before connect() of a client with manualConnect throws a TypeError",
     "note": "With manualConnect: true, the client has no stream until connect(). end() then throws \"Cannot read properties of undefined (reading 'on')\". Confidence high."
+  },
+  {
+    "id": "F0123",
+    "package": "mqtt",
+    "version": "5.16.1",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "tests",
+    "title": "Five test files call process.exit(0) in an after hook, so node --test does not report a failure of the last test of each file and exits 0",
+    "note": "client.ts, client_mqtt5.ts, secure_client.ts, unique_message_id_provider_client.ts and websocket_client.ts in test/node, at 5.16.1 (66a9708) and at main 0ceae41. The script unit-test:node runs the files with node --test. With the hook, the runner does not report the last test of the file, and a failure of that test gives exit code 0. A comment of client_mqtt5.ts names the effect, and the tests of GHSA-h8jm-hm87-fqw3 are not last because of it. Found in the work on the fix of F0116 (MQTT.js #2108), whose new test is not last for the same reason. On Windows with Node 24.21.0 the repro printed BUG PRESENT and exited 1. Confidence high."
   }
 ]
