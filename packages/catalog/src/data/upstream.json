@@ -935,6 +935,13 @@
     "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
   },
   {
+    "finding": "F0116",
+    "at": "2026-11-18T00:06:34Z",
+    "state": "pr-open",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2108",
+    "note": "The fix of #2101. On Windows with Node 24.21.0, the new test of secure_client.ts failed before the fix and passed after it. The 2 other failures of the file (read ECONNRESET) also fail without the fix. The CI of the PR waits for the approval of a maintainer."
+  },
+  {
     "finding": "F0117",
     "at": "2026-11-17T21:39:44Z",
     "state": "issue-open",
