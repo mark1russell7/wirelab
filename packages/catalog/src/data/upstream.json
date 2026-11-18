@@ -1073,5 +1073,26 @@
     "state": "issue-open",
     "url": "https://github.com/video-dev/hls.js/issues/8188",
     "note": "The repro ran in CI (repro.yml, run 44222005235). The issue names mergeDateRanges of level-helper.ts too, and offers a fix pull request with a unit test."
+  },
+  {
+    "finding": "F0134",
+    "at": "2026-11-18T02:54:45Z",
+    "state": "issue-open",
+    "url": "https://github.com/ethers-io/ethers.js/issues/5225",
+    "note": "The repro ran in CI (repro.yml, run 44225771922, one job for the 3 ethers folders). The main branch of ethers has the same utf8.ts. The issue offers a fix pull request with a test."
+  },
+  {
+    "finding": "F0135",
+    "at": "2026-11-18T02:54:46Z",
+    "state": "issue-open",
+    "url": "https://github.com/ethers-io/ethers.js/issues/5226",
+    "note": "The repro ran in CI (repro.yml, run 44225771922). The issue names ethers #4051, which added the error event for a JSON message of unknown form in 6.4.0."
+  },
+  {
+    "finding": "F0136",
+    "at": "2026-11-18T02:54:47Z",
+    "state": "issue-open",
+    "url": "https://github.com/ethers-io/ethers.js/issues/5227",
+    "note": "The repro ran in CI (repro.yml, run 44225771922). With a delete of the map entry in stop(), the repro counts 0 live subscribers. The issue offers a fix pull request with a test."
   }
 ]
