@@ -984,6 +984,13 @@
     "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
   },
   {
+    "finding": "F0122",
+    "at": "2026-11-18T01:12:20Z",
+    "state": "pr-open",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2111",
+    "note": "The fix of #2107: _cleanUp() returns early when the client has no stream, and a new test in test/node/client.ts. On Windows with Node 24.21.0, the test is red before the fix (the TypeError of #2107), and the 4 tests of 'connect manually' pass after it. The CI of the PR waits for the approval of a maintainer."
+  },
+  {
     "finding": "F0123",
     "at": "2026-11-18T00:42:04Z",
     "state": "issue-open",
