@@ -1122,5 +1122,23 @@
     "state": "issue-open",
     "url": "https://github.com/smithy-lang/smithy-typescript/issues/2367",
     "note": "The fault is in getChunkedStream of @smithy/core, so the issue is in smithy-typescript. Its repro uses only @smithy/core 3.41.0."
+  },
+  {
+    "finding": "F0142",
+    "at": "2026-11-18T04:44:27Z",
+    "state": "held-ai-policy",
+    "note": "aws/aws-sdk-js-v3 asks that a named person reviews each report that an AI tool writes, before it is filed. The issue text is ready, and it waits for that review."
+  },
+  {
+    "finding": "F0143",
+    "at": "2026-11-18T04:44:27Z",
+    "state": "held-ai-policy",
+    "note": "aws/aws-sdk-js-v3 asks that a named person reviews each report that an AI tool writes, before it is filed. The issue text is ready, and it waits for that review."
+  },
+  {
+    "finding": "F0144",
+    "at": "2026-11-18T04:44:27Z",
+    "state": "held-ai-policy",
+    "note": "aws/aws-sdk-js-v3 asks that a named person reviews each report that an AI tool writes, before it is filed. The issue text is ready, and it waits for that review."
   }
 ]
