@@ -62,6 +62,8 @@
           "repros/@microsoft/signalr/F0111/tsconfig.json",
           "repros/@microsoft/signalr/F0112/tsconfig.json",
           "repros/@microsoft/signalr/F0113/tsconfig.json",
+          "repros/@msgpack/msgpack/F0137/tsconfig.json",
+          "repros/@msgpack/msgpack/F0138/tsconfig.json",
           "repros/engine.io-client/F0031/tsconfig.json",
           "repros/engine.io-client/F0033/tsconfig.repro.json",
           "repros/ethers/F0134/tsconfig.json",
