@@ -395,6 +395,37 @@ importers:
         specifier: ^5.0.3
         version: 5.1.0(@opentelemetry/api@1.10.0)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
 
+  packages/suite-sockjs:
+    dependencies:
+      '@mark1russell7/rigor-proxy':
+        specifier: ^0.4.1
+        version: 0.4.1(zod@4.6.7)
+      '@mark1russell7/rigor-testkit':
+        specifier: ^0.1.19
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.0)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+      sockjs-client:
+        specifier: ^1.6.1
+        version: 1.6.1(supports-color@7.2.0)
+    devDependencies:
+      '@mark1russell7/cue':
+        specifier: ^2.0.0
+        version: 2.1.4
+      '@types/node':
+        specifier: ^26.6.5
+        version: 26.6.6
+      '@types/sockjs-client':
+        specifier: ^1.5.4
+        version: 1.5.4
+      '@vitest/coverage-v8':
+        specifier: ^5.0.3
+        version: 5.1.0(vitest@5.1.0)
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+      vitest:
+        specifier: ^5.0.3
+        version: 5.1.0(@opentelemetry/api@1.10.0)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.0)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
+
 packages:
 
   '@babel/helper-string-parser@7.29.14':
@@ -1061,6 +1092,9 @@ packages:
   '@types/readable-stream@4.0.25':
     resolution: {integrity: sha512-7GsxL8Wd5X3jh73/qgW7WCnbBvGSdD8U3E4Jiuus3/8I+PN20DtlkJtwFhr/sImXfDDQ2Z03i/9wNiIF3TVSsw==}
 
+  '@types/sockjs-client@1.5.4':
+    resolution: {integrity: sha512-zk+uFZeWyvJ5ZFkLIwoGA/DfJ+pYzcZ8eH4H/EILCm2OBZyHH6Hkdna1/UWL/CFruh5wj6ES7g75SvUB0VsH5w==}
+
   '@types/websocket@1.0.10':
     resolution: {integrity: sha512-svjGZvPB7EzuYS94cI7a+qhwgGU1y89wUgjT6E2wVUfmAGIvRfT7obBvRtnhXCSsoMdlG4gBFGE7MfkIXZLoww==}
 
@@ -1326,6 +1360,14 @@ packages:
       supports-color:
         optional: true
 
+  debug@3.2.7:
+    resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
     engines: {node: '>=6.0'}
@@ -1437,6 +1479,10 @@ packages:
   events@3.3.0:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
+
+  eventsource@2.0.2:
+    resolution: {integrity: sha512-IzUmBGPR3+oUG9dUeXynyNmf91/3zUSJg1lCktzKw47OXuhco54U3r9B7O4XX+Rb1Itm9OZ2b0RkTs10bICOxA==}
+    engines: {node: '>=12.0.0'}
 
   expect-type@1.4.0:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
@@ -1734,6 +1780,9 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  querystringify@2.2.0:
+    resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
+
   readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
@@ -1749,6 +1798,9 @@ packages:
   regexp-tree@0.1.27:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
     hasBin: true
+
+  requires-port@1.0.0:
+    resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
 
   resolve@1.22.14:
     resolution: {integrity: sha512-1ZjYvR9sbkiwC5+9QHetqW5HmA2pHRMaoupD01t2HlYnV/vydC2zPwLixhsMieSWVZt0JJRg5LVIk0Ow1D/TrA==}
@@ -1796,6 +1848,10 @@ packages:
   socket.io-parser@4.2.7:
     resolution: {integrity: sha512-IH/iSeO9T6gz1KkFleGDWkG9N3dl4jXVYUtMhIqH10Md0ttMer8nUNWiP1DKuNrybD2xBrixLJdCC9J6ECoYkg==}
     engines: {node: '>=10.0.0'}
+
+  sockjs-client@1.6.1:
+    resolution: {integrity: sha512-2g0tjOR+fRs0amxENLi/q5TiJTqY+WXFOzb5UwXndlK6TO3U/mirZznpx6w34HVMoc3g7cY24yC/ZMIYnDlfkw==}
+    engines: {node: '>=12'}
 
   socks@2.8.10:
     resolution: {integrity: sha512-e0VyvkVTwVYViNovRkZ9aodhxVlyoMn7eJhVUPxZ+eK9P/7CBkxvvsBOHqFPEH416726W8tLXXXjKwqgTErrCQ==}
@@ -1900,6 +1956,9 @@ packages:
     peerDependenciesMeta:
       '@napi-rs/canvas':
         optional: true
+
+  url-parse@1.5.10:
+    resolution: {integrity: sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==}
 
   utf-8-validate@5.0.10:
     resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
@@ -2564,6 +2623,8 @@ snapshots:
     dependencies:
       '@types/node': 26.6.6
 
+  '@types/sockjs-client@1.5.4': {}
+
   '@types/websocket@1.0.10':
     dependencies:
       '@types/node': 26.6.6
@@ -2769,6 +2830,12 @@ snapshots:
     optionalDependencies:
       supports-color: 7.2.0
 
+  debug@3.2.7(supports-color@7.2.0):
+    dependencies:
+      ms: 2.1.3
+    optionalDependencies:
+      supports-color: 7.2.0
+
   debug@4.4.3(supports-color@7.2.0):
     dependencies:
       ms: 2.1.3
@@ -2930,6 +2997,8 @@ snapshots:
   event-target-shim@5.0.1: {}
 
   events@3.3.0: {}
+
+  eventsource@2.0.2: {}
 
   expect-type@1.4.0: {}
 
@@ -3190,6 +3259,8 @@ snapshots:
       picocolors: 1.1.1
       sade: 1.8.1
 
+  querystringify@2.2.0: {}
+
   readable-stream@3.6.2:
     dependencies:
       inherits: 2.0.4
@@ -3209,6 +3280,8 @@ snapshots:
       resolve: 1.22.14
 
   regexp-tree@0.1.27: {}
+
+  requires-port@1.0.0: {}
 
   resolve@1.22.14:
     dependencies:
@@ -3274,6 +3347,16 @@ snapshots:
     dependencies:
       '@socket.io/component-emitter': 3.1.2
       debug: 4.4.3(supports-color@7.2.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  sockjs-client@1.6.1(supports-color@7.2.0):
+    dependencies:
+      debug: 3.2.7(supports-color@7.2.0)
+      eventsource: 2.0.2
+      faye-websocket: 0.11.4
+      inherits: 2.0.4
+      url-parse: 1.5.10
     transitivePeerDependencies:
       - supports-color
 
@@ -3374,6 +3457,11 @@ snapshots:
   undici@8.12.4: {}
 
   unpdf@1.9.1: {}
+
+  url-parse@1.5.10:
+    dependencies:
+      querystringify: 2.2.0
+      requires-port: 1.0.0
 
   utf-8-validate@5.0.10:
     dependencies:

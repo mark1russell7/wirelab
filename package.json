@@ -41,10 +41,11 @@
         "allow": [
           "suite-mqtt.yml",
           "suite-engineio.yml",
+          "suite-sockjs.yml",
           "suite-socketio.yml",
           "suite-autobahn.yml"
         ],
-        "reason": "The suites of MQTT, Engine.IO, Socket.IO and Autobahn are not gates. They find faults of the clients, and their it.fails tests record them. They run only when a suite changes, each week and on a manual start."
+        "reason": "The suites of MQTT, Engine.IO, SockJS, Socket.IO and Autobahn are not gates. They find faults of the clients, and their it.fails tests record them. They run only when a suite changes, each week and on a manual start."
       },
       "typed-files": {
         "configs": [

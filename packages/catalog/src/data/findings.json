@@ -1387,5 +1387,15 @@
     "kind": "correctness",
     "title": "encode() writes an Invalid Date as the timestamp 0 with no error, so decode() gives the valid date 1970-01-01T00:00:00.000Z",
     "note": "encodeDateToTimeSpec gives NaN for sec and nsec. encodeTimeSpecToTimestamp then uses the timestamp 96 format, and DataView writes NaN as 0. In the repro, new Date(NaN) and new Date(\"not a date\") both decode as 1970-01-01T00:00:00.000Z."
+  },
+  {
+    "id": "F0149",
+    "package": "sockjs-client",
+    "version": "1.6.1",
+    "kind": "conformance",
+    "method": "review",
+    "found": "2026-11-17",
+    "title": "The client sends 288 of the 1092 code units of escapable_by_client with no escape, for example U+2028 and U+FEFF",
+    "note": "The section JSON Unicode Encoding of the protocol says that the browser must escape the characters of escapable_by_client. quote() of lib/utils/escape.js in 1.6.1 escapes only the output of JSON.stringify and its own list extraEscapable. A probe of the review and the check client-escapes of the SockJS suite give the raw units U+007F-U+009F, U+00AD, U+0600-U+0604, U+070F, U+17B4-U+17B5, U+2002-U+20CF, U+20D2-U+20D3, U+20D8-U+20E6, U+20EA-U+20FF and U+FEFF on each of the 4 transports."
   }
 ]

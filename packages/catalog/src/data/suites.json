@@ -57,5 +57,12 @@
     "subject": "client",
     "url": "https://github.com/mark1russell7/wirelab/tree/main/packages/suite-socketio",
     "note": "The scripted Engine.IO server gives fixed replies of HTTP long-polling. The suite examines 15 rules of Socket.IO version 5 over NodeXHR and Fetch."
+  },
+  {
+    "id": "wirelab-suite-sockjs",
+    "name": "wirelab SockJS client suite",
+    "subject": "client",
+    "url": "https://github.com/mark1russell7/wirelab/tree/main/packages/suite-sockjs",
+    "note": "A scripted server gives fixed frames on the transports websocket, xhr-streaming, xhr-polling and eventsource. The suite examines 20 rules of SockJS protocol 0.3.3."
   }
 ]
