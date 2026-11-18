@@ -1,9 +1,9 @@
 # Builds the site of wirelab and publishes it to GitHub Pages at https://mark1russell7.github.io/wirelab/,
 # with the shared Pages workflow of the template (reusable-pages.yml, CI.md "Pages").
-# The home page is the Vite build of packages/site. The site-pages action adds the Releases page and the Status page.
+# The values of the site are in .github/site.json, the one home of the site config (CI.md, "The site config").
 # The Pages source of the repository is "GitHub Actions" (Settings > Pages).
 # A scheduled build takes the newest commit of main, or the newest green one if CI failed on it.
-# A pull request builds and checks the site in a browser, with no deploy.
+# No pull request starts this workflow. The job site of ci.yml builds and checks the same site, with no deploy.
 name: Pages
 
 on:
@@ -13,19 +13,17 @@ on:
   schedule:
     - cron: "18 */3 * * *"
   workflow_dispatch:
-  pull_request:
 
 permissions: {}
 
 # One deployment at a time. A deployment in progress ends, and GitHub keeps only the newest deployment that waits.
-# Each pull request has its own group, and a newer push cancels its run.
 concurrency:
-  group: pages-${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: pages-deploy
+  cancel-in-progress: false
 
 jobs:
   pages:
-    uses: mark1russell7/template/.github/workflows/reusable-pages.yml@23f7277eb3902b6be466cd2955d32b87cc774c5a # main
+    uses: mark1russell7/template/.github/workflows/reusable-pages.yml@8384e885a3cb304498a858c531cd86641956480c # main
     # The build job of the shared workflow gets only the read permissions. Only its deploy job,
     # which runs no code of the repository, writes to Pages.
     permissions:
@@ -38,18 +36,3 @@ jobs:
       statuses: read
       pages: write
       id-token: write
-    with:
-      # site-pages adds releases/ and status/ next to the home page.
-      build: pnpm --filter @wirelab/site run build
-      out: packages/site/dist
-      env: '{"SITE_BASE": "/${{ github.event.repository.name }}"}'
-      deploy: ${{ github.event_name != 'pull_request' }}
-      packages: ""
-      site-name: wirelab
-      # The open items for the Status page. check:conventions parses the file on each pull request (roadmap-parses).
-      roadmap: docs/ROADMAP.md
-      # The check opens each page in a browser at 360, 400 and 1280 pixels, in light and dark.
-      site-check: true
-      site-check-pages: /,/releases/,/status/
-      # The probe drives the catalog at each width: the list, the details of a row and the filters.
-      site-check-probe: packages/site/src/check-probe.ts
