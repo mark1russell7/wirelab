@@ -173,7 +173,15 @@
           "repros/bson/F0164/tsconfig.json",
           "repros/bson/F0165/tsconfig.json",
           "repros/bson/F0166/tsconfig.json",
-          "repros/bson/F0167/tsconfig.json"
+          "repros/bson/F0167/tsconfig.json",
+          "repros/@supabase/postgrest-js/F0168/tsconfig.json",
+          "repros/@supabase/postgrest-js/F0169/tsconfig.json",
+          "repros/@supabase/postgrest-js/F0170/tsconfig.json",
+          "repros/@supabase/postgrest-js/F0171/tsconfig.json",
+          "repros/@supabase/postgrest-js/F0172/tsconfig.json",
+          "repros/@supabase/postgrest-js/F0173/tsconfig.json",
+          "repros/@supabase/postgrest-js/F0174/tsconfig.json",
+          "repros/@supabase/postgrest-js/F0175/tsconfig.json"
         ],
         "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines the configs tsconfig.json and tsconfig.repro.json. A repro of a types finding has tsconfig.repro.json: tsc fails on purpose, and the workflow compares its errors with expected-errors.txt. The config repros/fix-tests/tsconfig.json examines the scripts of all fix tests. A types check of a fix test has its own config tsconfig.check-<finding>.json."
       }

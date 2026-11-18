@@ -1259,5 +1259,61 @@
     "state": "pr-open",
     "url": "https://github.com/mongodb/js-bson/pull/968",
     "note": "The PR fixes only the subType: it must be a one- or two-character hex string. The bad base64 part of the finding is not in this PR."
+  },
+  {
+    "finding": "F0168",
+    "at": "2026-11-18T14:49:03Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2685",
+    "note": "An open pull request of another author, for issue #2683. Its test 'reports a bodiless 404 as a failure rather than 204 No Content' covers this fault."
+  },
+  {
+    "finding": "F0169",
+    "at": "2026-11-18T15:06:31Z",
+    "state": "issue-open",
+    "url": "https://github.com/supabase/supabase-js/issues/2876",
+    "note": "The issue has the repro and the output of repro run 44329099152."
+  },
+  {
+    "finding": "F0170",
+    "at": "2026-11-18T14:49:03Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2634",
+    "note": "An open pull request of another author: it reads the HTTP-date form and limits the delay."
+  },
+  {
+    "finding": "F0171",
+    "at": "2026-11-18T14:49:03Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2825",
+    "note": "An open pull request of another author: the timeout and the abort of the caller also cover the read of the body. Issue #2755 reports the abort part."
+  },
+  {
+    "finding": "F0172",
+    "at": "2026-11-18T14:49:03Z",
+    "state": "pr-open",
+    "url": "https://github.com/supabase/supabase-js/pull/2693",
+    "note": "An open pull request of another author, for issue #2691."
+  },
+  {
+    "finding": "F0173",
+    "at": "2026-11-18T15:06:31Z",
+    "state": "issue-open",
+    "url": "https://github.com/supabase/supabase-js/issues/2877",
+    "note": "The issue has the repro and the output of repro run 44329099152."
+  },
+  {
+    "finding": "F0174",
+    "at": "2026-11-18T14:49:03Z",
+    "state": "issue-open",
+    "url": "https://github.com/supabase/supabase-js/issues/2848",
+    "note": "An open issue of another author."
+  },
+  {
+    "finding": "F0175",
+    "at": "2026-11-18T14:49:03Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/supabase/supabase-js/pull/2240",
+    "note": "Merged on the branch develop on 2026-04-29, as a breaking change for the next major version. Not on master and not in 2.119.0. Issue #1643 is closed."
   }
 ]

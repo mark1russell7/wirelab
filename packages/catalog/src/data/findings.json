@@ -1667,5 +1667,85 @@
     "kind": "conformance",
     "title": "EJSON number wrappers accept out-of-range and non-numeric strings and change the value",
     "note": "$numberInt \"2147483648\" becomes -2147483648 and \"12abc\" becomes 0. $numberLong 2^63 becomes -2^63, and a $timestamp t of 2^32 becomes 0 in canonical mode."
+  },
+  {
+    "id": "F0168",
+    "package": "@supabase/postgrest-js",
+    "version": "2.119.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A 404 reply with an empty body, as each 404 reply to HEAD, becomes success with status 204 and no error",
+    "note": "processResponse turns a 404 with an empty body into 204 No Content, as a workaround for postgrest-js#295. A reply to HEAD has no body, so a count with head: true on a missing table gives count null and no error."
+  },
+  {
+    "id": "F0169",
+    "package": "@supabase/postgrest-js",
+    "version": "2.119.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A failed reply whose body is a JSON scalar (null, false, 0 or \"\") gives no error object",
+    "note": "processResponse uses JSON.parse(body) as the error and does not check that it is an object. A 500 with the body null gives success true and error null. false, 0 and \"\" give a falsy error, so if (error) and throwOnError() do not see the failure."
+  },
+  {
+    "id": "F0170",
+    "package": "@supabase/postgrest-js",
+    "version": "2.119.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "conformance",
+    "title": "Retry-After in the HTTP-date form is read as 0 seconds, so the retry of a 503 starts at once",
+    "note": "fetchWithRetry uses parseInt(retryAfter, 10) || 0. RFC 9110 10.2.3 also allows an HTTP-date, which parseInt reads as NaN. The delay also has no upper limit."
+  },
+  {
+    "id": "F0171",
+    "package": "@supabase/postgrest-js",
+    "version": "2.119.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "resource",
+    "title": "The timeout option stops when the headers arrive, so a response body that stalls hangs the query with no limit",
+    "note": "withTimeout clears its timer when fetch resolves, and processResponse then reads the body with res.text() with no guard. The doc of the option says that it prevents indefinite hangs."
+  },
+  {
+    "id": "F0172",
+    "package": "@supabase/postgrest-js",
+    "version": "2.119.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "rpc() with get: true sends an object argument as the text [object Object]",
+    "note": "rpc() uses POST for object arguments only when head is true. With get: true, each argument goes into the URL as a template string, so a json argument becomes [object Object]."
+  },
+  {
+    "id": "F0173",
+    "package": "@supabase/postgrest-js",
+    "version": "2.119.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "eq(), neq() and match() accept array and JSON column values by type, but send them as a,b and [object Object]",
+    "note": "The value type is the column type, so string[] type-checks for a text[] column and an object for a jsonb column. At run time the value goes into the URL as a template string, which Postgres rejects or reads as a different value."
+  },
+  {
+    "id": "F0174",
+    "package": "@supabase/postgrest-js",
+    "version": "2.119.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "rpc() with count replaces the Prefer header of the client, so a client with tx=rollback commits that call",
+    "note": "rpc() uses headers.set('Prefer', ...) for count, and each table method uses headers.append. So each Prefer preference of the client headers, for example tx=rollback or timezone, is lost only for rpc() with count."
+  },
+  {
+    "id": "F0175",
+    "package": "@supabase/postgrest-js",
+    "version": "2.119.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "The error of a failed query result is a plain object, not the declared PostgrestError: instanceof is false and toJSON() is missing",
+    "note": "The declared type of PostgrestResponseFailure.error is the class PostgrestError. processResponse returns the parsed body or { message }. Only throwOnError() and getOpenApiSpec() make instances."
   }
 ]
