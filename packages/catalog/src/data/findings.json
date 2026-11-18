@@ -1827,5 +1827,25 @@
     "kind": "correctness",
     "title": "rawRequest() with an options object gives the responseMiddleware variables: undefined",
     "note": "rawRequest passes the positional variables argument to the responseMiddleware, which is undefined when the call uses an options object. request() passes the variables of its options."
+  },
+  {
+    "id": "F0184",
+    "package": "@upstash/redis",
+    "version": "1.41.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "geopos() drops each member that has no position, so the next positions move to the wrong members",
+    "note": "transform() in geo_pos.ts skips each null entry of the GEOPOS reply. Redis gives one entry for each member in order, with null for a member that is not in the key, so entry i of the result is not the position of member i."
+  },
+  {
+    "id": "F0185",
+    "package": "@upstash/redis",
+    "version": "1.41.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "keys() and scan() give key names that JSON parsing changed",
+    "note": "The automatic deserialization runs JSON.parse on each key name: \"123\" comes back as the number 123, \"null\" as null and \"\\\"draft\\\"\" as \"draft\". The docs give string[]. del() with a changed name deletes a different key."
   }
 ]
