@@ -1453,5 +1453,61 @@
     "state": "fixed-by-others",
     "url": "https://github.com/tus/tus-js-client/blob/fbbf606e8517057d06dbf49f99b102733b7b72d5/lib/upload.ts#L298-L302",
     "note": "Fixed on main by the TypeScript rewrite for 5.0.0: the parts are copies of the boundaries. Not released: 5.0.0-pre3 is on the dist-tag next, and 4.3.1 is the latest release."
+  },
+  {
+    "finding": "F0193",
+    "at": "2026-11-18T18:52:52Z",
+    "state": "issue-open",
+    "url": "https://github.com/mhart/aws4fetch/issues/86",
+    "note": "The issue has the repro and its local output on Node.js 24. The repro CI run 44372653256 was still in the queue at the filing. No commit on master since 2024-12-06."
+  },
+  {
+    "finding": "F0193",
+    "at": "2026-11-18T18:54:10Z",
+    "state": "pr-open",
+    "url": "https://github.com/mhart/aws4fetch/pull/90",
+    "note": "sign() skips the body read for GET and HEAD, and keeps the Content-Type check (see #80). The suite of the project, run as a rollup bundle in Node.js 24 (the project runs it in Puppeteer): without the fix the new test throws the TypeError, with the fix 449 assertions pass."
+  },
+  {
+    "finding": "F0194",
+    "at": "2026-11-18T18:52:53Z",
+    "state": "issue-open",
+    "url": "https://github.com/mhart/aws4fetch/issues/87",
+    "note": "The issue has the repro and its local output on Node.js 24. The repro CI run 44372653256 was still in the queue at the filing. No commit on master since 2024-12-06."
+  },
+  {
+    "finding": "F0194",
+    "at": "2026-11-18T18:54:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/mhart/aws4fetch/pull/91",
+    "note": "sign() copies signal and redirect of a Request input; cache, credentials and mode stay out, because new Request() refuses some of their values. The suite of the project, run as a rollup bundle in Node.js 24 (the project runs it in Puppeteer): without the fix 2 assertions fail, with the fix 448 pass."
+  },
+  {
+    "finding": "F0195",
+    "at": "2026-11-18T18:52:54Z",
+    "state": "issue-open",
+    "url": "https://github.com/mhart/aws4fetch/issues/88",
+    "note": "The issue has the repro and its local output on Node.js 24. The repro CI run 44372653256 was still in the queue at the filing. No commit on master since 2024-12-06."
+  },
+  {
+    "finding": "F0195",
+    "at": "2026-11-18T18:54:15Z",
+    "state": "pr-open",
+    "url": "https://github.com/mhart/aws4fetch/pull/92",
+    "note": "A branch for a region label that starts with s3-, after the s3 and s3-accelerate branch. The suite of the project, run as a rollup bundle in Node.js 24 (the project runs it in Puppeteer): without the fix 6 assertions fail, with the fix 451 pass. It adds rows at the same place as #93."
+  },
+  {
+    "finding": "F0196",
+    "at": "2026-11-18T18:52:56Z",
+    "state": "issue-open",
+    "url": "https://github.com/mhart/aws4fetch/issues/89",
+    "note": "The issue has the repro and its local output on Node.js 24. The repro CI run 44372653256 was still in the queue at the filing. No commit on master since 2024-12-06."
+  },
+  {
+    "finding": "F0196",
+    "at": "2026-11-18T18:54:18Z",
+    "state": "pr-open",
+    "url": "https://github.com/mhart/aws4fetch/pull/93",
+    "note": "s3-accesspoint maps to s3 in HOST_SERVICES. The suite of the project, run as a rollup bundle in Node.js 24 (the project runs it in Puppeteer): without the fix 3 assertions fail, with the fix 451 pass. It adds rows at the same place as #92."
   }
 ]
