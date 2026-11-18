@@ -1238,5 +1238,26 @@
     "state": "issue-open",
     "url": "https://github.com/wevm/viem/issues/5570",
     "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0162",
+    "at": "2026-11-18T14:31:45Z",
+    "state": "pr-open",
+    "url": "https://github.com/mongodb/js-bson/pull/966",
+    "note": "The fix accepts only own keys of fieldsAsRaw. The PR has a test and the repro. js-bson takes PRs with no issue first."
+  },
+  {
+    "finding": "F0165",
+    "at": "2026-11-18T14:35:13Z",
+    "state": "pr-open",
+    "url": "https://github.com/mongodb/js-bson/pull/967",
+    "note": "The fix checks the length before getBigInt64LE and throws BSONError. The PR has a test that fails with the RangeError before the fix."
+  },
+  {
+    "finding": "F0166",
+    "at": "2026-11-18T14:39:29Z",
+    "state": "pr-open",
+    "url": "https://github.com/mongodb/js-bson/pull/968",
+    "note": "The PR fixes only the subType: it must be a one- or two-character hex string. The bad base64 part of the finding is not in this PR."
   }
 ]
