@@ -50,7 +50,6 @@
         "configs": [
           "repros/@aws-sdk/client-s3/F0139/tsconfig.json",
           "repros/@aws-sdk/client-s3/F0140/tsconfig.json",
-          "repros/@aws-sdk/client-s3/F0141/tsconfig.json",
           "repros/@aws-sdk/client-s3/F0142/tsconfig.json",
           "repros/@aws-sdk/client-s3/F0143/tsconfig.json",
           "repros/@aws-sdk/client-s3/F0144/tsconfig.json",
@@ -99,7 +98,7 @@
           "repros/mqtt/F0120/tsconfig.json",
           "repros/mqtt/F0121/tsconfig.json",
           "repros/mqtt/F0122/tsconfig.json",
-    "repros/mqtt/F0123/tsconfig.json",
+          "repros/mqtt/F0123/tsconfig.json",
           "repros/partysocket/F0037/tsconfig.json",
           "repros/partysocket/F0038/tsconfig.json",
           "repros/partysocket/F0039/tsconfig.json",

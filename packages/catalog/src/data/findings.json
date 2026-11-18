@@ -1409,16 +1409,6 @@
     "note": "When the source ends, getChunkedStream in @smithy/core 3.41.0 examines only currentMessageTotalLength, so it drops a part of the 4-byte length prefix. In the repro of SelectObjectContent, cuts after 1, 2 and 3 bytes of the second message end with no error, and cuts after 4, 5 and 12 bytes throw."
   },
   {
-    "id": "F0141",
-    "package": "@aws-sdk/client-s3",
-    "version": "3.1171.0",
-    "kind": "correctness",
-    "method": "review",
-    "found": "2026-11-17",
-    "title": "The event stream decoder accepts a header value that runs past the header section, and the value takes bytes of the payload",
-    "note": "HeaderMarshaller.parse in @smithy/core 3.41.0 makes each value with new Uint8Array(headers.buffer, ...) and does not compare its end with the end of the header section. In the repro, a string header that declares 10 bytes with 3 bytes left gives \"abcPAYLOAD\". The message has correct lengths and CRC32 checksums."
-  },
-  {
     "id": "F0142",
     "package": "@aws-sdk/client-s3",
     "version": "3.1171.0",

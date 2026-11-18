@@ -1108,5 +1108,19 @@
     "state": "issue-open",
     "url": "https://github.com/msgpack/msgpack-javascript/issues/304",
     "note": "The repro ran in CI (repro.yml, run 44229138782). The issue proposes a RangeError for an Invalid Date, as Date.prototype.toISOString gives, and offers a fix pull request with a test."
+  },
+  {
+    "finding": "F0139",
+    "at": "2026-11-18T04:07:14Z",
+    "state": "issue-open",
+    "url": "https://github.com/smithy-lang/smithy-typescript/issues/2366",
+    "note": "The fault is in EventStreamSerde of @smithy/core, so the issue is in smithy-typescript. Its repro uses only @smithy/core 3.41.0."
+  },
+  {
+    "finding": "F0140",
+    "at": "2026-11-18T04:07:15Z",
+    "state": "issue-open",
+    "url": "https://github.com/smithy-lang/smithy-typescript/issues/2367",
+    "note": "The fault is in getChunkedStream of @smithy/core, so the issue is in smithy-typescript. Its repro uses only @smithy/core 3.41.0."
   }
 ]
