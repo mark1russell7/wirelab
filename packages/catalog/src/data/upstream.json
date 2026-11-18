@@ -1003,5 +1003,47 @@
     "state": "pr-open",
     "url": "https://github.com/mqttjs/MQTT.js/pull/2110",
     "note": "The fix of #2109: --test-force-exit in unit-test:node, and no process.exit(0) in the 5 after hooks. On Windows with Node 24.21.0, secure_client.ts and websocket_client.ts report one test more each, and 3 files report their cancelled tests. The CI of the PR waits for the approval of a maintainer."
+  },
+  {
+    "finding": "F0124",
+    "at": "2026-11-18T01:50:39Z",
+    "state": "pr-open",
+    "url": "https://github.com/protobufjs/protobuf.js/pull/2436",
+    "note": "An open pull request of another author (2026-09-19): utf8.write writes U+FFFD for a lone surrogate, with tests. A fix of the same form from this review stays local, so that there is no duplicate pull request."
+  },
+  {
+    "finding": "F0125",
+    "at": "2026-11-18T01:50:39Z",
+    "state": "issue-open",
+    "url": "https://github.com/protobufjs/protobuf.js/issues/2458",
+    "note": "The repro ran in CI (repro.yml, run 44217156407, one job for the 6 protobufjs folders). In the thread of #2426, its author offered a follow-up pull request for the Unicode escapes. The issue offers a fix pull request if nobody works on it."
+  },
+  {
+    "finding": "F0126",
+    "at": "2026-11-18T01:50:40Z",
+    "state": "issue-open",
+    "url": "https://github.com/protobufjs/protobuf.js/issues/2459",
+    "note": "The repro ran in CI (repro.yml, run 44217156407). A maintainer noted the fault for the hex escape of the byte 0xff in the thread of #2426. The issue points to the byte model of ext/textformat.js."
+  },
+  {
+    "finding": "F0127",
+    "at": "2026-11-18T01:50:41Z",
+    "state": "issue-open",
+    "url": "https://github.com/protobufjs/protobuf.js/issues/2460",
+    "note": "The repro ran in CI (repro.yml, run 44217156407). The fix needs a choice of the maintainers: the base64 guess of src/field.js possibly has users."
+  },
+  {
+    "finding": "F0128",
+    "at": "2026-11-18T01:50:42Z",
+    "state": "issue-open",
+    "url": "https://github.com/protobufjs/protobuf.js/issues/2461",
+    "note": "The repro ran in CI (repro.yml, run 44217156407). Issue #1384 (the same loss in the output of pbjs, 2020) was closed as inactive, with a request for a fresh issue."
+  },
+  {
+    "finding": "F0129",
+    "at": "2026-11-18T01:51:17Z",
+    "state": "pr-open",
+    "url": "https://github.com/protobufjs/protobuf.js/pull/1525",
+    "note": "An open pull request of another author (2020-12-24), with the fix and no test. A comment of this review gives the repro and the CI run 44217156407, and offers a test."
   }
 ]
