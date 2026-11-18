@@ -1404,5 +1404,26 @@
     "at": "2026-11-18T17:38:22Z",
     "state": "held-ai-policy",
     "note": "The contribution guide of birpc asks that a person writes each issue and pull request text in their own words, and understands each change. The issue text is ready, and it waits for that person."
+  },
+  {
+    "finding": "F0190",
+    "at": "2026-11-18T18:00:06Z",
+    "state": "pr-open",
+    "url": "https://github.com/tus/tus-js-client/pull/929",
+    "note": "An open pull request of a maintainer (2026-10-26): an explicit state machine. abort() during startup moves the upload to paused and drops the attempt. No duplicate report from this review."
+  },
+  {
+    "finding": "F0191",
+    "at": "2026-11-18T18:00:06Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/tus/tus-js-client/blob/fbbf606e8517057d06dbf49f99b102733b7b72d5/lib/upload.ts#L662",
+    "note": "Fixed on main by the TypeScript rewrite for 5.0.0: the storage error reaches onError. Not released: 5.0.0-pre3 is on the dist-tag next, and 4.3.1 is the latest release."
+  },
+  {
+    "finding": "F0192",
+    "at": "2026-11-18T18:00:06Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/tus/tus-js-client/blob/fbbf606e8517057d06dbf49f99b102733b7b72d5/lib/upload.ts#L298-L302",
+    "note": "Fixed on main by the TypeScript rewrite for 5.0.0: the parts are copies of the boundaries. Not released: 5.0.0-pre3 is on the dist-tag next, and 4.3.1 is the latest release."
   }
 ]
