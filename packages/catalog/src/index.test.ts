@@ -272,6 +272,24 @@ describe("the priority order", () => {
     expect(reopened.find((r) => r.package === "b")?.landing).toBe(1);
   });
 
+  it("gives a package of an unmaintained repository its factor, but not twice with deprecated", () => {
+    const f = fixture();
+    const evidence = "https://example.org/o/r#readme";
+    const policies = [
+      { repository: "o/r", topic: "contributions" as const, checked: "2026-11-16", value: "open", evidence },
+      { repository: "o/r", topic: "contributions" as const, checked: "2026-11-18", value: "unmaintained", evidence },
+    ];
+    const packageRepositories = [
+      { package: "a", repository: "o/r" },
+      { package: "b", repository: "o/r" },
+    ];
+    const order = priorityOrder({ ...f, packageRepositories, policies });
+    expect(order.find((r) => r.package === "b")?.landing).toBe(0.1);
+    expect(order.find((r) => r.package === "b")?.reasons).toEqual(["the owner of o/r keeps no maintenance (checked 2026-11-18)"]);
+    expect(order.find((r) => r.package === "a")?.landing).toBe(0.1);
+    expect(order.find((r) => r.package === "c")?.landing).toBe(1);
+  });
+
   it("gives a package with a closed source the factor of its vendor", () => {
     const f = fixture();
     const evidence = "https://vendor.example/package.json";

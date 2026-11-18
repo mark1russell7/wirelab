@@ -571,6 +571,14 @@
   },
   {
     "repository": "Yaffle/EventSource",
+    "topic": "contributions",
+    "checked": "2026-11-18",
+    "value": "unmaintained",
+    "evidence": "https://github.com/Yaffle/EventSource/commit/f864e1fc30fc",
+    "note": "With the last release, 1.0.31 of 2022-08-11, the owner added a line to the README that tells users, in Russian, not to use the library. No commit came after it."
+  },
+  {
+    "repository": "Yaffle/EventSource",
     "topic": "security",
     "checked": "2026-11-16",
     "value": "none-stated",
