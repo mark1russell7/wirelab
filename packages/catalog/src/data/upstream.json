@@ -982,5 +982,19 @@
     "state": "issue-open",
     "url": "https://github.com/mqttjs/MQTT.js/issues/2107",
     "note": "The repro ran in CI (repro.yml, run 44170362852, one job for the 9 mqtt folders). A fix pull request can follow: the project asks for no CLA."
+  },
+  {
+    "finding": "F0123",
+    "at": "2026-11-18T00:42:04Z",
+    "state": "issue-open",
+    "url": "https://github.com/mqttjs/MQTT.js/issues/2109",
+    "note": "The repro ran in CI (repro.yml, run 44207941205): BUG PRESENT on Linux with Node 24.22.2. The issue also gives the counts of the 5 files on Windows before and after the fix."
+  },
+  {
+    "finding": "F0123",
+    "at": "2026-11-18T00:45:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2110",
+    "note": "The fix of #2109: --test-force-exit in unit-test:node, and no process.exit(0) in the 5 after hooks. On Windows with Node 24.21.0, secure_client.ts and websocket_client.ts report one test more each, and 3 files report their cancelled tests. The CI of the PR waits for the approval of a maintainer."
   }
 ]
