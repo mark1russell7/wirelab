@@ -1168,5 +1168,75 @@
     "state": "issue-open",
     "url": "https://github.com/apache/arrow-js/issues/538",
     "note": "The issue has the repro and the output of repro run 44240950212. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
+  },
+  {
+    "finding": "F0150",
+    "at": "2026-11-18T12:14:53Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5561",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0151",
+    "at": "2026-11-18T12:14:54Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5562",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0152",
+    "at": "2026-11-18T12:14:55Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5563",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0153",
+    "at": "2026-11-18T12:14:56Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5564",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0154",
+    "at": "2026-11-18T12:14:58Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5565",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0155",
+    "at": "2026-11-18T12:14:59Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5566",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0156",
+    "at": "2026-11-18T12:15:00Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5567",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0157",
+    "at": "2026-11-18T12:15:01Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5568",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0158",
+    "at": "2026-11-18T12:15:02Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5569",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
+  },
+  {
+    "finding": "F0159",
+    "at": "2026-11-18T12:15:04Z",
+    "state": "issue-open",
+    "url": "https://github.com/wevm/viem/issues/5570",
+    "note": "The issue has the repro and the output of repro run 44299573953. A fix PR follows when a maintainer answers."
   }
 ]
