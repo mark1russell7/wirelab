@@ -1337,5 +1337,35 @@
     "kind": "correctness",
     "title": "An EXT-X-DATERANGE tag with the ID toString or constructor makes parseLevelPlaylist throw a TypeError",
     "note": "m3u8-parser.ts looks for an earlier Date Range with the same ID in a plain object. The lookup finds a function of Object.prototype, and the DateRange constructor reads its start date, which is undefined. Confidence high."
+  },
+  {
+    "id": "F0134",
+    "package": "ethers",
+    "version": "6.17.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "After a truncated multi-byte sequence at the end of the data, Utf8ErrorFuncs.replace and ignore drop the valid bytes that follow it",
+    "note": "For the reason OVERRUN, ignoreFunc of utils/utf8.ts returns the count of all remaining bytes, so the decoder skips to the end. Thus the bytes E2 41 decode to one U+FFFD with replace, and TextDecoder gives U+FFFD and A."
+  },
+  {
+    "id": "F0135",
+    "package": "ethers",
+    "version": "6.17.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "A socket frame that is not JSON, or an eth_subscription message with no params, gives an unhandled rejection and no error event",
+    "note": "SocketProvider._processMessage is async. It calls JSON.parse with no try, and it reads result.params.subscription with no check. Since 6.4.0 (ethers #4051), only a JSON message of unknown form gives the error event. In the default mode of Node.js, the unhandled rejection stops the process."
+  },
+  {
+    "id": "F0136",
+    "package": "ethers",
+    "version": "6.17.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "SocketSubscriber.stop does not remove the subscriber from the map of the provider, so each on() and off() keeps one subscriber in memory",
+    "note": "SocketProvider._register puts each subscriber in the private map #subs, and no code removes it. In the repro, 50 cycles of on() and off() keep 50 subscribers after garbage collection. With a delete in stop(), the count is 0."
   }
 ]
