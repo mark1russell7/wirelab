@@ -1626,7 +1626,7 @@
     "found": "2026-11-18",
     "kind": "correctness",
     "title": "A bigint outside the int64 range is written modulo 2^64, with no error",
-    "note": "serialize and EJSON.stringify write 2n**64n + 5n as 5, and 2n**63n as -2n**63n. The value that comes back is a different number."
+    "note": "serialize and EJSON.stringify write 2n**64n + 5n as 5, and 2n**63n as -2n**63n. The value that comes back is a different number. The upstream tests pin this wrap on purpose (test/node/bigint.test.ts: 'truncates a BigInt that is larger than a 64-bit int'), so it is the intended behavior and no PR goes out."
   },
   {
     "id": "F0164",
