@@ -176,14 +176,14 @@ importers:
   .:
     devDependencies:
       '@mark1russell7/api-report':
-        specifier: ^0.5.5
-        version: 0.5.7
+        specifier: ^0.5.12
+        version: 0.5.12
       '@mark1russell7/boundaries':
         specifier: ^0.2.1
         version: 0.2.1(@swc/core@1.16.22)(dependency-cruiser@18.7.2)
       '@mark1russell7/conventions':
-        specifier: ^0.41.2
-        version: 0.41.15
+        specifier: ^0.46.2
+        version: 0.46.2
       '@mark1russell7/cue':
         specifier: ^2.0.0
         version: 2.1.4
@@ -194,11 +194,11 @@ importers:
         specifier: ^0.1.7
         version: 0.1.9
       '@mark1russell7/text':
-        specifier: ^0.0.13
-        version: 0.0.13
+        specifier: ^0.0.14
+        version: 0.0.14
       '@procedures/npm':
-        specifier: ^0.59.0
-        version: 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+        specifier: ^0.63.0
+        version: 0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       '@swc/core':
         specifier: ^1.15.0
         version: 1.16.22
@@ -224,8 +224,8 @@ importers:
   packages/catalog:
     dependencies:
       '@mark1russell7/rigor-statistics':
-        specifier: ^0.2.1
-        version: 0.2.5
+        specifier: ^0.2.12
+        version: 0.2.12
     devDependencies:
       '@mark1russell7/cue':
         specifier: ^2.0.0
@@ -246,8 +246,8 @@ importers:
   packages/site:
     dependencies:
       '@mark1russell7/text':
-        specifier: ^0.0.13
-        version: 0.0.13
+        specifier: ^0.0.14
+        version: 0.0.14
       '@wirelab/catalog':
         specifier: workspace:*
         version: link:../catalog
@@ -256,8 +256,8 @@ importers:
         specifier: ^2.0.0
         version: 2.1.4
       '@mark1russell7/site-pages':
-        specifier: ^0.7.0
-        version: 0.7.0
+        specifier: ^0.7.3
+        version: 0.7.3
       '@types/node':
         specifier: ^26.6.5
         version: 26.6.6
@@ -654,8 +654,8 @@ packages:
       zod:
         optional: true
 
-  '@mark1russell7/api-report@0.5.7':
-    resolution: {integrity: sha512-Oe69KbJhZL6GIrbEwNVIFN+Yz5XLjgEt78CrQZFX7vdeGANWuRyDCoLQaebumVuyip52WpPt19ZQU7n3Oj5WmQ==}
+  '@mark1russell7/api-report@0.5.12':
+    resolution: {integrity: sha512-LEZ3UVUouiHT9Llv4aK/hFJmC+pMP0GeRhJPW/fArRJHIbpY5dH9P+bo0572z5Xs607hFJJlRNtRZNImjVuQMA==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -682,8 +682,8 @@ packages:
     resolution: {integrity: sha512-6JXrfvg2vMGITbc11C3POvDwbbCU7PMkFWSYdYjshJj5o0LSAMnpPsVSQySfA5G4mdYeAdJ/VfN5Yc3foJkdCQ==}
     engines: {node: '>=22.12'}
 
-  '@mark1russell7/conventions@0.41.15':
-    resolution: {integrity: sha512-MxfocF+YfdmMbG1UPZrZ17s7HyuCltJi2o488MtHiBgLy1oKrVgGZ1kSkCp0GUGkm2wgvShlhvnB9blEPYGvAg==}
+  '@mark1russell7/conventions@0.46.2':
+    resolution: {integrity: sha512-mopwFbENcozv3T8y8XHCfD1fzZqsp+Sp/xXbcSMbCRR2qqemCTBqb8PxM18/iDgoyG57vXCLiCw8Y8laxyZZxg==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -729,8 +729,8 @@ packages:
     resolution: {integrity: sha512-Wh91NJIwxIRN3+a5V2bqUkMhdPcjHI+gVZBCnohf12ZegdSTNqGlpqS2WXYmrRVjasF9EBgm1lC8GQNYpBSg7Q==}
     engines: {node: '>=22'}
 
-  '@mark1russell7/rigor-statistics@0.2.5':
-    resolution: {integrity: sha512-jaUqrz8FmsUoR9n0MeRUIk9UTpG5QL+dF/moh+C23fyihb00LgOD42Up//1piIPVZZDiq6lua0sBcSKMwh5IFg==}
+  '@mark1russell7/rigor-statistics@0.2.12':
+    resolution: {integrity: sha512-g37AZ4tqim2xp5rcwMgyNBYC75KT5Ai1TcEk7DWHvIlxKDlWquru2rDrwsN9H0pOSccl0o6gQ+eZ9QExERtB/w==}
     engines: {node: '>=22'}
 
   '@mark1russell7/rigor-statistics@0.2.9':
@@ -800,8 +800,8 @@ packages:
       zod:
         optional: true
 
-  '@mark1russell7/site-pages@0.7.0':
-    resolution: {integrity: sha512-nFiaxs1D/IAxj54KUow0AkU35fxWj6iCHAcQ2GG2ISv0yD+YwnOoDHNmO1mV1g+roRV7G5czJNZlzv+3lcT2vg==}
+  '@mark1russell7/site-pages@0.7.3':
+    resolution: {integrity: sha512-VCh+TkcmwyUbygViLOUutjX+THZmx6r/BmemSbhhE1MmG50PPqtvJG//6DTigoYBkuGnHdTK1OPHVf/0eMUMCA==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -821,6 +821,10 @@ packages:
 
   '@mark1russell7/text@0.0.13':
     resolution: {integrity: sha512-8Tu7DTTpfmpXIy0F2JCyOW1RD91X7tm38c5xiqz3cLdmEkUQViH/06kTBLj+hrzuQPMBGVyxd7snqVG6EpNLdQ==}
+    engines: {node: '>=22.12'}
+
+  '@mark1russell7/text@0.0.14':
+    resolution: {integrity: sha512-JmywIXW6DYx/wqaxGOEEVjF5lxM1FtFOgYABoidhVYXEEn00IQggM6JK6Yk/chPW4b6cM2BhZcnj3kjzN+DIyw==}
     engines: {node: '>=22.12'}
 
   '@mark1russell7/text@0.0.6':
@@ -845,8 +849,8 @@ packages:
   '@oxc-project/types@0.156.0':
     resolution: {integrity: sha512-1Duyg48TdJNdyhEB8Xn1L36bT9Pv6GUtlKjHxOys8xkaF/rQq3XJE+bAurSK/AgIz5mGFsb77cn9Pb20+WCScw==}
 
-  '@procedures/client@0.59.0':
-    resolution: {integrity: sha512-hKuOPW/qlNCGbCVtHzGsc2TgJO61QvOSrxn3qWUI7qWC763miS7vXz02xWY974nXMmEtJFnIzDmMZppqsA3mpA==}
+  '@procedures/client@0.63.0':
+    resolution: {integrity: sha512-8DyVvcfE69z7eLHBdTAWBQStL89FawH4vZa0hctiqcjdUbbKx9zIvJAuFwCqHfV/Q0fTuW202j0NSzhUWOREEQ==}
     engines: {node: '>=22'}
     peerDependencies:
       express: ^4.0.0 || ^5.0.0
@@ -854,20 +858,25 @@ packages:
       express:
         optional: true
 
-  '@procedures/compiler@0.59.0':
-    resolution: {integrity: sha512-aeeg4XqFV9Lb46uIViiC5UUKzBwqR4AYsWGrFb6j1HpolLQ4qLOEsFJJnyyoJHDn3TDr8t6WNfmPO4UvuREtvA==}
+  '@procedures/compiler@0.63.0':
+    resolution: {integrity: sha512-51fmGRMJDGtG86qjAbsDkNEW85mfQgC/JNRL/GC+zRVdHj/R4Th/P47PiqqiW7e+9FSQ4yfw5b9zfg+z4Z9eZQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      typescript-api: npm:typescript@^5.9.3
+    peerDependenciesMeta:
+      typescript-api:
+        optional: true
+
+  '@procedures/json@0.63.0':
+    resolution: {integrity: sha512-NHlnzlYlBK3WTEWcxSjuu7joL5Iz66f9F8jlDXJ3iPrFIPyOI2KGOa3Ha9y5KeeWptk4a7DSWJVI7ut8/Upf6w==}
     engines: {node: '>=22'}
 
-  '@procedures/json@0.59.0':
-    resolution: {integrity: sha512-w9OIY5Jw6pNcJp34JyDD6maDZJ7YPlfSdl/hg1drFpSsA99ybL1gztGhZq5jplJ2ltquifL0/W0UKnx+THM2Og==}
+  '@procedures/npm@0.63.0':
+    resolution: {integrity: sha512-p97RqRdEf1yY+hwpVpVp+Tx02lzqRtWD80QxUGZxSmPilIgBsNs1wlNSBfyYX2ELRJo4BKRH3XSCyVJ6BoWjiw==}
     engines: {node: '>=22'}
 
-  '@procedures/npm@0.59.0':
-    resolution: {integrity: sha512-c4KBe5Mz9z64PPRA2TVG3Tn+RJaymD3X25Nc1kMPk8/Kja7qh+5jTWaJMOtMYElzJAWwgyAF4xdtDekhMCuYtw==}
-    engines: {node: '>=22'}
-
-  '@procedures/shell@0.59.0':
-    resolution: {integrity: sha512-FaeolHeLQbI6NyPNIva1bfKFpqoKtFJXwtzrbAxW7oWwJUIJBmsausITeCav43JPt+ncxxWudZFW9zrgdLSrFA==}
+  '@procedures/shell@0.63.0':
+    resolution: {integrity: sha512-K9p7vM7kX6PXCJwHnrWu0XFFTJjyeC6Ny9AqYQAn40hNJ0qFAAYmoxI3GR2hWUO6kSWUiwBx37pYwCDKiEmE8A==}
     engines: {node: '>=22'}
 
   '@publint/pack@0.1.7':
@@ -2273,9 +2282,9 @@ snapshots:
     optionalDependencies:
       zod: 4.6.7
 
-  '@mark1russell7/api-report@0.5.7':
+  '@mark1russell7/api-report@0.5.12':
     dependencies:
-      '@mark1russell7/conventions': 0.41.15
+      '@mark1russell7/conventions': 0.46.2
 
   '@mark1russell7/boundaries@0.2.1(@swc/core@1.16.22)(dependency-cruiser@18.7.2)':
     optionalDependencies:
@@ -2301,12 +2310,13 @@ snapshots:
     dependencies:
       '@mark1russell7/algebra': 0.8.10(zod@4.6.7)
       '@mark1russell7/optional': 1.2.0
-      '@mark1russell7/rigor-statistics': 0.2.5
+      '@mark1russell7/rigor-statistics': 0.2.12
     transitivePeerDependencies:
       - zod
 
-  '@mark1russell7/conventions@0.41.15':
+  '@mark1russell7/conventions@0.46.2':
     dependencies:
+      '@mark1russell7/text': 0.0.13
       yaml: 2.9.1
 
   '@mark1russell7/cue@2.1.4': {}
@@ -2324,7 +2334,7 @@ snapshots:
   '@mark1russell7/rigor-chaos@0.3.4':
     dependencies:
       '@mark1russell7/rigor-generators': 0.2.0
-      '@mark1russell7/rigor-statistics': 0.2.9
+      '@mark1russell7/rigor-statistics': 0.2.12
 
   '@mark1russell7/rigor-generators@0.1.16': {}
 
@@ -2341,9 +2351,9 @@ snapshots:
     dependencies:
       '@mark1russell7/rigor-generators': 0.1.16
 
-  '@mark1russell7/rigor-statistics@0.2.5':
+  '@mark1russell7/rigor-statistics@0.2.12':
     dependencies:
-      '@mark1russell7/rigor-generators': 0.1.16
+      '@mark1russell7/rigor-generators': 0.2.0
 
   '@mark1russell7/rigor-statistics@0.2.9':
     dependencies:
@@ -2369,7 +2379,7 @@ snapshots:
       ws: 8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
 
-  '@mark1russell7/site-pages@0.7.0':
+  '@mark1russell7/site-pages@0.7.3':
     dependencies:
       '@mark1russell7/rigor-statistics': 0.2.9
 
@@ -2384,6 +2394,8 @@ snapshots:
       '@clack/prompts': 1.9.0
 
   '@mark1russell7/text@0.0.13': {}
+
+  '@mark1russell7/text@0.0.14': {}
 
   '@mark1russell7/text@0.0.6': {}
 
@@ -2400,12 +2412,13 @@ snapshots:
 
   '@oxc-project/types@0.156.0': {}
 
-  '@procedures/client@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
+  '@procedures/client@0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
       '@mark1russell7/algebra': 0.8.10(zod@4.6.7)
       '@mark1russell7/coeval': 0.34.0(zod@4.6.7)
       '@mark1russell7/collections': 0.10.2(zod@4.6.7)
       '@mark1russell7/quantity': 0.4.1(zod@4.6.7)
+      '@mark1russell7/rigor-generators': 0.2.0
       '@mark1russell7/service': 0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7)
       '@opentelemetry/api': 1.10.0
       '@types/ws': 8.18.2
@@ -2420,10 +2433,10 @@ snapshots:
       - pg
       - utf-8-validate
 
-  '@procedures/compiler@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
+  '@procedures/compiler@0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
       '@mark1russell7/coeval': 0.34.0(zod@4.6.7)
-      '@procedures/client': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/client': 0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
     transitivePeerDependencies:
       - '@grpc/grpc-js'
@@ -2435,10 +2448,10 @@ snapshots:
       - pg
       - utf-8-validate
 
-  '@procedures/json@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
+  '@procedures/json@0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
-      '@procedures/client': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
-      '@procedures/compiler': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/client': 0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/compiler': 0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       yaml: 2.9.1
       zod: 4.6.7
     transitivePeerDependencies:
@@ -2449,13 +2462,14 @@ snapshots:
       - ioredis
       - mongodb
       - pg
+      - typescript-api
       - utf-8-validate
 
-  '@procedures/npm@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
+  '@procedures/npm@0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
-      '@procedures/client': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
-      '@procedures/json': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
-      '@procedures/shell': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/client': 0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/json': 0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/shell': 0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
     transitivePeerDependencies:
       - '@grpc/grpc-js'
@@ -2465,11 +2479,12 @@ snapshots:
       - ioredis
       - mongodb
       - pg
+      - typescript-api
       - utf-8-validate
 
-  '@procedures/shell@0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
+  '@procedures/shell@0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)':
     dependencies:
-      '@procedures/client': 0.59.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
+      '@procedures/client': 0.63.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
     transitivePeerDependencies:
       - '@grpc/grpc-js'

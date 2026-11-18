@@ -1122,5 +1122,51 @@
     "state": "issue-open",
     "url": "https://github.com/smithy-lang/smithy-typescript/issues/2367",
     "note": "The fault is in getChunkedStream of @smithy/core, so the issue is in smithy-typescript. Its repro uses only @smithy/core 3.41.0."
+  },
+  {
+    "finding": "F0142",
+    "at": "2026-11-18T04:44:27Z",
+    "state": "held-ai-policy",
+    "note": "aws/aws-sdk-js-v3 asks that a named person reviews each report that an AI tool writes, before it is filed. The issue text is ready, and it waits for that review."
+  },
+  {
+    "finding": "F0143",
+    "at": "2026-11-18T04:44:27Z",
+    "state": "held-ai-policy",
+    "note": "aws/aws-sdk-js-v3 asks that a named person reviews each report that an AI tool writes, before it is filed. The issue text is ready, and it waits for that review."
+  },
+  {
+    "finding": "F0144",
+    "at": "2026-11-18T04:44:27Z",
+    "state": "held-ai-policy",
+    "note": "aws/aws-sdk-js-v3 asks that a named person reviews each report that an AI tool writes, before it is filed. The issue text is ready, and it waits for that review."
+  },
+  {
+    "finding": "F0145",
+    "at": "2026-11-18T05:14:46Z",
+    "state": "issue-open",
+    "url": "https://github.com/apache/arrow-js/issues/535",
+    "note": "The issue has the repro and the output of repro run 44240950212. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
+  },
+  {
+    "finding": "F0146",
+    "at": "2026-11-18T05:14:47Z",
+    "state": "issue-open",
+    "url": "https://github.com/apache/arrow-js/issues/536",
+    "note": "The issue has the repro and the output of repro run 44240950212. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
+  },
+  {
+    "finding": "F0147",
+    "at": "2026-11-18T05:14:49Z",
+    "state": "issue-open",
+    "url": "https://github.com/apache/arrow-js/issues/537",
+    "note": "The issue has the repro and the output of repro run 44240950212. It is a fault of the writer, not the reader fault of apache/arrow#41683."
+  },
+  {
+    "finding": "F0148",
+    "at": "2026-11-18T05:14:50Z",
+    "state": "issue-open",
+    "url": "https://github.com/apache/arrow-js/issues/538",
+    "note": "The issue has the repro and the output of repro run 44240950212. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
   }
 ]

@@ -13,12 +13,12 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@mark1russell7/text": "^0.0.13",
+    "@mark1russell7/text": "^0.0.14",
     "@wirelab/catalog": "workspace:*"
   },
   "devDependencies": {
     "@mark1russell7/cue": "^2.0.0",
-    "@mark1russell7/site-pages": "^0.7.0",
+    "@mark1russell7/site-pages": "^0.7.3",
     "@types/node": "^26.6.5",
     "@vitest/coverage-v8": "^5.0.3",
     "typescript": "^7.0.2",
