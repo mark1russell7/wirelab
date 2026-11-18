@@ -1747,5 +1747,85 @@
     "kind": "correctness",
     "title": "The error of a failed query result is a plain object, not the declared PostgrestError: instanceof is false and toJSON() is missing",
     "note": "The declared type of PostgrestResponseFailure.error is the class PostgrestError. processResponse returns the parsed body or { message }. Only throwOnError() and getOpenApiSpec() make instances."
+  },
+  {
+    "id": "F0176",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "With excludeOperationName and method GET, a mutation is sent with GET",
+    "note": "analyzeDocument gives isMutation false when excludeOperationName is set, before it parses the document. So the client uses its own method for a mutation, and the variables go into the URL. Without the option, the client sends a mutation with POST. A server that obeys GraphQL over HTTP refuses a mutation over GET."
+  },
+  {
+    "id": "F0177",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "batchRequests() with method GET throws a TypeError when the batch has a mutation",
+    "note": "batchRequests keeps method in the fetch options. The fetch init spreads them after the computed POST, so the request is a GET with a body, and fetch rejects it before it sends. request() and rawRequest() take method out of the fetch options."
+  },
+  {
+    "id": "F0178",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A batch reply with a GraphQL error gives a ClientError with no errors and the message GraphQL Error (Code: 200)",
+    "note": "The response of the error spreads the array of results into an object, so its keys are 0, 1 and so on. response.errors is undefined, and the message does not name the GraphQL error."
+  },
+  {
+    "id": "F0179",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "With method GET, the query cleaner changes string literals: a # cuts the rest of the line, and commas and runs of spaces change",
+    "note": "cleanQuery is one regular expression that does not skip strings. A string such as \"C# tips\" ends the query at the #, so the server gets a query that does not parse. Issue #378 (2024) reported the comma part."
+  },
+  {
+    "id": "F0180",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "setHeader() has no effect when the client headers are a Headers instance, an array or a function",
+    "note": "setHeader does headers[key] = value. On a Headers instance, an array or a function, this sets a JavaScript property, and the requests do not get the header. The client accepts each of these types. Issue #298 (2024) reported the Headers case."
+  },
+  {
+    "id": "F0181",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A request header does not replace a client header whose name differs only in case: the request sends the two values",
+    "note": "The client merges the two header sets as plain objects, with keys that are case-sensitive. Authorization from the client and authorization from the request become the header \"Bearer old, Bearer new\". A Headers instance always gives lowercase names."
+  },
+  {
+    "id": "F0182",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "With a BigInt variable, a GraphQL error becomes a TypeError from the ClientError constructor",
+    "note": "The constructor makes its message with JSON.stringify of the request, and the variables have the BigInt. The jsonSerializer option can send a BigInt, but the error path does not use it. The caller loses the GraphQL error, and instanceof ClientError is false."
+  },
+  {
+    "id": "F0183",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "rawRequest() with an options object gives the responseMiddleware variables: undefined",
+    "note": "rawRequest passes the positional variables argument to the responseMiddleware, which is undefined when the call uses an options object. request() passes the variables of its options."
   }
 ]
