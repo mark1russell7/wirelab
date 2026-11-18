@@ -154,7 +154,17 @@
           "repros/sockjs-client/F0096/tsconfig.json",
           "repros/sockjs-client/F0097/tsconfig.json",
           "repros/sockjs-client/F0098/tsconfig.json",
-          "repros/sockjs-client/F0099/tsconfig.json"
+          "repros/sockjs-client/F0099/tsconfig.json",
+          "repros/viem/F0150/tsconfig.json",
+          "repros/viem/F0151/tsconfig.json",
+          "repros/viem/F0152/tsconfig.json",
+          "repros/viem/F0153/tsconfig.json",
+          "repros/viem/F0154/tsconfig.json",
+          "repros/viem/F0155/tsconfig.json",
+          "repros/viem/F0156/tsconfig.json",
+          "repros/viem/F0157/tsconfig.json",
+          "repros/viem/F0158/tsconfig.json",
+          "repros/viem/F0159/tsconfig.json"
         ],
         "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines the configs tsconfig.json and tsconfig.repro.json. A repro of a types finding has tsconfig.repro.json: tsc fails on purpose, and the workflow compares its errors with expected-errors.txt. The config repros/fix-tests/tsconfig.json examines the scripts of all fix tests. A types check of a fix test has its own config tsconfig.check-<finding>.json."
       }

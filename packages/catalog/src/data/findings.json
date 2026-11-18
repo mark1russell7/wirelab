@@ -1477,5 +1477,105 @@
     "kind": "conformance",
     "title": "The file reader accepts two non-delta DictionaryBatches for one id, and the values of the column change with no error",
     "note": "The format lets a file have one non-delta DictionaryBatch for each id, and the writer of apache-arrow 21.2.0 refuses a replacement. The file reader accepts one: with the isDelta byte of the second DictionaryBatch set to 0, the column [\"a\", \"b\", \"c\"] reads as [\"c\", null, null]."
+  },
+  {
+    "id": "F0150",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "conformance",
+    "title": "The HTTP batch matches each reply to a request by its position after a sort, so a reply with the id null moves the other replies",
+    "note": "JSON-RPC 2.0 gives the id null to a reply when the server cannot read the id of the request. viem 2.58.0 sorts the replies of a batch by id and matches them by position. In the repro, address 2 gets the error and address 3 gets the balance of address 2, with no error."
+  },
+  {
+    "id": "F0151",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "An IPC frame that is not valid JSON throws out of the socket data listener, an uncaught exception",
+    "note": "utils/rpc/ipc.ts parses each frame with JSON.parse and no try/catch. The WebSocket path has one. In the repro, the frame {\"jsonrpc\":\"2.0\",\"id\":0,\"result\":} gives an uncaught SyntaxError, and the request times out."
+  },
+  {
+    "id": "F0152",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "One stray closing brace from the IPC server drops each later reply on the socket",
+    "note": "The frame splitter of utils/rpc/ipc.ts counts braces and lets the depth go below 0. After one } outside a message, the depth stays at -1 for the life of the socket. In the repro, three requests with valid replies time out."
+  },
+  {
+    "id": "F0153",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "The unsubscribe() function of a WebSocket subscription stays pending when the socket is closed",
+    "note": "unsubscribe() sends eth_unsubscribe with no onError (clients/transports/webSocket.ts). utils/rpc/socket.ts gives the send error to the undefined onError, so the error is lost. In the repro, the promise is pending 5 s after the server drops the socket."
+  },
+  {
+    "id": "F0154",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "resource",
+    "title": "With reconnect: false, a WebSocket frame that is not JSON leaves the old socket open, and the next request opens a second socket",
+    "note": "attemptReconnect() of utils/rpc/socket.ts clears the maps and removes the client from the cache, but it does not close the socket. In the repro, the server has 2 open sockets from one client."
+  },
+  {
+    "id": "F0155",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "decodeAbiParameters decodes data that ends before the head of a later static parameter from a wrong position, with no error",
+    "note": "After a top-level dynamic parameter, the cursor stays at byte 32. In viem 2.58.0, 96 bytes for 4 heads (128 bytes) decode to [3n, 119n, \"\\u0000\\u0000\\u0000\", 119n]. The expected result is a bounds error."
+  },
+  {
+    "id": "F0156",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "trim() of a hex value to the right removes zero nibbles, not zero bytes, and gives a shifted value",
+    "note": "In viem 2.58.0, trim(\"0x1020\", { dir: \"right\" }) gives 0x0102, and the byte path gives 0x1020. The hex path removes the last zero nibble, and the value of odd length gets a pad on the left."
+  },
+  {
+    "id": "F0157",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "The IPC subscribe() stays pending when the socket closes before the reply",
+    "note": "clients/transports/ipc.ts sends eth_subscribe with no onError. The WebSocket transport gives one. In the repro, the server closes the socket at the subscribe request. The promise is pending after 5 s, and onError has 0 calls."
+  },
+  {
+    "id": "F0158",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "The rank of fallback() gives the score NaN when each sampled latency is 0 ms, so a failing transport stays first",
+    "note": "The latency score is 1 - meanLatency / maxLatency, which is NaN when maxLatency is 0. The sort keeps the order for NaN. The repro freezes Date.now(), as for a fast local transport that answers in one 1 ms step."
+  },
+  {
+    "id": "F0159",
+    "package": "viem",
+    "version": "2.58.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "An HTTP 200 reply with an empty body resolves the request with undefined, not with an error",
+    "note": "utils/rpc/http.ts parses an empty body as {}, which has no result and no error. In the repro, sendRawTransaction resolves with undefined in place of a hash or an error."
   }
 ]
