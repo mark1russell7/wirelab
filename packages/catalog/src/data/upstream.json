@@ -1406,6 +1406,34 @@
     "note": "The contribution guide of birpc asks that a person writes each issue and pull request text in their own words, and understands each change. The issue text is ready, and it waits for that person."
   },
   {
+    "finding": "F0188",
+    "at": "2026-11-18T18:17:12Z",
+    "state": "issue-open",
+    "url": "https://github.com/tus/tus-js-client/issues/939",
+    "note": "The issue has the repro and the output of repro run 44365242779. The fault is also on main (5.0.0-pre3)."
+  },
+  {
+    "finding": "F0188",
+    "at": "2026-11-18T18:17:41Z",
+    "state": "pr-open",
+    "url": "https://github.com/tus/tus-js-client/pull/941",
+    "note": "The search prefix gets :: after the fingerprint. The shared URL storage test gets the fingerprint fingerprintAB. Without the fix, the new test fails, and with the fix it passes. The Node.js specs of the project pass on this computer (77 of 81, without the end-to-end specs, which use the public tusd instance)."
+  },
+  {
+    "finding": "F0189",
+    "at": "2026-11-18T18:17:14Z",
+    "state": "issue-open",
+    "url": "https://github.com/tus/tus-js-client/issues/940",
+    "note": "The issue has the repro and the output of repro run 44365242779. The fault is also on main (5.0.0-pre3)."
+  },
+  {
+    "finding": "F0189",
+    "at": "2026-11-18T18:17:44Z",
+    "state": "pr-open",
+    "url": "https://github.com/tus/tus-js-client/pull/942",
+    "note": "start() gives an error for an empty metadata key, or a key with a space or a comma, before any request. The pull request names the change of behavior and offers a different form. Without the fix, the new test fails, and with the fix it passes. The Node.js specs of the project pass on this computer (77 of 81, without the end-to-end specs, which use the public tusd instance)."
+  },
+  {
     "finding": "F0190",
     "at": "2026-11-18T18:00:06Z",
     "state": "pr-open",
