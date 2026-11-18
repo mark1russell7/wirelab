@@ -1297,5 +1297,45 @@
     "kind": "correctness",
     "title": "The .proto parser rejects a hex number with the prefix 0X",
     "note": "The protobuf language specification and protoc accept the prefixes 0x and 0X. The regular expressions of parse.js accept only 0x, so a field number or a default such as 0X1F throws an error. Confidence high."
+  },
+  {
+    "id": "F0130",
+    "package": "hls.js",
+    "version": "1.7.4",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "conformance",
+    "title": "For a Media Sequence Number of 2^32 or more, the AES-128 IV that hls.js derives keeps only the low 32 bits",
+    "note": "RFC 8216, section 5.2, puts the full number in 16 octets. This rule applies when the EXT-X-KEY tag has no IV attribute. createInitializationVector of level-key.ts uses the 32-bit operator >>. Thus the first 16-byte block of each segment decrypts wrong. Confidence high."
+  },
+  {
+    "id": "F0131",
+    "package": "hls.js",
+    "version": "1.7.4",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "conformance",
+    "title": "An IV attribute with fewer than 32 hex digits gives an IV of fewer than 16 bytes, so the segment does not decrypt",
+    "note": "RFC 8216 defines the IV as a 128-bit unsigned integer, and a hexadecimal-sequence has no minimum length. AttrList.hexadecimalInteger does not pad on the left, so IV=0x1 gives one byte, and WebCrypto rejects it. Confidence medium: a maintainer can read the RFC as a requirement of 32 digits."
+  },
+  {
+    "id": "F0132",
+    "package": "hls.js",
+    "version": "1.7.4",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "conformance",
+    "title": "The Variable Name constructor or toString gives a false duplicate error, and an undefined reference to it gives no parsing error",
+    "note": "variable-substitution.ts keeps the variables in a plain object and tests a name with the operator in, so the names of Object.prototype match. The substitution then puts the text of a native function into the URI. The IMPORT attribute has the same fault. Confidence high."
+  },
+  {
+    "id": "F0133",
+    "package": "hls.js",
+    "version": "1.7.4",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "An EXT-X-DATERANGE tag with the ID toString or constructor makes parseLevelPlaylist throw a TypeError",
+    "note": "m3u8-parser.ts looks for an earlier Date Range with the same ID in a plain object. The lookup finds a function of Object.prototype, and the DateRange constructor reads its start date, which is undefined. Confidence high."
   }
 ]
