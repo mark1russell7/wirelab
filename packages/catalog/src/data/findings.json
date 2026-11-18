@@ -1577,5 +1577,85 @@
     "kind": "correctness",
     "title": "An HTTP 200 reply with an empty body resolves the request with undefined, not with an error",
     "note": "utils/rpc/http.ts parses an empty body as {}, which has no result and no error. In the repro, sendRawTransaction resolves with undefined in place of a hash or an error."
+  },
+  {
+    "id": "F0160",
+    "package": "bson",
+    "version": "7.3.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "conformance",
+    "title": "A JS regex flag g is written as the BSON option s (dotAll), and the JS flag s is dropped",
+    "note": "parser/serializer.ts writes global as 's' and drops dotAll, and the options are not in alphabetical order. parser/deserializer.ts reads 's' back as the JS flag g."
+  },
+  {
+    "id": "F0161",
+    "package": "bson",
+    "version": "7.3.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "calculateObjectSize and serialize do not agree for typed arrays, DataView and ArrayBuffer",
+    "note": "calculateObjectSize counts each ArrayBuffer view as binary. serialize writes a typed array other than Uint8Array, a DataView or an ArrayBuffer as a document. An ArrayBuffer comes back as {}."
+  },
+  {
+    "id": "F0162",
+    "package": "bson",
+    "version": "7.3.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "fieldsAsRaw matches the names of Object.prototype, so an array named constructor comes back raw",
+    "note": "parser/deserializer.ts reads fieldsAsRaw[name] through the prototype chain. With fieldsAsRaw { plain: false }, the arrays constructor and toString come back as raw bytes."
+  },
+  {
+    "id": "F0163",
+    "package": "bson",
+    "version": "7.3.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A bigint outside the int64 range is written modulo 2^64, with no error",
+    "note": "serialize and EJSON.stringify write 2n**64n + 5n as 5, and 2n**63n as -2n**63n. The value that comes back is a different number."
+  },
+  {
+    "id": "F0164",
+    "package": "bson",
+    "version": "7.3.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "An Invalid Date is written as the datetime 0, and a datetime outside the Date range comes back as 0",
+    "note": "serialize writes new Date(NaN) as 1970-01-01 with no error. A valid datetime of 2^62 ms is read as an Invalid Date, so a round trip writes 0."
+  },
+  {
+    "id": "F0165",
+    "package": "bson",
+    "version": "7.3.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A cut int64 value with useBigInt64 throws RangeError, not BSONError",
+    "note": "With useBigInt64 true, a document with only 3 bytes of an int64 value throws RangeError from BigInt(NaN). The default path throws BSONError."
+  },
+  {
+    "id": "F0166",
+    "package": "bson",
+    "version": "7.3.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "conformance",
+    "title": "EJSON $binary accepts a bad subType as 0 and bad base64 as empty data",
+    "note": "EJSON.parse turns the subType \"100\" and \"zz\" into 0. On Node.js, the base64 \"!!!!\" becomes empty data."
+  },
+  {
+    "id": "F0167",
+    "package": "bson",
+    "version": "7.3.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "conformance",
+    "title": "EJSON number wrappers accept out-of-range and non-numeric strings and change the value",
+    "note": "$numberInt \"2147483648\" becomes -2147483648 and \"12abc\" becomes 0. $numberLong 2^63 becomes -2^63, and a $timestamp t of 2^32 becomes 0 in canonical mode."
   }
 ]
