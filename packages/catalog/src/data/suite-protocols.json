@@ -38,5 +38,9 @@
   {
     "suite": "wirelab-suite-socketio",
     "protocol": "socket-io"
+  },
+  {
+    "suite": "wirelab-suite-sockjs",
+    "protocol": "sockjs"
   }
 ]
