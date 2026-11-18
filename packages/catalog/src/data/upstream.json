@@ -1045,5 +1045,33 @@
     "state": "pr-open",
     "url": "https://github.com/protobufjs/protobuf.js/pull/1525",
     "note": "An open pull request of another author (2020-12-24), with the fix and no test. A comment of this review gives the repro and the CI run 44217156407, and offers a test."
+  },
+  {
+    "finding": "F0130",
+    "at": "2026-11-18T02:23:32Z",
+    "state": "issue-open",
+    "url": "https://github.com/video-dev/hls.js/issues/8185",
+    "note": "The repro ran in CI (repro.yml, run 44222005235, one job for the 4 hls.js folders). It also fails on the canary build of master (1.7.5-0.canary.12111). The issue offers a fix pull request with a unit test."
+  },
+  {
+    "finding": "F0131",
+    "at": "2026-11-18T02:23:33Z",
+    "state": "issue-open",
+    "url": "https://github.com/video-dev/hls.js/issues/8186",
+    "note": "The repro ran in CI (repro.yml, run 44222005235). The issue asks the maintainers to close it if they read the RFC as a requirement of 32 hex digits."
+  },
+  {
+    "finding": "F0132",
+    "at": "2026-11-18T02:23:34Z",
+    "state": "issue-open",
+    "url": "https://github.com/video-dev/hls.js/issues/8187",
+    "note": "The repro ran in CI (repro.yml, run 44222005235). The issue names the IMPORT attribute too, and offers a fix pull request with a unit test."
+  },
+  {
+    "finding": "F0133",
+    "at": "2026-11-18T02:23:36Z",
+    "state": "issue-open",
+    "url": "https://github.com/video-dev/hls.js/issues/8188",
+    "note": "The repro ran in CI (repro.yml, run 44222005235). The issue names mergeDateRanges of level-helper.ts too, and offers a fix pull request with a unit test."
   }
 ]
