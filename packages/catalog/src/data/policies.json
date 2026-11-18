@@ -728,10 +728,10 @@
   {
     "repository": "antfu-collective/birpc",
     "topic": "ai",
-    "checked": "2026-11-16",
-    "value": "none-stated",
-    "evidence": "https://github.com/antfu-collective/.github/blob/main/CONTRIBUTING.md",
-    "note": "The repository uses the contribution guide of the organization."
+    "checked": "2026-11-18",
+    "value": "refused",
+    "evidence": "https://github.com/antfu/contribute#-using-ai",
+    "note": "The guide of the organization points to antfu/contribute. AI help is welcome, but a person writes each comment, issue and pull request text in their own words, and understands each change."
   },
   {
     "repository": "antfu-collective/birpc",
