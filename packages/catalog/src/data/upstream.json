@@ -1268,6 +1268,13 @@
     "note": "An open pull request of another author, for issue #2683. Its test 'reports a bodiless 404 as a failure rather than 204 No Content' covers this fault."
   },
   {
+    "finding": "F0169",
+    "at": "2026-11-18T15:06:31Z",
+    "state": "issue-open",
+    "url": "https://github.com/supabase/supabase-js/issues/2876",
+    "note": "The issue has the repro and the output of repro run 44329099152."
+  },
+  {
     "finding": "F0170",
     "at": "2026-11-18T14:49:03Z",
     "state": "pr-open",
@@ -1287,6 +1294,13 @@
     "state": "pr-open",
     "url": "https://github.com/supabase/supabase-js/pull/2693",
     "note": "An open pull request of another author, for issue #2691."
+  },
+  {
+    "finding": "F0173",
+    "at": "2026-11-18T15:06:31Z",
+    "state": "issue-open",
+    "url": "https://github.com/supabase/supabase-js/issues/2877",
+    "note": "The issue has the repro and the output of repro run 44329099152."
   },
   {
     "finding": "F0174",

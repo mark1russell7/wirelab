@@ -7,7 +7,7 @@
 // type-checks. At run time String(['a','b']) is "a,b", which Postgres rejects
 // as a malformed array literal for `tags = 'a,b'`, and an object becomes
 // "[object Object]". The array literal is {"a","b"} and the jsonb text is JSON.
-// `npx tsc --noEmit` on this file passes (see tsconfig.repro.json).
+// `npx tsc --noEmit` on this file passes (see tsconfig.json).
 import { PostgrestClient } from '@supabase/postgrest-js'
 
 type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
