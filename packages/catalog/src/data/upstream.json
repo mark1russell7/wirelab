@@ -1315,5 +1315,61 @@
     "state": "fixed-by-others",
     "url": "https://github.com/supabase/supabase-js/pull/2240",
     "note": "Merged on the branch develop on 2026-04-29, as a breaking change for the next major version. Not on master and not in 2.119.0. Issue #1643 is closed."
+  },
+  {
+    "finding": "F0176",
+    "at": "2026-11-18T16:53:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/graffle-js/graffle/issues/1500",
+    "note": "The issue has the repro and the output of repro run 44350545222."
+  },
+  {
+    "finding": "F0177",
+    "at": "2026-11-18T16:53:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/graffle-js/graffle/issues/1501",
+    "note": "The issue has the repro and the output of repro run 44350545222."
+  },
+  {
+    "finding": "F0178",
+    "at": "2026-11-18T16:53:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/graffle-js/graffle/issues/1502",
+    "note": "The issue has the repro and the output of repro run 44350545222."
+  },
+  {
+    "finding": "F0179",
+    "at": "2026-11-18T16:53:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/graffle-js/graffle/issues/1503",
+    "note": "The issue has the repro and the output of repro run 44350545222. Issue #378 (2024) reported the comma part, and it was closed with no change."
+  },
+  {
+    "finding": "F0180",
+    "at": "2026-11-18T16:53:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/graffle-js/graffle/issues/1504",
+    "note": "The issue has the repro and the output of repro run 44350545222. Issue #298 (2024) reported the Headers case, and it was closed with no change."
+  },
+  {
+    "finding": "F0181",
+    "at": "2026-11-18T16:53:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/graffle-js/graffle/issues/1505",
+    "note": "The issue has the repro and the output of repro run 44350545222."
+  },
+  {
+    "finding": "F0182",
+    "at": "2026-11-18T16:53:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/graffle-js/graffle/issues/1506",
+    "note": "The issue has the repro and the output of repro run 44350545222."
+  },
+  {
+    "finding": "F0183",
+    "at": "2026-11-18T16:53:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/graffle-js/graffle/issues/1507",
+    "note": "The issue has the repro and the output of repro run 44350545222."
   }
 ]
