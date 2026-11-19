@@ -177,13 +177,13 @@ importers:
     devDependencies:
       '@mark1russell7/api-report':
         specifier: ^0.5.12
-        version: 0.5.12
+        version: 0.5.16
       '@mark1russell7/boundaries':
         specifier: ^0.3.1
-        version: 0.3.1(@swc/core@1.16.22)(dependency-cruiser@18.7.2)
+        version: 0.3.2(@swc/core@1.16.22)(dependency-cruiser@18.7.2)
       '@mark1russell7/conventions':
-        specifier: ^0.46.2
-        version: 0.46.2
+        specifier: ^0.48.1
+        version: 0.48.1
       '@mark1russell7/cue':
         specifier: ^2.0.0
         version: 2.1.4
@@ -257,7 +257,7 @@ importers:
         version: 2.1.4
       '@mark1russell7/site-pages':
         specifier: ^0.8.0
-        version: 0.8.0
+        version: 0.8.1
       '@types/node':
         specifier: ^26.6.5
         version: 26.6.6
@@ -654,13 +654,13 @@ packages:
       zod:
         optional: true
 
-  '@mark1russell7/api-report@0.5.12':
-    resolution: {integrity: sha512-LEZ3UVUouiHT9Llv4aK/hFJmC+pMP0GeRhJPW/fArRJHIbpY5dH9P+bo0572z5Xs607hFJJlRNtRZNImjVuQMA==}
+  '@mark1russell7/api-report@0.5.16':
+    resolution: {integrity: sha512-SG45xcND7JPg9npmXIvQxp1xyFRuFeYQ8ZOoKxU8jIorKnUw+l0sCyj76JKTfsAPgAha6LCrNt6YAjoqtfTyTA==}
     engines: {node: '>=22'}
     hasBin: true
 
-  '@mark1russell7/boundaries@0.3.1':
-    resolution: {integrity: sha512-i+nP6fCD+WIDPzVrOsMcS9y9J+Gdtyoj/ZF9OKT3s01Wn4TojgRBalB0xbwSuBM9QK7dJaGdbP4Rrs8WSw8FKw==}
+  '@mark1russell7/boundaries@0.3.2':
+    resolution: {integrity: sha512-PlgXsF+iJ6EoOusW61gx5Om1Oq86xySyTeMgmxEon6MM4/Eyi2ylDhf5a2YiwoWfpYJqPQE9zWj6pCcXvezFtQ==}
     engines: {node: '>=22'}
     peerDependencies:
       '@swc/core': ^1.10.0
@@ -682,8 +682,8 @@ packages:
     resolution: {integrity: sha512-6JXrfvg2vMGITbc11C3POvDwbbCU7PMkFWSYdYjshJj5o0LSAMnpPsVSQySfA5G4mdYeAdJ/VfN5Yc3foJkdCQ==}
     engines: {node: '>=22.12'}
 
-  '@mark1russell7/conventions@0.46.2':
-    resolution: {integrity: sha512-mopwFbENcozv3T8y8XHCfD1fzZqsp+Sp/xXbcSMbCRR2qqemCTBqb8PxM18/iDgoyG57vXCLiCw8Y8laxyZZxg==}
+  '@mark1russell7/conventions@0.48.1':
+    resolution: {integrity: sha512-W/p/evPiTwMbe2sieLgVDlW6vr3AhQMuwedof9j5sLAki01J/4gCoLZxdInBLuSoFst6skukOFVSjDmZV3cOGg==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -800,8 +800,8 @@ packages:
       zod:
         optional: true
 
-  '@mark1russell7/site-pages@0.8.0':
-    resolution: {integrity: sha512-OlqsZfj5yNovI1ysfPJEIVsRnON3KgEP9ELMIH5CO+kP9FY5Vu873oCY+Zja5dKB8wTVgU3YewEcTqH9ncDurg==}
+  '@mark1russell7/site-pages@0.8.1':
+    resolution: {integrity: sha512-R8lPPyDNAbemR2YBrivAIYkXNfQgJDUhggKiUGWHNEZTKwUpLtVGvl/lqD/bkhoSh9IluAhnz5c/5R/A/uFeVA==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -818,10 +818,6 @@ packages:
     resolution: {integrity: sha512-7ebtLlCmT6KYhbpoI2SZHXCQC6/7Rc660SvKwQvfslseSQrXMRlmBj+1/F5KOCep6aB+LtvGWg+HmTKi6uZjyQ==}
     engines: {node: '>=22.12'}
     hasBin: true
-
-  '@mark1russell7/text@0.0.13':
-    resolution: {integrity: sha512-8Tu7DTTpfmpXIy0F2JCyOW1RD91X7tm38c5xiqz3cLdmEkUQViH/06kTBLj+hrzuQPMBGVyxd7snqVG6EpNLdQ==}
-    engines: {node: '>=22.12'}
 
   '@mark1russell7/text@0.0.16':
     resolution: {integrity: sha512-hq2AWdtbKtXlibTTcVA/6GQAxgPj+6U3Hdmkh1I4sRMQZn/SiKh1k78UtcMgtcLJxwHHG9GVs2O2VNQxJP7R1Q==}
@@ -2282,11 +2278,11 @@ snapshots:
     optionalDependencies:
       zod: 4.6.7
 
-  '@mark1russell7/api-report@0.5.12':
+  '@mark1russell7/api-report@0.5.16':
     dependencies:
-      '@mark1russell7/conventions': 0.46.2
+      '@mark1russell7/conventions': 0.48.1
 
-  '@mark1russell7/boundaries@0.3.1(@swc/core@1.16.22)(dependency-cruiser@18.7.2)':
+  '@mark1russell7/boundaries@0.3.2(@swc/core@1.16.22)(dependency-cruiser@18.7.2)':
     optionalDependencies:
       '@swc/core': 1.16.22
       dependency-cruiser: 18.7.2
@@ -2314,9 +2310,9 @@ snapshots:
     transitivePeerDependencies:
       - zod
 
-  '@mark1russell7/conventions@0.46.2':
+  '@mark1russell7/conventions@0.48.1':
     dependencies:
-      '@mark1russell7/text': 0.0.13
+      '@mark1russell7/text': 0.0.16
       yaml: 2.9.1
 
   '@mark1russell7/cue@2.1.4': {}
@@ -2377,7 +2373,7 @@ snapshots:
       ws: 8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
 
-  '@mark1russell7/site-pages@0.8.0':
+  '@mark1russell7/site-pages@0.8.1':
     dependencies:
       '@mark1russell7/rigor-statistics': 0.2.12
 
@@ -2391,8 +2387,6 @@ snapshots:
   '@mark1russell7/template-cli@0.1.9':
     dependencies:
       '@clack/prompts': 1.9.0
-
-  '@mark1russell7/text@0.0.13': {}
 
   '@mark1russell7/text@0.0.16': {}
 
