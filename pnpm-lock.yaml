@@ -183,7 +183,7 @@ importers:
         version: 0.3.2(@swc/core@1.16.22)(dependency-cruiser@18.7.2)
       '@mark1russell7/conventions':
         specifier: ^0.50.4
-        version: 0.50.4
+        version: 0.50.7
       '@mark1russell7/cue':
         specifier: ^2.0.0
         version: 2.1.4
@@ -257,7 +257,7 @@ importers:
         version: 2.1.4
       '@mark1russell7/site-pages':
         specifier: ^0.8.0
-        version: 0.8.1
+        version: 0.8.2
       '@types/node':
         specifier: ^26.6.5
         version: 26.6.6
@@ -682,8 +682,8 @@ packages:
     resolution: {integrity: sha512-6JXrfvg2vMGITbc11C3POvDwbbCU7PMkFWSYdYjshJj5o0LSAMnpPsVSQySfA5G4mdYeAdJ/VfN5Yc3foJkdCQ==}
     engines: {node: '>=22.12'}
 
-  '@mark1russell7/conventions@0.50.4':
-    resolution: {integrity: sha512-RjRBOrWE0x87qSv8rqU0NiL+PTHTJPlyh87iONsPxHde1+ECutguWvho+p+6AnqOBF8Oai1roHwF9ELm3j3pkw==}
+  '@mark1russell7/conventions@0.50.7':
+    resolution: {integrity: sha512-1tx4G5JETCH+sccyKiNXi9rVviMEnFJS3RNpPnwI5/3Cp2DFKkyGZCKJpEh+uXJ5BSli5NrgWAV0lWTOnKWHSQ==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -800,8 +800,8 @@ packages:
       zod:
         optional: true
 
-  '@mark1russell7/site-pages@0.8.1':
-    resolution: {integrity: sha512-R8lPPyDNAbemR2YBrivAIYkXNfQgJDUhggKiUGWHNEZTKwUpLtVGvl/lqD/bkhoSh9IluAhnz5c/5R/A/uFeVA==}
+  '@mark1russell7/site-pages@0.8.2':
+    resolution: {integrity: sha512-WMErq1NBREuaBOn28Vg+7LMJSTou8+O27qNRoaRt11h+r3j9muf4jFmuwGazDOSS+Cf32gxDT1/IpXbAz2h/Vg==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -2280,7 +2280,7 @@ snapshots:
 
   '@mark1russell7/api-report@0.5.18':
     dependencies:
-      '@mark1russell7/conventions': 0.50.4
+      '@mark1russell7/conventions': 0.50.7
 
   '@mark1russell7/boundaries@0.3.2(@swc/core@1.16.22)(dependency-cruiser@18.7.2)':
     optionalDependencies:
@@ -2310,7 +2310,7 @@ snapshots:
     transitivePeerDependencies:
       - zod
 
-  '@mark1russell7/conventions@0.50.4':
+  '@mark1russell7/conventions@0.50.7':
     dependencies:
       '@mark1russell7/text': 0.0.17
       yaml: 2.9.1
@@ -2373,7 +2373,7 @@ snapshots:
       ws: 8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10)
       zod: 4.6.7
 
-  '@mark1russell7/site-pages@0.8.1':
+  '@mark1russell7/site-pages@0.8.2':
     dependencies:
       '@mark1russell7/rigor-statistics': 0.2.12
 
