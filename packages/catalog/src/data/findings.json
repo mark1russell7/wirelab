@@ -2067,5 +2067,71 @@
     "kind": "correctness",
     "title": "After the fallback to LongPoll, the socket keeps the custom encode and decode, which a LongPoll socket ignores",
     "note": "The constructor uses opts.encode and opts.decode only when the transport is not LongPoll. replaceTransport changes only the transport, so a socket that falls back with longPollFallbackMs keeps the custom serializer over LongPoll."
+  },
+  {
+    "id": "F0208",
+    "package": "graphql-http",
+    "version": "1.23.1",
+    "method": "suite",
+    "found": "2026-11-24",
+    "kind": "conformance",
+    "run": "suite-graphql-http-45351031481-graphql-http",
+    "title": "The Accept field gives application/json the same weight as application/graphql-response+json",
+    "note": "createClient sends accept: application/graphql-response+json, application/json (src/client.ts line 241), after the headers of the caller, so the caller cannot change it. GraphQL over HTTP tells the client to send application/json;q=0.9. The upstream test client.test.ts line 50 pins the value. Check accept-default."
+  },
+  {
+    "id": "F0209",
+    "package": "graphql-http",
+    "version": "1.23.1",
+    "method": "suite",
+    "found": "2026-11-24",
+    "kind": "conformance",
+    "run": "suite-graphql-http-45351031481-graphql-http",
+    "title": "A 400 or 422 reply of application/graphql-response+json gives a NetworkError, not its GraphQL errors",
+    "note": "src/client.ts line 251 throws NetworkError for each reply that is not ok, before it reads the body. The caller gets \"Server responded with 400: Bad Request\" and must read error.response again to see the errors. The upstream test \"should report invalid request\" pins NetworkError on a 400. Check errors-4xx."
+  },
+  {
+    "id": "F0210",
+    "package": "graphql-http",
+    "version": "1.23.1",
+    "method": "suite",
+    "found": "2026-11-24",
+    "kind": "conformance",
+    "run": "suite-graphql-http-45351031481-graphql-http",
+    "title": "A media type in a different letter case gives the error Unsupported response content-type",
+    "note": "src/client.ts lines 256 to 262 compare the content-type with a case-sensitive includes. RFC 9110 makes the type and the subtype case-insensitive. A 200 reply of Application/GraphQL-Response+JSON with data gives the error, not the data. No upstream test pins it. Check media-type-case."
+  },
+  {
+    "id": "F0211",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "method": "suite",
+    "found": "2026-11-24",
+    "kind": "conformance",
+    "run": "suite-graphql-http-45351031481-graphql-request",
+    "title": "The default Accept field gives application/json the same weight as application/graphql-response+json",
+    "note": "The client sends accept: application/graphql-response+json, application/json when the caller gives no Accept field. GraphQL over HTTP tells the client to send application/json;q=0.9. The caller can set its own Accept field. The upstream test tests/legacy/general.test.ts line 394 pins the value. Check accept-default."
+  },
+  {
+    "id": "F0212",
+    "package": "@urql/core",
+    "version": "6.0.3",
+    "method": "suite",
+    "found": "2026-11-24",
+    "kind": "conformance",
+    "run": "suite-graphql-http-45351031481-urql-core",
+    "title": "The default Accept field has three more media types, each with the weight of application/graphql-response+json",
+    "note": "fetchOptions.ts line 153 sends application/graphql-response+json, application/graphql+json, application/json, text/event-stream, multipart/mixed. GraphQL over HTTP tells the client to send application/graphql-response+json, application/json;q=0.9. The caller can set fetchOptions.headers. The upstream test fetchOptions.test.ts line 140 pins the value. Check accept-default."
+  },
+  {
+    "id": "F0213",
+    "package": "@apollo/client",
+    "version": "4.3.8",
+    "method": "suite",
+    "found": "2026-11-24",
+    "kind": "conformance",
+    "run": "suite-graphql-http-45351031481-apollo-client",
+    "title": "A 422 reply of a media type in a different letter case gives a ServerError with no GraphQL errors",
+    "note": "parseAndCheckHttpResponse.ts line 182 compares the content-type with a case-sensitive includes. Thus Application/GraphQL-Response+JSON goes to the JSON path, which throws ServerError for a status of 300 or more. A 200 reply still gives its data. The multipart path of the same file lower-cases the type. No upstream test pins it. Check media-type-case."
   }
 ]
