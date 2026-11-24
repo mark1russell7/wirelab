@@ -1808,5 +1808,47 @@
     "at": "2026-11-24T08:10:00Z",
     "state": "held-ai-policy",
     "note": "apollographql/apollo-client wants the issue and the comments written without AI, and a CLA for a pull request. The notes and a standalone repro wait for Mark."
+  },
+  {
+    "finding": "F0214",
+    "at": "2026-11-24T16:55:27Z",
+    "state": "issue-open",
+    "url": "https://github.com/mafintosh/dns-packet/issues/110",
+    "note": "The repro on dns-packet 5.6.1 prints BUG PRESENT: question.encode returns the question object."
+  },
+  {
+    "finding": "F0214",
+    "at": "2026-11-24T16:55:27Z",
+    "state": "pr-open",
+    "url": "https://github.com/mafintosh/dns-packet/pull/113",
+    "note": "question.encode returns the buffer. The new test fails without the change; all 656 tests and the lint pass with it."
+  },
+  {
+    "finding": "F0215",
+    "at": "2026-11-24T16:55:27Z",
+    "state": "issue-open",
+    "url": "https://github.com/mafintosh/dns-packet/issues/111",
+    "note": "The repro on dns-packet 5.6.1 prints BUG PRESENT: streamDecode at an offset gives the first message."
+  },
+  {
+    "finding": "F0215",
+    "at": "2026-11-24T16:55:27Z",
+    "state": "pr-open",
+    "url": "https://github.com/mafintosh/dns-packet/pull/115",
+    "note": "streamDecode takes the offset and decodes only the message at it. 3 of the 4 new checks fail without the change; all 640 tests and the lint pass with it."
+  },
+  {
+    "finding": "F0216",
+    "at": "2026-11-24T16:55:27Z",
+    "state": "issue-open",
+    "url": "https://github.com/mafintosh/dns-packet/issues/112",
+    "note": "The repro on dns-packet 5.6.1 prints BUG PRESENT: streamDecode.bytes is 29 for a stream message of 31 bytes."
+  },
+  {
+    "finding": "F0216",
+    "at": "2026-11-24T16:55:27Z",
+    "state": "pr-open",
+    "url": "https://github.com/mafintosh/dns-packet/pull/114",
+    "note": "streamDecode.bytes counts the length prefix. The new check fails without the change; all 637 tests and the lint pass with it."
   }
 ]
