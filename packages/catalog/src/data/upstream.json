@@ -1726,5 +1726,26 @@
     "state": "pr-open",
     "url": "https://github.com/enisdenjo/graphql-ws/pull/710",
     "note": "iterator.throw calls dispose(), as iterator.return does. The new test fails without the change; the client tests pass with it."
+  },
+  {
+    "finding": "F0206",
+    "at": "2026-11-24T06:50:36Z",
+    "state": "issue-open",
+    "url": "https://github.com/phoenixframework/phoenix/issues/6919",
+    "note": "The repro on phoenix 1.8.17 prints BUG PRESENT: syncDiff returns its input state, and that state changes."
+  },
+  {
+    "finding": "F0206",
+    "at": "2026-11-24T06:52:53Z",
+    "state": "pr-open",
+    "url": "https://github.com/phoenixframework/phoenix/pull/6921",
+    "note": "syncDiff copies the top object and each presence that a leave changes. The new jest test fails without the change; all 299 tests pass with it."
+  },
+  {
+    "finding": "F0207",
+    "at": "2026-11-24T06:50:37Z",
+    "state": "issue-open",
+    "url": "https://github.com/phoenixframework/phoenix/issues/6920",
+    "note": "Issue only: the maintainers choose the intended serializer of LongPoll. The issue offers a pull request for either fix."
   }
 ]
