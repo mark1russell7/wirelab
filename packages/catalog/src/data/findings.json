@@ -2193,5 +2193,15 @@
     "kind": "correctness",
     "title": "wsLink: an event without an id resets the lastEventId of a subscription, so a reconnect cannot resume after the last tracked event",
     "note": "handleResponseMessage sets params.lastEventId to result.id for each data event, also when the id is undefined. After a reconnect the client subscribes again with no lastEventId. httpSubscriptionLink and the SSE server keep the last tracked id (trpc #7691)."
+  },
+  {
+    "id": "F0220",
+    "package": "@neondatabase/serverless",
+    "version": "1.2.1",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "Pool.query over HTTP (poolQueryViaFetch) sends the source text of a password function as the password",
+    "note": "The HTTP path of NeonPool.query builds the connection string with encodeURIComponent(password). node-postgres and neon() accept a password function, so the server gets the text of the function and the login fails. A pool with no password sends the text null."
   }
 ]
