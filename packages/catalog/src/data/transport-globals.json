@@ -1,0 +1,61 @@
+[
+  {
+    "transport": "direct-sockets",
+    "global": "TCPServerSocket"
+  },
+  {
+    "transport": "direct-sockets",
+    "global": "TCPSocket"
+  },
+  {
+    "transport": "direct-sockets",
+    "global": "UDPSocket"
+  },
+  {
+    "transport": "eventsource",
+    "global": "EventSource"
+  },
+  {
+    "transport": "fetch",
+    "global": "fetch"
+  },
+  {
+    "transport": "postmessage",
+    "global": "BroadcastChannel",
+    "note": "The messages go to the other contexts of the same origin."
+  },
+  {
+    "transport": "postmessage",
+    "global": "MessageChannel"
+  },
+  {
+    "transport": "postmessage",
+    "global": "postMessage",
+    "note": "A member of a global object, for example self.postMessage in a worker."
+  },
+  {
+    "transport": "rtc-datachannel",
+    "global": "RTCDataChannel"
+  },
+  {
+    "transport": "rtc-datachannel",
+    "global": "RTCPeerConnection",
+    "note": "A peer connection also carries media tracks. The scan gives it to the data channel, because most packages of the catalog use it for data."
+  },
+  {
+    "transport": "websocket",
+    "global": "WebSocket"
+  },
+  {
+    "transport": "websocket-stream",
+    "global": "WebSocketStream"
+  },
+  {
+    "transport": "webtransport",
+    "global": "WebTransport"
+  },
+  {
+    "transport": "xhr",
+    "global": "XMLHttpRequest"
+  }
+]

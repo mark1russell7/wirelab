@@ -238,6 +238,33 @@ export const UPSTREAM_STATES = [
 ] as const;
 export type UpstreamState = (typeof UPSTREAM_STATES)[number];
 
+/** The uses of a global name in codeatlas: the callee of `new`, the callee of a call, the operand of `typeof`, or another use. */
+export const GLOBAL_USES = ["new", "call", "typeof", "read"] as const;
+export type GlobalUse = (typeof GLOBAL_USES)[number];
+
+/** A global name that shows the use of a transport, for example `WebSocket` for the transport `websocket`. */
+export interface TransportGlobal {
+  readonly transport: string;
+  readonly global: string;
+  readonly note?: string;
+}
+
+/**
+ * One use of a transport in the published code of a package. It gives the global name, its use, and the file and the
+ * line of the first such use in the file. The source names the scan.
+ */
+export interface PackageTransport {
+  readonly package: string;
+  readonly version: string;
+  readonly transport: string;
+  readonly global: string;
+  readonly use: GlobalUse;
+  readonly file: string;
+  readonly line: number;
+  readonly count: number;
+  readonly source: string;
+}
+
 /** One change of the state of a finding upstream, at a UTC time. The latest row gives the current state. */
 export interface UpstreamRow {
   readonly finding: string;
@@ -251,6 +278,7 @@ export interface UpstreamRow {
 export interface Catalog {
   readonly families: readonly Family[];
   readonly transports: readonly Transport[];
+  readonly transportGlobals: readonly TransportGlobal[];
   readonly protocols: readonly Protocol[];
   readonly packages: readonly Package[];
   readonly packageProtocols: readonly PackageProtocol[];
@@ -266,12 +294,14 @@ export interface Catalog {
   readonly runs: readonly Run[];
   readonly findings: readonly Finding[];
   readonly upstream: readonly UpstreamRow[];
+  readonly packageTransports: readonly PackageTransport[];
 }
 
 /** The name of each table, and the file that holds it. */
 export const TABLE_FILES: Readonly<Record<keyof Catalog, string>> = {
   families: "families.json",
   transports: "transports.json",
+  transportGlobals: "transport-globals.json",
   protocols: "protocols.json",
   packages: "packages.json",
   packageProtocols: "package-protocols.json",
@@ -287,6 +317,7 @@ export const TABLE_FILES: Readonly<Record<keyof Catalog, string>> = {
   runs: "runs.json",
   findings: "findings.json",
   upstream: "upstream.json",
+  packageTransports: "package-transports.json",
 };
 
 type FieldKind = "text" | "url" | "day" | "time" | "count" | "order" | readonly string[];
@@ -301,6 +332,7 @@ interface TableSpec {
 export const TABLE_SPECS: Readonly<Record<keyof Catalog, TableSpec>> = {
   families: { key: ["order"], required: { id: "text", order: "order", title: "text", what: "text" } },
   transports: { key: ["id"], required: { id: "text", name: "text" }, optional: { spec: "url", note: "text" } },
+  transportGlobals: { key: ["transport", "global"], required: { transport: "text", global: "text" }, optional: { note: "text" } },
   protocols: {
     key: ["id"],
     required: { id: "text", name: "text", family: "text", kind: PROTOCOL_KINDS, client: CLIENT_KINDS },
@@ -339,6 +371,10 @@ export const TABLE_SPECS: Readonly<Record<keyof Catalog, TableSpec>> = {
     optional: { run: "text", advisory: "url", note: "text" },
   },
   upstream: { key: ["finding", "at", "state"], required: { finding: "text", at: "time", state: UPSTREAM_STATES }, optional: { url: "url", note: "text" } },
+  packageTransports: {
+    key: ["package", "transport", "file", "global", "use"],
+    required: { package: "text", version: "text", transport: "text", global: "text", use: GLOBAL_USES, file: "text", line: "order", count: "order", source: "text" },
+  },
 };
 
 /** The upstream states that need the URL of a public issue, pull request or release. */
@@ -482,6 +518,20 @@ function keyProblems(c: Catalog): string[] {
     need(repositories, p.repository, `policies ${p.repository}`);
     const values = POLICY_VALUES[p.topic];
     if (!values.includes(p.value)) problems.push(`policies ${p.repository} ${p.topic}: ${p.value} is not one of ${values.join(", ")}.`);
+  }
+  const transports = ids(c.transports);
+  if (transports.size !== c.transports.length) problems.push("transports repeats an id.");
+  const globals = new Map<string, string>();
+  for (const g of c.transportGlobals) {
+    need(transports, g.transport, `transportGlobals ${g.global}`);
+    if (globals.has(g.global)) problems.push(`transportGlobals: the global ${g.global} shows more than one transport.`);
+    globals.set(g.global, g.transport);
+  }
+  for (const t of c.packageTransports) {
+    const what = `packageTransports ${t.package} ${t.file}`;
+    need(packages, t.package, what);
+    need(sources, t.source, what);
+    if (globals.get(t.global) !== t.transport) problems.push(`${what}: transportGlobals does not give the global ${t.global} to the transport ${t.transport}.`);
   }
   return problems.concat(ledgerProblems(c, { packages, protocols }));
 }
