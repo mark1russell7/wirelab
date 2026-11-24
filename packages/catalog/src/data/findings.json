@@ -1997,5 +1997,35 @@
     "kind": "conformance",
     "title": "The IPC reader ignores Schema.endianness: a big-endian stream reads 1, 2, 3 as 16777216, 33554432, 50331648",
     "note": "The reader neither swaps the bytes nor refuses the stream. The project rated it a regular bug, not a security fault."
+  },
+  {
+    "id": "F0201",
+    "package": "msgpackr",
+    "version": "2.1.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "With structuredClone and useRecords: false, unpack() throws a TypeError for an object that refers to itself",
+    "note": "The id extension makes a Map placeholder for a msgpack map, but with mapsAsObjects the map reads as a plain object, and the copy step calls targetProperties.entries(). An array that refers to itself works."
+  },
+  {
+    "id": "F0202",
+    "package": "msgpackr",
+    "version": "2.1.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "With moreTypes, an Error whose name is an Object.prototype member does not come back as an Error",
+    "note": "unpack() calls errors[name](message) with no own-property check. The names constructor, toString, valueOf, hasOwnProperty and isPrototypeOf give a String, a string, an object or a boolean, and __proto__ makes unpack() throw."
+  },
+  {
+    "id": "F0203",
+    "package": "msgpackr",
+    "version": "2.1.4",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "With useFloat32 DECIMAL_ROUND or DECIMAL_FIT, a float32 Infinity, -Infinity or NaN unpacks as 0",
+    "note": "The rounding uses >> 0, which makes each non-finite value 0. roundFloat32() has the same fault. msgpackr packs these values as float64, but another encoder can send them as float32."
   }
 ]
