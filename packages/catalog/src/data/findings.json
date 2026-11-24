@@ -2206,12 +2206,12 @@
   },
   {
     "id": "F0221",
-    "package": "@libsql/hrana-client",
-    "version": "0.10.0",
+    "package": "@libsql/client",
+    "version": "0.18.0",
     "method": "review",
     "found": "2026-11-24",
     "kind": "correctness",
-    "title": "Hrana 3 protobuf: the cursor decoder reads StepEndEntry.last_insert_rowid as uint64, not sint64",
-    "note": "The Hrana 3 spec and the libsql server encode the field as sint64 (zigzag), as StmtResult.last_insert_rowid. The client reads the zigzag value, so a cursor batch gives 10 for rowid 5. @libsql/client 0.18.0 opens Hrana 2 and does not use cursors: the fault needs openWs or openHttp with protocol version 3."
+    "title": "@libsql/hrana-client (Hrana 3 protobuf) reads StepEndEntry.last_insert_rowid as uint64, not sint64",
+    "note": "The fault is in @libsql/hrana-client 0.10.0, the Hrana client of @libsql/client 0.18.0. The Hrana 3 spec and the libsql server encode the field as sint64 (zigzag), as StmtResult.last_insert_rowid. The client reads the zigzag value, so a cursor batch gives 10 for rowid 5. @libsql/client opens Hrana 2 and does not use cursors: the fault needs openWs or openHttp with protocol version 3."
   }
 ]
