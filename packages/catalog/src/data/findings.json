@@ -2110,7 +2110,7 @@
     "kind": "conformance",
     "run": "suite-graphql-http-45351031481-graphql-request",
     "title": "The default Accept field gives application/json the same weight as application/graphql-response+json",
-    "note": "The client sends accept: application/graphql-response+json, application/json when the caller gives no Accept field. GraphQL over HTTP tells the client to send application/json;q=0.9. The caller can set its own Accept field. The upstream test tests/legacy/general.test.ts line 394 pins the value. Check accept-default."
+    "note": "The client sends accept: application/graphql-response+json, application/json when the caller gives no Accept field. GraphQL over HTTP tells the client to send application/json;q=0.9. The caller can set its own Accept field. The upstream test tests/legacy/general.test.ts line 394 pins the value. Check accept-default. Not filed upstream: the default is a deliberate choice of the project, its own test pins it, the rule is a SHOULD, and the caller can set the header."
   },
   {
     "id": "F0212",
@@ -2121,7 +2121,7 @@
     "kind": "conformance",
     "run": "suite-graphql-http-45351031481-urql-core",
     "title": "The default Accept field has three more media types, each with the weight of application/graphql-response+json",
-    "note": "fetchOptions.ts line 153 sends application/graphql-response+json, application/graphql+json, application/json, text/event-stream, multipart/mixed. GraphQL over HTTP tells the client to send application/graphql-response+json, application/json;q=0.9. The caller can set fetchOptions.headers. The upstream test fetchOptions.test.ts line 140 pins the value. Check accept-default."
+    "note": "fetchOptions.ts line 153 sends application/graphql-response+json, application/graphql+json, application/json, text/event-stream, multipart/mixed. GraphQL over HTTP tells the client to send application/graphql-response+json, application/json;q=0.9. The caller can set fetchOptions.headers. The upstream test fetchOptions.test.ts line 140 pins the value. Check accept-default. Not filed upstream: the default is a deliberate choice of the project, its own test pins it, the rule is a SHOULD, and the caller can set the header."
   },
   {
     "id": "F0213",
