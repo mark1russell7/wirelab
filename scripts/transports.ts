@@ -14,7 +14,9 @@
  * Start: `node scripts/transports.ts --atlas=<codeatlas folder> --work=<empty folder> [--summary=<file>] [--only=<count>]`
  */
 import { execFileSync } from "node:child_process";
-import { appendFile, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { createReadStream } from "node:fs";
+import { appendFile, mkdir, readdir, writeFile } from "node:fs/promises";
+import { createInterface } from "node:readline";
 import { join, resolve } from "node:path";
 import { errorMessage } from "@mark1russell7/text";
 import { TABLE_FILES, addTransportScan, catalog, parseCatalog, rawTables, tableText, transportUses, type ScannedPackage, type Source } from "../packages/catalog/src/index.ts";
@@ -69,10 +71,17 @@ if (scanned.length === 0) {
 
 const factsFile = join(root, "facts.jsonl");
 run("node", [join(resolve(atlas), "packages", "atlas", "src", "cli.ts"), "facts", "--files", "published", "--out", factsFile, "--repos-dir", join(root, "packages")], resolve(atlas));
-const records = (await readFile(factsFile, "utf8"))
-  .split("\n")
-  .filter((line) => line.trim() !== "")
-  .map((line): unknown => JSON.parse(line));
+/**
+ * The facts of all packages are longer than the longest string of Node.js, so the script reads them one line at a time.
+ * It keeps the file records, and only the global names of each blob record.
+ */
+const records: unknown[] = [];
+for await (const line of createInterface({ input: createReadStream(factsFile, "utf8"), crlfDelay: Infinity })) {
+  if (line.trim() === "") continue;
+  const record = JSON.parse(line) as { kind?: unknown; key?: unknown; facts?: { ok?: unknown; facts?: { globals?: unknown } } };
+  if (record.kind === "file") records.push(record);
+  else if (record.kind === "blob") records.push({ kind: "blob", key: record.key, facts: { ok: record.facts?.ok, facts: { globals: record.facts?.facts?.globals } } });
+}
 const atlasCommit = run("git", ["rev-parse", "HEAD"], resolve(atlas)).trim();
 
 const at = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
