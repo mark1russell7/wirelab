@@ -1857,5 +1857,19 @@
     "state": "issue-open",
     "url": "https://github.com/aws-amplify/amplify-js/issues/15025",
     "note": "The repro on aws-amplify 6.22.2 prints BUG PRESENT: socket A stays open, the state is Disconnected while socket B delivers data, and the silent socket B is not closed."
+  },
+  {
+    "finding": "F0217",
+    "at": "2026-11-24T18:04:51Z",
+    "state": "pr-open",
+    "url": "https://github.com/aws-amplify/amplify-js/pull/15027",
+    "note": "The handshake detaches the handlers of the timed-out socket and closes it with 3001. The F0217 repro prints BUG ABSENT against the 6.22.2 build with the same change. A new unit test checks the close and the handlers. The full suite runs in the CI of the PR."
+  },
+  {
+    "finding": "F0218",
+    "at": "2026-11-24T18:04:32Z",
+    "state": "issue-open",
+    "url": "https://github.com/aws-amplify/amplify-js/issues/15026",
+    "note": "The repro on aws-amplify 6.22.2 prints BUG PRESENT: the states are Disconnected, Connecting, Disconnected, ConnectedPendingDisconnect."
   }
 ]

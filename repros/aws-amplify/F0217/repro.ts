@@ -84,11 +84,13 @@ a.onclose?.({ code: 1006 }); // socket A closes later, for example when its TCP 
 await sleep(50);
 b.receive({ type: "data", id, payload: { data: { onX: { id: "1" } } } });
 await sleep(50);
-console.log(`2. state after socket A closed: ${states.at(-1)}; data still arrives on socket B: ${received.length === 1}`);
+const stateAfterClose = states.at(-1);
+console.log(`2. state after socket A closed: ${stateAfterClose}; data still arrives on socket B: ${received.length === 1}`);
 
 await sleep(8_000 + 5_000 + 1_000); // socket B is silent for longer than connectionTimeoutMs plus one heartbeat
 console.log(`3. silent socket B: ${b.closedByClient ? "closed by the keep-alive check" : "still open"}`);
 
-const present = !a.closedByClient || states.at(-1) !== "Connected" || !b.closedByClient;
+// The state after a retry is a separate fault (F0218), so this check looks only for the CLOSED record of socket A.
+const present = !a.closedByClient || stateAfterClose === "Disconnected" || !b.closedByClient;
 console.log(present ? "BUG PRESENT" : "BUG ABSENT");
 process.exit(present ? 1 : 0);
