@@ -18,7 +18,7 @@ The suite tests the clients. The server is a list of replies from `startScripted
 | `src/requests.test.ts` | The checks of the requests: the fields `Accept` and `Content-Type`, the JSON body of POST and the URL query of GET. |
 | `src/responses.test.ts` | The checks of the replies: the status codes 4xx and 294, the media types and the charset of a result. |
 | `src/index.test.ts` | A check with no server: each rule has a check, each check names its rules, and the installed clients have the pinned versions. |
-| `src/harness.ts` | The helpers of the tests: one adapter for each client, the operations, the scripted server and the function `check`. |
+| `src/harness.test-kit.ts` | The helpers of the tests, in a file name of tests because they import Vitest: one adapter for each client, the operations, the scripted server and the function `check`. |
 | `src/index.ts` | The rules, the clients, the checks and the verdicts as data. |
 
 - Each check has one test for each client. The title of the test starts with the name of the check and names its rules, in the form `[G<number>]`.

@@ -19,7 +19,7 @@ import {
   type CheckContext,
   type Mode,
   type Operation,
-} from "./harness.ts";
+} from "./harness.test-kit.ts";
 import { clientNames } from "./index.ts";
 import type { ScriptedRequest } from "@mark1russell7/rigor-testkit/http";
 

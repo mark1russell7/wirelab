@@ -2,7 +2,7 @@
 // The scripted server gives one reply, and the check examines what the caller gets from the client.
 import type { ScriptedReply } from "@mark1russell7/rigor-testkit/http";
 import { describe, expect } from "vitest";
-import { check, evidence, greetQuery, jsonReply, responseType, suiteEnabled, type CheckContext, type Outcome } from "./harness.ts";
+import { check, evidence, greetQuery, jsonReply, responseType, suiteEnabled, type CheckContext, type Outcome } from "./harness.test-kit.ts";
 import { clientNames } from "./index.ts";
 
 /** A result with data and no errors. */
