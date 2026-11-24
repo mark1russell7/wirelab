@@ -43,9 +43,10 @@
           "suite-engineio.yml",
           "suite-sockjs.yml",
           "suite-socketio.yml",
-          "suite-autobahn.yml"
+          "suite-autobahn.yml",
+          "suite-graphql-http.yml"
         ],
-        "reason": "The suites of MQTT, Engine.IO, SockJS, Socket.IO and Autobahn are not gates. They find faults of the clients, and their it.fails tests record them. They run only when a suite changes, each week and on a manual start."
+        "reason": "The suites of MQTT, Engine.IO, SockJS, Socket.IO, Autobahn and GraphQL over HTTP are not gates. They find faults of the clients, and their it.fails tests record them. They run only when a suite changes, each week and on a manual start."
       },
       "typed-files": {
         "configs": [

@@ -52,6 +52,13 @@
     "note": "A scripted server gives fixed replies of HTTP long-polling. The suite examines 14 rules of Engine.IO version 4 over NodeXHR and Fetch."
   },
   {
+    "id": "wirelab-suite-graphql-http",
+    "name": "wirelab GraphQL over HTTP client suite",
+    "subject": "client",
+    "url": "https://github.com/mark1russell7/wirelab/tree/main/packages/suite-graphql-http",
+    "note": "A scripted server gives fixed replies to graphql-http, graphql-request, @urql/core and @apollo/client. The suite examines 15 rules of the spec GraphQL over HTTP, at commit 2fe5c32."
+  },
+  {
     "id": "wirelab-suite-socketio",
     "name": "wirelab Socket.IO client suite",
     "subject": "client",
