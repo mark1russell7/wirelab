@@ -2173,5 +2173,15 @@
     "kind": "correctness",
     "title": "A real-time socket whose connection ack timed out stays open, and its later close stops the keep-alive check of the new socket",
     "note": "After the 15 s ack timeout the provider opens a new socket and does not close the first one. The onclose of the first socket calls _closeSocket on the provider: it clears the keep-alive interval of the new socket and records CLOSED. The Hub reports Disconnected while the new socket delivers data, and a silent new socket is never detected."
+  },
+  {
+    "id": "F0218",
+    "package": "aws-amplify",
+    "version": "6.22.2",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "After a retry that follows a connection ack timeout, the connection state stays ConnectedPendingDisconnect",
+    "note": "The ack timeout records CONNECTION_FAILED, which sets the intended state to disconnected. The retry does not record OPENING_CONNECTION again, so a working subscription on the retry socket reports ConnectedPendingDisconnect and never Connected."
   }
 ]
