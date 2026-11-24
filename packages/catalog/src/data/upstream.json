@@ -1906,5 +1906,19 @@
     "state": "pr-open",
     "url": "https://github.com/libsql/hrana-client-ts/pull/29",
     "note": "Field 2 of StepEndEntry reads sint64, with a decoder test that needs no server. The test fails without the fix (10n for 5n) and passes with it. The repro prints BUG ABSENT against the 0.10.0 build with the same change."
+  },
+  {
+    "finding": "F0222",
+    "at": "2026-11-24T19:04:10Z",
+    "state": "issue-open",
+    "url": "https://github.com/middleapi/orpc/issues/2548",
+    "note": "The repro on @orpc/client 1.16.5 prints BUG PRESENT: with a retry delay of 3000 ms and an abort at 100 ms, the call rejects after 3019 ms, with 2 requests."
+  },
+  {
+    "finding": "F0222",
+    "at": "2026-11-24T19:23:25Z",
+    "state": "pr-open",
+    "url": "https://github.com/middleapi/orpc/pull/2549",
+    "note": "The fix to base 1.x waits with an abortable delay, as RetryAfterPlugin does, and rejects with the last error after the abort. The new vitest test times out without the fix and passes with it. The repro prints BUG ABSENT against the 1.16.5 build with the same change (104 ms, 1 request)."
   }
 ]
