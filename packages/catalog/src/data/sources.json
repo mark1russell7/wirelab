@@ -16,5 +16,11 @@
     "at": "2026-11-17T07:18:37Z",
     "what": "The npm downloads API (last week), the deps.dev dependents of the default version and the jsDelivr hits (last month), through polite-crawler.",
     "note": "206 packages. Unknown: 0 to downloads, 25 to deps.dev, 0 to jsDelivr. Failed requests: 0."
+  },
+  {
+    "id": "transports-2026-11-24-45362512906",
+    "at": "2026-11-24T09:17:36Z",
+    "what": "The global names of the published files of the latest version of each package, from codeatlas facts --files published.",
+    "note": "210 of 210 packages. codeatlas a1136e353203. Failed packages: 0."
   }
 ]
