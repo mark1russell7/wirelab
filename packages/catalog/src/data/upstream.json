@@ -1934,5 +1934,19 @@
     "state": "pr-open",
     "url": "https://github.com/middleapi/orpc/pull/2549",
     "note": "The fix to base 1.x waits with an abortable delay, as RetryAfterPlugin does, and rejects with the last error after the abort. The new vitest test times out without the fix and passes with it. The repro prints BUG ABSENT against the 1.16.5 build with the same change (104 ms, 1 request)."
+  },
+  {
+    "finding": "F0223",
+    "at": "2026-11-24T20:12:14Z",
+    "state": "issue-open",
+    "url": "https://github.com/mtth/avsc/issues/512",
+    "note": "The repro on avsc 5.7.9 prints BUG PRESENT: the second client throws an uncaught MD5 error, and the process ends with exit code 1."
+  },
+  {
+    "finding": "F0223",
+    "at": "2026-11-24T20:15:03Z",
+    "state": "pr-open",
+    "url": "https://github.com/mtth/avsc/pull/513",
+    "note": "The fix to the branch v5.x takes the adapter hash from the remote service. The new mocha test fails without the fix and passes with it, and the 174 services tests pass. The repro prints BUG ABSENT against 5.7.9 with the same change."
   }
 ]
