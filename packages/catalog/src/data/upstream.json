@@ -1948,5 +1948,47 @@
     "state": "pr-open",
     "url": "https://github.com/mtth/avsc/pull/513",
     "note": "The fix to the branch v5.x takes the adapter hash from the remote service. The new mocha test fails without the fix and passes with it, and the 174 services tests pass. The repro prints BUG ABSENT against 5.7.9 with the same change."
+  },
+  {
+    "finding": "F0224",
+    "at": "2026-11-24T21:03:00Z",
+    "state": "issue-open",
+    "url": "https://github.com/stomp-js/stompjs/issues/759",
+    "note": "The repro on 7.5.0 prints BUG PRESENT: 12 onHeartbeatLost calls in 1.5 s and no close event."
+  },
+  {
+    "finding": "F0224",
+    "at": "2026-11-24T21:06:02Z",
+    "state": "pr-open",
+    "url": "https://github.com/stomp-js/stompjs/pull/762",
+    "note": "The fix to develop stops the heartbeat check before onHeartbeatLost. The new Playwright test needs the RabbitMQ broker, so CI runs it. A build of the branch gives 1 call in the in-process repro."
+  },
+  {
+    "finding": "F0225",
+    "at": "2026-11-24T21:03:01Z",
+    "state": "issue-open",
+    "url": "https://github.com/stomp-js/stompjs/issues/760",
+    "note": "The repro on 7.5.0 prints BUG PRESENT. The issue also tells that a frame command such as constructor does not reach onUnhandledFrame."
+  },
+  {
+    "finding": "F0225",
+    "at": "2026-11-24T21:08:07Z",
+    "state": "pr-open",
+    "url": "https://github.com/stomp-js/stompjs/pull/763",
+    "note": "The fix to develop makes the two maps with no prototype and looks up frame commands in own properties only. The new Playwright spec needs the broker, so CI runs it. A build of the branch sends each frame to the unhandled callbacks."
+  },
+  {
+    "finding": "F0226",
+    "at": "2026-11-24T21:03:04Z",
+    "state": "issue-open",
+    "url": "https://github.com/stomp-js/stompjs/issues/761",
+    "note": "The repro on 7.5.0 prints BUG PRESENT: 1 Timeout handle stays after deactivate(). The issue cites item 8 of Code-audit.md."
+  },
+  {
+    "finding": "F0226",
+    "at": "2026-11-24T21:09:19Z",
+    "state": "pr-open",
+    "url": "https://github.com/stomp-js/stompjs/pull/764",
+    "note": "The fix to develop clears the connection watcher in deactivate() and on close. The new Playwright test needs the broker, so CI runs it. A build of the branch keeps no Timeout handle after deactivate()."
   }
 ]
