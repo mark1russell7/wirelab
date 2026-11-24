@@ -1714,6 +1714,13 @@
     "note": "Each operation keeps its own reservation token. The new test fails without the change; all 285 tests pass with it."
   },
   {
+    "finding": "F0204",
+    "at": "2026-11-24T07:01:31Z",
+    "state": "closed",
+    "url": "https://github.com/enisdenjo/graphql-ws/pull/711",
+    "note": "The pull request was closed from the mark1russell7 account with no comment. The issue #708 stays open."
+  },
+  {
     "finding": "F0205",
     "at": "2026-11-24T06:37:49Z",
     "state": "issue-open",
@@ -1726,6 +1733,13 @@
     "state": "pr-open",
     "url": "https://github.com/enisdenjo/graphql-ws/pull/710",
     "note": "iterator.throw calls dispose(), as iterator.return does. The new test fails without the change; the client tests pass with it."
+  },
+  {
+    "finding": "F0205",
+    "at": "2026-11-24T07:01:33Z",
+    "state": "closed",
+    "url": "https://github.com/enisdenjo/graphql-ws/pull/710",
+    "note": "The pull request was closed from the mark1russell7 account with no comment. The issue #709 stays open."
   },
   {
     "finding": "F0206",
