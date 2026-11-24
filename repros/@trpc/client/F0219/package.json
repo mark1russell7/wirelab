@@ -4,7 +4,7 @@
   "dependencies": {
     "@trpc/client": "11.31.2",
     "@trpc/server": "11.31.2",
-    "ws": "8.18.3"
+    "ws": "8.23.0"
   },
   "devDependencies": {
     "@types/node": "24.19.2",
