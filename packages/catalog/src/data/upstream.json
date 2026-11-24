@@ -1892,5 +1892,19 @@
     "state": "issue-open",
     "url": "https://github.com/neondatabase/serverless/issues/243",
     "note": "The repro on @neondatabase/serverless 1.2.1 prints BUG PRESENT: Pool.query over HTTP sends the text of the password function. The proposed fix gives the password to neon() as a connection parameter, and the repro prints BUG ABSENT with it. The issue asks if the PR goes on main or on PR #238."
+  },
+  {
+    "finding": "F0221",
+    "at": "2026-11-24T18:40:13Z",
+    "state": "issue-open",
+    "url": "https://github.com/libsql/hrana-client-ts/issues/28",
+    "note": "The repro on @libsql/hrana-client 0.10.0 prints BUG PRESENT: the fake Hrana 3 server sends rowid 5, Stream.run() reads 5 and a cursor batch step reads 10."
+  },
+  {
+    "finding": "F0221",
+    "at": "2026-11-24T18:51:16Z",
+    "state": "pr-open",
+    "url": "https://github.com/libsql/hrana-client-ts/pull/29",
+    "note": "Field 2 of StepEndEntry reads sint64, with a decoder test that needs no server. The test fails without the fix (10n for 5n) and passes with it. The repro prints BUG ABSENT against the 0.10.0 build with the same change."
   }
 ]
