@@ -1117,11 +1117,25 @@
     "note": "The fault is in EventStreamSerde of @smithy/core, so the issue is in smithy-typescript. Its repro uses only @smithy/core 3.41.0."
   },
   {
+    "finding": "F0139",
+    "at": "2026-11-24T05:09:05Z",
+    "state": "pr-open",
+    "url": "https://github.com/smithy-lang/smithy-typescript/pull/2376",
+    "note": "The fix of #2366, as the maintainer asked: hasOwn in place of in, a test with the names toString, constructor, __proto__ and hasOwnProperty, and a patch changeset. The new test failed before the fix and passed after it (vitest, 9 of 9)."
+  },
+  {
     "finding": "F0140",
     "at": "2026-11-18T04:07:15Z",
     "state": "issue-open",
     "url": "https://github.com/smithy-lang/smithy-typescript/issues/2367",
     "note": "The fault is in getChunkedStream of @smithy/core, so the issue is in smithy-typescript. Its repro uses only @smithy/core 3.41.0."
+  },
+  {
+    "finding": "F0140",
+    "at": "2026-11-24T05:09:08Z",
+    "state": "pr-open",
+    "url": "https://github.com/smithy-lang/smithy-typescript/pull/2377",
+    "note": "The fix of #2367, as the maintainer asked: an error when the source ends in the length prefix, a test that cuts the source after 0 to 5 bytes, and a patch changeset. The cuts of 1, 2 and 3 bytes failed before the fix; 12 of 12 pass after it."
   },
   {
     "finding": "F0142",
@@ -1130,16 +1144,37 @@
     "note": "aws/aws-sdk-js-v3 asks that a named person reviews each report that an AI tool writes, before it is filed. The issue text is ready, and it waits for that review."
   },
   {
+    "finding": "F0142",
+    "at": "2026-11-24T05:10:59Z",
+    "state": "issue-open",
+    "url": "https://github.com/aws/aws-sdk-js-v3/issues/8439",
+    "note": "Mark reviewed the issue text before it was filed, as the AI rule of aws-sdk-js-v3 asks. The issue names the AI tool and the reviewer."
+  },
+  {
     "finding": "F0143",
     "at": "2026-11-18T04:44:27Z",
     "state": "held-ai-policy",
     "note": "aws/aws-sdk-js-v3 asks that a named person reviews each report that an AI tool writes, before it is filed. The issue text is ready, and it waits for that review."
   },
   {
+    "finding": "F0143",
+    "at": "2026-11-24T05:11:01Z",
+    "state": "issue-open",
+    "url": "https://github.com/aws/aws-sdk-js-v3/issues/8440",
+    "note": "Mark reviewed the issue text before it was filed, as the AI rule of aws-sdk-js-v3 asks. The issue names the AI tool and the reviewer."
+  },
+  {
     "finding": "F0144",
     "at": "2026-11-18T04:44:27Z",
     "state": "held-ai-policy",
     "note": "aws/aws-sdk-js-v3 asks that a named person reviews each report that an AI tool writes, before it is filed. The issue text is ready, and it waits for that review."
+  },
+  {
+    "finding": "F0144",
+    "at": "2026-11-24T05:11:02Z",
+    "state": "issue-open",
+    "url": "https://github.com/aws/aws-sdk-js-v3/issues/8441",
+    "note": "Mark reviewed the issue text before it was filed, as the AI rule of aws-sdk-js-v3 asks. The issue names the AI tool and the reviewer."
   },
   {
     "finding": "F0145",
