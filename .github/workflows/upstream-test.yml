@@ -1,0 +1,100 @@
+# The tests of an upstream project on a fix branch of a fork. Some projects need a large monorepo install for their
+# tests, and the computer of the campaign is shared, so these runs happen here. The job checks out the fork at the
+# ref, runs the install command and then the test command, and keeps the output of the tests as an artifact.
+# It reads only the fork of the campaign (mark1russell7/*), and it has no secrets and no write permission.
+name: Upstream test
+
+on:
+  # A person starts a run:
+  # gh workflow run upstream-test.yml -f repo=mark1russell7/amplify-js -f ref=<branch> \
+  #   -f install="yarn install --frozen-lockfile" -f dir=packages/api-graphql -f test="npx jest __tests__/x.test.ts"
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: The fork, as owner/name. The owner must be mark1russell7.
+        required: true
+        type: string
+      ref:
+        description: The branch, tag or commit of the fix
+        required: true
+        type: string
+      install:
+        description: The install command, in the root of the repository
+        required: true
+        type: string
+      test:
+        description: The test command
+        required: true
+        type: string
+      dir:
+        description: The folder of the test command, relative to the root of the repository
+        required: false
+        default: "."
+        type: string
+      node:
+        description: The major version of Node.js
+        required: false
+        default: "22"
+        type: string
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test:
+    name: Test ${{ inputs.repo }} at ${{ inputs.ref }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    # The commands come in through the environment, never through an expression in a script.
+    env:
+      REPO: ${{ inputs.repo }}
+      INSTALL: ${{ inputs.install }}
+      TEST: ${{ inputs.test }}
+      DIR: ${{ inputs.dir }}
+    steps:
+      - name: Check the fork
+        run: |
+          if [[ ! "$REPO" =~ ^mark1russell7/[A-Za-z0-9._-]+$ ]]; then
+            echo "The repository must be a fork of mark1russell7." >&2
+            exit 1
+          fi
+          if [[ "$DIR" == /* || "$DIR" == *..* ]]; then
+            echo "The folder must be a relative path in the repository." >&2
+            exit 1
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ inputs.repo }}
+          ref: ${{ inputs.ref }}
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ inputs.node }}
+      - name: Install
+        run: |
+          corepack enable || true
+          bash -c "$INSTALL"
+      - name: Test
+        working-directory: ${{ inputs.dir }}
+        run: |
+          set -o pipefail
+          bash -c "$TEST" 2>&1 | tee "$RUNNER_TEMP/test-output.txt"
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### $REPO at $(git rev-parse --short HEAD)"
+            echo '```'
+            tail -n 60 "$RUNNER_TEMP/test-output.txt" 2>/dev/null || echo "The test step gave no output."
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: upstream-test-output
+          path: ${{ runner.temp }}/test-output.txt
+          if-no-files-found: ignore
