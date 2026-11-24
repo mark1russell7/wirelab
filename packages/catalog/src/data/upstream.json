@@ -1850,5 +1850,12 @@
     "state": "pr-open",
     "url": "https://github.com/mafintosh/dns-packet/pull/114",
     "note": "streamDecode.bytes counts the length prefix. The new check fails without the change; all 637 tests and the lint pass with it."
+  },
+  {
+    "finding": "F0217",
+    "at": "2026-11-24T17:49:07Z",
+    "state": "issue-open",
+    "url": "https://github.com/aws-amplify/amplify-js/issues/15025",
+    "note": "The repro on aws-amplify 6.22.2 prints BUG PRESENT: socket A stays open, the state is Disconnected while socket B delivers data, and the silent socket B is not closed."
   }
 ]

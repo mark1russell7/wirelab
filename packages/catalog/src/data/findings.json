@@ -2163,5 +2163,15 @@
     "kind": "correctness",
     "title": "streamDecode.bytes does not count the 2-byte length prefix that streamEncode.bytes counts",
     "note": "streamDecode.bytes is decode.bytes. A reader of a TCP stream that removes streamDecode.bytes from its buffer after each message is 2 bytes short, and reads the last 2 bytes of the message as the next length prefix. The offset is the same for each message and no peer can choose it, so it is a fault of the API and not a desync that a peer can steer."
+  },
+  {
+    "id": "F0217",
+    "package": "aws-amplify",
+    "version": "6.22.2",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "A real-time socket whose connection ack timed out stays open, and its later close stops the keep-alive check of the new socket",
+    "note": "After the 15 s ack timeout the provider opens a new socket and does not close the first one. The onclose of the first socket calls _closeSocket on the provider: it clears the keep-alive interval of the new socket and records CLOSED. The Hub reports Disconnected while the new socket delivers data, and a silent new socket is never detected."
   }
 ]
