@@ -12,6 +12,13 @@ on:
   # Each Wednesday at 07:16 UTC, the day after the measures of use.
   schedule:
     - cron: "16 7 * * 3"
+  # A pull request that changes the scan scans the first 5 packages, as a short trial. It never pushes.
+  pull_request:
+    paths:
+      - .github/workflows/transports.yml
+      - scripts/transports.ts
+      - packages/catalog/src/transports.ts
+      - packages/catalog/src/data/transport-globals.json
   # A person starts a run: gh workflow run transports.yml --ref <branch> [-f only=<count>] [-f push=true]
   # Then: gh run download <run id> -n transports
   workflow_dispatch:
@@ -51,7 +58,7 @@ jobs:
     outputs:
       changed: ${{ steps.change.outputs.changed }}
     env:
-      ONLY: ${{ inputs.only }}
+      ONLY: ${{ github.event_name == 'pull_request' && '5' || inputs.only }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
