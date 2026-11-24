@@ -9,7 +9,9 @@
  * 3. The reach of a package is the mean of its shares. A package with no measure has no reach, and it goes last.
  * 4. The chance that a fix lands multiplies the reach. A deprecated package has the factor `LANDING.deprecated`. A
  *    package in an archived repository has the factor `LANDING.archived`, but only when npm does not deprecate it. A
- *    package of an unmaintained repository has the factor `LANDING.unmaintained` on the same terms. A repository that takes pull requests only from its collaborators has the factor `LANDING.collaboratorsOnly`. A
+ *    package of an unmaintained repository has the factor `LANDING.unmaintained` on the same terms. A dormant package
+ *    (its npm document did not change for `DORMANT_DAYS` before its registry source) has the factor
+ *    `LANDING.dormant`, but not with a deprecation, an archived repository or an unmaintained repository. A repository that takes pull requests only from its collaborators has the factor `LANDING.collaboratorsOnly`. A
  *    package with a closed source has the factor `LANDING.closed`. A repository that refuses contributions that an AI made has the factor `LANDING.aiRefused`, and a repository
  *    with a CLA has the factor `LANDING.cla`. The latest policy row of each topic applies.
  *
@@ -27,6 +29,8 @@ import { METRICS } from "./schema.ts";
  * - `archived`: the repository takes no pull request. A deprecated package does not get this factor too.
  * - `unmaintained`: the owner states that they keep no maintenance, so nobody releases a fix. A deprecated package does
  *   not get this factor too.
+ * - `dormant`: npm got no release of the package for `DORMANT_DAYS`, so a merged fix is not likely to reach users.
+ *   It has the value of `unmaintained`, because the effect is the same: no release carries the fix.
  * - `collaboratorsOnly`: the repository takes pull requests only from its collaborators. The issue links the fix
  *   branch, and a maintainer must apply the fix.
  * - `closed`: the source is not public. The fix goes to the vendor as a report with no fix branch, and only the
@@ -38,6 +42,7 @@ export const LANDING: {
   readonly deprecated: number;
   readonly archived: number;
   readonly unmaintained: number;
+  readonly dormant: number;
   readonly collaboratorsOnly: number;
   readonly closed: number;
   readonly aiRefused: number;
@@ -46,11 +51,19 @@ export const LANDING: {
   deprecated: 0.1,
   archived: 0.1,
   unmaintained: 0.1,
+  dormant: 0.1,
   collaboratorsOnly: 0.3,
   closed: 0.2,
   aiRefused: 0.2,
   cla: 0.5,
 };
+
+/**
+ * The days with no change of the npm document of a package, before the day of its registry source, after which the
+ * package is dormant. A release changes the document, so the package got no release in that time. A deprecation or a
+ * new tag also changes it, so the test can miss a dormant package, but it does not mark an active one.
+ */
+export const DORMANT_DAYS: number = 3 * 365;
 
 /** The share of a package on one measure. */
 export interface Share {
@@ -94,6 +107,13 @@ function latestPolicies(policies: readonly Policy[]): Map<string, Policy> {
   return out;
 }
 
+/** This function gives the days from the last change of the npm document of a package to the time of its registry source. */
+function dormantDays(row: RegistryRow, at: ReadonlyMap<string, string>): number {
+  const source = at.get(row.source);
+  if (source === undefined) return 0;
+  return (Date.parse(source) - Date.parse(`${row.packumentModified}T00:00:00Z`)) / 86_400_000;
+}
+
 /** This function gives the packages of the catalog in their priority order, with the parts of each score. */
 export function priorityOrder(catalog: Catalog): Ranked[] {
   const at = new Map(catalog.sources.map((s) => [s.id, s.at]));
@@ -123,7 +143,8 @@ export function priorityOrder(catalog: Catalog): Ranked[] {
     const reach = mine.length === 0 ? null : mine.reduce((sum, s) => sum + s.share, 0) / mine.length;
     const reasons: string[] = [];
     let landing = 1;
-    const deprecated = registry.get(p.name)?.deprecated;
+    const row = registry.get(p.name);
+    const deprecated = row?.deprecated;
     if (deprecated !== undefined) {
       landing *= LANDING.deprecated;
       reasons.push(`deprecated on npm: ${deprecated}`);
@@ -135,7 +156,11 @@ export function priorityOrder(catalog: Catalog): Ranked[] {
     } else if (contributions?.value === "unmaintained") {
       if (deprecated === undefined) landing *= LANDING.unmaintained;
       reasons.push(`the owner of ${contributions.repository} keeps no maintenance (checked ${contributions.checked})`);
-    } else if (contributions?.value === "collaborators-only") {
+    } else if (deprecated === undefined && row !== undefined && dormantDays(row, at) >= DORMANT_DAYS) {
+      landing *= LANDING.dormant;
+      reasons.push(`no release on npm for ${Math.floor(dormantDays(row, at) / 365)} years: the npm document is unchanged since ${row.packumentModified} (source ${row.source})`);
+    }
+    if (contributions?.value === "collaborators-only") {
       landing *= LANDING.collaboratorsOnly;
       reasons.push(`the repository ${contributions.repository} takes pull requests only from its collaborators (checked ${contributions.checked})`);
     } else if (contributions?.value === "closed") {

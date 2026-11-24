@@ -73,6 +73,7 @@ The ledger records the tests of the campaign, the faults that they find, and the
    - A deprecated package has the factor `LANDING.deprecated`, which is 0.1.
    - A package in an archived repository has the factor `LANDING.archived`, which is 0.1. A deprecated package does not get this factor too.
    - A package of an unmaintained repository has the factor `LANDING.unmaintained`, which is 0.1. Nobody releases a fix. A deprecated package does not get this factor too.
+   - A dormant package has the factor `LANDING.dormant`, which is 0.1. Its npm document did not change for `DORMANT_DAYS` (3 years) before its registry source, so npm got no release in that time. A deprecated package, or a package of an archived or unmaintained repository, does not get this factor too.
    - A repository that takes pull requests only from its collaborators has the factor `LANDING.collaboratorsOnly`, which is 0.3. The issue links the fix branch, and a maintainer must apply the fix.
    - A package with a closed source has the factor `LANDING.closed`, which is 0.2. The fix goes to the vendor as a report with no fix branch, and only the vendor can apply it.
    - A repository that refuses contributions that an AI made has the factor `LANDING.aiRefused`, which is 0.2. The fix stays held until the rule changes.
