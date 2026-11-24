@@ -1770,6 +1770,13 @@
     "note": "syncDiff copies the top object and each presence that a leave changes. The new jest test fails without the change; all 299 tests pass with it."
   },
   {
+    "finding": "F0206",
+    "at": "2026-11-24T16:57:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/phoenixframework/phoenix/pull/6923",
+    "note": "A maintainer merged the same change in the pull request phoenix #6923, which links phoenix #6921. It closed the issue phoenix #6919 and the pull request phoenix #6921."
+  },
+  {
     "finding": "F0207",
     "at": "2026-11-24T06:50:37Z",
     "state": "issue-open",
@@ -1885,6 +1892,13 @@
     "state": "pr-open",
     "url": "https://github.com/trpc/trpc/pull/8199",
     "note": "handleResponseMessage updates lastEventId only for an event with an id, with a regression test. The repro prints BUG ABSENT against the 11.31.2 build with the same change. The test runs in the CI of the PR."
+  },
+  {
+    "finding": "F0219",
+    "at": "2026-11-24T19:26:43Z",
+    "state": "merged",
+    "url": "https://github.com/trpc/trpc/pull/8199",
+    "note": "A maintainer merged the fix. It closed the issue trpc #8198."
   },
   {
     "finding": "F0220",
