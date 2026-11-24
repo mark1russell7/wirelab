@@ -2047,5 +2047,25 @@
     "kind": "resource",
     "title": "client.iterate(): throw() ends the iterator but does not dispose the subscription",
     "note": "return() sends complete and releases the connection. throw() only marks the iterator done, so the server keeps sending values, the client keeps them in a list, and the lazy socket stays open."
+  },
+  {
+    "id": "F0206",
+    "package": "phoenix",
+    "version": "1.8.17",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "Presence.syncDiff changes the state that it is given and returns the same object",
+    "note": "syncState copies its input state. syncDiff removes the left metas from the presence objects of its input, and for a null-prototype state (each state that syncState and syncDiff return) it changes and returns that object, so a caller that keeps the previous state sees it change."
+  },
+  {
+    "id": "F0207",
+    "package": "phoenix",
+    "version": "1.8.17",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "After the fallback to LongPoll, the socket keeps the custom encode and decode, which a LongPoll socket ignores",
+    "note": "The constructor uses opts.encode and opts.decode only when the transport is not LongPoll. replaceTransport changes only the transport, so a socket that falls back with longPollFallbackMs keeps the custom serializer over LongPoll."
   }
 ]

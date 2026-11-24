@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "phoenix": "1.8.17"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/phoenix": "1.6.8",
+    "typescript": "7.0.2"
+  }
+}
