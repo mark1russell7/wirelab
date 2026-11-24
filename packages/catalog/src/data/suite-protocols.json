@@ -36,6 +36,10 @@
     "protocol": "engine-io"
   },
   {
+    "suite": "wirelab-suite-graphql-http",
+    "protocol": "graphql-over-http"
+  },
+  {
     "suite": "wirelab-suite-socketio",
     "protocol": "socket-io"
   },

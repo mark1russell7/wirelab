@@ -82,5 +82,53 @@
     "failed": 0,
     "skipped": 0,
     "note": "Each of the 463 cases and each close behavior passed, with permessage-deflate."
+  },
+  {
+    "id": "suite-graphql-http-45351031481-apollo-client",
+    "suite": "wirelab-suite-graphql-http",
+    "package": "@apollo/client",
+    "version": "4.3.8",
+    "at": "2026-11-24T07:49:55Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/45351031481",
+    "passed": 17,
+    "failed": 0,
+    "skipped": 1,
+    "note": "The client has no option that stops the parse of an operation, so get-no-mutation-options is skipped. The it.fails test of F0213 passed, so the fault stays. The Accept field is the default of the spec."
+  },
+  {
+    "id": "suite-graphql-http-45351031481-graphql-http",
+    "suite": "wirelab-suite-graphql-http",
+    "package": "graphql-http",
+    "version": "1.23.1",
+    "at": "2026-11-24T07:49:55Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/45351031481",
+    "passed": 14,
+    "failed": 0,
+    "skipped": 4,
+    "note": "The client sends each operation with POST, so the 4 checks of GET are skipped. The it.fails tests of F0208, F0209 and F0210 passed, so the faults stay."
+  },
+  {
+    "id": "suite-graphql-http-45351031481-graphql-request",
+    "suite": "wirelab-suite-graphql-http",
+    "package": "graphql-request",
+    "version": "7.4.0",
+    "at": "2026-11-24T07:49:55Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/45351031481",
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "note": "The it.fails tests of F0211, F0179 and F0176 passed, so the faults stay. A 400 or 422 reply gives a ClientError with the GraphQL errors."
+  },
+  {
+    "id": "suite-graphql-http-45351031481-urql-core",
+    "suite": "wirelab-suite-graphql-http",
+    "package": "@urql/core",
+    "version": "6.0.3",
+    "at": "2026-11-24T07:49:55Z",
+    "url": "https://github.com/mark1russell7/wirelab/actions/runs/45351031481",
+    "passed": 17,
+    "failed": 0,
+    "skipped": 1,
+    "note": "The client has no option that stops the parse of an operation, so get-no-mutation-options is skipped. The it.fails test of F0212 passed, so the fault stays."
   }
 ]
