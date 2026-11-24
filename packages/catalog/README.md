@@ -10,6 +10,7 @@ Each table is one JSON file in `src/data`. A row names a row of another table by
 | --- | --- | --- | --- |
 | `families` | `families.json` | `order` | A group of protocols, as the catalog shows them. |
 | `transports` | `transports.json` | `id` | A browser API that carries bytes, for example WebSocket or `fetch`. |
+| `transportGlobals` | `transport-globals.json` | `transport`, `global` | A global name that shows the use of a transport, for example `WebSocket`. |
 | `protocols` | `protocols.json` | `id` | A protocol or a codec, with its family, its spec and how a page speaks it. |
 | `packages` | `packages.json` | `name` | An npm package of a client. |
 | `packageProtocols` | `package-protocols.json` | `package`, `protocol` | A package speaks a protocol. |
@@ -20,6 +21,7 @@ Each table is one JSON file in `src/data`. A row names a row of another table by
 | `repositories` | `repositories.json` | `id` | The home of the source of a package. The id is `owner/name` on GitHub. A closed source has the site of its vendor. |
 | `packageRepositories` | `package-repositories.json` | `package` | The repository of a package, and the folder of the package in it. |
 | `policies` | `policies.json` | `repository`, `topic`, `checked` | One rule of a repository on one topic, with the day of the check and the page that shows it. |
+| `packageTransports` | `package-transports.json` | `package`, `transport`, `file`, `global`, `use` | A use of a transport global in a published file of a package, with its first line. |
 
 - The field `client` of a protocol is `library`, `native` or `none`. A protocol with `none` often has a gateway, which the field `gateway` names.
 - `packumentModified` is the day of the last change of the registry document. A deprecation also changes it, so it is not the day of the last release.
@@ -29,6 +31,8 @@ Each table is one JSON file in `src/data`. A row names a row of another table by
 - The topic `security` gives the private channel for a security fault: `github-advisory`, `email`, `platform` or `none-stated`.
 - The topic `contributions` tells if the repository takes pull requests: `open`, `collaborators-only`, `archived`, `closed` or `unmaintained`. A `closed` source is not public, so only its vendor changes the code. An `unmaintained` repository has an owner who states that they keep no maintenance.
 - A new check of a policy adds a row. The latest row of a topic gives the current rule.
+- The workflow `transports.yml` scans the published files of each package with codeatlas. A new scan replaces the rows of each scanned package.
+- The transports `iframe`, `jsonp` and `rtc-media` have no global name, so the scan does not find them.
 - An observed row names its source. A new read adds a source and new rows, and the old rows stay. Thus the tables keep the history.
 
 ## The ledger

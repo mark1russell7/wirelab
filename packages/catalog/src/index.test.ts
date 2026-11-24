@@ -27,6 +27,8 @@ describe("the check", () => {
   const base = (): Record<keyof Catalog, unknown[]> => ({
     families: [{ id: "f", order: 1, title: "F", what: "F." }],
     transports: [],
+    transportGlobals: [],
+    packageTransports: [],
     protocols: [{ id: "p", name: "P", family: "f", kind: "protocol", client: "library" }],
     packages: [{ name: "a", family: "f" }],
     packageProtocols: [{ package: "a", protocol: "p" }],
@@ -94,6 +96,8 @@ describe("the check of the ledger", () => {
   const ledger = (): Record<keyof Catalog, unknown[]> => ({
     families: [{ id: "f", order: 1, title: "F", what: "F." }],
     transports: [],
+    transportGlobals: [],
+    packageTransports: [],
     protocols: [
       { id: "p", name: "P", family: "f", kind: "protocol", client: "library" },
       { id: "q", name: "Q", family: "f", kind: "protocol", client: "library" },
@@ -177,6 +181,8 @@ describe("the priority order", () => {
   const fixture = (): Catalog => ({
     families: [{ id: "f", order: 1, title: "F", what: "F." }],
     transports: [],
+    transportGlobals: [],
+    packageTransports: [],
     protocols: [{ id: "p", name: "P", family: "f", kind: "protocol", client: "library" }],
     packages: ["a", "b", "c", "d"].map((name) => ({ name, family: "f" })),
     packageProtocols: ["a", "b", "c", "d"].map((name) => ({ package: name, protocol: "p" })),

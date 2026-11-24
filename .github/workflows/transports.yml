@@ -1,0 +1,137 @@
+# The transports of each package of the catalog. The job starts scripts/transports.ts. The script gets the tarball of
+# the latest version of each package with npm pack, without its scripts, and reads the global names of its published
+# files with codeatlas facts. It keeps the new sources.json and package-transports.json as an artifact. The scan unpacks
+# about 200 packages, and the computer of the campaign is shared, so the scan runs here.
+#
+# Each week, the scheduled run scans all packages. When the tables change, the job push puts them on a new branch
+# transports/<date>-<run id>. A workflow of this repository cannot open a pull request, so the session of the campaign
+# opens it from that branch. The job push runs no code of the repository: it only copies the two JSON files.
+name: Transports
+
+on:
+  # Each Wednesday at 07:16 UTC, the day after the measures of use.
+  schedule:
+    - cron: "16 7 * * 3"
+  # A pull request that changes the scan scans the first 5 packages, as a short trial. It never pushes.
+  pull_request:
+    paths:
+      - .github/workflows/transports.yml
+      - scripts/transports.ts
+      - packages/catalog/src/transports.ts
+      - packages/catalog/src/data/transport-globals.json
+  # A person starts a run: gh workflow run transports.yml --ref <branch> [-f only=<count>] [-f push=true]
+  # Then: gh run download <run id> -n transports
+  workflow_dispatch:
+    inputs:
+      only:
+        description: Scan only the first packages of the catalog, for a short trial. Empty scans all packages.
+        required: false
+        default: ""
+        type: string
+      push:
+        description: Push the new tables to a branch transports/<date>-<run id>. A scan of only some packages never pushes.
+        required: false
+        default: false
+        type: boolean
+
+# Runs of the same branch wait for each other.
+concurrency:
+  group: transports-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  # The commit of codeatlas that reads the facts. A change of it is a change of the scan, so it goes in a pull request.
+  ATLAS_REF: a1136e353203b3375db8a3d38fde50e794665bb5
+
+jobs:
+  transports:
+    name: Transports
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      changed: ${{ steps.change.outputs.changed }}
+    env:
+      ONLY: ${{ github.event_name == 'pull_request' && '5' || inputs.only }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: metrograph-labs/codeatlas
+          ref: ${{ env.ATLAS_REF }}
+          path: .atlas
+          persist-credentials: false
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - run: pnpm install --frozen-lockfile
+      - name: Install codeatlas
+        working-directory: .atlas
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Scan the packages
+        run: node scripts/transports.ts --atlas=.atlas --work="$RUNNER_TEMP/scan" --summary="$GITHUB_STEP_SUMMARY" ${ONLY:+--only="$ONLY"}
+      - name: Show the change
+        id: change
+        run: |
+          git diff --stat -- packages/catalog/src/data
+          if git diff --quiet -- packages/catalog/src/data/sources.json packages/catalog/src/data/package-transports.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Upload the tables
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: transports
+          path: |
+            packages/catalog/src/data/sources.json
+            packages/catalog/src/data/package-transports.json
+          retention-days: 7
+
+  push:
+    name: Push the tables
+    needs: transports
+    # Only a scan of all packages pushes: the scheduled run, or a run that a person starts with push=true and no only.
+    if: needs.transports.outputs.changed == 'true' && (github.event_name == 'schedule' || (inputs.push && inputs.only == ''))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: transports
+          path: ${{ runner.temp }}/transports
+      - name: Commit and push the tables
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TABLES: ${{ runner.temp }}/transports
+        run: |
+          for file in sources.json package-transports.json; do
+            jq empty "$TABLES/$file"
+            cp "$TABLES/$file" "packages/catalog/src/data/$file"
+          done
+          day="$(date -u +%F)"
+          branch="transports/${day}-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/catalog/src/data/sources.json packages/catalog/src/data/package-transports.json
+          git commit -m "data(catalog): the transports of the packages of ${day}" -m "The Transports run ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID} scanned them."
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/${branch}"
+          {
+            echo "## The tables are on a branch"
+            echo
+            echo "Branch: \`${branch}\`. Open the pull request: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1"
+          } >> "$GITHUB_STEP_SUMMARY"

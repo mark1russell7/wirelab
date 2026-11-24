@@ -7,6 +7,7 @@ import findings from "./data/findings.json" with { type: "json" };
 import packageLinks from "./data/package-links.json" with { type: "json" };
 import packageProtocols from "./data/package-protocols.json" with { type: "json" };
 import packageRepositories from "./data/package-repositories.json" with { type: "json" };
+import packageTransports from "./data/package-transports.json" with { type: "json" };
 import packages from "./data/packages.json" with { type: "json" };
 import policies from "./data/policies.json" with { type: "json" };
 import protocols from "./data/protocols.json" with { type: "json" };
@@ -16,6 +17,7 @@ import runs from "./data/runs.json" with { type: "json" };
 import sources from "./data/sources.json" with { type: "json" };
 import suiteProtocols from "./data/suite-protocols.json" with { type: "json" };
 import suites from "./data/suites.json" with { type: "json" };
+import transportGlobals from "./data/transport-globals.json" with { type: "json" };
 import transports from "./data/transports.json" with { type: "json" };
 import upstream from "./data/upstream.json" with { type: "json" };
 import usage from "./data/usage.json" with { type: "json" };
@@ -24,11 +26,13 @@ import { type Catalog, type RawTables, parseCatalog } from "./schema.ts";
 export * from "./schema.ts";
 export * from "./priority.ts";
 export * from "./measures.ts";
+export * from "./transports.ts";
 
 /** The raw tables of the files, before the check. */
 export const rawTables: RawTables = {
   families,
   transports,
+  transportGlobals,
   protocols,
   packages,
   packageProtocols,
@@ -44,6 +48,7 @@ export const rawTables: RawTables = {
   runs,
   findings,
   upstream,
+  packageTransports,
 };
 
 /** The catalog, checked. An import of this module throws an error when a table has a problem. */
