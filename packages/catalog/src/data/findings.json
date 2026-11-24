@@ -2233,5 +2233,35 @@
     "kind": "correctness",
     "title": "The protocols from Client.remoteProtocols() crash a new client that gets them as its remoteProtocols option",
     "note": "The adapter cache of a client is keyed by a Buffer hash, so each key is the hash decoded as UTF-8 and the bytes of 0x80 or more become U+FFFD. The option stores that key string as the hash of the adapter. The next handshake writes it as an MD5 fixed value, which throws in process.nextTick, so the process ends. The services are only on the branch v5.x, the published 5.7.x line."
+  },
+  {
+    "id": "F0224",
+    "package": "@stomp/stompjs",
+    "version": "7.5.0",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "onHeartbeatLost runs again at each heartbeat check for one lost connection",
+    "note": "When the incoming heartbeat check fails, the handler calls onHeartbeatLost and closes the socket, but its interval continues. Until the close event comes, each tick calls onHeartbeatLost again: 12 calls in 1.5 s for a peer that stops reading. The close handshake of a dead link can take 30 s."
+  },
+  {
+    "id": "F0225",
+    "package": "@stomp/stompjs",
+    "version": "7.5.0",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "A MESSAGE or RECEIPT whose subscription or receipt-id names an Object.prototype member is lost",
+    "note": "The subscriptions and the receipt watchers are plain objects. subscription:constructor or receipt-id:toString finds an inherited function, so the frame does not get to onUnhandledMessage or onUnhandledReceipt. No global prototype pollution: the writes use the ids of the application."
+  },
+  {
+    "id": "F0226",
+    "package": "@stomp/stompjs",
+    "version": "7.5.0",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "resource",
+    "title": "The connectionTimeout timer stays after deactivate()",
+    "note": "The timer stops only on CONNECTED or at the next connect. After deactivate() resolves, it keeps a Node.js process alive until the timeout ends. The maintainer lists this fault as item 8 of Code-audit.md."
   }
 ]
