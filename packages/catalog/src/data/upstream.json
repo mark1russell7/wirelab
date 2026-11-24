@@ -1770,6 +1770,13 @@
     "note": "syncDiff copies the top object and each presence that a leave changes. The new jest test fails without the change; all 299 tests pass with it."
   },
   {
+    "finding": "F0206",
+    "at": "2026-11-24T16:57:50Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/phoenixframework/phoenix/pull/6923",
+    "note": "A maintainer merged the same change in the pull request phoenix #6923, which links phoenix #6921. It closed the issue phoenix #6919 and the pull request phoenix #6921."
+  },
+  {
     "finding": "F0207",
     "at": "2026-11-24T06:50:37Z",
     "state": "issue-open",
@@ -1887,6 +1894,13 @@
     "note": "handleResponseMessage updates lastEventId only for an event with an id, with a regression test. The repro prints BUG ABSENT against the 11.31.2 build with the same change. The test runs in the CI of the PR."
   },
   {
+    "finding": "F0219",
+    "at": "2026-11-24T19:26:43Z",
+    "state": "merged",
+    "url": "https://github.com/trpc/trpc/pull/8199",
+    "note": "A maintainer merged the fix. It closed the issue trpc #8198."
+  },
+  {
     "finding": "F0220",
     "at": "2026-11-24T18:31:21Z",
     "state": "issue-open",
@@ -1920,19 +1934,5 @@
     "state": "pr-open",
     "url": "https://github.com/middleapi/orpc/pull/2549",
     "note": "The fix to base 1.x waits with an abortable delay, as RetryAfterPlugin does, and rejects with the last error after the abort. The new vitest test times out without the fix and passes with it. The repro prints BUG ABSENT against the 1.16.5 build with the same change (104 ms, 1 request)."
-  },
-  {
-    "finding": "F0206",
-    "at": "2026-11-24T16:57:50Z",
-    "state": "fixed-by-others",
-    "url": "https://github.com/phoenixframework/phoenix/pull/6923",
-    "note": "A maintainer merged the same change in the pull request phoenix #6923, which links phoenix #6921. It closed the issue phoenix #6919 and the pull request phoenix #6921."
-  },
-  {
-    "finding": "F0219",
-    "at": "2026-11-24T19:26:43Z",
-    "state": "merged",
-    "url": "https://github.com/trpc/trpc/pull/8199",
-    "note": "A maintainer merged the fix. It closed the issue trpc #8198."
   }
 ]
