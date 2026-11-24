@@ -2223,5 +2223,15 @@
     "kind": "correctness",
     "title": "ClientRetryPlugin waits the whole retry delay after the signal of the call aborts",
     "note": "The retry delay is a bare setTimeout. An abort during the delay does not end the wait, so the call rejects only when the delay ends, and one more request goes out. RetryAfterPlugin of the same package stops its delay at the abort. The branch main (2.0.0 beta) waits with an abortable sleep. A delay from the retry field of the server can be long."
+  },
+  {
+    "id": "F0223",
+    "package": "avsc",
+    "version": "5.7.9",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "The protocols from Client.remoteProtocols() crash a new client that gets them as its remoteProtocols option",
+    "note": "The adapter cache of a client is keyed by a Buffer hash, so each key is the hash decoded as UTF-8 and the bytes of 0x80 or more become U+FFFD. The option stores that key string as the hash of the adapter. The next handshake writes it as an MD5 fixed value, which throws in process.nextTick, so the process ends. The services are only on the branch v5.x, the published 5.7.x line."
   }
 ]
