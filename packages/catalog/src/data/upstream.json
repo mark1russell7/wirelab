@@ -1747,5 +1747,38 @@
     "state": "issue-open",
     "url": "https://github.com/phoenixframework/phoenix/issues/6920",
     "note": "Issue only: the maintainers choose the intended serializer of LongPoll. The issue offers a pull request for either fix."
+  },
+  {
+    "finding": "F0208",
+    "at": "2026-11-24T08:01:22Z",
+    "state": "issue-open",
+    "url": "https://github.com/graphql/graphql-http/issues/159",
+    "note": "Issue only: the upstream test tests/client.test.ts pins the Accept value. The repro prints BUG PRESENT."
+  },
+  {
+    "finding": "F0209",
+    "at": "2026-11-24T08:01:24Z",
+    "state": "issue-open",
+    "url": "https://github.com/graphql/graphql-http/issues/160",
+    "note": "Issue only: the upstream test \"should report invalid request\" expects a NetworkError on a 400. The server of the same package answers validation errors with 400 and application/graphql-response+json."
+  },
+  {
+    "finding": "F0210",
+    "at": "2026-11-24T08:01:25Z",
+    "state": "issue-open",
+    "url": "https://github.com/graphql/graphql-http/issues/161",
+    "note": "The repro prints BUG PRESENT: an upper-case Content-Type is refused."
+  },
+  {
+    "finding": "F0210",
+    "at": "2026-11-24T08:10:00Z",
+    "state": "held-cla",
+    "note": "graphql/graphql-http needs the GraphQL Specification Membership agreement through EasyCLA. The fix (lower-case the type) and its test are ready; the test fails without the fix, and the 5 client tests pass with it."
+  },
+  {
+    "finding": "F0213",
+    "at": "2026-11-24T08:10:00Z",
+    "state": "held-ai-policy",
+    "note": "apollographql/apollo-client wants the issue and the comments written without AI, and a CLA for a pull request. The notes and a standalone repro wait for Mark."
   }
 ]
