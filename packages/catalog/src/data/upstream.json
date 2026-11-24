@@ -1698,5 +1698,33 @@
     "state": "pr-open",
     "url": "https://github.com/kriszyp/msgpackr/pull/242",
     "note": "The pull request has a test that fails without the change. The msgpackr suite passes with it (235 passing)."
+  },
+  {
+    "finding": "F0204",
+    "at": "2026-11-24T06:37:47Z",
+    "state": "issue-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/issues/708",
+    "note": "Run 45341798672 of repro.yml prints BUG PRESENT."
+  },
+  {
+    "finding": "F0204",
+    "at": "2026-11-24T06:42:49Z",
+    "state": "pr-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/pull/711",
+    "note": "Each operation keeps its own reservation token. The new test fails without the change; all 285 tests pass with it."
+  },
+  {
+    "finding": "F0205",
+    "at": "2026-11-24T06:37:49Z",
+    "state": "issue-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/issues/709",
+    "note": "Run 45341798672 of repro.yml prints BUG PRESENT."
+  },
+  {
+    "finding": "F0205",
+    "at": "2026-11-24T06:40:25Z",
+    "state": "pr-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/pull/710",
+    "note": "iterator.throw calls dispose(), as iterator.return does. The new test fails without the change; the client tests pass with it."
   }
 ]

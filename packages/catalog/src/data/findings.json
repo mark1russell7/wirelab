@@ -2027,5 +2027,25 @@
     "kind": "correctness",
     "title": "With useFloat32 DECIMAL_ROUND or DECIMAL_FIT, a float32 Infinity, -Infinity or NaN unpacks as 0",
     "note": "The rounding uses >> 0, which makes each non-finite value 0. roundFloat32() has the same fault. msgpackr packs these values as float64, but another encoder can send them as float32."
+  },
+  {
+    "id": "F0204",
+    "package": "graphql-ws",
+    "version": "6.4.3",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "conformance",
+    "title": "The server sends the result of a completed operation to a new operation with the same id, and drops the result of the new one",
+    "note": "PROTOCOL.md lets a client re-use an id after it completes the operation. Each operation deletes ctx.subscriptions[id] in a finally block, so an old operation that ends late answers for the new one and deletes its reservation."
+  },
+  {
+    "id": "F0205",
+    "package": "graphql-ws",
+    "version": "6.4.3",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "resource",
+    "title": "client.iterate(): throw() ends the iterator but does not dispose the subscription",
+    "note": "return() sends complete and releases the connection. throw() only marks the iterator done, so the server keeps sending values, the client keeps them in a list, and the lazy socket stays open."
   }
 ]
