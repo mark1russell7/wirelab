@@ -296,6 +296,30 @@ describe("the priority order", () => {
     expect(order.find((r) => r.package === "c")?.landing).toBe(1);
   });
 
+  it("gives a dormant package its factor, but not with a deprecation or an unmaintained repository", () => {
+    const f = fixture();
+    const registry = [
+      ...f.registry,
+      { package: "b", source: "new", version: "1.0.0", packumentModified: "2023-11-13" },
+      { package: "c", source: "new", version: "1.0.0", packumentModified: "2023-11-15" },
+      { package: "a", source: "old", version: "0.9.0", packumentModified: "2020-01-01" },
+    ];
+    const order = priorityOrder({ ...f, registry });
+    const b = order.find((r) => r.package === "b");
+    expect(b?.landing).toBe(0.1);
+    expect(b?.reasons).toEqual(["no release on npm for 3 years: the npm document is unchanged since 2023-11-13 (source new)"]);
+    expect(order.find((r) => r.package === "c")?.landing).toBe(1);
+    expect(order.find((r) => r.package === "a")?.landing).toBe(0.1);
+    expect(order.find((r) => r.package === "a")?.reasons).toEqual(["deprecated on npm: Use b."]);
+
+    const evidence = "https://example.org/o/r#readme";
+    const policies = [{ repository: "o/r", topic: "contributions" as const, checked: "2026-11-18", value: "unmaintained", evidence }];
+    const packageRepositories = [{ package: "b", repository: "o/r" }];
+    const both = priorityOrder({ ...f, registry, packageRepositories, policies }).find((r) => r.package === "b");
+    expect(both?.landing).toBe(0.1);
+    expect(both?.reasons).toEqual(["the owner of o/r keeps no maintenance (checked 2026-11-18)"]);
+  });
+
   it("gives a package with a closed source the factor of its vendor", () => {
     const f = fixture();
     const evidence = "https://vendor.example/package.json";
