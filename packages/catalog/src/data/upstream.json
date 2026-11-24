@@ -1871,5 +1871,19 @@
     "state": "issue-open",
     "url": "https://github.com/aws-amplify/amplify-js/issues/15026",
     "note": "The repro on aws-amplify 6.22.2 prints BUG PRESENT: the states are Disconnected, Connecting, Disconnected, ConnectedPendingDisconnect."
+  },
+  {
+    "finding": "F0219",
+    "at": "2026-11-24T18:20:04Z",
+    "state": "issue-open",
+    "url": "https://github.com/trpc/trpc/issues/8198",
+    "note": "The repro on @trpc/client 11.31.2 prints BUG PRESENT: after the reconnect the second subscribe gets no lastEventId. The control without the event that has no id resumes from \"1\"."
+  },
+  {
+    "finding": "F0219",
+    "at": "2026-11-24T18:22:12Z",
+    "state": "pr-open",
+    "url": "https://github.com/trpc/trpc/pull/8199",
+    "note": "handleResponseMessage updates lastEventId only for an event with an id, with a regression test. The repro prints BUG ABSENT against the 11.31.2 build with the same change. The test runs in the CI of the PR."
   }
 ]

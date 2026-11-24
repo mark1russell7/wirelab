@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@trpc/client": "11.31.2",
+    "@trpc/server": "11.31.2",
+    "ws": "8.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/ws": "8.18.1",
+    "typescript": "7.0.2"
+  }
+}

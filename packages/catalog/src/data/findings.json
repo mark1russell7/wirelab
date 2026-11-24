@@ -2183,5 +2183,15 @@
     "kind": "correctness",
     "title": "After a retry that follows a connection ack timeout, the connection state stays ConnectedPendingDisconnect",
     "note": "The ack timeout records CONNECTION_FAILED, which sets the intended state to disconnected. The retry does not record OPENING_CONNECTION again, so a working subscription on the retry socket reports ConnectedPendingDisconnect and never Connected."
+  },
+  {
+    "id": "F0219",
+    "package": "@trpc/client",
+    "version": "11.31.2",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "wsLink: an event without an id resets the lastEventId of a subscription, so a reconnect cannot resume after the last tracked event",
+    "note": "handleResponseMessage sets params.lastEventId to result.id for each data event, also when the id is undefined. After a reconnect the client subscribes again with no lastEventId. httpSubscriptionLink and the SSE server keep the last tracked id (trpc #7691)."
   }
 ]
