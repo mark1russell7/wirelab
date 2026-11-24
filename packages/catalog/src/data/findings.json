@@ -1957,5 +1957,45 @@
     "kind": "correctness",
     "title": "The guess gives the service s3-accesspoint for an S3 access point host",
     "note": "The signing name of S3 access points is s3. The credential scope is wrong, and the S3 rules (UNSIGNED-PAYLOAD) do not apply."
+  },
+  {
+    "id": "F0197",
+    "package": "apache-arrow",
+    "version": "21.2.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "conformance",
+    "title": "The stream reader drops a message of an unexpected type but not its body, and parses the body as the next messages",
+    "note": "A parser differential: in the same bytes, a reader that frames by bodyLength sees one RecordBatch of 3 rows, and apache-arrow 21.2.0 reads 6 rows, [666, 777, 888, 1, 2, 3]. The project rated it a regular bug, not a security fault."
+  },
+  {
+    "id": "F0198",
+    "package": "apache-arrow",
+    "version": "21.2.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "resource",
+    "title": "tableFromIPC loops with no end on a file whose RecordBatch block points at a DictionaryBatch",
+    "note": "The file reader reads the block as a DictionaryBatch, does not advance, and reads the same block again. The call never returns. The project rated it a regular bug, not a security fault."
+  },
+  {
+    "id": "F0199",
+    "package": "apache-arrow",
+    "version": "21.2.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "correctness",
+    "title": "The IPC reader accepts buffer regions outside the message body, and rows read as undefined with no error",
+    "note": "subarray() clamps a buffer that ends after the body, so no read goes outside the body. But rows read as undefined and toArray() is shorter than numRows, with no error. Arrow C++ refuses such a buffer. The project rated it a regular bug, not a security fault."
+  },
+  {
+    "id": "F0200",
+    "package": "apache-arrow",
+    "version": "21.2.0",
+    "method": "review",
+    "found": "2026-11-17",
+    "kind": "conformance",
+    "title": "The IPC reader ignores Schema.endianness: a big-endian stream reads 1, 2, 3 as 16777216, 33554432, 50331648",
+    "note": "The reader neither swaps the bytes nor refuses the stream. The project rated it a regular bug, not a security fault."
   }
 ]

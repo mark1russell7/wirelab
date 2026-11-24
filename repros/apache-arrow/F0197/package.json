@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "apache-arrow": "21.2.0",
+    "flatbuffers": "25.9.23"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2"
+  }
+}
