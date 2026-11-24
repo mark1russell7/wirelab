@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "dns-packet": "5.6.1"
+  },
+  "devDependencies": {
+    "@types/dns-packet": "5.6.5",
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2"
+  }
+}
