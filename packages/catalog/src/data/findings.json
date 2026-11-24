@@ -2133,5 +2133,35 @@
     "run": "suite-graphql-http-45351031481-apollo-client",
     "title": "A 422 reply of a media type in a different letter case gives a ServerError with no GraphQL errors",
     "note": "parseAndCheckHttpResponse.ts line 182 compares the content-type with a case-sensitive includes. Thus Application/GraphQL-Response+JSON goes to the JSON path, which throws ServerError for a status of 300 or more. A 200 reply still gives its data. The multipart path of the same file lower-cases the type. No upstream test pins it. Check media-type-case."
+  },
+  {
+    "id": "F0214",
+    "package": "dns-packet",
+    "version": "5.6.1",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "question.encode returns its input question, not the buffer with the encoded question",
+    "note": "Each other codec (encode, answer.encode, name.encode and the record codecs) returns the buffer. A caller that encodes one question without a buffer gets the question object back, and the bytes go to a buffer that it never sees."
+  },
+  {
+    "id": "F0215",
+    "package": "dns-packet",
+    "version": "5.6.1",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "streamDecode ignores the offset that the README documents",
+    "note": "The README documents streamDecode(buf, [offset]). The function reads the length prefix at byte 0 and decodes from byte 2, so the message at a later offset of a buffer decodes as the first message."
+  },
+  {
+    "id": "F0216",
+    "package": "dns-packet",
+    "version": "5.6.1",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "streamDecode.bytes does not count the 2-byte length prefix that streamEncode.bytes counts",
+    "note": "streamDecode.bytes is decode.bytes. A reader of a TCP stream that removes streamDecode.bytes from its buffer after each message is 2 bytes short, and reads the last 2 bytes of the message as the next length prefix. The offset is the same for each message and no peer can choose it, so it is a fault of the API and not a desync that a peer can steer."
   }
 ]
