@@ -1885,5 +1885,12 @@
     "state": "pr-open",
     "url": "https://github.com/trpc/trpc/pull/8199",
     "note": "handleResponseMessage updates lastEventId only for an event with an id, with a regression test. The repro prints BUG ABSENT against the 11.31.2 build with the same change. The test runs in the CI of the PR."
+  },
+  {
+    "finding": "F0220",
+    "at": "2026-11-24T18:31:21Z",
+    "state": "issue-open",
+    "url": "https://github.com/neondatabase/serverless/issues/243",
+    "note": "The repro on @neondatabase/serverless 1.2.1 prints BUG PRESENT: Pool.query over HTTP sends the text of the password function. The proposed fix gives the password to neon() as a connection parameter, and the repro prints BUG ABSENT with it. The issue asks if the PR goes on main or on PR #238."
   }
 ]
