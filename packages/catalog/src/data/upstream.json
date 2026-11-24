@@ -1656,5 +1656,47 @@
     "state": "issue-open",
     "url": "https://github.com/apache/arrow-js/issues/549",
     "note": "The issue has the repro, and repro.yml ran it in CI (run 45335222526: BUG PRESENT). The project asked for a public issue: it rates the fault a regular bug. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
+  },
+  {
+    "finding": "F0201",
+    "at": "2026-11-24T06:17:01Z",
+    "state": "issue-open",
+    "url": "https://github.com/kriszyp/msgpackr/issues/239",
+    "note": "The issue has the repro, and repro.yml ran it in CI (run 45339208225: BUG PRESENT)."
+  },
+  {
+    "finding": "F0201",
+    "at": "2026-11-24T06:23:31Z",
+    "state": "pr-open",
+    "url": "https://github.com/kriszyp/msgpackr/pull/244",
+    "note": "The pull request has a test that fails without the change. The msgpackr suite passes with it (235 passing)."
+  },
+  {
+    "finding": "F0202",
+    "at": "2026-11-24T06:17:03Z",
+    "state": "issue-open",
+    "url": "https://github.com/kriszyp/msgpackr/issues/240",
+    "note": "The issue has the repro, and repro.yml ran it in CI (run 45339208225: BUG PRESENT)."
+  },
+  {
+    "finding": "F0202",
+    "at": "2026-11-24T06:22:24Z",
+    "state": "pr-open",
+    "url": "https://github.com/kriszyp/msgpackr/pull/243",
+    "note": "The pull request has a test that fails without the change. The msgpackr suite passes with it (235 passing)."
+  },
+  {
+    "finding": "F0203",
+    "at": "2026-11-24T06:17:04Z",
+    "state": "issue-open",
+    "url": "https://github.com/kriszyp/msgpackr/issues/241",
+    "note": "The issue has the repro, and repro.yml ran it in CI (run 45339208225: BUG PRESENT)."
+  },
+  {
+    "finding": "F0203",
+    "at": "2026-11-24T06:21:19Z",
+    "state": "pr-open",
+    "url": "https://github.com/kriszyp/msgpackr/pull/242",
+    "note": "The pull request has a test that fails without the change. The msgpackr suite passes with it (235 passing)."
   }
 ]
