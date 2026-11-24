@@ -1557,27 +1557,27 @@
     "at": "2026-11-24T05:06:49Z",
     "state": "issue-open",
     "url": "https://github.com/apache/arrow-js/issues/546",
-    "note": "The issue has the repro. The project asked for a public issue: it rates the fault a regular bug. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
+    "note": "The issue has the repro, and repro.yml ran it in CI (run 45335222526: BUG PRESENT). The project asked for a public issue: it rates the fault a regular bug. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
   },
   {
     "finding": "F0198",
     "at": "2026-11-24T05:06:51Z",
     "state": "issue-open",
     "url": "https://github.com/apache/arrow-js/issues/547",
-    "note": "The issue has the repro. The project asked for a public issue: it rates the fault a regular bug. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
+    "note": "The issue has the repro, and repro.yml ran it in CI (run 45335222526: BUG PRESENT). The project asked for a public issue: it rates the fault a regular bug. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
   },
   {
     "finding": "F0199",
     "at": "2026-11-24T05:06:53Z",
     "state": "issue-open",
     "url": "https://github.com/apache/arrow-js/issues/548",
-    "note": "The issue has the repro. The project asked for a public issue: it rates the fault a regular bug. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
+    "note": "The issue has the repro, and repro.yml ran it in CI (run 45335222526: BUG PRESENT). The project asked for a public issue: it rates the fault a regular bug. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
   },
   {
     "finding": "F0200",
     "at": "2026-11-24T05:06:55Z",
     "state": "issue-open",
     "url": "https://github.com/apache/arrow-js/issues/549",
-    "note": "The issue has the repro. The project asked for a public issue: it rates the fault a regular bug. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
+    "note": "The issue has the repro, and repro.yml ran it in CI (run 45335222526: BUG PRESENT). The project asked for a public issue: it rates the fault a regular bug. For arrow-js, wirelab sends a fix PR only when a maintainer asks for one."
   }
 ]
