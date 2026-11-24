@@ -1721,6 +1721,13 @@
     "note": "The pull request was closed from the mark1russell7 account with no comment. The issue #708 stays open."
   },
   {
+    "finding": "F0204",
+    "at": "2026-11-24T13:08:15Z",
+    "state": "pr-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/pull/711",
+    "note": "Reopened from the mark1russell7 account. Mark did not close the pull request; no comment."
+  },
+  {
     "finding": "F0205",
     "at": "2026-11-24T06:37:49Z",
     "state": "issue-open",
@@ -1740,6 +1747,13 @@
     "state": "closed",
     "url": "https://github.com/enisdenjo/graphql-ws/pull/710",
     "note": "The pull request was closed from the mark1russell7 account with no comment. The issue #709 stays open."
+  },
+  {
+    "finding": "F0205",
+    "at": "2026-11-24T13:08:13Z",
+    "state": "pr-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/pull/710",
+    "note": "Reopened from the mark1russell7 account. Mark did not close the pull request; no comment."
   },
   {
     "finding": "F0206",
