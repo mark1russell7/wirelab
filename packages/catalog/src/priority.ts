@@ -9,7 +9,7 @@
  * 3. The reach of a package is the mean of its shares. A package with no measure has no reach, and it goes last.
  * 4. The chance that a fix lands multiplies the reach. A deprecated package has the factor `LANDING.deprecated`. A
  *    package in an archived repository has the factor `LANDING.archived`, but only when npm does not deprecate it. A
- *    repository that takes pull requests only from its collaborators has the factor `LANDING.collaboratorsOnly`. A
+ *    package of an unmaintained repository has the factor `LANDING.unmaintained` on the same terms. A repository that takes pull requests only from its collaborators has the factor `LANDING.collaboratorsOnly`. A
  *    package with a closed source has the factor `LANDING.closed`. A repository that refuses contributions that an AI made has the factor `LANDING.aiRefused`, and a repository
  *    with a CLA has the factor `LANDING.cla`. The latest policy row of each topic applies.
  *
@@ -25,6 +25,8 @@ import { METRICS } from "./schema.ts";
  *
  * - `deprecated`: a deprecated package has no maintainer to release a fix. Its users still get the issue.
  * - `archived`: the repository takes no pull request. A deprecated package does not get this factor too.
+ * - `unmaintained`: the owner states that they keep no maintenance, so nobody releases a fix. A deprecated package does
+ *   not get this factor too.
  * - `collaboratorsOnly`: the repository takes pull requests only from its collaborators. The issue links the fix
  *   branch, and a maintainer must apply the fix.
  * - `closed`: the source is not public. The fix goes to the vendor as a report with no fix branch, and only the
@@ -35,6 +37,7 @@ import { METRICS } from "./schema.ts";
 export const LANDING: {
   readonly deprecated: number;
   readonly archived: number;
+  readonly unmaintained: number;
   readonly collaboratorsOnly: number;
   readonly closed: number;
   readonly aiRefused: number;
@@ -42,6 +45,7 @@ export const LANDING: {
 } = {
   deprecated: 0.1,
   archived: 0.1,
+  unmaintained: 0.1,
   collaboratorsOnly: 0.3,
   closed: 0.2,
   aiRefused: 0.2,
@@ -128,6 +132,9 @@ export function priorityOrder(catalog: Catalog): Ranked[] {
     if (contributions?.value === "archived") {
       if (deprecated === undefined) landing *= LANDING.archived;
       reasons.push(`the repository ${contributions.repository} is archived (checked ${contributions.checked})`);
+    } else if (contributions?.value === "unmaintained") {
+      if (deprecated === undefined) landing *= LANDING.unmaintained;
+      reasons.push(`the owner of ${contributions.repository} keeps no maintenance (checked ${contributions.checked})`);
     } else if (contributions?.value === "collaborators-only") {
       landing *= LANDING.collaboratorsOnly;
       reasons.push(`the repository ${contributions.repository} takes pull requests only from its collaborators (checked ${contributions.checked})`);

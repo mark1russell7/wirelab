@@ -191,7 +191,18 @@
           "repros/graphql-request/F0182/tsconfig.json",
           "repros/graphql-request/F0183/tsconfig.json",
           "repros/@upstash/redis/F0184/tsconfig.json",
-          "repros/@upstash/redis/F0185/tsconfig.json"
+          "repros/@upstash/redis/F0185/tsconfig.json",
+          "repros/birpc/F0186/tsconfig.json",
+          "repros/birpc/F0187/tsconfig.json",
+          "repros/tus-js-client/F0188/tsconfig.json",
+          "repros/tus-js-client/F0189/tsconfig.json",
+          "repros/tus-js-client/F0190/tsconfig.json",
+          "repros/tus-js-client/F0191/tsconfig.json",
+          "repros/tus-js-client/F0192/tsconfig.json",
+          "repros/aws4fetch/F0193/tsconfig.json",
+          "repros/aws4fetch/F0194/tsconfig.json",
+          "repros/aws4fetch/F0195/tsconfig.json",
+          "repros/aws4fetch/F0196/tsconfig.json"
         ],
         "reason": "Each repro folder has its own pinned packages, so the root typecheck cannot reach it. The workflow repro-types.yml examines the configs tsconfig.json and tsconfig.repro.json. A repro of a types finding has tsconfig.repro.json: tsc fails on purpose, and the workflow compares its errors with expected-errors.txt. The config repros/fix-tests/tsconfig.json examines the scripts of all fix tests. A types check of a fix test has its own config tsconfig.check-<finding>.json."
       }

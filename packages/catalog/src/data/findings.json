@@ -1847,5 +1847,115 @@
     "kind": "correctness",
     "title": "keys() and scan() give key names that JSON parsing changed",
     "note": "The automatic deserialization runs JSON.parse on each key name: \"123\" comes back as the number 123, \"null\" as null and \"\\\"draft\\\"\" as \"draft\". The docs give string[]. del() with a changed name deletes a different key."
+  },
+  {
+    "id": "F0186",
+    "package": "birpc",
+    "version": "4.2.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A function that throws a falsy value gives the caller a success",
+    "note": "The reply and the caller test the truth of the thrown value. A function that throws undefined, null, 0, '' or false, or that gives Promise.reject() with no reason, resolves the call with undefined."
+  },
+  {
+    "id": "F0187",
+    "package": "birpc",
+    "version": "4.2.0",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "An onRequest hook that does not wait for next() leaves the call open after the timeout",
+    "note": "The type of onRequest allows a void return. When the hook calls next() and returns, _call clears the timer and removes the pending call, so the reply is dropped and the timeout never rejects the call."
+  },
+  {
+    "id": "F0188",
+    "package": "tus-js-client",
+    "version": "4.3.1",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "The Node.js URL storage finds the uploads of other fingerprints that start with the same text",
+    "note": "FileUrlStorage searches with the prefix tus::<fingerprint> and no :: at the end. findPreviousUploads() for photo-1 gives the uploads of photo-12, and a resume of one continues the upload of the other file. The browser storage is correct. Also on main (5.0.0-pre3)."
+  },
+  {
+    "id": "F0189",
+    "package": "tus-js-client",
+    "version": "4.3.1",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A metadata key with a space or a comma changes the pairs that the server reads",
+    "note": "encodeMetadata() writes each key as it is. The protocol forbids an empty key and keys with spaces or commas. The key project name is lost, and owner,team gives the keys owner and team. Also on main (5.0.0-pre3)."
+  },
+  {
+    "id": "F0190",
+    "package": "tus-js-client",
+    "version": "4.3.1",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "abort() before the first request does not stop the upload",
+    "note": "start() waits for the fingerprint and the file, then _startSingleUpload() sets _aborted to false again. The upload sends its requests and calls onSuccess after abort(). The open pull request tus-js-client #929 of a maintainer changes this. Also on main (5.0.0-pre3)."
+  },
+  {
+    "id": "F0191",
+    "package": "tus-js-client",
+    "version": "4.3.1",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A URL storage that cannot save the upload stops the upload with no callback",
+    "note": "_createUpload() calls _saveUploadInUrlStorage().then() with no catch. When addUpload() rejects, no PATCH request goes out, neither onSuccess nor onError runs, and the rejection is not handled. Main (5.0.0-pre3) gives onError."
+  },
+  {
+    "id": "F0192",
+    "package": "tus-js-client",
+    "version": "4.3.1",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "A resumed parallel upload writes the part URLs into the boundaries of the app",
+    "note": "_startParallelUpload() sets part.uploadUrl on the objects of parallelUploadBoundaries. A later upload of another file with the same array resumes the old parts, sends none of its bytes and reports success. Main (5.0.0-pre3) copies the objects."
+  },
+  {
+    "id": "F0193",
+    "package": "aws4fetch",
+    "version": "1.0.20",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "sign() of a GET or HEAD Request with a Content-Type header throws a TypeError",
+    "note": "sign() reads the body of a Request input when it has a Content-Type header. For GET and HEAD that body is an empty ArrayBuffer, and new Request() refuses it. No request goes out."
+  },
+  {
+    "id": "F0194",
+    "package": "aws4fetch",
+    "version": "1.0.20",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "sign() of a Request drops its signal and its redirect mode",
+    "note": "sign() copies only the method, URL, headers and body of a Request input. An abort of the Request does not stop aws.fetch(), and redirect: manual becomes follow."
+  },
+  {
+    "id": "F0195",
+    "package": "aws4fetch",
+    "version": "1.0.20",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "The guess gives a wrong service and region for a virtual-hosted bucket on an S3 host with a dash",
+    "note": "my-bucket.s3-us-west-2.amazonaws.com gives the service my-bucket and the region s3-us-west-2. The guess knows the dash hosts only in the path style."
+  },
+  {
+    "id": "F0196",
+    "package": "aws4fetch",
+    "version": "1.0.20",
+    "method": "review",
+    "found": "2026-11-18",
+    "kind": "correctness",
+    "title": "The guess gives the service s3-accesspoint for an S3 access point host",
+    "note": "The signing name of S3 access points is s3. The credential scope is wrong, and the S3 rules (UNSIGNED-PAYLOAD) do not apply."
   }
 ]

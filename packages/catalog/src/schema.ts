@@ -134,13 +134,14 @@ export type PolicyTopic = (typeof POLICY_TOPICS)[number];
  * - `security`: the private channel for a security fault. `platform` is a bounty platform, for example HackerOne.
  * - `contributions`: `open` when the repository takes pull requests. `collaborators-only` when it takes pull requests
  *   only from its collaborators. An `archived` repository takes none. A `closed` source is not public, so only its
- *   vendor changes the code.
+ *   vendor changes the code. An `unmaintained` repository has an owner who states that they keep no maintenance, for
+ *   example in the README.
  */
 export const POLICY_VALUES: Readonly<Record<PolicyTopic, readonly string[]>> = {
   ai: ["none-stated", "allowed", "disclosure", "refused"],
   cla: ["none", "dco", "cla"],
   security: ["github-advisory", "email", "platform", "none-stated"],
-  contributions: ["open", "collaborators-only", "archived", "closed"],
+  contributions: ["open", "collaborators-only", "archived", "closed", "unmaintained"],
 };
 
 /**
