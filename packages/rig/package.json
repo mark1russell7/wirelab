@@ -26,7 +26,7 @@
     "@mark1russell7/rigor-generators": "^0.2.7",
     "@mark1russell7/rigor-proxy": "^0.4.1",
     "@mark1russell7/rigor-testkit": "^0.1.19",
-    "@mark1russell7/text": "^0.0.17",
+    "@mark1russell7/text": "^0.0.20",
     "@microsoft/signalr": "11.0.0",
     "@smithy/core": "3.41.0",
     "@supabase/postgrest-js": "2.119.2",
