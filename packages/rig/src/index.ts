@@ -19,9 +19,13 @@ export {
   grpcWebTrailer,
   stringValue,
 } from "./targets/connect-web.ts";
+export { GRAPHQL_ERRORS, graphqlQueryTargetIds, graphqlReplyTargets, graphqlRequestBatchTarget, outcomeOfSuite } from "./targets/graphql-over-http.ts";
 export { GRAPHQL_WS, graphqlWsClientTarget, graphqlWsServerTarget, graphqlWsTargets } from "./targets/graphql-ws.ts";
+export { postgrestHeadTarget, postgrestReplyTargets, postgrestSelectTarget } from "./targets/postgrest-js.ts";
+export { replyTargets } from "./targets/reply-targets.ts";
 export { SIGNALR, signalrTarget } from "./targets/signalr.ts";
 export { SOCKJS_CLIENT, sockjsClientTargets } from "./targets/sockjs-client.ts";
+export { viemBaseTarget, viemFixedTarget, viemReplyTargets } from "./targets/viem.ts";
 export {
   CLASS_ID as C016,
   adapterProblems as c016AdapterProblems,

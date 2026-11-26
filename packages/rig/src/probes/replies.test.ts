@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { currentArm } from "../arms.ts";
 import type { Outcome } from "../outcome.ts";
-import { connectWebReplyTargets } from "../targets/connect-web.ts";
+import { replyTargets } from "../targets/reply-targets.ts";
 import * as c001 from "./c001.ts";
 import * as c003 from "./c003.ts";
 import * as c032 from "./c032.ts";
@@ -32,14 +32,26 @@ const PROBES: readonly (readonly [Probe, (one: ReplyCase) => boolean])[] = [
   [c003, () => true],
   // A trailers-only stream loses its trailers.
   [c032, () => true],
-  // The details with the code 0 hide the status 13. The bodies that are not an object give an error.
-  [c033, (one) => one.dims["status"] === "grpc-status 13 with details code 0"],
+  // The details with the code 0 hide the status 13. The bodies that are not an object give an error on connect-web.
+  // viem 2.58.0 gives `undefined` for an empty 200 (F0159). postgrest-js gives a success for a HEAD 404 (F0168) and
+  // for a 500 with a JSON scalar that is not empty (F0169).
+  [
+    c033,
+    (one) =>
+      one.dims["status"] === "grpc-status 13 with details code 0" ||
+      (one.target === "viem@2.58.0/send-raw" && one.dims["status"] === "200 with empty body") ||
+      one.target === "postgrest-js/count-head" ||
+      (one.target === "postgrest-js/select" && one.dims["body"] !== "empty"),
+  ],
   // A body that is not JSON loses the code of the HTTP status. The status 422 gives `Unknown`, as the parse error
-  // does, so that case passes by chance. A stream with no end marker gives `Unknown`.
+  // does, so that case passes by chance. A stream with no end marker gives `Unknown`. The client of graphql-http does
+  // not read the GraphQL errors of a 4xx (F0209). A batch of graphql-request loses the errors of its items (F0178).
   [
     c034,
     (one) =>
       one.dims["status"] === "stream with no end marker" ||
+      one.target === "graphql-http/query" ||
+      one.target === "graphql-request/batch" ||
       (["not JSON", "empty"].includes(one.dims["body"] ?? "") && ["HTTP 400", "HTTP 503"].includes(one.dims["status"] ?? "")),
   ],
 ];
@@ -51,7 +63,7 @@ const line = (one: { readonly target: string; readonly detail: string }): string
 const failLines = (results: readonly ReplyResult[]): string[] => results.filter((one) => one.verdict === "fail").map(line);
 
 describe("the reply probes: the cases and the catalog", () => {
-  const ids = connectWebReplyTargets.map((one) => one.id);
+  const ids = replyTargets.map((one) => one.id);
 
   it.each(PROBES.map(([probe]) => [probe.CLASS_ID, probe] as const))("%s uses only values of the catalog and targets of the rig", (_, probe) => {
     expect(caseProblems(probe.cases(), ids)).toEqual([]);
@@ -100,11 +112,11 @@ describe("the judges", () => {
   });
 });
 
-describe.runIf(rigEnabled)("the reply probes on @connectrpc/connect-web", () => {
+describe.runIf(rigEnabled)("the reply probes on each reply target", () => {
   it.each(PROBES.map(([probe, fails]) => [probe.CLASS_ID, probe, fails] as const))(
     "%s finds the known instances again, and each control passes",
     async (id, probe, fails) => {
-      const results = await probe.runProbe(connectWebReplyTargets);
+      const results = await probe.runProbe(replyTargets);
       writeReport(results, id.toLowerCase());
       expect(results.filter((one) => one.control && one.verdict !== "pass").map(line)).toEqual([]);
       expect(failLines(results)).toEqual(
@@ -124,7 +136,7 @@ describe.runIf(process.env["RIG"] === "1" && PROBES.some(([probe]) => probe.CLAS
     const found = PROBES.find(([probe]) => probe.CLASS_ID === arm.arm.class);
     if (found === undefined) throw new Error(`No reply probe has the class ${arm.arm.class}.`);
     const targets = arm.arm.targets.map((id) => {
-      const target = connectWebReplyTargets.find((one) => one.id === id);
+      const target = replyTargets.find((one) => one.id === id);
       if (target === undefined) throw new Error(`The rig has no reply target "${id}".`);
       return target;
     });

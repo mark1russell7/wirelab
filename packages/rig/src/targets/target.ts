@@ -32,7 +32,7 @@ export interface EnvelopeTarget {
 }
 
 /** The protocols of a reply target. */
-export type ReplyProtocol = "connect" | "grpc-web";
+export type ReplyProtocol = "connect" | "grpc-web" | "graphql-over-http" | "json-rpc" | "postgrest";
 
 /** The kinds of call of a reply target. */
 export type CallKind = "unary" | "stream";

@@ -160,3 +160,6 @@ const pass: Verdict = { kind: "pass" };
 export function verdictOf(check: string, client: ClientName): Verdict {
   return verdicts[check]?.[client] ?? pass;
 }
+
+export { graphqlPath, jsonReply, okReply, responseType, runClient, type Failure, type Mode, type Operation, type OperationKind, type Outcome, type RunOptions } from "./clients.ts";
+export { anonymousQuery, greetQuery, literalQuery, renameMutation } from "./clients.ts";

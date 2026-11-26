@@ -5,6 +5,7 @@
  */
 import { concatBytes } from "../cuts.ts";
 import { envelope, stringValue } from "../targets/connect-web.ts";
+import { GRAPHQL_ERRORS, graphqlQueryTargetIds } from "../targets/graphql-over-http.ts";
 import type { ReplyTarget } from "../targets/target.ts";
 import { expectCode, runReplyCases, type ReplyCase, type ReplyResult } from "./replies.ts";
 
@@ -49,6 +50,48 @@ const STREAMS: readonly (readonly [string, string, string])[] = [
   ["connect-web/grpc-web-stream", "application/grpc-web+proto", "Internal"],
 ];
 
+/** The media type of a GraphQL response, with its charset. */
+const GRAPHQL_RESPONSE = "application/graphql-response+json; charset=utf-8";
+
+/** A GraphQL result with one request error and no data. */
+const REQUEST_ERROR = JSON.stringify({ errors: [{ message: "real failure" }] });
+
+/**
+ * This function gives the GraphQL cases. A reply 400 or 422 of `application/graphql-response+json` holds the GraphQL
+ * errors, so the caller must get them. A batch reply with an error in one item must give that error too.
+ */
+function graphqlCases(): ReplyCase[] {
+  const shared = { class: CLASS_ID, expected: "the GraphQL errors", judge: expectCode(GRAPHQL_ERRORS) };
+  const out: ReplyCase[] = [];
+  for (const target of graphqlQueryTargetIds) {
+    for (const status of [400, 422]) {
+      out.push({
+        ...shared,
+        target,
+        dims: { body: "spec JSON", status: `HTTP ${String(status)}` },
+        detail: `HTTP ${String(status)} of application/graphql-response+json with one GraphQL error`,
+        reply: { status, fields: { "content-type": GRAPHQL_RESPONSE }, body: REQUEST_ERROR },
+      });
+    }
+    out.push({
+      ...shared,
+      target,
+      dims: {},
+      detail: "HTTP 200 with one GraphQL error",
+      control: true,
+      reply: { status: 200, fields: { "content-type": GRAPHQL_RESPONSE }, body: REQUEST_ERROR },
+    });
+  }
+  out.push({
+    ...shared,
+    target: "graphql-request/batch",
+    dims: { body: "spec JSON", status: "batch with errors" },
+    detail: "HTTP 200 with a batch of 2 results, and one GraphQL error in the second",
+    reply: { status: 200, fields: { "content-type": "application/json" }, body: JSON.stringify([{ data: { a: 1 } }, { data: null, errors: [{ message: "real failure" }] }]) },
+  });
+  return out;
+}
+
 /** This function gives each case of the probe: each body with each status, and each stream with no end marker. */
 export function cases(): ReplyCase[] {
   const out: ReplyCase[] = [];
@@ -82,7 +125,7 @@ export function cases(): ReplyCase[] {
       judge: expectCode(code),
     });
   }
-  return out;
+  return [...out, ...graphqlCases()];
 }
 
 /** This function starts the probe on `targets` and gives each result. */
