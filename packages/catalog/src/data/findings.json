@@ -2263,5 +2263,15 @@
     "kind": "resource",
     "title": "The connectionTimeout timer stays after deactivate()",
     "note": "The timer stops only on CONNECTED or at the next connect. After deactivate() resolves, it keeps a Node.js process alive until the timeout ends. The maintainer lists this fault as item 8 of Code-audit.md."
+  },
+  {
+    "id": "F0227",
+    "package": "@connectrpc/connect-web",
+    "version": "2.3.0",
+    "method": "review",
+    "found": "2026-11-26",
+    "kind": "correctness",
+    "title": "A body that ends just after a complete envelope prefix ends with no error",
+    "note": "createEnvelopeReadableStream of @connectrpc/connect gives \"incomplete envelope\" only when bytes stay in the buffer of the decoder. After a full 5-byte prefix, the decoder moves the bytes to its pending envelope, so the stream ends cleanly. The probe C017 of the rig finds it after the end marker on 3 targets: a Connect stream, a gRPC-web stream and a gRPC-web unary call."
   }
 ]
