@@ -1,7 +1,7 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { type Catalog, TABLE_FILES, catalog, catalogProblems, priorityOrder, rawTables, tableText } from "./index.ts";
+import { type Catalog, RIG_GATE_DAY, TABLE_FILES, catalog, catalogProblems, priorityOrder, rawTables, tableText } from "./index.ts";
 
 const dataDir = join(import.meta.dirname, "data");
 
@@ -15,6 +15,12 @@ describe("the tables of the catalog", () => {
       const text = readFileSync(join(dataDir, file), "utf8").replace(/\r\n/g, "\n");
       expect(text, file).toBe(tableText(table, catalog[table]));
     }
+  });
+
+  it("name only probe files that exist", () => {
+    const repoRoot = join(import.meta.dirname, "..", "..", "..");
+    const missing = catalog.probes.filter((p) => p.file !== undefined && !existsSync(join(repoRoot, p.file)));
+    expect(missing).toEqual([]);
   });
 
   it("give each package a protocol, and each library protocol a package", () => {
@@ -44,6 +50,12 @@ describe("the check", () => {
     runs: [],
     findings: [],
     upstream: [],
+    formats: [],
+    classes: [],
+    classFormats: [],
+    classDimensions: [],
+    findingClasses: [],
+    probes: [],
   });
 
   it("accepts a valid catalog", () => {
@@ -92,6 +104,17 @@ describe("the check", () => {
 
 describe("the check of the ledger", () => {
   const RUN = { id: "r1", suite: "t", package: "a", version: "1.0.0", at: "2026-11-14T10:00:00Z", url: "https://example.org/run/1", passed: 9, failed: 1 };
+  const classTables = (): Pick<Record<keyof Catalog, unknown[]>, "formats" | "classes" | "classFormats" | "classDimensions" | "findingClasses" | "probes"> => ({
+    formats: [{ id: "x", title: "X", what: "X." }],
+    classes: [{ id: "C001", title: "T.", rule: "R.", oracle: "O.", security: "no" }],
+    classFormats: [{ class: "C001", format: "x" }],
+    classDimensions: [
+      { class: "C001", dimension: "d", order: 1, value: "v" },
+      { class: "C001", dimension: "d", order: 2, value: " " },
+    ],
+    findingClasses: [{ finding: "F0001", class: "C001", role: "primary" }],
+    probes: [{ class: "C001", state: "planned" }],
+  });
   const FINDING = { id: "F0001", package: "a", version: "1.0.0", kind: "conformance", method: "suite", found: "2026-11-14", title: "T.", run: "r1" };
   const ledger = (): Record<keyof Catalog, unknown[]> => ({
     families: [{ id: "f", order: 1, title: "F", what: "F." }],
@@ -125,6 +148,7 @@ describe("the check of the ledger", () => {
       { finding: "F0001", at: "2026-11-14T11:00:00Z", state: "issue-open", url: "https://example.org/issues/1" },
       { finding: "F0001", at: "2026-11-15T09:00:00Z", state: "pr-open", url: "https://example.org/pull/2" },
     ],
+    ...classTables(),
   });
 
   it("accepts a valid ledger", () => {
@@ -146,6 +170,8 @@ describe("the check of the ledger", () => {
       "findings bug-1 is not an id of the form F0001.",
       "findings bug-1: a finding of a suite names its run, and only such a finding.",
       "findings F0002: the run r1 tested a, not b.",
+      "findings bug-1 has no primary class.",
+      "findings F0002 has no primary class.",
     ]);
   });
 
@@ -174,6 +200,53 @@ describe("the check of the ledger", () => {
       "upstream F0001: only a security finding goes through the private channel.",
       "upstream F0009 names F0009, and that row is not in the catalog.",
     ]);
+  });
+
+  it("finds a class with no format, no dimension or no probe, and a class row with a bad key", () => {
+    const raw = ledger();
+    raw.classes.push({ id: "C002", title: "T.", rule: "R.", oracle: "O.", security: "yes", cwe: "CWE-1321" }, { id: "K9", title: "T.", rule: "R.", oracle: "O.", security: "no", cwe: "1321" });
+    raw.classFormats.push({ class: "K9", format: "y" });
+    raw.classDimensions.push({ class: "C404", dimension: "d", order: 1, value: "v" });
+    raw.probes.push({ class: "K9", state: "planned" });
+    expect(catalogProblems(raw)).toEqual([
+      "classes K9 is not an id of the form C001.",
+      "classes K9: 1321 is not an id of the form CWE-20.",
+      "classFormats K9 names y, and that row is not in the catalog.",
+      "classDimensions C404 names C404, and that row is not in the catalog.",
+      "classes C002 has no format.",
+      "classes C002 has no dimension.",
+      "classes C002 has no probe.",
+      "classes K9 has no dimension.",
+    ]);
+  });
+
+  it("gives each finding one primary class, and a probe its file only when it is written or proven", () => {
+    const raw = ledger();
+    raw.classes.push({ id: "C002", title: "T.", rule: "R.", oracle: "O.", security: "no" });
+    raw.classFormats.push({ class: "C002", format: "x" });
+    raw.classDimensions.push({ class: "C002", dimension: "d", order: 1, value: "v" });
+    raw.findingClasses.push({ finding: "F0001", class: "C002", role: "primary" }, { finding: "F0404", class: "C001", role: "secondary" });
+    raw.probes = [
+      { class: "C001", state: "planned", file: "rig/c001.ts" },
+      { class: "C002", state: "written" },
+    ];
+    expect(catalogProblems(raw)).toEqual([
+      "findingClasses F0001 has more than one primary class.",
+      "findingClasses F0404 names F0404, and that row is not in the catalog.",
+      "probes C001: a written or proven probe names its file, and only such a probe.",
+      "probes C002: a written or proven probe names its file, and only such a probe.",
+    ]);
+  });
+
+  it("accepts a finding of the gate day only when the probe of its primary class is proven", () => {
+    const raw = ledger();
+    raw.findings = [{ ...FINDING, found: RIG_GATE_DAY }];
+    raw.upstream = [];
+    expect(catalogProblems(raw)).toEqual(["findings F0001: the probe of its class C001 is not proven."]);
+    raw.probes = [{ class: "C001", state: "written", file: "rig/c001.ts" }];
+    expect(catalogProblems(raw)).toEqual(["findings F0001: the probe of its class C001 is not proven."]);
+    raw.probes = [{ class: "C001", state: "proven", file: "rig/c001.ts" }];
+    expect(catalogProblems(raw)).toEqual([]);
   });
 });
 
@@ -206,6 +279,12 @@ describe("the priority order", () => {
     runs: [],
     findings: [],
     upstream: [],
+    formats: [],
+    classes: [],
+    classFormats: [],
+    classDimensions: [],
+    findingClasses: [],
+    probes: [],
   });
 
   it("puts the most used package first, and a package with no measure last", () => {

@@ -1,0 +1,542 @@
+[
+  {
+    "class": "C001",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C001",
+    "format": "json-http"
+  },
+  {
+    "class": "C001",
+    "format": "json-ws"
+  },
+  {
+    "class": "C001",
+    "format": "text-document"
+  },
+  {
+    "class": "C001",
+    "format": "text-frame-headers"
+  },
+  {
+    "class": "C002",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C002",
+    "format": "json-http"
+  },
+  {
+    "class": "C002",
+    "format": "json-ws"
+  },
+  {
+    "class": "C002",
+    "format": "text-document"
+  },
+  {
+    "class": "C003",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C003",
+    "format": "json-http"
+  },
+  {
+    "class": "C003",
+    "format": "json-ws"
+  },
+  {
+    "class": "C003",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C003",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C004",
+    "format": "json-http"
+  },
+  {
+    "class": "C004",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C005",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C006",
+    "format": "json-ws"
+  },
+  {
+    "class": "C006",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C006",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C007",
+    "format": "json-http"
+  },
+  {
+    "class": "C007",
+    "format": "json-ws"
+  },
+  {
+    "class": "C007",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C007",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C008",
+    "format": "json-http"
+  },
+  {
+    "class": "C008",
+    "format": "json-ws"
+  },
+  {
+    "class": "C008",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C008",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C008",
+    "format": "text-frame-headers"
+  },
+  {
+    "class": "C009",
+    "format": "json-http"
+  },
+  {
+    "class": "C009",
+    "format": "json-ws"
+  },
+  {
+    "class": "C009",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C010",
+    "format": "json-ws"
+  },
+  {
+    "class": "C010",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C011",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C012",
+    "format": "json-ws"
+  },
+  {
+    "class": "C012",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C012",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C013",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C014",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C015",
+    "format": "json-ws"
+  },
+  {
+    "class": "C015",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C016",
+    "format": "json-ws"
+  },
+  {
+    "class": "C016",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C016",
+    "format": "text-frame-headers"
+  },
+  {
+    "class": "C017",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C017",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C018",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C018",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C018",
+    "format": "text-frame-headers"
+  },
+  {
+    "class": "C019",
+    "format": "json-ws"
+  },
+  {
+    "class": "C019",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C019",
+    "format": "text-frame-headers"
+  },
+  {
+    "class": "C020",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C020",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C021",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C021",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C022",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C022",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C023",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C023",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C024",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C024",
+    "format": "json-http"
+  },
+  {
+    "class": "C024",
+    "format": "text-document"
+  },
+  {
+    "class": "C025",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C025",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C025",
+    "format": "text-document"
+  },
+  {
+    "class": "C026",
+    "format": "json-http"
+  },
+  {
+    "class": "C026",
+    "format": "text-document"
+  },
+  {
+    "class": "C027",
+    "format": "json-http"
+  },
+  {
+    "class": "C027",
+    "format": "text-frame-headers"
+  },
+  {
+    "class": "C027",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C028",
+    "format": "json-http"
+  },
+  {
+    "class": "C028",
+    "format": "json-ws"
+  },
+  {
+    "class": "C028",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C029",
+    "format": "json-ws"
+  },
+  {
+    "class": "C029",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C030",
+    "format": "json-ws"
+  },
+  {
+    "class": "C030",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C030",
+    "format": "text-frame-headers"
+  },
+  {
+    "class": "C031",
+    "format": "json-http"
+  },
+  {
+    "class": "C031",
+    "format": "json-ws"
+  },
+  {
+    "class": "C031",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C032",
+    "format": "json-ws"
+  },
+  {
+    "class": "C032",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C033",
+    "format": "json-http"
+  },
+  {
+    "class": "C033",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C034",
+    "format": "json-http"
+  },
+  {
+    "class": "C034",
+    "format": "json-ws"
+  },
+  {
+    "class": "C034",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C035",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C035",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C036",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C036",
+    "format": "json-ws"
+  },
+  {
+    "class": "C036",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C037",
+    "format": "text-document"
+  },
+  {
+    "class": "C038",
+    "format": "api-surface"
+  },
+  {
+    "class": "C038",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C038",
+    "format": "json-ws"
+  },
+  {
+    "class": "C039",
+    "format": "json-http"
+  },
+  {
+    "class": "C039",
+    "format": "text-document"
+  },
+  {
+    "class": "C039",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C040",
+    "format": "json-http"
+  },
+  {
+    "class": "C040",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C041",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C042",
+    "format": "json-http"
+  },
+  {
+    "class": "C042",
+    "format": "json-ws"
+  },
+  {
+    "class": "C042",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C042",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C043",
+    "format": "api-surface"
+  },
+  {
+    "class": "C043",
+    "format": "json-ws"
+  },
+  {
+    "class": "C044",
+    "format": "json-ws"
+  },
+  {
+    "class": "C044",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C044",
+    "format": "text-frame-headers"
+  },
+  {
+    "class": "C044",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C045",
+    "format": "json-http"
+  },
+  {
+    "class": "C045",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C046",
+    "format": "json-http"
+  },
+  {
+    "class": "C046",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C047",
+    "format": "json-ws"
+  },
+  {
+    "class": "C047",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C047",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C048",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C049",
+    "format": "json-ws"
+  },
+  {
+    "class": "C049",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C050",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C050",
+    "format": "url-and-headers"
+  },
+  {
+    "class": "C051",
+    "format": "api-surface"
+  },
+  {
+    "class": "C051",
+    "format": "socket-lifecycle"
+  },
+  {
+    "class": "C052",
+    "format": "api-surface"
+  },
+  {
+    "class": "C053",
+    "format": "binary-codec"
+  },
+  {
+    "class": "C053",
+    "format": "length-prefixed-envelope"
+  },
+  {
+    "class": "C054",
+    "format": "api-surface"
+  },
+  {
+    "class": "C055",
+    "format": "package-files"
+  },
+  {
+    "class": "C056",
+    "format": "package-files"
+  }
+]

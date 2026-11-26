@@ -1,0 +1,3320 @@
+[
+  {
+    "class": "C001",
+    "dimension": "key",
+    "order": 1,
+    "value": "constructor"
+  },
+  {
+    "class": "C001",
+    "dimension": "key",
+    "order": 2,
+    "value": "__proto__"
+  },
+  {
+    "class": "C001",
+    "dimension": "key",
+    "order": 3,
+    "value": "toString"
+  },
+  {
+    "class": "C001",
+    "dimension": "key",
+    "order": 4,
+    "value": "valueOf"
+  },
+  {
+    "class": "C001",
+    "dimension": "key",
+    "order": 5,
+    "value": "hasOwnProperty"
+  },
+  {
+    "class": "C001",
+    "dimension": "key",
+    "order": 6,
+    "value": "isPrototypeOf"
+  },
+  {
+    "class": "C001",
+    "dimension": "key",
+    "order": 7,
+    "value": "propertyIsEnumerable"
+  },
+  {
+    "class": "C001",
+    "dimension": "key",
+    "order": 8,
+    "value": "__defineGetter__"
+  },
+  {
+    "class": "C001",
+    "dimension": "key",
+    "order": 9,
+    "value": "toLocaleString"
+  },
+  {
+    "class": "C001",
+    "dimension": "phase",
+    "order": 1,
+    "value": "handshake"
+  },
+  {
+    "class": "C001",
+    "dimension": "phase",
+    "order": 2,
+    "value": "open"
+  },
+  {
+    "class": "C001",
+    "dimension": "phase",
+    "order": 3,
+    "value": "stream"
+  },
+  {
+    "class": "C001",
+    "dimension": "table",
+    "order": 1,
+    "value": "command"
+  },
+  {
+    "class": "C001",
+    "dimension": "table",
+    "order": 2,
+    "value": "method or handler name"
+  },
+  {
+    "class": "C001",
+    "dimension": "table",
+    "order": 3,
+    "value": "subscription or channel id"
+  },
+  {
+    "class": "C001",
+    "dimension": "table",
+    "order": 4,
+    "value": "receipt or request id"
+  },
+  {
+    "class": "C001",
+    "dimension": "table",
+    "order": 5,
+    "value": "event or union type"
+  },
+  {
+    "class": "C001",
+    "dimension": "table",
+    "order": 6,
+    "value": "error or code name"
+  },
+  {
+    "class": "C001",
+    "dimension": "table",
+    "order": 7,
+    "value": "entity or variable name"
+  },
+  {
+    "class": "C001",
+    "dimension": "table",
+    "order": 8,
+    "value": "field or option name"
+  },
+  {
+    "class": "C002",
+    "dimension": "container",
+    "order": 1,
+    "value": "state map"
+  },
+  {
+    "class": "C002",
+    "dimension": "container",
+    "order": 2,
+    "value": "record fields"
+  },
+  {
+    "class": "C002",
+    "dimension": "container",
+    "order": 3,
+    "value": "map type"
+  },
+  {
+    "class": "C002",
+    "dimension": "container",
+    "order": 4,
+    "value": "options copy"
+  },
+  {
+    "class": "C002",
+    "dimension": "key",
+    "order": 1,
+    "value": "__proto__"
+  },
+  {
+    "class": "C002",
+    "dimension": "key",
+    "order": 2,
+    "value": "constructor.prototype"
+  },
+  {
+    "class": "C002",
+    "dimension": "value",
+    "order": 1,
+    "value": "object"
+  },
+  {
+    "class": "C002",
+    "dimension": "value",
+    "order": 2,
+    "value": "array"
+  },
+  {
+    "class": "C002",
+    "dimension": "value",
+    "order": 3,
+    "value": "null"
+  },
+  {
+    "class": "C002",
+    "dimension": "value",
+    "order": 4,
+    "value": "string"
+  },
+  {
+    "class": "C003",
+    "dimension": "state",
+    "order": 1,
+    "value": "before connect"
+  },
+  {
+    "class": "C003",
+    "dimension": "state",
+    "order": 2,
+    "value": "open"
+  },
+  {
+    "class": "C003",
+    "dimension": "state",
+    "order": 3,
+    "value": "after end"
+  },
+  {
+    "class": "C003",
+    "dimension": "step",
+    "order": 1,
+    "value": "percent-decode of a status message"
+  },
+  {
+    "class": "C003",
+    "dimension": "step",
+    "order": 2,
+    "value": "base64 decode"
+  },
+  {
+    "class": "C003",
+    "dimension": "step",
+    "order": 3,
+    "value": "JSON.parse of an error body"
+  },
+  {
+    "class": "C003",
+    "dimension": "step",
+    "order": 4,
+    "value": "JSON.stringify of the request (BigInt, cycle)"
+  },
+  {
+    "class": "C003",
+    "dimension": "step",
+    "order": 5,
+    "value": "serializer of the app throws"
+  },
+  {
+    "class": "C003",
+    "dimension": "step",
+    "order": 6,
+    "value": "catch-all rethrow with a fixed text"
+  },
+  {
+    "class": "C003",
+    "dimension": "step",
+    "order": 7,
+    "value": "internal TypeError in a wrong state"
+  },
+  {
+    "class": "C004",
+    "dimension": "phase",
+    "order": 1,
+    "value": "connecting"
+  },
+  {
+    "class": "C004",
+    "dimension": "phase",
+    "order": 2,
+    "value": "handshake"
+  },
+  {
+    "class": "C004",
+    "dimension": "phase",
+    "order": 3,
+    "value": "open"
+  },
+  {
+    "class": "C004",
+    "dimension": "phase",
+    "order": 4,
+    "value": "stream"
+  },
+  {
+    "class": "C004",
+    "dimension": "phase",
+    "order": 5,
+    "value": "closing"
+  },
+  {
+    "class": "C004",
+    "dimension": "phase",
+    "order": 6,
+    "value": "backoff"
+  },
+  {
+    "class": "C004",
+    "dimension": "phase",
+    "order": 7,
+    "value": "after-end"
+  },
+  {
+    "class": "C004",
+    "dimension": "phase",
+    "order": 8,
+    "value": "after-close"
+  },
+  {
+    "class": "C004",
+    "dimension": "timer",
+    "order": 1,
+    "value": "connect timeout"
+  },
+  {
+    "class": "C004",
+    "dimension": "timer",
+    "order": 2,
+    "value": "handshake or info timeout"
+  },
+  {
+    "class": "C004",
+    "dimension": "timer",
+    "order": 3,
+    "value": "heartbeat or keep-alive"
+  },
+  {
+    "class": "C004",
+    "dimension": "timer",
+    "order": 4,
+    "value": "reconnect backoff"
+  },
+  {
+    "class": "C004",
+    "dimension": "timer",
+    "order": 5,
+    "value": "request timeout"
+  },
+  {
+    "class": "C004",
+    "dimension": "timer",
+    "order": 6,
+    "value": "transport timeout"
+  },
+  {
+    "class": "C004",
+    "dimension": "trigger",
+    "order": 1,
+    "value": "close()"
+  },
+  {
+    "class": "C004",
+    "dimension": "trigger",
+    "order": 2,
+    "value": "end()"
+  },
+  {
+    "class": "C004",
+    "dimension": "trigger",
+    "order": 3,
+    "value": "fetch rejects"
+  },
+  {
+    "class": "C004",
+    "dimension": "trigger",
+    "order": 4,
+    "value": "transport fails"
+  },
+  {
+    "class": "C004",
+    "dimension": "trigger",
+    "order": 5,
+    "value": "heartbeat lost"
+  },
+  {
+    "class": "C005",
+    "dimension": "phase",
+    "order": 1,
+    "value": "connecting"
+  },
+  {
+    "class": "C005",
+    "dimension": "phase",
+    "order": 2,
+    "value": "upgrade"
+  },
+  {
+    "class": "C005",
+    "dimension": "phase",
+    "order": 3,
+    "value": "open"
+  },
+  {
+    "class": "C005",
+    "dimension": "phase",
+    "order": 4,
+    "value": "after-error"
+  },
+  {
+    "class": "C005",
+    "dimension": "resource",
+    "order": 1,
+    "value": "long-poll request"
+  },
+  {
+    "class": "C005",
+    "dimension": "resource",
+    "order": 2,
+    "value": "close POST"
+  },
+  {
+    "class": "C005",
+    "dimension": "resource",
+    "order": 3,
+    "value": "probe socket"
+  },
+  {
+    "class": "C005",
+    "dimension": "resource",
+    "order": 4,
+    "value": "EventSource"
+  },
+  {
+    "class": "C005",
+    "dimension": "resource",
+    "order": 5,
+    "value": "old socket after a parse error"
+  },
+  {
+    "class": "C006",
+    "dimension": "cycle",
+    "order": 1,
+    "value": "reconnect"
+  },
+  {
+    "class": "C006",
+    "dimension": "cycle",
+    "order": 2,
+    "value": "on/off"
+  },
+  {
+    "class": "C006",
+    "dimension": "cycle",
+    "order": 3,
+    "value": "subscribe/complete"
+  },
+  {
+    "class": "C006",
+    "dimension": "cycle",
+    "order": 4,
+    "value": "iterator throw()"
+  },
+  {
+    "class": "C006",
+    "dimension": "cycle",
+    "order": 5,
+    "value": "early break"
+  },
+  {
+    "class": "C006",
+    "dimension": "n",
+    "order": 1,
+    "value": "1"
+  },
+  {
+    "class": "C006",
+    "dimension": "n",
+    "order": 2,
+    "value": "20"
+  },
+  {
+    "class": "C006",
+    "dimension": "n",
+    "order": 3,
+    "value": "1000"
+  },
+  {
+    "class": "C006",
+    "dimension": "registration",
+    "order": 1,
+    "value": "message handler"
+  },
+  {
+    "class": "C006",
+    "dimension": "registration",
+    "order": 2,
+    "value": "subscriber map entry"
+  },
+  {
+    "class": "C006",
+    "dimension": "registration",
+    "order": 3,
+    "value": "ack handler"
+  },
+  {
+    "class": "C006",
+    "dimension": "registration",
+    "order": 4,
+    "value": "abort listener"
+  },
+  {
+    "class": "C006",
+    "dimension": "registration",
+    "order": 5,
+    "value": "replay buffer"
+  },
+  {
+    "class": "C006",
+    "dimension": "registration",
+    "order": 6,
+    "value": "upload stream subscription"
+  },
+  {
+    "class": "C007",
+    "dimension": "call",
+    "order": 1,
+    "value": "publish"
+  },
+  {
+    "class": "C007",
+    "dimension": "call",
+    "order": 2,
+    "value": "subscribe"
+  },
+  {
+    "class": "C007",
+    "dimension": "call",
+    "order": 3,
+    "value": "unsubscribe"
+  },
+  {
+    "class": "C007",
+    "dimension": "call",
+    "order": 4,
+    "value": "invoke"
+  },
+  {
+    "class": "C007",
+    "dimension": "call",
+    "order": 5,
+    "value": "emitWithAck"
+  },
+  {
+    "class": "C007",
+    "dimension": "cause",
+    "order": 1,
+    "value": "buffer overflow drops the push"
+  },
+  {
+    "class": "C007",
+    "dimension": "cause",
+    "order": 2,
+    "value": "local refusal (topic alias)"
+  },
+  {
+    "class": "C007",
+    "dimension": "cause",
+    "order": 3,
+    "value": "socket closes before the reply"
+  },
+  {
+    "class": "C007",
+    "dimension": "cause",
+    "order": 4,
+    "value": "a hook does not await next()"
+  },
+  {
+    "class": "C007",
+    "dimension": "cause",
+    "order": 5,
+    "value": "volatile drop"
+  },
+  {
+    "class": "C007",
+    "dimension": "phase",
+    "order": 1,
+    "value": "connecting"
+  },
+  {
+    "class": "C007",
+    "dimension": "phase",
+    "order": 2,
+    "value": "open"
+  },
+  {
+    "class": "C007",
+    "dimension": "phase",
+    "order": 3,
+    "value": "closing"
+  },
+  {
+    "class": "C007",
+    "dimension": "phase",
+    "order": 4,
+    "value": "after-close"
+  },
+  {
+    "class": "C008",
+    "dimension": "input",
+    "order": 1,
+    "value": "frame that is not JSON"
+  },
+  {
+    "class": "C008",
+    "dimension": "input",
+    "order": 2,
+    "value": "JSON of a wrong shape"
+  },
+  {
+    "class": "C008",
+    "dimension": "input",
+    "order": 3,
+    "value": "unknown binary kind"
+  },
+  {
+    "class": "C008",
+    "dimension": "input",
+    "order": 4,
+    "value": "malformed open packet"
+  },
+  {
+    "class": "C008",
+    "dimension": "input",
+    "order": 5,
+    "value": "body read fails"
+  },
+  {
+    "class": "C008",
+    "dimension": "input",
+    "order": 6,
+    "value": "setup promise rejects"
+  },
+  {
+    "class": "C008",
+    "dimension": "input",
+    "order": 7,
+    "value": "storage rejects"
+  },
+  {
+    "class": "C008",
+    "dimension": "phase",
+    "order": 1,
+    "value": "handshake"
+  },
+  {
+    "class": "C008",
+    "dimension": "phase",
+    "order": 2,
+    "value": "open"
+  },
+  {
+    "class": "C008",
+    "dimension": "phase",
+    "order": 3,
+    "value": "stream"
+  },
+  {
+    "class": "C008",
+    "dimension": "transport",
+    "order": 1,
+    "value": "websocket"
+  },
+  {
+    "class": "C008",
+    "dimension": "transport",
+    "order": 2,
+    "value": "polling"
+  },
+  {
+    "class": "C008",
+    "dimension": "transport",
+    "order": 3,
+    "value": "fetch"
+  },
+  {
+    "class": "C008",
+    "dimension": "transport",
+    "order": 4,
+    "value": "ipc"
+  },
+  {
+    "class": "C008",
+    "dimension": "transport",
+    "order": 5,
+    "value": "webtransport"
+  },
+  {
+    "class": "C009",
+    "dimension": "source",
+    "order": 1,
+    "value": "remote function"
+  },
+  {
+    "class": "C009",
+    "dimension": "source",
+    "order": 2,
+    "value": "url provider"
+  },
+  {
+    "class": "C009",
+    "dimension": "source",
+    "order": 3,
+    "value": "auth callback"
+  },
+  {
+    "class": "C009",
+    "dimension": "source",
+    "order": 4,
+    "value": "transport send"
+  },
+  {
+    "class": "C009",
+    "dimension": "value",
+    "order": 1,
+    "value": "undefined"
+  },
+  {
+    "class": "C009",
+    "dimension": "value",
+    "order": 2,
+    "value": "null"
+  },
+  {
+    "class": "C009",
+    "dimension": "value",
+    "order": 3,
+    "value": "0"
+  },
+  {
+    "class": "C009",
+    "dimension": "value",
+    "order": 4,
+    "value": "''"
+  },
+  {
+    "class": "C009",
+    "dimension": "value",
+    "order": 5,
+    "value": "false"
+  },
+  {
+    "class": "C009",
+    "dimension": "value",
+    "order": 6,
+    "value": "a string"
+  },
+  {
+    "class": "C009",
+    "dimension": "value",
+    "order": 7,
+    "value": "a plain object"
+  },
+  {
+    "class": "C009",
+    "dimension": "value",
+    "order": 8,
+    "value": "Promise.reject() with no reason"
+  },
+  {
+    "class": "C010",
+    "dimension": "callback",
+    "order": 1,
+    "value": "on* handler"
+  },
+  {
+    "class": "C010",
+    "dimension": "callback",
+    "order": 2,
+    "value": "addEventListener listener"
+  },
+  {
+    "class": "C010",
+    "dimension": "callback",
+    "order": 3,
+    "value": "onclose/onreconnect list"
+  },
+  {
+    "class": "C010",
+    "dimension": "callback",
+    "order": 4,
+    "value": "open or close observer"
+  },
+  {
+    "class": "C010",
+    "dimension": "event",
+    "order": 1,
+    "value": "open"
+  },
+  {
+    "class": "C010",
+    "dimension": "event",
+    "order": 2,
+    "value": "message"
+  },
+  {
+    "class": "C010",
+    "dimension": "event",
+    "order": 3,
+    "value": "close"
+  },
+  {
+    "class": "C010",
+    "dimension": "event",
+    "order": 4,
+    "value": "error"
+  },
+  {
+    "class": "C010",
+    "dimension": "event",
+    "order": 5,
+    "value": "reconnecting"
+  },
+  {
+    "class": "C011",
+    "dimension": "late",
+    "order": 1,
+    "value": "error event"
+  },
+  {
+    "class": "C011",
+    "dimension": "late",
+    "order": 2,
+    "value": "close event"
+  },
+  {
+    "class": "C011",
+    "dimension": "late",
+    "order": 3,
+    "value": "ack timer"
+  },
+  {
+    "class": "C011",
+    "dimension": "late",
+    "order": 4,
+    "value": "retry timer"
+  },
+  {
+    "class": "C011",
+    "dimension": "late",
+    "order": 5,
+    "value": "transport timeout"
+  },
+  {
+    "class": "C011",
+    "dimension": "trigger",
+    "order": 1,
+    "value": "unsubscribe and subscribe while connecting"
+  },
+  {
+    "class": "C011",
+    "dimension": "trigger",
+    "order": 2,
+    "value": "stop() then start()"
+  },
+  {
+    "class": "C011",
+    "dimension": "trigger",
+    "order": 3,
+    "value": "connect() during the retry wait"
+  },
+  {
+    "class": "C011",
+    "dimension": "trigger",
+    "order": 4,
+    "value": "ack timeout and retry"
+  },
+  {
+    "class": "C011",
+    "dimension": "trigger",
+    "order": 5,
+    "value": "fast transport failure"
+  },
+  {
+    "class": "C012",
+    "dimension": "operation",
+    "order": 1,
+    "value": "subscribe"
+  },
+  {
+    "class": "C012",
+    "dimension": "operation",
+    "order": 2,
+    "value": "unsubscribe"
+  },
+  {
+    "class": "C012",
+    "dimension": "operation",
+    "order": 3,
+    "value": "publish QoS 1/2"
+  },
+  {
+    "class": "C012",
+    "dimension": "operation",
+    "order": 4,
+    "value": "buffered send"
+  },
+  {
+    "class": "C012",
+    "dimension": "operation",
+    "order": 5,
+    "value": "resume id"
+  },
+  {
+    "class": "C012",
+    "dimension": "phase",
+    "order": 1,
+    "value": "connecting"
+  },
+  {
+    "class": "C012",
+    "dimension": "phase",
+    "order": 2,
+    "value": "backoff"
+  },
+  {
+    "class": "C012",
+    "dimension": "phase",
+    "order": 3,
+    "value": "open"
+  },
+  {
+    "class": "C012",
+    "dimension": "session",
+    "order": 1,
+    "value": "session present"
+  },
+  {
+    "class": "C012",
+    "dimension": "session",
+    "order": 2,
+    "value": "clean start"
+  },
+  {
+    "class": "C012",
+    "dimension": "session",
+    "order": 3,
+    "value": "stateful reconnect fails"
+  },
+  {
+    "class": "C013",
+    "dimension": "call",
+    "order": 1,
+    "value": "connect"
+  },
+  {
+    "class": "C013",
+    "dimension": "call",
+    "order": 2,
+    "value": "close"
+  },
+  {
+    "class": "C013",
+    "dimension": "call",
+    "order": 3,
+    "value": "reconnect"
+  },
+  {
+    "class": "C013",
+    "dimension": "call",
+    "order": 4,
+    "value": "send"
+  },
+  {
+    "class": "C013",
+    "dimension": "call",
+    "order": 5,
+    "value": "subscribe"
+  },
+  {
+    "class": "C013",
+    "dimension": "call",
+    "order": 6,
+    "value": "abort"
+  },
+  {
+    "class": "C013",
+    "dimension": "call",
+    "order": 7,
+    "value": "peer close packet"
+  },
+  {
+    "class": "C013",
+    "dimension": "phase",
+    "order": 1,
+    "value": "connecting"
+  },
+  {
+    "class": "C013",
+    "dimension": "phase",
+    "order": 2,
+    "value": "handshake"
+  },
+  {
+    "class": "C013",
+    "dimension": "phase",
+    "order": 3,
+    "value": "open"
+  },
+  {
+    "class": "C013",
+    "dimension": "phase",
+    "order": 4,
+    "value": "stream"
+  },
+  {
+    "class": "C013",
+    "dimension": "phase",
+    "order": 5,
+    "value": "closing"
+  },
+  {
+    "class": "C013",
+    "dimension": "phase",
+    "order": 6,
+    "value": "backoff"
+  },
+  {
+    "class": "C013",
+    "dimension": "phase",
+    "order": 7,
+    "value": "after-end"
+  },
+  {
+    "class": "C013",
+    "dimension": "phase",
+    "order": 8,
+    "value": "after-close"
+  },
+  {
+    "class": "C014",
+    "dimension": "case",
+    "order": 1,
+    "value": "close() while connecting"
+  },
+  {
+    "class": "C014",
+    "dimension": "case",
+    "order": 2,
+    "value": "close() before the inner socket exists"
+  },
+  {
+    "class": "C014",
+    "dimension": "case",
+    "order": 3,
+    "value": "close by unsubscribe"
+  },
+  {
+    "class": "C014",
+    "dimension": "case",
+    "order": 4,
+    "value": "empty reason"
+  },
+  {
+    "class": "C014",
+    "dimension": "case",
+    "order": 5,
+    "value": "unclean close"
+  },
+  {
+    "class": "C014",
+    "dimension": "runtime",
+    "order": 1,
+    "value": "browser"
+  },
+  {
+    "class": "C014",
+    "dimension": "runtime",
+    "order": 2,
+    "value": "node"
+  },
+  {
+    "class": "C014",
+    "dimension": "runtime",
+    "order": 3,
+    "value": "react-native"
+  },
+  {
+    "class": "C015",
+    "dimension": "caller",
+    "order": 1,
+    "value": "app"
+  },
+  {
+    "class": "C015",
+    "dimension": "caller",
+    "order": 2,
+    "value": "library from peer data"
+  },
+  {
+    "class": "C015",
+    "dimension": "code",
+    "order": 1,
+    "value": "0"
+  },
+  {
+    "class": "C015",
+    "dimension": "code",
+    "order": 2,
+    "value": "NaN"
+  },
+  {
+    "class": "C015",
+    "dimension": "code",
+    "order": 3,
+    "value": "999"
+  },
+  {
+    "class": "C015",
+    "dimension": "code",
+    "order": 4,
+    "value": "1005"
+  },
+  {
+    "class": "C015",
+    "dimension": "code",
+    "order": 5,
+    "value": "2999"
+  },
+  {
+    "class": "C015",
+    "dimension": "code",
+    "order": 6,
+    "value": "5000"
+  },
+  {
+    "class": "C015",
+    "dimension": "reason",
+    "order": 1,
+    "value": "123 ASCII bytes"
+  },
+  {
+    "class": "C015",
+    "dimension": "reason",
+    "order": 2,
+    "value": "124 ASCII bytes"
+  },
+  {
+    "class": "C015",
+    "dimension": "reason",
+    "order": 3,
+    "value": "41 three-byte chars"
+  },
+  {
+    "class": "C015",
+    "dimension": "reason",
+    "order": 4,
+    "value": "text from the peer"
+  },
+  {
+    "class": "C016",
+    "dimension": "after",
+    "order": 1,
+    "value": "end-of-stream frame"
+  },
+  {
+    "class": "C016",
+    "dimension": "after",
+    "order": 2,
+    "value": "second end-of-stream"
+  },
+  {
+    "class": "C016",
+    "dimension": "after",
+    "order": 3,
+    "value": "completion of the peer"
+  },
+  {
+    "class": "C016",
+    "dimension": "after",
+    "order": 4,
+    "value": "local close()"
+  },
+  {
+    "class": "C016",
+    "dimension": "direction",
+    "order": 1,
+    "value": "inbound"
+  },
+  {
+    "class": "C016",
+    "dimension": "direction",
+    "order": 2,
+    "value": "outbound"
+  },
+  {
+    "class": "C016",
+    "dimension": "frame",
+    "order": 1,
+    "value": "data"
+  },
+  {
+    "class": "C016",
+    "dimension": "frame",
+    "order": 2,
+    "value": "trailer"
+  },
+  {
+    "class": "C016",
+    "dimension": "frame",
+    "order": 3,
+    "value": "message batch"
+  },
+  {
+    "class": "C017",
+    "dimension": "cut",
+    "order": 1,
+    "value": "1 byte into the prefix"
+  },
+  {
+    "class": "C017",
+    "dimension": "cut",
+    "order": 2,
+    "value": "prefix width - 1"
+  },
+  {
+    "class": "C017",
+    "dimension": "cut",
+    "order": 3,
+    "value": "after the full prefix with 0 payload bytes"
+  },
+  {
+    "class": "C017",
+    "dimension": "cut",
+    "order": 4,
+    "value": "inside the payload"
+  },
+  {
+    "class": "C017",
+    "dimension": "frame",
+    "order": 1,
+    "value": "first"
+  },
+  {
+    "class": "C017",
+    "dimension": "frame",
+    "order": 2,
+    "value": "after the end marker"
+  },
+  {
+    "class": "C017",
+    "dimension": "frame",
+    "order": 3,
+    "value": "middle"
+  },
+  {
+    "class": "C017",
+    "dimension": "prefixWidth",
+    "order": 1,
+    "value": "4"
+  },
+  {
+    "class": "C017",
+    "dimension": "prefixWidth",
+    "order": 2,
+    "value": "5"
+  },
+  {
+    "class": "C017",
+    "dimension": "prefixWidth",
+    "order": 3,
+    "value": "8"
+  },
+  {
+    "class": "C017",
+    "dimension": "prefixWidth",
+    "order": 4,
+    "value": "12"
+  },
+  {
+    "class": "C018",
+    "dimension": "badValue",
+    "order": 1,
+    "value": "longer than the data"
+  },
+  {
+    "class": "C018",
+    "dimension": "badValue",
+    "order": 2,
+    "value": "shorter than the data"
+  },
+  {
+    "class": "C018",
+    "dimension": "badValue",
+    "order": 3,
+    "value": "-1"
+  },
+  {
+    "class": "C018",
+    "dimension": "badValue",
+    "order": 4,
+    "value": "abc"
+  },
+  {
+    "class": "C018",
+    "dimension": "badValue",
+    "order": 5,
+    "value": "1.5"
+  },
+  {
+    "class": "C018",
+    "dimension": "badValue",
+    "order": 6,
+    "value": "2^32"
+  },
+  {
+    "class": "C018",
+    "dimension": "content",
+    "order": 1,
+    "value": "message that the reader skips"
+  },
+  {
+    "class": "C018",
+    "dimension": "content",
+    "order": 2,
+    "value": "data shorter than its declared length"
+  },
+  {
+    "class": "C018",
+    "dimension": "content",
+    "order": 3,
+    "value": "malformed header line"
+  },
+  {
+    "class": "C018",
+    "dimension": "field",
+    "order": 1,
+    "value": "declared length of a frame"
+  },
+  {
+    "class": "C018",
+    "dimension": "field",
+    "order": 2,
+    "value": "declared length of a record"
+  },
+  {
+    "class": "C018",
+    "dimension": "field",
+    "order": 3,
+    "value": "declared length of a body"
+  },
+  {
+    "class": "C018",
+    "dimension": "field",
+    "order": 4,
+    "value": "length header of a text frame"
+  },
+  {
+    "class": "C018",
+    "dimension": "field",
+    "order": 5,
+    "value": "separator of a batch"
+  },
+  {
+    "class": "C019",
+    "dimension": "bad",
+    "order": 1,
+    "value": "malformed packet"
+  },
+  {
+    "class": "C019",
+    "dimension": "bad",
+    "order": 2,
+    "value": "stray closing brace"
+  },
+  {
+    "class": "C019",
+    "dimension": "bad",
+    "order": 3,
+    "value": "frame that is not JSON"
+  },
+  {
+    "class": "C019",
+    "dimension": "next",
+    "order": 1,
+    "value": "chunk starts inside a payload"
+  },
+  {
+    "class": "C019",
+    "dimension": "next",
+    "order": 2,
+    "value": "valid frames follow"
+  },
+  {
+    "class": "C019",
+    "dimension": "transport",
+    "order": 1,
+    "value": "tcp"
+  },
+  {
+    "class": "C019",
+    "dimension": "transport",
+    "order": 2,
+    "value": "ipc"
+  },
+  {
+    "class": "C019",
+    "dimension": "transport",
+    "order": 3,
+    "value": "websocket"
+  },
+  {
+    "class": "C020",
+    "dimension": "badValue",
+    "order": 1,
+    "value": "end past the body"
+  },
+  {
+    "class": "C020",
+    "dimension": "badValue",
+    "order": 2,
+    "value": "start past the data"
+  },
+  {
+    "class": "C020",
+    "dimension": "badValue",
+    "order": 3,
+    "value": "size below the minimum"
+  },
+  {
+    "class": "C020",
+    "dimension": "badValue",
+    "order": 4,
+    "value": "size 0"
+  },
+  {
+    "class": "C020",
+    "dimension": "region",
+    "order": 1,
+    "value": "buffer of a column"
+  },
+  {
+    "class": "C020",
+    "dimension": "region",
+    "order": 2,
+    "value": "head of a static parameter"
+  },
+  {
+    "class": "C020",
+    "dimension": "region",
+    "order": 3,
+    "value": "nested field"
+  },
+  {
+    "class": "C020",
+    "dimension": "region",
+    "order": 4,
+    "value": "nested container size"
+  },
+  {
+    "class": "C021",
+    "dimension": "input",
+    "order": 1,
+    "value": "pointer to a block of another type"
+  },
+  {
+    "class": "C021",
+    "dimension": "input",
+    "order": 2,
+    "value": "large count field"
+  },
+  {
+    "class": "C021",
+    "dimension": "input",
+    "order": 3,
+    "value": "count field below 0"
+  },
+  {
+    "class": "C021",
+    "dimension": "size",
+    "order": 1,
+    "value": "small file"
+  },
+  {
+    "class": "C021",
+    "dimension": "size",
+    "order": 2,
+    "value": "1 MiB"
+  },
+  {
+    "class": "C022",
+    "dimension": "flag",
+    "order": 1,
+    "value": "compressed bit"
+  },
+  {
+    "class": "C022",
+    "dimension": "flag",
+    "order": 2,
+    "value": "endianness"
+  },
+  {
+    "class": "C022",
+    "dimension": "flag",
+    "order": 3,
+    "value": "version"
+  },
+  {
+    "class": "C022",
+    "dimension": "flag",
+    "order": 4,
+    "value": "reserved bits"
+  },
+  {
+    "class": "C022",
+    "dimension": "path",
+    "order": 1,
+    "value": "unary"
+  },
+  {
+    "class": "C022",
+    "dimension": "path",
+    "order": 2,
+    "value": "server stream"
+  },
+  {
+    "class": "C022",
+    "dimension": "path",
+    "order": 3,
+    "value": "file"
+  },
+  {
+    "class": "C022",
+    "dimension": "path",
+    "order": 4,
+    "value": "stream"
+  },
+  {
+    "class": "C023",
+    "dimension": "fault",
+    "order": 1,
+    "value": "never sent"
+  },
+  {
+    "class": "C023",
+    "dimension": "fault",
+    "order": 2,
+    "value": "sent twice"
+  },
+  {
+    "class": "C023",
+    "dimension": "fault",
+    "order": 3,
+    "value": "sent after use"
+  },
+  {
+    "class": "C023",
+    "dimension": "state",
+    "order": 1,
+    "value": "dictionary"
+  },
+  {
+    "class": "C023",
+    "dimension": "state",
+    "order": 2,
+    "value": "schema"
+  },
+  {
+    "class": "C023",
+    "dimension": "state",
+    "order": 3,
+    "value": "stream setup"
+  },
+  {
+    "class": "C024",
+    "dimension": "path",
+    "order": 1,
+    "value": "hex vs bytes"
+  },
+  {
+    "class": "C024",
+    "dimension": "path",
+    "order": 2,
+    "value": "stream vs file"
+  },
+  {
+    "class": "C024",
+    "dimension": "path",
+    "order": 3,
+    "value": "two batches with a shared chunk"
+  },
+  {
+    "class": "C024",
+    "dimension": "value",
+    "order": 1,
+    "value": "typed array"
+  },
+  {
+    "class": "C024",
+    "dimension": "value",
+    "order": 2,
+    "value": "DataView"
+  },
+  {
+    "class": "C024",
+    "dimension": "value",
+    "order": 3,
+    "value": "ArrayBuffer"
+  },
+  {
+    "class": "C024",
+    "dimension": "value",
+    "order": 4,
+    "value": "regex flags"
+  },
+  {
+    "class": "C024",
+    "dimension": "value",
+    "order": 5,
+    "value": "self reference"
+  },
+  {
+    "class": "C024",
+    "dimension": "value",
+    "order": 6,
+    "value": "string default of bytes"
+  },
+  {
+    "class": "C024",
+    "dimension": "value",
+    "order": 7,
+    "value": "zigzag int"
+  },
+  {
+    "class": "C024",
+    "dimension": "value",
+    "order": 8,
+    "value": "key that looks like JSON"
+  },
+  {
+    "class": "C024",
+    "dimension": "value",
+    "order": 9,
+    "value": "query text with # or ,"
+  },
+  {
+    "class": "C025",
+    "dimension": "badValue",
+    "order": 1,
+    "value": "2^31"
+  },
+  {
+    "class": "C025",
+    "dimension": "badValue",
+    "order": 2,
+    "value": "2^53+1"
+  },
+  {
+    "class": "C025",
+    "dimension": "badValue",
+    "order": 3,
+    "value": "2^63"
+  },
+  {
+    "class": "C025",
+    "dimension": "badValue",
+    "order": 4,
+    "value": "2^64+5"
+  },
+  {
+    "class": "C025",
+    "dimension": "badValue",
+    "order": 5,
+    "value": "NaN date"
+  },
+  {
+    "class": "C025",
+    "dimension": "badValue",
+    "order": 6,
+    "value": "Infinity"
+  },
+  {
+    "class": "C025",
+    "dimension": "badValue",
+    "order": 7,
+    "value": "short hex"
+  },
+  {
+    "class": "C025",
+    "dimension": "badValue",
+    "order": 8,
+    "value": "256 in a one-byte length"
+  },
+  {
+    "class": "C025",
+    "dimension": "field",
+    "order": 1,
+    "value": "int32"
+  },
+  {
+    "class": "C025",
+    "dimension": "field",
+    "order": 2,
+    "value": "int64"
+  },
+  {
+    "class": "C025",
+    "dimension": "field",
+    "order": 3,
+    "value": "uint32"
+  },
+  {
+    "class": "C025",
+    "dimension": "field",
+    "order": 4,
+    "value": "datetime"
+  },
+  {
+    "class": "C025",
+    "dimension": "field",
+    "order": 5,
+    "value": "float32"
+  },
+  {
+    "class": "C025",
+    "dimension": "field",
+    "order": 6,
+    "value": "128-bit IV"
+  },
+  {
+    "class": "C025",
+    "dimension": "field",
+    "order": 7,
+    "value": "length byte"
+  },
+  {
+    "class": "C026",
+    "dimension": "badValue",
+    "order": 1,
+    "value": "2147483648"
+  },
+  {
+    "class": "C026",
+    "dimension": "badValue",
+    "order": 2,
+    "value": "12abc"
+  },
+  {
+    "class": "C026",
+    "dimension": "badValue",
+    "order": 3,
+    "value": "2^63"
+  },
+  {
+    "class": "C026",
+    "dimension": "badValue",
+    "order": 4,
+    "value": "2^32"
+  },
+  {
+    "class": "C026",
+    "dimension": "badValue",
+    "order": 5,
+    "value": "100"
+  },
+  {
+    "class": "C026",
+    "dimension": "badValue",
+    "order": 6,
+    "value": "zz"
+  },
+  {
+    "class": "C026",
+    "dimension": "badValue",
+    "order": 7,
+    "value": "!!!!"
+  },
+  {
+    "class": "C026",
+    "dimension": "wrapper",
+    "order": 1,
+    "value": "$numberInt"
+  },
+  {
+    "class": "C026",
+    "dimension": "wrapper",
+    "order": 2,
+    "value": "$numberLong"
+  },
+  {
+    "class": "C026",
+    "dimension": "wrapper",
+    "order": 3,
+    "value": "$timestamp"
+  },
+  {
+    "class": "C026",
+    "dimension": "wrapper",
+    "order": 4,
+    "value": "$binary subType"
+  },
+  {
+    "class": "C026",
+    "dimension": "wrapper",
+    "order": 5,
+    "value": "$binary base64"
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 1,
+    "value": "?"
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 2,
+    "value": "#"
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 3,
+    "value": "/"
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 4,
+    "value": ".."
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 5,
+    "value": ","
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 6,
+    "value": " "
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 7,
+    "value": "\""
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 8,
+    "value": "\\"
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 9,
+    "value": ":"
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 10,
+    "value": "\\n"
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 11,
+    "value": "\\r"
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 12,
+    "value": "the record separator of the format"
+  },
+  {
+    "class": "C027",
+    "dimension": "badValue",
+    "order": 13,
+    "value": "U+2028"
+  },
+  {
+    "class": "C027",
+    "dimension": "field",
+    "order": 1,
+    "value": "path segment"
+  },
+  {
+    "class": "C027",
+    "dimension": "field",
+    "order": 2,
+    "value": "query value"
+  },
+  {
+    "class": "C027",
+    "dimension": "field",
+    "order": 3,
+    "value": "list item"
+  },
+  {
+    "class": "C027",
+    "dimension": "field",
+    "order": 4,
+    "value": "header value"
+  },
+  {
+    "class": "C027",
+    "dimension": "field",
+    "order": 5,
+    "value": "metadata key"
+  },
+  {
+    "class": "C027",
+    "dimension": "field",
+    "order": 6,
+    "value": "packet separator"
+  },
+  {
+    "class": "C027",
+    "dimension": "field",
+    "order": 7,
+    "value": "JSON escape set"
+  },
+  {
+    "class": "C028",
+    "dimension": "slot",
+    "order": 1,
+    "value": "query value"
+  },
+  {
+    "class": "C028",
+    "dimension": "slot",
+    "order": 2,
+    "value": "rpc GET argument"
+  },
+  {
+    "class": "C028",
+    "dimension": "slot",
+    "order": 3,
+    "value": "password"
+  },
+  {
+    "class": "C028",
+    "dimension": "slot",
+    "order": 4,
+    "value": "invoke argument"
+  },
+  {
+    "class": "C028",
+    "dimension": "value",
+    "order": 1,
+    "value": "object"
+  },
+  {
+    "class": "C028",
+    "dimension": "value",
+    "order": 2,
+    "value": "array"
+  },
+  {
+    "class": "C028",
+    "dimension": "value",
+    "order": 3,
+    "value": "function"
+  },
+  {
+    "class": "C028",
+    "dimension": "value",
+    "order": 4,
+    "value": "stream subject"
+  },
+  {
+    "class": "C028",
+    "dimension": "value",
+    "order": 5,
+    "value": "two adjacent streams"
+  },
+  {
+    "class": "C029",
+    "dimension": "field",
+    "order": 1,
+    "value": "DUP flag on QoS 0"
+  },
+  {
+    "class": "C029",
+    "dimension": "field",
+    "order": 2,
+    "value": "Subscription Identifier in PUBLISH"
+  },
+  {
+    "class": "C029",
+    "dimension": "field",
+    "order": 3,
+    "value": "Topic Alias 0"
+  },
+  {
+    "class": "C029",
+    "dimension": "field",
+    "order": 4,
+    "value": "last argument read as offset"
+  },
+  {
+    "class": "C029",
+    "dimension": "source",
+    "order": 1,
+    "value": "publish options"
+  },
+  {
+    "class": "C029",
+    "dimension": "source",
+    "order": 2,
+    "value": "event arguments"
+  },
+  {
+    "class": "C030",
+    "dimension": "limit",
+    "order": 1,
+    "value": "maximum packet size"
+  },
+  {
+    "class": "C030",
+    "dimension": "limit",
+    "order": 2,
+    "value": "receive maximum"
+  },
+  {
+    "class": "C030",
+    "dimension": "limit",
+    "order": 3,
+    "value": "maximum QoS"
+  },
+  {
+    "class": "C030",
+    "dimension": "limit",
+    "order": 4,
+    "value": "retain available"
+  },
+  {
+    "class": "C030",
+    "dimension": "limit",
+    "order": 5,
+    "value": "max payload with base64"
+  },
+  {
+    "class": "C030",
+    "dimension": "limit",
+    "order": 6,
+    "value": "attachment count"
+  },
+  {
+    "class": "C030",
+    "dimension": "value",
+    "order": 1,
+    "value": "0"
+  },
+  {
+    "class": "C030",
+    "dimension": "value",
+    "order": 2,
+    "value": "1"
+  },
+  {
+    "class": "C030",
+    "dimension": "value",
+    "order": 3,
+    "value": "limit - 1"
+  },
+  {
+    "class": "C030",
+    "dimension": "value",
+    "order": 4,
+    "value": "limit"
+  },
+  {
+    "class": "C030",
+    "dimension": "value",
+    "order": 5,
+    "value": "limit + 1"
+  },
+  {
+    "class": "C031",
+    "dimension": "batch",
+    "order": 1,
+    "value": "2"
+  },
+  {
+    "class": "C031",
+    "dimension": "batch",
+    "order": 2,
+    "value": "3"
+  },
+  {
+    "class": "C031",
+    "dimension": "batch",
+    "order": 3,
+    "value": "10"
+  },
+  {
+    "class": "C031",
+    "dimension": "fault",
+    "order": 1,
+    "value": "reply with id null"
+  },
+  {
+    "class": "C031",
+    "dimension": "fault",
+    "order": 2,
+    "value": "reply missing"
+  },
+  {
+    "class": "C031",
+    "dimension": "fault",
+    "order": 3,
+    "value": "null entry in an array reply"
+  },
+  {
+    "class": "C031",
+    "dimension": "fault",
+    "order": 4,
+    "value": "id reused after completion"
+  },
+  {
+    "class": "C031",
+    "dimension": "fault",
+    "order": 5,
+    "value": "message in the handshake frame"
+  },
+  {
+    "class": "C032",
+    "dimension": "call",
+    "order": 1,
+    "value": "subscribe"
+  },
+  {
+    "class": "C032",
+    "dimension": "call",
+    "order": 2,
+    "value": "unsubscribe"
+  },
+  {
+    "class": "C032",
+    "dimension": "call",
+    "order": 3,
+    "value": "emit with retries"
+  },
+  {
+    "class": "C032",
+    "dimension": "call",
+    "order": 4,
+    "value": "multiplex subMsg"
+  },
+  {
+    "class": "C032",
+    "dimension": "reply",
+    "order": 1,
+    "value": "one failure code among grants"
+  },
+  {
+    "class": "C032",
+    "dimension": "reply",
+    "order": 2,
+    "value": "failure code >= 0x80"
+  },
+  {
+    "class": "C032",
+    "dimension": "reply",
+    "order": 3,
+    "value": "positive ack"
+  },
+  {
+    "class": "C033",
+    "dimension": "body",
+    "order": 1,
+    "value": "empty"
+  },
+  {
+    "class": "C033",
+    "dimension": "body",
+    "order": 2,
+    "value": "null"
+  },
+  {
+    "class": "C033",
+    "dimension": "body",
+    "order": 3,
+    "value": "false"
+  },
+  {
+    "class": "C033",
+    "dimension": "body",
+    "order": 4,
+    "value": "0"
+  },
+  {
+    "class": "C033",
+    "dimension": "body",
+    "order": 5,
+    "value": "\"\""
+  },
+  {
+    "class": "C033",
+    "dimension": "status",
+    "order": 1,
+    "value": "200 with empty body"
+  },
+  {
+    "class": "C033",
+    "dimension": "status",
+    "order": 2,
+    "value": "404 empty (HEAD)"
+  },
+  {
+    "class": "C033",
+    "dimension": "status",
+    "order": 3,
+    "value": "500"
+  },
+  {
+    "class": "C033",
+    "dimension": "status",
+    "order": 4,
+    "value": "grpc-status 13 with details code 0"
+  },
+  {
+    "class": "C034",
+    "dimension": "body",
+    "order": 1,
+    "value": "spec JSON"
+  },
+  {
+    "class": "C034",
+    "dimension": "body",
+    "order": 2,
+    "value": "not JSON"
+  },
+  {
+    "class": "C034",
+    "dimension": "body",
+    "order": 3,
+    "value": "HTML page"
+  },
+  {
+    "class": "C034",
+    "dimension": "body",
+    "order": 4,
+    "value": "empty"
+  },
+  {
+    "class": "C034",
+    "dimension": "status",
+    "order": 1,
+    "value": "HTTP 400"
+  },
+  {
+    "class": "C034",
+    "dimension": "status",
+    "order": 2,
+    "value": "HTTP 422"
+  },
+  {
+    "class": "C034",
+    "dimension": "status",
+    "order": 3,
+    "value": "HTTP 503"
+  },
+  {
+    "class": "C034",
+    "dimension": "status",
+    "order": 4,
+    "value": "null code"
+  },
+  {
+    "class": "C034",
+    "dimension": "status",
+    "order": 5,
+    "value": "code below 4000"
+  },
+  {
+    "class": "C034",
+    "dimension": "status",
+    "order": 6,
+    "value": "unknown code 99"
+  },
+  {
+    "class": "C034",
+    "dimension": "status",
+    "order": 7,
+    "value": "batch with errors"
+  },
+  {
+    "class": "C035",
+    "dimension": "input",
+    "order": 1,
+    "value": "lone high surrogate"
+  },
+  {
+    "class": "C035",
+    "dimension": "input",
+    "order": 2,
+    "value": "lone low surrogate"
+  },
+  {
+    "class": "C035",
+    "dimension": "input",
+    "order": 3,
+    "value": "reversed pair"
+  },
+  {
+    "class": "C035",
+    "dimension": "length",
+    "order": 1,
+    "value": "1"
+  },
+  {
+    "class": "C035",
+    "dimension": "length",
+    "order": 2,
+    "value": "fast-path threshold - 1"
+  },
+  {
+    "class": "C035",
+    "dimension": "length",
+    "order": 3,
+    "value": "threshold"
+  },
+  {
+    "class": "C035",
+    "dimension": "length",
+    "order": 4,
+    "value": "threshold + 1"
+  },
+  {
+    "class": "C035",
+    "dimension": "length",
+    "order": 5,
+    "value": "200"
+  },
+  {
+    "class": "C036",
+    "dimension": "input",
+    "order": 1,
+    "value": "overlong form"
+  },
+  {
+    "class": "C036",
+    "dimension": "input",
+    "order": 2,
+    "value": "encoded surrogate"
+  },
+  {
+    "class": "C036",
+    "dimension": "input",
+    "order": 3,
+    "value": "truncated sequence"
+  },
+  {
+    "class": "C036",
+    "dimension": "input",
+    "order": 4,
+    "value": "truncated then valid bytes"
+  },
+  {
+    "class": "C036",
+    "dimension": "input",
+    "order": 5,
+    "value": "leading U+FEFF"
+  },
+  {
+    "class": "C036",
+    "dimension": "input",
+    "order": 6,
+    "value": "non-ASCII in a handshake"
+  },
+  {
+    "class": "C036",
+    "dimension": "length",
+    "order": 1,
+    "value": "short"
+  },
+  {
+    "class": "C036",
+    "dimension": "length",
+    "order": 2,
+    "value": "long"
+  },
+  {
+    "class": "C036",
+    "dimension": "place",
+    "order": 1,
+    "value": "string value"
+  },
+  {
+    "class": "C036",
+    "dimension": "place",
+    "order": 2,
+    "value": "map key or field name"
+  },
+  {
+    "class": "C036",
+    "dimension": "place",
+    "order": 3,
+    "value": "handshake text"
+  },
+  {
+    "class": "C037",
+    "dimension": "escape",
+    "order": 1,
+    "value": "\\uXXXX"
+  },
+  {
+    "class": "C037",
+    "dimension": "escape",
+    "order": 2,
+    "value": "\\UXXXXXXXX"
+  },
+  {
+    "class": "C037",
+    "dimension": "escape",
+    "order": 3,
+    "value": "\\xFF"
+  },
+  {
+    "class": "C037",
+    "dimension": "escape",
+    "order": 4,
+    "value": "\\377"
+  },
+  {
+    "class": "C037",
+    "dimension": "escape",
+    "order": 5,
+    "value": "&#x1F600;"
+  },
+  {
+    "class": "C037",
+    "dimension": "escape",
+    "order": 6,
+    "value": "&#10;"
+  },
+  {
+    "class": "C037",
+    "dimension": "escape",
+    "order": 7,
+    "value": "&nbsp;"
+  },
+  {
+    "class": "C037",
+    "dimension": "place",
+    "order": 1,
+    "value": "string literal"
+  },
+  {
+    "class": "C037",
+    "dimension": "place",
+    "order": 2,
+    "value": "bytes default"
+  },
+  {
+    "class": "C037",
+    "dimension": "place",
+    "order": 3,
+    "value": "text value"
+  },
+  {
+    "class": "C038",
+    "dimension": "pair",
+    "order": 1,
+    "value": "a key and a longer key with the same prefix"
+  },
+  {
+    "class": "C038",
+    "dimension": "pair",
+    "order": 2,
+    "value": "names that differ only in invalid UTF-8 bytes"
+  },
+  {
+    "class": "C038",
+    "dimension": "pair",
+    "order": 3,
+    "value": "hash bytes >= 0x80"
+  },
+  {
+    "class": "C038",
+    "dimension": "store",
+    "order": 1,
+    "value": "url storage"
+  },
+  {
+    "class": "C038",
+    "dimension": "store",
+    "order": 2,
+    "value": "cache by hash"
+  },
+  {
+    "class": "C038",
+    "dimension": "store",
+    "order": 3,
+    "value": "decoded name map"
+  },
+  {
+    "class": "C039",
+    "dimension": "field",
+    "order": 1,
+    "value": "content-type"
+  },
+  {
+    "class": "C039",
+    "dimension": "field",
+    "order": 2,
+    "value": "number literal"
+  },
+  {
+    "class": "C039",
+    "dimension": "field",
+    "order": 3,
+    "value": "Retry-After"
+  },
+  {
+    "class": "C039",
+    "dimension": "form",
+    "order": 1,
+    "value": "Application/GraphQL-Response+JSON"
+  },
+  {
+    "class": "C039",
+    "dimension": "form",
+    "order": 2,
+    "value": "0X1F"
+  },
+  {
+    "class": "C039",
+    "dimension": "form",
+    "order": 3,
+    "value": "HTTP-date"
+  },
+  {
+    "class": "C040",
+    "dimension": "client",
+    "order": 1,
+    "value": "default"
+  },
+  {
+    "class": "C040",
+    "dimension": "client",
+    "order": 2,
+    "value": "caller headers given"
+  },
+  {
+    "class": "C040",
+    "dimension": "header",
+    "order": 1,
+    "value": "Accept"
+  },
+  {
+    "class": "C041",
+    "dimension": "headers",
+    "order": 1,
+    "value": "plain object"
+  },
+  {
+    "class": "C041",
+    "dimension": "headers",
+    "order": 2,
+    "value": "Headers instance"
+  },
+  {
+    "class": "C041",
+    "dimension": "headers",
+    "order": 3,
+    "value": "array"
+  },
+  {
+    "class": "C041",
+    "dimension": "headers",
+    "order": 4,
+    "value": "function"
+  },
+  {
+    "class": "C041",
+    "dimension": "name",
+    "order": 1,
+    "value": "Authorization vs authorization"
+  },
+  {
+    "class": "C041",
+    "dimension": "name",
+    "order": 2,
+    "value": "Prefer"
+  },
+  {
+    "class": "C042",
+    "dimension": "form",
+    "order": 1,
+    "value": "positional args"
+  },
+  {
+    "class": "C042",
+    "dimension": "form",
+    "order": 2,
+    "value": "options object"
+  },
+  {
+    "class": "C042",
+    "dimension": "form",
+    "order": 3,
+    "value": "Request input"
+  },
+  {
+    "class": "C042",
+    "dimension": "form",
+    "order": 4,
+    "value": "batch"
+  },
+  {
+    "class": "C042",
+    "dimension": "form",
+    "order": 5,
+    "value": "updateProperties"
+  },
+  {
+    "class": "C042",
+    "dimension": "form",
+    "order": 6,
+    "value": "React hook enable"
+  },
+  {
+    "class": "C042",
+    "dimension": "option",
+    "order": 1,
+    "value": "method"
+  },
+  {
+    "class": "C042",
+    "dimension": "option",
+    "order": 2,
+    "value": "signal"
+  },
+  {
+    "class": "C042",
+    "dimension": "option",
+    "order": 3,
+    "value": "redirect"
+  },
+  {
+    "class": "C042",
+    "dimension": "option",
+    "order": 4,
+    "value": "timeout"
+  },
+  {
+    "class": "C042",
+    "dimension": "option",
+    "order": 5,
+    "value": "path"
+  },
+  {
+    "class": "C042",
+    "dimension": "option",
+    "order": 6,
+    "value": "id"
+  },
+  {
+    "class": "C042",
+    "dimension": "option",
+    "order": 7,
+    "value": "variables"
+  },
+  {
+    "class": "C043",
+    "dimension": "slot",
+    "order": 1,
+    "value": "option"
+  },
+  {
+    "class": "C043",
+    "dimension": "slot",
+    "order": 2,
+    "value": "event data"
+  },
+  {
+    "class": "C043",
+    "dimension": "slot",
+    "order": 3,
+    "value": "result"
+  },
+  {
+    "class": "C043",
+    "dimension": "slot",
+    "order": 4,
+    "value": "serializer"
+  },
+  {
+    "class": "C043",
+    "dimension": "value",
+    "order": 1,
+    "value": "undefined"
+  },
+  {
+    "class": "C043",
+    "dimension": "value",
+    "order": 2,
+    "value": "null"
+  },
+  {
+    "class": "C043",
+    "dimension": "value",
+    "order": 3,
+    "value": "0"
+  },
+  {
+    "class": "C043",
+    "dimension": "value",
+    "order": 4,
+    "value": "false"
+  },
+  {
+    "class": "C043",
+    "dimension": "value",
+    "order": 5,
+    "value": "''"
+  },
+  {
+    "class": "C043",
+    "dimension": "value",
+    "order": 6,
+    "value": "NaN"
+  },
+  {
+    "class": "C044",
+    "dimension": "badValue",
+    "order": 1,
+    "value": "-1"
+  },
+  {
+    "class": "C044",
+    "dimension": "badValue",
+    "order": 2,
+    "value": "0"
+  },
+  {
+    "class": "C044",
+    "dimension": "badValue",
+    "order": 3,
+    "value": "NaN"
+  },
+  {
+    "class": "C044",
+    "dimension": "badValue",
+    "order": 4,
+    "value": "1.5"
+  },
+  {
+    "class": "C044",
+    "dimension": "badValue",
+    "order": 5,
+    "value": "2^31"
+  },
+  {
+    "class": "C044",
+    "dimension": "badValue",
+    "order": 6,
+    "value": "2^31-1"
+  },
+  {
+    "class": "C044",
+    "dimension": "badValue",
+    "order": 7,
+    "value": "1e10"
+  },
+  {
+    "class": "C044",
+    "dimension": "badValue",
+    "order": 8,
+    "value": "Infinity"
+  },
+  {
+    "class": "C044",
+    "dimension": "field",
+    "order": 1,
+    "value": "ping interval + timeout"
+  },
+  {
+    "class": "C044",
+    "dimension": "field",
+    "order": 2,
+    "value": "heartbeat interval from the peer"
+  },
+  {
+    "class": "C044",
+    "dimension": "field",
+    "order": 3,
+    "value": "backoff attempt"
+  },
+  {
+    "class": "C044",
+    "dimension": "field",
+    "order": 4,
+    "value": "latency score"
+  },
+  {
+    "class": "C044",
+    "dimension": "field",
+    "order": 5,
+    "value": "timeoutMs"
+  },
+  {
+    "class": "C044",
+    "dimension": "source",
+    "order": 1,
+    "value": "peer"
+  },
+  {
+    "class": "C044",
+    "dimension": "source",
+    "order": 2,
+    "value": "app"
+  },
+  {
+    "class": "C045",
+    "dimension": "clients",
+    "order": 1,
+    "value": "1"
+  },
+  {
+    "class": "C045",
+    "dimension": "clients",
+    "order": 2,
+    "value": "100"
+  },
+  {
+    "class": "C045",
+    "dimension": "input",
+    "order": 1,
+    "value": "no jitter option"
+  },
+  {
+    "class": "C045",
+    "dimension": "input",
+    "order": 2,
+    "value": "abort during the delay"
+  },
+  {
+    "class": "C045",
+    "dimension": "input",
+    "order": 3,
+    "value": "Retry-After seconds"
+  },
+  {
+    "class": "C045",
+    "dimension": "input",
+    "order": 4,
+    "value": "Retry-After HTTP-date"
+  },
+  {
+    "class": "C045",
+    "dimension": "input",
+    "order": 5,
+    "value": "huge Retry-After"
+  },
+  {
+    "class": "C046",
+    "dimension": "control",
+    "order": 1,
+    "value": "timeout option"
+  },
+  {
+    "class": "C046",
+    "dimension": "control",
+    "order": 2,
+    "value": "abort signal"
+  },
+  {
+    "class": "C046",
+    "dimension": "control",
+    "order": 3,
+    "value": "stop()"
+  },
+  {
+    "class": "C046",
+    "dimension": "stall",
+    "order": 1,
+    "value": "after headers"
+  },
+  {
+    "class": "C046",
+    "dimension": "stall",
+    "order": 2,
+    "value": "mid-body"
+  },
+  {
+    "class": "C046",
+    "dimension": "stall",
+    "order": 3,
+    "value": "cut mid-body"
+  },
+  {
+    "class": "C046",
+    "dimension": "transport",
+    "order": 1,
+    "value": "fetch"
+  },
+  {
+    "class": "C046",
+    "dimension": "transport",
+    "order": 2,
+    "value": "node xhr"
+  },
+  {
+    "class": "C046",
+    "dimension": "transport",
+    "order": 3,
+    "value": "browser xhr"
+  },
+  {
+    "class": "C046",
+    "dimension": "transport",
+    "order": 4,
+    "value": "streaming"
+  },
+  {
+    "class": "C047",
+    "dimension": "data",
+    "order": 1,
+    "value": "binary payload"
+  },
+  {
+    "class": "C047",
+    "dimension": "data",
+    "order": 2,
+    "value": "topic alias"
+  },
+  {
+    "class": "C047",
+    "dimension": "data",
+    "order": 3,
+    "value": "custom serializer"
+  },
+  {
+    "class": "C047",
+    "dimension": "data",
+    "order": 4,
+    "value": "trailers-only reply"
+  },
+  {
+    "class": "C047",
+    "dimension": "pair",
+    "order": 1,
+    "value": "websocket vs http"
+  },
+  {
+    "class": "C047",
+    "dimension": "pair",
+    "order": 2,
+    "value": "QoS 0/1 vs QoS 2"
+  },
+  {
+    "class": "C047",
+    "dimension": "pair",
+    "order": 3,
+    "value": "websocket vs long poll fallback"
+  },
+  {
+    "class": "C047",
+    "dimension": "pair",
+    "order": 4,
+    "value": "browser transport vs universal transport of one library"
+  },
+  {
+    "class": "C048",
+    "dimension": "derived",
+    "order": 1,
+    "value": "scheme"
+  },
+  {
+    "class": "C048",
+    "dimension": "derived",
+    "order": 2,
+    "value": "query"
+  },
+  {
+    "class": "C048",
+    "dimension": "derived",
+    "order": 3,
+    "value": "SNI"
+  },
+  {
+    "class": "C048",
+    "dimension": "derived",
+    "order": 4,
+    "value": "service"
+  },
+  {
+    "class": "C048",
+    "dimension": "derived",
+    "order": 5,
+    "value": "region"
+  },
+  {
+    "class": "C048",
+    "dimension": "derived",
+    "order": 6,
+    "value": "username"
+  },
+  {
+    "class": "C048",
+    "dimension": "url",
+    "order": 1,
+    "value": "no scheme"
+  },
+  {
+    "class": "C048",
+    "dimension": "url",
+    "order": 2,
+    "value": "second ? in query"
+  },
+  {
+    "class": "C048",
+    "dimension": "url",
+    "order": 3,
+    "value": "failover server list"
+  },
+  {
+    "class": "C048",
+    "dimension": "url",
+    "order": 4,
+    "value": "bucket on a dash host"
+  },
+  {
+    "class": "C048",
+    "dimension": "url",
+    "order": 5,
+    "value": "access point host"
+  },
+  {
+    "class": "C048",
+    "dimension": "url",
+    "order": 6,
+    "value": "user info with an encoded delimiter"
+  },
+  {
+    "class": "C049",
+    "dimension": "credential",
+    "order": 1,
+    "value": "access token"
+  },
+  {
+    "class": "C049",
+    "dimension": "credential",
+    "order": 2,
+    "value": "same-origin cookie"
+  },
+  {
+    "class": "C049",
+    "dimension": "path",
+    "order": 1,
+    "value": "first join"
+  },
+  {
+    "class": "C049",
+    "dimension": "path",
+    "order": 2,
+    "value": "after reconnect"
+  },
+  {
+    "class": "C049",
+    "dimension": "path",
+    "order": 3,
+    "value": "fetch transport"
+  },
+  {
+    "class": "C050",
+    "dimension": "host",
+    "order": 1,
+    "value": "localhost"
+  },
+  {
+    "class": "C050",
+    "dimension": "host",
+    "order": 2,
+    "value": "*.localhost"
+  },
+  {
+    "class": "C050",
+    "dimension": "host",
+    "order": 3,
+    "value": "loopback IPv4"
+  },
+  {
+    "class": "C050",
+    "dimension": "host",
+    "order": 4,
+    "value": "loopback IPv6"
+  },
+  {
+    "class": "C050",
+    "dimension": "host",
+    "order": 5,
+    "value": "hosts next to a loopback or private range"
+  },
+  {
+    "class": "C050",
+    "dimension": "runtime",
+    "order": 1,
+    "value": "browser"
+  },
+  {
+    "class": "C050",
+    "dimension": "runtime",
+    "order": 2,
+    "value": "node"
+  },
+  {
+    "class": "C050",
+    "dimension": "runtime",
+    "order": 3,
+    "value": "react-native"
+  },
+  {
+    "class": "C050",
+    "dimension": "scheme",
+    "order": 1,
+    "value": "each secure scheme alias that the client accepts"
+  },
+  {
+    "class": "C050",
+    "dimension": "scheme",
+    "order": 2,
+    "value": "wss://"
+  },
+  {
+    "class": "C050",
+    "dimension": "scheme",
+    "order": 3,
+    "value": "no scheme"
+  },
+  {
+    "class": "C051",
+    "dimension": "global",
+    "order": 1,
+    "value": "WebSocket"
+  },
+  {
+    "class": "C051",
+    "dimension": "global",
+    "order": 2,
+    "value": "crypto"
+  },
+  {
+    "class": "C051",
+    "dimension": "global",
+    "order": 3,
+    "value": "Buffer"
+  },
+  {
+    "class": "C051",
+    "dimension": "global",
+    "order": 4,
+    "value": "TextEncoder"
+  },
+  {
+    "class": "C051",
+    "dimension": "global",
+    "order": 5,
+    "value": "fetch"
+  },
+  {
+    "class": "C051",
+    "dimension": "global",
+    "order": 6,
+    "value": "EventSource"
+  },
+  {
+    "class": "C052",
+    "dimension": "input",
+    "order": 1,
+    "value": "state object"
+  },
+  {
+    "class": "C052",
+    "dimension": "input",
+    "order": 2,
+    "value": "options array of objects"
+  },
+  {
+    "class": "C053",
+    "dimension": "contract",
+    "order": 1,
+    "value": "return value"
+  },
+  {
+    "class": "C053",
+    "dimension": "contract",
+    "order": 2,
+    "value": "offset"
+  },
+  {
+    "class": "C053",
+    "dimension": "contract",
+    "order": 3,
+    "value": "bytes count"
+  },
+  {
+    "class": "C053",
+    "dimension": "contract",
+    "order": 4,
+    "value": "compression pointer base"
+  },
+  {
+    "class": "C053",
+    "dimension": "offset",
+    "order": 1,
+    "value": "0"
+  },
+  {
+    "class": "C053",
+    "dimension": "offset",
+    "order": 2,
+    "value": "1"
+  },
+  {
+    "class": "C053",
+    "dimension": "offset",
+    "order": 3,
+    "value": "2"
+  },
+  {
+    "class": "C053",
+    "dimension": "offset",
+    "order": 4,
+    "value": "message after another"
+  },
+  {
+    "class": "C054",
+    "dimension": "fault",
+    "order": 1,
+    "value": "option typed but unused"
+  },
+  {
+    "class": "C054",
+    "dimension": "fault",
+    "order": 2,
+    "value": "documented value refused"
+  },
+  {
+    "class": "C054",
+    "dimension": "fault",
+    "order": 3,
+    "value": "needs the DOM lib"
+  },
+  {
+    "class": "C054",
+    "dimension": "fault",
+    "order": 4,
+    "value": "wrong event type"
+  },
+  {
+    "class": "C054",
+    "dimension": "fault",
+    "order": 5,
+    "value": "required field with a default"
+  },
+  {
+    "class": "C054",
+    "dimension": "fault",
+    "order": 6,
+    "value": "value never set"
+  },
+  {
+    "class": "C054",
+    "dimension": "fault",
+    "order": 7,
+    "value": "plain object for a class"
+  },
+  {
+    "class": "C055",
+    "dimension": "position",
+    "order": 1,
+    "value": "last test of a file"
+  },
+  {
+    "class": "C055",
+    "dimension": "position",
+    "order": 2,
+    "value": "only test of a file"
+  },
+  {
+    "class": "C055",
+    "dimension": "run",
+    "order": 1,
+    "value": "one file"
+  },
+  {
+    "class": "C055",
+    "dimension": "run",
+    "order": 2,
+    "value": "all files"
+  },
+  {
+    "class": "C055",
+    "dimension": "run",
+    "order": 3,
+    "value": "files in parallel"
+  },
+  {
+    "class": "C056",
+    "dimension": "entry",
+    "order": 1,
+    "value": "main"
+  },
+  {
+    "class": "C056",
+    "dimension": "entry",
+    "order": 2,
+    "value": "module"
+  },
+  {
+    "class": "C056",
+    "dimension": "entry",
+    "order": 3,
+    "value": "browser"
+  },
+  {
+    "class": "C056",
+    "dimension": "entry",
+    "order": 4,
+    "value": "each export"
+  },
+  {
+    "class": "C056",
+    "dimension": "manager",
+    "order": 1,
+    "value": "pnpm strict"
+  },
+  {
+    "class": "C056",
+    "dimension": "manager",
+    "order": 2,
+    "value": "npm"
+  },
+  {
+    "class": "C056",
+    "dimension": "manager",
+    "order": 3,
+    "value": "yarn plug and play"
+  }
+]

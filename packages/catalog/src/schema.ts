@@ -265,6 +265,80 @@ export interface PackageTransport {
   readonly source: string;
 }
 
+/**
+ * One wire format of the rig. An adapter of the rig turns one combination of the dimensions of a class into the bytes
+ * or the calls of this format.
+ */
+export interface Format {
+  readonly id: string;
+  readonly title: string;
+  readonly what: string;
+}
+
+/** The values of the field `security` of a class. A run of a security class gives its result only in private. */
+export const SECURITY_FLAGS = ["yes", "no"] as const;
+export type SecurityFlag = (typeof SECURITY_FLAGS)[number];
+
+/**
+ * One bug class. `rule` is the rule that each client must obey. `oracle` tells how a run decides that a client breaks
+ * the rule. A probe of the class examines each combination of its dimensions in each package of its formats.
+ */
+export interface BugClass {
+  readonly id: string;
+  readonly title: string;
+  readonly rule: string;
+  readonly oracle: string;
+  readonly security: SecurityFlag;
+  readonly cwe?: string;
+  readonly note?: string;
+}
+
+/** One wire format of a class. */
+export interface ClassFormat {
+  readonly class: string;
+  readonly format: string;
+}
+
+/** One value of one dimension of a class. `order` gives the order of the values in the dimension. */
+export interface ClassDimension {
+  readonly class: string;
+  readonly dimension: string;
+  readonly order: number;
+  readonly value: string;
+}
+
+/** The roles of a finding in a class. Each finding has one primary class, and it can have secondary classes. */
+export const CLASS_ROLES = ["primary", "secondary"] as const;
+export type ClassRole = (typeof CLASS_ROLES)[number];
+
+/** One class of one finding. */
+export interface FindingClass {
+  readonly finding: string;
+  readonly class: string;
+  readonly role: ClassRole;
+}
+
+/**
+ * The states of the probe of a class. A written probe is a file of the rig. A proven probe finds each known instance
+ * of its class again on the bad version, and it passes on the fixed version.
+ */
+export const PROBE_STATES = ["planned", "written", "proven"] as const;
+export type ProbeState = (typeof PROBE_STATES)[number];
+
+/** The probe of one class. `file` is the path of the probe in the repository, from its root. */
+export interface Probe {
+  readonly class: string;
+  readonly state: ProbeState;
+  readonly file?: string;
+  readonly note?: string;
+}
+
+/**
+ * The first day of the gate of the rig. A finding of this day or later is valid only when the probe of its primary
+ * class is proven.
+ */
+export const RIG_GATE_DAY = "2026-11-27";
+
 /** One change of the state of a finding upstream, at a UTC time. The latest row gives the current state. */
 export interface UpstreamRow {
   readonly finding: string;
@@ -295,6 +369,12 @@ export interface Catalog {
   readonly findings: readonly Finding[];
   readonly upstream: readonly UpstreamRow[];
   readonly packageTransports: readonly PackageTransport[];
+  readonly formats: readonly Format[];
+  readonly classes: readonly BugClass[];
+  readonly classFormats: readonly ClassFormat[];
+  readonly classDimensions: readonly ClassDimension[];
+  readonly findingClasses: readonly FindingClass[];
+  readonly probes: readonly Probe[];
 }
 
 /** The name of each table, and the file that holds it. */
@@ -318,9 +398,15 @@ export const TABLE_FILES: Readonly<Record<keyof Catalog, string>> = {
   findings: "findings.json",
   upstream: "upstream.json",
   packageTransports: "package-transports.json",
+  formats: "formats.json",
+  classes: "classes.json",
+  classFormats: "class-formats.json",
+  classDimensions: "class-dimensions.json",
+  findingClasses: "finding-classes.json",
+  probes: "probes.json",
 };
 
-type FieldKind = "text" | "url" | "day" | "time" | "count" | "order" | readonly string[];
+type FieldKind = "text" | "value" | "url" | "day" | "time" | "count" | "order" | readonly string[];
 
 interface TableSpec {
   readonly key: readonly string[];
@@ -375,6 +461,16 @@ export const TABLE_SPECS: Readonly<Record<keyof Catalog, TableSpec>> = {
     key: ["package", "transport", "file", "global", "use"],
     required: { package: "text", version: "text", transport: "text", global: "text", use: GLOBAL_USES, file: "text", line: "order", count: "order", source: "text" },
   },
+  formats: { key: ["id"], required: { id: "text", title: "text", what: "text" } },
+  classes: {
+    key: ["id"],
+    required: { id: "text", title: "text", rule: "text", oracle: "text", security: SECURITY_FLAGS },
+    optional: { cwe: "text", note: "text" },
+  },
+  classFormats: { key: ["class", "format"], required: { class: "text", format: "text" } },
+  classDimensions: { key: ["class", "dimension", "order"], required: { class: "text", dimension: "text", order: "order", value: "value" } },
+  findingClasses: { key: ["finding", "class"], required: { finding: "text", class: "text", role: CLASS_ROLES } },
+  probes: { key: ["class"], required: { class: "text", state: PROBE_STATES }, optional: { file: "text", note: "text" } },
 };
 
 /** The upstream states that need the URL of a public issue, pull request or release. */
@@ -384,6 +480,8 @@ const PUBLIC_STATES: ReadonlySet<UpstreamState> = new Set(["issue-open", "pr-ope
 const PRIVATE_STATES: ReadonlySet<UpstreamState> = new Set(["held-cla", "held-ai-policy", "reported-privately"]);
 
 const FINDING_ID = /^F\d{4,}$/;
+const CLASS_ID = /^C\d{3,}$/;
+const CWE_ID = /^CWE-\d+$/;
 
 const NPM_NAME = /^(?:@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -394,6 +492,8 @@ function fieldProblem(value: unknown, kind: FieldKind): string | null {
   switch (kind) {
     case "text":
       return typeof value === "string" && value.trim() !== "" ? null : "is not a text";
+    case "value":
+      return typeof value === "string" && value !== "" ? null : "is not a value";
     case "url":
       return typeof value === "string" && value.startsWith("https://") ? null : "is not an https URL";
     case "day":
@@ -533,7 +633,7 @@ function keyProblems(c: Catalog): string[] {
     need(sources, t.source, what);
     if (globals.get(t.global) !== t.transport) problems.push(`${what}: transportGlobals does not give the global ${t.global} to the transport ${t.transport}.`);
   }
-  return problems.concat(ledgerProblems(c, { packages, protocols }));
+  return problems.concat(ledgerProblems(c, { packages, protocols }), classProblems(c));
 }
 
 /** This function checks the ledger: the suites, the runs, the findings and their states upstream. */
@@ -581,6 +681,64 @@ function ledgerProblems(c: Catalog, known: { readonly packages: Set<string>; rea
     if (PRIVATE_STATES.has(u.state) && u.url !== undefined) problems.push(`upstream ${u.finding}: the state ${u.state} is private, so it has no URL.`);
     if (f.kind === "security" && u.state === "issue-open") problems.push(`upstream ${u.finding}: a security finding never has a public issue.`);
     if (f.kind !== "security" && u.state === "reported-privately") problems.push(`upstream ${u.finding}: only a security finding goes through the private channel.`);
+  }
+  return problems;
+}
+
+/**
+ * This function checks the bug classes of the rig. Each finding has one primary class. Each class has a format, a
+ * dimension and a probe. Each finding from `RIG_GATE_DAY` has a proven probe of its primary class.
+ */
+function classProblems(c: Catalog): string[] {
+  const problems: string[] = [];
+  const need = (set: ReadonlySet<string>, value: string, what: string): void => {
+    if (!set.has(value)) problems.push(`${what} names ${value}, and that row is not in the catalog.`);
+  };
+  const formats = new Set(c.formats.map((f) => f.id));
+  const classes = new Set(c.classes.map((k) => k.id));
+  const findings = new Set(c.findings.map((f) => f.id));
+  if (formats.size !== c.formats.length) problems.push("formats repeats an id.");
+  if (classes.size !== c.classes.length) problems.push("classes repeats an id.");
+  for (const k of c.classes) {
+    if (!CLASS_ID.test(k.id)) problems.push(`classes ${k.id} is not an id of the form C001.`);
+    if (k.cwe !== undefined && !CWE_ID.test(k.cwe)) problems.push(`classes ${k.id}: ${k.cwe} is not an id of the form CWE-20.`);
+  }
+  const withFormat = new Set<string>();
+  for (const f of c.classFormats) {
+    need(classes, f.class, `classFormats ${f.class}`);
+    need(formats, f.format, `classFormats ${f.class}`);
+    withFormat.add(f.class);
+  }
+  const withDimension = new Set<string>();
+  for (const d of c.classDimensions) {
+    need(classes, d.class, `classDimensions ${d.class}`);
+    withDimension.add(d.class);
+  }
+  const primary = new Map<string, string>();
+  for (const f of c.findingClasses) {
+    need(findings, f.finding, `findingClasses ${f.finding}`);
+    need(classes, f.class, `findingClasses ${f.finding}`);
+    if (f.role !== "primary") continue;
+    if (primary.has(f.finding)) problems.push(`findingClasses ${f.finding} has more than one primary class.`);
+    primary.set(f.finding, f.class);
+  }
+  const probes = new Map(c.probes.map((p) => [p.class, p]));
+  for (const p of c.probes) {
+    need(classes, p.class, `probes ${p.class}`);
+    if ((p.state === "planned") !== (p.file === undefined)) problems.push(`probes ${p.class}: a written or proven probe names its file, and only such a probe.`);
+  }
+  for (const k of c.classes) {
+    if (!withFormat.has(k.id)) problems.push(`classes ${k.id} has no format.`);
+    if (!withDimension.has(k.id)) problems.push(`classes ${k.id} has no dimension.`);
+    if (!probes.has(k.id)) problems.push(`classes ${k.id} has no probe.`);
+  }
+  for (const f of c.findings) {
+    const k = primary.get(f.id);
+    if (k === undefined) {
+      problems.push(`findings ${f.id} has no primary class.`);
+      continue;
+    }
+    if (f.found >= RIG_GATE_DAY && probes.get(k)?.state !== "proven") problems.push(`findings ${f.id}: the probe of its class ${k} is not proven.`);
   }
   return problems;
 }
