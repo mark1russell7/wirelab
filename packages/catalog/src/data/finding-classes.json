@@ -1273,5 +1273,35 @@
     "finding": "F0227",
     "class": "C017",
     "role": "primary"
+  },
+  {
+    "finding": "F0228",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0229",
+    "class": "C003",
+    "role": "primary"
+  },
+  {
+    "finding": "F0230",
+    "class": "C033",
+    "role": "primary"
+  },
+  {
+    "finding": "F0231",
+    "class": "C034",
+    "role": "primary"
+  },
+  {
+    "finding": "F0232",
+    "class": "C034",
+    "role": "primary"
+  },
+  {
+    "finding": "F0233",
+    "class": "C032",
+    "role": "primary"
   }
 ]
