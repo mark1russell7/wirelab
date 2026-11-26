@@ -4,7 +4,7 @@
  */
 import { matrixRows, random } from "@mark1russell7/rigor-generators";
 import { catalog } from "@wirelab/catalog";
-import { CUTS, PLACES, cutCase, type Cut, type Place } from "../cuts.ts";
+import { CUTS, PLACES, cutCasesAt, type Cut, type Place } from "../cuts.ts";
 import { dimensionsOf } from "../matrix.ts";
 import { errorOnCut, outcomeText, type Verdict } from "../outcome.ts";
 import type { EnvelopeTarget } from "../targets/target.ts";
@@ -21,6 +21,8 @@ export interface ProbeResult {
   readonly cut: Cut;
   /** The width of the prefix of the cut frame. */
   readonly prefixWidth: number;
+  /** The bytes of the cut frame that the cut stream keeps. */
+  readonly keep: number;
   readonly verdict: Verdict;
   readonly outcome: string;
 }
@@ -53,20 +55,21 @@ export async function runProbe(targets: readonly EnvelopeTarget[]): Promise<Prob
     for (const row of rows) {
       const frame = row["frame"] as Place;
       const cut = row["cut"] as Cut;
-      const one = cutCase(stream, frame, cut);
-      if (one === undefined) continue;
-      const outcome = await target.run(one.bytes);
-      const cutFrame = frame === "after the end marker" ? stream.frames[0] : stream.frames[one.frame];
-      results.push({
-        target: target.id,
-        package: target.package,
-        version: target.version,
-        frame,
-        cut,
-        prefixWidth: cutFrame?.prefix ?? 0,
-        verdict: errorOnCut(outcome),
-        outcome: outcomeText(outcome),
-      });
+      for (const one of cutCasesAt(stream, frame, cut)) {
+        const outcome = await target.run(one.bytes);
+        const cutFrame = frame === "after the end marker" ? stream.frames[0] : stream.frames[one.frame];
+        results.push({
+          target: target.id,
+          package: target.package,
+          version: target.version,
+          frame,
+          cut,
+          prefixWidth: cutFrame?.prefix ?? 0,
+          keep: one.keep,
+          verdict: errorOnCut(outcome),
+          outcome: outcomeText(outcome),
+        });
+      }
     }
   }
   return results;

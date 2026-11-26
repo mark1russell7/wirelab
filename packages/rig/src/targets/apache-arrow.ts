@@ -35,7 +35,7 @@ function arrowStream(): FramedStream {
   const schemaLength = PREFIX + new DataView(all.buffer, all.byteOffset, all.byteLength).getInt32(4, true);
   const batchLength = oneBatch.length - EOS - schemaLength;
   if (all.length - EOS !== schemaLength + 2 * batchLength) throw new Error("The Arrow stream of the rig has an unexpected length.");
-  const frame = (start: number, length: number): Frame => ({ bytes: all.slice(start, start + length), prefix: PREFIX });
+  const frame = (start: number, length: number): Frame => ({ bytes: all.slice(start, start + length), prefix: PREFIX, fields: [4, 4] });
   return { frames: [frame(0, schemaLength), frame(schemaLength, batchLength), frame(schemaLength + batchLength, batchLength)] };
 }
 

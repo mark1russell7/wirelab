@@ -1207,6 +1207,12 @@
   },
   {
     "class": "C017",
+    "dimension": "cut",
+    "order": 5,
+    "value": "at a field boundary of the prefix"
+  },
+  {
+    "class": "C017",
     "dimension": "frame",
     "order": 1,
     "value": "first"

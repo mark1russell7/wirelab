@@ -84,6 +84,12 @@ describe.runIf(rigEnabled)("C017 on apache-arrow", () => {
         "apache-arrow/table-from-ipc | middle | prefix width - 1",
       ]),
     );
+    // W26-R3: a stream that ends after the 4-byte continuation marker of a message also reads with no error.
+    expect(failLines(results)).toEqual(
+      expect.arrayContaining(
+        (["first", "middle", "after the end marker"] as const).map((place) => `apache-arrow/table-from-ipc | ${place} | at a field boundary of the prefix`),
+      ),
+    );
   }, 60_000);
 });
 
