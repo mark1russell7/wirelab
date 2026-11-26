@@ -9,6 +9,9 @@ import { dimensionsOf } from "../matrix.ts";
 import { apacheArrowTarget } from "../targets/apache-arrow.ts";
 import { awsSdkS3Target } from "../targets/aws-sdk-s3.ts";
 import { connectWebTargets, connectWebUnaryTarget } from "../targets/connect-web.ts";
+import { graphqlWsTargets } from "../targets/graphql-ws.ts";
+import { signalrTarget } from "../targets/signalr.ts";
+import { sockjsClientTargets } from "../targets/sockjs-client.ts";
 import { CLASS_ID, adapterProblems, runProbe } from "./c017.ts";
 import { writeReport } from "./report.ts";
 
@@ -96,8 +99,8 @@ describe.runIf(rigEnabled)("C017 on @aws-sdk/client-s3", () => {
 describe("C017: the arms", () => {
   it("names only targets of the rig, with full commits", () => {
     const patchExists = (path: string): boolean => existsSync(fileURLToPath(new URL(`../../${path}`, import.meta.url)));
-    // The reply probes also have the Connect unary target.
-    const ids = [...targets, connectWebUnaryTarget].map((one) => one.id);
+    // The reply probes also have the Connect unary target, and the C016 probe has the session targets.
+    const ids = [...targets, connectWebUnaryTarget, ...sockjsClientTargets, signalrTarget, ...graphqlWsTargets].map((one) => one.id);
     expect(armProblems(ARMS, ids, patchExists)).toEqual([]);
   });
 

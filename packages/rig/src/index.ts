@@ -19,5 +19,19 @@ export {
   grpcWebTrailer,
   stringValue,
 } from "./targets/connect-web.ts";
-export { CLASS_ID as C016, adapterProblems as c016AdapterProblems, extraCases, runProbe as runC016, type ProbeResult as C016Result } from "./probes/c016.ts";
+export { GRAPHQL_WS, graphqlWsClientTarget, graphqlWsServerTarget, graphqlWsTargets } from "./targets/graphql-ws.ts";
+export { SIGNALR, signalrTarget } from "./targets/signalr.ts";
+export { SOCKJS_CLIENT, sockjsClientTargets } from "./targets/sockjs-client.ts";
+export {
+  CLASS_ID as C016,
+  adapterProblems as c016AdapterProblems,
+  extraCases,
+  notCrossedAfterEnd,
+  runProbe as runC016,
+  runSessionProbe as runC016Sessions,
+  sessionCaseProblems,
+  sessionKey,
+  type ProbeResult as C016Result,
+  type SessionResult as C016SessionResult,
+} from "./probes/c016.ts";
 export { CLASS_ID as C017, adapterProblems as c017AdapterProblems, runProbe as runC017, type ProbeResult } from "./probes/c017.ts";

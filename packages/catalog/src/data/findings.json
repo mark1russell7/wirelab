@@ -2333,5 +2333,25 @@
     "kind": "correctness",
     "title": "A trailers-only server stream of gRPC-web gives no trailers to onTrailer",
     "note": "For a trailers-only response, the gRPC-web transport of connect-web returns before it copies the headers into the trailers. So onTrailer gets an empty Headers. The universal gRPC-web transport has the same gap. The probe C032 of the rig finds it on the gRPC-web stream."
+  },
+  {
+    "id": "F0234",
+    "package": "graphql-ws",
+    "version": "6.4.3",
+    "method": "probe",
+    "found": "2026-11-26",
+    "kind": "conformance",
+    "title": "The server sends one more next of a subscription after the client completes it",
+    "note": "The C016 probe of the rig found it. A source that waits in an await yields once more after return(). The for await loop of the server calls emit.next() with no check of ctx.subscriptions. PR 711 (F0204) does not change that loop."
+  },
+  {
+    "id": "F0235",
+    "package": "graphql-ws",
+    "version": "6.4.3",
+    "method": "probe",
+    "found": "2026-11-26",
+    "kind": "conformance",
+    "title": "The client gives the sink a next that comes after the complete of the server in the same read",
+    "note": "The C016 probe of the rig found it. The listener of the id stays until unlisten runs after microtasks, and its next branch does not examine done. The ws client gives each frame of one read in one task."
   }
 ]

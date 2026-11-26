@@ -5,7 +5,8 @@
  * @packageDocumentation
  */
 
-// The suites of protocols on SockJS, for example STOMP, use the codec and the scripted server of this suite.
+// The suites of protocols on SockJS, for example STOMP, use the codec and the scripted server of this suite. The rig
+// (@wirelab/rig) uses the sessions of this suite for its targets of sockjs-client.
 export * from "./codec.ts";
 export {
   basePath,
@@ -15,9 +16,15 @@ export {
   serverId,
   sessionId,
   sessionPath,
+  startSession,
   startSockServer,
+  transports,
+  until,
+  type ClientOptions,
   type Info,
+  type Session,
   type SessionScript,
+  type TransportName,
 } from "./harness.ts";
 
 /** The force of a rule. `MUST` and `SHOULD` come from the protocol document. `meaning` is the effect that the document gives to a frame, a field or a request. */

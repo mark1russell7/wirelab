@@ -2158,5 +2158,33 @@
     "state": "issue-open",
     "url": "https://github.com/connectrpc/connect-es/issues/1907",
     "note": "The issue has a repro with a scripted fetch and the output on 2.3.0. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch arm on v2.3.0."
+  },
+  {
+    "finding": "F0234",
+    "at": "2026-11-26T19:42:06Z",
+    "state": "issue-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/issues/713",
+    "note": "Run 45885354982 of repro.yml prints BUG PRESENT."
+  },
+  {
+    "finding": "F0234",
+    "at": "2026-11-26T19:46:28Z",
+    "state": "pr-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/pull/715",
+    "note": "The loop emits only while ctx.subscriptions[id] is the operation. The new test fails without the change; the server and use suites pass with it."
+  },
+  {
+    "finding": "F0235",
+    "at": "2026-11-26T19:42:06Z",
+    "state": "issue-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/issues/714",
+    "note": "Run 45885354982 of repro.yml prints BUG PRESENT."
+  },
+  {
+    "finding": "F0235",
+    "at": "2026-11-26T19:46:28Z",
+    "state": "pr-open",
+    "url": "https://github.com/enisdenjo/graphql-ws/pull/716",
+    "note": "The listener returns when done is set. The new test fails without the change; the client and common suites pass with it."
   }
 ]

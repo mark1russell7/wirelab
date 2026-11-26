@@ -199,8 +199,8 @@ export interface Run {
 export const FINDING_KINDS = ["conformance", "correctness", "types", "resource", "performance", "security", "tests"] as const;
 export type FindingKind = (typeof FINDING_KINDS)[number];
 
-/** How the campaign found a fault. */
-export const FINDING_METHODS = ["suite", "static", "fuzz", "chaos", "review"] as const;
+/** How the campaign found a fault. A finding of the method probe comes from a class probe of the rig (`@wirelab/rig`). */
+export const FINDING_METHODS = ["suite", "static", "fuzz", "chaos", "review", "probe"] as const;
 export type FindingMethod = (typeof FINDING_METHODS)[number];
 
 /**

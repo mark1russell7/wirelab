@@ -65,9 +65,9 @@
   },
   {
     "class": "C016",
-    "state": "written",
+    "state": "proven",
     "file": "packages/rig/src/probes/c016.ts",
-    "note": "It examines the format length-prefixed-envelope (connect-web, the candidate c1 of W16). The known instances F0069, F0105 and F0204 are of the formats json-ws and text-frame-headers: their targets are W26-R5."
+    "note": "It examines the formats length-prefixed-envelope (connect-web), json-ws (signalr, graphql-ws) and text-frame-headers (sockjs-client). Its session targets find F0069, F0105 and F0204 again, and found F0234 and F0235. In CI, it finds each known instance again on the base arms, and it passes on the fixed arms of sockjs-client and graphql-ws. The arm of signalr is W26-R8."
   },
   {
     "class": "C017",
