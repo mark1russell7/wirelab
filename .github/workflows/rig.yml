@@ -1,0 +1,62 @@
+# The probes of the bug-class rig (packages/rig). Each probe runs the matrix of its class on the pinned clients, with a
+# scripted server in the test process. The JSON report of each probe is an artifact of each run. The probes start many
+# servers and clients, so they run here and not on a shared computer. A class with the security flag yes never runs here.
+name: Rig probes
+
+on:
+  pull_request:
+    paths:
+      - packages/rig/**
+      - .github/workflows/rig.yml
+  # A person starts a run from the Actions page of the workflow
+  workflow_dispatch:
+  # Each week, so that the suite keeps a current record of the pinned clients
+  schedule:
+    - cron: "4 6 * * 1"
+
+permissions:
+  contents: read
+
+# A newer push cancels the run of a pull request. Each commit has its own group for the other events.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # The context runner does not exist in the env of a job, so the path goes to GITHUB_ENV in a step.
+      - name: Set the path of the report
+        run: echo "REPORT=$RUNNER_TEMP/rig-report.json" >> "$GITHUB_ENV"
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          # The targets use the global fetch of Node 24.
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Run the probes
+        working-directory: packages/rig
+        env:
+          RIG: "1"
+          RIG_REPORT: ${{ runner.temp }}/rig-c017.json
+        run: pnpm exec vitest run --reporter=default --reporter=json --outputFile.json="$REPORT"
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: rig
+          path: |
+            ${{ runner.temp }}/rig-report.json
+            ${{ runner.temp }}/rig-c017.json
+          if-no-files-found: warn
+          retention-days: 30

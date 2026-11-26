@@ -65,7 +65,8 @@
   },
   {
     "class": "C017",
-    "state": "planned"
+    "state": "written",
+    "file": "packages/rig/src/probes/c017.ts"
   },
   {
     "class": "C018",
