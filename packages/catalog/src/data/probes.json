@@ -65,9 +65,9 @@
   },
   {
     "class": "C017",
-    "state": "written",
+    "state": "proven",
     "file": "packages/rig/src/probes/c017.ts",
-    "note": "It finds F0140, F0145 and F0227 again. Its proof on a fixed version waits for W26-R2."
+    "note": "It finds F0140, F0145 and F0227 again on the base build of each fix, and it passes on each fixed build (the arms of rig-arms.yml)."
   },
   {
     "class": "C018",
