@@ -2011,5 +2011,47 @@
     "state": "issue-open",
     "url": "https://github.com/connectrpc/connect-es/issues/1901",
     "note": "The issue has a repro of the decoder alone: 0 payload bytes after a full prefix end cleanly, and 1 payload byte or 4 prefix bytes give the error. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch (the arm connect-es-1901)."
+  },
+  {
+    "finding": "F0228",
+    "at": "2026-11-26T18:44:46Z",
+    "state": "issue-open",
+    "url": "https://github.com/connectrpc/connect-es/issues/1902",
+    "note": "The issue has a repro with a scripted fetch and the output on 2.3.0. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch arm on v2.3.0."
+  },
+  {
+    "finding": "F0229",
+    "at": "2026-11-26T18:44:47Z",
+    "state": "issue-open",
+    "url": "https://github.com/connectrpc/connect-es/issues/1903",
+    "note": "The issue has a repro with a scripted fetch and the output on 2.3.0. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch arm on v2.3.0."
+  },
+  {
+    "finding": "F0230",
+    "at": "2026-11-26T18:44:49Z",
+    "state": "issue-open",
+    "url": "https://github.com/connectrpc/connect-es/issues/1904",
+    "note": "The issue has a repro with a scripted fetch and the output on 2.3.0. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch arm on v2.3.0."
+  },
+  {
+    "finding": "F0231",
+    "at": "2026-11-26T18:44:50Z",
+    "state": "issue-open",
+    "url": "https://github.com/connectrpc/connect-es/issues/1905",
+    "note": "The issue has a repro with a scripted fetch and the output on 2.3.0. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch arm on v2.3.0."
+  },
+  {
+    "finding": "F0232",
+    "at": "2026-11-26T18:44:51Z",
+    "state": "issue-open",
+    "url": "https://github.com/connectrpc/connect-es/issues/1906",
+    "note": "The issue has a repro with a scripted fetch and the output on 2.3.0. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch arm on v2.3.0."
+  },
+  {
+    "finding": "F0233",
+    "at": "2026-11-26T18:44:52Z",
+    "state": "issue-open",
+    "url": "https://github.com/connectrpc/connect-es/issues/1907",
+    "note": "The issue has a repro with a scripted fetch and the output on 2.3.0. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch arm on v2.3.0."
   }
 ]

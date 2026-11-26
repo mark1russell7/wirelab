@@ -2273,5 +2273,65 @@
     "kind": "correctness",
     "title": "A body that ends just after a complete envelope prefix ends with no error",
     "note": "createEnvelopeReadableStream of @connectrpc/connect gives \"incomplete envelope\" only when bytes stay in the buffer of the decoder. After a full 5-byte prefix, the decoder moves the bytes to its pending envelope, so the stream ends cleanly. The probe C017 of the rig finds it after the end marker on 3 targets: a Connect stream, a gRPC-web stream and a gRPC-web unary call."
+  },
+  {
+    "id": "F0228",
+    "package": "@connectrpc/connect-web",
+    "version": "2.3.0",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "A code string that is a key of Object.prototype gives a ConnectError whose code is not a Code",
+    "note": "codeFromString of @connectrpc/connect looks up the wire code in a plain object. So \"constructor\", \"toString\" and \"__proto__\" give a function or an object, and the fallback code is lost. This occurs for a unary error body and for the error of an EndStreamResponse. The probe C001 of the rig finds it on the Connect unary call and the Connect stream."
+  },
+  {
+    "id": "F0229",
+    "package": "@connectrpc/connect-web",
+    "version": "2.3.0",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "A grpc-message that is not valid percent-encoding gives Unknown, and the status is lost",
+    "note": "findTrailerError and the validateResponse of gRPC-web decode grpc-message with decodeURIComponent and no try. A message such as \"50% off\" gives Unknown with the message \"URI malformed\". The probe C003 of the rig finds it in a trailer frame, in trailers-only headers and with HTTP 503, on the gRPC-web unary call and stream."
+  },
+  {
+    "id": "F0230",
+    "package": "@connectrpc/connect-web",
+    "version": "2.3.0",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "grpc-status-details-bin with the code 0 hides the error of grpc-status",
+    "note": "findTrailerError prefers grpc-status-details-bin, and it returns no error when the details have the code 0. So grpc-status 13 with such details is a success. The probe C033 of the rig finds it in a trailer frame and in trailers-only headers, on the gRPC-web unary call and stream."
+  },
+  {
+    "id": "F0231",
+    "package": "@connectrpc/connect-web",
+    "version": "2.3.0",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "A unary error body that is not JSON gives Unknown, not the code of the HTTP status",
+    "note": "The Connect unary call of connect-web reads the error body with response.json() and no try. A body that is empty or not JSON, with a JSON content type, gives Unknown. The Connect protocol uses the code of the HTTP status in this case. The probe C034 of the rig finds it with HTTP 400 and 503."
+  },
+  {
+    "id": "F0232",
+    "package": "@connectrpc/connect-web",
+    "version": "2.3.0",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "A stream with no end marker fails with Unknown, not with the code of the universal transports",
+    "note": "connect-web throws the strings \"missing EndStreamResponse\" and \"missing trailer\", and a thrown string gives Unknown. The universal transports of @connectrpc/connect give InvalidArgument and Internal for the same response. The probe C034 of the rig finds it on the Connect stream and the gRPC-web stream."
+  },
+  {
+    "id": "F0233",
+    "package": "@connectrpc/connect-web",
+    "version": "2.3.0",
+    "method": "review",
+    "found": "2026-11-24",
+    "kind": "correctness",
+    "title": "A trailers-only server stream of gRPC-web gives no trailers to onTrailer",
+    "note": "For a trailers-only response, the gRPC-web transport of connect-web returns before it copies the headers into the trailers. So onTrailer gets an empty Headers. The universal gRPC-web transport has the same gap. The probe C032 of the rig finds it on the gRPC-web stream."
   }
 ]
