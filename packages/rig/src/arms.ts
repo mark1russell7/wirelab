@@ -2,7 +2,7 @@
  * The arms of a probe. An arm builds a package from a commit and puts the build in place of the release that the
  * workspace installs. The arm `fixed` builds the commit of a fix, and the probe expects no fail. The arm `base` builds
  * the parent of the fix with the same steps, and the probe expects the known fails. Thus the base arm shows that the
- * build alone does not change the result. The workflow `rig.yml` starts each arm.
+ * build alone does not change the result. The workflow `rig-arms.yml` starts each arm.
  */
 import data from "./arms.json" with { type: "json" };
 

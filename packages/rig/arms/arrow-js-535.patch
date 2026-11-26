@@ -80,3 +80,27 @@ index 40a6543..85e824b 100644
      }
  }
  
+diff --git a/src/ipc/reader.ts b/src/ipc/reader.ts
+index d0edafd..4e77f7c 100644
+--- a/src/ipc/reader.ts
++++ b/src/ipc/reader.ts
+@@ -801,7 +801,8 @@ function fromArrowJSON<T extends TypeMap>(source: ArrowJSONLike) {
+ /** @ignore */
+ function fromByteStream<T extends TypeMap>(source: ByteStream) {
+     const bytes = source.peek((magicLength + 7) & ~7);
+-    return bytes && bytes.byteLength >= 4 ? !checkForMagicArrowString(bytes)
++    // An empty stream gives an empty reader. A stream of 1 to 3 bytes is a cut length, and the stream reader throws.
++    return bytes && bytes.byteLength > 0 ? !checkForMagicArrowString(bytes)
+         ? new RecordBatchStreamReader(new RecordBatchStreamReaderImpl<T>(source))
+         : new RecordBatchFileReader(new RecordBatchFileReaderImpl<T>(source.read()))
+         : new RecordBatchStreamReader(new RecordBatchStreamReaderImpl<T>(function* (): any { }()));
+@@ -810,7 +811,8 @@ function fromByteStream<T extends TypeMap>(source: ByteStream) {
+ /** @ignore */
+ async function fromAsyncByteStream<T extends TypeMap>(source: AsyncByteStream) {
+     const bytes = await source.peek((magicLength + 7) & ~7);
+-    return bytes && bytes.byteLength >= 4 ? !checkForMagicArrowString(bytes)
++    // An empty stream gives an empty reader. A stream of 1 to 3 bytes is a cut length, and the stream reader throws.
++    return bytes && bytes.byteLength > 0 ? !checkForMagicArrowString(bytes)
+         ? new AsyncRecordBatchStreamReader(new AsyncRecordBatchStreamReaderImpl<T>(source))
+         : new RecordBatchFileReader(new RecordBatchFileReaderImpl<T>(await source.read()))
+         : new AsyncRecordBatchStreamReader(new AsyncRecordBatchStreamReaderImpl<T>(async function* (): any { }()));
