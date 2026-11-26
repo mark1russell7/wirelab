@@ -50,5 +50,70 @@
     "build": "npm ci --ignore-scripts && npm run build -w packages/connect && find packages/connect-web/src -name '*.spec.ts' -delete && npm run build -w packages/connect-web",
     "folder": "packages/connect-web",
     "copy": ["dist"]
+  },
+  {
+    "id": "connect-c001",
+    "class": "C001",
+    "targets": ["connect-web/connect-unary", "connect-web/connect-stream"],
+    "package": "@connectrpc/connect",
+    "repository": "connectrpc/connect-es",
+    "base": "6b7c593d1a26db0be3c2c35500f50e9925354444",
+    "patch": "arms/connect-c001.patch",
+    "fixLink": "https://github.com/connectrpc/connect-es/blob/6b7c593d1a26db0be3c2c35500f50e9925354444/packages/connect/src/protocol-connect/code-string.ts#L53",
+    "build": "npm ci --ignore-scripts && npm run build -w packages/connect",
+    "folder": "packages/connect",
+    "copy": ["dist"]
+  },
+  {
+    "id": "connect-c003",
+    "class": "C003",
+    "targets": ["connect-web/grpc-web-unary", "connect-web/grpc-web-stream"],
+    "package": "@connectrpc/connect",
+    "repository": "connectrpc/connect-es",
+    "base": "6b7c593d1a26db0be3c2c35500f50e9925354444",
+    "patch": "arms/connect-c003.patch",
+    "fixLink": "https://github.com/connectrpc/connect-es/blob/6b7c593d1a26db0be3c2c35500f50e9925354444/packages/connect/src/protocol-grpc/trailer-status.ts#L127",
+    "build": "npm ci --ignore-scripts && npm run build -w packages/connect",
+    "folder": "packages/connect",
+    "copy": ["dist"]
+  },
+  {
+    "id": "connect-c033",
+    "class": "C033",
+    "targets": ["connect-web/grpc-web-unary", "connect-web/grpc-web-stream", "connect-web/connect-unary"],
+    "package": "@connectrpc/connect",
+    "repository": "connectrpc/connect-es",
+    "base": "6b7c593d1a26db0be3c2c35500f50e9925354444",
+    "patch": "arms/connect-c033.patch",
+    "fixLink": "https://github.com/connectrpc/connect-es/blob/6b7c593d1a26db0be3c2c35500f50e9925354444/packages/connect/src/protocol-grpc/trailer-status.ts#L103-L105",
+    "build": "npm ci --ignore-scripts && npm run build -w packages/connect",
+    "folder": "packages/connect",
+    "copy": ["dist"]
+  },
+  {
+    "id": "connect-web-c032",
+    "class": "C032",
+    "targets": ["connect-web/connect-stream", "connect-web/grpc-web-stream"],
+    "package": "@connectrpc/connect-web",
+    "repository": "connectrpc/connect-es",
+    "base": "6b7c593d1a26db0be3c2c35500f50e9925354444",
+    "patch": "arms/connect-web-c032.patch",
+    "fixLink": "https://github.com/connectrpc/connect-es/blob/6b7c593d1a26db0be3c2c35500f50e9925354444/packages/connect-web/src/grpc-web-transport.ts#L267-L280",
+    "build": "npm ci --ignore-scripts && npm run build -w packages/connect && find packages/connect-web/src -name '*.spec.ts' -delete && npm run build -w packages/connect-web",
+    "folder": "packages/connect-web",
+    "copy": ["dist"]
+  },
+  {
+    "id": "connect-web-c034",
+    "class": "C034",
+    "targets": ["connect-web/connect-unary", "connect-web/connect-stream", "connect-web/grpc-web-stream"],
+    "package": "@connectrpc/connect-web",
+    "repository": "connectrpc/connect-es",
+    "base": "6b7c593d1a26db0be3c2c35500f50e9925354444",
+    "patch": "arms/connect-web-c034.patch",
+    "fixLink": "https://github.com/connectrpc/connect-es/blob/6b7c593d1a26db0be3c2c35500f50e9925354444/packages/connect-web/src/connect-transport.ts#L212-L218",
+    "build": "npm ci --ignore-scripts && npm run build -w packages/connect && find packages/connect-web/src -name '*.spec.ts' -delete && npm run build -w packages/connect-web",
+    "folder": "packages/connect-web",
+    "copy": ["dist"]
   }
 ]

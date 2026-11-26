@@ -2131,6 +2131,12 @@
   },
   {
     "class": "C032",
+    "dimension": "call",
+    "order": 5,
+    "value": "server stream"
+  },
+  {
+    "class": "C032",
     "dimension": "reply",
     "order": 1,
     "value": "one failure code among grants"
@@ -2146,6 +2152,12 @@
     "dimension": "reply",
     "order": 3,
     "value": "positive ack"
+  },
+  {
+    "class": "C032",
+    "dimension": "reply",
+    "order": 4,
+    "value": "trailers-only response"
   },
   {
     "class": "C033",
@@ -2266,6 +2278,12 @@
     "dimension": "status",
     "order": 7,
     "value": "batch with errors"
+  },
+  {
+    "class": "C034",
+    "dimension": "status",
+    "order": 8,
+    "value": "stream with no end marker"
   },
   {
     "class": "C035",

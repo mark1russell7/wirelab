@@ -1,0 +1,46 @@
+diff --git a/packages/connect-web/src/connect-transport.ts b/packages/connect-web/src/connect-transport.ts
+index c02f0b8..ecc2db5 100644
+--- a/packages/connect-web/src/connect-transport.ts
++++ b/packages/connect-web/src/connect-transport.ts
+@@ -210,8 +210,15 @@ export function createConnectTransport(
+             response.headers,
+           );
+           if (isUnaryError) {
++            let errorJson: JsonValue;
++            try {
++              errorJson = (await response.json()) as JsonValue;
++            } catch (e) {
++              // A body that is not JSON keeps the code of the HTTP status.
++              throw unaryError;
++            }
+             throw errorFromJson(
+-              (await response.json()) as JsonValue,
++              errorJson,
+               appendHeaders(...trailerDemux(response.headers)),
+               unaryError,
+             );
+@@ -291,7 +298,10 @@ export function createConnectTransport(
+           yield parse(data);
+         }
+         if (!endStreamReceived) {
+-          throw "missing EndStreamResponse";
++          throw new ConnectError(
++            "protocol error: missing EndStreamResponse",
++            Code.InvalidArgument,
++          );
+         }
+       }
+ 
+diff --git a/packages/connect-web/src/grpc-web-transport.ts b/packages/connect-web/src/grpc-web-transport.ts
+index d5d477a..311bbf0 100644
+--- a/packages/connect-web/src/grpc-web-transport.ts
++++ b/packages/connect-web/src/grpc-web-transport.ts
+@@ -301,7 +301,7 @@ export function createGrpcWebTransport(
+           yield parse(data);
+         }
+         if (!trailerReceived) {
+-          throw "missing trailer";
++          throw new ConnectError("protocol error: missing trailer", Code.Internal);
+         }
+       }
+ 

@@ -8,7 +8,7 @@ import { CUTS, PLACES } from "../cuts.ts";
 import { dimensionsOf } from "../matrix.ts";
 import { apacheArrowTarget } from "../targets/apache-arrow.ts";
 import { awsSdkS3Target } from "../targets/aws-sdk-s3.ts";
-import { connectWebTargets } from "../targets/connect-web.ts";
+import { connectWebTargets, connectWebUnaryTarget } from "../targets/connect-web.ts";
 import { CLASS_ID, adapterProblems, runProbe } from "./c017.ts";
 import { writeReport } from "./report.ts";
 
@@ -96,7 +96,9 @@ describe.runIf(rigEnabled)("C017 on @aws-sdk/client-s3", () => {
 describe("C017: the arms", () => {
   it("names only targets of the rig, with full commits", () => {
     const patchExists = (path: string): boolean => existsSync(fileURLToPath(new URL(`../../${path}`, import.meta.url)));
-    expect(armProblems(ARMS, targets.map((one) => one.id), patchExists)).toEqual([]);
+    // The reply probes also have the Connect unary target.
+    const ids = [...targets, connectWebUnaryTarget].map((one) => one.id);
+    expect(armProblems(ARMS, ids, patchExists)).toEqual([]);
   });
 
   it("finds each problem of a bad arm", () => {

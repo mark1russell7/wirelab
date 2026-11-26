@@ -7,7 +7,12 @@ import type { AfterEndRule } from "./targets/target.ts";
 
 /** The outcome of one run: the values that the caller got, an error, or no end in the time limit. */
 export type Outcome =
-  | { readonly kind: "value"; readonly values: readonly string[] }
+  | {
+      readonly kind: "value";
+      readonly values: readonly string[];
+      /** The trailers that the caller got, as lower-case names and values, when the target reads them. */
+      readonly trailers?: readonly (readonly [string, string])[];
+    }
   | { readonly kind: "error"; readonly name: string; readonly code: string; readonly message: string }
   | { readonly kind: "timeout"; readonly limitMs: number };
 
@@ -28,7 +33,7 @@ export function errorOutcome(error: unknown, codeName: (code: unknown) => string
  * client can stop its request. The timer does not keep the process alive after the end of `work`.
  */
 export async function outcomeOf(
-  work: (signal: AbortSignal) => Promise<readonly string[]>,
+  work: (signal: AbortSignal) => Promise<readonly string[] | { readonly values: readonly string[]; readonly trailers: readonly (readonly [string, string])[] }>,
   limitMs: number,
   codeName?: (code: unknown) => string,
 ): Promise<Outcome> {
@@ -41,7 +46,7 @@ export async function outcomeOf(
     }, limitMs);
   });
   const run = work(controller.signal).then(
-    (values): Outcome => ({ kind: "value", values }),
+    (got): Outcome => (isValueList(got) ? { kind: "value", values: got } : { kind: "value", values: got.values, trailers: got.trailers }),
     (error: unknown): Outcome => errorOutcome(error, codeName),
   );
   try {
@@ -76,7 +81,15 @@ export function notDeliveredAfterEnd(outcome: Outcome, rule: AfterEndRule, contr
 
 /** This function gives a short text of an outcome for a report. */
 export function outcomeText(outcome: Outcome): string {
-  if (outcome.kind === "value") return `value ${JSON.stringify(outcome.values)}`;
+  if (outcome.kind === "value") {
+    const trailers = outcome.trailers === undefined ? "" : ` trailers ${JSON.stringify(outcome.trailers)}`;
+    return `value ${JSON.stringify(outcome.values)}${trailers}`;
+  }
   if (outcome.kind === "error") return `error ${outcome.code || outcome.name}: ${outcome.message}`;
   return `timeout after ${outcome.limitMs} ms`;
+}
+
+/** This function tells if `got` is a list of values with no trailers. */
+function isValueList(got: readonly string[] | { readonly values: readonly string[] }): got is readonly string[] {
+  return Array.isArray(got);
 }

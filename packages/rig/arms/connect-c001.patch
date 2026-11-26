@@ -1,0 +1,13 @@
+diff --git a/packages/connect/src/protocol-connect/code-string.ts b/packages/connect/src/protocol-connect/code-string.ts
+index 70df1db..9e47647 100644
+--- a/packages/connect/src/protocol-connect/code-string.ts
++++ b/packages/connect/src/protocol-connect/code-string.ts
+@@ -50,5 +50,7 @@ export function codeFromString(value: string): Code | undefined {
+       stringToCode[codeToString(value)] = value;
+     }
+   }
+-  return stringToCode[value];
++  return Object.prototype.hasOwnProperty.call(stringToCode, value)
++    ? stringToCode[value]
++    : undefined;
+ }
