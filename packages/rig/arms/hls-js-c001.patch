@@ -1,0 +1,35 @@
+diff --git a/src/loader/level-details.ts b/src/loader/level-details.ts
+index 38730d2..c981950 100644
+--- a/src/loader/level-details.ts
++++ b/src/loader/level-details.ts
+@@ -63,7 +63,7 @@ export class LevelDetails {
+   constructor(baseUrl: string) {
+     this.fragments = [];
+     this.encryptedFragments = [];
+-    this.dateRanges = {};
++    this.dateRanges = Object.create(null) as Record<string, DateRange | undefined>;
+     this.url = baseUrl;
+   }
+ 
+diff --git a/src/utils/variable-substitution.ts b/src/utils/variable-substitution.ts
+index 9ed4ba5..5308f82 100644
+--- a/src/utils/variable-substitution.ts
++++ b/src/utils/variable-substitution.ts
+@@ -52,7 +52,7 @@ export function addVariableDefinition(
+ ) {
+   let variableList = parsed.variableList;
+   if (!variableList) {
+-    parsed.variableList = variableList = {};
++    parsed.variableList = variableList = Object.create(null) as VariableMap;
+   }
+   let NAME: string;
+   let VALUE;
+@@ -97,7 +97,7 @@ export function importVariableDefinition(
+   if (sourceVariableList && IMPORT in sourceVariableList) {
+     let variableList = parsed.variableList;
+     if (!variableList) {
+-      parsed.variableList = variableList = {};
++      parsed.variableList = variableList = Object.create(null) as VariableMap;
+     }
+     variableList[IMPORT] = sourceVariableList[IMPORT];
+   } else {

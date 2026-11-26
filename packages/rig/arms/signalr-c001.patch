@@ -1,0 +1,13 @@
+diff --git a/src/SignalR/clients/ts/signalr/src/HubConnection.ts b/src/SignalR/clients/ts/signalr/src/HubConnection.ts
+index 05fc011..b76f611 100644
+--- a/src/SignalR/clients/ts/signalr/src/HubConnection.ts
++++ b/src/SignalR/clients/ts/signalr/src/HubConnection.ts
+@@ -151,7 +151,7 @@ export class HubConnection {
+         this.connection.onclose = (error?: Error) => this._connectionClosed(error);
+ 
+         this._callbacks = {};
+-        this._methods = {};
++        this._methods = Object.create(null);
+         this._closedCallbacks = [];
+         this._reconnectingCallbacks = [];
+         this._reconnectedCallbacks = [];
