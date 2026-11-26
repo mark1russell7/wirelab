@@ -63,6 +63,8 @@ class LocalHandler {
 export const awsSdkS3Target: EnvelopeTarget = {
   id: "aws-sdk/s3-select-object-content",
   ...AWS_SDK_S3,
+  // The End event is an event of the S3 API. The event stream format has no rule for an event after it, so the target
+  // has no value of `afterEnd`.
   stream: selectStream,
   run(bytes: Uint8Array): Promise<Outcome> {
     return outcomeOf(async () => {

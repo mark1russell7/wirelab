@@ -37,5 +37,18 @@
     "build": "npm ci --ignore-scripts && npm run build -w packages/connect",
     "folder": "packages/connect",
     "copy": ["dist"]
+  },
+  {
+    "id": "connect-web-c016",
+    "class": "C016",
+    "targets": ["connect-web/connect-stream", "connect-web/grpc-web-stream", "connect-web/grpc-web-unary"],
+    "package": "@connectrpc/connect-web",
+    "repository": "connectrpc/connect-es",
+    "base": "6b7c593d1a26db0be3c2c35500f50e9925354444",
+    "patch": "arms/connect-web-c016.patch",
+    "fixLink": "https://github.com/connectrpc/connect-es/blob/6b7c593d1a26db0be3c2c35500f50e9925354444/packages/connect/src/protocol-connect/transport.ts#L273-L298",
+    "build": "npm ci --ignore-scripts && npm run build -w packages/connect && npm run build -w packages/connect-web",
+    "folder": "packages/connect-web",
+    "copy": ["dist"]
   }
 ]

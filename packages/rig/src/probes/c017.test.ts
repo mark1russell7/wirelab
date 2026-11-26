@@ -1,5 +1,4 @@
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
-import { dirname } from "node:path";
+import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { matrixRows, random } from "@mark1russell7/rigor-generators";
 import { catalog } from "@wirelab/catalog";
@@ -11,6 +10,7 @@ import { apacheArrowTarget } from "../targets/apache-arrow.ts";
 import { awsSdkS3Target } from "../targets/aws-sdk-s3.ts";
 import { connectWebTargets } from "../targets/connect-web.ts";
 import { CLASS_ID, adapterProblems, runProbe } from "./c017.ts";
+import { writeReport } from "./report.ts";
 
 /**
  * The runs of the probes start only when the environment variable `RIG` is `1`, in the workflow `rig.yml`. Each run
@@ -23,16 +23,6 @@ const rigEnabled = process.env["RIG"] === "1" && arm === undefined;
 
 /** Each target of C017. */
 const targets = [...connectWebTargets, apacheArrowTarget, awsSdkS3Target];
-
-/** This function writes the results to the file of the environment variable `RIG_REPORT`, with the suffix `name`. */
-function writeReport(name: string, results: readonly unknown[]): void {
-  const report = process.env["RIG_REPORT"];
-  if (report === undefined) return;
-  const file = report.replace(/.json$/, `-${name}.json`);
-  mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, `${JSON.stringify(results, null, 2)}
-`);
-}
 
 /** This function gives each fail as one line: the target, the place and the cut. */
 const failLines = (results: Awaited<ReturnType<typeof runProbe>>): string[] =>
@@ -55,11 +45,7 @@ describe("C017: the adapter and the catalog", () => {
 describe.runIf(rigEnabled)("C017 on @connectrpc/connect-web", () => {
   it("finds the known instance again: a bare prefix after the end marker ends with no error", async () => {
     const results = await runProbe(connectWebTargets);
-    const report = process.env["RIG_REPORT"];
-    if (report !== undefined) {
-      mkdirSync(dirname(report), { recursive: true });
-      writeFileSync(report, `${JSON.stringify(results, null, 2)}\n`);
-    }
+    writeReport(results);
     const fails = results.filter((one) => one.verdict === "fail").map((one) => `${one.target} | ${one.frame} | ${one.cut}`);
     // The known instance: the candidate c10 of the W16 review of connect-web 2.3.0.
     expect(fails).toEqual(
@@ -76,7 +62,7 @@ describe.runIf(rigEnabled)("C017 on @connectrpc/connect-web", () => {
 describe.runIf(rigEnabled)("C017 on apache-arrow", () => {
   it("finds the known instance again: a stream cut inside the 8-byte prefix of a message reads with no error", async () => {
     const results = await runProbe([apacheArrowTarget]);
-    writeReport("apache-arrow", results);
+    writeReport(results, "apache-arrow");
     // The known instance: F0145, apache/arrow-js#535.
     expect(failLines(results)).toEqual(
       expect.arrayContaining([
@@ -96,7 +82,7 @@ describe.runIf(rigEnabled)("C017 on apache-arrow", () => {
 describe.runIf(rigEnabled)("C017 on @aws-sdk/client-s3", () => {
   it("finds the known instance again: an event stream cut inside the 4-byte total length ends with no error", async () => {
     const results = await runProbe([awsSdkS3Target]);
-    writeReport("aws-sdk-s3", results);
+    writeReport(results, "aws-sdk-s3");
     // The known instance: F0140, smithy-lang/smithy-typescript#2367.
     expect(failLines(results)).toEqual(
       expect.arrayContaining([
@@ -138,7 +124,7 @@ describe.runIf(process.env["RIG"] === "1" && arm?.arm.class === CLASS_ID)("C017 
       return target;
     });
     const results = await runProbe(armTargets);
-    writeReport(`arm-${arm.arm.id}-${arm.kind}`, results);
+    writeReport(results, `arm-${arm.arm.id}-${arm.kind}`);
     if (arm.kind === "base") expect(failLines(results)).not.toEqual([]);
     else expect(failLines(results)).toEqual([]);
   }, 120_000);

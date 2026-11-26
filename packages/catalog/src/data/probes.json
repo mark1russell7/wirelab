@@ -61,7 +61,9 @@
   },
   {
     "class": "C016",
-    "state": "planned"
+    "state": "written",
+    "file": "packages/rig/src/probes/c016.ts",
+    "note": "It examines the format length-prefixed-envelope (connect-web, the candidate c1 of W16). The known instances F0069, F0105 and F0204 are of the formats json-ws and text-frame-headers: their targets are W26-R5."
   },
   {
     "class": "C017",
