@@ -2010,6 +2010,6 @@
     "at": "2026-11-26T15:11:48Z",
     "state": "issue-open",
     "url": "https://github.com/connectrpc/connect-es/issues/1901",
-    "note": "The issue has a repro of the decoder alone: 0 payload bytes after a full prefix end cleanly, and 1 payload byte or 4 prefix bytes give the error. The project has a DCO, so the fix waits."
+    "note": "The issue has a repro of the decoder alone: 0 payload bytes after a full prefix end cleanly, and 1 payload byte or 4 prefix bytes give the error. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch (the arm connect-es-1901)."
   }
 ]
