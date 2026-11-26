@@ -249,6 +249,46 @@ importers:
         specifier: ^5.0.3
         version: 5.1.1(@opentelemetry/api@1.10.0)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.1)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
 
+  packages/rig:
+    dependencies:
+      '@bufbuild/protobuf':
+        specifier: 2.17.0
+        version: 2.17.0
+      '@connectrpc/connect':
+        specifier: 2.3.0
+        version: 2.3.0(@bufbuild/protobuf@2.17.0)
+      '@connectrpc/connect-web':
+        specifier: 2.3.0
+        version: 2.3.0(@bufbuild/protobuf@2.17.0)(@connectrpc/connect@2.3.0(@bufbuild/protobuf@2.17.0))
+      '@mark1russell7/rigor-generators':
+        specifier: ^0.2.6
+        version: 0.2.6
+      '@mark1russell7/rigor-testkit':
+        specifier: ^0.1.19
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+      '@mark1russell7/text':
+        specifier: ^0.0.17
+        version: 0.0.17
+      '@wirelab/catalog':
+        specifier: workspace:*
+        version: link:../catalog
+    devDependencies:
+      '@mark1russell7/cue':
+        specifier: ^2.0.0
+        version: 2.1.4
+      '@types/node':
+        specifier: ^26.6.5
+        version: 26.6.6
+      '@vitest/coverage-v8':
+        specifier: ^5.0.3
+        version: 5.1.1(vitest@5.1.1)
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+      vitest:
+        specifier: ^5.0.3
+        version: 5.1.1(@opentelemetry/api@1.10.0)(@types/node@26.6.6)(@vitest/coverage-v8@5.1.1)(vite@8.3.8(@types/node@26.6.6)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
+
   packages/site:
     dependencies:
       '@mark1russell7/text':
@@ -324,7 +364,7 @@ importers:
         version: 0.4.1(zod@4.6.7)
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.19
-        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.0)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       engine.io-client:
         specifier: ^6.6.8
         version: 6.6.8(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10)
@@ -355,7 +395,7 @@ importers:
         version: 1.5.1
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.19
-        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.0)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       '@urql/core':
         specifier: 6.0.3
         version: 6.0.3(graphql@16.15.0)
@@ -420,7 +460,7 @@ importers:
         version: 0.4.1(zod@4.6.7)
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.19
-        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.0)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       '@wirelab/suite-engineio':
         specifier: workspace:*
         version: link:../suite-engineio
@@ -451,7 +491,7 @@ importers:
         version: 0.4.1(zod@4.6.7)
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.19
-        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.0)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       sockjs-client:
         specifier: ^1.6.1
         version: 1.6.1(supports-color@7.2.0)
@@ -529,6 +569,9 @@ packages:
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
 
+  '@bufbuild/protobuf@2.17.0':
+    resolution: {integrity: sha512-hcPkSz6D7MiTU/5VBBhK+kxaYDoOdQ6yJRFJ3kS8Nydp+VZXfg1vrpABKPNod8bXMufsVCmiUJVIKFzCzta4uw==}
+
   '@clack/core@1.6.0':
     resolution: {integrity: sha512-4GZynIB2IIe431odxesswvWTCP6orvqd6e2b07b3VFWBQRqUqIHc/EPIZwFoKS692QBp+ooPuXKaJV8g4kXuYA==}
     engines: {node: '>= 20.12.0'}
@@ -536,6 +579,17 @@ packages:
   '@clack/prompts@1.9.0':
     resolution: {integrity: sha512-tEj8X2No2A1c9NDnZECxiiJ8TP3vmFlN9tLlLeSaMqVW4tUmVG2R4qpv/eP4zymWxnymYLkLcIYVV0VcWj3RCQ==}
     engines: {node: '>= 20.12.0'}
+
+  '@connectrpc/connect-web@2.3.0':
+    resolution: {integrity: sha512-JPXOiWaVsj+ZwaXOQjwvhc0ORnkl0a1w36Qyl3j1WTuak6/VYyuWGl1Aq8I60gQfQRjsjLLFGr64tO0sjwstcg==}
+    peerDependencies:
+      '@bufbuild/protobuf': ^2.7.0
+      '@connectrpc/connect': 2.3.0
+
+  '@connectrpc/connect@2.3.0':
+    resolution: {integrity: sha512-rjAn8L9KbAZrkwiB8m1qzDsLs74hkYmwwM2iSWuxTPVOTRm/EZw31smKbQqPU50AXqJC5eKKpEnA6Uf/swQOgQ==}
+    peerDependencies:
+      '@bufbuild/protobuf': ^2.7.0
 
   '@emnapi/core@2.0.0-beta.2':
     resolution: {integrity: sha512-MzCVoWtcg4Pm2B3je5mMvYMvj3MmBKw+fU7vbsJc9/iT8ip6/eYIHo/Dsm/mr+wsHB6SEyJDuxB09Yy6r/8+4A==}
@@ -831,8 +885,8 @@ packages:
     resolution: {integrity: sha512-WIo/zJhj8RRRdNCz8JKEXOMZ4iPSh1h3igFGiWgRoAZGgETPuW7bP2oBgKVbMKEHn66c+hoXuCnwrIjguBaByA==}
     engines: {node: '>=22'}
 
-  '@mark1russell7/rigor-generators@0.2.0':
-    resolution: {integrity: sha512-eTyJhK4Nowx1KQ3QrsQqLiAlhFoL+8m1OT6He+X0Lf0G/0f9OyQC8ponQLViQKRkP/ef10B6oACFjtjnKErobg==}
+  '@mark1russell7/rigor-generators@0.2.6':
+    resolution: {integrity: sha512-twMYvM//nGt/oumhZ2uFiXpC+ve59B1Zl8hinUnAaru4Vy5MiybhKggrESyDhvc519dWIGTbwWd000hsLkhVsA==}
     engines: {node: '>=22'}
 
   '@mark1russell7/rigor-proxy@0.4.1':
@@ -961,6 +1015,10 @@ packages:
     resolution: {integrity: sha512-7ebtLlCmT6KYhbpoI2SZHXCQC6/7Rc660SvKwQvfslseSQrXMRlmBj+1/F5KOCep6aB+LtvGWg+HmTKi6uZjyQ==}
     engines: {node: '>=22.12'}
     hasBin: true
+
+  '@mark1russell7/text@0.0.17':
+    resolution: {integrity: sha512-jFqqVfCTQ0N65qvMP/gANAbnqB7ewpA3IeNxPeQTuF3IoSZkTgTl92PE47F5IOOfgz0Q0dF723crrYB8T6pR3g==}
+    engines: {node: '>=22.12'}
 
   '@mark1russell7/text@0.0.20':
     resolution: {integrity: sha512-HrjBak4BE0fDC+bLzFi/c4NDCHqiUm7VhYR5YhJmkApRSB8mUOao4bFiO9Jy3xwpsCGJCj4echVDCUxXjV+3NA==}
@@ -2379,6 +2437,8 @@ snapshots:
 
   '@bcoe/v8-coverage@1.0.2': {}
 
+  '@bufbuild/protobuf@2.17.0': {}
+
   '@clack/core@1.6.0':
     dependencies:
       fast-string-width: 3.0.2
@@ -2391,6 +2451,15 @@ snapshots:
       fast-string-width: 3.0.2
       fast-wrap-ansi: 0.2.2
       sisteransi: 2.0.0
+
+  '@connectrpc/connect-web@2.3.0(@bufbuild/protobuf@2.17.0)(@connectrpc/connect@2.3.0(@bufbuild/protobuf@2.17.0))':
+    dependencies:
+      '@bufbuild/protobuf': 2.17.0
+      '@connectrpc/connect': 2.3.0(@bufbuild/protobuf@2.17.0)
+
+  '@connectrpc/connect@2.3.0(@bufbuild/protobuf@2.17.0)':
+    dependencies:
+      '@bufbuild/protobuf': 2.17.0
 
   '@emnapi/core@2.0.0-beta.2':
     dependencies:
@@ -2537,7 +2606,7 @@ snapshots:
   '@mark1russell7/coeval@0.38.3(zod@4.6.7)':
     dependencies:
       '@mark1russell7/collections': 0.11.2(zod@4.6.7)
-      '@mark1russell7/rigor-generators': 0.2.0
+      '@mark1russell7/rigor-generators': 0.2.6
     transitivePeerDependencies:
       - zod
 
@@ -2586,14 +2655,14 @@ snapshots:
 
   '@mark1russell7/rigor-chaos@0.3.4':
     dependencies:
-      '@mark1russell7/rigor-generators': 0.2.0
+      '@mark1russell7/rigor-generators': 0.2.6
       '@mark1russell7/rigor-statistics': 0.2.12
 
   '@mark1russell7/rigor-generators@0.1.16': {}
 
   '@mark1russell7/rigor-generators@0.1.19': {}
 
-  '@mark1russell7/rigor-generators@0.2.0': {}
+  '@mark1russell7/rigor-generators@0.2.6': {}
 
   '@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7)':
     dependencies:
@@ -2608,12 +2677,12 @@ snapshots:
 
   '@mark1russell7/rigor-statistics@0.2.12':
     dependencies:
-      '@mark1russell7/rigor-generators': 0.2.0
+      '@mark1russell7/rigor-generators': 0.2.6
 
-  '@mark1russell7/rigor-testkit@0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.0)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)':
+  '@mark1russell7/rigor-testkit@0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)':
     optionalDependencies:
       '@mark1russell7/rigor-chaos': 0.3.4
-      '@mark1russell7/rigor-generators': 0.2.0
+      '@mark1russell7/rigor-generators': 0.2.6
       '@mark1russell7/rigor-proxy': 0.4.1(zod@4.6.7)
       '@opentelemetry/api': 1.10.0
 
@@ -2659,6 +2728,8 @@ snapshots:
     dependencies:
       '@clack/prompts': 1.9.0
 
+  '@mark1russell7/text@0.0.17': {}
+
   '@mark1russell7/text@0.0.20': {}
 
   '@mark1russell7/text@0.0.6': {}
@@ -2682,7 +2753,7 @@ snapshots:
       '@mark1russell7/coeval': 0.34.0(zod@4.6.7)
       '@mark1russell7/collections': 0.10.2(zod@4.6.7)
       '@mark1russell7/quantity': 0.4.1(zod@4.6.7)
-      '@mark1russell7/rigor-generators': 0.2.0
+      '@mark1russell7/rigor-generators': 0.2.6
       '@mark1russell7/service': 0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7)
       '@opentelemetry/api': 1.10.0
       '@types/ws': 8.18.2
@@ -2703,7 +2774,7 @@ snapshots:
       '@mark1russell7/coeval': 0.38.3(zod@4.6.7)
       '@mark1russell7/collections': 0.10.2(zod@4.6.7)
       '@mark1russell7/quantity': 0.4.1(zod@4.6.7)
-      '@mark1russell7/rigor-generators': 0.2.0
+      '@mark1russell7/rigor-generators': 0.2.6
       '@mark1russell7/service': 0.11.9(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7)
       '@opentelemetry/api': 1.10.0
       '@types/ws': 8.18.2

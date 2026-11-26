@@ -50,9 +50,10 @@
           "suite-socketio.yml",
           "suite-autobahn.yml",
           "suite-graphql-http.yml",
-          "transports.yml"
+          "transports.yml",
+          "rig.yml"
         ],
-        "reason": "The suites of MQTT, Engine.IO, SockJS, Socket.IO, Autobahn and GraphQL over HTTP are not gates. They find faults of the clients, and their it.fails tests record them. They run only when a suite changes, each week and on a manual start. The transport scan is not a gate: it writes data. It runs when the scan changes, each week and on a manual start."
+        "reason": "The suites of MQTT, Engine.IO, SockJS, Socket.IO, Autobahn and GraphQL over HTTP are not gates. They find faults of the clients, and their it.fails tests record them. They run only when a suite changes, each week and on a manual start. The probes of the bug-class rig are not a gate: they find the faults of a class in the clients again. They run when the rig changes, each week and on a manual start. The transport scan is not a gate: it writes data. It runs when the scan changes, each week and on a manual start."
       },
       "typed-files": {
         "configs": [

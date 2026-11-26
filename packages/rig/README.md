@@ -1,0 +1,28 @@
+# @wirelab/rig
+
+The bug-class rig of wirelab. Each finding of the catalog is an instance of a bug class. A probe of the class finds the same fault again, and each permutation of it, in each package of the formats of the class. `docs/W26-RIG.md` gives the design.
+
+## The parts
+
+| Part | File | What it does |
+| --- | --- | --- |
+| The adapter of format 1 | `src/cuts.ts` | It cuts a valid stream of length-prefixed frames at one point inside one frame. |
+| The outcomes and the oracles | `src/outcome.ts` | It records the outcome of one call: a value, an error or a timeout. An oracle gives a verdict for each outcome. |
+| The matrix | `src/matrix.ts` | It reads the dimensions of a class from the catalog and makes the rows of the matrix. |
+| The targets | `src/targets/` | A target is one client of one package at one version. It gives a valid stream and the outcome of a call on bytes. |
+| The probes | `src/probes/` | A probe examines each row of the matrix of its class on each target. |
+
+## The probe C017
+
+C017 is the class "a stream cut inside a length prefix or a header ends with no error". The probe cuts a valid stream at each place and each cut of the catalog. The oracle `errorOnCut` gives these verdicts:
+
+- An error is a pass.
+- A value is a fail.
+- A timeout is inconclusive, because a hang is the class C007.
+
+The targets are three calls of `@connectrpc/connect-web` 2.3.0: a Connect server stream, a gRPC-web server stream and a gRPC-web unary call. The scripted server of `@mark1russell7/rigor-testkit` sends each cut stream as the body of one response.
+
+## The checks
+
+- `pnpm test` examines the adapter, and compares its values with the dimensions of the catalog.
+- The probes start only when the environment variable `RIG` is `1`. The workflow `rig.yml` sets it, and writes the report of each probe to an artifact.
