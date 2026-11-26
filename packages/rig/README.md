@@ -24,6 +24,8 @@ The targets are three calls of `@connectrpc/connect-web` 2.3.0: a Connect server
 
 The target of `apache-arrow` 21.2.0 is `tableFromIPC` on an Arrow IPC stream of one schema and two record batches. Each message is one frame with a prefix of 8 bytes.
 
+The target of `@aws-sdk/client-s3` 3.1175.0 is the event stream of `SelectObjectContentCommand`, with `@smithy/core` 3.41.0. A local request handler gives the bytes. Each event message is one frame with a prefix of 4 bytes: its total length.
+
 ## The checks
 
 - `pnpm test` examines the adapter, and compares its values with the dimensions of the catalog.

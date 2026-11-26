@@ -66,7 +66,8 @@
   {
     "class": "C017",
     "state": "written",
-    "file": "packages/rig/src/probes/c017.ts"
+    "file": "packages/rig/src/probes/c017.ts",
+    "note": "It finds F0140, F0145 and F0227 again. Its proof on a fixed version waits for W26-R2."
   },
   {
     "class": "C018",
