@@ -97,8 +97,11 @@ function codeName(code: unknown): string {
   return `not a code (${typeof code}): ${String(code).slice(0, 40)}`;
 }
 
+/** The reply protocols of `@connectrpc/connect-web`. */
+type ConnectProtocol = Extract<ReplyProtocol, "connect" | "grpc-web">;
+
 /** The content types of a binary response of each protocol and kind of call. */
-const CONTENT_TYPES: Readonly<Record<ReplyProtocol, Readonly<Record<CallKind, string>>>> = {
+const CONTENT_TYPES: Readonly<Record<ConnectProtocol, Readonly<Record<CallKind, string>>>> = {
   connect: { unary: "application/proto", stream: "application/connect+proto" },
   "grpc-web": { unary: "application/grpc-web+proto", stream: "application/grpc-web+proto" },
 };
@@ -107,7 +110,7 @@ const CONTENT_TYPES: Readonly<Record<ReplyProtocol, Readonly<Record<CallKind, st
  * This function makes one call of `kind` over `protocol` to a scripted server that answers with `reply`. It gives the
  * values and the trailers that the caller got, or the error of the call.
  */
-async function callWith(protocol: ReplyProtocol, kind: CallKind, reply: ScriptedReply): Promise<Outcome> {
+async function callWith(protocol: ConnectProtocol, kind: CallKind, reply: ScriptedReply): Promise<Outcome> {
   const path = kind === "stream" ? "/test.Svc/Stream" : "/test.Svc/Unary";
   const server = await startScriptedServer({ routes: [{ method: "POST", path, replies: [reply] }] });
   try {
@@ -137,7 +140,7 @@ async function callWith(protocol: ReplyProtocol, kind: CallKind, reply: Scripted
 }
 
 /** This function makes a target of one protocol and one kind of call. It is an envelope target and a reply target. */
-function target(id: string, protocol: ReplyProtocol, kind: CallKind, valid: FramedStream): EnvelopeTarget & ReplyTarget {
+function target(id: string, protocol: ConnectProtocol, kind: CallKind, valid: FramedStream): EnvelopeTarget & ReplyTarget {
   const contentType = CONTENT_TYPES[protocol][kind];
   return {
     id,
