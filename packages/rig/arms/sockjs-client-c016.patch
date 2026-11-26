@@ -1,0 +1,23 @@
+diff --git a/lib/main.js b/lib/main.js
+index 90dc042..5e74b15 100644
+--- a/lib/main.js
++++ b/lib/main.js
+@@ -277,12 +277,18 @@ SockJS.prototype._transportMessage = function(msg) {
+     case 'a':
+       if (Array.isArray(payload)) {
+         payload.forEach(function(p) {
++          if (self.readyState !== SockJS.OPEN) {
++            return;
++          }
+           debug('message', self.transport, p);
+           self.dispatchEvent(new TransportMessageEvent(p));
+         });
+       }
+       break;
+     case 'm':
++      if (this.readyState !== SockJS.OPEN) {
++        break;
++      }
+       debug('message', this.transport, payload);
+       this.dispatchEvent(new TransportMessageEvent(payload));
+       break;

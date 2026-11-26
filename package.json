@@ -220,6 +220,8 @@
           "repros/msgpackr/F0203/tsconfig.json",
           "repros/graphql-ws/F0204/tsconfig.json",
           "repros/graphql-ws/F0205/tsconfig.json",
+          "repros/graphql-ws/F0234/tsconfig.json",
+          "repros/graphql-ws/F0235/tsconfig.json",
           "repros/phoenix/F0206/tsconfig.json",
           "repros/phoenix/F0207/tsconfig.json",
           "repros/dns-packet/F0214/tsconfig.json",

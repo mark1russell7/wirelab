@@ -115,5 +115,31 @@
     "build": "npm ci --ignore-scripts && npm run build -w packages/connect && find packages/connect-web/src -name '*.spec.ts' -delete && npm run build -w packages/connect-web",
     "folder": "packages/connect-web",
     "copy": ["dist"]
+  },
+  {
+    "id": "sockjs-client-c016",
+    "class": "C016",
+    "targets": ["sockjs-client/websocket", "sockjs-client/xhr-streaming", "sockjs-client/xhr-polling", "sockjs-client/eventsource"],
+    "package": "sockjs-client",
+    "repository": "sockjs/sockjs-client",
+    "base": "bdec828fe39827c6df5801244246193aae5b0b11",
+    "patch": "arms/sockjs-client-c016.patch",
+    "fixLink": "https://github.com/sockjs/sockjs-client/blob/bdec828fe39827c6df5801244246193aae5b0b11/lib/main.js#L277-L288",
+    "build": "true",
+    "folder": ".",
+    "copy": ["lib"]
+  },
+  {
+    "id": "graphql-ws-c016",
+    "class": "C016",
+    "targets": ["graphql-ws/server", "graphql-ws/client"],
+    "package": "graphql-ws",
+    "repository": "enisdenjo/graphql-ws",
+    "base": "98b3e23fc7e1734787bf0faf9e5c2557beb941b4",
+    "patch": "arms/graphql-ws-c016.patch",
+    "fixLink": "https://github.com/enisdenjo/graphql-ws/pull/711",
+    "build": "corepack enable && yarn install --immutable && yarn build",
+    "folder": ".",
+    "copy": ["dist"]
   }
 ]

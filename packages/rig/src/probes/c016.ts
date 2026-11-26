@@ -1,13 +1,18 @@
 /**
- * The probe of the class C016: a frame after the end-of-stream marker is delivered. The probe adds frames after the end
- * marker of the valid stream of each target with a rule `afterEnd`. The oracle `notDeliveredAfterEnd` judges each
- * outcome against the run of the valid stream.
+ * The probe of the class C016: a frame after the end-of-stream marker is delivered. The probe has two parts.
+ *
+ * - An envelope target takes one whole response. The probe adds frames after the end marker of the valid stream of
+ *   each target with a rule `afterEnd`. The oracle `notDeliveredAfterEnd` judges each outcome against the run of the
+ *   valid stream.
+ * - A session target stays open, and the rig scripts its peer. Each case makes one end (an end frame, a completion of
+ *   the peer or a local close) and then one item. The oracle `notCrossedAfterEnd` judges the record of the run.
  */
+import { errorMessage } from "@mark1russell7/text";
 import { catalog } from "@wirelab/catalog";
 import { concatBytes, type FramedStream } from "../cuts.ts";
 import { dimensionsOf } from "../matrix.ts";
 import { notDeliveredAfterEnd, outcomeText, type Verdict } from "../outcome.ts";
-import type { EnvelopeTarget } from "../targets/target.ts";
+import type { EnvelopeTarget, SessionCase, SessionRun, SessionTarget } from "../targets/target.ts";
 
 /** The id of the class of this probe. */
 export const CLASS_ID = "C016";
@@ -98,6 +103,73 @@ export async function runProbe(targets: readonly EnvelopeTarget[]): Promise<Prob
     for (const one of extraCases(stream)) {
       const outcome = await target.run(one.bytes);
       results.push({ ...base, after: one.after, frame: one.frame, verdict: notDeliveredAfterEnd(outcome, rule, control), outcome: outcomeText(outcome) });
+    }
+  }
+  return results;
+}
+
+/** One result of the probe on a session target: one case. */
+export interface SessionResult extends SessionCase {
+  readonly target: string;
+  readonly package: string;
+  readonly version: string;
+  readonly verdict: Verdict;
+  /** The items of the valid session that crossed. */
+  readonly before: readonly string[];
+  /** The items after the end that crossed. */
+  readonly late: readonly string[];
+  /** The text of the error of a run that threw. A run that throws is inconclusive. */
+  readonly error?: string;
+}
+
+/**
+ * This function judges the record of a session run. No item can cross after the end, so an item after the end is a
+ * fail. A run with no item of the valid session is inconclusive, because then the run does not show that the session
+ * worked.
+ */
+export function notCrossedAfterEnd(run: SessionRun): Verdict {
+  if (run.before.length === 0) return "inconclusive";
+  return run.after.length === 0 ? "pass" : "fail";
+}
+
+/**
+ * This function compares the cases of the session targets with the catalog. It gives each value of a case that the
+ * catalog does not have for C016. It also gives each pair of cases of one target with the same values and variant.
+ */
+export function sessionCaseProblems(targets: readonly SessionTarget[]): string[] {
+  const dimensions = dimensionsOf(catalog.classDimensions, CLASS_ID);
+  const problems: string[] = [];
+  for (const target of targets) {
+    const keys = new Set<string>();
+    for (const one of target.cases) {
+      for (const [name, value] of [["after", one.after], ["frame", one.frame], ["direction", one.direction]] as const) {
+        if (!(dimensions[name] ?? []).includes(value)) problems.push(`${target.id}: ${name}: the catalog has no value "${value}".`);
+      }
+      const key = sessionKey(one);
+      if (keys.has(key)) problems.push(`${target.id}: the case "${key}" is not unique.`);
+      keys.add(key);
+    }
+  }
+  return problems;
+}
+
+/** This function gives the values of a case as one line: the place of the end, the item, the direction and the variant. */
+export function sessionKey(one: SessionCase): string {
+  return `${one.after} | ${one.frame} | ${one.direction} | ${one.variant}`;
+}
+
+/** This function starts each case of each session target, one case at a time, and gives each result. */
+export async function runSessionProbe(targets: readonly SessionTarget[]): Promise<SessionResult[]> {
+  const results: SessionResult[] = [];
+  for (const target of targets) {
+    for (const one of target.cases) {
+      const base = { target: target.id, package: target.package, version: target.version, ...one };
+      try {
+        const run = await target.run(one);
+        results.push({ ...base, verdict: notCrossedAfterEnd(run), before: run.before, late: run.after });
+      } catch (error) {
+        results.push({ ...base, verdict: "inconclusive", before: [], late: [], error: errorMessage(error) });
+      }
     }
   }
   return results;

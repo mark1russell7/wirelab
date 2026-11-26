@@ -1303,5 +1303,15 @@
     "finding": "F0233",
     "class": "C032",
     "role": "primary"
+  },
+  {
+    "finding": "F0234",
+    "class": "C016",
+    "role": "primary"
+  },
+  {
+    "finding": "F0235",
+    "class": "C016",
+    "role": "primary"
   }
 ]
