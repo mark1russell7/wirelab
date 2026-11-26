@@ -3,6 +3,7 @@ import { dirname } from "node:path";
 import { matrixRows, random } from "@mark1russell7/rigor-generators";
 import { catalog } from "@wirelab/catalog";
 import { describe, expect, it } from "vitest";
+import { ARMS, armProblems, currentArm } from "../arms.ts";
 import { CUTS, PLACES } from "../cuts.ts";
 import { dimensionsOf } from "../matrix.ts";
 import { apacheArrowTarget } from "../targets/apache-arrow.ts";
@@ -14,7 +15,13 @@ import { CLASS_ID, adapterProblems, runProbe } from "./c017.ts";
  * The runs of the probes start only when the environment variable `RIG` is `1`, in the workflow `rig.yml`. Each run
  * starts servers and clients, so it is not part of the local checks.
  */
-const rigEnabled = process.env["RIG"] === "1";
+const arm = currentArm(process.env);
+
+/** The runs on the releases. A run of an arm replaces a package of the workspace, so it starts only the probe of its target. */
+const rigEnabled = process.env["RIG"] === "1" && arm === undefined;
+
+/** Each target of C017. */
+const targets = [...connectWebTargets, apacheArrowTarget, awsSdkS3Target];
 
 /** This function writes the results to the file of the environment variable `RIG_REPORT`, with the suffix `name`. */
 function writeReport(name: string, results: readonly unknown[]): void {
@@ -90,5 +97,36 @@ describe.runIf(rigEnabled)("C017 on @aws-sdk/client-s3", () => {
         "aws-sdk/s3-select-object-content | middle | prefix width - 1",
       ]),
     );
+  }, 60_000);
+});
+
+describe("C017: the arms", () => {
+  it("names only targets of the rig, with full commits", () => {
+    expect(armProblems(ARMS, targets.map((one) => one.id))).toEqual([]);
+  });
+
+  it("finds each problem of a bad arm", () => {
+    const good = ARMS[0];
+    if (good === undefined) throw new Error("The rig has no arm.");
+    const bad = { ...good, target: "none", base: "abc", copy: [] };
+    expect(armProblems([good, good, bad], ["aws-sdk/s3-select-object-content"])).toEqual([
+      `${good.id}: the id is not unique.`,
+      `${good.id}: the id is not unique.`,
+      `${good.id}: the rig has no target "none".`,
+      `${good.id}: each commit is a full SHA of 40 hex digits.`,
+      `${good.id}: the arm copies no folder.`,
+    ]);
+  });
+});
+
+describe.runIf(process.env["RIG"] === "1" && arm?.arm.class === CLASS_ID)("C017 on an arm", () => {
+  it("finds the fault again on the base commit, and no fault on the commit of the fix", async () => {
+    if (arm === undefined) throw new Error("This run has no arm.");
+    const target = targets.find((one) => one.id === arm.arm.target);
+    if (target === undefined) throw new Error(`The rig has no target "${arm.arm.target}".`);
+    const results = await runProbe([target]);
+    writeReport(`arm-${arm.arm.id}-${arm.kind}`, results);
+    if (arm.kind === "base") expect(failLines(results)).not.toEqual([]);
+    else expect(failLines(results)).toEqual([]);
   }, 60_000);
 });

@@ -2,6 +2,7 @@
  * The bug-class rig of wirelab. Each class of the catalog has a probe. A probe examines the matrix of its class on each
  * target of its formats, and an oracle judges each outcome. `docs/W26-RIG.md` has the design.
  */
+export * from "./arms.ts";
 export * from "./cuts.ts";
 export * from "./matrix.ts";
 export * from "./outcome.ts";
