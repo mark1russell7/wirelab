@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import { CUTS, PLACES } from "../cuts.ts";
 import { dimensionsOf } from "../matrix.ts";
 import { apacheArrowTarget } from "../targets/apache-arrow.ts";
+import { awsSdkS3Target } from "../targets/aws-sdk-s3.ts";
 import { connectWebTargets } from "../targets/connect-web.ts";
 import { CLASS_ID, adapterProblems, runProbe } from "./c017.ts";
 
@@ -73,6 +74,20 @@ describe.runIf(rigEnabled)("C017 on apache-arrow", () => {
       expect.arrayContaining([
         "apache-arrow/table-from-ipc | middle | 1 byte into the prefix",
         "apache-arrow/table-from-ipc | middle | prefix width - 1",
+      ]),
+    );
+  }, 60_000);
+});
+
+describe.runIf(rigEnabled)("C017 on @aws-sdk/client-s3", () => {
+  it("finds the known instance again: an event stream cut inside the 4-byte total length ends with no error", async () => {
+    const results = await runProbe([awsSdkS3Target]);
+    writeReport("aws-sdk-s3", results);
+    // The known instance: F0140, smithy-lang/smithy-typescript#2367.
+    expect(failLines(results)).toEqual(
+      expect.arrayContaining([
+        "aws-sdk/s3-select-object-content | middle | 1 byte into the prefix",
+        "aws-sdk/s3-select-object-content | middle | prefix width - 1",
       ]),
     );
   }, 60_000);
