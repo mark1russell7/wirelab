@@ -1,0 +1,38 @@
+diff --git a/packages/connect/src/protocol-grpc/trailer-status.ts b/packages/connect/src/protocol-grpc/trailer-status.ts
+index 1fbc4e2..2b88519 100644
+--- a/packages/connect/src/protocol-grpc/trailer-status.ts
++++ b/packages/connect/src/protocol-grpc/trailer-status.ts
+@@ -100,20 +100,20 @@ export function findTrailerError(
+   const statusBytes = headerOrTrailer.get(headerStatusDetailsBin);
+   if (statusBytes != null) {
+     const status = decodeBinaryHeader(statusBytes, StatusSchema);
+-    if (status.code == 0) {
+-      return undefined;
++    // A status with the code 0 does not hide the grpc-status field.
++    if (status.code != 0) {
++      const error = new ConnectError(
++        status.message,
++        status.code,
++        headerOrTrailer,
++      );
++      error.details = status.details.map((any) => ({
++        type: any.typeUrl.substring(any.typeUrl.lastIndexOf("/") + 1),
++        value: any.value,
++      }));
++      error.isWireError = true;
++      return error;
+     }
+-    const error = new ConnectError(
+-      status.message,
+-      status.code,
+-      headerOrTrailer,
+-    );
+-    error.details = status.details.map((any) => ({
+-      type: any.typeUrl.substring(any.typeUrl.lastIndexOf("/") + 1),
+-      value: any.value,
+-    }));
+-    error.isWireError = true;
+-    return error;
+   }
+   const grpcStatus = headerOrTrailer.get(headerGrpcStatus);
+   if (grpcStatus != null) {

@@ -1,7 +1,9 @@
 [
   {
     "class": "C001",
-    "state": "planned"
+    "state": "written",
+    "file": "packages/rig/src/probes/c001.ts",
+    "note": "It examines the error responses of connect-web (the candidate c4 of W16). The known instances F0073, F0108, F0132, F0133, F0139, F0144, F0162, F0202 and F0225 are of other packages: their targets are W26-R7."
   },
   {
     "class": "C002",
@@ -9,7 +11,9 @@
   },
   {
     "class": "C003",
-    "state": "planned"
+    "state": "written",
+    "file": "packages/rig/src/probes/c003.ts",
+    "note": "It examines the error responses of connect-web (the candidate c5 of W16). The known instances F0002, F0020, F0117, F0122, F0165 and F0182 are of other packages: their targets are W26-R7."
   },
   {
     "class": "C004",
@@ -129,15 +133,21 @@
   },
   {
     "class": "C032",
-    "state": "planned"
+    "state": "written",
+    "file": "packages/rig/src/probes/c032.ts",
+    "note": "It examines the error responses of connect-web (the candidate c11 of W16). The known instances F0004, F0064, F0115, F0120 and F0121 are of other packages: their targets are W26-R7."
   },
   {
     "class": "C033",
-    "state": "planned"
+    "state": "written",
+    "file": "packages/rig/src/probes/c033.ts",
+    "note": "It examines the error responses of connect-web (the candidate c6 of W16). The known instances F0159, F0168 and F0169 are of other packages: their targets are W26-R7."
   },
   {
     "class": "C034",
-    "state": "planned"
+    "state": "written",
+    "file": "packages/rig/src/probes/c034.ts",
+    "note": "It examines the error responses of connect-web (the candidate c2 and c3 of W16). The known instances F0070, F0072, F0178 and F0209 are of other packages: their targets are W26-R7."
   },
   {
     "class": "C035",

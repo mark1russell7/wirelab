@@ -1,0 +1,56 @@
+diff --git a/packages/connect/src/protocol-grpc-web/validate-response.ts b/packages/connect/src/protocol-grpc-web/validate-response.ts
+index 058c810..d11204a 100644
+--- a/packages/connect/src/protocol-grpc-web/validate-response.ts
++++ b/packages/connect/src/protocol-grpc-web/validate-response.ts
+@@ -20,7 +20,10 @@ import {
+   headerGrpcStatus,
+ } from "./headers.js";
+ import { codeFromHttpStatus } from "../protocol-grpc/http-status.js";
+-import { findTrailerError } from "../protocol-grpc/trailer-status.js";
++import {
++  decodeGrpcMessage,
++  findTrailerError,
++} from "../protocol-grpc/trailer-status.js";
+ import type { Compression } from "../protocol/compression.js";
+ 
+ /**
+@@ -48,7 +51,7 @@ export function validateResponse(
+     };
+   }
+   throw new ConnectError(
+-    decodeURIComponent(headers.get(headerGrpcMessage) ?? `HTTP ${status}`),
++    decodeGrpcMessage(headers.get(headerGrpcMessage) ?? `HTTP ${status}`),
+     codeFromHttpStatus(status),
+     headers,
+   );
+diff --git a/packages/connect/src/protocol-grpc/trailer-status.ts b/packages/connect/src/protocol-grpc/trailer-status.ts
+index 1fbc4e2..1c81fea 100644
+--- a/packages/connect/src/protocol-grpc/trailer-status.ts
++++ b/packages/connect/src/protocol-grpc/trailer-status.ts
+@@ -124,7 +124,7 @@ export function findTrailerError(
+     let error: ConnectError;
+     if (code in Code) {
+       error = new ConnectError(
+-        decodeURIComponent(headerOrTrailer.get(headerGrpcMessage) ?? ""),
++        decodeGrpcMessage(headerOrTrailer.get(headerGrpcMessage) ?? ""),
+         code,
+         headerOrTrailer,
+       );
+@@ -140,3 +140,17 @@ export function findTrailerError(
+   }
+   return undefined;
+ }
++
++/**
++ * Percent-decode a grpc-message. A bad escape keeps the raw text, so that the
++ * error keeps its code.
++ *
++ * @private Internal code, does not follow semantic versioning.
++ */
++export function decodeGrpcMessage(value: string): string {
++  try {
++    return decodeURIComponent(value);
++  } catch (e) {
++    return value;
++  }
++}

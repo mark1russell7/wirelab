@@ -1,0 +1,13 @@
+diff --git a/packages/connect-web/src/grpc-web-transport.ts b/packages/connect-web/src/grpc-web-transport.ts
+index d5d477a..b012843 100644
+--- a/packages/connect-web/src/grpc-web-transport.ts
++++ b/packages/connect-web/src/grpc-web-transport.ts
+@@ -276,6 +276,8 @@ export function createGrpcWebTransport(
+           if (!(await reader.read()).done) {
+             throw "extra data for trailers-only";
+           }
++          // In a trailers-only response, the headers are the trailers.
++          header.forEach((value, key) => trailerTarget.set(key, value));
+           return;
+         }
+         let trailerReceived = false;
