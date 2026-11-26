@@ -1,0 +1,156 @@
+# The arms of the bug-class rig (packages/rig). Each arm builds a fix of another repository from a pinned commit and
+# runs the probe of its class on the build. The arm base builds the commit before the fix, and the probe expects the
+# known fails. The arm fixed builds the fix, and the probe expects no fail. src/arms.json gives the arms.
+#
+# The arms run the build scripts of other repositories. So this workflow runs only for a pull request, where a cache that
+# a step writes is in the scope of the pull request. A run on the default branch could write a cache from that code.
+# The workflow starts on each pull request, so its summary check "Rig arms OK" is always there (CI.md, "A gate with
+# paths"). The job "changes" decides if the arms run.
+name: Rig arms
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+# A newer push cancels the run of a pull request.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  changes:
+    name: Changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pull-requests: read
+    outputs:
+      match: ${{ steps.changes.outputs.match }}
+    steps:
+      - id: changes
+        uses: mark1russell7/template/.github/actions/changes@8ad943ea22c2a65479b648664765028cf981da78 # main
+        with:
+          paths: |
+            packages/rig/**
+            pnpm-lock.yaml
+            .github/workflows/rig-arms.yml
+
+  plan:
+    needs: changes
+    if: needs.changes.outputs.match == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.arms.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - id: arms
+        run: |
+          node -e '
+            const arms = require("./packages/rig/src/arms.json");
+            const rows = arms.flatMap((arm) => ["base", "fixed"].map((kind) => ({
+              id: arm.id, kind, repository: arm.repository, commit: kind === "base" ? arm.base : (arm.fix ?? arm.base),
+              patch: kind === "fixed" ? (arm.patch ?? "") : "",
+              build: arm.build, folder: arm.folder, copy: arm.copy.join(" "), package: arm.package,
+            })));
+            console.log(`matrix=${JSON.stringify(rows)}`);
+          ' >> "$GITHUB_OUTPUT"
+
+  arms:
+    needs: plan
+    if: needs.plan.outputs.matrix != '[]'
+    name: arm ${{ matrix.id }} (${{ matrix.kind }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+      # No cache: this job builds the code of another repository, so it does not write a cache of this repository.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: pnpm install --frozen-lockfile
+      - name: Check out the commit of the arm
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: ${{ matrix.repository }}
+          ref: ${{ matrix.commit }}
+          path: arm-src
+          persist-credentials: false
+      - name: Apply the patch of the fix
+        if: matrix.patch != ''
+        env:
+          PATCH: ${{ matrix.patch }}
+        run: git -C arm-src apply --verbose "$GITHUB_WORKSPACE/packages/rig/$PATCH"
+      - name: Build the package
+        working-directory: arm-src
+        env:
+          BUILD: ${{ matrix.build }}
+        run: bash -c "$BUILD"
+      - name: Put the build in place of each installed release
+        env:
+          PACKAGE: ${{ matrix.package }}
+          FOLDER: ${{ matrix.folder }}
+          COPY: ${{ matrix.copy }}
+        run: |
+          shopt -s nullglob
+          found=0
+          for dir in node_modules/.pnpm/"${PACKAGE/\//+}"@*/node_modules/"$PACKAGE"; do
+            for part in $COPY; do
+              if [ "$part" = "." ]; then
+                # The whole package: the build replaces each file of the installed release.
+                find "${dir:?}" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+                cp -r "arm-src/$FOLDER/." "$dir/"
+              else
+                rm -rf "${dir:?}/$part"
+                cp -r "arm-src/$FOLDER/$part" "$dir/$part"
+              fi
+            done
+            echo "The build of the arm replaces $dir."
+            found=$((found + 1))
+          done
+          if [ "$found" -eq 0 ]; then echo "The workspace has no installed $PACKAGE."; exit 1; fi
+      - name: Run the probe of the arm
+        working-directory: packages/rig
+        env:
+          RIG: "1"
+          RIG_ARM: ${{ matrix.id }}
+          RIG_ARM_KIND: ${{ matrix.kind }}
+          RIG_REPORT: ${{ runner.temp }}/rig-arm.json
+        run: pnpm exec vitest run src/probes --reporter=default
+      - name: Upload the report
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: rig-arm-${{ matrix.id }}-${{ matrix.kind }}
+          path: ${{ runner.temp }}/rig-arm-*.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  rig-arms-ok:
+    name: Rig arms OK
+    if: ${{ !cancelled() }}
+    needs: [changes, plan, arms]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - uses: mark1russell7/template/.github/actions/gate-summary@8ad943ea22c2a65479b648664765028cf981da78 # main
+        with:
+          needs: ${{ toJSON(needs) }}

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "smithy-typescript-2377",
+    "class": "C017",
+    "target": "aws-sdk/s3-select-object-content",
+    "package": "@smithy/core",
+    "repository": "mark1russell7/smithy-typescript",
+    "base": "56723ea17952eef716a7f3bc14ba8607ad04409d",
+    "fix": "d80f2e822cee5cf9ba3de01277f5b2e0595a421f",
+    "fixLink": "https://github.com/smithy-lang/smithy-typescript/pull/2377",
+    "build": "corepack enable && yarn install --immutable && yarn turbo run build --filter=@smithy/core",
+    "folder": "packages/core",
+    "copy": ["dist-cjs", "dist-es", "dist-types"]
+  },
+  {
+    "id": "arrow-js-535",
+    "class": "C017",
+    "target": "apache-arrow/table-from-ipc",
+    "package": "apache-arrow",
+    "repository": "apache/arrow-js",
+    "base": "04ced72ce03d619836bb8a5445601114a67cbbc3",
+    "patch": "arms/arrow-js-535.patch",
+    "fixLink": "https://github.com/apache/arrow-js/issues/535",
+    "build": "npm ci && npx gulp build -t apache-arrow",
+    "folder": "targets/apache-arrow",
+    "copy": ["."]
+  }
+]
