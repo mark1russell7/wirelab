@@ -2,9 +2,10 @@
  * The probe of the class C017: a stream cut inside a length prefix or a header ends with no error. The probe cuts the
  * valid stream of each target at each point of the matrix of C017, and the oracle `errorOnCut` judges each outcome.
  */
+import { matrixRows, random } from "@mark1russell7/rigor-generators";
 import { catalog } from "@wirelab/catalog";
 import { CUTS, PLACES, cutCase, type Cut, type Place } from "../cuts.ts";
-import { dimensionsOf, matrixRows } from "../matrix.ts";
+import { dimensionsOf } from "../matrix.ts";
 import { errorOnCut, outcomeText, type Verdict } from "../outcome.ts";
 import type { EnvelopeTarget } from "../targets/target.ts";
 
@@ -44,7 +45,8 @@ export function adapterProblems(): string[] {
 
 /** This function starts the probe on each target, one cut stream at a time, and gives each result. */
 export async function runProbe(targets: readonly EnvelopeTarget[]): Promise<ProbeResult[]> {
-  const rows = matrixRows(dimensionsOf(catalog.classDimensions, CLASS_ID, ["frame", "cut"]), CLASS_ID);
+  // The matrix of C017 is small, so `matrixRows` gives each combination.
+  const rows = matrixRows(dimensionsOf(catalog.classDimensions, CLASS_ID, ["frame", "cut"]), random(CLASS_ID));
   const results: ProbeResult[] = [];
   for (const target of targets) {
     const stream = target.stream();

@@ -21,7 +21,7 @@
     "@bufbuild/protobuf": "2.17.0",
     "@connectrpc/connect": "2.3.0",
     "@connectrpc/connect-web": "2.3.0",
-    "@mark1russell7/rigor-generators": "^0.2.6",
+    "@mark1russell7/rigor-generators": "^0.2.7",
     "@mark1russell7/rigor-testkit": "^0.1.19",
     "@mark1russell7/text": "^0.0.17",
     "@wirelab/catalog": "workspace:*",
