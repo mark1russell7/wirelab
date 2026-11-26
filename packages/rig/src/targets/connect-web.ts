@@ -80,6 +80,9 @@ function target(id: string, contentType: string, kind: CallKind, valid: FramedSt
   return {
     id,
     ...CONNECT_WEB,
+    // The Connect and gRPC-web protocols end a response with the end marker. The universal transports of
+    // `@connectrpc/connect` refuse a frame after it.
+    afterEnd: "refuse",
     stream: () => valid,
     async run(bytes: Uint8Array): Promise<Outcome> {
       const path = kind === "stream" ? "/test.Svc/Stream" : "/test.Svc/Unary";

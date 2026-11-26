@@ -1,0 +1,30 @@
+diff --git a/packages/connect-web/src/connect-transport.ts b/packages/connect-web/src/connect-transport.ts
+index c02f0b8..e918016 100644
+--- a/packages/connect-web/src/connect-transport.ts
++++ b/packages/connect-web/src/connect-transport.ts
+@@ -274,6 +274,12 @@ export function createConnectTransport(
+             );
+           }
+           if ((flags & endStreamFlag) === endStreamFlag) {
++            if (endStreamReceived) {
++              throw new ConnectError(
++                "protocol error: received extra EndStreamResponse",
++                Code.InvalidArgument,
++              );
++            }
+             endStreamReceived = true;
+             const endStream = endStreamFromJson(data);
+             if (endStream.error) {
+@@ -288,6 +294,12 @@ export function createConnectTransport(
+             );
+             continue;
+           }
++          if (endStreamReceived) {
++            throw new ConnectError(
++              "protocol error: received extra message after EndStreamResponse",
++              Code.InvalidArgument,
++            );
++          }
+           yield parse(data);
+         }
+         if (!endStreamReceived) {

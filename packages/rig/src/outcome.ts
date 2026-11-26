@@ -3,6 +3,7 @@
  * compare outcomes across targets and versions.
  */
 import { errorMessage } from "@mark1russell7/text";
+import type { AfterEndRule } from "./targets/target.ts";
 
 /** The outcome of one run: the values that the caller got, an error, or no end in the time limit. */
 export type Outcome =
@@ -58,6 +59,19 @@ export function errorOnCut(outcome: Outcome): Verdict {
   if (outcome.kind === "error") return "pass";
   if (outcome.kind === "value") return "fail";
   return "inconclusive";
+}
+
+/**
+ * This function is the oracle of C016: a frame after the end marker is not delivered. With the rule `refuse`, only an
+ * error is a pass. With the rule `ignore`, an error or the values of `control` (the run of the valid stream) is a
+ * pass. A timeout is inconclusive.
+ */
+export function notDeliveredAfterEnd(outcome: Outcome, rule: AfterEndRule, control: Outcome): Verdict {
+  if (outcome.kind === "timeout") return "inconclusive";
+  if (outcome.kind === "error") return "pass";
+  if (rule === "refuse") return "fail";
+  if (control.kind !== "value") return "inconclusive";
+  return JSON.stringify(outcome.values) === JSON.stringify(control.values) ? "pass" : "fail";
 }
 
 /** This function gives a short text of an outcome for a report. */

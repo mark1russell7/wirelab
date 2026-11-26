@@ -10,4 +10,5 @@ export * from "./targets/target.ts";
 export { APACHE_ARROW, apacheArrowTarget } from "./targets/apache-arrow.ts";
 export { AWS_SDK_S3, awsSdkS3Target } from "./targets/aws-sdk-s3.ts";
 export { CONNECT_WEB, connectWebTargets, envelope } from "./targets/connect-web.ts";
+export { CLASS_ID as C016, adapterProblems as c016AdapterProblems, extraCases, runProbe as runC016, type ProbeResult as C016Result } from "./probes/c016.ts";
 export { CLASS_ID as C017, adapterProblems as c017AdapterProblems, runProbe as runC017, type ProbeResult } from "./probes/c017.ts";
