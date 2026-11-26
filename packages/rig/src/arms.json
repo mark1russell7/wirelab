@@ -2,7 +2,7 @@
   {
     "id": "smithy-typescript-2377",
     "class": "C017",
-    "target": "aws-sdk/s3-select-object-content",
+    "targets": ["aws-sdk/s3-select-object-content"],
     "package": "@smithy/core",
     "repository": "mark1russell7/smithy-typescript",
     "base": "56723ea17952eef716a7f3bc14ba8607ad04409d",
@@ -15,7 +15,7 @@
   {
     "id": "arrow-js-535",
     "class": "C017",
-    "target": "apache-arrow/table-from-ipc",
+    "targets": ["apache-arrow/table-from-ipc"],
     "package": "apache-arrow",
     "repository": "apache/arrow-js",
     "base": "04ced72ce03d619836bb8a5445601114a67cbbc3",
@@ -24,5 +24,18 @@
     "build": "npm ci && npx gulp build -t apache-arrow",
     "folder": "targets/apache-arrow",
     "copy": ["."]
+  },
+  {
+    "id": "connect-es-1901",
+    "class": "C017",
+    "targets": ["connect-web/connect-stream", "connect-web/grpc-web-stream", "connect-web/grpc-web-unary"],
+    "package": "@connectrpc/connect",
+    "repository": "connectrpc/connect-es",
+    "base": "6b7c593d1a26db0be3c2c35500f50e9925354444",
+    "patch": "arms/connect-es-1901.patch",
+    "fixLink": "https://github.com/connectrpc/connect-es/issues/1901",
+    "build": "npm ci --ignore-scripts && npm run build -w packages/connect",
+    "folder": "packages/connect",
+    "copy": ["dist"]
   }
 ]

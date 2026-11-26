@@ -16,8 +16,8 @@ export interface Arm {
   readonly id: string;
   /** The class of the probe that the arm proves. */
   readonly class: string;
-  /** The id of the target that uses the package. */
-  readonly target: string;
+  /** The ids of the targets that use the package. The probe examines each of them on the build. */
+  readonly targets: readonly string[];
   /** The npm name of the package that the build replaces. */
   readonly package: string;
   /** The GitHub repository of the commits, as `owner/name`. */
@@ -52,7 +52,8 @@ export function armProblems(arms: readonly Arm[], targets: readonly string[], pa
   for (const arm of arms) {
     if (ids.has(arm.id)) problems.push(`${arm.id}: the id is not unique.`);
     ids.add(arm.id);
-    if (!targets.includes(arm.target)) problems.push(`${arm.id}: the rig has no target "${arm.target}".`);
+    if (arm.targets.length === 0) problems.push(`${arm.id}: the arm names no target.`);
+    for (const target of arm.targets) if (!targets.includes(target)) problems.push(`${arm.id}: the rig has no target "${target}".`);
     if ((arm.fix === undefined) === (arm.patch === undefined)) problems.push(`${arm.id}: the arm has a fix commit or a patch, and not the two.`);
     if (!commit.test(arm.base) || (arm.fix !== undefined && !commit.test(arm.fix))) problems.push(`${arm.id}: each commit is a full SHA of 40 hex digits.`);
     if (arm.base === arm.fix) problems.push(`${arm.id}: the base and the fix are the same commit.`);

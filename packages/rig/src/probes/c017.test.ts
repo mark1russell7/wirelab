@@ -110,7 +110,7 @@ describe("C017: the arms", () => {
   it("finds each problem of a bad arm", () => {
     const good = ARMS[0];
     if (good === undefined) throw new Error("The rig has no arm.");
-    const bad = { ...good, target: "none", base: "abc", patch: "none.patch", copy: [] };
+    const bad = { ...good, targets: ["none"], base: "abc", patch: "none.patch", copy: [] };
     expect(armProblems([good, good, bad], ["aws-sdk/s3-select-object-content"], (path) => path !== "none.patch")).toEqual([
       `${good.id}: the id is not unique.`,
       `${good.id}: the id is not unique.`,
@@ -126,11 +126,14 @@ describe("C017: the arms", () => {
 describe.runIf(process.env["RIG"] === "1" && arm?.arm.class === CLASS_ID)("C017 on an arm", () => {
   it("finds the fault again on the base commit, and no fault on the commit of the fix", async () => {
     if (arm === undefined) throw new Error("This run has no arm.");
-    const target = targets.find((one) => one.id === arm.arm.target);
-    if (target === undefined) throw new Error(`The rig has no target "${arm.arm.target}".`);
-    const results = await runProbe([target]);
+    const armTargets = arm.arm.targets.map((id) => {
+      const target = targets.find((one) => one.id === id);
+      if (target === undefined) throw new Error(`The rig has no target "${id}".`);
+      return target;
+    });
+    const results = await runProbe(armTargets);
     writeReport(`arm-${arm.arm.id}-${arm.kind}`, results);
     if (arm.kind === "base") expect(failLines(results)).not.toEqual([]);
     else expect(failLines(results)).toEqual([]);
-  }, 60_000);
+  }, 120_000);
 });

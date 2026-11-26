@@ -1,0 +1,26 @@
+diff --git a/packages/connect/src/protocol/envelope.ts b/packages/connect/src/protocol/envelope.ts
+index 0e42c49..e7c8622 100644
+--- a/packages/connect/src/protocol/envelope.ts
++++ b/packages/connect/src/protocol/envelope.ts
+@@ -87,6 +87,12 @@ class EnvelopeDecoderImpl implements EnvelopeDecoder {
+   }
+ 
+   get byteLength(): number {
++    // The header of an envelope that is not complete is also incomplete data.
++    return this.buffered() + (this.env ? this.header.byteLength : 0);
++  }
++
++  // the bytes in the buffer, not yet consumed
++  private buffered(): number {
+     return this.buf.reduce((a, b) => a + b.byteLength, 0);
+   }
+ 
+@@ -136,7 +142,7 @@ class EnvelopeDecoderImpl implements EnvelopeDecoder {
+   // consume from buffer, fill target
+   cons(target: Uint8Array): boolean {
+     const wantLength = target.byteLength;
+-    if (this.byteLength < wantLength) {
++    if (this.buffered() < wantLength) {
+       return false;
+     }
+     let offset = 0;
