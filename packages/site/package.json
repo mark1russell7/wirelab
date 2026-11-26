@@ -13,7 +13,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@mark1russell7/text": "^0.0.19",
+    "@mark1russell7/text": "^0.0.20",
     "@wirelab/catalog": "workspace:*"
   },
   "devDependencies": {
