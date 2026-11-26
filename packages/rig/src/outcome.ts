@@ -45,7 +45,8 @@ export async function outcomeOf(
       resolve({ kind: "timeout", limitMs });
     }, limitMs);
   });
-  const run = work(controller.signal).then(
+  // The executor catches a throw of `work` before its promise, so that throw also gives an error outcome.
+  const run = new Promise<Awaited<ReturnType<typeof work>>>((resolve) => resolve(work(controller.signal))).then(
     (got): Outcome => (isValueList(got) ? { kind: "value", values: got } : { kind: "value", values: got.values, trailers: got.trailers }),
     (error: unknown): Outcome => errorOutcome(error, codeName),
   );

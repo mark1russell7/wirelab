@@ -57,6 +57,25 @@ export interface ReplyTarget {
   reply(reply: ScriptedReply): Promise<Outcome>;
 }
 
+/**
+ * A target that puts one key into one table of a client: a name that comes from the peer or from the app. The probe of
+ * C001 compares the outcome of a key of `Object.prototype` with the outcome of a random unknown key.
+ */
+export interface KeyTarget {
+  /** The id of the target: the package and the table, for example `stompjs/receipt`. */
+  readonly id: string;
+  /** The npm name of the package. */
+  readonly package: string;
+  /** The version of the package that the workspace installs. */
+  readonly version: string;
+  /** The table of the key: a value of the dimension `table` of C001. */
+  readonly table: string;
+  /** The phase of the key: a value of the dimension `phase` of C001. */
+  readonly phase: string;
+  /** This function puts `key` into the table, operates the client and gives the outcome. */
+  run(key: string): Promise<Outcome>;
+}
+
 /** The places of an end that a session target makes: the values of the dimension `after` of C016. */
 export type SessionAfter = "end-of-stream frame" | "second end-of-stream" | "completion of the peer" | "local close()";
 
