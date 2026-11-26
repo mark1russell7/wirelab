@@ -1,3 +1,47 @@
+diff --git a/src/io/adapters.ts b/src/io/adapters.ts
+index 7d25e00..80a5f85 100644
+--- a/src/io/adapters.ts
++++ b/src/io/adapters.ts
+@@ -93,7 +93,8 @@ function* fromIterable<T extends ArrayBufferViewInput>(source: Iterable<T> | T):
+             if (done || size <= bufferLength) {
+                 do {
+                     ({ cmd, size } = yield byteRange());
+-                } while (size < bufferLength);
++                    // At the end of the source, a read gets the bytes that are left, also when they are fewer than its size.
++                } while (size < bufferLength || (done && bufferLength > 0));
+             }
+         } while (!done);
+     } catch (e) {
+@@ -141,7 +142,8 @@ async function* fromAsyncIterable<T extends ArrayBufferViewInput>(source: AsyncI
+             if (done || size <= bufferLength) {
+                 do {
+                     ({ cmd, size } = yield byteRange());
+-                } while (size < bufferLength);
++                    // At the end of the source, a read gets the bytes that are left, also when they are fewer than its size.
++                } while (size < bufferLength || (done && bufferLength > 0));
+             }
+         } while (!done);
+     } catch (e) {
+@@ -192,7 +194,8 @@ async function* fromDOMStream<T extends ArrayBufferViewInput>(source: ReadableSt
+             if (done || size <= bufferLength) {
+                 do {
+                     ({ cmd, size } = yield byteRange());
+-                } while (size < bufferLength);
++                    // At the end of the source, a read gets the bytes that are left, also when they are fewer than its size.
++                } while (size < bufferLength || (done && bufferLength > 0));
+             }
+         } while (!done);
+     } catch (e) {
+@@ -324,7 +327,8 @@ async function* fromNodeStream(stream: NodeJS.ReadableStream): AsyncUint8ArrayGe
+             if (done || size <= bufferLength) {
+                 do {
+                     ({ cmd, size } = yield byteRange());
+-                } while (size < bufferLength);
++                    // At the end of the source, a read gets the bytes that are left, also when they are fewer than its size.
++                } while (size < bufferLength || (done && bufferLength > 0));
+             }
+         } while (!done);
+     } finally {
 diff --git a/src/ipc/message.ts b/src/ipc/message.ts
 index 40a6543..85e824b 100644
 --- a/src/ipc/message.ts
