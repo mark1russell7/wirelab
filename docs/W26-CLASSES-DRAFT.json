@@ -1,0 +1,2026 @@
+{
+  "formats": {
+    "length-prefixed-envelope": "frames with a binary length prefix: gRPC-web, Connect, MQTT remaining length, Avro RPC, AWS event streams, Arrow IPC, DNS over TCP",
+    "binary-codec": "a binary document or value codec: BSON, msgpack, CBOR, protobuf, Avro, Arrow, ABI, DNS records",
+    "text-frame-headers": "text frames with a command, header lines and a body or separator: STOMP, SockJS, Engine.IO, Socket.IO, SSE, HLS playlists",
+    "text-document": "a text document format that a client parses: XML, Extended JSON, .proto source, m3u8",
+    "json-http": "JSON over HTTP: GraphQL over HTTP, JSON-RPC over HTTP, PostgREST, REST APIs",
+    "json-ws": "JSON over a socket: graphql-transport-ws, JSON-RPC over WebSocket and IPC, Phoenix, Pusher, SignalR JSON, Socket.IO events",
+    "url-and-headers": "the URL, the query string and the headers that a client writes from values of the app",
+    "socket-lifecycle": "the connect, close, reconnect and event API of any stateful client (WebSocket, EventSource, WebTransport, long polling)",
+    "api-surface": "the published API and types of a client package, not the bytes"
+  },
+  "classes": [
+    {
+      "id": "C001",
+      "title": "A lookup keyed by wire text matches the keys of Object.prototype.",
+      "rule": "A name from the peer or the app that equals an Object.prototype member gives the same result as any other unknown name: no inherited value, no TypeError.",
+      "oracle": "Differential: the run with the key K gives the same events and errors as the run with a random unknown key of the same length.",
+      "formats": [
+        "json-ws",
+        "json-http",
+        "text-frame-headers",
+        "binary-codec",
+        "text-document"
+      ],
+      "dimensions": {
+        "key": [
+          "constructor",
+          "__proto__",
+          "toString",
+          "valueOf",
+          "hasOwnProperty",
+          "isPrototypeOf",
+          "propertyIsEnumerable",
+          "__defineGetter__",
+          "toLocaleString"
+        ],
+        "table": [
+          "command",
+          "method or handler name",
+          "subscription or channel id",
+          "receipt or request id",
+          "event or union type",
+          "error or code name",
+          "entity or variable name",
+          "field or option name"
+        ],
+        "phase": [
+          "handshake",
+          "open",
+          "stream"
+        ]
+      },
+      "cwe": "CWE-1321",
+      "security": true,
+      "instances": [
+        "F0073",
+        "F0108",
+        "F0132",
+        "F0133",
+        "F0139",
+        "F0144",
+        "F0162",
+        "F0202",
+        "F0225"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C002",
+      "title": "A wire key __proto__ written by assignment replaces the prototype of the result.",
+      "rule": "Each key from the peer, __proto__ too, becomes an own property of the result, or the decode refuses it. The prototype of the result does not change.",
+      "oracle": "After the decode, Object.getPrototypeOf(result) is the expected prototype, and the key is an own property or an error was raised.",
+      "formats": [
+        "json-ws",
+        "json-http",
+        "binary-codec",
+        "text-document"
+      ],
+      "dimensions": {
+        "key": [
+          "__proto__",
+          "constructor.prototype"
+        ],
+        "value": [
+          "object",
+          "array",
+          "null",
+          "string"
+        ],
+        "container": [
+          "state map",
+          "record fields",
+          "map type",
+          "options copy"
+        ]
+      },
+      "cwe": "CWE-1321",
+      "security": true,
+      "instances": [
+        "F0013"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C003",
+      "title": "The error that the caller gets is not the real cause: a second throw or a catch-all replaces it.",
+      "rule": "When a call fails, the error names the first cause and has the documented error class. A failure while the error is built does not replace it.",
+      "oracle": "The error class and code equal those of the reference case (the same failure with a plain ASCII value); the original cause is in the message or in cause.",
+      "formats": [
+        "json-http",
+        "json-ws",
+        "length-prefixed-envelope",
+        "binary-codec",
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "step": [
+          "percent-decode of a status message",
+          "base64 decode",
+          "JSON.parse of an error body",
+          "JSON.stringify of the request (BigInt, cycle)",
+          "serializer of the app throws",
+          "catch-all rethrow with a fixed text",
+          "internal TypeError in a wrong state"
+        ],
+        "state": [
+          "before connect",
+          "open",
+          "after end"
+        ]
+      },
+      "cwe": "CWE-755",
+      "security": false,
+      "instances": [
+        "F0002",
+        "F0020",
+        "F0117",
+        "F0122",
+        "F0165",
+        "F0182"
+      ],
+      "secondaryInstances": [
+        "F0038"
+      ]
+    },
+    {
+      "id": "C004",
+      "title": "A timer or interval outlives the close, the end or the failure that should clear it.",
+      "rule": "When close(), end(), deactivate() or disconnect() resolves, or an operation fails, the library has no active timer, and no timer callback of it runs later.",
+      "oracle": "No handle or timer of the library after close resolves (fake clock count or process.getActiveResourcesInfo), and the process exits at once.",
+      "formats": [
+        "socket-lifecycle",
+        "json-http"
+      ],
+      "dimensions": {
+        "timer": [
+          "connect timeout",
+          "handshake or info timeout",
+          "heartbeat or keep-alive",
+          "reconnect backoff",
+          "request timeout",
+          "transport timeout"
+        ],
+        "phase": [
+          "connecting",
+          "handshake",
+          "open",
+          "stream",
+          "closing",
+          "backoff",
+          "after-end",
+          "after-close"
+        ],
+        "trigger": [
+          "close()",
+          "end()",
+          "fetch rejects",
+          "transport fails",
+          "heartbeat lost"
+        ]
+      },
+      "cwe": "CWE-404",
+      "security": false,
+      "instances": [
+        "F0015",
+        "F0019",
+        "F0049",
+        "F0068",
+        "F0078",
+        "F0098",
+        "F0224",
+        "F0226"
+      ],
+      "secondaryInstances": [
+        "F0096"
+      ]
+    },
+    {
+      "id": "C005",
+      "title": "close() or a failed attempt leaves a socket or a request of the connection running.",
+      "rule": "After close() or a failed connect, each socket, poll, EventSource and probe of the client is closed or aborted, and none opens later.",
+      "oracle": "The scripted peer sees each connection of the client end within a short bound after close, and sees no new one.",
+      "formats": [
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "resource": [
+          "long-poll request",
+          "close POST",
+          "probe socket",
+          "EventSource",
+          "old socket after a parse error"
+        ],
+        "phase": [
+          "connecting",
+          "upgrade",
+          "open",
+          "after-error"
+        ]
+      },
+      "cwe": "CWE-772",
+      "security": false,
+      "instances": [
+        "F0031",
+        "F0032",
+        "F0104",
+        "F0154"
+      ],
+      "secondaryInstances": [
+        "F0217"
+      ]
+    },
+    {
+      "id": "C006",
+      "title": "A listener, handler, subscriber or buffer is not removed when its operation ends.",
+      "rule": "After N cycles of connect and close, or on and off, or subscribe and end, the count of registrations and the retained memory return to the start value.",
+      "oracle": "Listener and map counts after N cycles equal the counts after 1 cycle; heap after GC grows less than a constant.",
+      "formats": [
+        "socket-lifecycle",
+        "json-ws",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "registration": [
+          "message handler",
+          "subscriber map entry",
+          "ack handler",
+          "abort listener",
+          "replay buffer",
+          "upload stream subscription"
+        ],
+        "cycle": [
+          "reconnect",
+          "on/off",
+          "subscribe/complete",
+          "iterator throw()",
+          "early break"
+        ],
+        "n": [
+          "1",
+          "20",
+          "1000"
+        ]
+      },
+      "cwe": "CWE-401",
+      "security": false,
+      "instances": [
+        "F0011",
+        "F0014",
+        "F0136",
+        "F0205"
+      ],
+      "secondaryInstances": [
+        "F0056",
+        "F0105"
+      ]
+    },
+    {
+      "id": "C007",
+      "title": "A pending call never settles when its request is dropped or its connection ends.",
+      "rule": "Each promise or callback of a call settles (resolves or rejects) within its timeout plus a small bound, also when the request is dropped, refused locally, or the socket closes.",
+      "oracle": "No promise is pending after timeout + epsilon from the end of the connection or the drop.",
+      "formats": [
+        "json-ws",
+        "json-http",
+        "socket-lifecycle",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "cause": [
+          "buffer overflow drops the push",
+          "local refusal (topic alias)",
+          "socket closes before the reply",
+          "a hook does not await next()",
+          "volatile drop"
+        ],
+        "call": [
+          "publish",
+          "subscribe",
+          "unsubscribe",
+          "invoke",
+          "emitWithAck"
+        ],
+        "phase": [
+          "connecting",
+          "open",
+          "closing",
+          "after-close"
+        ]
+      },
+      "cwe": "CWE-835",
+      "security": false,
+      "instances": [
+        "F0018",
+        "F0056",
+        "F0090",
+        "F0153",
+        "F0157",
+        "F0187"
+      ],
+      "secondaryInstances": [
+        "F0076",
+        "F0102",
+        "F0191"
+      ]
+    },
+    {
+      "id": "C008",
+      "title": "A malformed or failed input escapes as an uncaught exception or an unhandled rejection.",
+      "rule": "Malformed bytes from the peer, a network failure or a failed hook give an error event or a rejected call. Nothing reaches uncaughtException or unhandledRejection.",
+      "oracle": "No uncaughtException and no unhandledRejection in the process; the error reaches the documented error path.",
+      "formats": [
+        "json-ws",
+        "json-http",
+        "text-frame-headers",
+        "length-prefixed-envelope",
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "input": [
+          "frame that is not JSON",
+          "JSON of a wrong shape",
+          "unknown binary kind",
+          "malformed open packet",
+          "body read fails",
+          "setup promise rejects",
+          "storage rejects"
+        ],
+        "phase": [
+          "handshake",
+          "open",
+          "stream"
+        ],
+        "transport": [
+          "websocket",
+          "polling",
+          "fetch",
+          "ipc",
+          "webtransport"
+        ]
+      },
+      "cwe": "CWE-248",
+      "security": true,
+      "instances": [
+        "F0022",
+        "F0026",
+        "F0027",
+        "F0029",
+        "F0076",
+        "F0135",
+        "F0151",
+        "F0191"
+      ],
+      "secondaryInstances": [
+        "F0040",
+        "F0072"
+      ]
+    },
+    {
+      "id": "C009",
+      "title": "A thrown or rejected value that is not an Error is mishandled.",
+      "rule": "A thrown value of any kind becomes a rejection with an Error that keeps the value as its cause. A falsy thrown value never gives success.",
+      "oracle": "For each value V, the call rejects, the error is instanceof Error, and error.cause or the message carries V.",
+      "formats": [
+        "json-ws",
+        "json-http",
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "value": [
+          "undefined",
+          "null",
+          "0",
+          "''",
+          "false",
+          "a string",
+          "a plain object",
+          "Promise.reject() with no reason"
+        ],
+        "source": [
+          "remote function",
+          "url provider",
+          "auth callback",
+          "transport send"
+        ]
+      },
+      "cwe": "CWE-754",
+      "security": false,
+      "instances": [
+        "F0040",
+        "F0077",
+        "F0106",
+        "F0186"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C010",
+      "title": "An exception in one user callback stops the other callbacks or breaks the connection state.",
+      "rule": "When a listener or hook throws, the library reports the exception and still runs the other listeners, and the connection state stays correct.",
+      "oracle": "Differential with the DOM EventTarget: each other listener runs once; readyState and later events equal the run with no throw.",
+      "formats": [
+        "socket-lifecycle",
+        "json-ws"
+      ],
+      "dimensions": {
+        "callback": [
+          "on* handler",
+          "addEventListener listener",
+          "onclose/onreconnect list",
+          "open or close observer"
+        ],
+        "event": [
+          "open",
+          "message",
+          "close",
+          "error",
+          "reconnecting"
+        ]
+      },
+      "cwe": "CWE-755",
+      "security": false,
+      "instances": [
+        "F0008",
+        "F0046",
+        "F0091",
+        "F0101"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C011",
+      "title": "An event or a timer of an old connection acts on the new connection.",
+      "rule": "Events and timers of connection n never change the state of connection n+1.",
+      "oracle": "Model-based: after a reconnect, a late event of the old socket or transport changes nothing; the new connection stays open and gets no stale message.",
+      "formats": [
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "late": [
+          "error event",
+          "close event",
+          "ack timer",
+          "retry timer",
+          "transport timeout"
+        ],
+        "trigger": [
+          "unsubscribe and subscribe while connecting",
+          "stop() then start()",
+          "connect() during the retry wait",
+          "ack timeout and retry",
+          "fast transport failure"
+        ]
+      },
+      "cwe": "CWE-362",
+      "security": false,
+      "instances": [
+        "F0001",
+        "F0079",
+        "F0096",
+        "F0110",
+        "F0217"
+      ],
+      "secondaryInstances": [
+        "F0078"
+      ]
+    },
+    {
+      "id": "C012",
+      "title": "The state carried over a reconnect is wrong: the client replays operations that ended, or drops operations that are live.",
+      "rule": "After a reconnect, the client sends again exactly the operations that are still live, with the flags that the spec gives a resend, and no others.",
+      "oracle": "Model-based: the set of subscribe, unsubscribe and publish packets after a reconnect equals the model set for the session state.",
+      "formats": [
+        "socket-lifecycle",
+        "json-ws",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "operation": [
+          "subscribe",
+          "unsubscribe",
+          "publish QoS 1/2",
+          "buffered send",
+          "resume id"
+        ],
+        "session": [
+          "session present",
+          "clean start",
+          "stateful reconnect fails"
+        ],
+        "phase": [
+          "connecting",
+          "backoff",
+          "open"
+        ]
+      },
+      "cwe": "CWE-664",
+      "security": false,
+      "instances": [
+        "F0009",
+        "F0010",
+        "F0074",
+        "F0085",
+        "F0086",
+        "F0102",
+        "F0219"
+      ],
+      "secondaryInstances": [
+        "F0110"
+      ]
+    },
+    {
+      "id": "C013",
+      "title": "A call or a peer event during a transition gives a result different from the lifecycle model.",
+      "rule": "Each call (connect, close, reconnect, send, subscribe, abort) and each peer event in each phase gives the result of the lifecycle state machine: no dropped, doubled or undone action.",
+      "oracle": "Model-based test on fast-check: the observed events and peer frames equal the model trace for the same sequence.",
+      "formats": [
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "call": [
+          "connect",
+          "close",
+          "reconnect",
+          "send",
+          "subscribe",
+          "abort",
+          "peer close packet"
+        ],
+        "phase": [
+          "connecting",
+          "handshake",
+          "open",
+          "stream",
+          "closing",
+          "backoff",
+          "after-end",
+          "after-close"
+        ]
+      },
+      "cwe": "CWE-362",
+      "security": false,
+      "instances": [
+        "F0016",
+        "F0034",
+        "F0035",
+        "F0036",
+        "F0039",
+        "F0048",
+        "F0055",
+        "F0057",
+        "F0058",
+        "F0095",
+        "F0190",
+        "F0218"
+      ],
+      "secondaryInstances": [
+        "F0029",
+        "F0045",
+        "F0070",
+        "F0094"
+      ]
+    },
+    {
+      "id": "C014",
+      "title": "The terminal events of a WebSocket-like API differ from those of the WHATWG WebSocket.",
+      "rule": "A client that offers the WebSocket API gives the same open, error and close events, with the same code, reason and wasClean, as the native WebSocket.",
+      "oracle": "Differential: the same peer script gives the same event sequence as the native WebSocket of Node.js.",
+      "formats": [
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "case": [
+          "close() while connecting",
+          "close() before the inner socket exists",
+          "close by unsubscribe",
+          "empty reason",
+          "unclean close"
+        ],
+        "runtime": [
+          "browser",
+          "node",
+          "react-native"
+        ]
+      },
+      "cwe": null,
+      "security": false,
+      "instances": [
+        "F0005",
+        "F0037",
+        "F0044",
+        "F0045",
+        "F0094"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C015",
+      "title": "A close code or reason is not checked against the limits of RFC 6455 before close().",
+      "rule": "The client refuses a close code outside 1000 and 3000 to 4999 and a reason over 123 UTF-8 bytes, or trims it, and a refused close still ends the state.",
+      "oracle": "No throw escapes; the socket ends; the code on the wire is legal and the reason is at most 123 bytes.",
+      "formats": [
+        "socket-lifecycle",
+        "json-ws"
+      ],
+      "dimensions": {
+        "code": [
+          "0",
+          "NaN",
+          "999",
+          "1005",
+          "2999",
+          "5000"
+        ],
+        "reason": [
+          "123 ASCII bytes",
+          "124 ASCII bytes",
+          "41 three-byte chars",
+          "text from the peer"
+        ],
+        "caller": [
+          "app",
+          "library from peer data"
+        ]
+      },
+      "cwe": "CWE-248",
+      "security": true,
+      "instances": [
+        "F0003",
+        "F0038",
+        "F0092"
+      ],
+      "secondaryInstances": [
+        "F0002"
+      ]
+    },
+    {
+      "id": "C016",
+      "title": "A frame after the end-of-stream marker, a completion or close() is delivered or sent.",
+      "rule": "After the end marker of a stream, a completion of the peer, or close(), the client delivers no more messages and sends no more items for that stream.",
+      "oracle": "The client raises a protocol error or drops the frame; no message event after the end; the peer gets no item after its completion.",
+      "formats": [
+        "length-prefixed-envelope",
+        "text-frame-headers",
+        "json-ws"
+      ],
+      "dimensions": {
+        "after": [
+          "end-of-stream frame",
+          "second end-of-stream",
+          "completion of the peer",
+          "local close()"
+        ],
+        "frame": [
+          "data",
+          "trailer",
+          "message batch"
+        ],
+        "direction": [
+          "inbound",
+          "outbound"
+        ]
+      },
+      "cwe": "CWE-696",
+      "security": false,
+      "instances": [
+        "F0069",
+        "F0105"
+      ],
+      "secondaryInstances": [
+        "F0204"
+      ]
+    },
+    {
+      "id": "C017",
+      "title": "A stream cut inside a length prefix or a header ends with no error.",
+      "rule": "A body that ends at any byte inside a frame (prefix, header or payload) gives a protocol error.",
+      "oracle": "For each cut offset k inside the last frame, the client raises an error; no cut gives a clean end.",
+      "formats": [
+        "length-prefixed-envelope",
+        "binary-codec"
+      ],
+      "dimensions": {
+        "cut": [
+          "1 byte into the prefix",
+          "prefix width - 1",
+          "after the full prefix with 0 payload bytes",
+          "inside the payload"
+        ],
+        "prefixWidth": [
+          "4",
+          "5",
+          "8",
+          "12"
+        ],
+        "frame": [
+          "first",
+          "after the end marker",
+          "middle"
+        ]
+      },
+      "cwe": "CWE-130",
+      "security": false,
+      "instances": [
+        "F0140",
+        "F0145"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C018",
+      "title": "A decoder advances by the bytes that it parsed, not by the declared length, so a frame boundary moves.",
+      "rule": "The next frame or record starts at start + declared length, whatever the content. A body that the decoder skips, or a content-length that does not match, never shifts the boundary.",
+      "oracle": "Differential: the frames that the client reads equal those of a reference reader that frames by the declared length; a mismatch is a protocol error.",
+      "formats": [
+        "length-prefixed-envelope",
+        "binary-codec",
+        "text-frame-headers"
+      ],
+      "dimensions": {
+        "field": [
+          "declared length of a frame",
+          "declared length of a record",
+          "declared length of a body",
+          "length header of a text frame",
+          "separator of a batch"
+        ],
+        "badValue": [
+          "longer than the data",
+          "shorter than the data",
+          "-1",
+          "abc",
+          "1.5",
+          "2^32"
+        ],
+        "content": [
+          "message that the reader skips",
+          "data shorter than its declared length",
+          "malformed header line"
+        ]
+      },
+      "cwe": "CWE-444",
+      "security": true,
+      "instances": [
+        "F0197"
+      ],
+      "secondaryInstances": [
+        "F0152",
+        "F0216"
+      ]
+    },
+    {
+      "id": "C019",
+      "title": "After a framing error the client keeps the connection and resumes parsing at an arbitrary byte.",
+      "rule": "After a frame that does not parse, the client closes the connection, or resynchronizes only at a defined boundary. It never reads payload bytes as frames.",
+      "oracle": "After the bad frame, the client closes or raises an error and delivers no frame made from payload bytes.",
+      "formats": [
+        "length-prefixed-envelope",
+        "json-ws",
+        "text-frame-headers"
+      ],
+      "dimensions": {
+        "bad": [
+          "malformed packet",
+          "stray closing brace",
+          "frame that is not JSON"
+        ],
+        "next": [
+          "chunk starts inside a payload",
+          "valid frames follow"
+        ],
+        "transport": [
+          "tcp",
+          "ipc",
+          "websocket"
+        ]
+      },
+      "cwe": "CWE-115",
+      "security": true,
+      "instances": [
+        "F0152"
+      ],
+      "secondaryInstances": [
+        "F0154"
+      ]
+    },
+    {
+      "id": "C020",
+      "title": "A declared region (offset, length or size) outside its container, or below its minimum, is accepted.",
+      "rule": "Each offset and length is checked against its container and its minimum before the read. A region outside gives an error.",
+      "oracle": "Allocated and read bytes stay inside the message; the decode raises an error; the result never has silent undefined values.",
+      "formats": [
+        "binary-codec",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "region": [
+          "buffer of a column",
+          "head of a static parameter",
+          "nested field",
+          "nested container size"
+        ],
+        "badValue": [
+          "end past the body",
+          "start past the data",
+          "size below the minimum",
+          "size 0"
+        ]
+      },
+      "cwe": "CWE-125",
+      "security": true,
+      "instances": [
+        "F0155",
+        "F0199"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C021",
+      "title": "A reader makes no progress on crafted input and loops with no end.",
+      "rule": "The decode of an input of n bytes ends in time and memory bounded by a function of n, or raises an error.",
+      "oracle": "The decode returns or throws within a time budget in a worker; memory stays below a bound.",
+      "formats": [
+        "binary-codec",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "input": [
+          "pointer to a block of another type",
+          "large count field",
+          "count field below 0"
+        ],
+        "size": [
+          "small file",
+          "1 MiB"
+        ]
+      },
+      "cwe": "CWE-835",
+      "security": true,
+      "instances": [
+        "F0198"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C022",
+      "title": "A flag of a frame or a schema that changes the decode is ignored, not refused.",
+      "rule": "A decoder that does not support a flag value (compression, endianness, version) refuses the input.",
+      "oracle": "The client raises a protocol error; it never returns values decoded with the wrong rule.",
+      "formats": [
+        "length-prefixed-envelope",
+        "binary-codec"
+      ],
+      "dimensions": {
+        "flag": [
+          "compressed bit",
+          "endianness",
+          "version",
+          "reserved bits"
+        ],
+        "path": [
+          "unary",
+          "server stream",
+          "file",
+          "stream"
+        ]
+      },
+      "cwe": "CWE-436",
+      "security": true,
+      "instances": [
+        "F0200"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C023",
+      "title": "A message that needs earlier stream state is accepted without it, or the state is replaced where the spec allows one.",
+      "rule": "A record that refers to state (a dictionary, a setup message) that was never sent is refused; a second non-delta setup of the same id is refused.",
+      "oracle": "The reader raises an error; no column reads as null for missing state.",
+      "formats": [
+        "binary-codec",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "state": [
+          "dictionary",
+          "schema",
+          "stream setup"
+        ],
+        "fault": [
+          "never sent",
+          "sent twice",
+          "sent after use"
+        ]
+      },
+      "cwe": "CWE-20",
+      "security": false,
+      "instances": [
+        "F0146",
+        "F0148"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C024",
+      "title": "Encode then decode does not give the value back, or two equal paths give different bytes.",
+      "rule": "For each value that the codec accepts, decode(encode(v)) equals v, and each pair of equivalent paths (hex and bytes, short and long, client and spec) give the same bytes.",
+      "oracle": "Property test on fast-check: round trip equality, and a differential against the reference encoder or the spec type.",
+      "formats": [
+        "binary-codec",
+        "json-http",
+        "text-document"
+      ],
+      "dimensions": {
+        "value": [
+          "typed array",
+          "DataView",
+          "ArrayBuffer",
+          "regex flags",
+          "self reference",
+          "string default of bytes",
+          "zigzag int",
+          "key that looks like JSON",
+          "query text with # or ,"
+        ],
+        "path": [
+          "hex vs bytes",
+          "stream vs file",
+          "two batches with a shared chunk"
+        ]
+      },
+      "cwe": "CWE-704",
+      "security": false,
+      "instances": [
+        "F0127",
+        "F0147",
+        "F0156",
+        "F0160",
+        "F0161",
+        "F0179",
+        "F0185",
+        "F0201",
+        "F0221"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C025",
+      "title": "A value outside the range of a fixed-width wire field is changed with no error.",
+      "rule": "A value that does not fit its wire field (int width, date range, float kind, hex width, length byte) gives an error, or is padded as the spec says. It never wraps or becomes 0.",
+      "oracle": "Property test: the encode throws, or the decode gives back the value exactly.",
+      "formats": [
+        "binary-codec",
+        "length-prefixed-envelope",
+        "text-document"
+      ],
+      "dimensions": {
+        "field": [
+          "int32",
+          "int64",
+          "uint32",
+          "datetime",
+          "float32",
+          "128-bit IV",
+          "length byte"
+        ],
+        "badValue": [
+          "2^31",
+          "2^53+1",
+          "2^63",
+          "2^64+5",
+          "NaN date",
+          "Infinity",
+          "short hex",
+          "256 in a one-byte length"
+        ]
+      },
+      "cwe": "CWE-190",
+      "security": true,
+      "instances": [
+        "F0128",
+        "F0130",
+        "F0131",
+        "F0138",
+        "F0163",
+        "F0164",
+        "F0203"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C026",
+      "title": "A malformed scalar in a text wire form is coerced to a default, not refused.",
+      "rule": "A text wrapper of a number, a subtype or base64 that does not parse, or is out of range, gives an error.",
+      "oracle": "The parse throws; it never returns 0, an empty value or a wrapped number.",
+      "formats": [
+        "text-document",
+        "json-http"
+      ],
+      "dimensions": {
+        "wrapper": [
+          "$numberInt",
+          "$numberLong",
+          "$timestamp",
+          "$binary subType",
+          "$binary base64"
+        ],
+        "badValue": [
+          "2147483648",
+          "12abc",
+          "2^63",
+          "2^32",
+          "100",
+          "zz",
+          "!!!!"
+        ]
+      },
+      "cwe": "CWE-20",
+      "security": true,
+      "instances": [
+        "F0166",
+        "F0167"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C027",
+      "title": "A value from the app is written raw into a delimited wire field.",
+      "rule": "Each value that the app gives goes into its wire field with the escape or encoding of that field, so it can never add, split or end a field.",
+      "oracle": "Differential: the peer parses the request into the same fields that the app gave; no extra item, header, key or segment.",
+      "formats": [
+        "url-and-headers",
+        "text-frame-headers",
+        "json-http"
+      ],
+      "dimensions": {
+        "field": [
+          "path segment",
+          "query value",
+          "list item",
+          "header value",
+          "metadata key",
+          "packet separator",
+          "JSON escape set"
+        ],
+        "badValue": [
+          "?",
+          "#",
+          "/",
+          "..",
+          ",",
+          " ",
+          "\"",
+          "\\",
+          ":",
+          "\\n",
+          "\\r",
+          "the record separator of the format",
+          "U+2028"
+        ]
+      },
+      "cwe": "CWE-74",
+      "security": true,
+      "instances": [
+        "F0050",
+        "F0149",
+        "F0189"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C028",
+      "title": "A structured or special value is written with the wrong codec (template text or plain JSON).",
+      "rule": "A non-scalar value (object, array, function, stream) is written with its documented encoding, or the call refuses it.",
+      "oracle": "The peer never gets [object Object], a,b, function source text, or a plain JSON copy of a stream object.",
+      "formats": [
+        "url-and-headers",
+        "json-http",
+        "json-ws"
+      ],
+      "dimensions": {
+        "value": [
+          "object",
+          "array",
+          "function",
+          "stream subject",
+          "two adjacent streams"
+        ],
+        "slot": [
+          "query value",
+          "rpc GET argument",
+          "password",
+          "invoke argument"
+        ]
+      },
+      "cwe": "CWE-116",
+      "security": false,
+      "instances": [
+        "F0100",
+        "F0172",
+        "F0173",
+        "F0220"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C029",
+      "title": "A value from the app fills a protocol field that the spec reserves or forbids.",
+      "rule": "Each outgoing packet obeys the MUST rules for its fields, whatever options the app passes.",
+      "oracle": "A spec checker of each outgoing packet finds no violated MUST rule.",
+      "formats": [
+        "length-prefixed-envelope",
+        "json-ws"
+      ],
+      "dimensions": {
+        "field": [
+          "DUP flag on QoS 0",
+          "Subscription Identifier in PUBLISH",
+          "Topic Alias 0",
+          "last argument read as offset"
+        ],
+        "source": [
+          "publish options",
+          "event arguments"
+        ]
+      },
+      "cwe": "CWE-20",
+      "security": false,
+      "instances": [
+        "F0066",
+        "F0084",
+        "F0088",
+        "F0089"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C030",
+      "title": "The client exceeds or miscounts a limit that the peer announced.",
+      "rule": "The client reads each limit of the peer (maximum packet size, receive maximum, maximum QoS, retain, payload size, attachment count) and never sends past it; its own decode limits accept what the peer may send.",
+      "oracle": "No outgoing packet violates the announced limit; the publish call reports an error instead.",
+      "formats": [
+        "length-prefixed-envelope",
+        "text-frame-headers",
+        "json-ws"
+      ],
+      "dimensions": {
+        "limit": [
+          "maximum packet size",
+          "receive maximum",
+          "maximum QoS",
+          "retain available",
+          "max payload with base64",
+          "attachment count"
+        ],
+        "value": [
+          "0",
+          "1",
+          "limit - 1",
+          "limit",
+          "limit + 1"
+        ]
+      },
+      "cwe": "CWE-770",
+      "security": false,
+      "instances": [
+        "F0024",
+        "F0067",
+        "F0082",
+        "F0083",
+        "F0118",
+        "F0119"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C031",
+      "title": "Replies are matched to requests wrongly: by position, by a reused id, or with a wrong sequence count.",
+      "rule": "Each reply goes to the request with its id; ids in use are never reused; sequence counts include each message.",
+      "oracle": "Differential: shuffle, drop or null one reply; every other request still gets its own reply.",
+      "formats": [
+        "json-http",
+        "json-ws",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "fault": [
+          "reply with id null",
+          "reply missing",
+          "null entry in an array reply",
+          "id reused after completion",
+          "message in the handshake frame"
+        ],
+        "batch": [
+          "2",
+          "3",
+          "10"
+        ]
+      },
+      "cwe": "CWE-841",
+      "security": false,
+      "instances": [
+        "F0087",
+        "F0103",
+        "F0150",
+        "F0184",
+        "F0204"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C032",
+      "title": "The result reported to the caller differs from what happened on the wire.",
+      "rule": "The callback says success only when the peer granted the operation, and failure only when the operation did not happen.",
+      "oracle": "Per reason code: the callback result equals the reason code on the wire, and the packets sent match the result.",
+      "formats": [
+        "length-prefixed-envelope",
+        "json-ws"
+      ],
+      "dimensions": {
+        "reply": [
+          "one failure code among grants",
+          "failure code >= 0x80",
+          "positive ack"
+        ],
+        "call": [
+          "subscribe",
+          "unsubscribe",
+          "emit with retries",
+          "multiplex subMsg"
+        ]
+      },
+      "cwe": "CWE-393",
+      "security": false,
+      "instances": [
+        "F0004",
+        "F0064",
+        "F0115",
+        "F0120",
+        "F0121"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C033",
+      "title": "A failure status, or an empty or non-object error body, becomes a success.",
+      "rule": "A non-success wire status always gives an error, whatever the body is.",
+      "oracle": "For each status and body, the call rejects or returns an error object that is truthy.",
+      "formats": [
+        "json-http",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "status": [
+          "200 with empty body",
+          "404 empty (HEAD)",
+          "500",
+          "grpc-status 13 with details code 0"
+        ],
+        "body": [
+          "empty",
+          "null",
+          "false",
+          "0",
+          "\"\""
+        ]
+      },
+      "cwe": "CWE-393",
+      "security": false,
+      "instances": [
+        "F0159",
+        "F0168",
+        "F0169"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C034",
+      "title": "The error code or the close action of a wire status is mapped wrong.",
+      "rule": "Each protocol status, HTTP status and unknown code maps to the code that the spec gives, with the documented fallback for an unknown value.",
+      "oracle": "Table test: for each (HTTP status, protocol status, body) the error code equals the spec table.",
+      "formats": [
+        "json-http",
+        "json-ws",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "status": [
+          "HTTP 400",
+          "HTTP 422",
+          "HTTP 503",
+          "null code",
+          "code below 4000",
+          "unknown code 99",
+          "batch with errors"
+        ],
+        "body": [
+          "spec JSON",
+          "not JSON",
+          "HTML page",
+          "empty"
+        ]
+      },
+      "cwe": "CWE-393",
+      "security": false,
+      "instances": [
+        "F0070",
+        "F0072",
+        "F0178",
+        "F0209"
+      ],
+      "secondaryInstances": [
+        "F0022",
+        "F0213"
+      ]
+    },
+    {
+      "id": "C035",
+      "title": "A UTF-16 string is encoded as invalid UTF-8, or differently by its length.",
+      "rule": "The encoder output equals TextEncoder output for every string, short or long.",
+      "oracle": "Differential with TextEncoder; the bytes are valid UTF-8 and the decoder of the same library accepts them.",
+      "formats": [
+        "binary-codec",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "input": [
+          "lone high surrogate",
+          "lone low surrogate",
+          "reversed pair"
+        ],
+        "length": [
+          "1",
+          "fast-path threshold - 1",
+          "threshold",
+          "threshold + 1",
+          "200"
+        ]
+      },
+      "cwe": "CWE-176",
+      "security": false,
+      "instances": [
+        "F0124",
+        "F0137"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C036",
+      "title": "A text decoder gives a different string than a strict UTF-8 decoder.",
+      "rule": "Text from the wire decodes as UTF-8 by the spec: malformed bytes give an error or U+FFFD at the right place, a leading U+FEFF is kept, and no Latin-1 decode is used.",
+      "oracle": "Differential with TextDecoder('utf-8', { fatal, ignoreBOM: true }) for each byte string.",
+      "formats": [
+        "binary-codec",
+        "length-prefixed-envelope",
+        "json-ws"
+      ],
+      "dimensions": {
+        "input": [
+          "overlong form",
+          "encoded surrogate",
+          "truncated sequence",
+          "truncated then valid bytes",
+          "leading U+FEFF",
+          "non-ASCII in a handshake"
+        ],
+        "place": [
+          "string value",
+          "map key or field name",
+          "handshake text"
+        ],
+        "length": [
+          "short",
+          "long"
+        ]
+      },
+      "cwe": "CWE-176",
+      "security": true,
+      "instances": [
+        "F0107",
+        "F0134"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C037",
+      "title": "An escape sequence or a character reference decodes to the wrong code point or byte.",
+      "rule": "Each escape decodes as its spec says: a code point above U+FFFF stays whole, an octal or hex escape gives one byte, and white space from references is kept.",
+      "oracle": "Differential with the reference parser of the format (protoc, a conformant XML parser).",
+      "formats": [
+        "text-document"
+      ],
+      "dimensions": {
+        "escape": [
+          "\\uXXXX",
+          "\\UXXXXXXXX",
+          "\\xFF",
+          "\\377",
+          "&#x1F600;",
+          "&#10;",
+          "&nbsp;"
+        ],
+        "place": [
+          "string literal",
+          "bytes default",
+          "text value"
+        ]
+      },
+      "cwe": "CWE-838",
+      "security": false,
+      "instances": [
+        "F0125",
+        "F0126",
+        "F0142",
+        "F0143"
+      ],
+      "secondaryInstances": [
+        "F0144"
+      ]
+    },
+    {
+      "id": "C038",
+      "title": "Two different keys map to one storage or cache key.",
+      "rule": "A storage or cache key keeps every key distinct: a delimiter ends a prefix, and bytes are not decoded lossily into the key.",
+      "oracle": "For pairs of keys where one is a prefix of the other, or that differ only in invalid bytes, the lookups stay apart.",
+      "formats": [
+        "binary-codec",
+        "json-ws",
+        "api-surface"
+      ],
+      "dimensions": {
+        "pair": [
+          "a key and a longer key with the same prefix",
+          "names that differ only in invalid UTF-8 bytes",
+          "hash bytes >= 0x80"
+        ],
+        "store": [
+          "url storage",
+          "cache by hash",
+          "decoded name map"
+        ]
+      },
+      "cwe": "CWE-694",
+      "security": true,
+      "instances": [
+        "F0188",
+        "F0223"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C039",
+      "title": "A value form that the spec allows is rejected or parsed wrong.",
+      "rule": "The parser accepts each form of the spec grammar: case-insensitive media types, both number prefixes, and the alternate syntax.",
+      "oracle": "Differential with the spec grammar: each allowed form gives the same result as the canonical form.",
+      "formats": [
+        "json-http",
+        "url-and-headers",
+        "text-document"
+      ],
+      "dimensions": {
+        "form": [
+          "Application/GraphQL-Response+JSON",
+          "0X1F",
+          "HTTP-date"
+        ],
+        "field": [
+          "content-type",
+          "number literal",
+          "Retry-After"
+        ]
+      },
+      "cwe": "CWE-20",
+      "security": false,
+      "instances": [
+        "F0129",
+        "F0210",
+        "F0213"
+      ],
+      "secondaryInstances": [
+        "F0170"
+      ]
+    },
+    {
+      "id": "C040",
+      "title": "The default Accept header gives a legacy media type the same weight as the preferred one.",
+      "rule": "The default Accept header equals the spec recommendation, for example application/graphql-response+json, application/json;q=0.9.",
+      "oracle": "Fixed rule: the Accept header of the first request equals the spec value.",
+      "formats": [
+        "json-http",
+        "url-and-headers"
+      ],
+      "dimensions": {
+        "header": [
+          "Accept"
+        ],
+        "client": [
+          "default",
+          "caller headers given"
+        ]
+      },
+      "cwe": null,
+      "security": false,
+      "instances": [
+        "F0208",
+        "F0211",
+        "F0212"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C041",
+      "title": "A header merge treats names as case-sensitive, or replaces a list header that it must append to.",
+      "rule": "Header names merge case-insensitively, and list headers such as Prefer keep the values of the client.",
+      "oracle": "The peer gets one value for each header name, and each preference of the client.",
+      "formats": [
+        "url-and-headers"
+      ],
+      "dimensions": {
+        "headers": [
+          "plain object",
+          "Headers instance",
+          "array",
+          "function"
+        ],
+        "name": [
+          "Authorization vs authorization",
+          "Prefer"
+        ]
+      },
+      "cwe": null,
+      "security": false,
+      "instances": [
+        "F0174",
+        "F0180",
+        "F0181"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C042",
+      "title": "An option of a call is lost, leaks into another call, or is applied wrong in another call form.",
+      "rule": "Each option has the same effect in each call form (positional, options object, Request input, batch, update) and only on its own call.",
+      "oracle": "Differential across call forms: the same options give the same request on the wire; a later call does not get the options of an earlier one.",
+      "formats": [
+        "json-http",
+        "json-ws",
+        "url-and-headers",
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "form": [
+          "positional args",
+          "options object",
+          "Request input",
+          "batch",
+          "updateProperties",
+          "React hook enable"
+        ],
+        "option": [
+          "method",
+          "signal",
+          "redirect",
+          "timeout",
+          "path",
+          "id",
+          "variables"
+        ]
+      },
+      "cwe": null,
+      "security": false,
+      "instances": [
+        "F0041",
+        "F0042",
+        "F0043",
+        "F0065",
+        "F0176",
+        "F0177",
+        "F0183",
+        "F0193",
+        "F0194"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C043",
+      "title": "An explicit falsy value is treated as absent.",
+      "rule": "0, false, '', null and an explicit undefined keep their meaning wherever the API accepts them; only a missing key takes the default.",
+      "oracle": "For each falsy value, the result differs from the default case as documented.",
+      "formats": [
+        "api-surface",
+        "json-ws"
+      ],
+      "dimensions": {
+        "value": [
+          "undefined",
+          "null",
+          "0",
+          "false",
+          "''",
+          "NaN"
+        ],
+        "slot": [
+          "option",
+          "event data",
+          "result",
+          "serializer"
+        ]
+      },
+      "cwe": "CWE-480",
+      "security": false,
+      "instances": [
+        "F0007",
+        "F0059",
+        "F0075",
+        "F0111"
+      ],
+      "secondaryInstances": [
+        "F0169"
+      ]
+    },
+    {
+      "id": "C044",
+      "title": "A number from the peer or the app is used without a range or NaN check.",
+      "rule": "Each number from the peer or the app is checked or clamped before use: timer delays stay in 0 to 2^31-1, NaN and negative values are refused, and divisions guard 0.",
+      "oracle": "With a fake clock: no timer fires earlier than the value asks; no NaN reaches a sort or a delay; no flood of timer callbacks.",
+      "formats": [
+        "socket-lifecycle",
+        "json-ws",
+        "text-frame-headers",
+        "url-and-headers"
+      ],
+      "dimensions": {
+        "field": [
+          "ping interval + timeout",
+          "heartbeat interval from the peer",
+          "backoff attempt",
+          "latency score",
+          "timeoutMs"
+        ],
+        "badValue": [
+          "-1",
+          "0",
+          "NaN",
+          "1.5",
+          "2^31",
+          "2^31-1",
+          "1e10",
+          "Infinity"
+        ],
+        "source": [
+          "peer",
+          "app"
+        ]
+      },
+      "cwe": "CWE-1284",
+      "security": true,
+      "instances": [
+        "F0028",
+        "F0063",
+        "F0158"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C045",
+      "title": "The retry and backoff timing is wrong.",
+      "rule": "Reconnect delays have jitter as documented, stop at an abort, and obey Retry-After in both of its forms with an upper bound.",
+      "oracle": "With a fake clock: delays of many clients spread; an abort ends the wait at once; Retry-After of both forms gives the right wait.",
+      "formats": [
+        "socket-lifecycle",
+        "json-http"
+      ],
+      "dimensions": {
+        "input": [
+          "no jitter option",
+          "abort during the delay",
+          "Retry-After seconds",
+          "Retry-After HTTP-date",
+          "huge Retry-After"
+        ],
+        "clients": [
+          "1",
+          "100"
+        ]
+      },
+      "cwe": null,
+      "security": false,
+      "instances": [
+        "F0047",
+        "F0170",
+        "F0222"
+      ],
+      "secondaryInstances": [
+        "F0063"
+      ]
+    },
+    {
+      "id": "C046",
+      "title": "A timeout or an abort stops covering the call when the headers arrive, so a stalled or lost body hangs.",
+      "rule": "The timeout and the abort signal cover the whole call, the body too, on each transport; a connection that drops mid-body ends the call.",
+      "oracle": "The scripted peer sends headers and then stalls or cuts; the call ends with a timeout or close within the bound.",
+      "formats": [
+        "json-http",
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "stall": [
+          "after headers",
+          "mid-body",
+          "cut mid-body"
+        ],
+        "transport": [
+          "fetch",
+          "node xhr",
+          "browser xhr",
+          "streaming"
+        ],
+        "control": [
+          "timeout option",
+          "abort signal",
+          "stop()"
+        ]
+      },
+      "cwe": "CWE-400",
+      "security": false,
+      "instances": [
+        "F0030",
+        "F0097",
+        "F0113",
+        "F0171"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C047",
+      "title": "Transports or code paths of one client give different results for the same call.",
+      "rule": "Each transport and each mode of a client (websocket, polling, fetch, QoS level, fallback) give the same observable result for the same peer data.",
+      "oracle": "Differential: the same scripted exchange over each transport gives the same messages, metadata and errors.",
+      "formats": [
+        "socket-lifecycle",
+        "length-prefixed-envelope",
+        "json-ws"
+      ],
+      "dimensions": {
+        "pair": [
+          "websocket vs http",
+          "QoS 0/1 vs QoS 2",
+          "websocket vs long poll fallback",
+          "browser transport vs universal transport of one library"
+        ],
+        "data": [
+          "binary payload",
+          "topic alias",
+          "custom serializer",
+          "trailers-only reply"
+        ]
+      },
+      "cwe": null,
+      "security": false,
+      "instances": [
+        "F0021",
+        "F0114",
+        "F0207"
+      ],
+      "secondaryInstances": [
+        "F0030"
+      ]
+    },
+    {
+      "id": "C048",
+      "title": "A value derived from the URL is wrong.",
+      "rule": "Scheme defaults, host, SNI, service, region, query and user info come from the URL by its RFC 3986 parse.",
+      "oracle": "Differential with WHATWG URL parse plus the documented rule.",
+      "formats": [
+        "url-and-headers"
+      ],
+      "dimensions": {
+        "url": [
+          "no scheme",
+          "second ? in query",
+          "failover server list",
+          "bucket on a dash host",
+          "access point host",
+          "user info with an encoded delimiter"
+        ],
+        "derived": [
+          "scheme",
+          "query",
+          "SNI",
+          "service",
+          "region",
+          "username"
+        ]
+      },
+      "cwe": null,
+      "security": false,
+      "instances": [
+        "F0061",
+        "F0099",
+        "F0116",
+        "F0195",
+        "F0196"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C049",
+      "title": "Credentials are not sent on a path that needs them.",
+      "rule": "Each request and the first message of each connection carry the credentials that the app configured.",
+      "oracle": "The scripted peer sees the token or cookie on the first join and on each transport.",
+      "formats": [
+        "url-and-headers",
+        "json-ws"
+      ],
+      "dimensions": {
+        "credential": [
+          "access token",
+          "same-origin cookie"
+        ],
+        "path": [
+          "first join",
+          "after reconnect",
+          "fetch transport"
+        ]
+      },
+      "cwe": null,
+      "security": false,
+      "instances": [
+        "F0017",
+        "F0025"
+      ],
+      "secondaryInstances": [
+        "F0220"
+      ]
+    },
+    {
+      "id": "C050",
+      "title": "The secure or insecure decision for a URL differs from the Secure Contexts and scheme rules.",
+      "rule": "A scheme or a host that is secure by the rules never connects in cleartext, and a host that the Secure Contexts spec trusts is not refused.",
+      "oracle": "Table test: for each scheme and host, the transport used (TLS or not) equals the spec table; the scripted peer with no TLS gets no CONNECT.",
+      "formats": [
+        "url-and-headers",
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "scheme": [
+          "each secure scheme alias that the client accepts",
+          "wss://",
+          "no scheme"
+        ],
+        "host": [
+          "localhost",
+          "*.localhost",
+          "loopback IPv4",
+          "loopback IPv6",
+          "hosts next to a loopback or private range"
+        ],
+        "runtime": [
+          "browser",
+          "node",
+          "react-native"
+        ]
+      },
+      "cwe": "CWE-319",
+      "security": true,
+      "instances": [
+        "F0093"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C051",
+      "title": "A missing optional global gives a ReferenceError, not the documented fallback or error.",
+      "rule": "With an optional global absent, the client uses its fallback or throws its own documented error.",
+      "oracle": "Run with the global deleted: no ReferenceError; the fallback works or the library error appears.",
+      "formats": [
+        "api-surface",
+        "socket-lifecycle"
+      ],
+      "dimensions": {
+        "global": [
+          "WebSocket",
+          "crypto",
+          "Buffer",
+          "TextEncoder",
+          "fetch",
+          "EventSource"
+        ]
+      },
+      "cwe": "CWE-456",
+      "security": false,
+      "instances": [
+        "F0012",
+        "F0051"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C052",
+      "title": "A library writes into an object that the app passed in.",
+      "rule": "A function does not change its inputs unless it documents that.",
+      "oracle": "Deep-freeze or deep-compare the inputs before and after the call.",
+      "formats": [
+        "api-surface"
+      ],
+      "dimensions": {
+        "input": [
+          "state object",
+          "options array of objects"
+        ]
+      },
+      "cwe": "CWE-471",
+      "security": false,
+      "instances": [
+        "F0192",
+        "F0206"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C053",
+      "title": "The offset, bytes-consumed or return contract of a codec differs from its docs and its siblings.",
+      "rule": "Each encode returns what its siblings return, each decode reads from the offset it is given, and the bytes count includes the prefix that it reads.",
+      "oracle": "Property test: decode at offset k of a buffer with k junk bytes equals decode at 0; consuming decode.bytes each time reads a stream of messages.",
+      "formats": [
+        "binary-codec",
+        "length-prefixed-envelope"
+      ],
+      "dimensions": {
+        "contract": [
+          "return value",
+          "offset",
+          "bytes count",
+          "compression pointer base"
+        ],
+        "offset": [
+          "0",
+          "1",
+          "2",
+          "message after another"
+        ]
+      },
+      "cwe": "CWE-684",
+      "security": false,
+      "instances": [
+        "F0214",
+        "F0215",
+        "F0216"
+      ],
+      "secondaryInstances": []
+    },
+    {
+      "id": "C054",
+      "title": "The published types disagree with the runtime or the docs.",
+      "rule": "Each type of the package accepts what the runtime and the docs accept, and gives the runtime value.",
+      "oracle": "A type test (tsd or expect-type with skipLibCheck false) next to a runtime probe of the same call.",
+      "formats": [
+        "api-surface"
+      ],
+      "dimensions": {
+        "fault": [
+          "option typed but unused",
+          "documented value refused",
+          "needs the DOM lib",
+          "wrong event type",
+          "required field with a default",
+          "value never set",
+          "plain object for a class"
+        ]
+      },
+      "cwe": null,
+      "security": false,
+      "instances": [
+        "F0006",
+        "F0023",
+        "F0033",
+        "F0052",
+        "F0053",
+        "F0054",
+        "F0060",
+        "F0062",
+        "F0080",
+        "F0081",
+        "F0112",
+        "F0175"
+      ],
+      "secondaryInstances": []
+    }
+  ],
+  "unclassified": [
+    {
+      "id": "F0071",
+      "why": "A fault of the upstream test suite (two test files bind one port), not of the client on the wire."
+    },
+    {
+      "id": "F0123",
+      "why": "A fault of the upstream test suite (process.exit in an after hook hides failures), not of the client on the wire."
+    },
+    {
+      "id": "F0109",
+      "why": "A packaging fault (a runtime import that package.json does not declare). A probe would be a strict install, not a wire run. Candidate for a later packaging class."
+    }
+  ]
+}

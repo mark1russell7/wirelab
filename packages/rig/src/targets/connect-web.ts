@@ -64,7 +64,7 @@ export function envelope(flags: number, payload: Uint8Array | string): Frame {
   const head = new Uint8Array(5);
   head[0] = flags;
   new DataView(head.buffer).setUint32(1, data.length, false);
-  return { bytes: concatBytes([head, data]), prefix: 5 };
+  return { bytes: concatBytes([head, data]), prefix: 5, fields: [1, 4] };
 }
 
 /** This function gives the name of a code of Connect, for example `invalid_argument` for 3. */

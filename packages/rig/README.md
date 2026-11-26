@@ -6,7 +6,7 @@ The bug-class rig of wirelab. Each finding of the catalog is an instance of a bu
 
 | Part | File | What it does |
 | --- | --- | --- |
-| The adapter of format 1 | `src/cuts.ts` | It cuts a valid stream of length-prefixed frames at one point inside one frame. |
+| The adapter of format 1 | `src/cuts.ts` | It cuts a valid stream of length-prefixed frames at one point inside one frame. A frame can give the fields of its prefix, and a cut goes to each field boundary. |
 | The outcomes and the oracles | `src/outcome.ts` | It records the outcome of one call: a value, an error or a timeout. An oracle gives a verdict for each outcome. |
 | The matrix | `src/matrix.ts` | It reads the dimensions of a class from the catalog and makes the rows of the matrix. |
 | The targets | `src/targets/` | A target is one client of one package at one version. It gives a valid stream and the outcome of a call on bytes. |

@@ -10,6 +10,11 @@ export interface Frame {
   readonly bytes: Uint8Array;
   /** The bytes of the prefix: the length and the flags, before the payload. It is 1 or more. */
   readonly prefix: number;
+  /**
+   * The widths of the fields of the prefix, in their order, for example the flags and the length. Their sum is
+   * `prefix`. No value means that the prefix has one field.
+   */
+  readonly fields?: readonly number[];
 }
 
 /** A valid stream of a protocol. The last frame is the end marker when the protocol has one. */
@@ -23,6 +28,7 @@ export const CUTS = [
   "prefix width - 1",
   "after the full prefix with 0 payload bytes",
   "inside the payload",
+  "at a field boundary of the prefix",
 ] as const;
 
 /** A cut point inside a frame. */
@@ -46,11 +52,8 @@ export interface CutCase {
   readonly bytes: Uint8Array;
 }
 
-/**
- * This function gives the count of the bytes of `frame` that a cut at `cut` keeps. It gives `undefined` when the frame
- * has no such point, or when the point is the same as an earlier point of `CUTS`.
- */
-export function keptBytes(frame: Frame, cut: Cut): number | undefined {
+/** This function gives the one point of a cut that is not `at a field boundary of the prefix`, or `undefined`. */
+function onePoint(frame: Frame, cut: Exclude<Cut, "at a field boundary of the prefix">): number | undefined {
   const payload = frame.bytes.length - frame.prefix;
   switch (cut) {
     case "1 byte into the prefix":
@@ -62,6 +65,34 @@ export function keptBytes(frame: Frame, cut: Cut): number | undefined {
     case "inside the payload":
       return payload > 1 ? frame.prefix + Math.max(1, Math.floor(payload / 2)) : undefined;
   }
+}
+
+/** This function gives each boundary between two fields of the prefix of `frame`, as a count of bytes. */
+export function fieldBoundaries(frame: Frame): number[] {
+  const fields = frame.fields ?? [frame.prefix];
+  const sum = fields.reduce((total, width) => total + width, 0);
+  if (fields.some((width) => !Number.isInteger(width) || width < 1) || sum !== frame.prefix) {
+    throw new Error(`The fields ${JSON.stringify(fields)} do not fill the prefix of ${frame.prefix} bytes.`);
+  }
+  const out: number[] = [];
+  let at = 0;
+  for (const width of fields.slice(0, -1)) out.push((at += width));
+  return out;
+}
+
+/**
+ * This function gives each count of the bytes of `frame` that a cut at `cut` keeps. The cut
+ * `at a field boundary of the prefix` gives one count for each boundary. The list is empty when the frame has no
+ * such point. The list has no point of an earlier cut of `CUTS`.
+ */
+export function keptBytes(frame: Frame, cut: Cut): number[] {
+  const earlier = new Set<number>();
+  for (const one of CUTS) {
+    if (one === cut) break;
+    for (const point of keptBytes(frame, one)) earlier.add(point);
+  }
+  const points = cut === "at a field boundary of the prefix" ? fieldBoundaries(frame) : [onePoint(frame, cut)];
+  return points.filter((point): point is number => point !== undefined && !earlier.has(point));
 }
 
 /** This function joins byte arrays into one array. */
@@ -84,30 +115,31 @@ function frameIndex(stream: FramedStream, place: Place): number | undefined {
 }
 
 /**
- * This function gives the cut stream of `place` and `cut`, or `undefined` when `stream` has no such cut.
+ * This function gives the cut streams of `place` and `cut`: one for each point of `keptBytes`. The list is empty
+ * when `stream` has no such cut.
  * - For `first` and `middle`, the stream keeps the frames before the cut frame and the first bytes of the cut frame.
  * - For `after the end marker`, the stream keeps each frame, and then the first bytes of a copy of the first frame.
  */
-export function cutCase(stream: FramedStream, place: Place, cut: Cut): CutCase | undefined {
+export function cutCasesAt(stream: FramedStream, place: Place, cut: Cut): CutCase[] {
   const index = frameIndex(stream, place);
-  if (index === undefined) return undefined;
+  if (index === undefined) return [];
   const whole = stream.frames.map((frame) => frame.bytes);
   const cutFrame = place === "after the end marker" ? stream.frames[0] : stream.frames[index];
-  if (cutFrame === undefined) return undefined;
-  const keep = keptBytes(cutFrame, cut);
-  if (keep === undefined) return undefined;
-  const bytes = concatBytes([...whole.slice(0, index), cutFrame.bytes.subarray(0, keep)]);
-  return { place, cut, frame: index, keep, bytes };
+  if (cutFrame === undefined) return [];
+  return keptBytes(cutFrame, cut).map((keep) => ({
+    place,
+    cut,
+    frame: index,
+    keep,
+    bytes: concatBytes([...whole.slice(0, index), cutFrame.bytes.subarray(0, keep)]),
+  }));
 }
 
 /** This function gives each cut stream of `stream`, in the order of `PLACES` and then `CUTS`. */
 export function cutCases(stream: FramedStream, places: readonly Place[] = PLACES, cuts: readonly Cut[] = CUTS): CutCase[] {
   const out: CutCase[] = [];
   for (const place of places) {
-    for (const cut of cuts) {
-      const one = cutCase(stream, place, cut);
-      if (one !== undefined) out.push(one);
-    }
+    for (const cut of cuts) out.push(...cutCasesAt(stream, place, cut));
   }
   return out;
 }
