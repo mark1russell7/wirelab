@@ -279,6 +279,12 @@ describe("the priority order", () => {
     runs: [],
     findings: [],
     upstream: [],
+    formats: [],
+    classes: [],
+    classFormats: [],
+    classDimensions: [],
+    findingClasses: [],
+    probes: [],
   });
 
   it("puts the most used package first, and a package with no measure last", () => {

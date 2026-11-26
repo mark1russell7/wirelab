@@ -55,14 +55,14 @@ The ledger records the tests of the campaign, the faults that they find, and the
 
 ## The bug classes
 
-Each finding is an instance of a bug class. A probe of the class finds the same fault again, and each permutation of it, in each package of its formats. `docs/W26-RIG.md` tells how the rig runs the probes.
+Each finding is an instance of a bug class. A probe of the class finds the same fault again, and each permutation of it, in each package of its formats. `docs/W26-RIG.md` tells how the rig starts the probes.
 
 | Table | File | Key | What a row is |
 | --- | --- | --- | --- |
 | `formats` | `formats.json` | `id` | A wire format of the rig. One adapter of the rig writes each format. |
 | `classes` | `classes.json` | `id` | A bug class: the rule that a client must obey, the oracle of a run, and its security flag. |
 | `classFormats` | `class-formats.json` | `class`, `format` | A class applies to a format. |
-| `classDimensions` | `class-dimensions.json` | `class`, `dimension`, `order` | One value of one dimension of a class. A probe runs the combinations of the values. |
+| `classDimensions` | `class-dimensions.json` | `class`, `dimension`, `order` | One value of one dimension of a class. A probe examines the combinations of the values. |
 | `findingClasses` | `finding-classes.json` | `finding`, `class` | A finding is an instance of a class, as its primary class or as a secondary class. |
 | `probes` | `probes.json` | `class` | The probe of a class: planned, written or proven, with its file. |
 
@@ -77,7 +77,8 @@ Each finding is an instance of a bug class. A probe of the class finds the same 
 
 `catalogProblems` gives one text for each problem, and `parseCatalog` throws an error that lists them. The import of the package checks the tables.
 
-- Each field has a kind: a text, a value (any text that is not empty, also a space), an https URL, a day, a UTC time, a count, or a value of a set.
+- Each field has a kind: a text, a value, an https URL, a day, a UTC time, a count, or a value of a set.
+- A value is any text that is not empty. A space is also a value.
 - A row with an unknown field is a problem. So is a duplicate key or a key that names a missing row.
 - Each package speaks a protocol. Each protocol with the client kind `library` has a package, and the other protocols have none.
 - `tableText` gives the canonical text of a file: the rows in the order of the key. A test holds each file in that form.

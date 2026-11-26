@@ -281,7 +281,7 @@ export type SecurityFlag = (typeof SECURITY_FLAGS)[number];
 
 /**
  * One bug class. `rule` is the rule that each client must obey. `oracle` tells how a run decides that a client breaks
- * the rule. A probe of the class runs each combination of its dimensions against each package of its formats.
+ * the rule. A probe of the class examines each combination of its dimensions in each package of its formats.
  */
 export interface BugClass {
   readonly id: string;
