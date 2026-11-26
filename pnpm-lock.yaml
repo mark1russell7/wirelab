@@ -261,11 +261,11 @@ importers:
         specifier: 2.3.0
         version: 2.3.0(@bufbuild/protobuf@2.17.0)(@connectrpc/connect@2.3.0(@bufbuild/protobuf@2.17.0))
       '@mark1russell7/rigor-generators':
-        specifier: ^0.2.6
-        version: 0.2.6
+        specifier: ^0.2.7
+        version: 0.2.7
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.19
-        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.7)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       '@mark1russell7/text':
         specifier: ^0.0.17
         version: 0.0.17
@@ -367,7 +367,7 @@ importers:
         version: 0.4.1(zod@4.6.7)
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.19
-        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.7)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       engine.io-client:
         specifier: ^6.6.8
         version: 6.6.8(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10)
@@ -398,7 +398,7 @@ importers:
         version: 1.5.1
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.19
-        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.7)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       '@urql/core':
         specifier: 6.0.3
         version: 6.0.3(graphql@16.15.0)
@@ -463,7 +463,7 @@ importers:
         version: 0.4.1(zod@4.6.7)
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.19
-        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.7)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       '@wirelab/suite-engineio':
         specifier: workspace:*
         version: link:../suite-engineio
@@ -494,7 +494,7 @@ importers:
         version: 0.4.1(zod@4.6.7)
       '@mark1russell7/rigor-testkit':
         specifier: ^0.1.19
-        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
+        version: 0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.7)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)
       sockjs-client:
         specifier: ^1.6.1
         version: 1.6.1(supports-color@7.2.0)
@@ -888,8 +888,8 @@ packages:
     resolution: {integrity: sha512-WIo/zJhj8RRRdNCz8JKEXOMZ4iPSh1h3igFGiWgRoAZGgETPuW7bP2oBgKVbMKEHn66c+hoXuCnwrIjguBaByA==}
     engines: {node: '>=22'}
 
-  '@mark1russell7/rigor-generators@0.2.6':
-    resolution: {integrity: sha512-twMYvM//nGt/oumhZ2uFiXpC+ve59B1Zl8hinUnAaru4Vy5MiybhKggrESyDhvc519dWIGTbwWd000hsLkhVsA==}
+  '@mark1russell7/rigor-generators@0.2.7':
+    resolution: {integrity: sha512-7UwfykXyUqZBHZPNf/tHI2ExwsCTZLPmTqdl1FdmilkmWptdNy30PU8QEeF0u/LQ0W4OUv78r2rAS+PtQJOBug==}
     engines: {node: '>=22'}
 
   '@mark1russell7/rigor-proxy@0.4.1':
@@ -2625,7 +2625,7 @@ snapshots:
   '@mark1russell7/coeval@0.38.3(zod@4.6.7)':
     dependencies:
       '@mark1russell7/collections': 0.11.2(zod@4.6.7)
-      '@mark1russell7/rigor-generators': 0.2.6
+      '@mark1russell7/rigor-generators': 0.2.7
     transitivePeerDependencies:
       - zod
 
@@ -2674,14 +2674,14 @@ snapshots:
 
   '@mark1russell7/rigor-chaos@0.3.4':
     dependencies:
-      '@mark1russell7/rigor-generators': 0.2.6
+      '@mark1russell7/rigor-generators': 0.2.7
       '@mark1russell7/rigor-statistics': 0.2.12
 
   '@mark1russell7/rigor-generators@0.1.16': {}
 
   '@mark1russell7/rigor-generators@0.1.19': {}
 
-  '@mark1russell7/rigor-generators@0.2.6': {}
+  '@mark1russell7/rigor-generators@0.2.7': {}
 
   '@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7)':
     dependencies:
@@ -2696,12 +2696,12 @@ snapshots:
 
   '@mark1russell7/rigor-statistics@0.2.12':
     dependencies:
-      '@mark1russell7/rigor-generators': 0.2.6
+      '@mark1russell7/rigor-generators': 0.2.7
 
-  '@mark1russell7/rigor-testkit@0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.6)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)':
+  '@mark1russell7/rigor-testkit@0.1.19(@mark1russell7/rigor-chaos@0.3.4)(@mark1russell7/rigor-generators@0.2.7)(@mark1russell7/rigor-proxy@0.4.1(zod@4.6.7))(@opentelemetry/api@1.10.0)':
     optionalDependencies:
       '@mark1russell7/rigor-chaos': 0.3.4
-      '@mark1russell7/rigor-generators': 0.2.6
+      '@mark1russell7/rigor-generators': 0.2.7
       '@mark1russell7/rigor-proxy': 0.4.1(zod@4.6.7)
       '@opentelemetry/api': 1.10.0
 
@@ -2772,7 +2772,7 @@ snapshots:
       '@mark1russell7/coeval': 0.34.0(zod@4.6.7)
       '@mark1russell7/collections': 0.10.2(zod@4.6.7)
       '@mark1russell7/quantity': 0.4.1(zod@4.6.7)
-      '@mark1russell7/rigor-generators': 0.2.6
+      '@mark1russell7/rigor-generators': 0.2.7
       '@mark1russell7/service': 0.8.20(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7)
       '@opentelemetry/api': 1.10.0
       '@types/ws': 8.18.2
@@ -2793,7 +2793,7 @@ snapshots:
       '@mark1russell7/coeval': 0.38.3(zod@4.6.7)
       '@mark1russell7/collections': 0.10.2(zod@4.6.7)
       '@mark1russell7/quantity': 0.4.1(zod@4.6.7)
-      '@mark1russell7/rigor-generators': 0.2.6
+      '@mark1russell7/rigor-generators': 0.2.7
       '@mark1russell7/service': 0.11.9(@opentelemetry/api@1.10.0)(ws@8.23.0(bufferutil@4.2.0)(utf-8-validate@5.0.10))(zod@4.6.7)
       '@opentelemetry/api': 1.10.0
       '@types/ws': 8.18.2

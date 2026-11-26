@@ -1,9 +1,13 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
+import { matrixRows, random } from "@mark1russell7/rigor-generators";
+import { catalog } from "@wirelab/catalog";
 import { describe, expect, it } from "vitest";
+import { CUTS, PLACES } from "../cuts.ts";
+import { dimensionsOf } from "../matrix.ts";
 import { apacheArrowTarget } from "../targets/apache-arrow.ts";
 import { connectWebTargets } from "../targets/connect-web.ts";
-import { adapterProblems, runProbe } from "./c017.ts";
+import { CLASS_ID, adapterProblems, runProbe } from "./c017.ts";
 
 /**
  * The runs of the probes start only when the environment variable `RIG` is `1`, in the workflow `rig.yml`. Each run
@@ -28,6 +32,14 @@ const failLines = (results: Awaited<ReturnType<typeof runProbe>>): string[] =>
 describe("C017: the adapter and the catalog", () => {
   it("has each value of the dimensions frame and cut of the catalog, and no other value", () => {
     expect(adapterProblems()).toEqual([]);
+  });
+
+  it("examines each combination of frame and cut, because the matrix is small", () => {
+    const dimensions = dimensionsOf(catalog.classDimensions, CLASS_ID, ["frame", "cut"]);
+    const rows = matrixRows(dimensions, random(CLASS_ID));
+    const keys = new Set(rows.map((row) => `${row["frame"]} | ${row["cut"]}`));
+    expect(keys.size).toBe(PLACES.length * CUTS.length);
+    expect(rows).toHaveLength(keys.size);
   });
 });
 
