@@ -1873,11 +1873,25 @@
     "note": "The handshake detaches the handlers of the timed-out socket and closes it with 3001. The F0217 repro prints BUG ABSENT against the 6.22.2 build with the same change. A new unit test checks the close and the handlers. The full suite runs in the CI of the PR."
   },
   {
+    "finding": "F0217",
+    "at": "2026-11-26T13:58:27Z",
+    "state": "issue-open",
+    "url": "https://github.com/aws-amplify/amplify-js/issues/15025",
+    "note": "The maintainer reproduced the fault and confirmed it as a bug."
+  },
+  {
     "finding": "F0218",
     "at": "2026-11-24T18:04:32Z",
     "state": "issue-open",
     "url": "https://github.com/aws-amplify/amplify-js/issues/15026",
     "note": "The repro on aws-amplify 6.22.2 prints BUG PRESENT: the states are Disconnected, Connecting, Disconnected, ConnectedPendingDisconnect."
+  },
+  {
+    "finding": "F0218",
+    "at": "2026-11-26T13:56:13Z",
+    "state": "issue-open",
+    "url": "https://github.com/aws-amplify/amplify-js/issues/15026",
+    "note": "The maintainer reproduced the fault and confirmed it as a bug."
   },
   {
     "finding": "F0219",
@@ -1990,5 +2004,12 @@
     "state": "pr-open",
     "url": "https://github.com/stomp-js/stompjs/pull/764",
     "note": "The fix to develop clears the connection watcher in deactivate() and on close. The new Playwright test needs the broker, so CI runs it. A build of the branch keeps no Timeout handle after deactivate()."
+  },
+  {
+    "finding": "F0227",
+    "at": "2026-11-26T15:11:48Z",
+    "state": "issue-open",
+    "url": "https://github.com/connectrpc/connect-es/issues/1901",
+    "note": "The issue has a repro of the decoder alone: 0 payload bytes after a full prefix end cleanly, and 1 payload byte or 4 prefix bytes give the error. The project has a DCO, so the fix waits."
   }
 ]

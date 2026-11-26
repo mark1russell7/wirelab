@@ -1268,5 +1268,10 @@
     "finding": "F0226",
     "class": "C004",
     "role": "primary"
+  },
+  {
+    "finding": "F0227",
+    "class": "C017",
+    "role": "primary"
   }
 ]
