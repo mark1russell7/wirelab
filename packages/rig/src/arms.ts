@@ -42,8 +42,8 @@ export interface Arm {
 export const ARMS: readonly Arm[] = data;
 
 /**
- * This function gives each problem of the arms: a duplicate id, a target that the rig does not have, a bad commit or a
- * patch that `patchExists` does not find.
+ * This function gives each problem of the arms. A problem is a duplicate id, a target that the rig does not have or a
+ * bad commit. A patch that `patchExists` does not find is also a problem.
  */
 export function armProblems(arms: readonly Arm[], targets: readonly string[], patchExists: (path: string) => boolean = () => true): string[] {
   const problems: string[] = [];
