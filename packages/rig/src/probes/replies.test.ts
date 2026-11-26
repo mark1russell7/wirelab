@@ -46,12 +46,14 @@ const PROBES: readonly (readonly [Probe, (one: ReplyCase) => boolean])[] = [
   // A body that is not JSON loses the code of the HTTP status. The status 422 gives `Unknown`, as the parse error
   // does, so that case passes by chance. A stream with no end marker gives `Unknown`. The client of graphql-http does
   // not read the GraphQL errors of a 4xx (F0209). A batch of graphql-request loses the errors of its items (F0178).
+  // pusher-js 8.6.0 does not connect again after an invalid handshake (F0070) or a code with no action (F0072).
   [
     c034,
     (one) =>
       one.dims["status"] === "stream with no end marker" ||
       one.target === "graphql-http/query" ||
       one.target === "graphql-request/batch" ||
+      one.target === "pusher-js/handshake" ||
       (["not JSON", "empty"].includes(one.dims["body"] ?? "") && ["HTTP 400", "HTTP 503"].includes(one.dims["status"] ?? "")),
   ],
 ];
@@ -109,6 +111,17 @@ describe("the judges", () => {
     expect(expectTrailer("x-t", "w")(value)).toBe("fail");
     expect(expectTrailer("x-t", "v")({ kind: "value", values: ["a"] })).toBe("fail");
     expect(expectTrailer("x-t", "v")(error("Unknown"))).toBe("fail");
+  });
+
+  it("expectSession passes only the state and the count of connections, with no error out of a socket event", () => {
+    const session = (...values: string[]): Outcome => ({ kind: "value", values });
+    expect(c034.expectSession("connected", true)(session("state=connected", "connections=2"))).toBe("pass");
+    expect(c034.expectSession("connected", true)(session("state=connected", "connections=1"))).toBe("fail");
+    expect(c034.expectSession("connected", false)(session("state=connected", "connections=1"))).toBe("pass");
+    expect(c034.expectSession("disconnected", false)(session("state=unavailable", "connections=1"))).toBe("fail");
+    expect(c034.expectSession("connected", true)(session("state=connected", "connections=2", "uncaught=TypeError: x"))).toBe("fail");
+    expect(c034.expectSession("connected", true)(error("worker"))).toBe("fail");
+    expect(c034.expectSession("connected", true)(timeout)).toBe("inconclusive");
   });
 });
 

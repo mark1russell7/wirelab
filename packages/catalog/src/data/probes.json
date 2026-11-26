@@ -145,9 +145,9 @@
   },
   {
     "class": "C034",
-    "state": "written",
+    "state": "proven",
     "file": "packages/rig/src/probes/c034.ts",
-    "note": "It examines connect-web (the candidates c2 and c3 of W16) and the GraphQL clients. It finds F0178 on the batch of graphql-request and F0209 on graphql-http. The known instances F0070 and F0072 of pusher-js are W26-R9."
+    "note": "It examines connect-web (the candidates c2 and c3 of W16), the GraphQL clients and the handshake of pusher-js. It finds F0231, F0232, F0178, F0209, F0070 and F0072. The arms connect-web-c034 and pusher-js-c034 pass on the fix. The fixed arm of F0178 is W26-R13."
   },
   {
     "class": "C035",

@@ -32,14 +32,15 @@ export interface EnvelopeTarget {
 }
 
 /** The protocols of a reply target. */
-export type ReplyProtocol = "connect" | "grpc-web" | "graphql-over-http" | "json-rpc" | "postgrest";
+export type ReplyProtocol = "connect" | "grpc-web" | "graphql-over-http" | "json-rpc" | "postgrest" | "pusher";
 
 /** The kinds of call of a reply target. */
 export type CallKind = "unary" | "stream";
 
 /**
  * A target that takes one whole HTTP response: the status, the fields and the body. The probes of the error classes
- * use it, because an error of these protocols is in the status, the fields or the trailers.
+ * use it, because an error of these protocols is in the status, the fields or the trailers. A target of a WebSocket
+ * protocol takes the body as the first frame of the server.
  */
 export interface ReplyTarget {
   /** The id of the target: the package and the call, for example `connect-web/connect-unary`. */

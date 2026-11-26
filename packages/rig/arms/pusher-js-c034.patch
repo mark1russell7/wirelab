@@ -1,0 +1,28 @@
+diff --git a/src/core/connection/connection_manager.ts b/src/core/connection/connection_manager.ts
+index fa32406f..8e1c37c0 100644
+--- a/src/core/connection/connection_manager.ts
++++ b/src/core/connection/connection_manager.ts
+@@ -171,6 +171,9 @@ export default class ConnectionManager extends EventsDispatcher {
+             error: handshake.error,
+           });
+           this.timeline.error({ handshakeError: handshake.error });
++          // The strategy stops at the first handshake, so try again later,
++          // as for the 'backoff' action
++          this.retryIn(1000);
+         } else {
+           this.abortConnecting(); // we don't support switching connections yet
+           this.handshakeCallbacks[handshake.action](handshake);
+diff --git a/src/core/connection/handshake/index.ts b/src/core/connection/handshake/index.ts
+index 0b676bcd..3ba96e16 100644
+--- a/src/core/connection/handshake/index.ts
++++ b/src/core/connection/handshake/index.ts
+@@ -60,7 +60,8 @@ export default class Handshake {
+           activityTimeout: result.activityTimeout,
+         });
+       } else {
+-        this.finish(result.action, { error: result.error });
++        // A pusher:error with no code gives no action: back off, as on close.
++        this.finish(result.action || 'backoff', { error: result.error });
+         this.transport.close();
+       }
+     };
