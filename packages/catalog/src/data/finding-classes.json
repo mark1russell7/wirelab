@@ -1,0 +1,1272 @@
+[
+  {
+    "finding": "F0001",
+    "class": "C011",
+    "role": "primary"
+  },
+  {
+    "finding": "F0002",
+    "class": "C003",
+    "role": "primary"
+  },
+  {
+    "finding": "F0002",
+    "class": "C015",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0003",
+    "class": "C015",
+    "role": "primary"
+  },
+  {
+    "finding": "F0004",
+    "class": "C032",
+    "role": "primary"
+  },
+  {
+    "finding": "F0005",
+    "class": "C014",
+    "role": "primary"
+  },
+  {
+    "finding": "F0006",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0007",
+    "class": "C043",
+    "role": "primary"
+  },
+  {
+    "finding": "F0008",
+    "class": "C010",
+    "role": "primary"
+  },
+  {
+    "finding": "F0009",
+    "class": "C012",
+    "role": "primary"
+  },
+  {
+    "finding": "F0010",
+    "class": "C012",
+    "role": "primary"
+  },
+  {
+    "finding": "F0011",
+    "class": "C006",
+    "role": "primary"
+  },
+  {
+    "finding": "F0012",
+    "class": "C051",
+    "role": "primary"
+  },
+  {
+    "finding": "F0013",
+    "class": "C002",
+    "role": "primary"
+  },
+  {
+    "finding": "F0014",
+    "class": "C006",
+    "role": "primary"
+  },
+  {
+    "finding": "F0015",
+    "class": "C004",
+    "role": "primary"
+  },
+  {
+    "finding": "F0016",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0017",
+    "class": "C049",
+    "role": "primary"
+  },
+  {
+    "finding": "F0018",
+    "class": "C007",
+    "role": "primary"
+  },
+  {
+    "finding": "F0019",
+    "class": "C004",
+    "role": "primary"
+  },
+  {
+    "finding": "F0020",
+    "class": "C003",
+    "role": "primary"
+  },
+  {
+    "finding": "F0021",
+    "class": "C047",
+    "role": "primary"
+  },
+  {
+    "finding": "F0022",
+    "class": "C008",
+    "role": "primary"
+  },
+  {
+    "finding": "F0022",
+    "class": "C034",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0023",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0024",
+    "class": "C030",
+    "role": "primary"
+  },
+  {
+    "finding": "F0025",
+    "class": "C049",
+    "role": "primary"
+  },
+  {
+    "finding": "F0026",
+    "class": "C008",
+    "role": "primary"
+  },
+  {
+    "finding": "F0027",
+    "class": "C008",
+    "role": "primary"
+  },
+  {
+    "finding": "F0028",
+    "class": "C044",
+    "role": "primary"
+  },
+  {
+    "finding": "F0029",
+    "class": "C008",
+    "role": "primary"
+  },
+  {
+    "finding": "F0029",
+    "class": "C013",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0030",
+    "class": "C046",
+    "role": "primary"
+  },
+  {
+    "finding": "F0030",
+    "class": "C047",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0031",
+    "class": "C005",
+    "role": "primary"
+  },
+  {
+    "finding": "F0032",
+    "class": "C005",
+    "role": "primary"
+  },
+  {
+    "finding": "F0033",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0034",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0035",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0036",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0037",
+    "class": "C014",
+    "role": "primary"
+  },
+  {
+    "finding": "F0038",
+    "class": "C003",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0038",
+    "class": "C015",
+    "role": "primary"
+  },
+  {
+    "finding": "F0039",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0040",
+    "class": "C008",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0040",
+    "class": "C009",
+    "role": "primary"
+  },
+  {
+    "finding": "F0041",
+    "class": "C042",
+    "role": "primary"
+  },
+  {
+    "finding": "F0042",
+    "class": "C042",
+    "role": "primary"
+  },
+  {
+    "finding": "F0043",
+    "class": "C042",
+    "role": "primary"
+  },
+  {
+    "finding": "F0044",
+    "class": "C014",
+    "role": "primary"
+  },
+  {
+    "finding": "F0045",
+    "class": "C013",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0045",
+    "class": "C014",
+    "role": "primary"
+  },
+  {
+    "finding": "F0046",
+    "class": "C010",
+    "role": "primary"
+  },
+  {
+    "finding": "F0047",
+    "class": "C045",
+    "role": "primary"
+  },
+  {
+    "finding": "F0048",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0049",
+    "class": "C004",
+    "role": "primary"
+  },
+  {
+    "finding": "F0050",
+    "class": "C027",
+    "role": "primary"
+  },
+  {
+    "finding": "F0051",
+    "class": "C051",
+    "role": "primary"
+  },
+  {
+    "finding": "F0052",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0053",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0054",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0055",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0056",
+    "class": "C006",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0056",
+    "class": "C007",
+    "role": "primary"
+  },
+  {
+    "finding": "F0057",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0058",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0059",
+    "class": "C043",
+    "role": "primary"
+  },
+  {
+    "finding": "F0060",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0061",
+    "class": "C048",
+    "role": "primary"
+  },
+  {
+    "finding": "F0062",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0063",
+    "class": "C044",
+    "role": "primary"
+  },
+  {
+    "finding": "F0063",
+    "class": "C045",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0064",
+    "class": "C032",
+    "role": "primary"
+  },
+  {
+    "finding": "F0065",
+    "class": "C042",
+    "role": "primary"
+  },
+  {
+    "finding": "F0066",
+    "class": "C029",
+    "role": "primary"
+  },
+  {
+    "finding": "F0067",
+    "class": "C030",
+    "role": "primary"
+  },
+  {
+    "finding": "F0068",
+    "class": "C004",
+    "role": "primary"
+  },
+  {
+    "finding": "F0069",
+    "class": "C016",
+    "role": "primary"
+  },
+  {
+    "finding": "F0070",
+    "class": "C013",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0070",
+    "class": "C034",
+    "role": "primary"
+  },
+  {
+    "finding": "F0071",
+    "class": "C055",
+    "role": "primary"
+  },
+  {
+    "finding": "F0072",
+    "class": "C008",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0072",
+    "class": "C034",
+    "role": "primary"
+  },
+  {
+    "finding": "F0073",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0074",
+    "class": "C012",
+    "role": "primary"
+  },
+  {
+    "finding": "F0075",
+    "class": "C043",
+    "role": "primary"
+  },
+  {
+    "finding": "F0076",
+    "class": "C007",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0076",
+    "class": "C008",
+    "role": "primary"
+  },
+  {
+    "finding": "F0077",
+    "class": "C009",
+    "role": "primary"
+  },
+  {
+    "finding": "F0078",
+    "class": "C004",
+    "role": "primary"
+  },
+  {
+    "finding": "F0078",
+    "class": "C011",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0079",
+    "class": "C011",
+    "role": "primary"
+  },
+  {
+    "finding": "F0080",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0081",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0082",
+    "class": "C030",
+    "role": "primary"
+  },
+  {
+    "finding": "F0083",
+    "class": "C030",
+    "role": "primary"
+  },
+  {
+    "finding": "F0084",
+    "class": "C029",
+    "role": "primary"
+  },
+  {
+    "finding": "F0085",
+    "class": "C012",
+    "role": "primary"
+  },
+  {
+    "finding": "F0086",
+    "class": "C012",
+    "role": "primary"
+  },
+  {
+    "finding": "F0087",
+    "class": "C031",
+    "role": "primary"
+  },
+  {
+    "finding": "F0088",
+    "class": "C029",
+    "role": "primary"
+  },
+  {
+    "finding": "F0089",
+    "class": "C029",
+    "role": "primary"
+  },
+  {
+    "finding": "F0090",
+    "class": "C007",
+    "role": "primary"
+  },
+  {
+    "finding": "F0091",
+    "class": "C010",
+    "role": "primary"
+  },
+  {
+    "finding": "F0092",
+    "class": "C015",
+    "role": "primary"
+  },
+  {
+    "finding": "F0093",
+    "class": "C050",
+    "role": "primary"
+  },
+  {
+    "finding": "F0094",
+    "class": "C013",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0094",
+    "class": "C014",
+    "role": "primary"
+  },
+  {
+    "finding": "F0095",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0096",
+    "class": "C004",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0096",
+    "class": "C011",
+    "role": "primary"
+  },
+  {
+    "finding": "F0097",
+    "class": "C046",
+    "role": "primary"
+  },
+  {
+    "finding": "F0098",
+    "class": "C004",
+    "role": "primary"
+  },
+  {
+    "finding": "F0099",
+    "class": "C048",
+    "role": "primary"
+  },
+  {
+    "finding": "F0100",
+    "class": "C028",
+    "role": "primary"
+  },
+  {
+    "finding": "F0101",
+    "class": "C010",
+    "role": "primary"
+  },
+  {
+    "finding": "F0102",
+    "class": "C007",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0102",
+    "class": "C012",
+    "role": "primary"
+  },
+  {
+    "finding": "F0103",
+    "class": "C031",
+    "role": "primary"
+  },
+  {
+    "finding": "F0104",
+    "class": "C005",
+    "role": "primary"
+  },
+  {
+    "finding": "F0105",
+    "class": "C006",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0105",
+    "class": "C016",
+    "role": "primary"
+  },
+  {
+    "finding": "F0106",
+    "class": "C009",
+    "role": "primary"
+  },
+  {
+    "finding": "F0107",
+    "class": "C036",
+    "role": "primary"
+  },
+  {
+    "finding": "F0108",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0109",
+    "class": "C056",
+    "role": "primary"
+  },
+  {
+    "finding": "F0110",
+    "class": "C011",
+    "role": "primary"
+  },
+  {
+    "finding": "F0110",
+    "class": "C012",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0111",
+    "class": "C043",
+    "role": "primary"
+  },
+  {
+    "finding": "F0112",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0113",
+    "class": "C046",
+    "role": "primary"
+  },
+  {
+    "finding": "F0114",
+    "class": "C047",
+    "role": "primary"
+  },
+  {
+    "finding": "F0115",
+    "class": "C032",
+    "role": "primary"
+  },
+  {
+    "finding": "F0116",
+    "class": "C048",
+    "role": "primary"
+  },
+  {
+    "finding": "F0117",
+    "class": "C003",
+    "role": "primary"
+  },
+  {
+    "finding": "F0118",
+    "class": "C030",
+    "role": "primary"
+  },
+  {
+    "finding": "F0119",
+    "class": "C030",
+    "role": "primary"
+  },
+  {
+    "finding": "F0120",
+    "class": "C032",
+    "role": "primary"
+  },
+  {
+    "finding": "F0121",
+    "class": "C032",
+    "role": "primary"
+  },
+  {
+    "finding": "F0122",
+    "class": "C003",
+    "role": "primary"
+  },
+  {
+    "finding": "F0123",
+    "class": "C055",
+    "role": "primary"
+  },
+  {
+    "finding": "F0124",
+    "class": "C035",
+    "role": "primary"
+  },
+  {
+    "finding": "F0125",
+    "class": "C037",
+    "role": "primary"
+  },
+  {
+    "finding": "F0126",
+    "class": "C037",
+    "role": "primary"
+  },
+  {
+    "finding": "F0127",
+    "class": "C024",
+    "role": "primary"
+  },
+  {
+    "finding": "F0128",
+    "class": "C025",
+    "role": "primary"
+  },
+  {
+    "finding": "F0129",
+    "class": "C039",
+    "role": "primary"
+  },
+  {
+    "finding": "F0130",
+    "class": "C025",
+    "role": "primary"
+  },
+  {
+    "finding": "F0131",
+    "class": "C025",
+    "role": "primary"
+  },
+  {
+    "finding": "F0132",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0133",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0134",
+    "class": "C036",
+    "role": "primary"
+  },
+  {
+    "finding": "F0135",
+    "class": "C008",
+    "role": "primary"
+  },
+  {
+    "finding": "F0136",
+    "class": "C006",
+    "role": "primary"
+  },
+  {
+    "finding": "F0137",
+    "class": "C035",
+    "role": "primary"
+  },
+  {
+    "finding": "F0138",
+    "class": "C025",
+    "role": "primary"
+  },
+  {
+    "finding": "F0139",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0140",
+    "class": "C017",
+    "role": "primary"
+  },
+  {
+    "finding": "F0142",
+    "class": "C037",
+    "role": "primary"
+  },
+  {
+    "finding": "F0143",
+    "class": "C037",
+    "role": "primary"
+  },
+  {
+    "finding": "F0144",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0144",
+    "class": "C037",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0145",
+    "class": "C017",
+    "role": "primary"
+  },
+  {
+    "finding": "F0146",
+    "class": "C023",
+    "role": "primary"
+  },
+  {
+    "finding": "F0147",
+    "class": "C024",
+    "role": "primary"
+  },
+  {
+    "finding": "F0148",
+    "class": "C023",
+    "role": "primary"
+  },
+  {
+    "finding": "F0149",
+    "class": "C027",
+    "role": "primary"
+  },
+  {
+    "finding": "F0150",
+    "class": "C031",
+    "role": "primary"
+  },
+  {
+    "finding": "F0151",
+    "class": "C008",
+    "role": "primary"
+  },
+  {
+    "finding": "F0152",
+    "class": "C018",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0152",
+    "class": "C019",
+    "role": "primary"
+  },
+  {
+    "finding": "F0153",
+    "class": "C007",
+    "role": "primary"
+  },
+  {
+    "finding": "F0154",
+    "class": "C005",
+    "role": "primary"
+  },
+  {
+    "finding": "F0154",
+    "class": "C019",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0155",
+    "class": "C020",
+    "role": "primary"
+  },
+  {
+    "finding": "F0156",
+    "class": "C024",
+    "role": "primary"
+  },
+  {
+    "finding": "F0157",
+    "class": "C007",
+    "role": "primary"
+  },
+  {
+    "finding": "F0158",
+    "class": "C044",
+    "role": "primary"
+  },
+  {
+    "finding": "F0159",
+    "class": "C033",
+    "role": "primary"
+  },
+  {
+    "finding": "F0160",
+    "class": "C024",
+    "role": "primary"
+  },
+  {
+    "finding": "F0161",
+    "class": "C024",
+    "role": "primary"
+  },
+  {
+    "finding": "F0162",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0163",
+    "class": "C025",
+    "role": "primary"
+  },
+  {
+    "finding": "F0164",
+    "class": "C025",
+    "role": "primary"
+  },
+  {
+    "finding": "F0165",
+    "class": "C003",
+    "role": "primary"
+  },
+  {
+    "finding": "F0166",
+    "class": "C026",
+    "role": "primary"
+  },
+  {
+    "finding": "F0167",
+    "class": "C026",
+    "role": "primary"
+  },
+  {
+    "finding": "F0168",
+    "class": "C033",
+    "role": "primary"
+  },
+  {
+    "finding": "F0169",
+    "class": "C033",
+    "role": "primary"
+  },
+  {
+    "finding": "F0169",
+    "class": "C043",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0170",
+    "class": "C039",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0170",
+    "class": "C045",
+    "role": "primary"
+  },
+  {
+    "finding": "F0171",
+    "class": "C046",
+    "role": "primary"
+  },
+  {
+    "finding": "F0172",
+    "class": "C028",
+    "role": "primary"
+  },
+  {
+    "finding": "F0173",
+    "class": "C028",
+    "role": "primary"
+  },
+  {
+    "finding": "F0174",
+    "class": "C041",
+    "role": "primary"
+  },
+  {
+    "finding": "F0175",
+    "class": "C054",
+    "role": "primary"
+  },
+  {
+    "finding": "F0176",
+    "class": "C042",
+    "role": "primary"
+  },
+  {
+    "finding": "F0177",
+    "class": "C042",
+    "role": "primary"
+  },
+  {
+    "finding": "F0178",
+    "class": "C034",
+    "role": "primary"
+  },
+  {
+    "finding": "F0179",
+    "class": "C024",
+    "role": "primary"
+  },
+  {
+    "finding": "F0180",
+    "class": "C041",
+    "role": "primary"
+  },
+  {
+    "finding": "F0181",
+    "class": "C041",
+    "role": "primary"
+  },
+  {
+    "finding": "F0182",
+    "class": "C003",
+    "role": "primary"
+  },
+  {
+    "finding": "F0183",
+    "class": "C042",
+    "role": "primary"
+  },
+  {
+    "finding": "F0184",
+    "class": "C031",
+    "role": "primary"
+  },
+  {
+    "finding": "F0185",
+    "class": "C024",
+    "role": "primary"
+  },
+  {
+    "finding": "F0186",
+    "class": "C009",
+    "role": "primary"
+  },
+  {
+    "finding": "F0187",
+    "class": "C007",
+    "role": "primary"
+  },
+  {
+    "finding": "F0188",
+    "class": "C038",
+    "role": "primary"
+  },
+  {
+    "finding": "F0189",
+    "class": "C027",
+    "role": "primary"
+  },
+  {
+    "finding": "F0190",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0191",
+    "class": "C007",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0191",
+    "class": "C008",
+    "role": "primary"
+  },
+  {
+    "finding": "F0192",
+    "class": "C052",
+    "role": "primary"
+  },
+  {
+    "finding": "F0193",
+    "class": "C042",
+    "role": "primary"
+  },
+  {
+    "finding": "F0194",
+    "class": "C042",
+    "role": "primary"
+  },
+  {
+    "finding": "F0195",
+    "class": "C048",
+    "role": "primary"
+  },
+  {
+    "finding": "F0196",
+    "class": "C048",
+    "role": "primary"
+  },
+  {
+    "finding": "F0197",
+    "class": "C018",
+    "role": "primary"
+  },
+  {
+    "finding": "F0198",
+    "class": "C021",
+    "role": "primary"
+  },
+  {
+    "finding": "F0199",
+    "class": "C020",
+    "role": "primary"
+  },
+  {
+    "finding": "F0200",
+    "class": "C022",
+    "role": "primary"
+  },
+  {
+    "finding": "F0201",
+    "class": "C024",
+    "role": "primary"
+  },
+  {
+    "finding": "F0202",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0203",
+    "class": "C025",
+    "role": "primary"
+  },
+  {
+    "finding": "F0204",
+    "class": "C016",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0204",
+    "class": "C031",
+    "role": "primary"
+  },
+  {
+    "finding": "F0205",
+    "class": "C006",
+    "role": "primary"
+  },
+  {
+    "finding": "F0206",
+    "class": "C052",
+    "role": "primary"
+  },
+  {
+    "finding": "F0207",
+    "class": "C047",
+    "role": "primary"
+  },
+  {
+    "finding": "F0208",
+    "class": "C040",
+    "role": "primary"
+  },
+  {
+    "finding": "F0209",
+    "class": "C034",
+    "role": "primary"
+  },
+  {
+    "finding": "F0210",
+    "class": "C039",
+    "role": "primary"
+  },
+  {
+    "finding": "F0211",
+    "class": "C040",
+    "role": "primary"
+  },
+  {
+    "finding": "F0212",
+    "class": "C040",
+    "role": "primary"
+  },
+  {
+    "finding": "F0213",
+    "class": "C034",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0213",
+    "class": "C039",
+    "role": "primary"
+  },
+  {
+    "finding": "F0214",
+    "class": "C053",
+    "role": "primary"
+  },
+  {
+    "finding": "F0215",
+    "class": "C053",
+    "role": "primary"
+  },
+  {
+    "finding": "F0216",
+    "class": "C018",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0216",
+    "class": "C053",
+    "role": "primary"
+  },
+  {
+    "finding": "F0217",
+    "class": "C005",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0217",
+    "class": "C011",
+    "role": "primary"
+  },
+  {
+    "finding": "F0218",
+    "class": "C013",
+    "role": "primary"
+  },
+  {
+    "finding": "F0219",
+    "class": "C012",
+    "role": "primary"
+  },
+  {
+    "finding": "F0220",
+    "class": "C028",
+    "role": "primary"
+  },
+  {
+    "finding": "F0220",
+    "class": "C049",
+    "role": "secondary"
+  },
+  {
+    "finding": "F0221",
+    "class": "C024",
+    "role": "primary"
+  },
+  {
+    "finding": "F0222",
+    "class": "C045",
+    "role": "primary"
+  },
+  {
+    "finding": "F0223",
+    "class": "C038",
+    "role": "primary"
+  },
+  {
+    "finding": "F0224",
+    "class": "C004",
+    "role": "primary"
+  },
+  {
+    "finding": "F0225",
+    "class": "C001",
+    "role": "primary"
+  },
+  {
+    "finding": "F0226",
+    "class": "C004",
+    "role": "primary"
+  }
+]

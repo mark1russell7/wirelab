@@ -2,6 +2,12 @@
  * The wirelab catalog: the browser clients of the wire protocols, as tables. `catalog` holds the checked tables.
  * `priorityOrder` gives the order of the campaign.
  */
+import formats from "./data/formats.json" with { type: "json" };
+import classes from "./data/classes.json" with { type: "json" };
+import classFormats from "./data/class-formats.json" with { type: "json" };
+import classDimensions from "./data/class-dimensions.json" with { type: "json" };
+import findingClasses from "./data/finding-classes.json" with { type: "json" };
+import probes from "./data/probes.json" with { type: "json" };
 import families from "./data/families.json" with { type: "json" };
 import findings from "./data/findings.json" with { type: "json" };
 import packageLinks from "./data/package-links.json" with { type: "json" };
@@ -49,6 +55,12 @@ export const rawTables: RawTables = {
   findings,
   upstream,
   packageTransports,
+  formats,
+  classes,
+  classFormats,
+  classDimensions,
+  findingClasses,
+  probes,
 };
 
 /** The catalog, checked. An import of this module throws an error when a table has a problem. */

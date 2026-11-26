@@ -1,0 +1,52 @@
+[
+  {
+    "id": "api-surface",
+    "title": "API surface",
+    "what": "The published API and types of a client package, not the bytes."
+  },
+  {
+    "id": "binary-codec",
+    "title": "Binary codecs",
+    "what": "A binary document or value codec: BSON, msgpack, CBOR, protobuf, Avro, Arrow, ABI, DNS records."
+  },
+  {
+    "id": "json-http",
+    "title": "JSON over HTTP",
+    "what": "JSON over HTTP: GraphQL over HTTP, JSON-RPC over HTTP, PostgREST, REST APIs."
+  },
+  {
+    "id": "json-ws",
+    "title": "JSON over a socket",
+    "what": "JSON over a socket: graphql-transport-ws, JSON-RPC over WebSocket and IPC, Phoenix, Pusher, SignalR JSON, Socket.IO events."
+  },
+  {
+    "id": "length-prefixed-envelope",
+    "title": "Length-prefixed envelopes",
+    "what": "Frames with a binary length prefix: gRPC-web, Connect, MQTT remaining length, Avro RPC, AWS event streams, Arrow IPC, DNS over TCP."
+  },
+  {
+    "id": "package-files",
+    "title": "Package files",
+    "what": "The manifest, the published files and the test suite of a package, not the bytes on the wire."
+  },
+  {
+    "id": "socket-lifecycle",
+    "title": "Socket lifecycle",
+    "what": "The connect, close, reconnect and event API of any stateful client (WebSocket, EventSource, WebTransport, long polling)."
+  },
+  {
+    "id": "text-document",
+    "title": "Text documents",
+    "what": "A text document format that a client parses: XML, Extended JSON, .proto source, m3u8."
+  },
+  {
+    "id": "text-frame-headers",
+    "title": "Text frames with headers",
+    "what": "Text frames with a command, header lines and a body or separator: STOMP, SockJS, Engine.IO, Socket.IO, SSE, HLS playlists."
+  },
+  {
+    "id": "url-and-headers",
+    "title": "URLs and headers",
+    "what": "The URL, the query string and the headers that a client writes from values of the app."
+  }
+]
