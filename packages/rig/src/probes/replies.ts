@@ -82,7 +82,7 @@ export function expectTrailer(name: string, value: string): (outcome: Outcome) =
  * This function gives each problem of `cases`. A problem is a dimension or a value that the catalog does not have for
  * the class of the case. A target that `targets` does not have is also a problem.
  */
-export function caseProblems(cases: readonly ReplyCase[], targets: readonly string[]): string[] {
+export function caseProblems(cases: readonly Pick<ReplyCase, "class" | "target" | "dims">[], targets: readonly string[]): string[] {
   const problems = new Set<string>();
   for (const one of cases) {
     const dimensions = dimensionsOf(catalog.classDimensions, one.class);

@@ -3,7 +3,7 @@
     "class": "C001",
     "state": "written",
     "file": "packages/rig/src/probes/c001.ts",
-    "note": "It examines the error responses of connect-web (the candidate c4 of W16). The known instances F0073, F0108, F0132, F0133, F0139, F0144, F0162, F0202 and F0225 are of other packages: their targets are W26-R10."
+    "note": "It examines connect-web (the candidate c4 of W16) and the 10 key targets of W26-R10. It finds F0228, F0073, F0108, F0132, F0133, F0139, F0144, F0162, F0202 and F0225. The arms of the key targets are W26-R14."
   },
   {
     "class": "C002",

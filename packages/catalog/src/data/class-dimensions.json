@@ -120,6 +120,12 @@
     "value": "field or option name"
   },
   {
+    "class": "C001",
+    "dimension": "table",
+    "order": 9,
+    "value": "tag id"
+  },
+  {
     "class": "C002",
     "dimension": "container",
     "order": 1,

@@ -14,6 +14,9 @@ allowBuilds:
   utf-8-validate: false
   # websocket needs it. Its postinstall script only prints a message.
   es5-ext: false
+  # msgpackr (the rig) has it as an optional dependency. Its install script builds a native reader. Without it, msgpackr
+  # uses its JavaScript reader, and the rig tests that reader.
+  msgpackr-extract: false
 
 # Our own packages: the release train updates them, so the release age check of pnpm does not apply to them.
 minimumReleaseAgeExclude:

@@ -7,7 +7,9 @@
  * - An inbound case reads a server stream. The end is the Completion of the server, or a local close (dispose()).
  */
 import { HttpClient, HttpResponse, HubConnectionBuilder, LogLevel, Subject, type HttpRequest, type HubConnection, type ITransport } from "@microsoft/signalr";
-import type { SessionCase, SessionRun, SessionTarget } from "./target.ts";
+import { errorMessage } from "@mark1russell7/text";
+import { outcomeOf } from "../outcome.ts";
+import type { KeyTarget, SessionCase, SessionRun, SessionTarget } from "./target.ts";
 
 /** The package and the version of the target. The version is the version that the workspace installs. */
 export const SIGNALR = { package: "@microsoft/signalr", version: "11.0.0" } as const;
@@ -16,6 +18,7 @@ export const SIGNALR = { package: "@microsoft/signalr", version: "11.0.0" } as c
 const RS = "\x1e";
 
 /** The message types of the hub protocol that the target uses. */
+const INVOCATION = 1;
 const STREAM_ITEM = 2;
 const COMPLETION = 3;
 const STREAM_INVOCATION = 4;
@@ -29,6 +32,8 @@ interface HubMessage {
   readonly streamIds?: readonly string[];
   readonly item?: unknown;
   readonly error?: string;
+  readonly result?: unknown;
+  readonly arguments?: readonly unknown[];
 }
 
 /** The script of the server: it gets each message of the client after the handshake. */
@@ -218,4 +223,35 @@ export const signalrTarget: SessionTarget = {
   format: "json-ws",
   cases,
   run: (one) => (one.direction === "outbound" ? runOutbound(one) : runInbound(one)),
+};
+
+/**
+ * The key target of `@microsoft/signalr`: the name of a client method. The caller registers the method with `on()`,
+ * and the server starts it as a client-result invocation. The outcome is the result of `on()` and each Completion of the client.
+ */
+export const signalrMethodTarget: KeyTarget = {
+  id: "signalr/client-method",
+  ...SIGNALR,
+  table: "method or handler name",
+  phase: "stream",
+  run: (key) =>
+    outcomeOf(async () => {
+      const { hub, transport } = await connect(() => undefined);
+      try {
+        let on = "ok";
+        try {
+          hub.on(key, () => "r");
+        } catch (error) {
+          on = errorMessage(error);
+        }
+        transport.later(record({ type: INVOCATION, invocationId: "1", target: key, arguments: [] }));
+        await settle();
+        const completions = transport.sent
+          .filter((item) => item.message.type === COMPLETION)
+          .map((item) => `completion ${String(item.message.invocationId)} result ${JSON.stringify(item.message.result)} error ${String(item.message.error)}`);
+        return [`on ${on}`, ...completions];
+      } finally {
+        await hub.stop();
+      }
+    }, 5_000),
 };
