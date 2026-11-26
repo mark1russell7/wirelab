@@ -2286,6 +2286,12 @@
     "value": "stream with no end marker"
   },
   {
+    "class": "C034",
+    "dimension": "status",
+    "order": 9,
+    "value": "invalid handshake"
+  },
+  {
     "class": "C035",
     "dimension": "input",
     "order": 1,

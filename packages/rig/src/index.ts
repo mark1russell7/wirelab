@@ -22,6 +22,7 @@ export {
 export { GRAPHQL_ERRORS, graphqlQueryTargetIds, graphqlReplyTargets, graphqlRequestBatchTarget, outcomeOfSuite } from "./targets/graphql-over-http.ts";
 export { GRAPHQL_WS, graphqlWsClientTarget, graphqlWsServerTarget, graphqlWsTargets } from "./targets/graphql-ws.ts";
 export { postgrestHeadTarget, postgrestReplyTargets, postgrestSelectTarget } from "./targets/postgrest-js.ts";
+export { pusherHandshakeTarget, pusherReplyTargets } from "./targets/pusher-js.ts";
 export { replyTargets } from "./targets/reply-targets.ts";
 export { SIGNALR, signalrTarget } from "./targets/signalr.ts";
 export { SOCKJS_CLIENT, sockjsClientTargets } from "./targets/sockjs-client.ts";

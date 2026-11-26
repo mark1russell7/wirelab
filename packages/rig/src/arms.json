@@ -141,5 +141,18 @@
     "build": "corepack enable && yarn install --immutable && yarn build",
     "folder": ".",
     "copy": ["dist"]
+  },
+  {
+    "id": "pusher-js-c034",
+    "class": "C034",
+    "targets": ["pusher-js/handshake"],
+    "package": "pusher-js",
+    "repository": "pusher/pusher-js",
+    "base": "6ea9e1597cc4633af8f4041172a4cca47604bcfc",
+    "patch": "arms/pusher-js-c034.patch",
+    "fixLink": "https://github.com/pusher/pusher-js/pull/1013",
+    "build": "npm ci --ignore-scripts && make node",
+    "folder": ".",
+    "copy": ["dist/node"]
   }
 ]

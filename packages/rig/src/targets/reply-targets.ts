@@ -4,8 +4,9 @@
 import { connectWebReplyTargets } from "./connect-web.ts";
 import { graphqlReplyTargets } from "./graphql-over-http.ts";
 import { postgrestReplyTargets } from "./postgrest-js.ts";
+import { pusherReplyTargets } from "./pusher-js.ts";
 import type { ReplyTarget } from "./target.ts";
 import { viemReplyTargets } from "./viem.ts";
 
-/** Each reply target of the rig: `@connectrpc/connect-web`, the GraphQL clients, `viem` and `@supabase/postgrest-js`. */
-export const replyTargets: readonly ReplyTarget[] = [...connectWebReplyTargets, ...graphqlReplyTargets, ...viemReplyTargets, ...postgrestReplyTargets];
+/** Each reply target of the rig: `@connectrpc/connect-web`, the GraphQL clients, `viem` `@supabase/postgrest-js` and `pusher-js`. */
+export const replyTargets: readonly ReplyTarget[] = [...connectWebReplyTargets, ...graphqlReplyTargets, ...viemReplyTargets, ...postgrestReplyTargets, ...pusherReplyTargets];
