@@ -26,6 +26,14 @@ The target of `apache-arrow` 21.2.0 is `tableFromIPC` on an Arrow IPC stream of 
 
 The target of `@aws-sdk/client-s3` 3.1175.0 is the event stream of `SelectObjectContentCommand`, with `@smithy/core` 3.41.0. A local request handler gives the bytes. Each event message is one frame with a prefix of 4 bytes: its total length.
 
+## The arms
+
+A proven probe passes on the fixed version of each instance. When no fixed version is released, an arm builds the package from a commit. `src/arms.json` gives each arm: the repository, the commit of the fix, its base commit, the build command and the folders to copy.
+
+- The arm `base` builds the base commit. The probe must find the fault again. Thus the build alone does not change the result.
+- The arm `fixed` builds the commit of the fix. The probe must find no fault.
+- The workflow `rig.yml` starts each arm in its own job. The job puts the build in place of each installed release of the package.
+
 ## The checks
 
 - `pnpm test` examines the adapter, and compares its values with the dimensions of the catalog.
