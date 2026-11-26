@@ -22,7 +22,7 @@
     "@mark1russell7/optional": "^1.5.0",
     "@mark1russell7/rigor-testkit": "^0.1.19",
     "@urql/core": "6.0.3",
-    "graphql": "16.15.0",
+    "graphql": "17.1.0",
     "graphql-http": "1.23.1",
     "graphql-request": "7.4.0",
     "rxjs": "7.8.2"
