@@ -177,7 +177,7 @@
     "base": "1def4cdc07dc10fc267136060e3ef5c1a96d4a99",
     "patch": "arms/signalr-c001.patch",
     "fixLink": "https://github.com/dotnet/aspnetcore/issues/70649",
-    "build": "npm ci --ignore-scripts && cd src/SignalR/clients/ts/signalr && npx tsc --project ./tsconfig.json --module commonjs --outDir ./dist/cjs",
+    "build": "npm ci --ignore-scripts && cd src/SignalR/clients/ts/signalr && node -e \"require('fs').writeFileSync('src/pkg-version.ts', 'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';')\" && npx tsc --project ./tsconfig.json --module commonjs --outDir ./dist/cjs",
     "folder": "src/SignalR/clients/ts/signalr",
     "copy": ["dist/cjs"]
   },
