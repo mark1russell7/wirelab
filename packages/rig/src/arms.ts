@@ -24,23 +24,28 @@ export interface Arm {
   readonly repository: string;
   /** The commit before the fix. */
   readonly base: string;
-  /** The commit of the fix. */
-  readonly fix: string;
+  /** The commit of the fix. An arm has a fix commit or a patch, not the two. */
+  readonly fix?: string;
+  /** The patch of the fix, a file of this package, that the arm applies on the base commit. */
+  readonly patch?: string;
   /** The link to the fix upstream. */
   readonly fixLink: string;
   /** The shell command that builds the package in the root of the repository. */
   readonly build: string;
   /** The folder of the package in the repository. */
   readonly folder: string;
-  /** The folders of the build that replace the folders of the installed package. */
+  /** The folders of the build that replace the folders of the installed package. The folder `.` replaces the whole package. */
   readonly copy: readonly string[];
 }
 
 /** The arms of the rig. */
 export const ARMS: readonly Arm[] = data;
 
-/** This function gives each problem of the arms: a duplicate id, a target that the rig does not have, or a bad commit. */
-export function armProblems(arms: readonly Arm[], targets: readonly string[]): string[] {
+/**
+ * This function gives each problem of the arms: a duplicate id, a target that the rig does not have, a bad commit or a
+ * patch that `patchExists` does not find.
+ */
+export function armProblems(arms: readonly Arm[], targets: readonly string[], patchExists: (path: string) => boolean = () => true): string[] {
   const problems: string[] = [];
   const ids = new Set<string>();
   const commit = /^[0-9a-f]{40}$/;
@@ -48,8 +53,10 @@ export function armProblems(arms: readonly Arm[], targets: readonly string[]): s
     if (ids.has(arm.id)) problems.push(`${arm.id}: the id is not unique.`);
     ids.add(arm.id);
     if (!targets.includes(arm.target)) problems.push(`${arm.id}: the rig has no target "${arm.target}".`);
-    if (!commit.test(arm.base) || !commit.test(arm.fix)) problems.push(`${arm.id}: each commit is a full SHA of 40 hex digits.`);
+    if ((arm.fix === undefined) === (arm.patch === undefined)) problems.push(`${arm.id}: the arm has a fix commit or a patch, and not the two.`);
+    if (!commit.test(arm.base) || (arm.fix !== undefined && !commit.test(arm.fix))) problems.push(`${arm.id}: each commit is a full SHA of 40 hex digits.`);
     if (arm.base === arm.fix) problems.push(`${arm.id}: the base and the fix are the same commit.`);
+    if (arm.patch !== undefined && !patchExists(arm.patch)) problems.push(`${arm.id}: the patch "${arm.patch}" does not exist.`);
     if (arm.copy.length === 0) problems.push(`${arm.id}: the arm copies no folder.`);
   }
   return problems;

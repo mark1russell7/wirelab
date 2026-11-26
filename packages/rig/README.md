@@ -28,7 +28,7 @@ The target of `@aws-sdk/client-s3` 3.1175.0 is the event stream of `SelectObject
 
 ## The arms
 
-A proven probe passes on the fixed version of each instance. When no fixed version is released, an arm builds the package from a commit. `src/arms.json` gives each arm: the repository, the commit of the fix, its base commit, the build command and the folders to copy.
+A proven probe passes on the fixed version of each instance. When no fixed version is released, an arm builds the package from a commit. `src/arms.json` gives each arm: the repository, its base commit, the fix, the build command and the folders to copy. The fix is a commit, or a patch in the folder `arms` when no fix commit is public.
 
 - The arm `base` builds the base commit. The probe must find the fault again. Thus the build alone does not change the result.
 - The arm `fixed` builds the commit of the fix. The probe must find no fault.

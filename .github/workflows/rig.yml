@@ -76,7 +76,8 @@ jobs:
           node -e '
             const arms = require("./packages/rig/src/arms.json");
             const rows = arms.flatMap((arm) => ["base", "fixed"].map((kind) => ({
-              id: arm.id, kind, repository: arm.repository, commit: kind === "base" ? arm.base : arm.fix,
+              id: arm.id, kind, repository: arm.repository, commit: kind === "base" ? arm.base : (arm.fix ?? arm.base),
+              patch: kind === "fixed" ? (arm.patch ?? "") : "",
               build: arm.build, folder: arm.folder, copy: arm.copy.join(" "), package: arm.package,
             })));
             console.log(`matrix=${JSON.stringify(rows)}`);
@@ -111,6 +112,11 @@ jobs:
           ref: ${{ matrix.commit }}
           path: arm-src
           persist-credentials: false
+      - name: Apply the patch of the fix
+        if: matrix.patch != ''
+        env:
+          PATCH: ${{ matrix.patch }}
+        run: git -C arm-src apply --verbose "$GITHUB_WORKSPACE/packages/rig/$PATCH"
       - name: Build the package
         working-directory: arm-src
         env:
@@ -126,8 +132,14 @@ jobs:
           found=0
           for dir in node_modules/.pnpm/"${PACKAGE/\//+}"@*/node_modules/"$PACKAGE"; do
             for part in $COPY; do
-              rm -rf "${dir:?}/$part"
-              cp -r "arm-src/$FOLDER/$part" "$dir/$part"
+              if [ "$part" = "." ]; then
+                # The whole package: the build replaces each file of the installed release.
+                find "${dir:?}" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+                cp -r "arm-src/$FOLDER/." "$dir/"
+              else
+                rm -rf "${dir:?}/$part"
+                cp -r "arm-src/$FOLDER/$part" "$dir/$part"
+              fi
             done
             echo "The build of the arm replaces $dir."
             found=$((found + 1))

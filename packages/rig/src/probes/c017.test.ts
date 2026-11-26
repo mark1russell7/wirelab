@@ -1,5 +1,6 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { matrixRows, random } from "@mark1russell7/rigor-generators";
 import { catalog } from "@wirelab/catalog";
 import { describe, expect, it } from "vitest";
@@ -102,18 +103,21 @@ describe.runIf(rigEnabled)("C017 on @aws-sdk/client-s3", () => {
 
 describe("C017: the arms", () => {
   it("names only targets of the rig, with full commits", () => {
-    expect(armProblems(ARMS, targets.map((one) => one.id))).toEqual([]);
+    const patchExists = (path: string): boolean => existsSync(fileURLToPath(new URL(`../../${path}`, import.meta.url)));
+    expect(armProblems(ARMS, targets.map((one) => one.id), patchExists)).toEqual([]);
   });
 
   it("finds each problem of a bad arm", () => {
     const good = ARMS[0];
     if (good === undefined) throw new Error("The rig has no arm.");
-    const bad = { ...good, target: "none", base: "abc", copy: [] };
-    expect(armProblems([good, good, bad], ["aws-sdk/s3-select-object-content"])).toEqual([
+    const bad = { ...good, target: "none", base: "abc", patch: "none.patch", copy: [] };
+    expect(armProblems([good, good, bad], ["aws-sdk/s3-select-object-content"], (path) => path !== "none.patch")).toEqual([
       `${good.id}: the id is not unique.`,
       `${good.id}: the id is not unique.`,
       `${good.id}: the rig has no target "none".`,
+      `${good.id}: the arm has a fix commit or a patch, and not the two.`,
       `${good.id}: each commit is a full SHA of 40 hex digits.`,
+      `${good.id}: the patch "none.patch" does not exist.`,
       `${good.id}: the arm copies no folder.`,
     ]);
   });

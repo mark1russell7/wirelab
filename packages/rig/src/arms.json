@@ -11,5 +11,18 @@
     "build": "corepack enable && yarn install --immutable && yarn turbo run build --filter=@smithy/core",
     "folder": "packages/core",
     "copy": ["dist-cjs", "dist-es", "dist-types"]
+  },
+  {
+    "id": "arrow-js-535",
+    "class": "C017",
+    "target": "apache-arrow/table-from-ipc",
+    "package": "apache-arrow",
+    "repository": "apache/arrow-js",
+    "base": "04ced72ce03d619836bb8a5445601114a67cbbc3",
+    "patch": "arms/arrow-js-535.patch",
+    "fixLink": "https://github.com/apache/arrow-js/issues/535",
+    "build": "npm ci && npx gulp build -t apache-arrow",
+    "folder": "targets/apache-arrow",
+    "copy": ["."]
   }
 ]

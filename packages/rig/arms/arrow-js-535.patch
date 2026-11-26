@@ -1,0 +1,82 @@
+diff --git a/src/ipc/message.ts b/src/ipc/message.ts
+index 40a6543..85e824b 100644
+--- a/src/ipc/message.ts
++++ b/src/ipc/message.ts
+@@ -43,7 +43,7 @@ export class MessageReader implements IterableIterator<Message> {
+         // the next 4 for the 32-bit metadata length. Otherwise, assume this is a
+         // pre-v0.15 message, where the first 4 bytes are the metadata length.
+         if ((r.value === -1) &&
+-            (r = this.readMetadataLength()).done) { return ITERATOR_DONE; }
++            (r = this.readMetadataLength(true)).done) { return ITERATOR_DONE; }
+         if ((r = this.readMetadata(r.value)).done) { return ITERATOR_DONE; }
+         return (<any>r) as IteratorResult<Message>;
+     }
+@@ -77,19 +77,22 @@ export class MessageReader implements IterableIterator<Message> {
+         }
+         return schema;
+     }
+-    protected readMetadataLength(): IteratorResult<number> {
++    protected readMetadataLength(afterContinuation = false): IteratorResult<number> {
+         const buf = this.source.read(PADDING);
+-        const bb = buf && new ByteBuffer(buf);
+-        const len = bb?.readInt32(0) || 0;
++        const read = buf?.byteLength ?? 0;
++        // A clean end of the stream comes only before a message. A part of a length is a cut stream.
++        if (read === 0 && !afterContinuation) { return ITERATOR_DONE; }
++        if (read < PADDING) { throw new Error(invalidMessageMetadata(PADDING, read)); }
++        const len = new ByteBuffer(buf!).readInt32(0);
+         return { done: len === 0, value: len };
+     }
+     protected readMetadata(metadataLength: number): IteratorResult<Message> {
+         const buf = this.source.read(metadataLength);
+-        if (!buf) { return ITERATOR_DONE; }
+-        if (buf.byteLength < metadataLength) {
+-            throw new Error(invalidMessageMetadata(metadataLength, buf.byteLength));
++        const read = buf?.byteLength ?? 0;
++        if (read < metadataLength) {
++            throw new Error(invalidMessageMetadata(metadataLength, read));
+         }
+-        return { done: false, value: Message.decode(buf) };
++        return { done: false, value: Message.decode(buf!) };
+     }
+ }
+ 
+@@ -112,7 +115,7 @@ export class AsyncMessageReader implements AsyncIterableIterator<Message> {
+         // the next 4 for the 32-bit metadata length. Otherwise, assume this is a
+         // pre-v0.15 message, where the first 4 bytes are the metadata length.
+         if ((r.value === -1) &&
+-            (r = await this.readMetadataLength()).done) { return ITERATOR_DONE; }
++            (r = await this.readMetadataLength(true)).done) { return ITERATOR_DONE; }
+         if ((r = await this.readMetadata(r.value)).done) { return ITERATOR_DONE; }
+         return (<any>r) as IteratorResult<Message>;
+     }
+@@ -146,19 +149,22 @@ export class AsyncMessageReader implements AsyncIterableIterator<Message> {
+         }
+         return schema;
+     }
+-    protected async readMetadataLength(): Promise<IteratorResult<number>> {
++    protected async readMetadataLength(afterContinuation = false): Promise<IteratorResult<number>> {
+         const buf = await this.source.read(PADDING);
+-        const bb = buf && new ByteBuffer(buf);
+-        const len = bb?.readInt32(0) || 0;
++        const read = buf?.byteLength ?? 0;
++        // A clean end of the stream comes only before a message. A part of a length is a cut stream.
++        if (read === 0 && !afterContinuation) { return ITERATOR_DONE; }
++        if (read < PADDING) { throw new Error(invalidMessageMetadata(PADDING, read)); }
++        const len = new ByteBuffer(buf!).readInt32(0);
+         return { done: len === 0, value: len };
+     }
+     protected async readMetadata(metadataLength: number): Promise<IteratorResult<Message>> {
+         const buf = await this.source.read(metadataLength);
+-        if (!buf) { return ITERATOR_DONE; }
+-        if (buf.byteLength < metadataLength) {
+-            throw new Error(invalidMessageMetadata(metadataLength, buf.byteLength));
++        const read = buf?.byteLength ?? 0;
++        if (read < metadataLength) {
++            throw new Error(invalidMessageMetadata(metadataLength, read));
+         }
+-        return { done: false, value: Message.decode(buf) };
++        return { done: false, value: Message.decode(buf!) };
+     }
+ }
+ 
