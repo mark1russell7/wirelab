@@ -22,6 +22,8 @@ C017 is the class "a stream cut inside a length prefix or a header ends with no 
 
 The targets are three calls of `@connectrpc/connect-web` 2.3.0: a Connect server stream, a gRPC-web server stream and a gRPC-web unary call. The scripted server of `@mark1russell7/rigor-testkit` sends each cut stream as the body of one response.
 
+The target of `apache-arrow` 21.2.0 is `tableFromIPC` on an Arrow IPC stream of one schema and two record batches. Each message is one frame with a prefix of 8 bytes.
+
 ## The checks
 
 - `pnpm test` examines the adapter, and compares its values with the dimensions of the catalog.
