@@ -2053,5 +2053,110 @@
     "state": "issue-open",
     "url": "https://github.com/connectrpc/connect-es/issues/1907",
     "note": "The issue has a repro with a scripted fetch and the output on 2.3.0. The project has a DCO, so wirelab sends no fix PR: the issue alone goes upstream. The rig tests the fix as a patch arm on v2.3.0."
+  },
+  {
+    "finding": "F0222",
+    "at": "2026-11-25T08:09:45Z",
+    "state": "merged",
+    "url": "https://github.com/middleapi/orpc/pull/2549",
+    "note": "A maintainer merged the fix. It closed the issue orpc #2548."
+  },
+  {
+    "finding": "F0116",
+    "at": "2026-11-26T09:59:32Z",
+    "state": "merged",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2108",
+    "note": "A maintainer merged the fix. It closed the issue MQTT.js #2101."
+  },
+  {
+    "finding": "F0083",
+    "at": "2026-11-26T09:20:53Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2119",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2119, which a maintainer merged. It closed the issue MQTT.js #2092."
+  },
+  {
+    "finding": "F0089",
+    "at": "2026-11-26T09:20:53Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2119",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2119, which a maintainer merged. It closed the issue MQTT.js #2097."
+  },
+  {
+    "finding": "F0090",
+    "at": "2026-11-26T09:20:53Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2119",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2119, which a maintainer merged. It closed the issue MQTT.js #2098."
+  },
+  {
+    "finding": "F0118",
+    "at": "2026-11-26T09:20:53Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2119",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2119, which a maintainer merged. It closed the issue MQTT.js #2103."
+  },
+  {
+    "finding": "F0119",
+    "at": "2026-11-26T09:20:53Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2119",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2119, which a maintainer merged. It closed the issue MQTT.js #2104."
+  },
+  {
+    "finding": "F0084",
+    "at": "2026-11-26T10:12:02Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2114",
+    "note": "A contributor fixed it in the pull request MQTT.js #2114, which a maintainer merged. It closed the issue MQTT.js #2093."
+  },
+  {
+    "finding": "F0085",
+    "at": "2026-11-26T09:49:01Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2120",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2120, which a maintainer merged. It closed the issue MQTT.js #2094."
+  },
+  {
+    "finding": "F0087",
+    "at": "2026-11-26T09:51:59Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2118",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2118, which a maintainer merged. It closed the issue MQTT.js #2095."
+  },
+  {
+    "finding": "F0088",
+    "at": "2026-11-26T10:10:58Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2113",
+    "note": "A contributor fixed it in the pull request MQTT.js #2113, which a maintainer merged. It closed the issue MQTT.js #2096."
+  },
+  {
+    "finding": "F0114",
+    "at": "2026-11-26T09:07:26Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2115",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2115, which a maintainer merged. It closed the issue MQTT.js #2099."
+  },
+  {
+    "finding": "F0115",
+    "at": "2026-11-26T09:06:18Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2117",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2117, which a maintainer merged. It closed the issue MQTT.js #2100."
+  },
+  {
+    "finding": "F0121",
+    "at": "2026-11-26T09:06:18Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/mqttjs/MQTT.js/pull/2117",
+    "note": "A maintainer fixed it in the pull request MQTT.js #2117, which a maintainer merged. It closed the issue MQTT.js #2106."
+  },
+  {
+    "finding": "F0218",
+    "at": "2026-11-26T14:49:40Z",
+    "state": "fixed-by-others",
+    "url": "https://github.com/aws-amplify/amplify-js/pull/15029",
+    "note": "A maintainer fixed it in the pull request amplify-js #15029. It closed the issue amplify-js #15026."
   }
 ]
