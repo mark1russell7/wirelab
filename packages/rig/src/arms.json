@@ -323,5 +323,18 @@
     "build": "npx --yes pnpm@9.4.0 install --ignore-workspace --frozen-lockfile --ignore-scripts && rm -rf build && node_modules/.bin/tsc --project tsconfig.build.json && node_modules/.bin/tsup",
     "folder": ".",
     "copy": ["build"]
+  },
+  {
+    "id": "graphql-request-c034",
+    "class": "C034",
+    "targets": ["graphql-request/batch"],
+    "package": "graphql-request",
+    "repository": "graffle-js/graffle",
+    "base": "9b8714cdf0041e148ab9235db553ff8dc7d0bf61",
+    "patch": "arms/graphql-request-c034.patch",
+    "fixLink": "https://github.com/graffle-js/graffle/issues/1502",
+    "build": "npx --yes pnpm@9.4.0 install --ignore-workspace --frozen-lockfile --ignore-scripts && rm -rf build && node_modules/.bin/tsc --project tsconfig.build.json && node_modules/.bin/tsup",
+    "folder": ".",
+    "copy": ["build"]
   }
 ]
