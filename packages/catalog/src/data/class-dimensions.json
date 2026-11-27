@@ -246,6 +246,12 @@
     "value": "internal TypeError in a wrong state"
   },
   {
+    "class": "C003",
+    "dimension": "step",
+    "order": 8,
+    "value": "BigInt of a cut value"
+  },
+  {
     "class": "C004",
     "dimension": "phase",
     "order": 1,

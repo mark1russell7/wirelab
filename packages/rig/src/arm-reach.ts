@@ -134,7 +134,8 @@ export function armReach(input: ReachInput): Map<string, string[]> {
         const before = baseArms?.find((one) => one.id === arm.id);
         if (before === undefined || JSON.stringify(before) !== JSON.stringify(arm)) add(arm, path);
       }
-    } else if (path.startsWith(`${RIG}/`) && path.endsWith(".md")) {
+    } else if (path.endsWith(".md")) {
+      // No code of the rig or of its workspace packages reads Markdown.
       continue;
     } else if (path.startsWith(`${RIG}/arms/`)) {
       for (const arm of arms) if (arm.patch !== undefined && `${RIG}/${arm.patch}` === path) add(arm, path);

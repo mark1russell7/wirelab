@@ -76,6 +76,35 @@ export interface KeyTarget {
   run(key: string): Promise<Outcome>;
 }
 
+/**
+ * The two inputs of a cause target. `reference`: a failure that the client reports with its real cause. `trigger`: the
+ * same failure in the form of the finding.
+ */
+export type CauseInput = "reference" | "trigger";
+
+/**
+ * A target that makes one failure of a client in two forms. The probe of C003 compares the error of the trigger with
+ * the error of the reference. The class and the code of the two errors must be equal.
+ */
+export interface CauseTarget {
+  /** The id of the target: the package and the failure, for example `mqtt/end-before-connect`. */
+  readonly id: string;
+  /** The npm name of the package. */
+  readonly package: string;
+  /** The version of the package that the workspace installs. */
+  readonly version: string;
+  /** The state of the client at the failure: a value of the dimension `state` of C003. */
+  readonly state: string;
+  /** The step that replaces the cause: a value of the dimension `step` of C003. */
+  readonly step: string;
+  /** The failure of the reference, in words. */
+  readonly reference: string;
+  /** The failure of the trigger, in words. */
+  readonly trigger: string;
+  /** This function makes the failure in the form `input` and gives the outcome that the caller sees. */
+  run(input: CauseInput): Promise<Outcome>;
+}
+
 /** The places of an end that a session target makes: the values of the dimension `after` of C016. */
 export type SessionAfter = "end-of-stream frame" | "second end-of-stream" | "completion of the peer" | "local close()";
 

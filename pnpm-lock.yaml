@@ -314,12 +314,21 @@ importers:
       hls.js:
         specifier: 1.7.4
         version: 1.7.4
+      mqtt:
+        specifier: 5.16.1
+        version: 5.16.1(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10)
+      mqtt-packet:
+        specifier: 9.0.2
+        version: 9.0.2(supports-color@7.2.0)
       msgpackr:
         specifier: 2.1.4
         version: 2.1.4
       pusher-js:
         specifier: 8.6.0
         version: 8.6.0
+      rxjs:
+        specifier: 7.8.2
+        version: 7.8.2
       viem:
         specifier: 2.58.0
         version: 2.58.0(bufferutil@4.2.0)(typescript@7.0.2)(utf-8-validate@5.0.10)(zod@4.6.7)
