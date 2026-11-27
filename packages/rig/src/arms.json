@@ -336,5 +336,31 @@
     "build": "npx --yes pnpm@9.4.0 install --ignore-workspace --frozen-lockfile --ignore-scripts && rm -rf build && node_modules/.bin/tsc --project tsconfig.build.json && node_modules/.bin/tsup",
     "folder": ".",
     "copy": ["build"]
+  },
+  {
+    "id": "postgrest-js-c033-head",
+    "class": "C033",
+    "targets": ["postgrest-js/count-head"],
+    "package": "@supabase/postgrest-js",
+    "repository": "supabase/supabase-js",
+    "base": "02d2e8f12079955a28901d95e8513846d01a3c3e",
+    "patch": "arms/postgrest-js-c033-head.patch",
+    "fixLink": "https://github.com/supabase/supabase-js/pull/2685",
+    "build": "npx --yes pnpm@11.1.2 install --frozen-lockfile --ignore-scripts --filter @supabase/postgrest-js... && cd packages/core/postgrest-js && node_modules/.bin/tsdown",
+    "folder": "packages/core/postgrest-js",
+    "copy": ["dist"]
+  },
+  {
+    "id": "postgrest-js-c033-select",
+    "class": "C033",
+    "targets": ["postgrest-js/select"],
+    "package": "@supabase/postgrest-js",
+    "repository": "supabase/supabase-js",
+    "base": "02d2e8f12079955a28901d95e8513846d01a3c3e",
+    "patch": "arms/postgrest-js-c033-select.patch",
+    "fixLink": "https://github.com/supabase/supabase-js/blob/02d2e8f12079955a28901d95e8513846d01a3c3e/packages/core/postgrest-js/src/PostgrestBuilder.ts#L450",
+    "build": "npx --yes pnpm@11.1.2 install --frozen-lockfile --ignore-scripts --filter @supabase/postgrest-js... && cd packages/core/postgrest-js && node_modules/.bin/tsdown",
+    "folder": "packages/core/postgrest-js",
+    "copy": ["dist"]
   }
 ]
