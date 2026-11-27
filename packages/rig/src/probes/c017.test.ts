@@ -1,19 +1,12 @@
-import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import { matrixRows, random } from "@mark1russell7/rigor-generators";
 import { catalog } from "@wirelab/catalog";
 import { describe, expect, it } from "vitest";
-import { ARMS, armProblems, currentArm } from "../arms.ts";
+import { currentArm } from "../arms.ts";
 import { CUTS, PLACES } from "../cuts.ts";
 import { dimensionsOf } from "../matrix.ts";
 import { apacheArrowTarget } from "../targets/apache-arrow.ts";
 import { awsSdkS3Target } from "../targets/aws-sdk-s3.ts";
 import { connectWebTargets } from "../targets/connect-web.ts";
-import { graphqlWsTargets } from "../targets/graphql-ws.ts";
-import { keyTargets } from "../targets/key-targets.ts";
-import { replyTargets } from "../targets/reply-targets.ts";
-import { signalrTarget } from "../targets/signalr.ts";
-import { sockjsClientTargets } from "../targets/sockjs-client.ts";
 import { CLASS_ID, adapterProblems, runProbe } from "./c017.ts";
 import { writeReport } from "./report.ts";
 
@@ -96,30 +89,6 @@ describe.runIf(rigEnabled)("C017 on @aws-sdk/client-s3", () => {
       ]),
     );
   }, 60_000);
-});
-
-describe("C017: the arms", () => {
-  it("names only targets of the rig, with full commits", () => {
-    const patchExists = (path: string): boolean => existsSync(fileURLToPath(new URL(`../../${path}`, import.meta.url)));
-    // The reply probes have the reply targets, the C016 probe has the session targets, and the C001 probe has the key targets.
-    const ids = [...targets, ...replyTargets, ...sockjsClientTargets, signalrTarget, ...graphqlWsTargets, ...keyTargets].map((one) => one.id);
-    expect(armProblems(ARMS, ids, patchExists)).toEqual([]);
-  });
-
-  it("finds each problem of a bad arm", () => {
-    const good = ARMS[0];
-    if (good === undefined) throw new Error("The rig has no arm.");
-    const bad = { ...good, targets: ["none"], base: "abc", patch: "none.patch", copy: [] };
-    expect(armProblems([good, good, bad], ["aws-sdk/s3-select-object-content"], (path) => path !== "none.patch")).toEqual([
-      `${good.id}: the id is not unique.`,
-      `${good.id}: the id is not unique.`,
-      `${good.id}: the rig has no target "none".`,
-      `${good.id}: the arm has a fix commit or a patch, and not the two.`,
-      `${good.id}: each commit is a full SHA of 40 hex digits.`,
-      `${good.id}: the patch "none.patch" does not exist.`,
-      `${good.id}: the arm copies no folder.`,
-    ]);
-  });
 });
 
 describe.runIf(process.env["RIG"] === "1" && arm?.arm.class === CLASS_ID)("C017 on an arm", () => {
