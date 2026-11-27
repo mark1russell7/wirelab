@@ -35,6 +35,15 @@ C003 is the class "the error that the caller gets is not the real cause". A caus
 
 The oracle `sameCause` compares the kind of the two outcomes, and the class and the code of an error. It does not compare the message. The cause targets are `rxjs` (F0002), `mqtt` (F0117 and F0122), `bson` (F0165) and `graphql-request` (F0182). The reply cases of C003 examine `@connectrpc/connect-web`.
 
+## The probe C032
+
+C032 is the class "the result reported to the caller differs from what happened on the wire". The reply cases examine the trailers of `@connectrpc/connect-web`. A wire target examines one call of another client:
+
+- The target gives the outcome of the call and the packets that the peer got.
+- The rule of the protocol for the reply of the peer gives the expected kind of the outcome and the packets.
+
+The oracle `wireVerdict` compares the kind and the packets in order. The reference of each target is a control. The wire targets are `mqtt` (F0115, F0120 and F0121) and `rxjs` (F0004).
+
 ## The arms
 
 A proven probe passes on the fixed version of each instance. When no fixed version is released, an arm builds the package from a commit. `src/arms.json` gives each arm: the repository, its base commit, the fix, the build command and the folders to copy. The fix is a commit, or a patch in the folder `arms` when no fix commit is public. An arm names each target that uses the package.
