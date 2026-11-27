@@ -55,7 +55,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W26-R11 | Targets of C003 and C032 for the known instances | later | P1 | The probes of C003 and C032 examine only connect-web. Their known instances are in `rxjs`, `@supabase/realtime-js`, `mqtt`, `bson`, `graphql-request` (F0182) and `socket.io-client`. Each one gets a target, so each probe finds each known instance again. |
 | W26-R12 | Fixed arms of C033 on `@supabase/postgrest-js` | later | P2 | No release of `@supabase/postgrest-js` has a fix of F0168 or F0169. supabase-js #2685 is an open fix of F0168. The item adds a patch arm of each finding, so C033 passes on a fixed side of each instance. |
 | W26-R13 | Fixed arm of C034 on `graphql-request` | later | P2 | No release of `graphql-request` has a fix of F0178 (graffle #1502). The item adds a patch arm, so C034 passes on a fixed side of the batch. F0209 gets no arm: the tests of graphql-http pin it. |
-| W26-R14 | Arms of the key targets of C001 | later | P1 | Each key target of C001 gets an arm with the fix: the open PRs of `pusher-js`, `smithy-typescript`, `js-bson`, `msgpackr` and `stompjs`, and patch arms of `signalr`, `hls.js` and `xml-builder`. Then C001 is proven. The arm test of the reply probes also learns the key targets. |
+| W26-R14 | Arms of the key targets of C001 | done | P1 | Each key target of C001 gets an arm with the fix: the open PRs of `pusher-js`, `smithy-typescript`, `js-bson`, `msgpackr` and `stompjs`, and patch arms of `signalr`, `hls.js` and `xml-builder`. Result: each of the 16 arm jobs agrees with the prediction. Each base build gives the fails of W26-R10, and each fix gives no fail. C001 is proven. |
 
 ## The priority formula
 

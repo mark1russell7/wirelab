@@ -1,9 +1,9 @@
 [
   {
     "class": "C001",
-    "state": "written",
+    "state": "proven",
     "file": "packages/rig/src/probes/c001.ts",
-    "note": "It examines connect-web (the candidate c4 of W16) and the 10 key targets of W26-R10. It finds F0228, F0073, F0108, F0132, F0133, F0139, F0144, F0162, F0202 and F0225. The arms of the key targets are W26-R14."
+    "note": "It examines connect-web (the candidate c4 of W16) and the 10 key targets of W26-R10. It finds F0228, F0073, F0108, F0132, F0133, F0139, F0144, F0162, F0202 and F0225. In CI, each base arm gives the known fails, and each fixed arm gives no fail (W26-R14)."
   },
   {
     "class": "C002",
