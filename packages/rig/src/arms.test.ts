@@ -36,7 +36,7 @@ describe("the arms", () => {
   it("find each problem of a bad arm", () => {
     const good = ARMS[0];
     if (good === undefined) throw new Error("The rig has no arm.");
-    const bad = { ...good, targets: ["none"], base: "abc", patch: "none.patch", copy: [] };
+    const bad = { ...good, targets: ["none"], base: "abc", patch: "none.patch", copy: [], folder: "packages/a", sparse: ["packages/ab"] };
     expect(armProblems([good, good, bad], ["aws-sdk/s3-select-object-content"], (path) => path !== "none.patch")).toEqual([
       `${good.id}: the id is not unique.`,
       `${good.id}: the id is not unique.`,
@@ -45,6 +45,7 @@ describe("the arms", () => {
       `${good.id}: each commit is a full SHA of 40 hex digits.`,
       `${good.id}: the patch "none.patch" does not exist.`,
       `${good.id}: the arm copies no folder.`,
+      `${good.id}: the sparse checkout does not hold the folder "packages/a".`,
     ]);
   });
 });

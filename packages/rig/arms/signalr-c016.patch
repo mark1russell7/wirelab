@@ -1,0 +1,120 @@
+diff --git a/src/SignalR/clients/ts/signalr/src/HubConnection.ts b/src/SignalR/clients/ts/signalr/src/HubConnection.ts
+index 05fc011..88984bc 100644
+--- a/src/SignalR/clients/ts/signalr/src/HubConnection.ts
++++ b/src/SignalR/clients/ts/signalr/src/HubConnection.ts
+@@ -8,7 +8,7 @@ import { CancelInvocationMessage, CloseMessage, CompletionMessage, IHubProtocol,
+ import type { AuthenticationRefreshFailedContext, AuthenticationRefreshedContext, IAuthenticationRefreshOptions } from "./IAuthenticationRefreshOptions";
+ import { ILogger, LogLevel } from "./ILogger";
+ import { IRetryPolicy } from "./IRetryPolicy";
+-import { IStreamResult } from "./Stream";
++import { IStreamResult, ISubscription } from "./Stream";
+ import { Subject } from "./Subject";
+ import { Arg, getErrorString, Platform } from "./Utils";
+ import { MessageBuffer } from "./MessageBuffer";
+@@ -398,12 +398,15 @@ export class HubConnection {
+ 
+         // eslint-disable-next-line prefer-const
+         let promiseQueue: Promise<void>;
++        // The subscriptions of the upload streams. The end of the invocation disposes them.
++        let uploads: ISubscription<any>[] = [];
+ 
+         const subject = new Subject<T>();
+         subject.cancelCallback = () => {
+             const cancelInvocation: CancelInvocationMessage = this._createCancelInvocation(invocationDescriptor.invocationId);
+ 
+             delete this._callbacks[invocationDescriptor.invocationId];
++            this._disposeStreams(uploads);
+ 
+             return promiseQueue.then(() => {
+                 return this._sendWithProtocol(cancelInvocation);
+@@ -412,11 +415,13 @@ export class HubConnection {
+ 
+         this._callbacks[invocationDescriptor.invocationId] = (invocationEvent: CompletionMessage | StreamItemMessage | null, error?: Error) => {
+             if (error) {
++                this._disposeStreams(uploads);
+                 subject.error(error);
+                 return;
+             } else if (invocationEvent) {
+                 // invocationEvent will not be null when an error is not passed to the callback
+                 if (invocationEvent.type === MessageType.Completion) {
++                    this._disposeStreams(uploads);
+                     if (invocationEvent.error) {
+                         subject.error(new Error(invocationEvent.error));
+                     } else {
+@@ -434,7 +439,7 @@ export class HubConnection {
+                 delete this._callbacks[invocationDescriptor.invocationId];
+             });
+ 
+-        this._launchStreams(streams, promiseQueue);
++        uploads = this._launchStreams(streams, promiseQueue);
+ 
+         return subject;
+     }
+@@ -490,14 +495,18 @@ export class HubConnection {
+         const invocationDescriptor = this._createInvocation(methodName, args, false, streamIds);
+ 
+         const p = new Promise<any>((resolve, reject) => {
++            // The subscriptions of the upload streams. The end of the invocation disposes them.
++            let uploads: ISubscription<any>[] = [];
+             // invocationId will always have a value for a non-blocking invocation
+             this._callbacks[invocationDescriptor.invocationId!] = (invocationEvent: StreamItemMessage | CompletionMessage | null, error?: Error) => {
+                 if (error) {
++                    this._disposeStreams(uploads);
+                     reject(error);
+                     return;
+                 } else if (invocationEvent) {
+                     // invocationEvent will not be null when an error is not passed to the callback
+                     if (invocationEvent.type === MessageType.Completion) {
++                        this._disposeStreams(uploads);
+                         if (invocationEvent.error) {
+                             reject(new Error(invocationEvent.error));
+                         } else {
+@@ -516,7 +525,7 @@ export class HubConnection {
+                     delete this._callbacks[invocationDescriptor.invocationId!];
+                 });
+ 
+-            this._launchStreams(streams, promiseQueue);
++            uploads = this._launchStreams(streams, promiseQueue);
+         });
+ 
+         return p;
+@@ -1225,9 +1234,17 @@ export class HubConnection {
+         }
+     }
+ 
+-    private _launchStreams(streams: IStreamResult<any>[], promiseQueue: Promise<void>): void {
++    // After the end of an invocation, the client sends no more StreamItem or Completion messages of its upload streams.
++    private _disposeStreams(subscriptions: ISubscription<any>[]): void {
++        for (const subscription of subscriptions.splice(0)) {
++            subscription.dispose();
++        }
++    }
++
++    private _launchStreams(streams: IStreamResult<any>[], promiseQueue: Promise<void>): ISubscription<any>[] {
++        const subscriptions: ISubscription<any>[] = [];
+         if (streams.length === 0) {
+-            return;
++            return subscriptions;
+         }
+ 
+         // Synchronize stream data so they arrive in-order on the server
+@@ -1238,7 +1255,7 @@ export class HubConnection {
+         // We want to iterate over the keys, since the keys are the stream ids
+         // eslint-disable-next-line guard-for-in
+         for (const streamId in streams) {
+-            streams[streamId].subscribe({
++            subscriptions.push(streams[streamId].subscribe({
+                 complete: () => {
+                     promiseQueue = promiseQueue.then(() => this._sendWithProtocol(this._createCompletionMessage(streamId)));
+                 },
+@@ -1257,8 +1274,9 @@ export class HubConnection {
+                 next: (item) => {
+                     promiseQueue = promiseQueue.then(() => this._sendWithProtocol(this._createStreamItemMessage(streamId, item)));
+                 },
+-            });
++            }));
+         }
++        return subscriptions;
+     }
+ 
+     private _replaceStreamingParams(args: any[]): [IStreamResult<any>[], string[]] {

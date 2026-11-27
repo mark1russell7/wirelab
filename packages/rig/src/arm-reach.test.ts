@@ -191,6 +191,9 @@ describe("the rows of the matrix", () => {
       expect.objectContaining({ kind: "fixed", commit: hls?.base, patch: hls?.patch }),
     ]);
     const stomp = ARMS.find((arm) => arm.id === "stompjs-763");
-    expect(rows.find((row) => row.id === "stompjs-763" && row.kind === "fixed")).toEqual(expect.objectContaining({ commit: stomp?.fix, patch: "", copy: "esm6 bundles" }));
+    expect(rows.find((row) => row.id === "stompjs-763" && row.kind === "fixed")).toEqual(expect.objectContaining({ commit: stomp?.fix, patch: "", copy: "esm6 bundles", sparse: "" }));
+    expect(rows.find((row) => row.id === "signalr-c016")).toEqual(expect.objectContaining({ sparse: "src/SignalR/clients/ts" }));
+    const workflow = readFileSync(`${root}.github/workflows/rig-arms.yml`, "utf8");
+    expect(workflow).toMatch(/\n {10}sparse-checkout: \$\{\{ matrix\.sparse \}\}\n/);
   });
 });

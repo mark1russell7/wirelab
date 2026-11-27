@@ -92,6 +92,8 @@ jobs:
           ref: ${{ matrix.commit }}
           path: arm-src
           persist-credentials: false
+          # A large repository gives the folders of a sparse checkout. An empty value checks out all files.
+          sparse-checkout: ${{ matrix.sparse }}
       - name: Apply the patch of the fix
         if: matrix.patch != ''
         env:

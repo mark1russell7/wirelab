@@ -36,6 +36,8 @@ export interface Arm {
   readonly folder: string;
   /** The folders of the build that replace the folders of the installed package. The folder `.` replaces the whole package. */
   readonly copy: readonly string[];
+  /** The folders of a sparse checkout of a large repository. The folder of the package is inside one of them. Without it, the arm checks out all files. */
+  readonly sparse?: readonly string[];
 }
 
 /** The arms of the rig. */
@@ -59,6 +61,9 @@ export function armProblems(arms: readonly Arm[], targets: readonly string[], pa
     if (arm.base === arm.fix) problems.push(`${arm.id}: the base and the fix are the same commit.`);
     if (arm.patch !== undefined && !patchExists(arm.patch)) problems.push(`${arm.id}: the patch "${arm.patch}" does not exist.`);
     if (arm.copy.length === 0) problems.push(`${arm.id}: the arm copies no folder.`);
+    if (arm.sparse !== undefined && !arm.sparse.some((path) => arm.folder === path || arm.folder.startsWith(`${path}/`))) {
+      problems.push(`${arm.id}: the sparse checkout does not hold the folder "${arm.folder}".`);
+    }
   }
   return problems;
 }
