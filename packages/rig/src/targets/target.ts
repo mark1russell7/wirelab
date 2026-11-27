@@ -105,6 +105,48 @@ export interface CauseTarget {
   run(input: CauseInput): Promise<Outcome>;
 }
 
+/** The kind of outcome that the rule of a protocol gives for one reply of the peer. */
+export type ExpectedKind = "value" | "error";
+
+/** The outcome of one run of a wire target, and the packets that the peer got. */
+export interface WireRun {
+  /** The outcome that the caller sees. */
+  readonly outcome: Outcome;
+  /** The packets of the peer that the target records, as short words, for example `subscribe a`. */
+  readonly wire: readonly string[];
+}
+
+/** The result and the packets that the rule of a protocol gives for one reply of the peer. */
+export interface WireRule {
+  readonly kind: ExpectedKind;
+  readonly wire: readonly string[];
+}
+
+/**
+ * A target that compares the result that the caller gets with the packets on the wire. The probe of C032 starts the
+ * reference and the trigger, and compares each run with the rule of the protocol for its reply.
+ */
+export interface WireTarget {
+  /** The id of the target: the package and the call, for example `mqtt/unsuback-failure`. */
+  readonly id: string;
+  /** The npm name of the package. */
+  readonly package: string;
+  /** The version of the package that the workspace installs. */
+  readonly version: string;
+  /** The call of the case: a value of the dimension `call` of C032. */
+  readonly call: string;
+  /** The reply of the trigger: a value of the dimension `reply` of C032. */
+  readonly reply: string;
+  /** The reply of the reference, in words. The client handles it correctly. */
+  readonly reference: string;
+  /** The reply of the trigger, in words. */
+  readonly trigger: string;
+  /** This function gives the rule of the protocol for the reply `input`. */
+  rule(input: CauseInput): WireRule;
+  /** This function makes the peer send the reply `input`, and gives the outcome and the packets. */
+  run(input: CauseInput): Promise<WireRun>;
+}
+
 /** The places of an end that a session target makes: the values of the dimension `after` of C016. */
 export type SessionAfter = "end-of-stream frame" | "second end-of-stream" | "completion of the peer" | "local close()";
 
