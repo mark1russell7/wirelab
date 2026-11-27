@@ -143,7 +143,11 @@ describe.runIf(rigEnabled)("the reply probes on each reply target", () => {
   );
 });
 
-describe.runIf(process.env["RIG"] === "1" && PROBES.some(([probe]) => probe.CLASS_ID === arm?.arm.class))("a reply probe on an arm", () => {
+/** The arm of this run is an arm of a reply probe: its class has a reply probe, and each of its targets is a reply target. */
+const replyArm =
+  arm !== undefined && PROBES.some(([probe]) => probe.CLASS_ID === arm.arm.class) && arm.arm.targets.every((id) => replyTargets.some((one) => one.id === id));
+
+describe.runIf(process.env["RIG"] === "1" && replyArm)("a reply probe on an arm", () => {
   it("finds the fault again on the base commit, and no fault on the commit of the fix", async () => {
     if (arm === undefined) throw new Error("This run has no arm.");
     const found = PROBES.find(([probe]) => probe.CLASS_ID === arm.arm.class);

@@ -1,15 +1,20 @@
 import { random } from "@mark1russell7/rigor-generators";
 import { catalog } from "@wirelab/catalog";
 import { describe, expect, it } from "vitest";
-import { currentArm } from "../arms.ts";
+import { ARMS, currentArm } from "../arms.ts";
 import type { Outcome } from "../outcome.ts";
 import { keyTargets } from "../targets/key-targets.ts";
+import type { KeyTarget } from "../targets/target.ts";
 import { keyCases, maskedText, runKeyProbe, sameAsBaseline, unknownKeyLike } from "./c001.ts";
 import { caseProblems, type ReplyResult } from "./replies.ts";
 import { writeReport } from "./report.ts";
 
-/** The runs of the probe start only when `RIG` is `1` and the run has no arm, as in `replies.test.ts`. */
-const rigEnabled = process.env["RIG"] === "1" && currentArm(process.env) === undefined;
+/** The arm of this run, or undefined. The runs of the probe start only when `RIG` is `1`, as in `replies.test.ts`. */
+const arm = currentArm(process.env);
+const rigEnabled = process.env["RIG"] === "1" && arm === undefined;
+
+/** The arm of this run is an arm of the key probe: its class is C001, and each of its targets is a key target. */
+const keyArm = arm !== undefined && arm.arm.class === "C001" && arm.arm.targets.every((id) => keyTargets.some((one) => one.id === id));
 
 /**
  * The finding of each key target, and the keys that pass on the version of the rig. Each other key of the catalog
@@ -92,14 +97,36 @@ describe("the oracle of C001", () => {
   });
 });
 
+/** This function gives the line of each key case of `targets` that fails on the versions of the rig, from `KNOWN`. */
+const knownFails = (targets: readonly KeyTarget[]): string[] =>
+  keyCases(targets)
+    .filter((one) => one.control !== true && !(KNOWN[one.target]?.passes ?? []).includes(one.key))
+    .map(line);
+
 describe.runIf(rigEnabled)("the key probe of C001 on each key target", () => {
   it("finds the known instances again, and each control passes", async () => {
     const results = await runKeyProbe(keyTargets);
     writeReport(results, "c001-keys");
     expect(results.filter((one) => one.control && one.verdict !== "pass").map(line)).toEqual([]);
-    const expected = keyCases(keyTargets)
-      .filter((one) => one.control !== true && !(KNOWN[one.target]?.passes ?? []).includes(one.key))
-      .map(line);
-    expect(failLines(results)).toEqual(expected);
+    expect(failLines(results)).toEqual(knownFails(keyTargets));
+  }, 120_000);
+});
+
+describe("the arms of the key targets", () => {
+  it("give an arm to each key target", () => {
+    const armed = ARMS.filter((one) => one.class === "C001").flatMap((one) => one.targets);
+    expect(keyTargets.map((one) => one.id).filter((id) => !armed.includes(id))).toEqual([]);
+  });
+});
+
+describe.runIf(process.env["RIG"] === "1" && keyArm)("the key probe of C001 on an arm", () => {
+  it("finds the known fails on the base commit, and no fail on the fix", async () => {
+    if (arm === undefined) throw new Error("This run has no arm.");
+    const targets = keyTargets.filter((one) => arm.arm.targets.includes(one.id));
+    const results = await runKeyProbe(targets);
+    writeReport(results, `arm-${arm.arm.id}-${arm.kind}`);
+    expect(results.filter((one) => one.control && one.verdict !== "pass").map(line)).toEqual([]);
+    // The base build gives the fails of the release. Thus the build alone does not change the result.
+    expect(failLines(results)).toEqual(arm.kind === "base" ? knownFails(targets) : []);
   }, 120_000);
 });

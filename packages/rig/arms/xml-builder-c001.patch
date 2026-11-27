@@ -1,0 +1,13 @@
+diff --git a/packages-internal/xml-builder/src/xml-parser.ts b/packages-internal/xml-builder/src/xml-parser.ts
+index 9a38603..720a5dc 100644
+--- a/packages-internal/xml-builder/src/xml-parser.ts
++++ b/packages-internal/xml-builder/src/xml-parser.ts
+@@ -312,7 +312,7 @@ class AwsXmlParser {
+       if (dec) {
+         return String.fromCharCode(parseInt(dec, 10));
+       }
+-      return AwsXmlParser.ENTITIES[named] ?? "";
++      return Object.prototype.hasOwnProperty.call(AwsXmlParser.ENTITIES, named) ? AwsXmlParser.ENTITIES[named] : "";
+     });
+   }
+ }
