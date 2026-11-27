@@ -30,7 +30,12 @@ const texts = new Map(
     .filter((path) => path.endsWith(".ts"))
     .map((path) => [path, readFileSync(path, "utf8")] as const),
 );
-const reach = armReach({ arms, baseArms, changed, texts });
+// The text before the change of each changed source file of the rig. A file that the commit before does not have is new.
+const baseFiles = new Set(lines(git("ls-tree", "-r", "--name-only", base, "--", `${RIG}/src`)));
+const baseTexts = new Map(
+  changed.filter((path) => path.endsWith(".ts") && baseFiles.has(path)).map((path) => [path, git("show", `${base}:${path}`)] as const),
+);
+const reach = armReach({ arms, baseArms, changed, texts, baseTexts });
 for (const [id, paths] of reach) process.stderr.write(`${id}: ${paths.join(", ")}\n`);
 process.stderr.write(`The change reaches ${String(reach.size)} of ${String(arms.length)} arms.\n`);
 process.stdout.write(`matrix=${JSON.stringify(armRows(arms.filter((arm) => reach.has(arm.id))))}\n`);
