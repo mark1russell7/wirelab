@@ -1,0 +1,35 @@
+diff --git a/src/legacy/helpers/runRequest.ts b/src/legacy/helpers/runRequest.ts
+index e568e8c..74d7161 100644
+--- a/src/legacy/helpers/runRequest.ts
++++ b/src/legacy/helpers/runRequest.ts
+@@ -110,7 +110,7 @@ export const runRequest = async (input: Input): Promise<ClientError | GraphQLCli
+ 
+     // Parse succeeded - return ClientError WITH GraphQL errors/data (fixes #1281)
+     const clientResponse = result._tag === `Batch`
+-      ? { ...result.executionResults, ...clientResponseBase }
++      ? { ...result.executionResults, errors: batchErrors(result.executionResults), ...clientResponseBase }
+       : {
+         ...result.executionResult,
+         ...clientResponseBase,
+@@ -128,7 +128,7 @@ export const runRequest = async (input: Input): Promise<ClientError | GraphQLCli
+   if (isRequestResultHaveErrors(result) && config.fetchOptions.errorPolicy === `none`) {
+     // todo this client response on error is not consistent with the data type for success
+     const clientResponse = result._tag === `Batch`
+-      ? { ...result.executionResults, ...clientResponseBase }
++      ? { ...result.executionResults, errors: batchErrors(result.executionResults), ...clientResponseBase }
+       : {
+         ...result.executionResult,
+         ...clientResponseBase,
+@@ -156,6 +156,12 @@ export const runRequest = async (input: Input): Promise<ClientError | GraphQLCli
+   }
+ }
+ 
++// The errors of each result of a batch, in one list. A ClientError of a batch then gives them, and its message names the first.
++const batchErrors = (executionResults: GraphQLExecutionResultSingle[]) =>
++  executionResults.flatMap((executionResult) =>
++    executionResult.errors === undefined ? [] : Array.isArray(executionResult.errors) ? executionResult.errors : [executionResult.errors]
++  )
++
+ const executionResultClientResponseFields = ($params: Input) => (executionResult: GraphQLExecutionResultSingle) => {
+   return {
+     extensions: executionResult.extensions,
