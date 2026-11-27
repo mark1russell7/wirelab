@@ -2172,6 +2172,18 @@
     "value": "trailers-only response"
   },
   {
+    "class": "C032",
+    "dimension": "reply",
+    "order": 5,
+    "value": "failed reconnect attempt"
+  },
+  {
+    "class": "C032",
+    "dimension": "reply",
+    "order": 6,
+    "value": "subMsg of the app throws"
+  },
+  {
     "class": "C033",
     "dimension": "body",
     "order": 1,
