@@ -153,3 +153,5 @@ jobs:
       - uses: mark1russell7/template/.github/actions/gate-summary@7c83f30551e066c06852ea75bf0140eadfc49961 # main
         with:
           needs: ${{ toJSON(needs) }}
+          # The job arms skips when the plan reaches no arm. A failure of the plan still fails the gate.
+          allow-skip: arms

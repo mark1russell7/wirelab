@@ -56,7 +56,7 @@ export function targetHomes(texts: ReadonlyMap<string, string>, arms: readonly A
   return homes;
 }
 
-/** A token of a source text: its text, the depth of brackets before it, and whether a line break comes before it. */
+/** A token of a source text: its text, the depth of brackets before it, and if a line break comes before it. */
 interface Token {
   readonly text: string;
   readonly depth: number;
