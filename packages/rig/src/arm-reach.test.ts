@@ -36,7 +36,7 @@ describe("the reach of a sample change", () => {
   });
 
   it("of a probe module or the test file of a class is the arms of that class", () => {
-    expect(reached([src("probes/c003.ts")])).toEqual(["connect-c003"]);
+    expect(reached([src("probes/c003.ts")])).toEqual(ofClass("C003"));
     expect(reached([src("probes/c016.test.ts")])).toEqual(ofClass("C016"));
     expect(reached([src("probes/c017.test.ts")])).toEqual(ofClass("C017"));
   });
@@ -47,7 +47,8 @@ describe("the reach of a sample change", () => {
   });
 
   it("of a list of targets is each arm of a test file that imports the list", () => {
-    expect(reached([src("targets/key-targets.ts")])).toEqual([...ofClass("C017"), ...ofClass("C001")].sort((a, b) => all.indexOf(a) - all.indexOf(b)));
+    // Only the test file of C001 imports the key targets. The check of the arms in `arms.test.ts` is the root of no arm.
+    expect(reached([src("targets/key-targets.ts")])).toEqual(ofClass("C001"));
   });
 
   it("of Markdown, or of a file that no arm imports, is no arm", () => {
