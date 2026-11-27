@@ -5,7 +5,8 @@
 # The arms run the build scripts of other repositories. So this workflow runs only for a pull request, where a cache that
 # a step writes is in the scope of the pull request. A run on the default branch could write a cache from that code.
 # The workflow starts on each pull request, so its summary check "Rig arms OK" is always there (CI.md, "A gate with
-# paths"). The job "changes" decides if the arms run.
+# paths"). The job "changes" decides if the plan starts. The plan starts only the arms that the change can reach
+# (packages/rig/src/arm-reach.ts). A change to shared code of the rig, to the lockfile or to this file reaches each arm.
 name: Rig arms
 
 on:
@@ -49,20 +50,18 @@ jobs:
     outputs:
       matrix: ${{ steps.arms.outputs.matrix }}
     steps:
+      # The merge commit of the pull request and its first parent, the head of the base branch.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+          fetch-depth: 2
+      # Node 24 strips the types of arm-plan.ts, so the plan needs no install.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          package-manager-cache: false
       - id: arms
-        run: |
-          node -e '
-            const arms = require("./packages/rig/src/arms.json");
-            const rows = arms.flatMap((arm) => ["base", "fixed"].map((kind) => ({
-              id: arm.id, kind, repository: arm.repository, commit: kind === "base" ? arm.base : (arm.fix ?? arm.base),
-              patch: kind === "fixed" ? (arm.patch ?? "") : "",
-              build: arm.build, folder: arm.folder, copy: arm.copy.join(" "), package: arm.package,
-            })));
-            console.log(`matrix=${JSON.stringify(rows)}`);
-          ' >> "$GITHUB_OUTPUT"
+        run: node packages/rig/src/arm-plan.ts HEAD^1 >> "$GITHUB_OUTPUT"
 
   arms:
     needs: plan
