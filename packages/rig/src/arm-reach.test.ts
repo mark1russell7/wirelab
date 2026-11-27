@@ -51,7 +51,8 @@ describe("the reach of a sample change", () => {
   });
 
   it("of Markdown, or of a file that no arm imports, is no arm", () => {
-    expect(reached([`${RIG}/README.md`, src("index.ts")])).toEqual([]);
+    expect(reached([`${RIG}/README.md`, "docs/ROADMAP.md", src("index.ts")])).toEqual([]);
+    expect(reached(["packages/catalog/src/data/class-dimensions.json"])).toEqual(all);
   });
 
   it("of the file of the arms is each arm whose entry changes", () => {

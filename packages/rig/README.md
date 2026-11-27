@@ -26,6 +26,15 @@ The target of `apache-arrow` 21.2.0 is `tableFromIPC` on an Arrow IPC stream of 
 
 The target of `@aws-sdk/client-s3` 3.1175.0 is the event stream of `SelectObjectContentCommand`, with `@smithy/core` 3.41.0. A local request handler gives the bytes. Each event message is one frame with a prefix of 4 bytes: its total length.
 
+## The probe C003
+
+C003 is the class "the error that the caller gets is not the real cause". A cause target makes one failure of a client in two forms:
+
+- The reference is a form that the client reports with its real cause.
+- The trigger is the form of the finding.
+
+The oracle `sameCause` compares the kind of the two outcomes, and the class and the code of an error. It does not compare the message. The cause targets are `rxjs` (F0002), `mqtt` (F0117 and F0122), `bson` (F0165) and `graphql-request` (F0182). The reply cases of C003 examine `@connectrpc/connect-web`.
+
 ## The arms
 
 A proven probe passes on the fixed version of each instance. When no fixed version is released, an arm builds the package from a commit. `src/arms.json` gives each arm: the repository, its base commit, the fix, the build command and the folders to copy. The fix is a commit, or a patch in the folder `arms` when no fix commit is public. An arm names each target that uses the package.

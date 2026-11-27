@@ -40,8 +40,11 @@
     "graphql-request": "7.4.0",
     "graphql-ws": "6.4.3",
     "hls.js": "1.7.4",
+    "mqtt": "5.16.1",
+    "mqtt-packet": "9.0.2",
     "msgpackr": "2.1.4",
     "pusher-js": "8.6.0",
+    "rxjs": "7.8.2",
     "viem": "2.58.0",
     "viem-2.58.1": "npm:viem@2.58.1",
     "ws": "8.23.0"

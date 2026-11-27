@@ -10,7 +10,7 @@ import { startScriptedServer, type ScriptedReply } from "@mark1russell7/rigor-te
 import { anonymousQuery, clients, graphqlPath, runClient, type ClientName, type Outcome as SuiteOutcome } from "@wirelab/suite-graphql-http";
 import { ClientError, GraphQLClient } from "graphql-request";
 import { outcomeOf, type Outcome } from "../outcome.ts";
-import type { ReplyTarget } from "./target.ts";
+import type { CauseTarget, ReplyTarget } from "./target.ts";
 
 /** The code of an outcome in which the caller gets the GraphQL errors of the reply. */
 export const GRAPHQL_ERRORS = "graphql-errors";
@@ -82,6 +82,34 @@ export const graphqlRequestBatchTarget: ReplyTarget = {
           if (count > 0) throw Object.assign(new Error(error.message.slice(0, 200)), { name: "ClientError", code: GRAPHQL_ERRORS });
           throw Object.assign(new Error(error.message.slice(0, 200)), { name: "ClientError", code: "failure" });
         }
+      }, limitMs),
+    ),
+};
+
+/** The JSON serializer of the cause target: it sends a BigInt as its decimal text. */
+const bigIntSerializer = {
+  stringify: (value: unknown): string => JSON.stringify(value, (_, one: unknown) => (typeof one === "bigint" ? one.toString() : one)),
+  parse: (text: string): unknown => JSON.parse(text),
+};
+
+/**
+ * The cause target of F0182: a GraphQL error in the reply of `request`. With a number variable, the caller gets
+ * `ClientError`. With a BigInt variable, the constructor of `ClientError` throws a `TypeError` from `JSON.stringify`.
+ */
+export const graphqlRequestBigIntTarget: CauseTarget = {
+  id: "graphql-request/bigint-variable",
+  package: "graphql-request",
+  version: "7.4.0",
+  state: "open",
+  step: "JSON.stringify of the request (BigInt, cycle)",
+  reference: "a GraphQL error in the reply, with the variable n: 1",
+  trigger: "a GraphQL error in the reply, with the variable n: 1n",
+  run: (input) =>
+    withServer({ status: 200, fields: { "content-type": "application/json" }, body: JSON.stringify({ data: null, errors: [{ message: "nope" }] }) }, (url) =>
+      outcomeOf(async () => {
+        const client = new GraphQLClient(url, { jsonSerializer: bigIntSerializer });
+        await client.request("query ($n: Int) { a(n: $n) }", { n: input === "reference" ? 1 : 1n });
+        return ["data"];
       }, limitMs),
     ),
 };
