@@ -60,7 +60,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W26-R16 | Targets of C032 for the known instances | done | P1 | The probe of C032 examined only connect-web. A wire target gives the outcome of one call and the packets that the peer got. The rule of the protocol for the reply gives the expected outcome and packets. Targets: `mqtt` (F0115, F0120 and F0121) and `rxjs` (F0004) in #199, `socket.io-client` (F0064) in #200. Each control passes, and each trigger fails with its finding, also with `RIG=1` in CI. |
 | W26-R17 | Cause targets of `@supabase/realtime-js` and `partysocket` | later | P2 | The known instances F0020 and F0038 of C003 are in two packages that the rig does not install. Each one gets a cause target. |
 | W26-R18 | Arms of the cause targets of C003 | done | P1 | Each cause target of C003 has an arm with a fix, so C003 is proven outside connect-web. #202 has the fix commits of `bson` (#967) and `mqtt` (#2111). #203 has patch arms for `mqtt` F0117, `rxjs` F0002 and `graphql-request` F0182. |
-| W26-R19 | A file with only types reaches no arm | later | P2 | A file with only `type`, `interface` and type-export statements emits no JavaScript. So a change to it cannot alter an arm. The reach rule then keeps the narrow reach for a change to `targets/target.ts`, and the pinned test says so. |
+| W26-R19 | A file with only types reaches no arm | done | P2 | A file with only `type`, `interface` and type-export statements emits no JavaScript. So a change to it cannot alter an arm. `typesOnly` in `src/arm-reach.ts` examines the file before and after the change. A doubtful file counts as code, so the reach is wide. A change to `targets/target.ts` now reaches no arm. |
 
 ## The priority formula
 

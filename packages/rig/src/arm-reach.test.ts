@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { ARMS_FILE, RIG, armReach, armRows, cutsTargets, importsOf, targetHomes } from "./arm-reach.ts";
+import { ARMS_FILE, RIG, armReach, armRows, cutsTargets, importsOf, targetHomes, typesOnly } from "./arm-reach.ts";
 import { ARMS, type Arm } from "./arms.ts";
 
 /** The folder of the repository. */
@@ -71,6 +71,54 @@ describe("a change to shared code of the rig", () => {
     const shared = [src("outcome.ts"), src("arms.ts"), src("cuts.ts"), src("matrix.ts"), src("targets/target.ts"), src("probes/report.ts")];
     const config = [`${RIG}/package.json`, `${RIG}/vitest.config.ts`, "pnpm-lock.yaml", ".github/workflows/rig-arms.yml"];
     for (const path of [...shared, ...config]) expect(reached([path]), path).toEqual(all);
+  });
+});
+
+describe("a change to a file with only types", () => {
+  const target = src("targets/target.ts");
+  const text = texts.get(target) ?? "";
+  const withBase = (before: string): string[] => [
+    ...armReach({ arms: ARMS, baseArms: ARMS, changed: [target], texts, baseTexts: new Map([[target, before]]) }).keys(),
+  ];
+
+  it("reaches no arm when the file has only types before and after the change", () => {
+    expect(typesOnly(text)).toBe(true);
+    expect(withBase(text)).toEqual([]);
+    // A new file has no text before the change.
+    expect([...armReach({ arms: ARMS, baseArms: ARMS, changed: [target], texts, baseTexts: new Map() }).keys()]).toEqual([]);
+  });
+
+  it("reaches each arm of the file when the file had code before the change", () => {
+    expect(withBase(`${text}\nexport const removed = 1;\n`)).toEqual(all);
+  });
+
+  it("knows the type statements", () => {
+    const types = [
+      'import type { A } from "./a.ts";\nexport type B = A |\n  "x";\n',
+      "export interface C {\n  readonly d: (e: string) => void;\n}\ninterface D extends C {}\nexport type E =\n  | 1\n  | 2;\n",
+      '/** A comment. */\nexport type { A } from "./a.ts";\nexport type * from "./b.ts";\ntype F<T> = T extends string\n  ? 1\n  : 2;\n',
+    ];
+    for (const one of types) expect(typesOnly(one), one).toBe(true);
+  });
+
+  it("finds the code in a file", () => {
+    const code = [
+      "",
+      "// Only a comment.\n",
+      "export const a = 1;\n",
+      "export type A = 1;\nfoo();\n",
+      "export type A = 1\nfoo();\n",
+      "export type A = 1; ;foo();\n",
+      "export interface A {} foo();\n",
+      'import type from "./a.ts";\n',
+      'import "./a.ts";\n',
+      "type = 1;\n",
+      "export type A = `x${string}`;\n",
+      "export enum A { B }\n",
+      "export type A = { b: 1 };\n}\n",
+      "export type A = 'b\n';\n",
+    ];
+    for (const one of code) expect(typesOnly(one), one).toBe(false);
   });
 });
 

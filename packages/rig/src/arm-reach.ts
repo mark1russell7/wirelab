@@ -12,6 +12,9 @@
  *
  * The closure leaves out the files of other targets only when each target of the arm has a home (`targetHomes`). The test
  * of this file shows that each module that gives an arm target is its home or imports its home.
+ *
+ * A file with only types emits no JavaScript, and an arm job does not examine the types. So a change to such a file
+ * reaches no arm, when the file has only types before and after the change (`typesOnly`).
  */
 import { posix } from "node:path";
 import type { Arm } from "./arms.ts";
@@ -51,6 +54,120 @@ export function targetHomes(texts: ReadonlyMap<string, string>, arms: readonly A
     );
   }
   return homes;
+}
+
+/** A token of a source text: its text, the depth of brackets before it, and whether a line break comes before it. */
+interface Token {
+  readonly text: string;
+  readonly depth: number;
+  readonly newline: boolean;
+}
+
+/**
+ * This function gives the tokens of `text` without the comments. It gives undefined for a template literal, a line break
+ * in a string, a comment that does not end and brackets that do not match. The check of types then fails.
+ */
+function tokensOf(text: string): Token[] | undefined {
+  const tokens: Token[] = [];
+  let depth = 0;
+  let newline = false;
+  for (let at = 0; at < text.length; ) {
+    const char = text.charAt(at);
+    if (char === "\n") {
+      newline = true;
+      at += 1;
+    } else if (/\s/.test(char)) {
+      at += 1;
+    } else if (text.startsWith("//", at)) {
+      const end = text.indexOf("\n", at);
+      at = end === -1 ? text.length : end;
+    } else if (text.startsWith("/*", at)) {
+      const end = text.indexOf("*/", at + 2);
+      if (end === -1) return undefined;
+      if (text.slice(at, end).includes("\n")) newline = true;
+      at = end + 2;
+    } else {
+      if (char === "`") return undefined;
+      let end = at + 1;
+      if (char === '"' || char === "'") {
+        while (end < text.length && text.charAt(end) !== char) {
+          if (text.charAt(end) === "\n") return undefined;
+          end += text.charAt(end) === "\\" ? 2 : 1;
+        }
+        if (end >= text.length) return undefined;
+        end += 1;
+      } else if (/[\w$]/.test(char)) {
+        while (end < text.length && /[\w$]/.test(text.charAt(end))) end += 1;
+      } else if (text.startsWith("=>", at)) {
+        end = at + 2;
+      }
+      tokens.push({ text: text.slice(at, end), depth, newline });
+      newline = false;
+      if ("([{".includes(char)) depth += 1;
+      if (")]}".includes(char)) depth -= 1;
+      if (depth < 0) return undefined;
+      at = end;
+    }
+  }
+  return depth === 0 ? tokens : undefined;
+}
+
+/** This function tells if `text` is a name, for example `Outcome`. */
+const isName = (text: string | undefined): boolean => text !== undefined && /^[A-Za-z_$][\w$]*$/.test(text);
+
+/**
+ * This function gives the number of tokens of the head of a type statement at `at`, or 0 when no type statement starts
+ * there. The heads are `import type`, `export type`, `type`, `interface` and `export interface`. The function also
+ * examines the tokens after the head, because `type = 1` and `import type from "./a.ts"` are code.
+ */
+function headAt(tokens: readonly Token[], at: number): number {
+  const text = (offset: number): string | undefined => tokens[at + offset]?.text;
+  const exported = text(0) === "export" ? 1 : 0;
+  if (text(exported) === "interface" && isName(text(exported + 1))) return exported + 1;
+  if (text(0) === "import" && text(1) === "type") {
+    return text(2) === "{" || text(2) === "*" || (isName(text(2)) && text(2) !== "from") ? 2 : 0;
+  }
+  if (exported === 1 && text(1) === "type") return text(2) === "{" || text(2) === "*" || isName(text(2)) ? 2 : 0;
+  if (text(0) === "type" && isName(text(1)) && (text(2) === "=" || text(2) === "<")) return 1;
+  return 0;
+}
+
+/** A token before a line break that continues a type, for example the `|` of a union. */
+const CONTINUES_BEFORE = new Set(["=", "|", "&", "?", ":", "=>", ",", "extends"]);
+
+/** A token after a line break that continues a type, for example the `|` of a union. */
+const CONTINUES_AFTER = new Set(["|", "&", "?", ":", "=>", "extends"]);
+
+/**
+ * This function tells if the source `text` has only type statements, so it emits no JavaScript. A doubtful text gives
+ * false. The reach of a change to the file is then the reach of a change to code.
+ */
+export function typesOnly(text: string): boolean {
+  const tokens = tokensOf(text);
+  if (tokens === undefined || tokens.length === 0) return false;
+  let at = 0;
+  while (at < tokens.length) {
+    const head = headAt(tokens, at);
+    if (head === 0) return false;
+    const isInterface = tokens[at + head - 1]?.text === "interface";
+    at += head;
+    for (; at < tokens.length; at += 1) {
+      const token = tokens[at];
+      if (token === undefined || token.depth > 1) continue;
+      // A semicolon or the closing brace of an interface ends the statement.
+      if ((token.depth === 0 && token.text === ";") || (isInterface && token.depth === 1 && token.text === "}")) {
+        at += 1;
+        while (tokens[at]?.text === ";") at += 1;
+        break;
+      }
+      if (token.depth === 1 || !token.newline) continue;
+      // After a line break at the depth 0, the type continues, or a new type statement starts.
+      if (CONTINUES_AFTER.has(token.text) || CONTINUES_BEFORE.has(tokens[at - 1]?.text ?? "")) continue;
+      if (!isInterface && headAt(tokens, at) > 0) break;
+      return false;
+    }
+  }
+  return true;
 }
 
 /** The import graph of the sources of the rig, and the homes of the arm targets. */
@@ -113,6 +230,11 @@ export interface ReachInput {
   readonly changed: readonly string[];
   /** Each `.ts` file of `packages/rig/src` after the change: its path in the repository and its text. */
   readonly texts: ReadonlyMap<string, string>;
+  /**
+   * Each changed `.ts` file of `packages/rig/src` before the change, with its text. A file that is not in it is new.
+   * Without this map, no file counts as a file with only types.
+   */
+  readonly baseTexts?: ReadonlyMap<string, string>;
 }
 
 /**
@@ -120,7 +242,12 @@ export interface ReachInput {
  * Each other path reaches each arm. Examples are a path outside the rig, the lockfile and a configuration file of the rig.
  */
 export function armReach(input: ReachInput): Map<string, string[]> {
-  const { arms, baseArms, changed, texts } = input;
+  const { arms, baseArms, changed, texts, baseTexts } = input;
+  const onlyTypes = (path: string): boolean => {
+    const after = texts.get(path);
+    const before = baseTexts?.get(path);
+    return baseTexts !== undefined && after !== undefined && typesOnly(after) && (before === undefined || typesOnly(before));
+  };
   const graph = graphOf(texts, arms);
   const closures = new Map(arms.map((arm) => [arm.id, closureOf(arm, graph)]));
   const reach = new Map<string, string[]>(arms.map((arm) => [arm.id, []]));
@@ -140,6 +267,8 @@ export function armReach(input: ReachInput): Map<string, string[]> {
     } else if (path.startsWith(`${RIG}/arms/`)) {
       for (const arm of arms) if (arm.patch !== undefined && `${RIG}/${arm.patch}` === path) add(arm, path);
     } else if (path.startsWith(`${RIG}/src/`) && path.endsWith(".ts")) {
+      // A file with only types before and after the change emits no JavaScript, so it alters no arm.
+      if (onlyTypes(path)) continue;
       for (const arm of arms) if (closures.get(arm.id)?.has(path) === true) add(arm, path);
     } else {
       for (const arm of arms) add(arm, path);
