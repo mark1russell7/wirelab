@@ -33,6 +33,7 @@ A proven probe passes on the fixed version of each instance. When no fixed versi
 - The arm `base` builds the base commit. The probe must find the fault again. Thus the build alone does not change the result.
 - The arm `fixed` builds the commit of the fix. The probe must find no fault.
 - The workflow `rig-arms.yml` starts each arm in its own job, only for a pull request. The job puts the build in place of each installed release of the package.
+- The workflow starts only the arms that the change can reach. `src/arm-reach.ts` follows the imports from the probe and the targets of each arm. A change to shared code, to the lockfile or to the workflow reaches each arm.
 
 ## The checks
 
