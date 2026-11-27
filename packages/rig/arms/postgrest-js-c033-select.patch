@@ -1,0 +1,15 @@
+diff --git a/packages/core/postgrest-js/src/PostgrestBuilder.ts b/packages/core/postgrest-js/src/PostgrestBuilder.ts
+index 7c81ac8..90113f2 100644
+--- a/packages/core/postgrest-js/src/PostgrestBuilder.ts
++++ b/packages/core/postgrest-js/src/PostgrestBuilder.ts
+@@ -448,6 +448,10 @@ export default abstract class PostgrestBuilder<
+ 
+       try {
+         error = JSON.parse(body)
++        // A JSON scalar such as null, false, 0 or "" is not an error object. The failure keeps the body as its message.
++        if (typeof error !== 'object' || error === null) {
++          error = { message: body }
++        }
+ 
+         // Workaround for https://github.com/supabase/postgrest-js/issues/295
+         if (Array.isArray(error) && res.status === 404) {
