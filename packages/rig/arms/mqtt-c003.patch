@@ -1,0 +1,29 @@
+diff --git a/src/lib/client.ts b/src/lib/client.ts
+index 468482c..71bd928 100644
+--- a/src/lib/client.ts
++++ b/src/lib/client.ts
+@@ -2204,14 +2204,20 @@ export default class MqttClient extends TypedEventEmitter<MqttClientEventCallbac
+ 	}
+ 
+ 	private _checkDisconnecting(callback?: GenericCallback<any>) {
+-		if (this.disconnecting) {
++		// After end(), the stores are closed. With reconnectPeriod 0 or manualConnect,
++		// `disconnecting` is false again, so `disconnected` tells that the client ended.
++		const closed = this.disconnecting || this.disconnected === true
++		if (closed) {
++			const message = this.disconnecting
++				? 'client disconnecting'
++				: 'client disconnected'
+ 			if (callback && callback !== this.noop) {
+-				callback(new Error('client disconnecting'))
++				callback(new Error(message))
+ 			} else {
+-				this.emit('error', new Error('client disconnecting'))
++				this.emit('error', new Error(message))
+ 			}
+ 		}
+-		return this.disconnecting
++		return closed
+ 	}
+ 
+ 	/**

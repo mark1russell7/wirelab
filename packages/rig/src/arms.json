@@ -284,5 +284,44 @@
     "build": "npm ci --ignore-scripts && npm run build:ts",
     "folder": ".",
     "copy": ["build"]
+  },
+  {
+    "id": "mqtt-c003",
+    "class": "C003",
+    "targets": ["mqtt/publish-after-end"],
+    "package": "mqtt",
+    "repository": "mqttjs/MQTT.js",
+    "base": "9073c6370b02a5c51006cebc32f1b0e0a0b09ea0",
+    "patch": "arms/mqtt-c003.patch",
+    "fixLink": "https://github.com/mqttjs/MQTT.js/issues/2102",
+    "build": "npm ci --ignore-scripts && npm run build:ts",
+    "folder": ".",
+    "copy": ["build"]
+  },
+  {
+    "id": "rxjs-c003",
+    "class": "C003",
+    "targets": ["rxjs/websocket-codec"],
+    "package": "rxjs",
+    "repository": "ReactiveX/rxjs",
+    "base": "e5351d02e225e275ac0e497c7b66eaa5f0c88791",
+    "patch": "arms/rxjs-c003.patch",
+    "fixLink": "https://github.com/ReactiveX/rxjs/issues/7111",
+    "build": "npm ci --ignore-scripts && npx tsc -p src/tsconfig.cjs.json",
+    "folder": ".",
+    "copy": ["dist/cjs"]
+  },
+  {
+    "id": "graphql-request-c003",
+    "class": "C003",
+    "targets": ["graphql-request/bigint-variable"],
+    "package": "graphql-request",
+    "repository": "graffle-js/graffle",
+    "base": "9b8714cdf0041e148ab9235db553ff8dc7d0bf61",
+    "patch": "arms/graphql-request-c003.patch",
+    "fixLink": "https://github.com/graffle-js/graffle/issues/1506",
+    "build": "npx --yes pnpm@9.4.0 install --frozen-lockfile --ignore-scripts && rm -rf build && node_modules/.bin/tsc --project tsconfig.build.json && node_modules/.bin/tsup",
+    "folder": ".",
+    "copy": ["build"]
   }
 ]

@@ -1,0 +1,17 @@
+diff --git a/src/legacy/classes/ClientError.ts b/src/legacy/classes/ClientError.ts
+index 28841b0..b42d5da 100644
+--- a/src/legacy/classes/ClientError.ts
++++ b/src/legacy/classes/ClientError.ts
+@@ -6,10 +6,11 @@ export class ClientError extends Error {
+ 
+   constructor(response: GraphQLResponse, request: GraphQLRequestContext) {
+     const message = `${ClientError.extractMessage(response)}: ${
++      // A variable can be a BigInt, which JSON.stringify cannot write. The message then writes it as a string.
+       JSON.stringify({
+         response,
+         request,
+-      })
++      }, (_key: string, value: unknown) => typeof value === `bigint` ? value.toString() : value)
+     }`
+ 
+     super(message)
