@@ -288,6 +288,8 @@ export interface ArmRow {
   readonly folder: string;
   readonly copy: string;
   readonly package: string;
+  /** The folders of the sparse checkout, one on each line. An empty text checks out all files. */
+  readonly sparse: string;
 }
 
 /** This function gives the rows of the matrix of `arms`: the kind `base` and the kind `fixed` of each arm. */
@@ -303,6 +305,7 @@ export function armRows(arms: readonly Arm[]): ArmRow[] {
       folder: arm.folder,
       copy: arm.copy.join(" "),
       package: arm.package,
+      sparse: (arm.sparse ?? []).join("\n"),
     })),
   );
 }

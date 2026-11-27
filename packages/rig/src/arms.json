@@ -362,5 +362,19 @@
     "build": "npx --yes pnpm@11.1.2 install --frozen-lockfile --ignore-scripts --filter @supabase/postgrest-js... && cd packages/core/postgrest-js && node_modules/.bin/tsdown",
     "folder": "packages/core/postgrest-js",
     "copy": ["dist"]
+  },
+  {
+    "id": "signalr-c016",
+    "class": "C016",
+    "targets": ["signalr/hub-connection"],
+    "package": "@microsoft/signalr",
+    "repository": "dotnet/aspnetcore",
+    "base": "1def4cdc07dc10fc267136060e3ef5c1a96d4a99",
+    "patch": "arms/signalr-c016.patch",
+    "fixLink": "https://github.com/dotnet/aspnetcore/blob/1def4cdc07dc10fc267136060e3ef5c1a96d4a99/src/SignalR/clients/ts/signalr/src/HubConnection.ts#L1228",
+    "build": "mkdir -p src/SignalR/clients/node_modules && cd src/SignalR/clients && npm install --prefix . --workspaces=false --no-save --no-package-lock --ignore-scripts --no-audit --no-fund typescript@4.9.5 @types/node@14.18.63 @types/jest@26.0.24 @types/jasmine@2.8.24 @types/tough-cookie@4.0.5 && cd ts/signalr && echo \"export const VERSION = '11.0.0-dev';\" > src/pkg-version.ts && ../../node_modules/.bin/tsc --project ./tsconfig.json --module es2015 --outDir ./dist/esm -d && ../../node_modules/.bin/tsc --project ./tsconfig.json --module commonjs --outDir ./dist/cjs",
+    "folder": "src/SignalR/clients/ts/signalr",
+    "copy": ["dist/cjs", "dist/esm"],
+    "sparse": ["src/SignalR/clients/ts"]
   }
 ]
