@@ -1,0 +1,21 @@
+diff --git a/src/internal/observable/dom/WebSocketSubject.ts b/src/internal/observable/dom/WebSocketSubject.ts
+index 9eecbf5..caab8e8 100644
+--- a/src/internal/observable/dom/WebSocketSubject.ts
++++ b/src/internal/observable/dom/WebSocketSubject.ts
+@@ -303,7 +303,15 @@ export class WebSocketSubject<T> extends AnonymousSubject<T> {
+               const { serializer } = this._config;
+               socket!.send(serializer!(x!));
+             } catch (e) {
+-              this.destination!.error(e);
++              // An error of the serializer goes to the subscribers, as an error of the deserializer does.
++              // this.destination.error() takes only a close code, so it hid the error.
++              const { closingObserver } = this._config;
++              if (closingObserver) {
++                closingObserver.next(undefined);
++              }
++              socket!.close();
++              this._resetState();
++              observer.error(e);
+             }
+           }
+         },
