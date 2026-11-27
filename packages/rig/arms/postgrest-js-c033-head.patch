@@ -1,0 +1,14 @@
+diff --git a/packages/core/postgrest-js/src/PostgrestBuilder.ts b/packages/core/postgrest-js/src/PostgrestBuilder.ts
+index 7c81ac8..024127d 100644
+--- a/packages/core/postgrest-js/src/PostgrestBuilder.ts
++++ b/packages/core/postgrest-js/src/PostgrestBuilder.ts
+@@ -458,7 +458,8 @@ export default abstract class PostgrestBuilder<
+         }
+       } catch {
+         // Workaround for https://github.com/supabase/postgrest-js/issues/295
+-        if (res.status === 404 && body === '') {
++        // A reply to HEAD never has a body, so an empty body there is not the update with no match.
++        if (this.method !== 'HEAD' && res.status === 404 && body === '') {
+           status = 204
+           statusText = 'No Content'
+         } else {
