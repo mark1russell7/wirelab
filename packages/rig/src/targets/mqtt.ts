@@ -137,8 +137,11 @@ export const mqttEndBeforeConnectTarget: CauseTarget = {
 /** The cause targets of `mqtt`. */
 export const mqttCauseTargets: readonly CauseTarget[] = [mqttPublishAfterEndTarget, mqttEndBeforeConnectTarget];
 
+/** This function gives the message id of a SUBSCRIBE or an UNSUBSCRIBE. The client gives each of them an id. */
+const idOf = (packet: { readonly messageId?: number | undefined }): number => packet.messageId ?? 0;
+
 /** This function gives the callback of an mqtt call as a promise of its error. */
-const settled = (start: (callback: (error?: Error) => void) => void): Promise<Error | undefined> =>
+const settled = (start: (callback: (error?: Error | null) => void) => void): Promise<Error | undefined> =>
   new Promise((resolve) => start((error) => resolve(error ?? undefined)));
 
 /** This function gives the outcome of a call whose callback gave `error`. */
@@ -175,13 +178,13 @@ export const mqttSubackPartialTarget: WireTarget = {
         if (packet.cmd === "connect") connection.send(connack(packet.protocolVersion));
         if (packet.cmd !== "subscribe") return;
         if (connection.index === 0) {
-          connection.send({ cmd: "suback", messageId: packet.messageId, granted });
+          connection.send({ cmd: "suback", messageId: idOf(packet), granted });
           connection.close();
           return;
         }
         // Only the packets of the reconnect are the record.
         wire.push(...topicsOf(packet));
-        connection.send({ cmd: "suback", messageId: packet.messageId, granted: packet.subscriptions.map(() => 0) });
+        connection.send({ cmd: "suback", messageId: idOf(packet), granted: packet.subscriptions.map(() => 0) });
       },
       (url) =>
         outcomeOf(async () => {
@@ -199,7 +202,7 @@ export const mqttSubackPartialTarget: WireTarget = {
 };
 
 /**
- * The target of F0120: `subscribe()` while the client is offline. When the next connection attempt fails, the
+ * The target of F0120: `subscribe()` while the client is offline. When the client cannot connect the next time, the
  * callback gets "Connection closed". The client of the trigger still subscribes on the connection after it.
  */
 export const mqttOfflineSubscribeTarget: WireTarget = {
@@ -222,7 +225,7 @@ export const mqttOfflineSubscribeTarget: WireTarget = {
         }
         if (packet.cmd === "subscribe") {
           for (const one of topicsOf(packet)) wire.add(one);
-          connection.send({ cmd: "suback", messageId: packet.messageId, granted: packet.subscriptions.map(() => 0) });
+          connection.send({ cmd: "suback", messageId: idOf(packet), granted: packet.subscriptions.map(() => 0) });
         }
       },
       (url) =>
@@ -230,7 +233,7 @@ export const mqttOfflineSubscribeTarget: WireTarget = {
           const client = await connected(url, { reconnectPeriod: 100 });
           await next(client, "close");
           const error = await settled((callback) => client.subscribe("a", { qos: 0 }, callback));
-          // After a failed attempt, the trigger waits for the connection that succeeds.
+          // After the refused connection, the trigger waits for the connection that succeeds.
           if (input === "trigger") await next(client, "connect");
           await delay(settleMs);
           client.end(true);
@@ -258,10 +261,10 @@ export const mqttUnsubackFailureTarget: WireTarget = {
     const outcome = await withScriptedPeer(
       (connection, packet) => {
         if (packet.cmd === "connect") connection.send(connack(packet.protocolVersion));
-        if (packet.cmd === "subscribe") connection.send({ cmd: "suback", messageId: packet.messageId, granted: [0] });
+        if (packet.cmd === "subscribe") connection.send({ cmd: "suback", messageId: idOf(packet), granted: [0] });
         if (packet.cmd === "unsubscribe") {
           wire.push(...topicsOf(packet));
-          connection.send({ cmd: "unsuback", messageId: packet.messageId, granted: [input === "reference" ? 0x00 : 0x87] });
+          connection.send({ cmd: "unsuback", messageId: idOf(packet), granted: [input === "reference" ? 0x00 : 0x87] });
         }
       },
       (url) =>
