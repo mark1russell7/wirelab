@@ -60,6 +60,7 @@ wirelab tests the browser clients of the wire protocols, and it sends a fix for 
 | W26-R16 | Targets of C032 for the known instances | active | P1 | The probe of C032 examined only connect-web. A wire target gives the outcome of one call and the packets that the peer got. The rule of the protocol for the reply gives the expected outcome and packets. The first PR has `mqtt` (F0115, F0120 and F0121) and `rxjs` (F0004). A second PR adds `socket.io-client` (F0064), because its new dependency changes the lockfile. |
 | W26-R17 | Cause targets of `@supabase/realtime-js` and `partysocket` | later | P2 | The known instances F0020 and F0038 of C003 are in two packages that the rig does not install. Each one gets a cause target. |
 | W26-R18 | Arms of the cause targets of C003 | later | P1 | Each cause target of C003 gets an arm with a fix, as the key targets of C001 got in W26-R14. Then C003 is proven outside connect-web. |
+| W26-R19 | A file with only types reaches no arm | later | P2 | A file with only `type`, `interface` and type-export statements emits no JavaScript. So a change to it cannot alter an arm. The reach rule then keeps the narrow reach for a change to `targets/target.ts`, and the pinned test says so. |
 
 ## The priority formula
 

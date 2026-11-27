@@ -329,6 +329,9 @@ importers:
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
+      socket.io-client:
+        specifier: 4.8.4
+        version: 4.8.4(bufferutil@4.2.0)(supports-color@7.2.0)(utf-8-validate@5.0.10)
       viem:
         specifier: 2.58.0
         version: 2.58.0(bufferutil@4.2.0)(typescript@7.0.2)(utf-8-validate@5.0.10)(zod@4.6.7)

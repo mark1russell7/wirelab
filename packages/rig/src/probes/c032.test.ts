@@ -20,6 +20,7 @@ const KNOWN: Readonly<Record<string, string>> = {
   "mqtt/offline-subscribe": "F0120",
   "mqtt/unsuback-failure": "F0121",
   "rxjs/multiplex-submsg": "F0004",
+  "socket.io-client/retries-ack": "F0064",
 };
 
 /** This function gives one line for a case or a result: the target and the detail. */
