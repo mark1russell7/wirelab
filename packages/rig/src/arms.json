@@ -258,5 +258,31 @@
     "build": "npm ci --ignore-scripts && npm run build",
     "folder": ".",
     "copy": ["esm6", "bundles"]
+  },
+  {
+    "id": "js-bson-967",
+    "class": "C003",
+    "targets": ["bson/cut-int64"],
+    "package": "bson",
+    "repository": "mark1russell7/js-bson",
+    "base": "7348ff59c70c4cbe39d39ba6dc3f2291569e6848",
+    "fix": "5d88353c0c8968f96315d4a89c503a701f29d292",
+    "fixLink": "https://github.com/mongodb/js-bson/pull/967",
+    "build": "npm ci --ignore-scripts && npm run build",
+    "folder": ".",
+    "copy": ["lib"]
+  },
+  {
+    "id": "mqtt-2111",
+    "class": "C003",
+    "targets": ["mqtt/end-before-connect"],
+    "package": "mqtt",
+    "repository": "mark1russell7/MQTT.js",
+    "base": "9073c6370b02a5c51006cebc32f1b0e0a0b09ea0",
+    "fix": "acfc0851a35bfbcbf4bc13ada2c5bb6d1f8eb541",
+    "fixLink": "https://github.com/mqttjs/MQTT.js/pull/2111",
+    "build": "npm ci --ignore-scripts && npm run build:ts",
+    "folder": ".",
+    "copy": ["build"]
   }
 ]
