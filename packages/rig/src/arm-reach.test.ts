@@ -74,6 +74,18 @@ describe("a change to shared code of the rig", () => {
   });
 });
 
+describe("a plan that reaches no arm", () => {
+  it("passes the gate with no arm job", () => {
+    // A change to Markdown reaches no arm, so the plan can give an empty matrix.
+    expect(reached([`${RIG}/README.md`])).toEqual([]);
+    const workflow = readFileSync(`${root}.github/workflows/rig-arms.yml`, "utf8");
+    // The job arms then skips. The gate allows that skip, and a failure of the plan job still fails the gate.
+    expect(workflow).toMatch(/\n {4}if: needs\.plan\.outputs\.matrix != '\[\]'\n/);
+    expect(workflow).toMatch(/\n {4}needs: \[changes, plan, arms\]\n/);
+    expect(workflow).toMatch(/\n {10}allow-skip: arms\n/);
+  });
+});
+
 describe("a change to a file with only types", () => {
   const target = src("targets/target.ts");
   const text = texts.get(target) ?? "";
