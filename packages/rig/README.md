@@ -42,7 +42,7 @@ C032 is the class "the result reported to the caller differs from what happened 
 - The target gives the outcome of the call and the packets that the peer got.
 - The rule of the protocol for the reply of the peer gives the expected kind of the outcome and the packets.
 
-The oracle `wireVerdict` compares the kind and the packets in order. The reference of each target is a control. The wire targets are `mqtt` (F0115, F0120 and F0121) and `rxjs` (F0004).
+The oracle `wireVerdict` compares the kind and the packets in order. The reference of each target is a control. The wire targets are `mqtt` (F0115, F0120 and F0121), `rxjs` (F0004) and `socket.io-client` (F0064).
 
 ## The arms
 
