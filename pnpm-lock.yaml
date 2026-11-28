@@ -395,8 +395,8 @@ importers:
   packages/suite-autobahn:
     dependencies:
       faye-websocket:
-        specifier: ~0.11.4
-        version: 0.11.4
+        specifier: ~0.12.0
+        version: 0.12.0
       websocket:
         specifier: ^1.0.35
         version: 1.0.35(supports-color@7.2.0)
@@ -1988,6 +1988,10 @@ packages:
   faye-websocket@0.11.4:
     resolution: {integrity: sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==}
     engines: {node: '>=0.8.0'}
+
+  faye-websocket@0.12.0:
+    resolution: {integrity: sha512-k4SrrWTHgtilT0hPMzS/kbYx9OHs+ITVv3VGqEI45SOsveVyFSES4DA4Opi2UMrba2MZhQe9yjsVz7uwVKa1qQ==}
+    engines: {node: '>=0.10.0'}
 
   fdir@6.5.0:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
@@ -4103,6 +4107,10 @@ snapshots:
       fast-string-width: 3.0.2
 
   faye-websocket@0.11.4:
+    dependencies:
+      websocket-driver: 0.8.1
+
+  faye-websocket@0.12.0:
     dependencies:
       websocket-driver: 0.8.1
 
